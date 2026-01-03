@@ -5,9 +5,12 @@
  * This layout applies to all routes in the (marketing) route group.
  */
 
+import Topbar from "@/components/ui/Topbar";
+
 export default function MarketingLayout({ children }) {
   return (
     <div className="min-h-screen">
+      <Topbar />
       {children}
     </div>
   );
