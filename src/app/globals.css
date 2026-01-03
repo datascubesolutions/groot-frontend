@@ -1,4 +1,7 @@
 @import "tailwindcss";
+
+@source "../../src/**/*.{js,jsx,ts,tsx,mdx}";
+
 @import "../styles/tokens.css";
 @import "../styles/animations.css";
 
