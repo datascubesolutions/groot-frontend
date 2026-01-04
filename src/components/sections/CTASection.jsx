@@ -1,10 +1,29 @@
 "use client";
 
+import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function CTASection() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Generate random positions for animated dots (client-side only to avoid hydration mismatch)
+  const animatedDots = useMemo(() => {
+    if (!isMounted) return [];
+    return Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      duration: 3 + Math.random() * 2,
+      delay: Math.random() * 2,
+    }));
+  }, [isMounted]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -12,22 +31,22 @@ export function CTASection() {
 
       {/* Animated dots */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
+        {animatedDots.map((dot) => (
           <motion.div
-            key={i}
+            key={dot.id}
             className="absolute w-2 h-2 rounded-full bg-primary/20"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${dot.left}%`,
+              top: `${dot.top}%`,
             }}
             animate={{
               scale: [1, 1.5, 1],
               opacity: [0.2, 0.5, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: dot.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: dot.delay,
             }}
           />
         ))}
