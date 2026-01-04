@@ -1,12 +1,12 @@
 /**
  * UI Components Index
- * 
+ *
  * @fileoverview Centralized export for all UI primitive components
  * These are the building blocks used to compose larger components
- * 
+ *
  * @example
  * import { Button, Card, Input, Badge } from '@/components/ui';
- * 
+ *
  * @module components/ui
  */
 
@@ -24,12 +24,7 @@ export { Input } from './Input';
 // Display
 // ============================================================================
 export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
+  Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
 } from './Card';
 
 export { Badge, badgeVariants } from './Badge';
@@ -37,7 +32,7 @@ export { Badge, badgeVariants } from './Badge';
 // ============================================================================
 // Feedback
 // ============================================================================
-export { Loading, LoadingSpinner, LoadingDots } from './Loading';
+export { Loading, LoadingDots, LoadingSpinner } from './Loading';
 
 // ============================================================================
 // Layout
@@ -47,7 +42,7 @@ export { default as Container } from './Container';
 // ============================================================================
 // Navigation (to be added)
 // ============================================================================
-// export { Breadcrumbs } from './Breadcrumbs';
+export { Breadcrumb } from './Breadcrumb';
 // export { Tabs } from './Tabs';
 // export { Pagination } from './Pagination';
 

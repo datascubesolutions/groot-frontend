@@ -1,10 +1,10 @@
 export const siteConfig = {
-  name: "Biztech",
-  description: "Software Product Development & AI Solutions",
-  url: "https://groot.datascube.com",
+  name: "Groot Analytics",
+  description: "Data Engineering, AI & Analytics Solutions",
+  url: "https://grootanalytics.com",
 };
 
 export const METADATA = {
-  TITLE: "Biztech - Software Product Development Company",
-  DESCRIPTION: "Biztech is a leading software product development company offering AI solutions, enterprise applications, and cloud operations.",
+  TITLE: "Groot Analytics - Data Engineering & AI Solutions",
+  DESCRIPTION: "Groot Analytics transforms complex, scattered data into intelligent decisions. We build modern data platforms, advanced analytics, and AI-powered automation.",
 };

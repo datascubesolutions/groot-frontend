@@ -70,10 +70,10 @@ export {
     OrganizationSchema, ServiceSchema, WebsiteSchema
 } from './seo/StructuredData';
 
-export {
-    Breadcrumbs,
-    generateBreadcrumbsFromPath
-} from './seo/Breadcrumbs';
+// export {
+//     Breadcrumbs,
+//     generateBreadcrumbsFromPath
+// } from './seo/Breadcrumbs';
 
 // ============================================================================
 // Animation Components

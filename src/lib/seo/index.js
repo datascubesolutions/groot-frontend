@@ -1,15 +1,15 @@
 /**
  * SEO Utilities
- * 
+ *
  * @fileoverview Helper functions for SEO and metadata management
  * @module lib/seo
  */
 
-import { getRouteMetadata, ROUTE_METADATA } from '@/lib/routes/metadata';
+import { ROUTE_METADATA } from '@/lib/routes/metadata';
 
 /**
  * Generate static metadata object for pages
- * 
+ *
  * @param {Object} params - Metadata parameters
  * @param {string} params.title - Page title
  * @param {string} params.description - Page description
@@ -72,7 +72,7 @@ export function generateMetadata({
 
 /**
  * Generate metadata from route configuration
- * 
+ *
  * @param {keyof typeof ROUTE_METADATA} routeKey - Key from ROUTE_METADATA
  * @param {Object} [overrides] - Override values
  * @returns {import('next').Metadata}
@@ -100,30 +100,11 @@ export function generateRouteMetadata(routeKey, overrides = {}) {
   });
 }
 
-/**
- * Generate breadcrumb structured data
- * 
- * @param {Array<{name: string, path: string}>} items - Breadcrumb items
- * @returns {Object} JSON-LD structured data
- */
-export function generateBreadcrumbSchema(items) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      item: `${siteUrl}${item.path}`,
-    })),
-  };
-}
 
 /**
  * Generate FAQ structured data
- * 
+ *
  * @param {Array<{question: string, answer: string}>} faqs - FAQ items
  * @returns {Object} JSON-LD structured data
  */
@@ -144,7 +125,7 @@ export function generateFAQSchema(faqs) {
 
 /**
  * Generate article structured data
- * 
+ *
  * @param {Object} article - Article data
  * @param {string} article.title - Article title
  * @param {string} article.description - Article description
@@ -186,7 +167,7 @@ export function generateArticleSchema(article) {
 export default {
   generateMetadata,
   generateRouteMetadata,
-  generateBreadcrumbSchema,
+
   generateFAQSchema,
   generateArticleSchema,
 };

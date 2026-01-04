@@ -1,6 +1,6 @@
 /**
  * SEO Type Definitions
- * 
+ *
  * @fileoverview Type definitions for SEO and metadata
  * @module types/seo
  */
@@ -58,12 +58,7 @@
  * @property {Object} [contactPoint] - Contact information
  */
 
-/**
- * @typedef {Object} BreadcrumbItem
- * @property {string} name - Display name
- * @property {string} url - Item URL
- * @property {number} position - Position in breadcrumb
- */
+
 
 // Export empty object for module resolution
 export { };

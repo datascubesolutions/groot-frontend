@@ -16,7 +16,13 @@ const nextConfig = {
   // Experimental features
   experimental: {
     optimizePackageImports: ["@/components", "@/lib"],
+    // Enable optimized route prefetching
+    optimizeCss: true,
   },
+  
+  // Optimize route prefetching
+  // Next.js automatically prefetches routes in viewport, but we ensure it's enabled
+  // File-based routing is already in use via App Router
   
   // External packages (optional dependencies)
   // Mark Sentry as external so it doesn't try to bundle it

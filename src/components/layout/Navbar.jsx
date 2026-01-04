@@ -1,174 +1,265 @@
 "use client";
 
-import { Container } from '@/components/ui';
-import { Button } from '@/components/ui/Button';
-import { NAVIGATION_CONFIG } from '@/config';
-import { cn } from '@/lib/utils';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Award, ChevronDown, ChevronRight, FileCheck, UserCheck, Users } from 'lucide-react';
-import Link from 'next/link';
-import { useState } from 'react';
+import { Button } from "@/components/ui/Button";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { MegaMenu } from "./MegaMenu";
 
-// Icon mapping for stats since we can't store components in JSON safely if we want strict serializability
-const ICON_MAP = {
-  award: Award,
-  'file-check': FileCheck,
-  users: Users,
-  'user-check': UserCheck
-};
+const navLinks = [
+  { label: "Services", href: "/services", hasDropdown: true },
+  { label: "Industries", href: "/industries" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Technologies", href: "/technologies" },
+  { label: "Our Work", href: "/work" },
+  {
+    label: "About Us",
+    href: "/about",
+    hasDropdown: true,
+    subLinks: [
+      { label: "Who We Are", href: "/about/who-we-are" },
+      { label: "What We Do", href: "/about/what-we-do" },
+      { label: "How We Do It", href: "/about/how-we-do-it" },
+      { label: "Our Story", href: "/about/our-story" },
+      { label: "Why Join Us", href: "/about/why-join-us" },
+      { label: "Careers", href: "/about/careers" },
+    ]
+  },
+];
 
 export function Navbar() {
-  const [activeMenu, setActiveMenu] = useState(null);
-  const [activeCategory, setActiveCategory] = useState('Software Product Development');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const handleMouseEnter = (menu) => {
-    setActiveMenu(menu);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleMouseEnter = (label) => {
+    setActiveDropdown(label);
   };
 
   const handleMouseLeave = () => {
-    setActiveMenu(null);
+    setActiveDropdown(null);
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <Container>
-        <div className="flex h-20 items-center justify-between">
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || activeDropdown ? "glass shadow-md" : "bg-transparent"
+        }`}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="container mx-auto px-6">
+        <nav className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
-              Biztech
-            </span>
-            <sup className="text-xs text-muted-foreground">®</sup>
+          <Link href="/" prefetch={true} className="flex items-center gap-2 z-50">
+            <GrootLogo />
           </Link>
 
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
-            {NAVIGATION_CONFIG.main.map((item) => (
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8 h-full">
+            {navLinks.map((link) => (
               <div
-                key={item.label}
-                className="relative group"
-                onMouseEnter={() => handleMouseEnter(item.type === 'mega' ? 'mega' : null)}
-                onMouseLeave={handleMouseLeave}
+                key={link.label}
+                className="relative h-full flex items-center"
+                onMouseEnter={() => handleMouseEnter(link.label)}
               >
                 <Link
-                  href={item.href}
-                  className={cn(
-                    "flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:text-orange-500 transition-colors",
-                    (activeMenu === 'mega' && item.type === 'mega') && "text-orange-500"
-                  )}
+                  href={link.href}
+                  prefetch={true}
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 relative group py-2
+                    ${activeDropdown === link.label ? "text-primary" : "text-foreground/80 hover:text-primary"}`}
                 >
-                  {item.label}
-                  {item.type !== 'link' && (
-                    <ChevronDown className="ml-1 h-4 w-4" />
+                  {link.label}
+                  {link.hasDropdown && (
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-200 ${activeDropdown === link.label ? "rotate-180" : ""
+                        }`}
+                    />
                   )}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
                 </Link>
 
-                {/* Mega Menu Dropdown */}
-                <AnimatePresence>
-                  {activeMenu === 'mega' && item.type === 'mega' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute left-1/2 -translate-x-1/2 top-full w-[90vw] max-w-7xl bg-white shadow-xl border-t border-slate-100 rounded-b-xl overflow-hidden"
-                      style={{ transform: 'translate(-50%, 0)' }} // Centering fix
-                    >
-                      <div className="flex h-[500px]">
-                        {/* Column 1: Categories */}
-                        <div className="w-1/4 bg-orange-50 p-6 border-r border-orange-100">
-                          <h3 className="font-semibold text-orange-600 mb-6 px-4">Services</h3>
-                          <div className="space-y-1">
-                            {item.columns[0].items.map((cat) => (
-                              <button
-                                key={cat.label}
-                                onMouseEnter={() => setActiveCategory(cat.label)}
-                                className={cn(
-                                  "w-full flex items-center justify-between px-4 py-3 text-sm rounded-lg transition-all",
-                                  activeCategory === cat.label
-                                    ? "bg-white text-orange-600 shadow-sm font-medium"
-                                    : "text-slate-600 hover:bg-orange-100/50"
-                                )}
-                              >
-                                <span className="flex items-center">
-                                  {/* {cat.icon && <cat.icon className="mr-2 h-4 w-4" />} */}
-                                  {cat.label}
-                                </span>
-                                {activeCategory === cat.label && (
-                                  <ChevronRight className="h-4 w-4" />
-                                )}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Column 2: Sub-items */}
-                        <div className="w-1/2 p-8 grid grid-cols-2 gap-x-8 gap-y-4 content-start">
-                          <div className="col-span-2 mb-4">
-                            <h3 className="font-bold text-slate-800 text-lg">{activeCategory}</h3>
-                            <div className="h-1 w-12 bg-orange-500 mt-2 rounded-full"></div>
-                          </div>
-                          {item.columns[1].items.map((subItem) => (
-                            <Link
-                              key={subItem.label}
-                              href={subItem.href}
-                              className="group flex items-center p-2 rounded-md hover:bg-slate-50 transition-colors"
-                            >
-                              <span className="h-1.5 w-1.5 rounded-full bg-slate-300 group-hover:bg-orange-500 mr-3 transition-colors"></span>
-                              <span className="text-slate-600 group-hover:text-orange-600 font-medium transition-colors">
-                                {subItem.label}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-
-                        {/* Column 3: Stats */}
-                        <div className="w-1/4 bg-slate-50 p-8 flex flex-col justify-center space-y-8 border-l">
-                          {item.columns[2].items.map((stat, idx) => {
-                            const Icon = ICON_MAP[stat.icon];
-                            return (
-                              <div key={idx} className="flex items-start space-x-4">
-                                <div className={cn(
-                                  "p-3 rounded-xl bg-orange-100/50 text-orange-600",
-                                  idx === 1 && "text-blue-600 bg-blue-100/50",
-                                  idx === 2 && "text-pink-600 bg-pink-100/50",
-                                  idx === 3 && "text-amber-600 bg-amber-100/50"
-                                )}>
-                                  {Icon && <Icon className="h-6 w-6" />}
-                                </div>
-                                <div>
-                                  <div className={cn(
-                                    "text-2xl font-bold text-orange-600",
-                                    idx === 1 && "text-blue-600",
-                                    idx === 2 && "text-pink-600",
-                                    idx === 3 && "text-amber-600"
-                                  )}>
-                                    {stat.value}
-                                  </div>
-                                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">
-                                    {stat.label}
-                                  </div>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Regular Dropdown for non-MegaMenu links */}
+                {link.hasDropdown && link.label !== "Services" && link.label !== "About Us" && activeDropdown === link.label && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 w-64 bg-background border border-border shadow-xl rounded-xl py-4 z-50"
+                  >
+                    {link.subLinks?.map((sub) => (
+                      <Link
+                        key={sub.label}
+                        href={sub.href}
+                        prefetch={true}
+                        className="block px-6 py-2.5 text-sm text-foreground/70 hover:text-primary hover:bg-primary/5 transition-all"
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
               </div>
             ))}
-          </nav>
+          </div>
 
-          {/* CTA */}
-          <div className="flex items-center space-x-4">
-            <Button className="bg-orange-600 hover:bg-orange-700 text-white rounded-md px-6 font-semibold shadow-lg shadow-orange-200">
-              Let's Connect <ChevronRight className="ml-1 h-4 w-4" />
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center gap-4">
+            <Button variant="hero" size="default">
+              Let's Connect
             </Button>
           </div>
-        </div>
-      </Container>
-    </header>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-foreground"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </nav>
+      </div>
+
+      {/* Mega Menu Dropdown */}
+      <AnimatePresence>
+        {(activeDropdown === "Services" || activeDropdown === "About Us") && (
+          <MegaMenu
+            isOpen={true}
+            onClose={() => setActiveDropdown(null)}
+            menuType={activeDropdown}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass border-t border-border overflow-hidden max-h-[80vh] overflow-y-auto"
+          >
+            <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <div key={link.label} className="flex flex-col">
+                  <Link
+                    href={link.href}
+                    prefetch={true}
+                    onClick={() => !link.hasDropdown && setIsMobileMenuOpen(false)}
+                    className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors flex items-center justify-between"
+                  >
+                    {link.label}
+                    {link.hasDropdown && <ChevronDown size={16} />}
+                  </Link>
+                  {link.hasDropdown && (
+                    <div className="pl-4 flex flex-col gap-2 border-l border-border mt-1 mb-2">
+                      {link.label === "Services" ? (
+                        // Simplified Services for mobile
+                        ['Strategy & Advisory', 'Data Engineering', 'Business Intelligence', 'AI & Automation', 'Dedicated Resources'].map(s => (
+                          <Link
+                            key={s}
+                            href={`/services/${s.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                            prefetch={true}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-sm text-foreground/60 py-1"
+                          >
+                            {s}
+                          </Link>
+                        ))
+                      ) : (
+                        link.subLinks?.map((sub) => (
+                          <Link
+                            key={sub.label}
+                            href={sub.href}
+                            prefetch={true}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-sm text-foreground/60 py-1"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <Button variant="hero" className="mt-4 w-full">
+                Let's Connect
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }
+
+const GrootLogo = () => (
+  <svg
+    width="100"
+    height="32"
+    viewBox="0 0 100 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Groot Analytics Logo"
+  >
+    {/* Dots forming 'groot' */}
+    <g className="text-charcoal" fill="currentColor">
+      {/* g */}
+      <circle cx="6" cy="10" r="2" />
+      <circle cx="12" cy="8" r="2" />
+      <circle cx="16" cy="12" r="2" />
+      <circle cx="14" cy="18" r="2" />
+      <circle cx="8" cy="20" r="2" />
+      <circle cx="4" cy="16" r="2" />
+      <circle cx="16" cy="24" r="2" />
+      <circle cx="10" cy="26" r="2" />
+
+      {/* r */}
+      <circle cx="24" cy="12" r="2" />
+      <circle cx="24" cy="18" r="2" />
+      <circle cx="24" cy="24" r="2" />
+      <circle cx="30" cy="10" r="2" />
+      <circle cx="34" cy="14" r="2" />
+
+      {/* o */}
+      <circle cx="44" cy="10" r="2" />
+      <circle cx="50" cy="12" r="2" />
+      <circle cx="52" cy="18" r="2" />
+      <circle cx="48" cy="24" r="2" />
+      <circle cx="42" cy="22" r="2" />
+      <circle cx="40" cy="16" r="2" />
+
+      {/* o */}
+      <circle cx="62" cy="10" r="2" />
+      <circle cx="68" cy="12" r="2" />
+      <circle cx="70" cy="18" r="2" />
+      <circle cx="66" cy="24" r="2" />
+      <circle cx="60" cy="22" r="2" />
+      <circle cx="58" cy="16" r="2" />
+
+      {/* t */}
+      <circle cx="80" cy="8" r="2" />
+      <circle cx="86" cy="8" r="2" />
+      <circle cx="83" cy="14" r="2" />
+      <circle cx="83" cy="20" r="2" />
+      <circle cx="86" cy="26" r="2" />
+      <circle cx="90" cy="24" r="2" />
+    </g>
+  </svg>
+);
+
+export default Navbar;

@@ -1,43 +1,75 @@
-import { Breadcrumbs } from "@/components/seo";
-import { Container } from "@/components/ui";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { BarChart, Brain, Database, TrendingUp, Users } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = {
-  title: "Services",
-  description: "Explore our comprehensive software development and data engineering services.",
+  title: "Our Services | Groot Analytics",
+  description: "Comprehensive data engineering, analytics, and AI services to transform your business.",
 };
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen pt-20"> {/* Add padding for fixed header */}
-      <Container>
-        <div className="py-8">
-          <Breadcrumbs items={[{ name: "Services", path: "/services" }]} />
-        </div>
+    <main className="pt-20">
+      <Breadcrumb items={[{ label: "Services", href: "/services" }]} />
 
-        <div className="py-12">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-6">
-            Our Services
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl">
-            We deliver cutting-edge solutions across the entire digital spectrum, from product strategy to cloud operations.
-          </p>
-        </div>
-      </Container>
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              We provide end-to-end data capabilities, from strategy to execution.
+            </p>
+          </div>
 
-      {/* Placeholder content - In real app, this would be sections */}
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
-          {['Software Product Development', 'AI-Powered Solutions', 'Enterprise Applications', 'Custom Software', 'Ecommerce', 'CloudOps'].map((service) => (
-            <div key={service} className="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-12 w-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center mb-4">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">{service}</h3>
-              <p className="text-slate-500">Comprehensive solutions tailored to your business needs ensuring scalability and performance.</p>
-            </div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <ServiceCard
+              icon={TrendingUp}
+              title="Strategy & Advisory"
+              description="Define your data vision, build the roadmap, and execute with confidence."
+              href="/services/strategy-advisory"
+            />
+            <ServiceCard
+              icon={Database}
+              title="Data Engineering"
+              description="Build modern cloud data platforms, pipelines, and warehouses."
+              href="/services/data-engineering"
+            />
+            <ServiceCard
+              icon={BarChart}
+              title="Business Intelligence"
+              description="Turn data into insights with dashboards, reporting, and semantic models."
+              href="/services/business-intelligence"
+            />
+            <ServiceCard
+              icon={Brain}
+              title="AI & Automation"
+              description="Deploy production-grade AI, machine learning, and intelligent automation."
+              href="/services/ai-automation"
+            />
+            <ServiceCard
+              icon={Users}
+              title="Dedicated Resources"
+              description="Scale your team with embedded engineers and offshore centers."
+              href="/services/dedicated-resources"
+            />
+          </div>
         </div>
-      </Container>
-    </div>
+      </section>
+    </main>
   );
+}
+
+function ServiceCard({ icon: Icon, title, description, href }) {
+  return (
+    <Link href={href} prefetch={true} className="group">
+      <div className="p-8 h-full bg-background rounded-2xl border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+        <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+          <Icon size={28} />
+        </div>
+        <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">{title}</h3>
+        <p className="text-muted-foreground mb-6">{description}</p>
+        <span className="text-primary font-medium flex items-center gap-2">Explore <span className="group-hover:translate-x-1 transition-transform">→</span></span>
+      </div>
+    </Link>
+  )
 }

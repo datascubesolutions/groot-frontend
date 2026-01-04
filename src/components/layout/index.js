@@ -5,6 +5,7 @@
  * @module components/layout
  */
 
+export { MegaMenu } from './MegaMenu';
 export { Navbar } from './Navbar';
 // export { Footer } from './Footer'; // Already exported from sections but could be here too
 // export { Sidebar } from './Sidebar';
