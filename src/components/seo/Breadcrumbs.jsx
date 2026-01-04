@@ -2,15 +2,15 @@
 
 /**
  * Breadcrumbs Component
- * 
+ *
  * @fileoverview Navigation breadcrumbs with structured data support
  * @module components/seo/Breadcrumbs
  */
 
-import Link from 'next/link';
-import { ChevronRight, Home } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { generateBreadcrumbSchema } from '@/lib/seo';
+import { cn } from '@/lib/utils';
+import { ChevronRight, Home } from 'lucide-react';
+import Link from 'next/link';
 
 /**
  * @typedef {Object} BreadcrumbItem
@@ -28,9 +28,9 @@ import { generateBreadcrumbSchema } from '@/lib/seo';
 
 /**
  * Breadcrumbs navigation component
- * 
+ *
  * @param {BreadcrumbsProps} props
- * 
+ *
  * @example
  * ```jsx
  * <Breadcrumbs
@@ -68,9 +68,9 @@ export function Breadcrumbs({
             {/* Breadcrumb Navigation */}
             <nav
                 aria-label="Breadcrumb"
-                className={cn('flex items-center space-x-1 text-sm text-muted-foreground', className)}
+                className={cn('flex items-center space-x-2 text-sm text-slate-500', className)}
             >
-                <ol className="flex items-center space-x-1">
+                <ol className="flex items-center space-x-2">
                     {breadcrumbItems.map((item, index) => {
                         const isLast = index === breadcrumbItems.length - 1;
                         const isFirst = index === 0;
@@ -79,13 +79,13 @@ export function Breadcrumbs({
                             <li key={item.path} className="flex items-center">
                                 {/* Separator */}
                                 {!isFirst && (
-                                    <ChevronRight className="mx-2 h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                                    <ChevronRight className="mx-2 h-3 w-3 text-slate-400" aria-hidden="true" />
                                 )}
 
                                 {/* Link or Current Page */}
                                 {isLast ? (
                                     <span
-                                        className="font-medium text-foreground"
+                                        className="font-semibold text-orange-600"
                                         aria-current="page"
                                     >
                                         {item.name}
@@ -94,12 +94,12 @@ export function Breadcrumbs({
                                     <Link
                                         href={item.path}
                                         className={cn(
-                                            'flex items-center hover:text-foreground transition-colors',
-                                            isFirst && 'text-primary'
+                                            'flex items-center hover:text-orange-600 transition-colors duration-200',
+                                            isFirst && 'hover:text-orange-600'
                                         )}
                                     >
                                         {isFirst && showHome && (
-                                            <Home className="mr-1 h-4 w-4" aria-hidden="true" />
+                                            <Home className="mr-1 h-3.5 w-3.5 mb-0.5" aria-hidden="true" />
                                         )}
                                         <span>{item.name}</span>
                                     </Link>
@@ -115,11 +115,11 @@ export function Breadcrumbs({
 
 /**
  * Generate breadcrumb items from pathname
- * 
+ *
  * @param {string} pathname - Current pathname (e.g., '/services/data-engineering')
  * @param {Object<string, string>} [labels] - Custom labels for paths
  * @returns {BreadcrumbItem[]}
- * 
+ *
  * @example
  * ```jsx
  * const items = generateBreadcrumbsFromPath('/services/data-engineering', {

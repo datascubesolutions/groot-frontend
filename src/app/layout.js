@@ -1,6 +1,7 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
-import { METADATA } from "@/lib/constants";
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
+import { Navbar } from "@/components/layout";
+import { METADATA } from "@/lib/constants";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -77,8 +78,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${plusJakartaSans.variable} antialiased`}>
-        <ErrorBoundary>{children}</ErrorBoundary>
+      <body className={`${plusJakartaSans.variable} antialiased min-h-screen flex flex-col`}>
+        <ErrorBoundary>
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+        </ErrorBoundary>
       </body>
     </html>
   );
