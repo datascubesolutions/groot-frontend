@@ -1,6 +1,6 @@
 /**
  * Animation Styles
- * Reusable animation keyframes and utilities
+ * Custom animations from data-dot-dynamics
  */
 
 @keyframes fadeIn {
@@ -76,6 +76,116 @@
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes dotAssemble {
+  0% {
+    opacity: 0;
+    transform: translate(var(--start-x, 0), var(--start-y, 0)) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(calc(var(--start-x, 0) * 0.3), calc(var(--start-y, 0) * 0.3)) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes dotFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(5px, -5px);
+  }
+  50% {
+    transform: translate(0, -10px);
+  }
+  75% {
+    transform: translate(-5px, -5px);
+  }
+}
+
+@keyframes accordionDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordionUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Animation utility classes */
 .animate-fade-in {
   animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -103,6 +213,26 @@
 
 .animate-scale-in {
   animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2s ease-in-out infinite;
+}
+
+.animate-dot-float {
+  animation: dotFloat 4s ease-in-out infinite;
+}
+
+.animate-accordion-down {
+  animation: accordionDown 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordionUp 0.2s ease-out;
 }
 
 /* Reduced motion support */

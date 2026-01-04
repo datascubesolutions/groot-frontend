@@ -1,70 +1,97 @@
-/**
- * Design Tokens
- * CSS custom properties for design system
- */
-
 :root {
-  /* Colors - Mint Green Theme */
-  --color-primary-50: #f0fdf4;
-  --color-primary-100: #dcfce7;
-  --color-primary-200: #bbf7d0;
-  --color-primary-300: #86efac;
-  --color-primary-400: #4ade80;
-  --color-primary-500: #22c55e;
-  --color-primary-600: #16a34a;
-  --color-primary-700: #15803d;
-  --color-primary-800: #166534;
-  --color-primary-900: #14532d;
+    /* Groot Analytics Brand Colors */
+    --background: 150 20% 98%; /* Soft Birch White #F8FAF9 */
+    --foreground: 200 28% 16%; /* Charcoal Bark #1F2933 */
 
-  /* Neutral Colors */
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f4f4f5;
-  --color-neutral-200: #e4e4e7;
-  --color-neutral-300: #d4d4d8;
-  --color-neutral-400: #a1a1aa;
-  --color-neutral-500: #71717a;
-  --color-neutral-600: #52525b;
-  --color-neutral-700: #3f3f46;
-  --color-neutral-800: #27272a;
-  --color-neutral-900: #18181b;
+    --card: 150 20% 98%;
+    --card-foreground: 200 28% 16%;
 
-  /* Semantic Colors */
-  --background: #ffffff;
-  --foreground: #171717;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --border: #e4e4e7;
-  --card: #ffffff;
-  --card-foreground: #171717;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 28% 16%;
 
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
-  --spacing-3xl: 6rem;
+    /* Ocean Mint - Primary Brand */
+    --primary: 168 64% 51%; /* #2DD4BF */
+    --primary-foreground: 200 28% 16%;
 
-  /* Border Radius */
-  --radius: 0.5rem;
-  --radius-sm: 0.25rem;
-  --radius-lg: 0.75rem;
-  --radius-full: 9999px;
+    /* Deep Forest Green - Secondary */
+    --secondary: 161 88% 16%; /* #064E3B */
+    --secondary-foreground: 150 20% 98%;
 
-  /* Typography */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+    /* Fresh Leaf - Accent/CTA */
+    --accent: 142 71% 45%; /* #22C55E */
+    --accent-foreground: 150 20% 98%;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #18181b;
-    --muted-foreground: #a1a1aa;
-    --border: #27272a;
-    --card: #18181b;
-    --card-foreground: #ededed;
+    --muted: 160 20% 94%;
+    --muted-foreground: 200 15% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 160 20% 90%;
+    --input: 160 20% 90%;
+    --ring: 168 64% 51%;
+
+    --radius: 0.75rem;
+
+    /* Custom Brand Tokens */
+    --mint: 168 64% 51%;
+    --mint-light: 168 64% 90%;
+    --forest: 161 88% 16%;
+    --leaf: 142 71% 45%;
+    --charcoal: 200 28% 16%;
+    --birch: 150 20% 98%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--birch)) 0%, hsl(var(--mint-light)) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(var(--forest)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--mint)) 0%, hsl(var(--leaf)) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(var(--charcoal) / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(var(--charcoal) / 0.1), 0 2px 4px -2px hsl(var(--charcoal) / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(var(--charcoal) / 0.1), 0 4px 6px -4px hsl(var(--charcoal) / 0.1);
+    --shadow-glow: 0 0 40px hsl(var(--mint) / 0.3);
+
+    /* Sidebar */
+    --sidebar-background: 150 20% 98%;
+    --sidebar-foreground: 200 28% 16%;
+    --sidebar-primary: 168 64% 51%;
+    --sidebar-primary-foreground: 200 28% 16%;
+    --sidebar-accent: 160 20% 94%;
+    --sidebar-accent-foreground: 200 28% 16%;
+    --sidebar-border: 160 20% 90%;
+    --sidebar-ring: 168 64% 51%;
+
+    /* Typography */
+    --font-sans: var(--font-plus-jakarta-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
-}
+
+  .dark {
+    --background: 200 28% 10%;
+    --foreground: 150 20% 98%;
+
+    --card: 200 28% 12%;
+    --card-foreground: 150 20% 98%;
+
+    --popover: 200 28% 12%;
+    --popover-foreground: 150 20% 98%;
+
+    --primary: 168 64% 51%;
+    --primary-foreground: 200 28% 10%;
+
+    --secondary: 161 50% 25%;
+    --secondary-foreground: 150 20% 98%;
+
+    --accent: 142 71% 45%;
+    --accent-foreground: 200 28% 10%;
+
+    --muted: 200 20% 18%;
+    --muted-foreground: 160 15% 65%;
+
+    --border: 200 20% 20%;
+    --input: 200 20% 20%;
+    --ring: 168 64% 51%;
+
+    --mint-light: 168 40% 20%;
+  }
