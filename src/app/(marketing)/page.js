@@ -1,23 +1,27 @@
-/**
- * Home Page
- * 
- * Main landing page - accessible at /
- */
+import { Navbar } from "@/components/layout/Navbar";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { CTASection } from "@/components/sections/CTASection";
+import { Footer } from "@/components/sections/Footer";
 
 export const metadata = {
-  title: "Home",
-  description: "Enterprise-grade solutions for modern businesses",
+  title: "Groot Analytics - Data Engineering & AI Solutions",
+  description:
+    "Turning messy data into intelligent decisions. Modern data platforms, advanced analytics, and AI-powered solutions.",
 };
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Groot</h1>
-        <p className="text-lg text-muted-foreground">
-          Enterprise-grade solutions for modern businesses
-        </p>
-      </div>
-    </main>
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main>
+        <HeroSection />
+        <ServicesSection />
+        <AboutSection />
+        <CTASection />
+      </main>
+      <Footer />
+    </div>
   );
 }

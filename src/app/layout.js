@@ -1,24 +1,27 @@
-import { Geist } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { METADATA } from "@/lib/constants";
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
   display: "swap",
   preload: true,
-  fallback: ["system-ui", "arial"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  fallback: ["system-ui", "sans-serif"],
 });
 
 export const metadata = {
   title: METADATA.TITLE,
   description: METADATA.DESCRIPTION,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Groot",
+    siteName: "Groot Analytics",
   },
   robots: {
     index: true,
@@ -29,12 +32,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} antialiased`}
-      >
-        <ErrorBoundary>
-          {children}
-        </ErrorBoundary>
+      <body className={`${plusJakartaSans.variable} antialiased`}>
+        <ErrorBoundary>{children}</ErrorBoundary>
       </body>
     </html>
   );
