@@ -33,7 +33,7 @@ export default function Breadcrumbs() {
     <nav aria-label="Breadcrumb" className="mb-4">
       <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
         <li>
-          <Link href={ROUTES.MARKETING.HOME} className="hover:text-foreground">
+          <Link href={ROUTES.PUBLIC.HOME} className="hover:text-foreground">
             Home
           </Link>
         </li>

@@ -6,12 +6,12 @@
  * 
  * @example
  * import { ROUTES } from '@/lib/routes';
- * <Link href={ROUTES.MARKETING.HOME}>Home</Link>
+ * <Link href={ROUTES.PUBLIC.HOME}>Home</Link>
  */
 
 export const ROUTES = {
-  // Public/Marketing routes
-  MARKETING: {
+  // Public routes
+  PUBLIC: {
     HOME: "/",
     ABOUT: "/about",
     SERVICES: "/services",
@@ -55,13 +55,13 @@ export const ROUTES = {
 
 /**
  * Get route by key path
- * @param {string} path - Dot-separated path (e.g., 'MARKETING.HOME')
+ * @param {string} path - Dot-separated path (e.g., 'PUBLIC.HOME')
  * @returns {string} Route path
  */
 export function getRoute(path) {
   const keys = path.split(".");
   let value = ROUTES;
-  
+
   for (const key of keys) {
     value = value?.[key];
     if (!value) {
@@ -69,7 +69,7 @@ export function getRoute(path) {
       return "/";
     }
   }
-  
+
   return value;
 }
 
@@ -84,3 +84,11 @@ export function isActiveRoute(currentPath, routePath) {
   if (routePath !== "/" && currentPath.startsWith(routePath)) return true;
   return false;
 }
+
+// Route Metadata for SEO
+export {
+  ROUTE_METADATA,
+  getRouteMetadata,
+  getIndexableRoutes,
+  getRoutesByPriority,
+} from './metadata';

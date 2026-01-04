@@ -18,6 +18,10 @@ const nextConfig = {
     optimizePackageImports: ["@/components", "@/lib"],
   },
   
+  // External packages (optional dependencies)
+  // Mark Sentry as external so it doesn't try to bundle it
+  serverExternalPackages: ["@sentry/nextjs"],
+  
   // Headers for security
   async headers() {
     const isProduction = process.env.NODE_ENV === "production";

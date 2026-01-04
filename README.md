@@ -68,7 +68,7 @@ npm run clean        # Clean build artifacts
 ```
 src/
 ├── app/              # Next.js app router pages
-│   ├── (marketing)/  # Public marketing pages
+│   ├── (public)/     # Public pages
 │   ├── (admin)/      # Admin-only pages
 │   └── layout.js     # Root layout
 ├── components/       # React components

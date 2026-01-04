@@ -5,13 +5,13 @@
  * Route groups use parentheses in folder names and don't affect URL structure.
  * 
  * @example
- * (marketing) - Public marketing pages
+ * (public) - Public pages
  * (app) - Authenticated application pages
  * (admin) - Admin-only pages
  */
 
 export const ROUTE_GROUPS = {
-  MARKETING: "(marketing)",
+  PUBLIC: "(public)",
   APP: "(app)",
   ADMIN: "(admin)",
   AUTH: "(auth)",
@@ -23,17 +23,17 @@ export const ROUTE_GROUPS = {
 export const ROUTE_METADATA = {
   "/": {
     title: "Home",
-    group: "marketing",
+    group: "public",
     requiresAuth: false,
   },
   "/about": {
     title: "About",
-    group: "marketing",
+    group: "public",
     requiresAuth: false,
   },
   "/services": {
     title: "Services",
-    group: "marketing",
+    group: "public",
     requiresAuth: false,
   },
   "/app/dashboard": {

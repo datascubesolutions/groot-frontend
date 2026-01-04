@@ -10,7 +10,7 @@ import { isActiveRoute } from "@/lib/routes";
  * Enhanced Link component that automatically applies active styles
  * 
  * @example
- * <ActiveLink href={ROUTES.MARKETING.HOME} activeClassName="text-primary">
+ * <ActiveLink href={ROUTES.PUBLIC.HOME} activeClassName="text-primary">
  *   Home
  * </ActiveLink>
  */
