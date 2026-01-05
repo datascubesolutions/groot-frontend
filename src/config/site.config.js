@@ -1,20 +1,10 @@
-/**
- * Site Configuration
- * Navigation and site-wide settings
- */
-
-import { METADATA } from "@/lib/constants";
-import { env } from "@/lib/env";
-
 export const siteConfig = {
-  name: "Groot",
-  description: METADATA.DESCRIPTION,
-  url: env.NEXT_PUBLIC_SITE_URL,
-  metadata: {
-    title: METADATA.TITLE,
-    description: METADATA.DESCRIPTION,
-  },
-  navigation: [
-    { name: "Home", href: "/" },
-  ],
+  name: "Groot Analytics",
+  description: "Data Engineering, AI & Analytics Solutions",
+  url: "https://grootanalytics.com",
+};
+
+export const METADATA = {
+  TITLE: "Groot Analytics - Data Engineering & AI Solutions",
+  DESCRIPTION: "Groot Analytics transforms complex, scattered data into intelligent decisions. We build modern data platforms, advanced analytics, and AI-powered automation.",
 };

@@ -9,6 +9,7 @@
 
 import { Component } from "react";
 import { ROUTES } from "@/lib/routes";
+import { captureException } from "@/lib/error-tracking";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 
@@ -49,10 +50,12 @@ class ErrorBoundary extends Component {
     // Log error to error reporting service
     console.error("ErrorBoundary caught an error:", error, errorInfo);
     
-    // In production, send to error tracking service
-    if (process.env.NODE_ENV === "production") {
-      // Example: logErrorToService(error, errorInfo);
-    }
+    // Send to error tracking service
+    captureException(error, {
+      errorInfo,
+      componentStack: errorInfo.componentStack,
+      errorBoundary: true,
+    });
   }
 
   handleReset = () => {
@@ -71,7 +74,7 @@ class ErrorBoundary extends Component {
           <div className="text-center space-y-6 max-w-md">
             <h1 className="text-4xl font-bold">Something went wrong</h1>
             <p className="text-muted-foreground">
-              We're sorry, but something unexpected happened. Please try again.
+              We&apos;re sorry, but something unexpected happened. Please try again.
             </p>
             {process.env.NODE_ENV === "development" && this.state.error && (
               <details className="text-left bg-muted p-4 rounded-lg">
@@ -89,7 +92,7 @@ class ErrorBoundary extends Component {
                 Try Again
               </Button>
               <Button
-                onClick={() => (window.location.href = ROUTES.MARKETING.HOME)}
+                onClick={() => (window.location.href = ROUTES.PUBLIC.HOME)}
                 variant="secondary"
               >
                 Go Home

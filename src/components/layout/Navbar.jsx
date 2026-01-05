@@ -1,20 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { MegaMenu } from "./MegaMenu";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "About", href: "#about" },
-  { label: "Insights", href: "#insights" },
+  { label: "Services", href: "/services", hasDropdown: true },
+  { label: "Industries", href: "/industries" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Technologies", href: "/technologies" },
+  { label: "Our Work", href: "/work" },
+  {
+    label: "About Us",
+    href: "/about",
+    hasDropdown: true,
+    subLinks: [
+      { label: "Who We Are", href: "/about/who-we-are" },
+      { label: "What We Do", href: "/about/what-we-do" },
+      { label: "How We Do It", href: "/about/how-we-do-it" },
+      { label: "Our Story", href: "/about/our-story" },
+      { label: "Why Join Us", href: "/about/why-join-us" },
+      { label: "Careers", href: "/about/careers" },
+    ]
+  },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,40 +41,83 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleMouseEnter = (label) => {
+    setActiveDropdown(label);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveDropdown(null);
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass shadow-md" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || activeDropdown ? "glass shadow-md" : "bg-transparent"
+        }`}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="container mx-auto px-6">
         <nav className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <Link href="/" prefetch={true} className="flex items-center gap-2 z-50">
             <GrootLogo />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8 h-full">
             {navLinks.map((link) => (
-              <a
+              <div
                 key={link.label}
-                href={link.href}
-                className="text-foreground/80 hover:text-primary font-medium transition-colors duration-200 relative group"
+                className="relative h-full flex items-center"
+                onMouseEnter={() => handleMouseEnter(link.label)}
               >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </a>
+                <Link
+                  href={link.href}
+                  prefetch={true}
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 relative group py-2
+                    ${activeDropdown === link.label ? "text-primary" : "text-foreground/80 hover:text-primary"}`}
+                >
+                  {link.label}
+                  {link.hasDropdown && (
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-200 ${activeDropdown === link.label ? "rotate-180" : ""
+                        }`}
+                    />
+                  )}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                </Link>
+
+                {/* Regular Dropdown for non-MegaMenu links */}
+                {link.hasDropdown && link.label !== "Services" && link.label !== "About Us" && activeDropdown === link.label && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 w-64 bg-background border border-border shadow-xl rounded-xl py-4 z-50"
+                  >
+                    {link.subLinks?.map((sub) => (
+                      <Link
+                        key={sub.label}
+                        href={sub.href}
+                        prefetch={true}
+                        className="block px-6 py-2.5 text-sm text-foreground/70 hover:text-primary hover:bg-primary/5 transition-all"
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </div>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
             <Button variant="hero" size="default">
-              Work with Groot
+              Let's Connect
             </Button>
           </div>
 
@@ -72,6 +132,17 @@ export function Navbar() {
         </nav>
       </div>
 
+      {/* Mega Menu Dropdown */}
+      <AnimatePresence>
+        {(activeDropdown === "Services" || activeDropdown === "About Us") && (
+          <MegaMenu
+            isOpen={true}
+            onClose={() => setActiveDropdown(null)}
+            menuType={activeDropdown}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
@@ -79,21 +150,54 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-border"
+            className="md:hidden glass border-t border-border overflow-hidden max-h-[80vh] overflow-y-auto"
           >
             <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors"
-                >
-                  {link.label}
-                </a>
+                <div key={link.label} className="flex flex-col">
+                  <Link
+                    href={link.href}
+                    prefetch={true}
+                    onClick={() => !link.hasDropdown && setIsMobileMenuOpen(false)}
+                    className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors flex items-center justify-between"
+                  >
+                    {link.label}
+                    {link.hasDropdown && <ChevronDown size={16} />}
+                  </Link>
+                  {link.hasDropdown && (
+                    <div className="pl-4 flex flex-col gap-2 border-l border-border mt-1 mb-2">
+                      {link.label === "Services" ? (
+                        // Simplified Services for mobile
+                        ['Strategy & Advisory', 'Data Engineering', 'Business Intelligence', 'AI & Automation', 'Dedicated Resources'].map(s => (
+                          <Link
+                            key={s}
+                            href={`/services/${s.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                            prefetch={true}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-sm text-foreground/60 py-1"
+                          >
+                            {s}
+                          </Link>
+                        ))
+                      ) : (
+                        link.subLinks?.map((sub) => (
+                          <Link
+                            key={sub.label}
+                            href={sub.href}
+                            prefetch={true}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-sm text-foreground/60 py-1"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))
+                      )}
+                    </div>
+                  )}
+                </div>
               ))}
               <Button variant="hero" className="mt-4 w-full">
-                Work with Groot
+                Let's Connect
               </Button>
             </div>
           </motion.div>

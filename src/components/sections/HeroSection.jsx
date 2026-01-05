@@ -7,9 +7,11 @@ import { Button } from "@/components/ui/Button";
 
 export function HeroSection() {
   const [isAssembled, setIsAssembled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Generate dots that will form a pattern
+  // Generate dots that will form a pattern (client-side only to avoid hydration mismatch)
   const dots = useMemo(() => {
+    if (!isMounted) return [];
     const dotPositions = [];
     const gridSize = 8;
     const spacing = 20;
@@ -43,9 +45,22 @@ export function HeroSection() {
       });
     });
     return dotPositions;
-  }, []);
+  }, [isMounted]);
+
+  // Generate random positions for floating dots (client-side only to avoid hydration mismatch)
+  const floatingDots = useMemo(() => {
+    if (!isMounted) return [];
+    return Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      duration: 3 + Math.random() * 2,
+      delay: Math.random() * 2,
+    }));
+  }, [isMounted]);
 
   useEffect(() => {
+    setIsMounted(true);
     const timer = setTimeout(() => setIsAssembled(true), 500);
     return () => clearTimeout(timer);
   }, []);
@@ -60,22 +75,22 @@ export function HeroSection() {
 
       {/* Floating Background Dots */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {floatingDots.map((dot) => (
           <motion.div
-            key={i}
+            key={dot.id}
             className="absolute w-2 h-2 rounded-full bg-primary/20"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${dot.left}%`,
+              top: `${dot.top}%`,
             }}
             animate={{
               y: [0, -20, 0],
               opacity: [0.3, 0.6, 0.3],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: dot.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: dot.delay,
             }}
           />
         ))}
