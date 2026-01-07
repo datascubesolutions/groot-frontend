@@ -1,0 +1,25 @@
+{
+    "recommendations": [
+        // Essential extensions
+        "ms-vscode.vscode-typescript-next",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        // React/Next.js
+        "dsznajder.es7-react-js-snippets",
+        "formulahendry.auto-rename-tag",
+        // Git
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        // Productivity
+        "christian-kohler.path-intellisense",
+        "streetsidesoftware.code-spell-checker",
+        "gruntfuggly.todo-tree",
+        // Testing
+        "orta.vscode-jest",
+        "ms-playwright.playwright",
+        // Documentation
+        "bierner.markdown-preview-github-styles"
+    ],
+    "unwantedRecommendations": []
+}

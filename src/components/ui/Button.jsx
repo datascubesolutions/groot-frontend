@@ -1,72 +1,60 @@
-/**
- * Button Component
- * 
- * @fileoverview Reusable button component with variants, sizes, and accessibility features
- * @module components/ui/Button
- */
+"use client";
 
-import { memo, forwardRef } from "react";
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { BUTTON_VARIANTS, BUTTON_SIZES } from "@/lib/constants";
 
-/**
- * @typedef {Object} ButtonProps
- * @property {React.ReactNode} children - Button content
- * @property {'primary' | 'secondary' | 'outline'} [variant='primary'] - Visual variant
- * @property {'sm' | 'md' | 'lg'} [size='md'] - Button size
- * @property {string} [className] - Additional CSS classes
- * @property {boolean} [disabled] - Disabled state
- * @property {string} [ariaLabel] - Accessibility label
- * @property {React.ButtonHTMLAttributes<HTMLButtonElement>} [props] - Additional button props
- */
-
-const ButtonComponent = forwardRef(
-  (
-    {
-      children,
-      variant = BUTTON_VARIANTS.PRIMARY,
-      size = BUTTON_SIZES.MD,
-      className = "",
-      disabled = false,
-      ariaLabel,
-      ...props
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5",
+        ghost: "hover:bg-muted hover:text-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+        // Groot Custom Variants
+        hero: "bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-xl hover:-translate-y-1 shadow-lg",
+        "hero-outline": "border-2 border-secondary bg-transparent text-secondary hover:bg-secondary hover:text-secondary-foreground",
+        heroOutline: "border-2 border-secondary bg-transparent text-secondary hover:bg-secondary hover:text-secondary-foreground",
+        accent: "bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:-translate-y-0.5",
+        mint: "bg-primary text-foreground hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5",
+      },
+      size: {
+        default: "h-11 px-6 py-2",
+        sm: "h-9 rounded-md px-4 text-xs",
+        lg: "h-14 rounded-xl px-8 text-base",
+        xl: "h-16 rounded-xl px-10 text-lg",
+        icon: "h-10 w-10",
+      },
     },
-    ref
-  ) => {
-    const baseStyles =
-      "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
-
-    const variants = {
-      [BUTTON_VARIANTS.PRIMARY]:
-        "bg-[var(--color-primary-500)] text-white hover:bg-[var(--color-primary-600)] focus:ring-[var(--color-primary-500)] active:bg-[var(--color-primary-700)]",
-      [BUTTON_VARIANTS.SECONDARY]:
-        "bg-white text-[var(--color-primary-500)] border-2 border-[var(--color-primary-500)] hover:bg-[var(--color-primary-50)] focus:ring-[var(--color-primary-500)] active:bg-[var(--color-primary-100)]",
-      [BUTTON_VARIANTS.OUTLINE]:
-        "border-2 border-foreground text-foreground hover:bg-foreground hover:text-background focus:ring-foreground",
-    };
-
-    const sizes = {
-      [BUTTON_SIZES.SM]: "px-4 py-2 text-sm",
-      [BUTTON_SIZES.MD]: "px-6 py-3 text-base",
-      [BUTTON_SIZES.LG]: "px-8 py-4 text-lg",
-    };
-
-    return (
-      <button
-        ref={ref}
-        type={props.type || "button"}
-        disabled={disabled}
-        aria-label={ariaLabel}
-        aria-disabled={disabled}
-        className={cn(baseStyles, variants[variant], sizes[size], className)}
-        {...props}
-      >
-        {children}
-      </button>
-    );
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
   }
 );
 
-ButtonComponent.displayName = "Button";
+const Button = React.forwardRef(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+Button.displayName = "Button";
 
-export default memo(ButtonComponent);
+export { Button, buttonVariants };
+export default Button;

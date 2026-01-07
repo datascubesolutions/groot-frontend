@@ -12,7 +12,8 @@ export default function NotFound() {
         <h1 className="text-6xl font-bold mb-4">404</h1>
         <p className="text-xl mb-8 text-muted-foreground">Page not found</p>
         <Link
-          href={ROUTES.MARKETING.HOME}
+          href={ROUTES.PUBLIC.HOME}
+          prefetch={true}
           className="inline-block rounded-lg bg-foreground px-6 py-3 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
         >
           Return Home

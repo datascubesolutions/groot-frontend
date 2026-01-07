@@ -1,39 +1,132 @@
-import { Geist } from "next/font/google";
-import { METADATA } from "@/lib/constants";
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
+import { Navbar } from "@/components/layout";
+import Footer from "@/components/sections/Footer";
+import { METADATA } from "@/lib/constants";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import "./accessibility.css";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
   display: "swap",
   preload: true,
-  fallback: ["system-ui", "arial"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  fallback: ["system-ui", "sans-serif"],
 });
 
 export const metadata = {
-  title: METADATA.TITLE,
+  title: {
+    default: METADATA.TITLE,
+    template: `%s | ${METADATA.TITLE}`,
+  },
   description: METADATA.DESCRIPTION,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  keywords: [
+    "data engineering",
+    "AI solutions",
+    "data analytics",
+    "machine learning",
+    "data platform",
+    "business intelligence",
+  ],
+  authors: [{ name: "Groot Analytics" }],
+  creator: "Groot Analytics",
+  publisher: "Groot Analytics",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Groot",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+    siteName: "Groot Analytics",
+    title: METADATA.TITLE,
+    description: METADATA.DESCRIPTION,
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Groot Analytics",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: METADATA.TITLE,
+    description: METADATA.DESCRIPTION,
+    images: ["/og-image.jpg"],
+    creator: "@grootanalytics",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
 };
 
 export default function RootLayout({ children }) {
+  // Generate structured data
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Groot Analytics",
+    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com",
+    "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com"}/logo.png`,
+    "description": "Modern data, analytics, and AI solutions for enterprise transformation",
+    "sameAs": [
+      "https://linkedin.com/company/grootanalytics",
+      "https://twitter.com/grootanalytics"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-555-123-4567",
+      "contactType": "Customer Service",
+      "email": "contact@grootanalytics.com"
+    }
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com",
+    "name": "Groot Analytics",
+    "description": METADATA.DESCRIPTION
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} antialiased`}
-      >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
+      <body className={`${plusJakartaSans.variable} antialiased`}>
         <ErrorBoundary>
-          {children}
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </ErrorBoundary>
       </body>
     </html>
