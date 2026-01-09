@@ -71,3 +71,134 @@
     animation-delay: 500ms;
   }
 }
+
+/* Elite UI Studio Styles Ported */
+@layer base {
+  .theme-elite {
+    /* -- Elite UI Variables -- */
+    --background: 150 20% 98%;
+    --foreground: 210 24% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 24% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 24% 16%;
+
+    --primary: 168 76% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 150 60% 96%;
+    --secondary-foreground: 162 82% 15%;
+
+    --muted: 150 30% 94%;
+    --muted-foreground: 210 15% 45%;
+
+    --accent: 142 71% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --forest: 162 82% 16%;
+    --forest-foreground: 0 0% 100%;
+
+    --mint: 152 76% 96%;
+    --mint-foreground: 162 82% 16%;
+
+    --border: 150 20% 90%;
+    --input: 150 20% 90%;
+    --ring: 168 76% 50%;
+  }
+}
+
+@layer components {
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .text-gradient-forest {
+    @apply bg-gradient-to-r from-forest to-primary bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-hero {
+    @apply bg-gradient-to-br from-mint via-background to-secondary;
+  }
+
+  .section-label {
+    @apply text-sm font-semibold uppercase tracking-[0.2em] text-primary;
+    font-family: var(--font-sans);
+  }
+
+  .heading-display {
+    @apply text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground;
+  }
+
+  .heading-section {
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground;
+  }
+
+  .body-large {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+    font-family: var(--font-sans);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-forest text-forest-foreground font-semibold rounded-full transition-all duration-300 hover:bg-primary hover:shadow-lg;
+    font-family: var(--font-sans);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-forest font-semibold rounded-full border-2 border-forest transition-all duration-300 hover:bg-forest hover:text-forest-foreground;
+    font-family: var(--font-sans);
+  }
+
+  .card-corporate {
+    @apply bg-card rounded-xl border border-border/50;
+    box-shadow: 0 4px 20px -2px hsl(var(--forest) / 0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-corporate:hover {
+    box-shadow: 0 8px 30px -4px hsl(var(--forest) / 0.12);
+    transform: translateY(-2px);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

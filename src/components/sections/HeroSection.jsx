@@ -1,45 +1,64 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
 export function HeroSection() {
   const [isAssembled, setIsAssembled] = useState(false);
+  const [isPulsing, setIsPulsing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  // Generate dots that will form a pattern (client-side only to avoid hydration mismatch)
+  // Generate dots that will form "GROOT" text in a clear, readable way
   const dots = useMemo(() => {
     if (!isMounted) return [];
     const dotPositions = [];
-    const gridSize = 8;
-    const spacing = 20;
-    const offsetX = 0;
-    const offsetY = 0;
 
-    // Create a "G" shape with dots
-    const gPattern = [
-      [0, 1, 1, 1, 1, 0],
-      [1, 0, 0, 0, 0, 0],
-      [1, 0, 0, 0, 0, 0],
-      [1, 0, 0, 1, 1, 1],
-      [1, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 1],
-      [0, 1, 1, 1, 1, 0],
+    // Define a clear "GROOT" pattern with proper letter spacing
+    // Each letter is 5 units wide, with 1 unit spacing between letters
+    const grootPattern = [
+      // Row 0
+      [0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
+      // Row 1
+      [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+      // Row 2
+      [1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+      // Row 3
+      [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+      // Row 4
+      [1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+      // Row 5
+      [0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0],
+    ];
+
+    // 8 different directions for dots to come from
+    const directions = [
+      { x: -1, y: -1, name: 'top-left' },
+      { x: 1, y: -1, name: 'top-right' },
+      { x: -1, y: 1, name: 'bottom-left' },
+      { x: 1, y: 1, name: 'bottom-right' },
+      { x: 0, y: -1, name: 'top' },
+      { x: 0, y: 1, name: 'bottom' },
+      { x: -1, y: 0, name: 'left' },
+      { x: 1, y: 0, name: 'right' },
     ];
 
     let id = 0;
-    gPattern.forEach((row, rowIndex) => {
+    grootPattern.forEach((row, rowIndex) => {
       row.forEach((cell, colIndex) => {
         if (cell === 1) {
+          const direction = directions[id % directions.length];
+          const distance = 400 + Math.random() * 300; // Dots come from far away
+
           dotPositions.push({
             id: id++,
-            targetX: offsetX + colIndex * spacing,
-            targetY: offsetY + rowIndex * spacing,
-            startX: (Math.random() - 0.5) * 400,
-            startY: (Math.random() - 0.5) * 400,
+            targetX: colIndex * 12 - 170, // Center the text (29 cols * 12 / 2 approx 174)
+            targetY: rowIndex * 12 - 30,
+            startX: (colIndex * 12 - 170) + direction.x * distance,
+            startY: (rowIndex * 12 - 30) + direction.y * distance,
             delay: Math.random() * 0.8,
+            direction: direction.name,
           });
         }
       });
@@ -47,28 +66,35 @@ export function HeroSection() {
     return dotPositions;
   }, [isMounted]);
 
-  // Generate random positions for floating dots (client-side only to avoid hydration mismatch)
+  // Generate random positions for floating background dots
   const floatingDots = useMemo(() => {
     if (!isMounted) return [];
-    return Array.from({ length: 20 }, (_, i) => ({
+    return Array.from({ length: 25 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       top: Math.random() * 100,
-      duration: 3 + Math.random() * 2,
+      duration: 3 + Math.random() * 3,
       delay: Math.random() * 2,
     }));
   }, [isMounted]);
 
   useEffect(() => {
     setIsMounted(true);
-    const timer = setTimeout(() => setIsAssembled(true), 500);
-    return () => clearTimeout(timer);
+    // Start assembly animation after a short delay
+    const assemblyTimer = setTimeout(() => setIsAssembled(true), 800);
+    // Start pulsing after assembly completes
+    const pulseTimer = setTimeout(() => setIsPulsing(true), 3500);
+
+    return () => {
+      clearTimeout(assemblyTimer);
+      clearTimeout(pulseTimer);
+    };
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Pattern */}
-      <div className="absolute inset-0 dot-pattern opacity-50" />
+      {/* Background Pattern - Removed as per user request */}
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-mint-light/30" />
@@ -97,7 +123,7 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start mt-10">
           {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -105,7 +131,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center lg:text-left"
           >
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -115,7 +141,7 @@ export function HeroSection() {
               <span className="text-sm font-medium text-foreground/80">
                 Data Engineering & AI Solutions
               </span>
-            </motion.div>
+            </motion.div> */}
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -181,25 +207,36 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right: Animated Logo */}
+          {/* Right: Animated "GROOT" Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center -mt-12 lg:-mt-24"
           >
-            <div className="relative w-80 h-80 md:w-96 md:h-96">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-mint/20 via-transparent to-leaf/20 rounded-full blur-3xl" />
+            <div className="relative w-full h-80 md:h-96">
+              {/* Animated pulsing glow effect */}
+              {/* Animated pulsing glow effect - Removed as per user request */}
 
-              {/* Animated dots container */}
-              <svg viewBox="-200 -200 400 400" className="w-full h-full">
+              {/* SVG Container for animated dots forming "GROOT" */}
+              <svg
+                viewBox="-200 -150 400 250"
+                className="w-full h-full"
+                style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))' }}
+              >
+                <defs>
+                  <linearGradient id="groot-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="hsl(var(--burgundy))" />
+                    <stop offset="50%" stopColor="hsl(var(--forest))" />
+                    <stop offset="100%" stopColor="hsl(var(--primary))" />
+                  </linearGradient>
+                </defs>
                 {dots.map((dot) => (
                   <motion.circle
                     key={dot.id}
-                    r="6"
-                    fill="currentColor"
-                    className="text-secondary"
+                    r="5"
+                    fill="url(#groot-gradient)"
+                    className="drop-shadow-sm"
                     initial={{
                       cx: dot.startX,
                       cy: dot.startY,
@@ -209,42 +246,54 @@ export function HeroSection() {
                     animate={
                       isAssembled
                         ? {
-                            cx: dot.targetX - 50,
-                            cy: dot.targetY - 60,
-                            opacity: 1,
-                            scale: 1,
-                          }
-                        : {}
+                          cx: dot.targetX,
+                          cy: dot.targetY,
+                          opacity: 1,
+                          scale: isPulsing ? [1, 1.15, 1] : 1,
+                        }
+                        : {
+                          cx: dot.startX,
+                          cy: dot.startY,
+                          opacity: 0,
+                          scale: 0,
+                        }
                     }
                     transition={{
                       duration: 1.5,
                       delay: dot.delay,
                       type: "spring",
-                      stiffness: 100,
+                      stiffness: 60,
                       damping: 15,
+                      scale: {
+                        duration: 2.5,
+                        repeat: isPulsing ? Infinity : 0,
+                        ease: "easeInOut",
+                      }
                     }}
                   />
                 ))}
               </svg>
 
-              {/* Orbiting dots */}
-              {[...Array(6)].map((_, i) => (
+              {/* Orbiting accent dots */}
+              {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-3 h-3 rounded-full bg-primary"
+                  className="absolute w-2.5 h-2.5 rounded-full bg-primary/50 shadow-lg"
                   style={{
                     top: "50%",
                     left: "50%",
                   }}
+                  initial={{ opacity: 0 }}
                   animate={{
-                    x: Math.cos((i / 6) * Math.PI * 2) * 160 - 6,
-                    y: Math.sin((i / 6) * Math.PI * 2) * 160 - 6,
+                    x: Math.cos((i / 8) * Math.PI * 2) * 180 - 5,
+                    y: Math.sin((i / 8) * Math.PI * 2) * 140 - 5,
+                    opacity: 0.6,
                   }}
                   transition={{
-                    duration: 20,
+                    duration: 25 + i * 2,
                     repeat: Infinity,
                     ease: "linear",
-                    delay: (i / 6) * 20,
+                    delay: (i / 8) * 3,
                   }}
                 />
               ))}
@@ -257,7 +306,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div

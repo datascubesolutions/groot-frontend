@@ -6,6 +6,16 @@ const HeroSection = lazy(() => import("@/components/sections/HeroSection"));
 const ServicesSection = lazy(() =>
   import("@/components/sections/ServicesSection")
 );
+const PlatformPreviewSection = lazy(() =>
+  import("@/components/sections/PlatformPreviewSection").then((mod) => ({
+    default: mod.PlatformPreviewSection,
+  }))
+);
+const ProcessTimelineSection = lazy(() =>
+  import("@/components/sections/ProcessTimelineSection").then((mod) => ({
+    default: mod.ProcessTimelineSection,
+  }))
+);
 const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
 const CTASection = lazy(() => import("@/components/sections/CTASection"));
 
@@ -23,6 +33,12 @@ export default function HomePage() {
       </Suspense>
       <Suspense fallback={<Loading className="min-h-[400px]" />}>
         <ServicesSection />
+      </Suspense>
+      <Suspense fallback={<Loading className="min-h-[400px]" />}>
+        <ProcessTimelineSection />
+      </Suspense>
+      <Suspense fallback={<Loading className="min-h-[400px]" />}>
+        <PlatformPreviewSection />
       </Suspense>
       <Suspense fallback={<Loading className="min-h-[400px]" />}>
         <AboutSection />

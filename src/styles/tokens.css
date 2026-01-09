@@ -40,6 +40,10 @@
     --leaf: 142 71% 45%;
     --charcoal: 200 28% 16%;
     --birch: 150 20% 98%;
+    --teal: 168 64% 51%;
+    --burgundy: 340 75% 45%;
+    --burgundy-dark: 340 75% 35%;
+    --burgundy-light: 340 75% 55%;
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--birch)) 0%, hsl(var(--mint-light)) 100%);
