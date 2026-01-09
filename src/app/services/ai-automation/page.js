@@ -8,6 +8,7 @@ import {
   Workflow,
   Zap
 } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = {
   title: "AI & Automation Services | Groot Analytics",
@@ -69,31 +70,37 @@ export default function AIAutomationPage() {
               icon={Brain}
               title="AI Strategy & Roadmap"
               description="AI maturity assessment, use case identification, and technology stack recommendations for leadership exploring AI."
+              href="/services/ai-automation/ai-strategy-roadmap"
             />
             <ServiceCard
               icon={Cpu}
               title="Machine Learning Solutions & MLOps"
               description="Custom ML model development, feature engineering, and MLOps pipelines for CI/CD of machine learning."
+              href="/services/ai-automation/machine-learning-solutions-mlops"
             />
             <ServiceCard
               icon={MessageSquare}
               title="Natural Language Processing (NLP)"
               description="Text classification, sentiment analysis, document processing, and conversational AI powered by LLMs."
+              href="/services/ai-automation/natural-language-processing-nlp"
             />
             <ServiceCard
               icon={Workflow}
-              title="Intelligent Process Automation (IPA)"
+              title="Intelligent Process Automation"
               description="RPA + AI integration, document automation, and workflow intelligence to automate complex business rules."
+              href="/services/ai-automation/intelligent-process-automation"
             />
             <ServiceCard
               icon={Bot}
               title="AI Model Development & Deployment"
               description="End-to-end model development and production deployment with a focus on scalability and performance."
+              href="/services/ai-automation/ai-model-development-deployment"
             />
             <ServiceCard
               icon={Zap}
               title="AI-Powered Decision Support"
               description="Recommendation engines, next-best-action systems, and AI copilots to augment human decision-making."
+              href="/services/ai-automation/ai-powered-decision-support"
             />
           </div>
         </div>
@@ -148,14 +155,17 @@ export default function AIAutomationPage() {
   );
 }
 
-function ServiceCard({ icon: Icon, title, description }) {
+function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="group p-8 rounded-2xl bg-background border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300">
       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
         <Icon size={24} />
       </div>
       <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed">{description}</p>
+      <p className="text-muted-foreground leading-relaxed mb-6">{description}</p>
+      <Link href={href || "#"} className="inline-flex items-center text-primary font-medium hover:underline">
+        Learn More <span className="ml-1">→</span>
+      </Link>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
 import {
@@ -8,6 +9,7 @@ import {
   Users,
   Zap
 } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = {
   title: "Dedicated & Offshore Analytics Resources | Groot Analytics",
@@ -69,31 +71,37 @@ export default function DedicatedResourcesPage() {
               icon={Database}
               title="Dedicated Data Engineers"
               description="Long-term specialists focused on pipeline development, maintenance, and data platform administration."
+              href="/services/dedicated-resources/dedicated-data-engineers"
             />
             <ServiceCard
               icon={Settings}
               title="Analytics Engineers & BI Developers"
               description="Experts in dashboard development, semantic model maintenance, and report automation."
+              href="/services/dedicated-resources/analytics-engineers-bi-developers"
             />
             <ServiceCard
               icon={Brain}
               title="AI & Machine Learning Engineers"
               description="Dedicated researchers and engineers for model development, monitoring, and MLOps management."
+              href="/services/dedicated-resources/ai-machine-learning-engineers"
             />
             <ServiceCard
               icon={Zap}
-              title="Team Augmentation"
+              title="Team Augmentation & Flexible Capacity"
               description="Scale your internal team up or down with skill-specific specialists for short or long-term durations."
+              href="/services/dedicated-resources/team-augmentation-flexible-capacity"
             />
             <ServiceCard
               icon={Globe}
               title="Offshore Development Centers (ODC)"
               description="Dedicated offshore teams working exclusively on your projects with managed service models."
+              href="/services/dedicated-resources/offshore-development-centers-odc"
             />
             <ServiceCard
               icon={Users}
               title="Managed Analytics Services"
               description="End-to-end management of your analytics operations with SLA-based delivery and proactive monitoring."
+              href="/services/dedicated-resources/managed-analytics-services"
             />
           </div>
         </div>
@@ -149,14 +157,17 @@ export default function DedicatedResourcesPage() {
   );
 }
 
-function ServiceCard({ icon: Icon, title, description }) {
+function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="group p-8 rounded-2xl bg-background border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300">
       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
         <Icon size={24} />
       </div>
       <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed">{description}</p>
+      <p className="text-muted-foreground leading-relaxed mb-6">{description}</p>
+      <Link href={href || "#"} className="inline-flex items-center text-primary font-medium hover:underline">
+        Learn More <span className="ml-1">→</span>
+      </Link>
     </div>
   );
 }

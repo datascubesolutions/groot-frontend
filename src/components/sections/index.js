@@ -12,3 +12,7 @@ export { AboutSection } from './AboutSection';
 export { ServicesSection } from './ServicesSection';
 export { CTASection } from './CTASection';
 export { Footer } from './Footer';
+export { PlatformSection } from './PlatformSection';
+export { ProductSection } from './ProductSection';
+export { StatsSection } from './StatsSection';
+export { PlatformHeroSection } from './PlatformHeroSection';

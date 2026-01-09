@@ -8,6 +8,7 @@ import {
   Target,
   TrendingUp
 } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = {
   title: "Business Intelligence & Data Science | Groot Analytics",
@@ -66,31 +67,37 @@ export default function BusinessIntelligencePage() {
               icon={BarChart3}
               title="Data Visualization & Dashboards"
               description="Build executive and operational dashboards with Power BI, Tableau, or Looker. Beautiful, interactive, and mobile-responsive."
+              href="/services/business-intelligence/data-visualization-dashboards"
             />
             <ServiceCard
               icon={PieChart}
               title="Semantic Modeling & Analytics Layer"
               description="Create unified semantic layers with standardized metrics and KPIs. Enable self-service analytics with governed data access."
+              href="/services/business-intelligence/semantic-modeling-analytics-layer"
             />
             <ServiceCard
               icon={TrendingUp}
               title="Predictive Analytics & Forecasting"
               description="Build demand forecasting, sales prediction, and customer churn models. Scenario planning and what-if analysis."
+              href="/services/business-intelligence/predictive-analytics-forecasting"
             />
             <ServiceCard
               icon={Brain}
               title="Advanced Analytics Solutions"
               description="Statistical analysis, cohort segmentation, customer lifetime value, market basket analysis, and attribution modeling."
+              href="/services/business-intelligence/advanced-analytics-solutions"
             />
             <ServiceCard
               icon={Sparkles}
               title="Self-Service BI & Democratization"
               description="Empower business users with self-service analytics platforms. Training, enablement, and data literacy programs."
+              href="/services/business-intelligence/self-service-bi-democratization"
             />
             <ServiceCard
               icon={Target}
               title="Decision Intelligence & Optimization"
               description="Build decision support systems with prescriptive analytics, optimization models, and business rules automation."
+              href="/services/business-intelligence/decision-intelligence-optimization"
             />
           </div>
         </div>
@@ -143,14 +150,17 @@ export default function BusinessIntelligencePage() {
   );
 }
 
-function ServiceCard({ icon: Icon, title, description }) {
+function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="group p-8 rounded-2xl bg-background border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300">
       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
         <Icon size={24} />
       </div>
       <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed">{description}</p>
+      <p className="text-muted-foreground leading-relaxed mb-6">{description}</p>
+      <Link href={href || "#"} className="inline-flex items-center text-primary font-medium hover:underline">
+        Learn More <span className="ml-1">→</span>
+      </Link>
     </div>
   );
 }
