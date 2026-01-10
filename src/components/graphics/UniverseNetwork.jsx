@@ -42,8 +42,8 @@ export const UniverseNetwork = () => {
       {/* Connection lines */}
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
         {orbitNodes.map((node, index) => {
-          const x = 200 + radius * Math.cos((node.angle * Math.PI) / 180);
-          const y = 200 + radius * Math.sin((node.angle * Math.PI) / 180);
+          const x = parseFloat((200 + radius * Math.cos((node.angle * Math.PI) / 180)).toFixed(3));
+          const y = parseFloat((200 + radius * Math.sin((node.angle * Math.PI) / 180)).toFixed(3));
 
           // Connect to center
           return (
@@ -66,10 +66,10 @@ export const UniverseNetwork = () => {
         {/* Cross connections */}
         {orbitNodes.map((node, index) => {
           const nextIndex = (index + 2) % orbitNodes.length;
-          const x1 = 200 + radius * Math.cos((node.angle * Math.PI) / 180);
-          const y1 = 200 + radius * Math.sin((node.angle * Math.PI) / 180);
-          const x2 = 200 + radius * Math.cos((orbitNodes[nextIndex].angle * Math.PI) / 180);
-          const y2 = 200 + radius * Math.sin((orbitNodes[nextIndex].angle * Math.PI) / 180);
+          const x1 = parseFloat((200 + radius * Math.cos((node.angle * Math.PI) / 180)).toFixed(3));
+          const y1 = parseFloat((200 + radius * Math.sin((node.angle * Math.PI) / 180)).toFixed(3));
+          const x2 = parseFloat((200 + radius * Math.cos((orbitNodes[nextIndex].angle * Math.PI) / 180)).toFixed(3));
+          const y2 = parseFloat((200 + radius * Math.sin((orbitNodes[nextIndex].angle * Math.PI) / 180)).toFixed(3));
 
           return (
             <motion.line
@@ -103,8 +103,8 @@ export const UniverseNetwork = () => {
       {/* Orbit nodes */}
       {orbitNodes.map((node, index) => {
         const Icon = node.icon;
-        const x = 50 + (radius / 4) * Math.cos((node.angle * Math.PI) / 180);
-        const y = 50 + (radius / 4) * Math.sin((node.angle * Math.PI) / 180);
+        const x = parseFloat((50 + (radius / 4) * Math.cos((node.angle * Math.PI) / 180)).toFixed(3));
+        const y = parseFloat((50 + (radius / 4) * Math.sin((node.angle * Math.PI) / 180)).toFixed(3));
 
         const colorClass = node.color === "primary"
           ? "border-primary/30 text-primary"

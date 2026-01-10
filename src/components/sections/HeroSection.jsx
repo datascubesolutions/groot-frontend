@@ -4,35 +4,18 @@ import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { logoPaths } from "./logoData";
 
 export function HeroSection() {
   const [isAssembled, setIsAssembled] = useState(false);
   const [isPulsing, setIsPulsing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  // Generate dots that will form "GROOT" text in a clear, readable way
-  const dots = useMemo(() => {
+  // Generate paths that will form the GROOT logo
+  const logoElements = useMemo(() => {
     if (!isMounted) return [];
-    const dotPositions = [];
 
-    // Define a clear "GROOT" pattern with proper letter spacing
-    // Each letter is 5 units wide, with 1 unit spacing between letters
-    const grootPattern = [
-      // Row 0
-      [0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
-      // Row 1
-      [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
-      // Row 2
-      [1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
-      // Row 3
-      [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
-      // Row 4
-      [1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
-      // Row 5
-      [0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0],
-    ];
-
-    // 8 different directions for dots to come from
+    // 8 different directions for elements to come from
     const directions = [
       { x: -1, y: -1, name: 'top-left' },
       { x: 1, y: -1, name: 'top-right' },
@@ -44,26 +27,22 @@ export function HeroSection() {
       { x: 1, y: 0, name: 'right' },
     ];
 
-    let id = 0;
-    grootPattern.forEach((row, rowIndex) => {
-      row.forEach((cell, colIndex) => {
-        if (cell === 1) {
-          const direction = directions[id % directions.length];
-          const distance = 400 + Math.random() * 300; // Dots come from far away
+    return logoPaths.map((d, index) => {
+      const direction = directions[index % directions.length];
+      const distance = 400 + Math.random() * 300;
 
-          dotPositions.push({
-            id: id++,
-            targetX: colIndex * 12 - 170, // Center the text (29 cols * 12 / 2 approx 174)
-            targetY: rowIndex * 12 - 30,
-            startX: (colIndex * 12 - 170) + direction.x * distance,
-            startY: (rowIndex * 12 - 30) + direction.y * distance,
-            delay: Math.random() * 0.8,
-            direction: direction.name,
-          });
-        }
-      });
+      return {
+        id: index,
+        d: d,
+        // Start position logic:
+        // Since we are transforming the path element itself,
+        // 0,0 is the final position (identity transform).
+        // We want to start at some offset.
+        initialX: direction.x * distance,
+        initialY: direction.y * distance,
+        delay: Math.random() * 0.8,
+      };
     });
-    return dotPositions;
   }, [isMounted]);
 
   // Generate random positions for floating background dots
@@ -218,9 +197,9 @@ export function HeroSection() {
               {/* Animated pulsing glow effect */}
               {/* Animated pulsing glow effect - Removed as per user request */}
 
-              {/* SVG Container for animated dots forming "GROOT" */}
+              {/* SVG Container for animated logo paths */}
               <svg
-                viewBox="-200 -150 400 250"
+                viewBox="50 20 300 180"
                 className="w-full h-full"
                 style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))' }}
               >
@@ -231,36 +210,35 @@ export function HeroSection() {
                     <stop offset="100%" stopColor="hsl(var(--primary))" />
                   </linearGradient>
                 </defs>
-                {dots.map((dot) => (
-                  <motion.circle
-                    key={dot.id}
-                    r="5"
+                {logoElements.map((item) => (
+                  <motion.path
+                    key={item.id}
+                    d={item.d}
                     fill="url(#groot-gradient)"
-                    className="drop-shadow-sm"
                     initial={{
-                      cx: dot.startX,
-                      cy: dot.startY,
+                      x: item.initialX,
+                      y: item.initialY,
                       opacity: 0,
                       scale: 0,
                     }}
                     animate={
                       isAssembled
                         ? {
-                          cx: dot.targetX,
-                          cy: dot.targetY,
+                          x: 0,
+                          y: 0,
                           opacity: 1,
-                          scale: isPulsing ? [1, 1.15, 1] : 1,
+                          scale: isPulsing ? [1, 1.05, 1] : 1,
                         }
                         : {
-                          cx: dot.startX,
-                          cy: dot.startY,
+                          x: item.initialX,
+                          y: item.initialY,
                           opacity: 0,
                           scale: 0,
                         }
                     }
                     transition={{
                       duration: 1.5,
-                      delay: dot.delay,
+                      delay: item.delay,
                       type: "spring",
                       stiffness: 60,
                       damping: 15,
@@ -268,6 +246,9 @@ export function HeroSection() {
                         duration: 2.5,
                         repeat: isPulsing ? Infinity : 0,
                         ease: "easeInOut",
+                        transformOrigin: "center" // Pulse might look weird on individual paths if not careful,
+                        // center of path is hard to determine for CSS transform origin without bbox.
+                        // But let's try.
                       }
                     }}
                   />
