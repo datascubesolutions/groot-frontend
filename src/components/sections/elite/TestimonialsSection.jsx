@@ -6,6 +6,7 @@ import { useState } from "react";
 const testimonials = [
   {
     id: 1,
+    client: "InnovateX",
     quote: "Nexus Corp built a powerful attribution system that made our campaign a huge success with clear event-based insights.",
     industry: "Technology",
     role: "Head of Digital Marketing",
@@ -14,6 +15,7 @@ const testimonials = [
   },
   {
     id: 2,
+    client: "Summit Brands",
     quote: "The Chief Procurement Officer plan's acceptance marks a first in history – a proud milestone driven by Nexus Corp's strategic partnership.",
     industry: "CPG",
     role: "Director, Procurement Transformation",
@@ -22,6 +24,7 @@ const testimonials = [
   },
   {
     id: 3,
+    client: "MediaForce",
     quote: "Their social listening tool helps us track impact and uncover new ideas for solving our toughest marketing challenges.",
     industry: "Advertising & Marketing",
     role: "Director, Data & Insights",
@@ -30,6 +33,7 @@ const testimonials = [
   },
   {
     id: 4,
+    client: "FinStream",
     quote: "The predictive analytics platform transformed how we approach customer retention, resulting in dramatic improvements.",
     industry: "Financial Services",
     role: "VP, Customer Success",
@@ -38,6 +42,7 @@ const testimonials = [
   },
   {
     id: 5,
+    client: "Wellness Plus",
     quote: "Working with Nexus Corp has been transformative. Their AI solutions helped us automate 60% of our manual processes.",
     industry: "Healthcare",
     role: "Chief Technology Officer",
@@ -92,8 +97,9 @@ const TestimonialsSection = () => {
               {/* Author & Metric Row */}
               <div className="mt-10 flex flex-wrap items-end justify-between gap-6">
                 <div className="space-y-1">
-                  <div className="text-lg font-semibold text-foreground">{activeTestimonial.industry}</div>
+                  <div className="text-2xl font-bold text-foreground">{activeTestimonial.client}</div>
                   <div className="text-primary font-medium">{activeTestimonial.role}</div>
+                  <div className="text-sm text-muted-foreground">{activeTestimonial.industry}</div>
                 </div>
 
                 {activeTestimonial.metric && (
@@ -132,7 +138,7 @@ const TestimonialsSection = () => {
                       <div className="flex-1 min-w-0">
                         <div className={`font-semibold truncate ${index === activeIndex ? "text-white" : "text-foreground"
                           }`}>
-                          {testimonial.industry}
+                          {testimonial.client}
                         </div>
                         <div className={`text-sm truncate ${index === activeIndex ? "text-primary-foreground/70" : "text-muted-foreground"
                           }`}>

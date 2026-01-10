@@ -45,17 +45,7 @@ export function HeroSection() {
     });
   }, [isMounted]);
 
-  // Generate random positions for floating background dots
-  const floatingDots = useMemo(() => {
-    if (!isMounted) return [];
-    return Array.from({ length: 25 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      duration: 3 + Math.random() * 3,
-      delay: Math.random() * 2,
-    }));
-  }, [isMounted]);
+
 
   useEffect(() => {
     setIsMounted(true);
@@ -78,28 +68,7 @@ export function HeroSection() {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-mint-light/30" />
 
-      {/* Floating Background Dots */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {floatingDots.map((dot) => (
-          <motion.div
-            key={dot.id}
-            className="absolute w-2 h-2 rounded-full bg-primary/20"
-            style={{
-              left: `${dot.left}%`,
-              top: `${dot.top}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: dot.duration,
-              repeat: Infinity,
-              delay: dot.delay,
-            }}
-          />
-        ))}
-      </div>
+
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-start mt-10">
@@ -110,17 +79,16 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center lg:text-left"
           >
-            {/* <motion.div
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-mint/10 border border-mint/20 mb-6"
+              className="mb-8"
             >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-foreground/80">
-                Data Engineering & AI Solutions
-              </span>
-            </motion.div> */}
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight bg-gradient-to-r from-[hsl(var(--burgundy))] via-[hsl(var(--forest))] to-[hsl(var(--primary))] bg-clip-text text-transparent pb-2">
+                EXTRACT. REFINE. DELIVER.
+              </h2>
+            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -199,7 +167,7 @@ export function HeroSection() {
 
               {/* SVG Container for animated logo paths */}
               <svg
-                viewBox="50 20 300 180"
+                viewBox="105 55 220 120"
                 className="w-full h-full"
                 style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))' }}
               >
@@ -219,7 +187,7 @@ export function HeroSection() {
                       x: item.initialX,
                       y: item.initialY,
                       opacity: 0,
-                      scale: 0,
+                      scale: 0.5,
                     }}
                     animate={
                       isAssembled
@@ -233,7 +201,7 @@ export function HeroSection() {
                           x: item.initialX,
                           y: item.initialY,
                           opacity: 0,
-                          scale: 0,
+                          scale: 0.5,
                         }
                     }
                     transition={{
@@ -246,38 +214,14 @@ export function HeroSection() {
                         duration: 2.5,
                         repeat: isPulsing ? Infinity : 0,
                         ease: "easeInOut",
-                        transformOrigin: "center" // Pulse might look weird on individual paths if not careful,
-                        // center of path is hard to determine for CSS transform origin without bbox.
-                        // But let's try.
+                        transformOrigin: "center"
                       }
                     }}
                   />
                 ))}
               </svg>
 
-              {/* Orbiting accent dots */}
-              {[...Array(8)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-2.5 h-2.5 rounded-full bg-primary/50 shadow-lg"
-                  style={{
-                    top: "50%",
-                    left: "50%",
-                  }}
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    x: Math.cos((i / 8) * Math.PI * 2) * 180 - 5,
-                    y: Math.sin((i / 8) * Math.PI * 2) * 140 - 5,
-                    opacity: 0.6,
-                  }}
-                  transition={{
-                    duration: 25 + i * 2,
-                    repeat: Infinity,
-                    ease: "linear",
-                    delay: (i / 8) * 3,
-                  }}
-                />
-              ))}
+
             </div>
           </motion.div>
         </div>

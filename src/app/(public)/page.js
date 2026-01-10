@@ -1,4 +1,5 @@
-import { Loading } from "@/components/ui/Loading";
+import { HeroSkeleton } from "@/components/skeletons/HeroSkeleton";
+import { SectionSkeleton } from "@/components/skeletons/SectionSkeleton";
 import { lazy, Suspense } from "react";
 
 // Lazy load sections for better performance
@@ -28,22 +29,22 @@ export const metadata = {
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      <Suspense fallback={<Loading className="min-h-screen" size="lg" />}>
+      <Suspense fallback={<HeroSkeleton />}>
         <HeroSection />
       </Suspense>
-      <Suspense fallback={<Loading className="min-h-[400px]" />}>
+      <Suspense fallback={<SectionSkeleton />}>
         <ServicesSection />
       </Suspense>
-      <Suspense fallback={<Loading className="min-h-[400px]" />}>
+      <Suspense fallback={<SectionSkeleton />}>
         <ProcessTimelineSection />
       </Suspense>
-      <Suspense fallback={<Loading className="min-h-[400px]" />}>
+      <Suspense fallback={<SectionSkeleton />}>
         <PlatformPreviewSection />
       </Suspense>
-      <Suspense fallback={<Loading className="min-h-[400px]" />}>
+      <Suspense fallback={<SectionSkeleton />}>
         <AboutSection />
       </Suspense>
-      <Suspense fallback={<Loading className="min-h-[300px]" />}>
+      <Suspense fallback={<SectionSkeleton className="min-h-[300px]" />}>
         <CTASection />
       </Suspense>
     </div>
