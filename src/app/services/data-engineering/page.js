@@ -1,5 +1,6 @@
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
+import { TextFlip } from "@/components/ui/TextFlip";
 import {
   Activity,
   ArrowRight,
@@ -8,6 +9,7 @@ import {
   Shield,
   Zap
 } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = {
   title: "Data Engineering Services | Groot Analytics",
@@ -31,9 +33,11 @@ export default function DataEngineeringPage() {
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Data Engineering & Modern Platforms
-          </h1>
+          <TextFlip
+            as="h1"
+            text="Data Engineering & Modern Platforms"
+            className="text-4xl md:text-6xl font-bold mb-6 tracking-tight"
+          />
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
             Build the foundation for data-driven decisions with scalable, reliable, and modern data infrastructure.
           </p>
@@ -66,31 +70,37 @@ export default function DataEngineeringPage() {
               icon={Cloud}
               title="Cloud Data Architecture & Design"
               description="Design scalable, cost-effective cloud data architectures on AWS, Azure, or GCP. Modern data platforms built for performance and flexibility."
+              href="/services/data-engineering/cloud-data-architecture-design"
             />
             <ServiceCard
               icon={Zap}
               title="Data Pipeline Development"
               description="Build robust ETL/ELT pipelines with Apache Airflow, dbt, Databricks, or cloud-native tools. Automated, monitored, and reliable."
+              href="/services/data-engineering/data-pipeline-development"
             />
             <ServiceCard
               icon={Database}
               title="Data Lake & Warehouse Implementation"
               description="Implement modern data lakes and warehouses using Snowflake, Databricks, BigQuery, or Redshift. Optimized for analytics and AI."
+              href="/services/data-engineering/data-lake-warehouse-implementation"
             />
             <ServiceCard
               icon={Activity}
               title="Real-Time Data Processing"
               description="Build streaming data pipelines with Kafka, Spark Streaming, or cloud-native services. Process events in milliseconds, not hours."
+              href="/services/data-engineering/real-time-data-processing"
             />
             <ServiceCard
               icon={Shield}
               title="Data Quality & Observability"
               description="Implement data quality frameworks, monitoring, and alerting. Know when data breaks before your users do."
+              href="/services/data-engineering/data-quality-observability"
             />
             <ServiceCard
               icon={ArrowRight}
               title="Platform Migration & Modernization"
               description="Migrate from legacy systems to modern platforms with minimal downtime. Re-architect for cloud-native performance."
+              href="/services/data-engineering/platform-migration-modernization"
             />
           </div>
         </div>
@@ -143,14 +153,17 @@ export default function DataEngineeringPage() {
   );
 }
 
-function ServiceCard({ icon: Icon, title, description }) {
+function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="group p-8 rounded-2xl bg-background border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300">
       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
         <Icon size={24} />
       </div>
       <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed">{description}</p>
+      <p className="text-muted-foreground leading-relaxed mb-6">{description}</p>
+      <Link href={href || "#"} className="inline-flex items-center text-primary font-medium hover:underline">
+        Learn More <span className="ml-1">→</span>
+      </Link>
     </div>
   );
 }

@@ -1,26 +1,9 @@
 "use client";
 
-import { Linkedin, Twitter, Mail } from "lucide-react";
-
-const footerLinks = {
-  services: [
-    { label: "Data Engineering", href: "#services" },
-    { label: "AI & Machine Learning", href: "#services" },
-    { label: "Advanced Analytics", href: "#services" },
-    { label: "Consulting", href: "#services" },
-  ],
-  company: [
-    { label: "About", href: "#about" },
-    { label: "Careers", href: "#" },
-    { label: "Insights", href: "#insights" },
-    { label: "Contact", href: "#" },
-  ],
-  resources: [
-    { label: "Case Studies", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "Documentation", href: "#" },
-  ],
-};
+import { FOOTER_LINKS } from "@/lib/constants/navigation";
+import { Linkedin, Mail, Twitter } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -65,14 +48,14 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
+              {FOOTER_LINKS.services.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-birch/70 hover:text-primary transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -81,14 +64,14 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
+              {FOOTER_LINKS.company.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-birch/70 hover:text-primary transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -97,14 +80,14 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
+              {FOOTER_LINKS.resources.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-birch/70 hover:text-primary transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -114,15 +97,15 @@ export function Footer() {
         {/* Bottom */}
         <div className="pt-8 border-t border-birch/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-birch/50 text-sm">
-            © {new Date().getFullYear()} Groot Analytics. All rights reserved.
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Groot Analytics. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-birch/50">
-            <a href="#" className="hover:text-primary transition-colors">
+            <Link href="#" className="hover:text-primary transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-primary transition-colors">
+            </Link>
+            <Link href="#" className="hover:text-primary transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -131,57 +114,15 @@ export function Footer() {
 }
 
 const GrootLogoLight = () => (
-  <svg
-    width="80"
-    height="28"
-    viewBox="0 0 100 32"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-label="Groot Analytics Logo"
-  >
-    <g fill="currentColor" className="text-birch">
-      {/* g */}
-      <circle cx="6" cy="10" r="2" />
-      <circle cx="12" cy="8" r="2" />
-      <circle cx="16" cy="12" r="2" />
-      <circle cx="14" cy="18" r="2" />
-      <circle cx="8" cy="20" r="2" />
-      <circle cx="4" cy="16" r="2" />
-      <circle cx="16" cy="24" r="2" />
-      <circle cx="10" cy="26" r="2" />
-
-      {/* r */}
-      <circle cx="24" cy="12" r="2" />
-      <circle cx="24" cy="18" r="2" />
-      <circle cx="24" cy="24" r="2" />
-      <circle cx="30" cy="10" r="2" />
-      <circle cx="34" cy="14" r="2" />
-
-      {/* o */}
-      <circle cx="44" cy="10" r="2" />
-      <circle cx="50" cy="12" r="2" />
-      <circle cx="52" cy="18" r="2" />
-      <circle cx="48" cy="24" r="2" />
-      <circle cx="42" cy="22" r="2" />
-      <circle cx="40" cy="16" r="2" />
-
-      {/* o */}
-      <circle cx="62" cy="10" r="2" />
-      <circle cx="68" cy="12" r="2" />
-      <circle cx="70" cy="18" r="2" />
-      <circle cx="66" cy="24" r="2" />
-      <circle cx="60" cy="22" r="2" />
-      <circle cx="58" cy="16" r="2" />
-
-      {/* t */}
-      <circle cx="80" cy="8" r="2" />
-      <circle cx="86" cy="8" r="2" />
-      <circle cx="83" cy="14" r="2" />
-      <circle cx="83" cy="20" r="2" />
-      <circle cx="86" cy="26" r="2" />
-      <circle cx="90" cy="24" r="2" />
-    </g>
-  </svg>
+  <div className="relative h-40 w-auto">
+    <Image
+      src="/svg/logo.svg"
+      alt="Groot Analytics Logo"
+      width={500}
+      height={180}
+      className="h-40 w-auto brightness-0 invert"
+    />
+  </div>
 );
 
 export default Footer;

@@ -60,3 +60,4 @@ export { Breadcrumb } from './Breadcrumb';
 // export { Table } from './Table';
 // export { Avatar } from './Avatar';
 // export { List } from './List';
+export { TextFlip } from './TextFlip';

@@ -1,6 +1,7 @@
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import { Navbar } from "@/components/layout";
 import Footer from "@/components/sections/Footer";
+import { OrganizationSchema, WebsiteSchema } from "@/components/seo/StructuredData";
 import { METADATA } from "@/lib/constants";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./accessibility.css";
@@ -78,47 +79,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // Generate structured data
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Groot Analytics",
-    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com",
-    "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com"}/logo.png`,
-    "description": "Modern data, analytics, and AI solutions for enterprise transformation",
-    "sameAs": [
-      "https://linkedin.com/company/grootanalytics",
-      "https://twitter.com/grootanalytics"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-555-123-4567",
-      "contactType": "Customer Service",
-      "email": "contact@grootanalytics.com"
-    }
-  };
 
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com",
-    "name": "Groot Analytics",
-    "description": METADATA.DESCRIPTION
-  };
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
+        <OrganizationSchema />
+        <WebsiteSchema />
       </head>
-      <body className={`${plusJakartaSans.variable} antialiased`}>
+      <body className={`${plusJakartaSans.variable} antialiased`} suppressHydrationWarning>
         <ErrorBoundary>
           <div className="flex flex-col min-h-screen">
             <Navbar />

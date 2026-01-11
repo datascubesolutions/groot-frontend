@@ -142,31 +142,37 @@ export default function StrategyAdvisoryPage() {
               icon={Map}
               title="Analytics Roadmap & Planning"
               description="Assess your current analytics maturity, define your target state, and create a phased implementation roadmap that prioritizes business value."
+              href="/services/strategy-advisory/analytics-roadmap-planning"
             />
             <ServiceCard
               icon={ClipboardList}
               title="Data Strategy Development"
               description="Establish data governance frameworks, define architecture principles, and align data initiatives with business objectives."
+              href="/services/strategy-advisory/data-strategy-development"
             />
             <ServiceCard
               icon={Settings}
               title="Platform Strategy & Selection"
               description="Evaluate technology options, design platform architecture, and select vendors based on your needs—not vendor relationships."
+              href="/services/strategy-advisory/platform-strategy-selection"
             />
             <ServiceCard
               icon={Search}
               title="AI/ML Feasibility & Assessment"
               description="Evaluate AI readiness, identify high-value use cases, and create realistic implementation plans with measurable ROI."
+              href="/services/strategy-advisory/ai-ml-feasibility-assessment"
             />
             <ServiceCard
               icon={TestTube}
               title="Proof of Concept Development"
               description="Validate ideas with rapid prototypes, demonstrate business value, and reduce risk before committing to full-scale development."
+              href="/services/strategy-advisory/proof-of-concept-development"
             />
             <ServiceCard
               icon={Rocket}
               title="Digital Transformation Consulting"
               description="End-to-end transformation planning, change management, operating model design, and ongoing advisory support."
+              href="/services/strategy-advisory/digital-transformation-consulting"
             />
           </div>
         </div>
@@ -210,7 +216,7 @@ export default function StrategyAdvisoryPage() {
   );
 }
 
-function ServiceCard({ icon: Icon, title, description }) {
+function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="group p-8 rounded-2xl bg-background border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300">
       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
@@ -220,7 +226,7 @@ function ServiceCard({ icon: Icon, title, description }) {
       <p className="text-muted-foreground leading-relaxed mb-6">
         {description}
       </p>
-      <Link href="#" className="inline-flex items-center text-primary font-medium hover:underline">
+      <Link href={href || "#"} className="inline-flex items-center text-primary font-medium hover:underline">
         Learn More <span className="ml-1">→</span>
       </Link>
     </div>
