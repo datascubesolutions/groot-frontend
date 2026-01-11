@@ -87,7 +87,7 @@ export default function RootLayout({ children }) {
         <OrganizationSchema />
         <WebsiteSchema />
       </head>
-      <body className={`${plusJakartaSans.variable} antialiased`}>
+      <body className={`${plusJakartaSans.variable} antialiased`} suppressHydrationWarning>
         <ErrorBoundary>
           <div className="flex flex-col min-h-screen">
             <Navbar />
