@@ -44,7 +44,7 @@ export function HeroSection() {
         delay: Math.random() * 0.8,
       };
     });
-  }, [isMounted]);
+  }, [isMounted, logoPaths]);
 
 
 
@@ -65,8 +65,9 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-background">
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        {/* Grid Pattern with Vignette Mask */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+
         {/* Radial Gradient for depth */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_50%,hsl(var(--mint)/0.15),transparent)]"></div>
       </div>
@@ -263,7 +264,7 @@ export function HeroSection() {
 
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 text-foreground">
                 Turning messy data into<br />
-                <span className="text-gradient-primary">intelligent decisions</span>
+                <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent">intelligent decisions</span>
               </h1>
 
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
