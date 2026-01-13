@@ -171,7 +171,7 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center justify-center gap-6 lg:gap-8 mt-4 lg:mt-0">
+        <div className="flex flex-col items-center justify-center gap-8 lg:gap-10 mt-4 lg:mt-0">
 
           {/* Animated "GROOT" Logo */}
           <motion.div
@@ -181,7 +181,7 @@ export function HeroSection() {
             className="relative flex items-center justify-center w-full max-w-5xl"
           >
             <motion.div
-              className="relative w-full h-48 md:h-64 lg:h-[24rem]"
+              className="relative w-full h-48 md:h-64 lg:h-[22rem]"
               animate={isPulsing ? {
                 scale: [1, 1.02, 1],
               } : {
@@ -267,7 +267,7 @@ export function HeroSection() {
                 <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent">intelligent decisions</span>
               </h1>
 
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Build modern data platforms and AI-powered systems that transform complex information into clarity, automation, and sustainable growth.
               </p>
             </div>
