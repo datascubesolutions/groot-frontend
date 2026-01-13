@@ -196,7 +196,27 @@ export function HeroSection() {
                 ))}
               </svg>
 
+<<<<<<< Updated upstream
 
+=======
+            {/* Analytics Text - Animates after logo assembly */}
+            <div className="flex justify-center gap-[0.1em] md:gap-[0.2em] z-20 -mt-[45px] md:-mt-[65px] lg:-mt-[146px] -ml-[30px] md:-ml-[50px] lg:-ml-[90px]">
+              {"Analytics".split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, x: -10, filter: "blur(4px)" }}
+                  animate={isAssembled ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
+                  transition={{
+                    duration: 0.8,
+                    delay: 2.2 + index * 0.08,
+                    ease: "easeOut"
+                  }}
+                  className="text-lg md:text-2xl lg:text-4xl font-normal tracking-tight bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent select-none font-sans pb-1"
+                >
+                  {char}
+                </motion.span>
+              ))}
+>>>>>>> Stashed changes
             </div>
           </motion.div>
         </div>
