@@ -17,32 +17,32 @@ export const metadata = {
 const solutions = [
   {
     title: "Executive Decision Intelligence",
-    description: "AI-powered dashboards and automated reporting for leadership teams to make data-backed decisions faster.",
+    description: "Real-time executive dashboards built on Power BI and Tableau, powered by automated data pipelines using Airflow and dbt.",
     icon: Lightbulb,
   },
   {
     title: "Customer 360 & Personalization",
-    description: "Unified customer data platforms that drive deep personalization across marketing, sales, and support channels.",
+    description: "Unified customer data platforms on Snowflake or Databricks that drive deep personalization using reverse ETL tools.",
     icon: Target,
   },
   {
     title: "Supply Chain & Operations AI",
-    description: "Optimize logistics, inventory, and production workflows using predictive analytics and intelligent automation.",
+    description: "Optimize logistics and inventory with predictive models built on Azure Machine Learning and deployed via Kubernetes.",
     icon: Settings,
   },
   {
-    title: "Financial Governance & Risk",
-    description: "Robust data systems for risk assessment, fraud prevention, and regulatory compliance in real-time.",
+    title: "Financial Governance & Compliance",
+    description: "Automated regulatory reporting and fraud detection systems leveraging Azure Purview and AWS Glue for end-to-end lineage.",
     icon: ShieldCheck,
   },
   {
     title: "Sales & Growth Analytics",
-    description: "Revenue attribution, pipeline forecasting, and churn prediction models to drive sustainable growth.",
+    description: "Revenue attribution and churn prediction models built in Python/PySpark to forecast growth with 95%+ accuracy.",
     icon: BarChart,
   },
   {
     title: "Self-Service Analytics Engine",
-    description: "Governed semantic layers that empower business users to explore data without technical barriers.",
+    description: "Governed semantic layers on Azure Synapse or BigQuery that empower business users to explore data securely.",
     icon: Zap,
   }
 ];

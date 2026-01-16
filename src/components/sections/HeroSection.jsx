@@ -241,6 +241,25 @@ export function HeroSection() {
                   />
                 ))}
               </svg>
+
+              {/* Analytics Text - Animates after logo assembly */}
+              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[45px] md:-mt-[65px] lg:-mt-[145px] -ml-[25px] md:-ml-[45px] lg:-ml-[80px]">
+                {"Analytics".split("").map((char, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0, x: -10, filter: "blur(4px)" }}
+                    animate={isAssembled ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
+                    transition={{
+                      duration: 0.8,
+                      delay: 2.2 + index * 0.08,
+                      ease: "easeOut"
+                    }}
+                    className="text-base md:text-xl lg:text-3xl font-bold tracking-normal bg-gradient-to-tr from-[hsl(var(--burgundy))] via-[hsl(var(--forest))] to-[hsl(var(--primary))] bg-fixed bg-clip-text text-transparent select-none font-sans pb-1"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
 

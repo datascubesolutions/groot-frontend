@@ -46,10 +46,9 @@ export default function WhoWeArePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
               <div className="p-8 bg-muted/30 rounded-2xl">
                 <Users className="text-primary mb-4" size={40} />
-                <h3 className="text-2xl font-bold mb-3">Platform-Agnostic Independence</h3>
+                <h3 className="text-2xl font-bold mb-3">True Multi-Cloud Independence</h3>
                 <p className="text-muted-foreground">
-                  We're not tied to any vendor or technology stack. We choose the best tools for your needs—whether
-                  that's Azure, AWS, GCP, or a hybrid approach—based on what actually works.
+                  We are not tied to a single vendor. Whether your stack is on Azure, AWS, GCP, or multi-cloud, we optimize for *your* cost and performance needs, not a vendor's roadmap.
                 </p>
               </div>
 

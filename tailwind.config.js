@@ -88,11 +88,45 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "draw-width-line": {
+          "0%": { width: "0%" },
+          "100%": { width: "100%" },
+        },
+        "draw-height-line": {
+          "0%": { height: "0%" },
+          "100%": { height: "100%" },
+        },
+        "draw-height-5rem-line-bottom-to-top": {
+          "0%": { height: "0rem" },
+          "100%": { height: "5rem" },
+        },
+        "draw-height-5-04rem--line-bottom-to-top": {
+          "0%": { height: "0rem" },
+          "100%": { height: "5.04rem" },
+        },
+        "draw-height-line-cross-line": {
+          "0%": { height: "0%" },
+          "100%": { height: "20.2rem" },
+        },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "draw-width-line": "draw-width-line 2s ease-out forwards",
+        "draw-height-line": "draw-height-line 2s ease-out forwards",
+        "draw-height-5rem-line-bottom-to-top":
+          "draw-height-5rem-line-bottom-to-top 2s ease-out forwards",
+        "draw-height-5-04rem--line-bottom-to-top":
+          "draw-height-5-04rem--line-bottom-to-top 2s ease-out forwards",
+        "draw-height-line-cross-line":
+          "draw-height-line-cross-line 2s ease-out forwards",
       },
     },
   },

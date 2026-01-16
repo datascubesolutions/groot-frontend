@@ -30,28 +30,28 @@ export default function WhatWeDoPage() {
               <ServiceSection
                 icon={TrendingUp}
                 title="Strategy & Advisory"
-                description="We help you define where you're going and how to get there. Analytics roadmaps, data strategy, platform selection, AI feasibility—all grounded in business value, not vendor pitches."
+                description="We help you define where you're going. Analytics roadmaps, multi-cloud strategy (Azure/AWS/GCP), and platform selection—grounded in business value."
                 link="/services/strategy-advisory"
               />
 
               <ServiceSection
                 icon={Database}
                 title="Data Engineering & Modern Platforms"
-                description="We build the foundation: cloud data architectures, real-time pipelines, data lakes and warehouses, quality frameworks, and platform migrations that minimize risk and downtime."
+                description="We build the foundation: Lakehouse architectures on Databricks/OneLake, dbt pipelines, and real-time streaming with Kafka and Spark."
                 link="/services/data-engineering"
               />
 
               <ServiceSection
                 icon={BarChart}
                 title="Business Intelligence & Data Science"
-                description="We turn data into insights: interactive dashboards, semantic models, predictive analytics, self-service BI, and decision intelligence systems that people actually use."
+                description="We turn data into insights: Power BI & Tableau dashboards, semantic layers, and predictive forecasting models that people actually use."
                 link="/services/business-intelligence"
               />
 
               <ServiceSection
                 icon={Brain}
                 title="Artificial Intelligence & Automation"
-                description="We build production-ready AI: machine learning models, NLP solutions, intelligent automation, MLOps pipelines, and AI-powered decision support that creates measurable impact."
+                description="We build production-ready AI: LLM apps with Azure OpenAI, MLOps with MLflow, and intelligent automation that creates measurable impact."
                 link="/services/ai-automation"
               />
 

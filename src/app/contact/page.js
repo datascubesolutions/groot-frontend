@@ -45,8 +45,7 @@ export default function ContactPage() {
               <span className="text-gradient-primary">future together</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-              Have a project in mind? Looking for an enterprise analytics partner?
-              We are ready to help you transform your data into intelligent action.
+              Ready to modernize your data stack? Schedule a technical consultation to discuss your architecture, tooling, and roadmap.
             </p>
           </div>
 
