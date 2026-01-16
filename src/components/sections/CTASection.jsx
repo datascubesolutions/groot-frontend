@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { motion } from "framer-motion";
+import { ArrowRight, Calendar, Mail } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 
 export function CTASection() {
   const [isMounted, setIsMounted] = useState(false);
@@ -71,19 +72,23 @@ export function CTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="mint" size="lg" className="group">
-              <Mail className="w-5 h-5" />
-              Start a Conversation
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary/50 text-primary hover:bg-primary hover:text-charcoal"
-            >
-              <Calendar className="w-5 h-5" />
-              Schedule a Call
-            </Button>
+            <Link href="/contact">
+              <Button variant="mint" size="lg" className="group">
+                <Mail className="w-5 h-5" />
+                Start a Conversation
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary/50 text-primary hover:bg-primary hover:text-charcoal"
+              >
+                <Calendar className="w-5 h-5" />
+                Schedule a Call
+              </Button>
+            </Link>
           </div>
 
           {/* Contact options */}

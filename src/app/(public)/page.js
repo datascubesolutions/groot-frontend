@@ -21,10 +21,8 @@ const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
 const CTASection = lazy(() => import("@/components/sections/CTASection"));
 
 // Elite Demo Sections
-const EnterpriseHeroSection = lazy(() => import("@/components/sections/elite/EnterpriseHeroSection"));
 const TestimonialsSection = lazy(() => import("@/components/sections/elite/TestimonialsSection"));
 const CultureSection = lazy(() => import("@/components/sections/elite/CultureSection"));
-const EliteCTASection = lazy(() => import("@/components/sections/elite/EliteCTASection"));
 
 export const metadata = {
   title: "Groot Analytics - Data Engineering & AI Solutions",
@@ -41,11 +39,6 @@ export default function HomePage() {
       <Suspense fallback={<SectionSkeleton />}>
         <ServicesSection />
       </Suspense>
-      <div className="theme-elite">
-        <Suspense fallback={<SectionSkeleton />}>
-          <EnterpriseHeroSection />
-        </Suspense>
-      </div>
       <Suspense fallback={<SectionSkeleton />}>
         <ProcessTimelineSection />
       </Suspense>
@@ -65,11 +58,6 @@ export default function HomePage() {
       <Suspense fallback={<SectionSkeleton />}>
         <AboutSection />
       </Suspense>
-      <div className="theme-elite">
-        <Suspense fallback={<SectionSkeleton />}>
-          <EliteCTASection />
-        </Suspense>
-      </div>
       <Suspense fallback={<SectionSkeleton className="min-h-[300px]" />}>
         <CTASection />
       </Suspense>

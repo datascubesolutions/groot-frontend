@@ -21,42 +21,42 @@ const jobPositions = [
     department: "Data Engineering",
     location: "Remote",
     type: "Full-time",
-    experience: "5+ years",
+    experience: "5+ years (Spark/Databricks)",
   },
   {
     title: "Analytics Engineer",
     department: "Business Intelligence",
     location: "Remote / Hybrid",
     type: "Full-time",
-    experience: "3+ years",
+    experience: "3+ years (dbt/Snowflake)",
   },
   {
     title: "AI & ML Practitioner",
     department: "Artificial Intelligence",
     location: "Remote",
     type: "Full-time",
-    experience: "4+ years",
+    experience: "4+ years (Python/PyTorch)",
   },
   {
     title: "Data Strategy Consultant",
     department: "Advisory",
     location: "London / New York",
     type: "Full-time",
-    experience: "7+ years",
+    experience: "7+ years (Multi-Cloud)",
   },
   {
     title: "Platform Architect (Cloud)",
     department: "Data Engineering",
     location: "Remote",
     type: "Full-time",
-    experience: "8+ years",
+    experience: "8+ years (Azure/AWS)",
   },
   {
     title: "Junior Data Analyst",
     department: "Business Intelligence",
     location: "Remote",
     type: "Full-time",
-    experience: "1+ year",
+    experience: "1+ year (SQL/Power BI)",
   }
 ];
 

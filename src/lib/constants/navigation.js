@@ -20,6 +20,7 @@ export const NAV_LINKS = [
       { label: "Our Story", href: "/about/our-story" },
       { label: "Why Join Us", href: "/about/why-join-us" },
       { label: "Careers", href: "/about/careers" },
+      { label: "Contact Us", href: "/contact" },
     ]
   },
 ];
@@ -60,6 +61,12 @@ export const ABOUT_LINKS = [
     href: "/about/careers",
     icon: Briefcase,
     description: "Open Positions & Opportunities"
+  },
+  {
+    title: "Contact Us",
+    href: "/contact",
+    icon: Users,
+    description: "Get in Touch with Our Team"
   }
 ];
 

@@ -43,7 +43,7 @@ const CultureSection = () => {
               {/* Content */}
               <div className="relative z-10 mt-auto pt-24">
                 <h3 className="text-2xl lg:text-3xl font-serif font-semibold text-white mb-4 leading-tight">
-                  Nexus as a University
+                  Groot Analytics Academy
                 </h3>
                 <p className="text-white/80 text-base lg:text-lg leading-relaxed mb-6 max-w-lg">
                   A home for the curious, our Academy is a living university, blending art, science, & business to grow explorers and first-principle thinkers.
@@ -104,7 +104,7 @@ const CultureSection = () => {
                     Family Day Program
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                    A day of learning, laughter, and togetherness where families experience the curiosity and collaboration that define Nexus.
+                    A day of learning, laughter, and togetherness where families experience the curiosity and collaboration that define Groot.
                   </p>
                   <a href="#" className="inline-flex items-center gap-2 text-primary font-semibold text-sm group/link">
                     <span>Know More</span>

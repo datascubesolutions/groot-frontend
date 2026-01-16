@@ -68,38 +68,38 @@ export default function DataEngineeringPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard
               icon={Cloud}
-              title="Cloud Data Architecture & Design"
-              description="Design scalable, cost-effective cloud data architectures on AWS, Azure, or GCP. Modern data platforms built for performance and flexibility."
+              title="Multi-Cloud Data Platforms"
+              description="Architect and build unified data platforms on Azure (Fabric, Databricks), AWS (Glue, EMR), or GCP (BigQuery, Dataproc). We ensure portability and scalability."
               href="/services/data-engineering/cloud-data-architecture-design"
             />
             <ServiceCard
               icon={Zap}
-              title="Data Pipeline Development"
-              description="Build robust ETL/ELT pipelines with Apache Airflow, dbt, Databricks, or cloud-native tools. Automated, monitored, and reliable."
+              title="Data Processing & Orchestration"
+              description="Build robust ETL/ELT pipelines using Apache Spark, Airflow, and dbt. enhanced by Python and PySpark for complex transformations."
               href="/services/data-engineering/data-pipeline-development"
             />
             <ServiceCard
               icon={Database}
-              title="Data Lake & Warehouse Implementation"
-              description="Implement modern data lakes and warehouses using Snowflake, Databricks, BigQuery, or Redshift. Optimized for analytics and AI."
+              title="Modern Data Warehousing"
+              description="Implement enterprise-grade warehouses with Snowflake, Azure Synapse, Amazon Redshift, or Google BigQuery. Optimized for high-performance analytics."
               href="/services/data-engineering/data-lake-warehouse-implementation"
             />
             <ServiceCard
               icon={Activity}
-              title="Real-Time Data Processing"
-              description="Build streaming data pipelines with Kafka, Spark Streaming, or cloud-native services. Process events in milliseconds, not hours."
+              title="Real-Time Streaming"
+              description="Ingest and process real-time data streams using Apache Kafka, Spark Streaming, or cloud-native services like AWS Kinesis and Azure Event Hubs."
               href="/services/data-engineering/real-time-data-processing"
             />
             <ServiceCard
               icon={Shield}
-              title="Data Quality & Observability"
-              description="Implement data quality frameworks, monitoring, and alerting. Know when data breaks before your users do."
+              title="Data Governance & Quality"
+              description="Ensure data trust with Great Expectations, dbt tests, and governance tools like Azure Purview and AWS Glue Data Catalog."
               href="/services/data-engineering/data-quality-observability"
             />
             <ServiceCard
               icon={ArrowRight}
-              title="Platform Migration & Modernization"
-              description="Migrate from legacy systems to modern platforms with minimal downtime. Re-architect for cloud-native performance."
+              title="Migration & Modernization"
+              description="Seamlessly migrate legacy on-prem systems (SQL Server, Hadoop) to modern cloud infrastructure with zero business disruption."
               href="/services/data-engineering/platform-migration-modernization"
             />
           </div>

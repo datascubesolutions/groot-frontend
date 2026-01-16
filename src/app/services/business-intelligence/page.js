@@ -65,38 +65,38 @@ export default function BusinessIntelligencePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard
               icon={BarChart3}
-              title="Data Visualization & Dashboards"
-              description="Build executive and operational dashboards with Power BI, Tableau, or Looker. Beautiful, interactive, and mobile-responsive."
+              title="Enterprise Visualization"
+              description="Design intuitive, interactive dashboards using Power BI and Tableau. We turn complex datasets into clear, actionable visual narratives."
               href="/services/business-intelligence/data-visualization-dashboards"
             />
             <ServiceCard
               icon={PieChart}
-              title="Semantic Modeling & Analytics Layer"
-              description="Create unified semantic layers with standardized metrics and KPIs. Enable self-service analytics with governed data access."
+              title="Modern Data Warehousing"
+              description="Build the foundation for BI with Azure Synapse, Amazon Redshift, Google BigQuery, or Snowflake. Centralized, governed, and fast."
               href="/services/business-intelligence/semantic-modeling-analytics-layer"
             />
             <ServiceCard
               icon={TrendingUp}
-              title="Predictive Analytics & Forecasting"
-              description="Build demand forecasting, sales prediction, and customer churn models. Scenario planning and what-if analysis."
+              title="Predictive Analytics"
+              description="Leverage statistical models and machine learning to forecast trends, demand, and customer behavior using Python and SQL."
               href="/services/business-intelligence/predictive-analytics-forecasting"
             />
             <ServiceCard
               icon={Brain}
-              title="Advanced Analytics Solutions"
-              description="Statistical analysis, cohort segmentation, customer lifetime value, market basket analysis, and attribution modeling."
+              title="Advanced Analytics"
+              description="Go beyond basic reporting. Implement cohort analysis, attribution modeling, and customer lifetime value calculations."
               href="/services/business-intelligence/advanced-analytics-solutions"
             />
             <ServiceCard
               icon={Sparkles}
-              title="Self-Service BI & Democratization"
-              description="Empower business users with self-service analytics platforms. Training, enablement, and data literacy programs."
+              title="Self-Service BI"
+              description="Empower teams with governed self-service capabilities. We configure Power BI and Tableau Server for secure, democratized access."
               href="/services/business-intelligence/self-service-bi-democratization"
             />
             <ServiceCard
               icon={Target}
-              title="Decision Intelligence & Optimization"
-              description="Build decision support systems with prescriptive analytics, optimization models, and business rules automation."
+              title="Decision Intelligence"
+              description="Integrate analytics directly into business workflows with prescriptive models and automated alerts using modern BI tools."
               href="/services/business-intelligence/decision-intelligence-optimization"
             />
           </div>

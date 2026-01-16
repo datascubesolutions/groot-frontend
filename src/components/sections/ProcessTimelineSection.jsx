@@ -15,7 +15,7 @@ const steps = [
     id: "01",
     title: "Discovery & Strategy",
     subtitle: "The Foundation",
-    description: "We decode your business DNA. Through immersive strategic mapping, we align data potential with business reality.",
+    description: "We map your business DNA to technical reality. Assessing infrastructure across Azure, AWS, and GCP to design a scalable roadmap.",
     icon: ScanSearch,
     color: "#3b82f6", // Blue
   },
@@ -23,7 +23,7 @@ const steps = [
     id: "02",
     title: "Data Architecture",
     subtitle: "The Synapse",
-    description: "Constructing the neural pathways. We engineer heavy-duty pipelines that transform raw chaos into structured intelligence.",
+    description: "Constructing the neural pathways. We engineer heavy-duty pipelines using Spark and Databricks to transform raw chaos into structured assets.",
     icon: DatabaseZap,
     color: "#a855f7", // Purple
   },
@@ -31,7 +31,7 @@ const steps = [
     id: "03",
     title: "Intelligence Engines",
     subtitle: "The Cortex",
-    description: "Where algorithms breathe. We deploy deep learning models that evolve, predict, and uncover hidden realities.",
+    description: "Where algorithms breathe. We deploy deep learning models via AI Foundry and SageMaker that evolve, predict, and uncover hidden realities.",
     icon: BrainCircuit,
     color: "#ec4899", // Pink
   },
@@ -39,7 +39,7 @@ const steps = [
     id: "04",
     title: "Actionable Impact",
     subtitle: "The Pulse",
-    description: "Intelligence in motion. We synthesize complex data into intuitive signals that drive decisive business action.",
+    description: "Intelligence in motion. We synthesize complex data into intuitive Power BI and Tableau signals that drive decisive business action.",
     icon: LineChart,
     color: "#14b8a6", // Teal
   },

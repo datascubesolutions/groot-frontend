@@ -68,38 +68,38 @@ export default function AIAutomationPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard
               icon={Brain}
-              title="AI Strategy & Roadmap"
-              description="AI maturity assessment, use case identification, and technology stack recommendations for leadership exploring AI."
+              title="Generative AI Solutions"
+              description="Build custom LLM applications using Azure OpenAI, Amazon Bedrock, and Google Vertex AI. Secure, enterprise-grade implementations."
               href="/services/ai-automation/ai-strategy-roadmap"
             />
             <ServiceCard
               icon={Cpu}
-              title="Machine Learning Solutions & MLOps"
-              description="Custom ML model development, feature engineering, and MLOps pipelines for CI/CD of machine learning."
+              title="Custom ML Development"
+              description="Develop predictive models with TensorFlow, PyTorch, and Scikit-learn. Deployed on Azure ML, SageMaker, or Vertex AI."
               href="/services/ai-automation/machine-learning-solutions-mlops"
             />
             <ServiceCard
               icon={MessageSquare}
-              title="Natural Language Processing (NLP)"
-              description="Text classification, sentiment analysis, document processing, and conversational AI powered by LLMs."
+              title="Natural Language Processing"
+              description="Leverage OpenAI API, Anthropic Claude, and Hugging Face Transformers for sentiment analysis, classification, and chat solutions."
               href="/services/ai-automation/natural-language-processing-nlp"
             />
             <ServiceCard
               icon={Workflow}
-              title="Intelligent Process Automation"
-              description="RPA + AI integration, document automation, and workflow intelligence to automate complex business rules."
+              title="MLOps & Pipelines"
+              description="Automate model lifecycle from training to deployment using MLflow, Azure ML Pipelines, and SageMaker Pipelines."
               href="/services/ai-automation/intelligent-process-automation"
             />
             <ServiceCard
               icon={Bot}
-              title="AI Model Development & Deployment"
-              description="End-to-end model development and production deployment with a focus on scalability and performance."
+              title="Intelligent Automation"
+              description="Combine AI with RPA and APIs to automate complex workflows. Smart document processing and decision automation."
               href="/services/ai-automation/ai-model-development-deployment"
             />
             <ServiceCard
               icon={Zap}
-              title="AI-Powered Decision Support"
-              description="Recommendation engines, next-best-action systems, and AI copilots to augment human decision-making."
+              title="AI Strategy & Governance"
+              description="Define your AI roadmap, ensure responsible AI practices, and implement governance frameworks for model risk management."
               href="/services/ai-automation/ai-powered-decision-support"
             />
           </div>

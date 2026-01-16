@@ -95,9 +95,11 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="hero" size="default">
-              Let's Connect
-            </Button>
+            <Link href="/contact">
+              <Button variant="hero" size="default">
+                Let's Connect
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -178,9 +180,11 @@ export function Navbar() {
                   )}
                 </div>
               ))}
-              <Button variant="hero" className="mt-4 w-full">
-                Let's Connect
-              </Button>
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="hero" className="mt-4 w-full">
+                  Let's Connect
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}

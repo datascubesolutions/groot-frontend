@@ -18,7 +18,7 @@ const caseStudies = [
     title: "Modernizing a Global Financial Data Lake",
     client: "Tier 1 Investment Bank",
     impact: "99.9% Pipeline Reliability",
-    description: "Built a cloud-native data architecture processing 5TB+ daily for real-time risk assessment and regulatory reporting.",
+    description: "Built a cloud-native data architecture on Azure Databricks processing 5TB+ daily for real-time risk assessment.",
     icon: Database
   },
   {
@@ -26,7 +26,7 @@ const caseStudies = [
     title: "Intelligent Inventory Optimization AI",
     client: "Retail Conglomerate",
     impact: "18% Stockout Reduction",
-    description: "Deployed custom ML models to predict demand spikes and automate reordering across 200+ locations.",
+    description: "Deployed custom XGBoost models on Azure ML to predict demand spikes and automate reordering across 200+ locations.",
     icon: Brain
   },
   {
@@ -34,7 +34,7 @@ const caseStudies = [
     title: "Decision Intelligence for PE Integration",
     client: "Leading Private Equity Firm",
     impact: "40% Faster Reporting",
-    description: "Designed a unified semantic layer and executive dashboards during a complex merger of three major entities.",
+    description: "Designed a unified semantic layer on Snowflake and Power BI dashboards during a complex merger of three major entities.",
     icon: TrendingUp
   }
 ];

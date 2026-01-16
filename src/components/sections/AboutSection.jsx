@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Target, Zap, Shield, TrendingUp } from "lucide-react";
+import { Shield, Target, TrendingUp, Zap } from "lucide-react";
 
 const values = [
   {
@@ -69,7 +69,7 @@ export function AboutSection() {
             <div className="grid grid-cols-3 gap-6">
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
-                  50+
+                  1200+
                 </div>
                 <div className="text-sm text-muted-foreground">
                   Projects Delivered
@@ -77,7 +77,7 @@ export function AboutSection() {
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
-                  10+
+                  15+
                 </div>
                 <div className="text-sm text-muted-foreground">
                   Industries Served
@@ -85,10 +85,10 @@ export function AboutSection() {
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
-                  99%
+                  98%
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Client Satisfaction
+                  Client Retention
                 </div>
               </div>
             </div>
