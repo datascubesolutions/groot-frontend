@@ -140,8 +140,8 @@ export default function StrategyAdvisoryPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard
               icon={Map}
-              title="Analytics Roadmap & Planning"
-              description="Assess your current analytics maturity, define your target state, and create a phased implementation roadmap that prioritizes business value."
+              title="Multi-Cloud Analytics Strategy"
+              description="Define your path to a modern data estate. We help you choose the right mix of Azure, AWS, and GCP services to meet your business goals."
               href="/services/strategy-advisory/analytics-roadmap-planning"
             />
             <ServiceCard

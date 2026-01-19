@@ -1,131 +1,95 @@
+import { ContactForm } from "@/components/forms/ContactForm";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { Button } from "@/components/ui/Button";
-import {
-  Globe,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-  Twitter
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export const metadata = {
   title: "Contact Us | Groot Analytics",
   description: "Get in touch with Groot Analytics. Let's discuss your data, AI, and automation challenges.",
 };
 
+const ContactInfoItem = ({ icon: Icon, label, value, delay }) => (
+  <div
+    className="flex gap-5 items-start p-4 rounded-2xl hover:bg-white/5 transition-colors group cursor-default"
+  >
+    <div className="p-4 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.15)] group-hover:shadow-[0_0_30px_rgba(34,197,94,0.4)]">
+      <Icon size={24} />
+    </div>
+    <div className="space-y-1">
+      <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider">{label}</p>
+      <p className="text-xl font-medium text-foreground group-hover:text-gradient-primary transition-all">{value}</p>
+    </div>
+  </div>
+);
+
 export default function ContactPage() {
   return (
-    <main className="pt-20">
-      <Breadcrumb
-        items={[
-          { label: "Contact Us", href: "/contact" }
-        ]}
-      />
+    <main className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
+      </div>
 
-      <section className="py-24">
+      <div className="relative pt-24 pb-20">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-16">
+          <Breadcrumb
+            items={[
+              { label: "Contact Us", href: "/contact" }
+            ]}
+          />
 
+          <div className="mt-12 mb-20">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
+              Let's build the <br />
+              <span className="text-gradient-primary">future together</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
+              Ready to modernize your data stack? Schedule a technical consultation to discuss your architecture, tooling, and roadmap.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
             {/* Contact Info Side */}
-            <div className="lg:w-1/3">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Let's Connect</h1>
-              <p className="text-xl text-muted-foreground mb-12">
-                Have a project in mind? Looking for an analytics partner? Or just want to say hello? Drop us a message.
-              </p>
-
-              <div className="space-y-8">
+            <div className="lg:col-span-4 space-y-12">
+              <div className="space-y-6">
                 <ContactInfoItem
                   icon={Mail}
                   label="Email Us"
                   value="contact@grootanalytics.com"
                 />
                 <ContactInfoItem
-                  icon={MapPin}
-                  label="Our Global Hub"
-                  value="Groot Analytics HQ, Tech Center Level 12"
+                  icon={Phone}
+                  label="Call Us"
+                  value="+1 (555) 123-4567"
                 />
                 <ContactInfoItem
-                  icon={Phone}
-                  label="Reach Out"
-                  value="+1 (555) 123-4567"
+                  icon={MapPin}
+                  label="Visit HQ"
+                  value="Tech Center Level 12, Innovation City"
                 />
               </div>
 
-              <div className="mt-16 pt-12 border-t border-border flex gap-6">
-                <a href="#" className="p-3 rounded-full bg-muted hover:bg-primary/10 hover:text-primary transition-all"><Linkedin size={20} /></a>
-                <a href="#" className="p-3 rounded-full bg-muted hover:bg-primary/10 hover:text-primary transition-all"><Twitter size={20} /></a>
-                <a href="#" className="p-3 rounded-full bg-muted hover:bg-primary/10 hover:text-primary transition-all"><Globe size={20} /></a>
+              {/* Global Presence Card */}
+              <div className="relative p-8 rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 overflow-hidden group">
+                <div className="absolute inset-0 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all duration-700" />
+                <h3 className="relative text-xl font-bold text-foreground mb-4">Global Presence</h3>
+                <p className="relative text-muted-foreground mb-6">
+                  Serving clients across North America, Europe, and Asia Pacific.
+                </p>
+                <div className="relative h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="absolute top-0 left-0 h-full w-1/3 bg-primary animate-shine" />
+                </div>
               </div>
             </div>
 
             {/* Form Side */}
-            <div className="lg:w-2/3">
-              <div className="p-10 md:p-16 rounded-[3rem] bg-muted/30 border border-border">
-                <form className="space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <FormGroup label="Full Name" placeholder="John Doe" />
-                    <FormGroup label="Email Address" type="email" placeholder="john@company.com" />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <FormGroup label="Company" placeholder="Global Tech Inc." />
-                    <FormGroup label="Industry" placeholder="Healthcare, Finance, etc." />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-foreground">Write Your Message</label>
-                    <textarea
-                      className="w-full bg-background border border-border rounded-2xl p-6 min-h-[200px] outline-none focus:ring-2 focus:ring-primary transition-all"
-                      placeholder="Tell us about your data challenges..."
-                    ></textarea>
-                  </div>
-                  <Button variant="hero" size="lg" className="w-full h-16 rounded-2xl flex items-center justify-center gap-3">
-                    Send Message <Send size={18} />
-                  </Button>
-                </form>
-              </div>
+            <div className="lg:col-span-8">
+              <ContactForm />
             </div>
-
           </div>
         </div>
-      </section>
-
-      {/* Map Placeholder */}
-      <section className="h-[400px] w-full bg-muted relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <MapPin size={48} className="text-primary animate-bounce" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/20 rounded-full blur-2xl animate-pulse" />
-        </div>
-        {/* In a real scenario, an iframe or Mapbox component would go here */}
-      </section>
-
+      </div>
     </main>
   );
-}
-
-function ContactInfoItem({ icon: Icon, label, value }) {
-  return (
-    <div className="flex gap-4 items-start">
-      <div className="p-3 rounded-xl bg-primary/10 text-primary">
-        <Icon size={20} />
-      </div>
-      <div>
-        <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">{label}</p>
-        <p className="text-lg font-medium text-foreground">{value}</p>
-      </div>
-    </div>
-  )
-}
-
-function FormGroup({ label, type = "text", placeholder }) {
-  return (
-    <div className="space-y-2">
-      <label className="text-sm font-bold text-foreground">{label}</label>
-      <input
-        type={type}
-        className="w-full bg-background border border-border rounded-xl h-14 px-6 outline-none focus:ring-2 focus:ring-primary transition-all"
-        placeholder={placeholder}
-      />
-    </div>
-  )
 }
