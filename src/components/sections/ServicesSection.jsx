@@ -53,16 +53,16 @@ export function ServicesSection() {
         <div className="absolute inset-0 pointer-events-none z-0">
           <svg className="w-full h-full overflow-visible" viewBox="0 0 288 448">
             <defs>
-              <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#f97316" stopOpacity="1" />
-                <stop offset="100%" stopColor="#ea580c" stopOpacity="1" />
+              <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+                <stop offset="100%" stopColor="hsl(var(--forest))" stopOpacity="1" />
               </linearGradient>
             </defs>
             {/* Top Part: Top-Left -> Top-Right -> Down Stub */}
             <motion.path
               d="M 0 0 H 288 V 100"
               fill="none"
-              stroke="url(#orangeGradient)"
+              stroke="url(#techGradient)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -72,13 +72,13 @@ export function ServicesSection() {
               transition={{ duration: 1.5, ease: "easeInOut" }}
             />
             {/* Dot at Top Break */}
-            <circle cx="288" cy="100" r="3" fill="#f97316" />
+            <circle cx="288" cy="100" r="3" fill="hsl(var(--primary))" />
 
             {/* Bottom Part: Top-Left -> Down -> Right -> Up Stub -> Diagonal to Next Card */}
             <motion.path
               d="M 0 0 V 448 H 288 V 348 L 387 100 V 0"
               fill="none"
-              stroke="url(#orangeGradient)"
+              stroke="url(#techGradient)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -91,10 +91,10 @@ export function ServicesSection() {
         </div>
 
         <div className="flex flex-col items-center space-y-6 h-full justify-center relative z-10">
-          <div className="text-orange-500 p-3 bg-orange-50 rounded-xl">
+          <div className="text-primary p-3 bg-primary/10 rounded-xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8 text-orange-600"
+              className="w-8 h-8 text-primary"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -123,7 +123,7 @@ export function ServicesSection() {
           </p>
           <Link href={rowCards[0]?.link || "#"}>
             <button className="mt-2 text-white bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
-              View Case Study
+              Explore Solution
             </button>
           </Link>
         </div>
@@ -137,7 +137,7 @@ export function ServicesSection() {
             <motion.path
               d="M 0 0 H 288 V 100"
               fill="none"
-              stroke="url(#orangeGradient)"
+              stroke="url(#techGradient)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -147,13 +147,13 @@ export function ServicesSection() {
               transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }}
             />
             {/* Dot at Top Break */}
-            <circle cx="288" cy="100" r="3" fill="#f97316" />
+            <circle cx="288" cy="100" r="3" fill="hsl(var(--primary))" />
 
             {/* Bottom Part: Dot -> Down Stub -> Right -> Up Stub -> Diag to Next */}
             <motion.path
               d="M 0 348 V 448 H 288 V 348 L 387 100 V 0"
               fill="none"
-              stroke="url(#orangeGradient)"
+              stroke="url(#techGradient)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -163,15 +163,15 @@ export function ServicesSection() {
               transition={{ duration: 2.5, delay: 0.5, ease: "easeInOut" }}
             />
             {/* Dot at Bottom Break */}
-            <circle cx="0" cy="348" r="3" fill="#f97316" />
+            <circle cx="0" cy="348" r="3" fill="hsl(var(--primary))" />
           </svg>
         </div>
 
         <div className="flex flex-col items-center space-y-6 h-full justify-center relative z-10">
-          <div className="text-orange-500 p-3 bg-orange-50 rounded-xl">
+          <div className="text-primary p-3 bg-primary/10 rounded-xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8 text-orange-600"
+              className="w-8 h-8 text-primary"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -200,7 +200,7 @@ export function ServicesSection() {
           </p>
           <Link href={rowCards[1]?.link || "#"}>
             <button className="mt-2 text-white bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
-              View Case Study
+              Explore Solution
             </button>
           </Link>
         </div>
@@ -214,7 +214,7 @@ export function ServicesSection() {
             <motion.path
               d="M 0 0 H 288 V 448 H 0 V 348"
               fill="none"
-              stroke="url(#orangeGradient)"
+              stroke="url(#techGradient)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -224,15 +224,15 @@ export function ServicesSection() {
               transition={{ duration: 3, delay: 1.5, ease: "easeInOut" }}
             />
             {/* Dot at Bottom Break */}
-            <circle cx="0" cy="348" r="3" fill="#f97316" />
+            <circle cx="0" cy="348" r="3" fill="hsl(var(--primary))" />
           </svg>
         </div>
 
         <div className="flex flex-col items-center space-y-6 h-full justify-center relative z-10">
-          <div className="text-orange-500 p-3 bg-orange-50 rounded-xl">
+          <div className="text-primary p-3 bg-primary/10 rounded-xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8 text-orange-600"
+              className="w-8 h-8 text-primary"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -261,7 +261,7 @@ export function ServicesSection() {
           </p>
           <Link href={rowCards[2]?.link || "#"}>
             <button className="mt-2 text-white bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
-              View Case Study
+              Explore Solution
             </button>
           </Link>
         </div>
@@ -282,7 +282,7 @@ export function ServicesSection() {
             </span>
           </div>
           <h2 className="heading-section">
-            Integrated <span className="text-primary">Technology</span> Ecosystem
+            Integrated <span className="bg-gradient-to-tr from-[hsl(var(--burgundy))] via-[hsl(var(--forest))] to-[hsl(var(--primary))] bg-clip-text text-transparent font-extrabold drop-shadow-sm">Technology</span> Ecosystem
           </h2>
           <p className="body-large">
             Leveraging best-in-class platforms and tools to build scalable, high-performance data solutions.

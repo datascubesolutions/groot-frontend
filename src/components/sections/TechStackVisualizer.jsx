@@ -11,7 +11,7 @@ export function TechStackVisualizer() {
     <section id="technologies" className="py-24 bg-background relative">
       <div className="container mx-auto px-6">
         {/* Tabs Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="flex flex-wrap justify-center gap-3 mb-16 max-w-5xl mx-auto">
           {TECH_STACK.map((category) => {
             const Icon = category.icon;
             const isActive = activeTab === category.id;
@@ -21,10 +21,10 @@ export function TechStackVisualizer() {
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
                 className={`
-                      flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 border
+                      flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border
                       ${isActive
-                    ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25"
-                    : "bg-background text-muted-foreground border-border hover:border-primary/50 hover:text-foreground"
+                    ? "bg-primary text-primary-foreground border-primary shadow-[0_0_20px_-5px_hsl(var(--primary)/0.5)] scale-105"
+                    : "bg-background/50 backdrop-blur-sm text-muted-foreground border-border/50 hover:border-primary/50 hover:text-foreground hover:bg-muted/20"
                   }
                     `}
               >
@@ -36,7 +36,7 @@ export function TechStackVisualizer() {
         </div>
 
         {/* Content Area */}
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-[90rem] mx-auto">
           <AnimatePresence mode="wait">
             {TECH_STACK.map((category) => (
               category.id === activeTab && (
@@ -45,35 +45,45 @@ export function TechStackVisualizer() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
                 >
                   {/* Category Description */}
                   <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold mb-4">{category.label}</h2>
-                    <p className="text-lg text-muted-foreground">{category.description}</p>
+                    <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">{category.label}</h2>
+                    <p className="text-xl text-muted-foreground/90 max-w-2xl mx-auto leading-relaxed">{category.description}</p>
                   </div>
 
                   {/* Subcategories Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {category.subcategories.map((sub, idx) => (
-                      <div key={idx} className="bg-muted/30 border border-border/50 rounded-2xl p-6 hover:border-primary/30 transition-colors">
-                        <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                          <div className="w-1.5 h-6 bg-primary rounded-full" />
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: idx * 0.05 }}
+                        className="group relative bg-background/40 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.15)] hover:-translate-y-1 overflow-hidden"
+                      >
+                        {/* Hover Gradient Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        <h3 className="relative text-xl font-bold mb-6 flex items-center gap-3 text-foreground">
+                          <div className="w-1 h-6 bg-gradient-to-b from-primary to-forest rounded-full shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
                           {sub.name}
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="relative space-y-4">
                           {sub.items.map((item, itemIdx) => (
-                            <li key={itemIdx} className="group">
-                              <div className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                            <li key={itemIdx} className="group/item">
+                              <div className="font-semibold text-foreground/90 group-hover/item:text-primary transition-colors flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-border group-hover/item:bg-primary transition-colors duration-300" />
                                 {item.name}
                               </div>
-                              <div className="text-sm text-muted-foreground mt-0.5">
+                              <div className="text-sm text-muted-foreground mt-1 pl-3.5 leading-snug">
                                 {item.description}
                               </div>
                             </li>
                           ))}
                         </ul>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </motion.div>
