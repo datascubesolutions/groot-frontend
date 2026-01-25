@@ -2,20 +2,24 @@
 
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Cloud, Database, Cpu, Zap, BarChart } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { logoPaths } from "./logoData";
 
+const techStack = [
+  { name: "Microsoft Azure", icon: Cloud },
+  { name: "Microsoft Fabric", icon: BarChart },
+  { name: "Azure Databricks", icon: Database },
+  { name: "AI Foundry", icon: Cpu },
+];
+
 export function HeroSection() {
   const [isAssembled, setIsAssembled] = useState(false);
   const [isPulsing, setIsPulsing] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const [logoElements, setLogoElements] = useState([]);
 
-  // Generate paths that will form the GROOT logo
-  const logoElements = useMemo(() => {
-    if (!isMounted) return [];
-
+  useEffect(() => {
     // 8 different directions for elements to come from
     const directions = [
       { x: -1, y: -1, name: 'top-left' },
@@ -28,28 +32,21 @@ export function HeroSection() {
       { x: 1, y: 0, name: 'right' },
     ];
 
-    return logoPaths.map((d, index) => {
+    const elements = logoPaths.map((d, index) => {
       const direction = directions[index % directions.length];
       const distance = 400 + Math.random() * 300;
 
       return {
         id: index,
         d: d,
-        // Start position logic:
-        // Since we are transforming the path element itself,
-        // 0,0 is the final position (identity transform).
-        // We want to start at some offset.
         initialX: direction.x * distance,
         initialY: direction.y * distance,
         delay: Math.random() * 0.8,
       };
     });
-  }, [isMounted, logoPaths]);
 
+    setLogoElements(elements);
 
-
-  useEffect(() => {
-    setIsMounted(true);
     // Start assembly animation after a short delay
     const assemblyTimer = setTimeout(() => setIsAssembled(true), 800);
     // Start pulsing after assembly completes
@@ -61,8 +58,9 @@ export function HeroSection() {
     };
   }, []);
 
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-background">
         {/* Grid Pattern with Vignette Mask */}
@@ -72,29 +70,25 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_50%,hsl(var(--mint)/0.15),transparent)]"></div>
       </div>
 
-
-
-
-
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center justify-center gap-8 lg:gap-10 mt-4 lg:mt-0">
+        <div className="flex flex-col items-center justify-center gap-8 lg:gap-12">
 
-          {/* Animated "GROOT" Logo */}
+          {/* Animated "GROOT" Logo - More compact */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative flex items-center justify-center w-full max-w-5xl"
+            className="relative flex items-center justify-center w-full max-w-4xl"
           >
             <motion.div
-              className="relative w-full h-48 md:h-64 lg:h-[22rem]"
+              className="relative w-full h-40 md:h-52 lg:h-[18rem]"
               animate={isPulsing ? {
-                scale: [1, 1.02, 1],
+                scale: [1, 1.01, 1],
               } : {
                 scale: 1,
               }}
               transition={{
-                duration: 3,
+                duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
@@ -147,8 +141,8 @@ export function HeroSection() {
                 ))}
               </svg>
 
-              {/* Analytics Text - Animates after logo assembly */}
-              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[45px] md:-mt-[65px] lg:-mt-[145px] -ml-[25px] md:-ml-[45px] lg:-ml-[80px]">
+              {/* Analytics Text - Scaled down slightly */}
+              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[35px] md:-mt-[55px] lg:-mt-[115px] -ml-[20px] md:-ml-[40px] lg:-ml-[70px]">
                 {"Analytics".split("").map((char, index) => (
                   <motion.span
                     key={index}
@@ -159,7 +153,7 @@ export function HeroSection() {
                       delay: 2.2 + index * 0.08,
                       ease: "easeOut"
                     }}
-                    className="text-base md:text-xl lg:text-3xl font-bold tracking-normal bg-gradient-to-br from-[hsl(var(--groot-dark-primary))] to-[hsl(var(--groot-dark-forest))] bg-fixed bg-clip-text text-transparent select-none font-sans pb-1"
+                    className="text-sm md:text-lg lg:text-2xl font-bold tracking-normal bg-gradient-to-br from-[hsl(var(--groot-dark-primary))] to-[hsl(var(--groot-dark-forest))] bg-fixed bg-clip-text text-transparent select-none font-sans pb-1"
                   >
                     {char}
                   </motion.span>
@@ -173,26 +167,26 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center max-w-4xl mx-auto space-y-6"
+            className="text-center max-w-5xl mx-auto space-y-8"
           >
             <div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50 border border-border mb-4"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50 border border-border mb-6"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-foreground/80 drop-shadow-sm">Extract • Refine • Deliver</span>
+                <span className="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-foreground/80 drop-shadow-sm">Extract • Refine • Deliver</span>
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 text-foreground">
-                Turning messy data into<br />
-                <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent">intelligent decisions</span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6 text-foreground">
+                Enterprise Data & AI on<br />
+                <span className="bg-gradient-to-r from-primary via-forest to-primary bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">Microsoft Azure</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Build modern data platforms and AI-powered systems that transform complex information into clarity, automation, and sustainable growth.
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Specializing in Microsoft Fabric, Azure Databricks, and AI Foundry to build modern data platforms that transform complex information into intelligent decisions.
               </p>
             </div>
 
@@ -200,7 +194,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center pt-2"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <Link href="/contact">
                 <Button variant="hero" size="xl" className="group text-lg px-8">
@@ -213,6 +207,26 @@ export function HeroSection() {
                   Explore Services
                 </Button>
               </Link>
+            </motion.div>
+
+            {/* Tech Stack Row */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 1 }}
+              className="pt-12 border-t border-border/50"
+            >
+              <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-8">Specializing in the Microsoft Data Stack</p>
+              <div className="flex flex-wrap justify-center gap-6 md:gap-12">
+                {techStack.map((tech) => (
+                  <div key={tech.name} className="flex items-center gap-3 text-foreground/70 grayscale hover:grayscale-0 transition-all cursor-default group">
+                    <div className="p-2 rounded-lg bg-muted/50 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                      <tech.icon size={20} />
+                    </div>
+                    <span className="text-sm md:text-base font-medium whitespace-nowrap">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         </div>
