@@ -34,7 +34,7 @@ const EliteCTASection = () => {
 
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-foreground mb-6 tracking-tight leading-[1.1]">
                 It's Time to{" "}
-                <span className="text-gradient-primary relative">
+                <span className="bg-gradient-to-r from-[hsl(168,76%,40%)] to-[hsl(142,71%,38%)] bg-clip-text text-transparent relative">
                   Do the Math.
                   {/* Underline Decoration */}
                   <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary/30" viewBox="0 0 200 12" preserveAspectRatio="none">

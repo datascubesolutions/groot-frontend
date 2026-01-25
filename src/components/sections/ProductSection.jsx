@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { motion, useInView } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
 
 export const ProductSection = ({
   title,
@@ -24,7 +23,7 @@ export const ProductSection = ({
   return (
     <section
       ref={ref}
-      className={`py-24 md:py-32 ${bgVariant === "muted" ? "bg-muted/30" : "bg-background"}`}
+      className={`py-20 md:py-24 ${bgVariant === "muted" ? "bg-muted/30" : "bg-background"}`}
     >
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

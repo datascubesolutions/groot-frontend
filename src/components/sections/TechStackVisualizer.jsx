@@ -62,8 +62,7 @@ export function TechStackVisualizer() {
                     <p className="text-xl text-muted-foreground/90 max-w-2xl mx-auto leading-relaxed">{category.description}</p>
                   </div>
 
-                  {/* Subcategories Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {category.subcategories.map((sub, idx) => (
                       <motion.div
                         key={idx}

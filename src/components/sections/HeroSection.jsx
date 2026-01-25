@@ -100,7 +100,7 @@ export function HeroSection() {
               }}
             >
               <svg
-                viewBox="105 55 220 120"
+                viewBox="95 45 240 140"
                 className="w-full h-full"
                 style={{ overflow: "visible" }}
               >
@@ -148,7 +148,7 @@ export function HeroSection() {
               </svg>
 
               {/* Analytics Text - Animates after logo assembly */}
-              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[45px] md:-mt-[65px] lg:-mt-[145px] -ml-[25px] md:-ml-[45px] lg:-ml-[80px]">
+              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[50px] md:-mt-[75px] lg:-mt-[155px] -ml-[25px] md:-ml-[45px] lg:-ml-[80px]">
                 {"Analytics".split("").map((char, index) => (
                   <motion.span
                     key={index}
@@ -183,7 +183,7 @@ export function HeroSection() {
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50 border border-border mb-4"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-foreground/80 drop-shadow-sm">Extract • Refine • Deliver</span>
+                <span className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-foreground/80 drop-shadow-sm">Architecting Intelligence</span>
               </motion.div>
 
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 text-foreground">
@@ -192,7 +192,7 @@ export function HeroSection() {
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Build modern data platforms and AI-powered systems that transform complex information into clarity, automation, and sustainable growth.
+                We build the digital foundations that power the world's most ambitious companies. From raw infrastructure to agentic AI—engineered on Microsoft Cloud.
               </p>
             </div>
 
@@ -204,13 +204,13 @@ export function HeroSection() {
             >
               <Link href="/contact">
                 <Button variant="hero" size="xl" className="group text-lg px-8">
-                  Start a Project
+                  Start Your Journey
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/services">
                 <Button variant="hero-outline" size="xl" className="text-lg px-8">
-                  Explore Services
+                  Explore Our Platform
                 </Button>
               </Link>
             </motion.div>
