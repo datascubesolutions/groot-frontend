@@ -25,9 +25,9 @@ const TestimonialsSection = lazy(() => import("@/components/sections/elite/Testi
 const CultureSection = lazy(() => import("@/components/sections/elite/CultureSection"));
 
 export const metadata = {
-  title: "Groot Analytics - Data Engineering & AI Solutions",
+  title: "Groot Analytics - Microsoft Azure Data & AI Solutions",
   description:
-    "Turning messy data into intelligent decisions. Modern data platforms, advanced analytics, and AI-powered solutions.",
+    "Specializing in Microsoft Azure, Fabric, Databricks, and AI Foundry. Turning messy data into intelligent decisions with modern cloud technologies.",
 };
 
 export default function HomePage() {

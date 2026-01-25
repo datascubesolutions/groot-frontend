@@ -31,7 +31,7 @@ export function AdminHeader() {
             <p className="text-sm font-medium text-foreground">Admin User</p>
             <p className="text-xs text-muted-foreground">Super Admin</p>
           </div>
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-white font-bold shadow-lg shadow-primary/20">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-[hsl(var(--forest))] flex items-center justify-center text-white font-bold shadow-lg shadow-primary/20">
             <User size={20} />
           </div>
         </div>

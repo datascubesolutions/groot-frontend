@@ -35,17 +35,26 @@ export function TechStackVisualizer() {
           })}
         </div>
 
-        {/* Content Area */}
-        <div className="max-w-[90rem] mx-auto">
-          <AnimatePresence mode="wait">
+        <div className="max-w-[90rem] mx-auto min-h-[500px]"> {/* Add min-h to prevent layout jump */}
+          <AnimatePresence mode="popLayout">
             {TECH_STACK.map((category) => (
               category.id === activeTab && (
                 <motion.div
                   key={category.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{
+                    opacity: 0,
+                    y: -20,
+                    scale: 0.98,
+                    transition: { duration: 0.2 }
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30,
+                    mass: 1
+                  }}
                 >
                   {/* Category Description */}
                   <div className="text-center mb-12">
@@ -58,13 +67,18 @@ export function TechStackVisualizer() {
                     {category.subcategories.map((sub, idx) => (
                       <motion.div
                         key={idx}
-                        initial={{ opacity: 0, scale: 0.95 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: idx * 0.05 }}
-                        className="group relative bg-background/40 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.15)] hover:-translate-y-1 overflow-hidden"
+                        transition={{
+                          type: "spring",
+                          stiffness: 100,
+                          damping: 15,
+                          delay: idx * 0.05
+                        }}
+                        className="group relative bg-background/40 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-primary/80 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_hsl(var(--primary)/0.2)] hover:-translate-y-1 overflow-hidden"
                       >
                         {/* Hover Gradient Effect */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         <h3 className="relative text-xl font-bold mb-6 flex items-center gap-3 text-foreground">
                           <div className="w-1 h-6 bg-gradient-to-b from-primary to-forest rounded-full shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />

@@ -1,5 +1,6 @@
 import { AdminHeader } from "@/components/admin/AdminHeader";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
+import { Toaster } from "sonner";
 
 export const metadata = {
   title: "Admin Dashboard | Groot Analytics",
@@ -27,6 +28,9 @@ export default function AdminLayout({ children }) {
 
       {/* Mobile Overlay Background (Optional implementation for full mobile support later) */}
       <div className="fixed inset-0 bg-background -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
+
+      {/* Toast Notifications */}
+      <Toaster position="top-right" richColors />
     </div>
   );
 }

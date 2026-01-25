@@ -7,6 +7,7 @@ import { contactService } from "@/services/contactService";
 import { Edit, Eye, Plus, Search, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
 
 export default function ContactsPage() {
   const [data, setData] = useState([]);
@@ -39,16 +40,48 @@ export default function ContactsPage() {
     fetchContacts();
   }, []);
 
-  const handleDelete = async (id) => {
-    if (confirm("Are you sure you want to delete this contact?")) {
-      try {
-        await contactService.delete(id);
-        setData(prev => prev.filter(item => item.id !== id));
-      } catch (error) {
-        console.error("Delete error:", error);
-        alert("An error occurred while deleting");
-      }
-    }
+  const handleDelete = (id) => {
+    toast.custom((t) => (
+      <div className="bg-background border border-border p-4 rounded-xl shadow-xl w-[350px] space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="p-2 bg-red-500/10 rounded-lg text-red-500">
+            <Trash2 size={18} />
+          </div>
+          <div>
+            <h3 className="font-semibold text-foreground">Delete Contact?</h3>
+            <p className="text-sm text-muted-foreground mt-1">
+              This action cannot be undone. This contact will be permanently removed.
+            </p>
+          </div>
+        </div>
+        <div className="flex justify-end gap-2 pt-2">
+          <button
+            onClick={() => toast.dismiss(t)}
+            className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted/50 rounded-lg transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={async () => {
+              toast.dismiss(t);
+              try {
+                // Optimistic UI update or wait for API
+                // For a "professional" feel, let's show a loading toast during the op
+                const loadingToast = toast.loading('Deleting contact...');
+                await contactService.delete(id);
+                setData(prev => prev.filter(item => item.id !== id));
+                toast.success('Contact deleted successfully', { id: loadingToast });
+              } catch (error) {
+                toast.error('Failed to delete contact');
+              }
+            }}
+            className="px-3 py-1.5 text-sm font-medium bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-sm"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    ), { duration: Infinity });
   };
 
   const columns = [

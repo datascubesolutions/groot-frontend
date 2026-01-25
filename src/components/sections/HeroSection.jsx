@@ -105,10 +105,9 @@ export function HeroSection() {
                 style={{ overflow: "visible" }}
               >
                 <defs>
-                  <linearGradient id="groot-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="hsl(var(--burgundy))" />
-                    <stop offset="50%" stopColor="hsl(var(--forest))" />
-                    <stop offset="100%" stopColor="hsl(var(--primary))" />
+                  <linearGradient id="groot-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="hsl(var(--groot-dark-primary))" />
+                    <stop offset="100%" stopColor="hsl(var(--groot-dark-forest))" />
                   </linearGradient>
                 </defs>
                 {logoElements.map((item) => (
@@ -160,7 +159,7 @@ export function HeroSection() {
                       delay: 2.2 + index * 0.08,
                       ease: "easeOut"
                     }}
-                    className="text-base md:text-xl lg:text-3xl font-bold tracking-normal bg-gradient-to-tr from-[hsl(var(--burgundy))] via-[hsl(var(--forest))] to-[hsl(var(--primary))] bg-fixed bg-clip-text text-transparent select-none font-sans pb-1"
+                    className="text-base md:text-xl lg:text-3xl font-bold tracking-normal bg-gradient-to-br from-[hsl(var(--groot-dark-primary))] to-[hsl(var(--groot-dark-forest))] bg-fixed bg-clip-text text-transparent select-none font-sans pb-1"
                   >
                     {char}
                   </motion.span>

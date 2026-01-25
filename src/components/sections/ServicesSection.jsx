@@ -7,40 +7,40 @@ import React from "react";
 const cards = [
   // First Row
   {
-    title: "Core Platform",
+    title: "Microsoft Azure",
     description:
-      "Multi-cloud infrastructure and services providing the foundation for scalable solutions. Supporting Azure, AWS, and GCP environments.",
+      "Comprehensive cloud infrastructure and services. From computing and networking to security and hybrid cloud management with Azure Arc.",
     link: "/technologies",
   },
   {
-    title: "Data Engineering",
+    title: "Microsoft Fabric",
     description:
-      "Robust data processing, orchestration, and transformation at scale. utilizing Apache Spark, Airflow, and Databricks for high-performance pipelines.",
+      "Unified analytics platform that brings together data engineering, data science, real-time analytics, and business intelligence.",
     link: "/services/data-engineering",
   },
   {
-    title: "BI & Analytics",
+    title: "Azure Databricks",
     description:
-      "Advanced visualization, reporting, and enterprise data warehousing. Empowering decisions with Power BI, Tableau, and Snowflake.",
-    link: "/services/business-intelligence",
+      "The world's first open and unified data intelligence platform. specific optimizations for storage, processing, and AI on Azure.",
+    link: "/services/data-engineering",
   },
   // Second Row
   {
-    title: "AI & Machine Learning",
+    title: "Microsoft AI Foundry",
     description:
-      "Cutting-edge AI platforms, frameworks, and MLOps for intelligent solutions. From Generative AI to predictive modeling and automation.",
+      "Developing next-generation AI applications. Build, evaluate, and deploy generative AI models with ease and responsibility.",
     link: "/services/ai-automation",
   },
   {
-    title: "DevOps & Infrastructure",
+    title: "Azure DevOps",
     description:
-      "Streamlined deployment, orchestration, and infrastructure as code. Leveraging Kubernetes, Terraform, and CI/CD for agile delivery.",
+      "Plan smarter, collaborate better, and ship faster with a set of modern dev services. CI/CD, Boards, Repos, and Artifacts.",
     link: "/technologies",
   },
   {
-    title: "Quality & Governance",
+    title: "Azure Governance",
     description:
-      "Ensuring data integrity, compliance, and comprehensive governance. Automated testing and metadata management for trusted data assets.",
+      "Control and manage your cloud environment with policy-based management. Microsoft Purview for unified data governance.",
     link: "/services/strategy-advisory",
   },
 ];

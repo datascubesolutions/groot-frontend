@@ -50,19 +50,19 @@ export function AboutSection() {
               About Groot Analytics
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              We turn complexity into{" "}
-              <span className="text-gradient">clarity</span>
+              Your Premier Partner for{" "}
+              <span className="text-gradient">Microsoft Azure</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Groot Analytics combines deep technical expertise with real
-              business understanding. We work across finance, operations, field
-              services, workforce management, and supply chain—building data
-              foundations that scale with your ambitions.
+              Groot Analytics is a specialized consultancy focused on the
+              Microsoft Azure ecosystem. We leverage the full power of Azure,
+              Fabric, Databricks, and AI Foundry to build scalable, secure, and
+              intelligent data solutions.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Our mission is simple: transform complex, scattered data into
-              actionable insights, intelligent automation, and sustainable
-              growth.
+              Our mission is to empower your business with cutting-edge Microsoft
+              technologies—turning complex data into actionable insights and
+              sustainable growth.
             </p>
 
             {/* Stats */}

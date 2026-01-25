@@ -45,6 +45,10 @@
     --burgundy-dark: 340 75% 35%;
     --burgundy-light: 340 75% 55%;
 
+    /* Groot Dark Theme (Premium Deep Green) */
+    --groot-dark-primary: 168 76% 35%; /* Deep Teal (Rich Body) */
+    --groot-dark-forest: 162 90% 12%;   /* Obsidian Green (Deep Shadow) */
+
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--birch)) 0%, hsl(var(--mint-light)) 100%);
     --gradient-cta: linear-gradient(135deg, hsl(var(--forest)) 0%, hsl(var(--secondary)) 100%);
