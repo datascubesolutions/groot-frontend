@@ -4,6 +4,8 @@ import { lazy, Suspense } from "react";
 
 // Lazy load sections for better performance
 const HeroSection = lazy(() => import("@/components/sections/HeroSection"));
+const ClientLogosSection = lazy(() => import("@/components/sections/ClientLogosSection"));
+const VideoScrollSection = lazy(() => import("@/components/sections/VideoScrollSection"));
 const ServicesSection = lazy(() =>
   import("@/components/sections/ServicesSection")
 );
@@ -23,11 +25,12 @@ const CTASection = lazy(() => import("@/components/sections/CTASection"));
 // Elite Demo Sections
 const TestimonialsSection = lazy(() => import("@/components/sections/elite/TestimonialsSection"));
 const CultureSection = lazy(() => import("@/components/sections/elite/CultureSection"));
+const EnterpriseHeroSection = lazy(() => import("@/components/sections/elite/EnterpriseHeroSection"));
 
 export const metadata = {
-  title: "Groot Analytics - Data Engineering & AI Solutions",
+  title: "Groot Analytics - Microsoft Azure Data & AI Solutions",
   description:
-    "Turning messy data into intelligent decisions. Modern data platforms, advanced analytics, and AI-powered solutions.",
+    "Specializing in Microsoft Azure, Fabric, Databricks, and AI Foundry. Turning messy data into intelligent decisions with modern cloud technologies.",
 };
 
 export default function HomePage() {
@@ -37,14 +40,23 @@ export default function HomePage() {
         <HeroSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
+        <VideoScrollSection />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <ClientLogosSection />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
         <ServicesSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <ProcessTimelineSection />
       </Suspense>
       <div className="theme-elite">
-        <Suspense fallback={<SectionSkeleton />}>
+        {/* <Suspense fallback={<SectionSkeleton />}>
           <TestimonialsSection />
+        </Suspense> */}
+        <Suspense fallback={<SectionSkeleton />}>
+          <EnterpriseHeroSection />
         </Suspense>
       </div>
       <Suspense fallback={<SectionSkeleton />}>
@@ -55,12 +67,6 @@ export default function HomePage() {
           <CultureSection />
         </Suspense>
       </div>
-      <Suspense fallback={<SectionSkeleton />}>
-        <AboutSection />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton className="min-h-[300px]" />}>
-        <CTASection />
-      </Suspense>
     </div>
   );
 }

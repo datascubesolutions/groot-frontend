@@ -1,3 +1,4 @@
+import ContactAnimation from "@/components/contact/ContactAnimation";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Mail, MapPin, Phone } from "lucide-react";
@@ -26,20 +27,25 @@ export default function ContactPage() {
     <main className="min-h-screen bg-background relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808020_1px,transparent_1px),linear-gradient(to_bottom,#80808020_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
       </div>
 
       <div className="relative pt-24 pb-20">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 relative">
+          {/* Animation - Absolute Top Right for Desktop */}
+          <div className="hidden lg:flex absolute top-12 right-12 z-0 pointer-events-none select-none justify-center w-[550px]">
+            <ContactAnimation className="w-full" />
+          </div>
+
           <Breadcrumb
             items={[
               { label: "Contact Us", href: "/contact" }
             ]}
           />
 
-          <div className="mt-12 mb-20">
+          <div className="mt-12 mb-20 relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
               Let's build the <br />
               <span className="text-gradient-primary">future together</span>
@@ -49,7 +55,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative z-10">
             {/* Contact Info Side */}
             <div className="lg:col-span-4 space-y-12">
               <div className="space-y-6">
@@ -85,6 +91,10 @@ export default function ContactPage() {
 
             {/* Form Side */}
             <div className="lg:col-span-8">
+              {/* Animation - Visible only on Mobile */}
+              <div className="w-full flex lg:hidden relative justify-center mb-8 pointer-events-none select-none">
+                <ContactAnimation className="w-full max-w-[400px]" />
+              </div>
               <ContactForm />
             </div>
           </div>

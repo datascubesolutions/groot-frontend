@@ -78,6 +78,10 @@ export const metadata = {
   },
 };
 
+import { PublicLayoutWrapper } from "@/components/layout/PublicLayoutWrapper";
+
+// ... existing imports
+
 export default function RootLayout({ children }) {
 
 
@@ -90,11 +94,17 @@ export default function RootLayout({ children }) {
       <body className={`${plusJakartaSans.variable} antialiased`} suppressHydrationWarning>
         <ErrorBoundary>
           <div className="flex flex-col min-h-screen">
-            <Navbar />
+            <PublicLayoutWrapper>
+              <Navbar />
+            </PublicLayoutWrapper>
+
             <main className="flex-1">
               {children}
             </main>
-            <Footer />
+
+            <PublicLayoutWrapper>
+              <Footer />
+            </PublicLayoutWrapper>
           </div>
         </ErrorBoundary>
       </body>

@@ -17,21 +17,25 @@ export default function TechnologiesPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center justify-center bg-background border-b border-border overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center justify-center bg-background border-b border-border overflow-hidden">
         {/* Abstract Background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-mint/10 via-background to-background" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2" />
         </div>
 
         <div className="container mx-auto px-6 text-center z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+          <div className="inline-block mb-6 px-4 py-1.5 rounded-full bg-background/50 backdrop-blur-md border border-primary/20 shadow-[0_0_15px_-3px_hsl(var(--primary)/0.2)] animate-fade-in">
+            <span className="text-xs md:text-sm font-bold bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent tracking-widest uppercase">Core Infrastructure</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-foreground">
             Our Modern Tech Stack
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto mb-10 leading-relaxed font-light">
             We are platform-agnostic partners. We help you choose the best-of-breed technologies to build your future-ready data landscape.
           </p>
-          <Button variant="hero" size="lg">Request Tech Consultation</Button>
+          <Button variant="hero" size="xl">Request Tech Consultation</Button>
         </div>
       </section>
 

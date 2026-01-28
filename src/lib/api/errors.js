@@ -1,6 +1,6 @@
 /**
  * API Errors
- * 
+ *
  * @fileoverview Error handling utilities for API calls
  * @module lib/api/errors
  */
@@ -150,12 +150,42 @@ export function handleApiError(error) {
  */
 export function getErrorMessage(error) {
     if (error instanceof ApiError) {
+        // Handle specific nested validation errors from the user's example
+        if (error.data?.details?.validationErrors && Array.isArray(error.data.details.validationErrors)) {
+            return error.data.details.validationErrors[0];
+        }
+
+        // Handle generic details object
+        if (error.data?.details?.message) {
+            return error.data.details.message;
+        }
+
         // Use custom message from API if available
         if (error.message && error.message !== error.status?.toString()) {
             return error.message;
         }
         // Fallback to status-based message
         return ERROR_MESSAGES[error.status] || 'An unexpected error occurred.';
+    }
+
+    // 1. Handle structure: { error: { details: { details: { validationErrors: [] } } } }
+    // This often happens when the API response itself is the error object
+    if (error?.error?.details?.details?.validationErrors && Array.isArray(error.error.details.details.validationErrors)) {
+        return error.error.details.details.validationErrors[0];
+    }
+
+    if (error?.error?.message) {
+        return error.error.message;
+    }
+
+    // 2. Handle structure: { details: { details: { validationErrors: [] } } }
+    // This might happen if the error object is unwrapped
+    if (error?.details?.details?.validationErrors && Array.isArray(error.details.details.validationErrors)) {
+        return error.details.details.validationErrors[0];
+    }
+
+    if (error?.details?.message) {
+        return error.details.message;
     }
 
     return error.message || 'An unexpected error occurred.';

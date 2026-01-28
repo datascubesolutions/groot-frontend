@@ -13,33 +13,33 @@ import { useRef } from "react";
 const steps = [
   {
     id: "01",
-    title: "Discovery & Strategy",
-    subtitle: "The Foundation",
-    description: "We map your business DNA to technical reality. Assessing infrastructure across Azure, AWS, and GCP to design a scalable roadmap.",
+    title: "Greenfield Engineering",
+    subtitle: "Zero to One",
+    description: "For visionaries building from scratch. We design cloud-native foundations without legacy debt, ensuring your first rapid prototype is also your long-term bedrock.",
     icon: ScanSearch,
     color: "#3b82f6", // Blue
   },
   {
     id: "02",
-    title: "Data Architecture",
-    subtitle: "The Synapse",
-    description: "Constructing the neural pathways. We engineer heavy-duty pipelines using Spark and Databricks to transform raw chaos into structured assets.",
+    title: "Modernization & Governance",
+    subtitle: "Chaos to Order",
+    description: "For enterprises drowning in data. We transform fragmented, messy archives into a governed Data Mesh, turning liability into a strategic asset.",
     icon: DatabaseZap,
     color: "#a855f7", // Purple
   },
   {
     id: "03",
-    title: "Intelligence Engines",
-    subtitle: "The Cortex",
-    description: "Where algorithms breathe. We deploy deep learning models via AI Foundry and SageMaker that evolve, predict, and uncover hidden realities.",
+    title: "Cognitive Intelligence",
+    subtitle: "Good to Great",
+    description: "For leaders seeking dominance. We deploy agentic AI workflows that self-optimize, automating complex decisions and unlocking exponential growth.",
     icon: BrainCircuit,
     color: "#ec4899", // Pink
   },
   {
     id: "04",
-    title: "Actionable Impact",
-    subtitle: "The Pulse",
-    description: "Intelligence in motion. We synthesize complex data into intuitive Power BI and Tableau signals that drive decisive business action.",
+    title: "Operational Excellence",
+    subtitle: "The Standard",
+    description: "Frictionless automation. We re-engineer supply chains and pipelines for sub-second decision making, creating a permanent competitive gap.",
     icon: LineChart,
     color: "#14b8a6", // Teal
   },
@@ -61,7 +61,7 @@ export const ProcessTimelineSection = () => {
   });
 
   return (
-    <section ref={containerRef} className="py-16 md:py-20 relative overflow-hidden bg-background">
+    <section ref={containerRef} className="py-20 md:py-24 relative overflow-hidden bg-background">
       {/* Ambient Neural Background - Reduced Size */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[80px] mix-blend-screen" />
@@ -86,7 +86,7 @@ export const ProcessTimelineSection = () => {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-serif font-bold text-foreground tracking-tight mb-4"
           >
-            From <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient">Chaos</span> to Clarity
+            Accelerate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient">Data Maturity</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -95,7 +95,7 @@ export const ProcessTimelineSection = () => {
             transition={{ delay: 0.2 }}
             className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto"
           >
-            A continuous stream of intelligence, engineering, and insight.
+            Whether you are starting from zero or optimizing for AI, we have a roadmap for you.
           </motion.p>
         </div>
 

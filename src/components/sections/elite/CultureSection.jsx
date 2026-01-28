@@ -1,8 +1,26 @@
+"use client";
+
 import { ArrowRight, ExternalLink, GraduationCap, Play, Users } from "lucide-react";
+import dynamic from "next/dynamic";
+import { Suspense, useEffect, useState } from "react"; // Added useState, useEffect, Suspense
+
+// Lazy load Lottie component
+const ClientLottie = dynamic(() => import("@/components/ui/ClientLottie"), {
+  ssr: false,
+});
 
 const CultureSection = () => {
+  const [assistantBotAnimation, setAssistantBotAnimation] = useState(null);
+
+  useEffect(() => {
+    fetch('/lottie/json/Assistant-Bot.json')
+      .then(res => res.json())
+      .then(data => setAssistantBotAnimation(data))
+      .catch(err => console.error('Failed to load animation:', err));
+  }, []);
+
   return (
-    <section className="py-24 lg:py-32 bg-mint/40 relative overflow-hidden">
+    <section className="py-20 md:py-24 bg-mint/40 relative overflow-hidden">
       {/* Decorative Grid Pattern */}
       <div className="absolute inset-0 opacity-30 pointer-events-none">
         <div className="absolute top-20 left-20 w-64 h-64 border border-primary/20 rounded-full" />
@@ -16,7 +34,7 @@ const CultureSection = () => {
           <div className="max-w-2xl">
             <span className="section-label mb-4 block">Careers & Culture</span>
             <h2 className="heading-section">
-              Grow <span className="text-gradient-primary">With Us</span>
+              Grow <span className="bg-gradient-to-r from-[hsl(168,76%,40%)] to-[hsl(142,71%,38%)] bg-clip-text text-transparent">With Us</span>
             </h2>
           </div>
           <button className="btn-primary group self-start lg:self-auto">
@@ -43,7 +61,7 @@ const CultureSection = () => {
               {/* Content */}
               <div className="relative z-10 mt-auto pt-24">
                 <h3 className="text-2xl lg:text-3xl font-serif font-semibold text-white mb-4 leading-tight">
-                  Groot Analytics Academy
+                  Groot Analytics
                 </h3>
                 <p className="text-white/80 text-base lg:text-lg leading-relaxed mb-6 max-w-lg">
                   A home for the curious, our Academy is a living university, blending art, science, & business to grow explorers and first-principle thinkers.
@@ -52,7 +70,7 @@ const CultureSection = () => {
                   href="#"
                   className="inline-flex items-center gap-2 text-primary font-semibold group/link"
                 >
-                  <span>Explore Academy</span>
+                  <span>Explore</span>
                   <ArrowRight className="w-5 h-5 transition-transform group-hover/link:translate-x-1" />
                 </a>
               </div>
@@ -64,21 +82,30 @@ const CultureSection = () => {
 
             {/* Video Card */}
             <div className="group relative rounded-3xl overflow-hidden bg-card border border-border/50 shadow-lg">
-              <div className="relative h-56 bg-gradient-to-br from-primary/20 via-mint to-accent/10">
-                {/* Play Button */}
-                <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative h-56 bg-gradient-to-br from-primary/20 via-mint to-accent/10 overflow-hidden">
+                {/* Assistant Bot Animation */}
+                <Suspense fallback={
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-forest/30 rounded-full" />
+                    <div className="absolute top-1/2 right-1/4 w-24 h-24 border border-forest/30 rounded-full" />
+                  </div>
+                }>
+                  <ClientLottie
+                    animationData={assistantBotAnimation}
+                    className="w-full h-full scale-125"
+                    loop={true}
+                    autoplay={true}
+                  />
+                </Suspense>
+
+                {/* Play Button Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/20 to-transparent">
                   <div className="relative">
                     <div className="absolute inset-0 w-16 h-16 rounded-full bg-forest/30 animate-ping" style={{ animationDuration: '2s' }} />
                     <button className="relative w-16 h-16 rounded-full bg-forest flex items-center justify-center shadow-xl shadow-forest/30 group-hover:scale-110 transition-transform">
                       <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
                     </button>
                   </div>
-                </div>
-
-                {/* Overlay Pattern */}
-                <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-forest/30 rounded-full" />
-                  <div className="absolute top-1/2 right-1/4 w-24 h-24 border border-forest/30 rounded-full" />
                 </div>
               </div>
 
@@ -119,13 +146,13 @@ const CultureSection = () => {
         {/* Bottom Stats Row */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
           {[
-            { value: "200+", label: "Team Members" },
-            { value: "15+", label: "Countries" },
+            { value: "100%", label: "Dedicated" },
+            { value: "Global", label: "Reach" },
             { value: "92%", label: "Retention Rate" },
             { value: "4.8", label: "Glassdoor Rating" },
           ].map((stat, index) => (
             <div key={index} className="text-center p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-border/30">
-              <div className="text-3xl lg:text-4xl font-bold text-gradient-primary mb-1">{stat.value}</div>
+              <div className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[hsl(168,76%,40%)] to-[hsl(142,71%,38%)] bg-clip-text text-transparent mb-1">{stat.value}</div>
               <div className="text-sm text-muted-foreground">{stat.label}</div>
             </div>
           ))}

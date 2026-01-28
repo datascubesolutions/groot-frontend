@@ -1,6 +1,6 @@
 /**
  * API Endpoints
- * 
+ *
  * @fileoverview Centralized API endpoint definitions
  * @module lib/api/endpoints
  */
@@ -33,6 +33,11 @@ export const API_ENDPOINTS = {
     CONTACT: {
         SUBMIT: '/contact',
         NEWSLETTER: '/contact/newsletter',
+        CREATE: 'https://us-central1-datascube-2b74e.cloudfunctions.net/contact_create',
+        LIST: 'https://us-central1-datascube-2b74e.cloudfunctions.net/contact_list',
+        GET: 'https://us-central1-datascube-2b74e.cloudfunctions.net/contact_get',
+        UPDATE: 'https://us-central1-datascube-2b74e.cloudfunctions.net/contact_update',
+        DELETE: 'https://us-central1-datascube-2b74e.cloudfunctions.net/contact_delete',
     },
 
     // Services
@@ -77,7 +82,7 @@ export const API_ENDPOINTS = {
  * @param {string | ((...args: any[]) => string)} endpoint - Endpoint or endpoint factory
  * @param {...any} args - Arguments for endpoint factory
  * @returns {string} Resolved endpoint
- * 
+ *
  * @example
  * getEndpoint(API_ENDPOINTS.SERVICES.DETAIL, 'service-123')
  * // Returns: '/services/service-123'

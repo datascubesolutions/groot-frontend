@@ -10,23 +10,19 @@ const EnterpriseHeroSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between min-h-[calc(100vh-5rem)] py-16 gap-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between min-h-[calc(100vh-5rem)] py-20 md:py-24 gap-12">
           {/* Content */}
           <div className="flex-1 max-w-2xl">
             <div className="section-label mb-6 animate-fade-in">
-              Enterprise Solutions
+              Growth Solutions
             </div>
 
             <h1 className="heading-display mb-6 animate-slide-up">
-              Transform Your Business with{" "}
-              <span className="text-gradient-primary">Data-Driven</span>{" "}
-              Intelligence
+              Engineered for <span className="bg-gradient-to-r from-[hsl(168,76%,40%)] to-[hsl(142,71%,38%)] bg-clip-text text-transparent">Impact</span>
             </h1>
 
             <p className="body-large mb-10 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-              We partner with Fortune 500 companies to unlock actionable insights,
-              optimize operations, and drive sustainable growth through advanced
-              analytics and strategic consulting.
+              We refuse to let complexity equate to slowness. We re-engineer supply chains, automate data pipelines, and orchestrate sub-second decision systems to secure your market leadership.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-slide-up" style={{ animationDelay: "0.2s" }}>
@@ -35,7 +31,7 @@ const EnterpriseHeroSection = () => {
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button className="btn-secondary">
-                View Case Studies
+                View Solutions
               </button>
             </div>
 
@@ -46,8 +42,8 @@ const EnterpriseHeroSection = () => {
                   <TrendingUp className="w-6 h-6 text-forest" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground font-serif">$2.4B+</div>
-                  <div className="text-sm text-muted-foreground">Revenue Generated</div>
+                  <div className="text-2xl font-bold text-foreground font-serif">10x</div>
+                  <div className="text-sm text-muted-foreground">Faster Insights</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -55,8 +51,8 @@ const EnterpriseHeroSection = () => {
                   <Shield className="w-6 h-6 text-forest" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground font-serif">500+</div>
-                  <div className="text-sm text-muted-foreground">Enterprise Clients</div>
+                  <div className="text-2xl font-bold text-foreground font-serif">Secure</div>
+                  <div className="text-sm text-muted-foreground">By Design</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -64,8 +60,8 @@ const EnterpriseHeroSection = () => {
                   <Zap className="w-6 h-6 text-forest" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground font-serif">98%</div>
-                  <div className="text-sm text-muted-foreground">Client Retention</div>
+                  <div className="text-2xl font-bold text-foreground font-serif">Rapid</div>
+                  <div className="text-sm text-muted-foreground">Deployment</div>
                 </div>
               </div>
             </div>
@@ -81,7 +77,7 @@ const EnterpriseHeroSection = () => {
                     <TrendingUp className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <div className="text-lg font-semibold text-foreground">Real-Time Analytics</div>
+                    <div className="text-lg font-semibold text-foreground">Growth Analytics</div>
                     <div className="text-sm text-muted-foreground">Live Dashboard</div>
                   </div>
                 </div>
@@ -99,16 +95,16 @@ const EnterpriseHeroSection = () => {
 
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center p-3 bg-secondary rounded-lg">
-                    <div className="text-xl font-bold text-forest font-serif">+34%</div>
-                    <div className="text-xs text-muted-foreground">Growth</div>
+                    <div className="text-xl font-bold text-forest font-serif">+300%</div>
+                    <div className="text-xs text-muted-foreground">Scale</div>
                   </div>
                   <div className="text-center p-3 bg-secondary rounded-lg">
-                    <div className="text-xl font-bold text-accent font-serif">$1.2M</div>
-                    <div className="text-xs text-muted-foreground">Savings</div>
+                    <div className="text-xl font-bold text-accent font-serif">-40%</div>
+                    <div className="text-xs text-muted-foreground">Costs</div>
                   </div>
                   <div className="text-center p-3 bg-secondary rounded-lg">
-                    <div className="text-xl font-bold text-primary font-serif">98.5%</div>
-                    <div className="text-xs text-muted-foreground">Accuracy</div>
+                    <div className="text-xl font-bold text-primary font-serif">99.9%</div>
+                    <div className="text-xs text-muted-foreground">Uptime</div>
                   </div>
                 </div>
               </div>
@@ -120,8 +116,8 @@ const EnterpriseHeroSection = () => {
                     <Shield className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-foreground">ISO 27001 Certified</div>
-                    <div className="text-xs text-muted-foreground">Enterprise Security</div>
+                    <div className="text-sm font-semibold text-foreground">Best Practices</div>
+                    <div className="text-xs text-muted-foreground">Industry Standards</div>
                   </div>
                 </div>
               </div>
