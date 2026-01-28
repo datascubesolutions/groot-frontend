@@ -1,5 +1,6 @@
 "use client";
 
+import { getErrorMessage } from "@/lib/api/errors";
 import { contactService } from "@/services/contactService";
 import { motion } from "framer-motion";
 import {
@@ -13,10 +14,11 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function CreateContactPage() {
   const router = useRouter();
-  const [saving, setSaving] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -25,36 +27,34 @@ export default function CreateContactPage() {
     company: "",
     subject: "General Inquiry",
     message: "",
-    status: "NEW"
+    status: "PENDING"
   });
 
   const handleCreate = async () => {
+    // Prevent multiple submissions
+    if (isSubmitting) return;
+
     // Basic Validation
     if (!formData.name || !formData.email) {
-      alert("Name and Email are required");
+      toast.error("Name and Email are required");
       return;
     }
 
-    setSaving(true);
+    setIsSubmitting(true);
     try {
       await contactService.create({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        company: formData.company,
-        subject: formData.subject,
-        message: formData.message,
-        status: formData.status,
+        ...formData,
         source: "admin_dashboard"
       });
 
+      toast.success("Contact created successfully");
       router.push("/admin/contacts");
       router.refresh();
-    } catch (err) {
-      console.error(err);
-      alert("Error creating contact");
+    } catch (error) {
+      console.error("Failed to create contact:", error);
+      toast.error(getErrorMessage(error));
     } finally {
-      setSaving(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -81,10 +81,10 @@ export default function CreateContactPage() {
 
         <button
           onClick={handleCreate}
-          disabled={saving}
-          className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-50 disabled:pointer-events-none"
+          disabled={isSubmitting}
+          className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-bold hover:bg-gray-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-50 disabled:pointer-events-none"
         >
-          {saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
+          {isSubmitting ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
           Save Contact
         </button>
       </div>
@@ -107,7 +107,7 @@ export default function CreateContactPage() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-lg bg-background border border-input focus:border-primary/50 focus:ring-2 focus:ring-primary/10 outline-none transition-all text-sm"
-                  placeholder="e.g. John Doe"
+                  placeholder="e.g. Amit Yadav"
                 />
               </div>
 
@@ -118,7 +118,7 @@ export default function CreateContactPage() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-lg bg-background border border-input focus:border-primary/50 focus:ring-2 focus:ring-primary/10 outline-none transition-all text-sm"
-                  placeholder="e.g. john@example.com"
+                  placeholder="e.g. amity@gmail.com"
                 />
               </div>
 
@@ -147,7 +147,7 @@ export default function CreateContactPage() {
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                 className="w-full px-4 py-2.5 rounded-lg bg-background border border-input focus:border-primary/50 focus:ring-2 focus:ring-primary/10 outline-none transition-all text-sm"
-                placeholder="e.g. Acme Corp"
+                placeholder="e.g. Groot Analytics"
               />
             </div>
           </div>

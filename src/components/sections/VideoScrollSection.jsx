@@ -17,6 +17,9 @@ export default function VideoScrollSection() {
       const startWidth = isMobile ? "90%" : "55%";
       const startHeight = isMobile ? "50vh" : "60vh";
 
+      // Select inner container
+      const innerContainer = videoContainerRef.current.querySelector(".video-inner");
+
       // Animation: Start small, grow to full width/height
       gsap.fromTo(
         videoContainerRef.current,
@@ -24,13 +27,15 @@ export default function VideoScrollSection() {
           width: startWidth, // Responsive start size
           height: startHeight,
           borderRadius: "40px",
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", // Initial heavy shadow
+          padding: "12px", // Initial border thickness
+          boxShadow: "0 20px 50px rgba(8, 112, 184, 0.7)", // Initial heavy shadow
         },
         {
           width: "100%", // End size (Full screen)
           height: "100vh",
           borderRadius: "0px",
-          boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)", // Shadow fades out as it docks
+          padding: "0px", // Remove border
+          boxShadow: "none", // Remove shadow
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top", // When section hits top
@@ -38,6 +43,22 @@ export default function VideoScrollSection() {
             scrub: 0.5, // Faster scrubbing
             pin: true, // Pin the section while animating
             pinSpacing: true, // Maintain spacing so next section waits
+          },
+          ease: "power1.inOut",
+        }
+      );
+
+      // Animate inner radius in sync
+      gsap.fromTo(
+        innerContainer,
+        { borderRadius: "28px" },
+        {
+          borderRadius: "0px",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "+=1000",
+            scrub: 0.5,
           },
           ease: "power1.inOut",
         }
@@ -53,10 +74,10 @@ export default function VideoScrollSection() {
       <div className="h-screen flex items-center justify-center overflow-hidden">
         <div
           ref={videoContainerRef}
-          className="relative overflow-hidden bg-black shadow-2xl"
+          className="relative overflow-hidden bg-white"
         >
-          {/* Video Container */}
-          <div className="absolute inset-0 bg-black flex items-center justify-center">
+          {/* Video Inner Container */}
+          <div className="video-inner relative w-full h-full overflow-hidden rounded-[28px] bg-black">
             <video
               className="w-full h-full object-cover"
               autoPlay

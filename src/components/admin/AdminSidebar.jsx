@@ -8,6 +8,7 @@ import {
   Settings,
   Users
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -52,10 +53,13 @@ export function AdminSidebar() {
       {/* Logo Area */}
       <div className="h-20 flex items-center px-6 border-b border-white/5 bg-white/[0.02]">
         <div className="flex items-center gap-3 font-bold text-xl text-white tracking-tight">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-[hsl(var(--forest))] flex items-center justify-center text-white shadow-lg shadow-primary/20 ring-1 ring-white/20">
-            G
-          </div>
-          <span>Admin<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[hsl(var(--forest))]">Panel</span></span>
+          <Image
+            src="/svg/logo.svg"
+            alt="Groot Analytics Logo"
+            width={180}
+            height={60}
+            className="h-16 w-auto brightness-0 invert"
+          />
         </div>
       </div>
 

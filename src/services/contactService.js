@@ -2,8 +2,8 @@ import { apiClient } from "@/lib/api/client";
 import { API_ENDPOINTS } from "@/lib/api/endpoints";
 
 export const contactService = {
-  getAll: (pagination = { limit: 100 }) => {
-    return apiClient.post(API_ENDPOINTS.CONTACT.LIST, { data: { pagination } });
+  getAll: (params = { page: 1, limit: 10 }) => {
+    return apiClient.post(API_ENDPOINTS.CONTACT.LIST, { data: params });
   },
 
   getById: (contactId) => {

@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function AdminLayout({ children }) {
   return (
-    <div className="min-h-screen bg-background text-foreground flex">
+    <div className="theme-admin-dark min-h-screen bg-[#0a0a0a] text-white flex selection:bg-primary/30 selection:text-primary-foreground" style={{ colorScheme: 'dark' }}>
       <AdminSidebar />
 
       <div className="flex-1 lg:ml-64 flex flex-col min-h-screen relative z-0">
@@ -26,11 +26,11 @@ export default function AdminLayout({ children }) {
         </main>
       </div>
 
-      {/* Mobile Overlay Background (Optional implementation for full mobile support later) */}
-      <div className="fixed inset-0 bg-background -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
+      {/* Mobile Overlay Background */}
+      <div className="fixed inset-0 pointer-events-none -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]" />
 
-      {/* Toast Notifications */}
-      <Toaster position="top-right" richColors />
+      {/* Toast Notifications - Force dark mode for admin toasts */}
+      <Toaster position="top-right" theme="dark" richColors />
     </div>
   );
 }

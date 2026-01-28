@@ -40,7 +40,7 @@ export default function ContactDetailsPage() {
     notes: ""
   });
 
-  const statusOptions = ["NEW", "CONTACTED", "IN PROGRESS", "RESOLVED", "CLOSED"];
+  const statusOptions = ["PENDING", "CONTACTED", "QUALIFIED", "CONVERTED", "REJECTED", "SPAM"];
 
   useEffect(() => {
     const fetchContact = async () => {
@@ -52,7 +52,7 @@ export default function ContactDetailsPage() {
           const data = result.result.data.contact;
           setContact(data);
           setFormData({
-            status: data.status || "NEW",
+            status: data.status || "PENDING",
             company: data.company || "",
             notes: data.notes || ""
           });
@@ -61,7 +61,7 @@ export default function ContactDetailsPage() {
           const data = result.result.data;
           setContact(data);
           setFormData({
-            status: data.status || "NEW",
+            status: data.status || "PENDING",
             company: data.company || "",
             notes: data.notes || ""
           });
@@ -119,7 +119,7 @@ export default function ContactDetailsPage() {
         </div>
         <Link
           href="/admin/contacts"
-          className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+          className="px-6 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors font-bold"
         >
           Return to List
         </Link>
@@ -164,14 +164,14 @@ export default function ContactDetailsPage() {
           <button
             onClick={handleUpdate}
             disabled={saving}
-            className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-50 disabled:pointer-events-none"
+            className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-bold hover:bg-gray-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-50 disabled:pointer-events-none"
           >
             {saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
             Save Changes
           </button>
         ) : (
           <Link href={`/admin/contacts/${params.id}?mode=edit`}>
-            <button className="flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground border border-border/50 rounded-xl font-semibold hover:bg-secondary/80 hover:border-primary/20 transition-all">
+            <button className="flex items-center gap-2 px-6 py-3 bg-white text-black border border-transparent rounded-xl font-bold hover:bg-gray-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all">
               <Edit size={18} />
               Edit Details
             </button>

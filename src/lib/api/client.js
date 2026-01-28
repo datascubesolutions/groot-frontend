@@ -10,8 +10,8 @@ const headers = {
 const handleResponse = async (response) => {
     const data = await response.json();
     if (!response.ok) {
-        const error = (data && data.message) || response.statusText;
-        return Promise.reject(error);
+        // Reject with the full error object so getErrorMessage can parse it
+        return Promise.reject(data);
     }
     return data;
 };

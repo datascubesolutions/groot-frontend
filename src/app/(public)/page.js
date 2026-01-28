@@ -4,6 +4,7 @@ import { lazy, Suspense } from "react";
 
 // Lazy load sections for better performance
 const HeroSection = lazy(() => import("@/components/sections/HeroSection"));
+const ClientLogosSection = lazy(() => import("@/components/sections/ClientLogosSection"));
 const VideoScrollSection = lazy(() => import("@/components/sections/VideoScrollSection"));
 const ServicesSection = lazy(() =>
   import("@/components/sections/ServicesSection")
@@ -40,6 +41,9 @@ export default function HomePage() {
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <VideoScrollSection />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <ClientLogosSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <ServicesSection />
