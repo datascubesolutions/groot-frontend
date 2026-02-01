@@ -8,59 +8,28 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function VideoScrollSection() {
   const sectionRef = useRef(null);
-  const videoContainerRef = useRef(null);
+  const videoWrapRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Responsive start width: 85% on mobile (<768px), 55% on desktop
-      const isMobile = window.innerWidth < 768;
-      const startWidth = isMobile ? "90%" : "55%";
-      const startHeight = isMobile ? "50vh" : "60vh";
-
-      // Select inner container
-      const innerContainer = videoContainerRef.current.querySelector(".video-inner");
-
-      // Animation: Start small, grow to full width/height
+      // GoodData exact animation: Scale 0.7 -> 1.12
       gsap.fromTo(
-        videoContainerRef.current,
+        videoWrapRef.current,
         {
-          width: startWidth, // Responsive start size
-          height: startHeight,
-          borderRadius: "40px",
-          padding: "12px", // Initial border thickness
-          boxShadow: "0 20px 50px rgba(8, 112, 184, 0.7)", // Initial heavy shadow
+          scale: 0.7, // Start larger (simulating ~63% width)
         },
         {
-          width: "100%", // End size (Full screen)
-          height: "100vh",
-          borderRadius: "0px",
-          padding: "0px", // Remove border
-          boxShadow: "none", // Remove shadow
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top", // When section hits top
-            end: "+=1000", // Scroll distance (pixels) to complete animation
-            scrub: 0.5, // Faster scrubbing
-            pin: true, // Pin the section while animating
-            pinSpacing: true, // Maintain spacing so next section waits
-          },
-          ease: "power1.inOut",
-        }
-      );
-
-      // Animate inner radius in sync
-      gsap.fromTo(
-        innerContainer,
-        { borderRadius: "28px" },
-        {
-          borderRadius: "0px",
+          scale: 1.12, // End very large (edge to edge)
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: "+=1000",
-            scrub: 0.5,
+            end: "+=800", // "No effort" - very short scroll distance
+            scrub: 0.6, // "Perfect smooth" - balanced momentum
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
           },
-          ease: "power1.inOut",
+          ease: "power1.out", // Soft landing, feels natural (not robotic)
         }
       );
     }, sectionRef);
@@ -69,26 +38,56 @@ export default function VideoScrollSection() {
   }, []);
 
   return (
-    // Height is determined by the pin spacer, so we can just use h-screen or a minimal height for the trigger
-    <section ref={sectionRef} className="relative h-screen bg-background">
-      <div className="h-screen flex items-center justify-center overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative bg-background z-20"
+      style={{
+        height: "100vh",
+        paddingTop: "80px", // Restored standard navbar height for proper alignment
+      }}
+    >
+      <div className="h-full w-full flex items-center justify-center">
+        {/*
+          GoodData Structure:
+          - Outer: .video-wrap with white BG, 12px padding, 30px radius, shadow
+          - Inner: video with 18px radius (30 - 12 = 18 for perfect nesting)
+        */}
         <div
-          ref={videoContainerRef}
-          className="relative overflow-hidden bg-white"
+          ref={videoWrapRef}
+          className="will-change-transform backface-visibility-hidden transform-gpu" // Hardware acceleration hints
+          style={{
+            width: "90%", // Wider base
+            maxWidth: "1600px", // Cap max width so it doesn't get too large on wide screens
+            height: "80vh", // Taller presence
+
+            borderRadius: "30px",
+            backgroundColor: "#FFFFFF", // White background acts as visual "border"
+            padding: "12px", // Creates the border effect
+            boxShadow:
+              "rgba(28, 13, 63, 0.07) 0px 60.86px 81.15px 0px, rgba(28, 13, 63, 0.05) 0px 60.36px 48.29px 0px, rgba(28, 13, 63, 0.04) 0px 32.27px 25.82px 0px, rgba(28, 13, 63, 0.04) 0px 18.09px 14.47px 0px, rgba(28, 13, 63, 0.03) 0px 9.61px 7.69px 0px, rgba(28, 13, 63, 0.02) 0px 4.00px 3.20px 0px",
+          }}
         >
-          {/* Video Inner Container */}
-          <div className="video-inner relative w-full h-full overflow-hidden rounded-[28px] bg-black">
+          {/* Inner video container */}
+          <div
+            className="overflow-hidden w-full h-full"
+            style={{
+              borderRadius: "18px", // 30 - 12 = 18 (perfect nested radius)
+            }}
+          >
             <video
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover block"
+              style={{
+                pointerEvents: "none", // Prevent interaction with video
+              }}
               autoPlay
               muted
               loop
               playsInline
-            // poster="/placeholder-poster.jpg"
+              disablePictureInPicture
+              controlsList="nodownload nofullscreen noremoteplayback"
             >
               <source src="/video/homepage-hero.mp4" type="video/mp4" />
             </video>
-            {/* No text overlay, purely visual */}
           </div>
         </div>
       </div>

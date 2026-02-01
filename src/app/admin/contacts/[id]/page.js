@@ -1,6 +1,7 @@
 
 "use client";
 
+import { Skeleton } from "@/components/ui/Skeleton";
 import { formatDate, getStatusColor } from "@/lib/utils";
 import { contactService } from "@/services/contactService";
 import { motion } from "framer-motion";
@@ -101,8 +102,69 @@ export default function ContactDetailsPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-[calc(100vh-200px)]">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      <div className="space-y-8 max-w-6xl mx-auto pb-10 animate-pulse">
+        {/* Header Skeleton */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/5 pb-6">
+          <div className="flex items-start gap-4 w-full">
+            <Skeleton className="h-12 w-12 rounded-xl" />
+            <div className="space-y-2 w-full max-w-md">
+              <div className="flex items-center gap-3">
+                <Skeleton className="h-8 w-48 rounded-lg" />
+                <Skeleton className="h-6 w-24 rounded-full" />
+              </div>
+              <div className="flex gap-4">
+                <Skeleton className="h-4 w-32" />
+                <Skeleton className="h-4 w-32" />
+              </div>
+            </div>
+          </div>
+          <Skeleton className="h-12 w-40 rounded-xl" />
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Left Column Skeleton */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Inquiry Card Skeleton */}
+            <div className="rounded-2xl border border-white/5 bg-white/5 overflow-hidden h-64 p-6 space-y-6">
+              <div className="flex items-center gap-3 mb-6">
+                <Skeleton className="h-10 w-10 rounded-lg" />
+                <Skeleton className="h-6 w-40" />
+              </div>
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-6 w-3/4" />
+              </div>
+              <div className="space-y-2 pt-4">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-2/3" />
+              </div>
+            </div>
+
+            {/* Stats Grid Skeleton */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Skeleton className="h-24 w-full rounded-xl" />
+              <Skeleton className="h-24 w-full rounded-xl" />
+            </div>
+          </div>
+
+          {/* Right Column Skeleton */}
+          <div className="space-y-6">
+            <div className="rounded-2xl border border-white/5 bg-white/5 p-6 space-y-6">
+              <div className="flex items-center gap-3 mb-6">
+                <Skeleton className="h-10 w-10 rounded-lg" />
+                <Skeleton className="h-6 w-48" />
+              </div>
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="space-y-2">
+                  <Skeleton className="h-3 w-24" />
+                  <Skeleton className="h-10 w-full rounded-lg" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
