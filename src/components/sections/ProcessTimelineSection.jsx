@@ -2,10 +2,10 @@
 
 import { motion, useScroll, useSpring } from "framer-motion";
 import {
-  BrainCircuit,
-  DatabaseZap,
-  LineChart,
-  ScanSearch
+    BrainCircuit,
+    DatabaseZap,
+    LineChart,
+    ScanSearch
 } from "lucide-react";
 import { useRef } from "react";
 
@@ -104,6 +104,15 @@ export const ProcessTimelineSection = () => {
           {/* Main SVG Path - Compacted Height (800px instead of 1200px) */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[600px] h-full pointer-events-none z-0">
             <svg className="w-full h-full" viewBox="0 0 600 800" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2" />
+                  <stop offset="50%" stopColor="#a855f7" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#ec4899" stopOpacity="0.2" />
+                </linearGradient>
+              </defs>
+
+              {/* Central Root Line */}
               <motion.path
                 d="M300,0 C300,150 100,200 100,300 C100,400 500,500 500,600 C500,700 300,750 300,800"
                 fill="none"
@@ -112,13 +121,6 @@ export const ProcessTimelineSection = () => {
                 strokeLinecap="round"
                 style={{ pathLength }}
               />
-              <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2" />
-                  <stop offset="50%" stopColor="#a855f7" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#ec4899" stopOpacity="0.2" />
-                </linearGradient>
-              </defs>
             </svg>
           </div>
 
