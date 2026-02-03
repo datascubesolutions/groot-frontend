@@ -48,8 +48,10 @@
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-tsparticles": "^2.12.2",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "tsparticles-slim": "^2.12.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.48.0",

@@ -14,9 +14,14 @@ const PlatformPreviewSection = lazy(() =>
     default: mod.PlatformPreviewSection,
   }))
 );
-const ProcessTimelineSection = lazy(() =>
-  import("@/components/sections/ProcessTimelineSection").then((mod) => ({
-    default: mod.ProcessTimelineSection,
+const HowWeWorkSection = lazy(() =>
+  import("@/components/sections/HowWeWorkSection").then((mod) => ({
+    default: mod.HowWeWorkSection,
+  }))
+);
+const ToolsSection = lazy(() =>
+  import("@/components/sections/ToolsSection").then((mod) => ({
+    default: mod.ToolsSection,
   }))
 );
 const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
@@ -49,7 +54,10 @@ export default function HomePage() {
         <ServicesSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
-        <ProcessTimelineSection />
+        <HowWeWorkSection />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <ToolsSection />
       </Suspense>
       <div className="theme-elite">
         {/* <Suspense fallback={<SectionSkeleton />}>
