@@ -50,7 +50,7 @@ const tools = [
 
 export function ToolsSection() {
   return (
-    <section className="py-24 relative overflow-visible bg-white min-h-[800px] flex items-center justify-center font-sans">
+    <section className="py-24 relative overflow-visible bg-background min-h-[800px] flex items-center justify-center font-sans">
 
       {/* Water Ripple Background (High Visibility Version) */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] z-0 pointer-events-none flex items-center justify-center">
@@ -132,35 +132,19 @@ export function ToolsSection() {
 
       {/* Manual Placements for missing ones (Original Placeholders) */}
 
-      {/* Rasa - Top Left */}
-      <div className="absolute top-[25%] left-[20%]">
-        <div className="flex items-center gap-2 p-2">
-          <div className="w-10 h-10 bg-purple-600 rounded-md flex items-center justify-center text-white font-bold">R</div>
-          <span className="font-bold text-purple-700 text-xl">RASA</span>
-        </div>
-      </div>
 
-      {/* Dialogflow - Left */}
-      <div className="absolute top-[45%] left-[10%]">
-        <div className="flex items-center gap-2 p-2">
-          <div className="w-10 h-10 bg-orange-500 rounded-md flex items-center justify-center text-white font-bold">D</div>
-          <span className="font-bold text-slate-600 text-xl">Dialogflow</span>
-        </div>
-      </div>
 
-      {/* Qlik - Bottom Left */}
-      <div className="absolute bottom-[40%] left-[18%]">
-        <div className="flex items-center gap-2 p-2">
-          <span className="font-bold text-[#009845] text-4xl">Qlik</span>
-          <div className="w-8 h-8 rounded-full border-4 border-[#009845]"></div>
-        </div>
-      </div>
-
-      {/* Adobe - Bottom Left Low */}
+      {/* Google Analytics - Bottom Left Low */}
       <div className="absolute bottom-[15%] left-[15%]">
-        <div className="flex items-center gap-2">
-          <div className="w-12 h-12 bg-[#48286a] rounded-full flex items-center justify-center text-white">A</div>
-          <span className="font-bold text-slate-700">Adobe<br />Analytics</span>
+        <div className="flex items-center gap-2 bg-white/50 backdrop-blur-sm p-2 rounded-xl">
+          <Image
+            src="/svg/google-analytics.svg"
+            alt="Google Analytics"
+            width={40}
+            height={40}
+            className="object-contain"
+          />
+          <span className="font-bold text-slate-700 text-sm">Google<br />Analytics</span>
         </div>
       </div>
 

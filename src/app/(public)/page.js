@@ -9,6 +9,16 @@ const VideoScrollSection = lazy(() => import("@/components/sections/VideoScrollS
 const ServicesSection = lazy(() =>
   import("@/components/sections/ServicesSection")
 );
+const PainPointsSection = lazy(() =>
+  import("@/components/sections/PainPointsSection").then((mod) => ({
+    default: mod.PainPointsSection,
+  }))
+);
+const ProcessTimelineSection = lazy(() =>
+  import("@/components/sections/ProcessTimelineSection").then((mod) => ({
+    default: mod.ProcessTimelineSection,
+  }))
+);
 const PlatformPreviewSection = lazy(() =>
   import("@/components/sections/PlatformPreviewSection").then((mod) => ({
     default: mod.PlatformPreviewSection,
@@ -25,12 +35,16 @@ const ToolsSection = lazy(() =>
   }))
 );
 const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
-const CTASection = lazy(() => import("@/components/sections/CTASection"));
+const DataReadinessSection = lazy(() =>
+  import("@/components/sections/DataReadinessSection").then((mod) => ({
+    default: mod.DataReadinessSection,
+  }))
+);
 
-// Elite Demo Sections
-const TestimonialsSection = lazy(() => import("@/components/sections/elite/TestimonialsSection"));
-const CultureSection = lazy(() => import("@/components/sections/elite/CultureSection"));
-const EnterpriseHeroSection = lazy(() => import("@/components/sections/elite/EnterpriseHeroSection"));
+// Elite Demo Sections - BACKUP AT /elite-demo
+// const TestimonialsSection = lazy(() => import("@/components/sections/elite/TestimonialsSection"));
+// const CultureSection = lazy(() => import("@/components/sections/elite/CultureSection"));
+// const EnterpriseHeroSection = lazy(() => import("@/components/sections/elite/EnterpriseHeroSection"));
 
 export const metadata = {
   title: "Groot Analytics - Microsoft Azure Data & AI Solutions",
@@ -47,22 +61,26 @@ export default function HomePage() {
       <Suspense fallback={<SectionSkeleton />}>
         <VideoScrollSection />
       </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
+      {/* <Suspense fallback={<SectionSkeleton />}>
         <ClientLogosSection />
+      </Suspense> */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <HowWeWorkSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <ServicesSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
-        <HowWeWorkSection />
+        <ProcessTimelineSection />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <PainPointsSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <ToolsSection />
       </Suspense>
+      {/*
       <div className="theme-elite">
-        {/* <Suspense fallback={<SectionSkeleton />}>
-          <TestimonialsSection />
-        </Suspense> */}
         <Suspense fallback={<SectionSkeleton />}>
           <EnterpriseHeroSection />
         </Suspense>
@@ -70,11 +88,17 @@ export default function HomePage() {
       <Suspense fallback={<SectionSkeleton />}>
         <PlatformPreviewSection />
       </Suspense>
+      */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <DataReadinessSection />
+      </Suspense>
+      {/*
       <div className="theme-elite">
         <Suspense fallback={<SectionSkeleton />}>
           <CultureSection />
         </Suspense>
       </div>
+      */}
     </div>
   );
 }
