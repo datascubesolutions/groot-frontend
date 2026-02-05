@@ -181,7 +181,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-center max-w-4xl mx-auto space-y-6 relative"
           >
-             {/* Glassmorphic Backdrop */}
+            {/* Glassmorphic Backdrop */}
             <div className="absolute inset-0 -z-10 bg-background/30 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl scale-[1.1] opacity-0 animate-in fade-in duration-1000 fill-mode-forwards" style={{ animationDelay: '1s' }} />
 
             <div className="relative p-6 md:p-10 rounded-3xl">
@@ -192,35 +192,66 @@ export function HeroSection() {
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50 border border-border mb-4"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-foreground/80 drop-shadow-sm">Architecting Intelligence</span>
+                <span className="text-sm md:text-base font-bold uppercase tracking-[0.1em] text-foreground/80 drop-shadow-sm whitespace-nowrap">MICROSOFT FABRIC & AI FOUNDRY SPECIALISTS</span>
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 text-foreground drop-shadow-sm">
-                Turning messy data into<br />
-                <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent">intelligent decisions</span>
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tighter mb-4 text-foreground drop-shadow-sm">
+                Your data wasn't built <br className="hidden md:block" />
+                for <span className="font-['var(--font-playfair)'] italic font-semibold tracking-wide bg-gradient-to-r from-[#059669] to-[#022c22] bg-clip-text text-transparent px-2">what&apos;s coming.</span>
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                We build the digital foundations that power the world's most ambitious companies. From raw infrastructure to agentic AI—engineered on Microsoft Cloud.
+                Production-grade Fabric. Governed data. Dashboards your board actually trusts. The foundation that makes AI possible — and gives you the edge.
               </p>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
+                className="flex flex-col items-center gap-8 pt-6"
               >
-                <Link href="/contact">
-                  <Button variant="hero" size="xl" className="group text-lg px-8 shadow-lg shadow-mint/20">
-                    Start Your Journey
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Link href="/services">
-                  <Button variant="hero-outline" size="xl" className="text-lg px-8 bg-background/50 hover:bg-background/80">
-                    Explore Our Platform
-                  </Button>
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link href="/contact">
+                    <Button variant="hero" size="xl" className="group text-lg px-8 shadow-lg shadow-mint/20">
+                      Get Your Data Readiness Score
+                      <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* Tech Stack Footer */}
+                <div className="flex flex-wrap items-center justify-center gap-3 md:gap-5 mt-8 opacity-90">
+                  {/* Azure */}
+                  <div className="flex items-center gap-2 group cursor-default">
+                    <img src="/svg/azure-2.svg" alt="Azure" className="h-5 w-auto object-contain grayscale group-hover:grayscale-0 transition-all opacity-70 group-hover:opacity-100" />
+                    <span className="text-xs md:text-sm font-semibold text-muted-foreground group-hover:text-foreground transition-colors uppercase tracking-wider">Azure</span>
+                  </div>
+
+                  <span className="h-1 w-1 rounded-full bg-border"></span>
+
+                  {/* Fabric */}
+                  <div className="flex items-center gap-2 group cursor-default">
+                    <img src="/svg/fabric_48_color.svg" alt="Fabric" className="h-5 w-auto object-contain grayscale group-hover:grayscale-0 transition-all opacity-70 group-hover:opacity-100" />
+                    <span className="text-xs md:text-sm font-semibold text-muted-foreground group-hover:text-foreground transition-colors uppercase tracking-wider">Fabric</span>
+                  </div>
+
+                  <span className="h-1 w-1 rounded-full bg-border"></span>
+
+                  {/* Purview */}
+                  <div className="flex items-center gap-2 group cursor-default">
+                    <img src="/svg/microsoft-purview-seeklogo.svg" alt="Purview" className="h-5 w-auto object-contain grayscale group-hover:grayscale-0 transition-all opacity-70 group-hover:opacity-100" />
+                    <span className="text-xs md:text-sm font-semibold text-muted-foreground group-hover:text-foreground transition-colors uppercase tracking-wider">Purview</span>
+                  </div>
+
+                  <span className="h-1 w-1 rounded-full bg-border"></span>
+
+                  {/* Power BI */}
+                  <div className="flex items-center gap-2 group cursor-default">
+                    {/* Using Fabric logo logic from ToolsSection */}
+                    <img src="/svg/fabric_48_color.svg" alt="Power BI" className="h-5 w-auto object-contain grayscale group-hover:grayscale-0 transition-all opacity-70 group-hover:opacity-100" />
+                    <span className="text-xs md:text-sm font-semibold text-muted-foreground group-hover:text-foreground transition-colors uppercase tracking-wider">Power BI</span>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </motion.div>

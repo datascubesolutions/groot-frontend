@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout";
 import Footer from "@/components/sections/Footer";
 import { OrganizationSchema, WebsiteSchema } from "@/components/seo/StructuredData";
 import { METADATA } from "@/lib/constants";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google"; // Added Playfair
 import "./accessibility.css";
 import "./globals.css";
 
@@ -14,6 +14,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   preload: true,
   weight: ["300", "400", "500", "600", "700", "800"],
   fallback: ["system-ui", "sans-serif"],
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  weight: ["400", "500", "600", "700", "800", "900"], // Full range for contrast
+  style: ["normal", "italic"], // For that "calligraphy" feel
+  fallback: ["Georgia", "serif"],
 });
 
 export const metadata = {
@@ -91,7 +101,7 @@ export default function RootLayout({ children }) {
         <OrganizationSchema />
         <WebsiteSchema />
       </head>
-      <body className={`${plusJakartaSans.variable} antialiased`} suppressHydrationWarning>
+      <body className={`${plusJakartaSans.variable} ${playfairDisplay.variable} antialiased`} suppressHydrationWarning>
         <ErrorBoundary>
           <div className="flex flex-col min-h-screen">
             <PublicLayoutWrapper>

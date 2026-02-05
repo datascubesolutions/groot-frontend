@@ -46,9 +46,11 @@ export function ServicesSection() {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="heading-section">
-            No rip-and-replace. We leverage your existing Microsoft investment and <span className="text-foreground">build alongside you.</span>
+        <div className="text-center w-full max-w-6xl mx-auto mb-16 space-y-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] to-[#022c22] animate-gradient">
+              No rip-and-replace. We leverage your existing Microsoft investment and build alongside you.
+            </span>
           </h2>
         </div>
 
@@ -74,8 +76,8 @@ export function ServicesSection() {
                     <motion.path
                       d="M 0 0 H 288 V 100"
                       fill="none"
-                      stroke="url(#techGradient)"
-                      strokeWidth="1.5"
+                      stroke="hsl(var(--forest))"
+                      strokeWidth="4"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       initial={{ pathLength: 0 }}
@@ -87,8 +89,8 @@ export function ServicesSection() {
                     <motion.path
                       d="M 0 0 V 448 H 288 V 348 L 387 100 V 0"
                       fill="none"
-                      stroke="url(#techGradient)"
-                      strokeWidth="1.5"
+                      stroke="hsl(var(--forest))"
+                      strokeWidth="4"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       initial={{ pathLength: 0 }}
@@ -100,8 +102,11 @@ export function ServicesSection() {
                 </div>
                 <div className="flex flex-col items-center space-y-6 h-full justify-center relative z-10">
                   {/* Icon */}
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    {React.createElement(cards[0].icon, { className: `w-8 h-8 bg-gradient-to-br ${cards[0].textGradient} bg-clip-text text-primary` })}
+                  <div className="p-3 bg-mint/50 rounded-xl border border-forest/10 shadow-inner">
+                    {React.createElement(cards[0].icon, {
+                      className: "w-8 h-8 text-forest",
+                      strokeWidth: 2.5
+                    })}
                   </div>
 
                   <div className="text-center">
@@ -129,8 +134,8 @@ export function ServicesSection() {
                     <motion.path
                       d="M 0 0 H 288 V 100"
                       fill="none"
-                      stroke="url(#techGradient)"
-                      strokeWidth="1.5"
+                      stroke="hsl(var(--forest))"
+                      strokeWidth="4"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       initial={{ pathLength: 0 }}
@@ -142,8 +147,8 @@ export function ServicesSection() {
                     <motion.path
                       d="M 0 348 V 448 H 288 V 348 L 387 100 V 0"
                       fill="none"
-                      stroke="url(#techGradient)"
-                      strokeWidth="1.5"
+                      stroke="hsl(var(--forest))"
+                      strokeWidth="4"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       initial={{ pathLength: 0 }}
@@ -156,8 +161,11 @@ export function ServicesSection() {
                 </div>
                 <div className="flex flex-col items-center space-y-6 h-full justify-center relative z-10">
                   {/* Icon */}
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    {React.createElement(cards[1].icon, { className: `w-8 h-8 bg-gradient-to-br ${cards[1].textGradient} bg-clip-text text-primary` })}
+                  <div className="p-3 bg-mint/50 rounded-xl border border-forest/10 shadow-inner">
+                    {React.createElement(cards[1].icon, {
+                      className: "w-8 h-8 text-forest",
+                      strokeWidth: 2.5
+                    })}
                   </div>
 
                   <div className="text-center">
@@ -185,8 +193,8 @@ export function ServicesSection() {
                     <motion.path
                       d="M 0 0 H 288 V 448 H 0 V 348"
                       fill="none"
-                      stroke="url(#techGradient)"
-                      strokeWidth="1.5"
+                      stroke="hsl(var(--forest))"
+                      strokeWidth="4"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       initial={{ pathLength: 0 }}
@@ -199,8 +207,11 @@ export function ServicesSection() {
                 </div>
                 <div className="flex flex-col items-center space-y-6 h-full justify-center relative z-10">
                   {/* Icon */}
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    {React.createElement(cards[2].icon, { className: `w-8 h-8 bg-gradient-to-br ${cards[2].textGradient} bg-clip-text text-primary` })}
+                  <div className="p-3 bg-mint/50 rounded-xl border border-forest/10 shadow-inner">
+                    {React.createElement(cards[2].icon, {
+                      className: "w-8 h-8 text-forest",
+                      strokeWidth: 2.5
+                    })}
                   </div>
 
                   <div className="text-center">

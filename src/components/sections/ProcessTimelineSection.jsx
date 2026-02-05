@@ -1,13 +1,20 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "framer-motion";
+import Lottie from "lottie-react";
 import {
-    BrainCircuit,
-    DatabaseZap,
-    LineChart,
-    ScanSearch
+  BrainCircuit,
+  DatabaseZap,
+  LineChart,
+  ScanSearch
 } from "lucide-react";
 import { useRef } from "react";
+
+// Lottie Imports
+import analyticsCharacterAnimation from "../../assets/lotties/Analytics Character Animation.json";
+import dataAnalyticsAnimation from "../../assets/lotties/Data Analytics and Research.json";
+import aiBrainAnimation from "../../assets/lotties/Technology isometric ai robot brain.json";
+import techNetworkAnimation from "../../assets/lotties/Technology Network.json";
 
 // Neural Stream Steps
 const steps = [
@@ -16,6 +23,7 @@ const steps = [
     title: "Greenfield Engineering",
     subtitle: "Zero to One",
     description: "For visionaries building from scratch. We design cloud-native foundations without legacy debt, ensuring your first rapid prototype is also your long-term bedrock.",
+    animation: techNetworkAnimation,
     icon: ScanSearch,
     color: "#3b82f6", // Blue
   },
@@ -24,6 +32,7 @@ const steps = [
     title: "Modernization & Governance",
     subtitle: "Chaos to Order",
     description: "For enterprises drowning in data. We transform fragmented, messy archives into a governed Data Mesh, turning liability into a strategic asset.",
+    animation: dataAnalyticsAnimation,
     icon: DatabaseZap,
     color: "#a855f7", // Purple
   },
@@ -32,6 +41,7 @@ const steps = [
     title: "Cognitive Intelligence",
     subtitle: "Good to Great",
     description: "For leaders seeking dominance. We deploy agentic AI workflows that self-optimize, automating complex decisions and unlocking exponential growth.",
+    animation: aiBrainAnimation,
     icon: BrainCircuit,
     color: "#ec4899", // Pink
   },
@@ -40,6 +50,7 @@ const steps = [
     title: "Operational Excellence",
     subtitle: "The Standard",
     description: "Frictionless automation. We re-engineer supply chains and pipelines for sub-second decision making, creating a permanent competitive gap.",
+    animation: analyticsCharacterAnimation,
     icon: LineChart,
     color: "#14b8a6", // Teal
   },
@@ -61,7 +72,7 @@ export const ProcessTimelineSection = () => {
   });
 
   return (
-    <section ref={containerRef} className="py-20 md:py-24 relative overflow-hidden bg-background">
+    <section ref={containerRef} className="py-16 md:py-20 relative overflow-hidden bg-background">
       {/* Ambient Neural Background - Reduced Size */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[80px] mix-blend-screen" />
@@ -70,12 +81,12 @@ export const ProcessTimelineSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header - Compacted */}
-        <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-10 md:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block mb-3 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm"
+            className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm"
           >
             <span className="text-xs font-semibold text-primary tracking-widest uppercase">The Neural Process</span>
           </motion.div>
@@ -84,7 +95,7 @@ export const ProcessTimelineSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-serif font-bold text-foreground tracking-tight mb-4"
+            className="text-4xl md:text-5xl font-serif font-bold text-foreground tracking-tight mb-3"
           >
             Accelerate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient">Data Maturity</span>
           </motion.h2>
@@ -124,7 +135,7 @@ export const ProcessTimelineSection = () => {
             </svg>
           </div>
 
-          <div className="space-y-12 md:space-y-16 relative z-10">
+          <div className="space-y-8 md:space-y-12 relative z-10">
             {steps.map((step, index) => (
               <StepCard key={step.id} step={step} index={index} />
             ))}
@@ -161,6 +172,7 @@ const StepCard = ({ step, index }) => {
           />
 
           <div className="relative z-10 flex flex-col md:flex-row gap-5 items-start">
+            {/* Icon Box */}
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
               <step.icon className="w-6 h-6" style={{ color: step.color }} />
             </div>
@@ -182,8 +194,12 @@ const StepCard = ({ step, index }) => {
       {/* Spacer for the central line flow on desktop - Reduced */}
       <div className="hidden lg:block w-12"></div>
 
-      {/* Counter-balance side */}
-      <div className="flex-1 hidden lg:block" />
+      {/* Counter-balance side (Now Lottie Container) */}
+      <div className={`flex-1 hidden lg:flex items-center ${isEven ? "justify-end lg:pr-16" : "justify-start lg:pl-16"}`}>
+        <div className="w-full max-w-[400px] opacity-90 mix-blend-screen scale-110">
+          <Lottie animationData={step.animation} loop={true} />
+        </div>
+      </div>
     </motion.div>
   );
 };

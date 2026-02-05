@@ -12,14 +12,12 @@ const phases = [
   {
     id: "01",
     title: "DISCOVER & ASSESS",
-    timeline: "WEEK 1-2",
+    timeline: "PHASE 01",
     icon: FileSearch,
-    // Yellow Theme
-    bgColor: "bg-[#FFF9E6]",
-    iconBg: "bg-[#FFF9E6]",
-    borderColor: "border-[#FFE599]",
-    textColor: "text-[#B45F06]",
-    iconColor: "#F1C232",
+    borderColor: "border-primary/20",
+    textColor: "text-forest",
+    iconColor: "hsl(var(--forest))",
+    glowColor: "rgba(168, 255, 230, 0.4)", // Mint-ish
     activities: [
       "Understand your systems",
       "Map data sources",
@@ -29,14 +27,12 @@ const phases = [
   {
     id: "02",
     title: "BUILD FOUNDATION",
-    timeline: "WEEK 3-6",
+    timeline: "PHASE 02",
     icon: Users,
-    // Purple Theme
-    bgColor: "bg-[#F3E8FF]",
-    iconBg: "bg-[#F3E8FF]",
-    borderColor: "border-[#D8B4FE]",
-    textColor: "text-[#7E22CE]",
-    iconColor: "#A855F7",
+    borderColor: "border-primary/20",
+    textColor: "text-forest",
+    iconColor: "hsl(var(--forest))",
+    glowColor: "rgba(5, 150, 105, 0.3)", // Emerald
     activities: [
       "Deploy Fabric",
       "Set up Purview",
@@ -47,14 +43,12 @@ const phases = [
   {
     id: "03",
     title: "ENABLE & SCALE",
-    timeline: "WEEK 7-12",
+    timeline: "PHASE 03",
     icon: Workflow,
-    // Green/Teal Theme
-    bgColor: "bg-[#E6FFFA]",
-    iconBg: "bg-[#E6FFFA]",
-    borderColor: "border-[#81E6D9]",
-    textColor: "text-[#2C7A7B]",
-    iconColor: "#38B2AC",
+    borderColor: "border-primary/20",
+    textColor: "text-forest",
+    iconColor: "hsl(var(--forest))",
+    glowColor: "rgba(13, 148, 136, 0.3)", // Teal
     activities: [
       "Power BI dashboards",
       "AI Foundry",
@@ -65,14 +59,12 @@ const phases = [
   {
     id: "04",
     title: "PROTECT YOUR INVESTMENT",
-    timeline: "ONGOING",
+    timeline: "PHASE 04",
     icon: PackageCheck,
-    // Red/Pink Theme
-    bgColor: "bg-[#FFF5F5]",
-    iconBg: "bg-[#FFF5F5]",
-    borderColor: "border-[#FEB2B2]",
-    textColor: "text-[#C53030]",
-    iconColor: "#F56565",
+    borderColor: "border-primary/20",
+    textColor: "text-forest",
+    iconColor: "hsl(var(--forest))",
+    glowColor: "rgba(2, 44, 34, 0.2)", // Deep Forest
     activities: [
       "Ensure it doesn't rot",
       "Pipeline monitoring",
@@ -84,87 +76,144 @@ const phases = [
 
 export function HowWeWorkSection() {
   return (
-    <section className="py-12 relative overflow-visible">
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+    <section className="py-24 relative overflow-hidden bg-background">
+      {/* Ambient Glows */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-forest/5 rounded-full blur-[120px]" />
+      </div>
 
-        {/* Header */}
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-6 relative z-10">
+
+        {/* Header - Premium Gradient */}
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block mb-4 px-4 py-1.5 rounded-full border border-forest/10 bg-forest/5 backdrop-blur-sm"
+          >
+            <span className="text-xs font-bold text-forest tracking-[0.2em] uppercase">The Implementation Roadmap</span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold tracking-tight leading-tight"
           >
-            How we work
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] to-[#022c22] animate-gradient">
+              How we work
+            </span>
           </motion.h2>
         </div>
 
         {/* Timeline Desktop View */}
         <div className="hidden lg:block relative font-sans">
 
-          {/* Top Row: Week Labels & Icons */}
-          <div className="grid grid-cols-4 gap-6 mb-0">
-            {phases.map((phase) => (
-              <div key={phase.id} className="flex flex-col items-center justify-end h-[140px]">
-                {/* Week Label */}
-                <span className="mb-4 text-sm font-extrabold text-slate-500 uppercase tracking-wider block">
-                  {phase.timeline}
-                </span>
-
-                {/* Icon */}
-                <div className={`w-[80px] h-[80px] rounded-lg ${phase.iconBg} flex items-center justify-center border border-transparent shadow-sm z-20 relative transition-transform duration-300 hover:-translate-y-1`}>
-                  <phase.icon className="w-9 h-9" style={{ color: phase.iconColor }} strokeWidth={1.5} />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Middle: Horizontal Line & Connector */}
-          <div className="relative h-[60px] w-full">
-            {/* Main Line - Centered vertically - Thicker & Darker */}
-            <div className="absolute top-1/2 left-0 w-full h-[3px] bg-slate-300 -translate-y-1/2 z-0" />
-
-            <div className="grid grid-cols-4 gap-6 h-full">
-              {phases.map((phase) => (
-                <div key={phase.id} className="relative h-full flex justify-center items-center">
-                  {/* Vertical Connector - Thicker & Darker */}
-                  <div className="w-[3px] h-full bg-slate-300" />
-                  {/* Marker at intersection */}
-                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#F97316] rounded-full border-2 border-white z-10`} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom Row: Cards */}
-          <div className="grid grid-cols-4 gap-6">
+          {/* Top Row: Phase Labels & Icons */}
+          <div className="grid grid-cols-4 gap-8 mb-0">
             {phases.map((phase, index) => (
               <motion.div
                 key={phase.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="flex flex-col items-center justify-end h-[160px]"
+              >
+                {/* Phase Label */}
+                <span className="mb-6 text-xs font-bold text-muted-foreground uppercase tracking-[0.3em] block">
+                  {phase.timeline}
+                </span>
+
+                {/* Icon Container - Glassmorphic */}
+                <div className={`
+                    w-[90px] h-[90px] rounded-2xl bg-white/40 backdrop-blur-xl
+                    flex items-center justify-center border border-white/20 shadow-xl
+                    z-20 relative transition-all duration-500 group hover:-translate-y-2
+                `}>
+                  {/* Internal Glow */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ background: `radial-gradient(circle at center, ${phase.glowColor}, transparent 70%)` }}
+                  />
+                  <phase.icon className="w-10 h-10 relative z-10 text-forest" strokeWidth={1.5} />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Middle: Horizontal Line & Connector */}
+          <div className="relative h-[80px] w-full">
+            {/* Main Line - Brand Gradient */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-forest/30 to-transparent -translate-y-1/2 z-0 shadow-[0_0_10px_rgba(5,150,105,0.1)] origin-left"
+            />
+
+            <div className="grid grid-cols-4 gap-8 h-full">
+              {phases.map((phase, i) => (
+                <div key={phase.id} className="relative h-full flex justify-center items-center">
+                  {/* Vertical Connector */}
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 + 0.5, duration: 0.3 }}
+                    className="w-[1.5px] h-full bg-forest/25 origin-bottom"
+                  />
+                  {/* Glow Node */}
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 + 0.7, type: "spring", stiffness: 200 }}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-forest rounded-full border-2 border-background shadow-[0_0_15px_rgba(5,150,105,0.5)] z-10"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom Row: Cards - Premium Glass */}
+          <div className="grid grid-cols-4 gap-8">
+            {phases.map((phase, index) => (
+              <motion.div
+                key={phase.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 + 0.8, duration: 0.6 }}
                 className="w-full"
               >
-                <div className={`h-full ${phase.bgColor} rounded-lg p-6 relative transition-all duration-300 hover:shadow-lg border border-slate-100/50`}>
+                <div className={`
+                    h-full relative p-8 rounded-3xl backdrop-blur-xl bg-white/40 border border-white/20
+                    shadow-2xl transition-all duration-500 hover:shadow-mint/10 hover:-translate-y-1 group
+                `}>
+                  {/* Subtle Background Glow */}
+                  <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500"
+                    style={{ backgroundColor: phase.glowColor }}
+                  />
 
-                  {/* Number - Inside Card, Top Right */}
-                  <div className={`absolute top-4 right-4 text-3xl font-bold ${phase.textColor} opacity-20`}>
+                  {/* ID Number */}
+                  <div className={`absolute top-6 right-8 text-4xl font-serif font-black text-forest/15`}>
                     {phase.id}
                   </div>
 
                   {/* Title */}
-                  <h3 className={`text-[17px] font-extrabold ${phase.textColor} mb-4 uppercase leading-tight pr-8`}>
+                  <h3 className="text-xl font-bold text-forest mb-6 tracking-tight leading-tight pr-6">
                     {phase.title}
                   </h3>
 
-                  {/* Bullet List */}
-                  <ul className="space-y-2.5">
+                  {/* Activity List */}
+                  <ul className="space-y-4">
                     {phase.activities.map((activity, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[13px] font-semibold text-slate-700">
-                        <div className={`mt-[6px] w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0`} />
-                        <span className="leading-snug">{activity}</span>
+                      <li key={i} className="flex items-start gap-3 text-sm font-medium text-muted-foreground/90">
+                        <div className="mt-1.5 w-1.5 h-1.5 rotate-45 rounded-[2px] bg-primary shrink-0 shadow-[0_0_8px_rgba(168,255,230,0.8)]" />
+                        <span className="leading-relaxed">{activity}</span>
                       </li>
                     ))}
                   </ul>
@@ -174,36 +223,41 @@ export function HowWeWorkSection() {
           </div>
         </div>
 
-        {/* Mobile View */}
-        <div className="lg:hidden space-y-8 relative max-w-md mx-auto">
+        {/* Mobile View - Enhanced Quality */}
+        <div className="lg:hidden space-y-10 relative max-w-md mx-auto">
           {phases.map((phase, index) => (
             <motion.div
               key={phase.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className={`${phase.bgColor} rounded-xl p-6 shadow-sm border border-slate-100`}>
-                <div className="flex items-center gap-4 mb-4">
-                  {/* Icon in Mobile */}
-                  <div className={`w-12 h-12 rounded-lg ${phase.iconBg} flex items-center justify-center shadow-sm shrink-0`}>
-                    <phase.icon className="w-6 h-6" style={{ color: phase.iconColor }} />
+              <div className="relative p-7 rounded-3xl bg-white/40 backdrop-blur-xl border border-white/20 shadow-xl overflow-hidden group">
+                {/* Mobile ID Number */}
+                <div className="absolute top-6 right-7 text-3xl font-serif font-black text-forest/15">
+                  {phase.id}
+                </div>
+                {/* Mobile Title Row */}
+                <div className="flex items-center gap-5 mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-forest/5 flex items-center justify-center shrink-0 border border-forest/10 shadow-inner">
+                    <phase.icon className="w-7 h-7 text-forest" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-500 uppercase block mb-1">{phase.timeline}</span>
-                    <h3 className={`font-bold ${phase.textColor} text-lg`}>
+                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block mb-1">{phase.timeline}</span>
+                    <h3 className="font-bold text-forest text-lg tracking-tight">
                       {phase.title}
                     </h3>
                   </div>
                 </div>
 
-                <div className="bg-white/60 rounded-lg p-4">
-                  <ul className="space-y-2">
+                {/* Mobile Activity Row */}
+                <div className="bg-white/30 rounded-2xl p-5 border border-white/10 shadow-inner">
+                  <ul className="space-y-3.5">
                     {phase.activities.map((activity, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs font-medium text-slate-700">
-                        <div className="mt-1.5 w-1 h-1 rounded-full bg-slate-400 shrink-0" />
-                        {activity}
+                      <li key={i} className="flex items-start gap-2.5 text-xs font-semibold text-muted-foreground">
+                        <div className="mt-1.5 w-1.5 h-1.5 rotate-45 rounded-[2px] bg-primary shrink-0 shadow-[0_0_8px_rgba(168,255,230,0.8)]" />
+                        <span className="leading-snug">{activity}</span>
                       </li>
                     ))}
                   </ul>

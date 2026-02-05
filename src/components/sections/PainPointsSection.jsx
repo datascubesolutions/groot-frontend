@@ -69,28 +69,13 @@ export function PainPointsSection() {
 
               {/* Connection Line Layer (Mobile hidden) */}
               {/* This sits absolutely relative to the cards column to track Y positions accurately */}
-              <div className="hidden lg:block absolute right-[-80px] top-0 bottom-0 w-[100px] pointer-events-none z-0">
+              <div className="hidden lg:block absolute right-[-120px] top-0 bottom-0 w-[160px] pointer-events-none z-0">
                 <svg className="w-full h-full overflow-visible">
                   <motion.path
                     initial={false}
                     animate={{
-                      // Visual Logic:
-                      // Header (approx 180px) + Gap (40px) = Start of Cards ~220px?
-                      // To avoid brittle absolute math, we align relative to the active card's visually centered icon.
-                      // SVG is relative to this Left Column container.
-                      // Card 0 Icon Center: HeaderHeight (let's say 240px with margin) + CardPadding (24px) + IconHalf (24px) = ~288px?
-                      // We use a relative path from the specific card index.
-                      // Card Height is variable. This is the hard part.
-                      // Simplification: Curve goes from Right Edge (x=0 relative to SVG container) to Target.
-                      // We simply translate the START point based on active index standard steps.
-                      d: `M 0 ${activePoint * 128 + 48} C 60 ${activePoint * 128 + 48}, 60 ${activePoint * 50 + 150}, 100 ${activePoint * 20 + 200}`
-                      // Actually, a simpler curve to a fixed point on the right (Terminal Center) looks cleanest.
-                      // Terminal is fixed on right. Let's aim for a fixed 'Receiver' Y on the right relative to the grid.
-                      // d: `M 0 ${290 + (activePoint * 140)} C 50 ${290 + (activePoint * 140)}, 40 400, 80 400`
+                      d: `M 40 ${activePoint * 140 + 48} C 100 ${activePoint * 140 + 48}, 100 178, 152 178`
                     }}
-                    // REVISED PATH: Draw from the specific card's right edge (x=0 of this SVG is ~right edge of column)
-                    // To the "Receiver Dot" on the Terminal.
-                    d={`M -20 ${activePoint * 140 + 48} C 40 ${activePoint * 140 + 48}, 40 300, 100 300`}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     fill="none"
                     stroke="hsl(var(--primary))"
@@ -108,8 +93,8 @@ export function PainPointsSection() {
                   <motion.div
                     key={point.id}
                     className={`relative p-6 rounded-2xl cursor-pointer transition-all duration-300 border group ${isActive
-                        ? "bg-white border-primary/20 shadow-xl shadow-primary/5 scale-[1.02] z-10"
-                        : "bg-white/50 border-transparent hover:bg-white hover:border-border/50 z-0"
+                      ? "bg-white border-primary/20 shadow-xl shadow-primary/5 scale-[1.02] z-10"
+                      : "bg-white/50 border-transparent hover:bg-white hover:border-border/50 z-0"
                       }`}
                     onClick={() => setActivePoint(index)}
                     onMouseEnter={() => setActivePoint(index)}
