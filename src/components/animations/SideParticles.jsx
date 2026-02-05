@@ -55,9 +55,9 @@ export function SideParticles({ side = "left", variant = "chaotic" }) {
       },
       modes: {
         parallax: {
-            enable: true,
-            force: 60,
-            smooth: 10
+          enable: true,
+          force: 60,
+          smooth: 10
         }
       },
     },
@@ -71,49 +71,49 @@ export function SideParticles({ side = "left", variant = "chaotic" }) {
     pauseOnBlur: true,
     pauseOnOutsideViewport: true,
     background: {
-        color: { value: "transparent" }
+      color: { value: "transparent" }
     }
   };
 
   const chaoticOptions = {
     ...baseOptions,
     particles: {
-      color: { value: "#1D9278" }, // Teal Green
+      color: { value: "#1D9278" },
       links: {
         color: "#10b981",
-        distance: 150, // Matched distance
+        distance: 130, // Reduced distance
         enable: true,
-        opacity: 0.4,
-        width: 0.5,
+        opacity: 0.4, // Softened links
+        width: 1,
       },
       move: {
         enable: true,
-        speed: 1.5, // Consistent flow (matched)
-        direction: "top", // Upward data stream (matched)
-        random: false,
+        speed: 1.2, // Slower, elegant chaos
+        direction: "none",
+        random: true,
         straight: false,
-        outModes: { default: "out" },
+        outModes: { default: "bounce" },
       },
       number: {
-        value: 150, // Matched density for symmetry
+        value: 80, // Reduced density
         density: { enable: true, width: 400, height: 1000 },
       },
-      opacity: { value: 0.8 }, // Steady opacity (matched)
+      opacity: { value: 0.9 },
       shape: { type: "circle" },
-      size: { value: 3 }, // Matched size
+      size: { value: { min: 2, max: 4 } }, // Varied size
     },
     interactivity: {
       events: {
         onHover: {
           enable: true,
-          mode: "grab", // Connect to mouse (matched)
+          mode: "grab",
         },
         resize: { enable: true, delay: 0.5 },
       },
       modes: {
         grab: {
           distance: 140,
-          links: { opacity: 1, color: "#32d0b1" }, // Highlight connection
+          links: { opacity: 1, color: "#32d0b1" },
         },
       },
     },
@@ -122,42 +122,42 @@ export function SideParticles({ side = "left", variant = "chaotic" }) {
   const structuredOptions = {
     ...baseOptions,
     particles: {
-      color: { value: "#1D9278" }, // Teal Green
+      color: { value: "#1D9278" },
       links: {
         color: "#10b981",
-        distance: 150,
+        distance: 130,
         enable: true,
         opacity: 0.4,
-        width: 0.5,
+        width: 0.8,
       },
       move: {
         enable: true,
-        speed: 1.5, // Consistent flow
-        direction: "top", // Upward data stream
+        speed: 0.8, // Very calm, premium flow
+        direction: "top",
         random: false,
         straight: false,
-        outModes: { default: "out" }, // Exit and re-enter
+        outModes: { default: "out" },
       },
       number: {
-        value: 150,
+        value: 80, // Balanced density
         density: { enable: true, width: 400, height: 1000 },
       },
-      opacity: { value: 0.8 },
-      shape: { type: "circle" }, // Could change to 'edge' (squares) for more structure if desired
-      size: { value: 3 },
+      opacity: { value: 0.9 },
+      shape: { type: "circle" },
+      size: { value: { min: 2, max: 4 } },
     },
     interactivity: {
       events: {
         onHover: {
           enable: true,
-          mode: "grab", // Connect to mouse
+          mode: "grab",
         },
         resize: { enable: true, delay: 0.5 },
       },
       modes: {
         grab: {
           distance: 140,
-          links: { opacity: 1, color: "#32d0b1" }, // Highlight connection
+          links: { opacity: 1, color: "#32d0b1" },
         },
       },
     },
@@ -167,20 +167,19 @@ export function SideParticles({ side = "left", variant = "chaotic" }) {
 
   return (
     <div
-      className={`absolute top-0 h-full pointer-events-none z-[1] hidden lg:block ${
-        side === "left" ? "left-0" : "right-0"
-      }`}
+      className={`absolute top-0 h-full pointer-events-none z-[1] hidden lg:block ${side === "left" ? "left-0" : "right-0"
+        }`}
       style={{
-        width: "35%", // Take up more space for the zones
-        maxWidth: "500px",
+        width: "40%", // Slightly wider
+        maxWidth: "600px",
         maskImage:
           side === "left"
-            ? "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 100%)"
-            : "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 100%)",
+            ? "linear-gradient(to right, black 0%, black 70%, transparent 100%)" // Clearer, sharper fade
+            : "linear-gradient(to left, black 0%, black 70%, transparent 100%)",
         WebkitMaskImage:
           side === "left"
-            ? "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 100%)"
-            : "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 100%)",
+            ? "linear-gradient(to right, black 0%, black 70%, transparent 100%)"
+            : "linear-gradient(to left, black 0%, black 70%, transparent 100%)",
         willChange: "transform",
       }}
     >
