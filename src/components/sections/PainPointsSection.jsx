@@ -74,7 +74,11 @@ export function PainPointsSection() {
                   <motion.path
                     initial={false}
                     animate={{
-                      d: `M 40 ${activePoint * 140 + 48} C 100 ${activePoint * 140 + 48}, 100 178, 152 178`
+                      // Precise Calibration:
+                      // Sender Dot (on card) is at X=64 relative to SVG container.
+                      // Receiver Dot (on terminal) is at X=116 relative to SVG container.
+                      // Y for Sender follows cards. Y for Receiver is terminal top (178px).
+                      d: `M 64 ${activePoint * 140 + 48} C 100 ${activePoint * 140 + 48}, 100 178, 116 178`
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     fill="none"

@@ -144,34 +144,34 @@ export function HowWeWorkSection() {
           </div>
 
           {/* Middle: Horizontal Line & Connector */}
-          <div className="relative h-[80px] w-full">
-            {/* Main Line - Brand Gradient */}
+          <div className="relative h-[80px] w-full flex items-center">
+            {/* Main Horizontal Line - Continuous across columns */}
             <motion.div
               initial={{ scaleX: 0, opacity: 0 }}
               whileInView={{ scaleX: 1, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-forest/30 to-transparent -translate-y-1/2 z-0 shadow-[0_0_10px_rgba(5,150,105,0.1)] origin-left"
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="absolute left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-forest/40 to-transparent z-0 origin-left"
             />
 
-            <div className="grid grid-cols-4 gap-8 h-full">
+            <div className="grid grid-cols-4 gap-8 w-full h-full relative z-10">
               {phases.map((phase, i) => (
-                <div key={phase.id} className="relative h-full flex justify-center items-center">
-                  {/* Vertical Connector */}
+                <div key={phase.id} className="relative flex items-center justify-center">
+                  {/* Vertical Connector - Fixed height crossing point */}
                   <motion.div
                     initial={{ scaleY: 0 }}
                     whileInView={{ scaleY: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 + 0.5, duration: 0.3 }}
-                    className="w-[1.5px] h-full bg-forest/25 origin-bottom"
+                    transition={{ delay: i * 0.1 + 0.5, duration: 0.4 }}
+                    className="w-[1.5px] h-full bg-forest/20 origin-center"
                   />
-                  {/* Glow Node */}
+                  {/* The Intersection Point (Dot) - Perfectly Centered */}
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 + 0.7, type: "spring", stiffness: 200 }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-forest rounded-full border-2 border-background shadow-[0_0_15px_rgba(5,150,105,0.5)] z-10"
+                    transition={{ delay: i * 0.1 + 0.8, type: "spring", stiffness: 260, damping: 20 }}
+                    className="absolute w-3.5 h-3.5 bg-forest rounded-full border-2 border-background shadow-[0_0_12px_rgba(5,150,105,0.4)]"
                   />
                 </div>
               ))}
