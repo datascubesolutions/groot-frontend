@@ -1,5 +1,6 @@
 "use client";
 
+import { SideParticles } from "@/components/animations/SideParticles";
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -65,11 +66,17 @@ export function HeroSection() {
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-background">
-        {/* Grid Pattern with Vignette Mask */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        {/* Left Zone: Chaotic/Messy Data */}
+        <SideParticles side="left" variant="chaotic" />
 
-        {/* Radial Gradient for depth */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_50%,hsl(var(--mint)/0.15),transparent)]"></div>
+        {/* Right Zone: Structured/Intelligent Data */}
+        <SideParticles side="right" variant="structured" />
+
+        {/* Grid Pattern with Vignette Mask - Reduced opacity */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+
+        {/* Data Architect Radial Gradient: White center -> Faint Mint Edges */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white_0%,hsl(160,20%,97%)_60%,hsl(160,20%,94%)_100%)] opacity-80 mix-blend-multiply"></div>
       </div>
 
 
@@ -168,14 +175,16 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center max-w-4xl mx-auto space-y-6"
+            className="text-center max-w-4xl mx-auto space-y-6 relative"
           >
-            <div>
+             {/* Glassmorphic Backdrop */}
+            <div className="absolute inset-0 -z-10 bg-background/30 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl scale-[1.1] opacity-0 animate-in fade-in duration-1000 fill-mode-forwards" style={{ animationDelay: '1s' }} />
+
+            <div className="relative p-6 md:p-10 rounded-3xl">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -186,7 +195,7 @@ export function HeroSection() {
                 <span className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-foreground/80 drop-shadow-sm">Architecting Intelligence</span>
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 text-foreground">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 text-foreground drop-shadow-sm">
                 Turning messy data into<br />
                 <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent">intelligent decisions</span>
               </h1>
@@ -194,26 +203,26 @@ export function HeroSection() {
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 We build the digital foundations that power the world's most ambitious companies. From raw infrastructure to agentic AI—engineered on Microsoft Cloud.
               </p>
-            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center pt-2"
-            >
-              <Link href="/contact">
-                <Button variant="hero" size="xl" className="group text-lg px-8">
-                  Start Your Journey
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <Link href="/services">
-                <Button variant="hero-outline" size="xl" className="text-lg px-8">
-                  Explore Our Platform
-                </Button>
-              </Link>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
+              >
+                <Link href="/contact">
+                  <Button variant="hero" size="xl" className="group text-lg px-8 shadow-lg shadow-mint/20">
+                    Start Your Journey
+                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+                <Link href="/services">
+                  <Button variant="hero-outline" size="xl" className="text-lg px-8 bg-background/50 hover:bg-background/80">
+                    Explore Our Platform
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
