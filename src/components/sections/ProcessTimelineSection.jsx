@@ -1,54 +1,75 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "framer-motion";
-import {
-    BrainCircuit,
-    DatabaseZap,
-    LineChart,
-    ScanSearch
-} from "lucide-react";
+import { ArrowRight, FileSearch, PackageCheck, Users, Workflow } from "lucide-react";
 import { useRef } from "react";
 
-// Neural Stream Steps
+// Groot brand colors – use CSS variables for theme consistency
+const THEME_COLORS = {
+  forest: "hsl(var(--forest))",
+  primary: "hsl(var(--primary))",
+  leaf: "hsl(var(--leaf))",
+  teal: "hsl(var(--primary))",
+};
+
 const steps = [
   {
     id: "01",
-    title: "Greenfield Engineering",
-    subtitle: "Zero to One",
-    description: "For visionaries building from scratch. We design cloud-native foundations without legacy debt, ensuring your first rapid prototype is also your long-term bedrock.",
-    icon: ScanSearch,
-    color: "#3b82f6", // Blue
+    title: "Discover & Assess",
+    subtitle: "Week 1–2",
+    icon: FileSearch,
+    tagline: "We learn your world first.",
+    activities: [
+      "Deep-dive into your systems & data landscape",
+      "Map sources, flows, and ownership",
+      "Define clear success metrics & roadmap",
+    ],
+    color: THEME_COLORS.forest,
   },
   {
     id: "02",
-    title: "Modernization & Governance",
-    subtitle: "Chaos to Order",
-    description: "For enterprises drowning in data. We transform fragmented, messy archives into a governed Data Mesh, turning liability into a strategic asset.",
-    icon: DatabaseZap,
-    color: "#a855f7", // Purple
+    title: "Build Foundation",
+    subtitle: "Week 3–6",
+    icon: Users,
+    tagline: "Governed from day one.",
+    activities: [
+      "Deploy Azure Fabric & Purview",
+      "Establish governance & security framework",
+      "Stand up first production pipelines",
+    ],
+    color: THEME_COLORS.teal,
   },
   {
     id: "03",
-    title: "Cognitive Intelligence",
-    subtitle: "Good to Great",
-    description: "For leaders seeking dominance. We deploy agentic AI workflows that self-optimize, automating complex decisions and unlocking exponential growth.",
-    icon: BrainCircuit,
-    color: "#ec4899", // Pink
+    title: "Enable & Scale",
+    subtitle: "Week 7–12",
+    icon: Workflow,
+    tagline: "Insight that drives decisions.",
+    activities: [
+      "Power BI dashboards leadership trusts",
+      "AI Foundry & Copilot integration",
+      "User training & enablement",
+    ],
+    color: THEME_COLORS.primary,
   },
   {
     id: "04",
-    title: "Operational Excellence",
-    subtitle: "The Standard",
-    description: "Frictionless automation. We re-engineer supply chains and pipelines for sub-second decision making, creating a permanent competitive gap.",
-    icon: LineChart,
-    color: "#14b8a6", // Teal
+    title: "Protect Your Investment",
+    subtitle: "Ongoing",
+    icon: PackageCheck,
+    tagline: "Built to last.",
+    activities: [
+      "Continuous monitoring & optimization",
+      "Data quality & lineage tracking",
+      "New use cases & expansion",
+    ],
+    color: THEME_COLORS.leaf,
   },
 ];
 
 export const ProcessTimelineSection = () => {
   const containerRef = useRef(null);
 
-  // Ref for the SVG container to track scroll
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"],
@@ -57,25 +78,24 @@ export const ProcessTimelineSection = () => {
   const pathLength = useSpring(scrollYProgress, {
     stiffness: 50,
     damping: 20,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   return (
-    <section ref={containerRef} className="py-20 md:py-24 relative overflow-hidden bg-background">
-      {/* Ambient Neural Background - Reduced Size */}
+    <section ref={containerRef} className="py-12 md:py-16 relative overflow-hidden bg-background">
       <div className="absolute inset-0 w-full h-full pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[80px] mix-blend-screen" />
-        <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[80px] mix-blend-screen" />
+        <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px] mix-blend-screen" />
+        <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-forest/5 rounded-full blur-[80px] mix-blend-screen" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Header - Compacted */}
-        <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        {/* Header */}
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block mb-3 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm"
+            className="inline-block mb-4 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm"
           >
             <span className="text-xs font-semibold text-primary tracking-widest uppercase">The Neural Process</span>
           </motion.div>
@@ -84,9 +104,9 @@ export const ProcessTimelineSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-serif font-bold text-foreground tracking-tight mb-4"
+            className="heading-section mb-4 md:mb-6"
           >
-            Accelerate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient">Data Maturity</span>
+            How we <span className="text-transparent bg-clip-text bg-gradient-to-r from-forest to-primary">work</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -99,32 +119,29 @@ export const ProcessTimelineSection = () => {
           </motion.p>
         </div>
 
-        {/* The Neural Stream Container */}
+        {/* Neural Stream Container */}
         <div className="relative">
-          {/* Main SVG Path - Compacted Height (800px instead of 1200px) */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[600px] h-full pointer-events-none z-0">
             <svg className="w-full h-full" viewBox="0 0 600 800" preserveAspectRatio="none">
               <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2" />
-                  <stop offset="50%" stopColor="#a855f7" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#ec4899" stopOpacity="0.2" />
+                <linearGradient id="process-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor={THEME_COLORS.forest} stopOpacity="0.4" />
+                  <stop offset="50%" stopColor={THEME_COLORS.primary} stopOpacity="0.8" />
+                  <stop offset="100%" stopColor={THEME_COLORS.leaf} stopOpacity="0.4" />
                 </linearGradient>
               </defs>
-
-              {/* Central Root Line */}
               <motion.path
                 d="M300,0 C300,150 100,200 100,300 C100,400 500,500 500,600 C500,700 300,750 300,800"
                 fill="none"
                 strokeWidth="3"
-                stroke="url(#gradient)"
+                stroke="url(#process-gradient)"
                 strokeLinecap="round"
                 style={{ pathLength }}
               />
             </svg>
           </div>
 
-          <div className="space-y-12 md:space-y-16 relative z-10">
+          <div className="space-y-8 md:space-y-10 relative z-10">
             {steps.map((step, index) => (
               <StepCard key={step.id} step={step} index={index} />
             ))}
@@ -144,45 +161,52 @@ const StepCard = ({ step, index }) => {
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6 }}
-      className={`flex flex-col lg:flex-row items-center gap-6 lg:gap-12 ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-        }`}
+      className={`flex flex-col lg:flex-row items-center gap-8 ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"}`}
     >
-      {/* Icon/Connect Node */}
       <div className="flex-1 flex justify-center lg:justify-end order-1 lg:order-none w-full">
-        {/* The Glass Card - Reduced Padding */}
-        <div className={`
-             relative group p-6 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl
-             hover:bg-white/10 transition-all duration-300 w-full max-w-md
-             ${isEven ? "lg:mr-auto" : "lg:ml-auto"}
-         `}>
-          {/* Glow Effect */}
-          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        <div
+          className={`
+            relative group p-6 rounded-2xl backdrop-blur-sm bg-card/80 border border-border shadow-md
+            hover:border-primary/30 hover:shadow-lg transition-all duration-300 w-full max-w-md
+            ${isEven ? "lg:mr-auto" : "lg:ml-auto"}
+          `}
+        >
+          <div
+            className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             style={{ background: `radial-gradient(circle at center, ${step.color}15, transparent 70%)` }}
           />
 
-          <div className="relative z-10 flex flex-col md:flex-row gap-5 items-start">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+          <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start">
+            <div
+              className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300"
+              style={{ background: `linear-gradient(135deg, ${step.color}20, ${step.color}10)`, border: `1px solid ${step.color}30` }}
+            >
               <step.icon className="w-6 h-6" style={{ color: step.color }} />
             </div>
 
-            <div>
+            <div className="flex-1">
               <div className="flex items-center gap-3 mb-1.5">
-                <span className="text-3xl font-bold opacity-10 font-serif">{step.id}</span>
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: step.color }}>{step.subtitle}</span>
+                <span className="text-3xl font-bold opacity-20 font-serif">{step.id}</span>
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: step.color }}>
+                  {step.subtitle}
+                </span>
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{step.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {step.description}
-              </p>
+              <p className="font-medium text-sm mb-3" style={{ color: step.color }}>{step.tagline}</p>
+              <ul className="space-y-2">
+                {step.activities.map((activity, i) => (
+                  <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm leading-relaxed">
+                    <ArrowRight className="h-3.5 w-3.5 shrink-0 mt-0.5 opacity-70" style={{ color: step.color }} />
+                    {activity}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Spacer for the central line flow on desktop - Reduced */}
-      <div className="hidden lg:block w-12"></div>
-
-      {/* Counter-balance side */}
+      <div className="hidden lg:block w-8" />
       <div className="flex-1 hidden lg:block" />
     </motion.div>
   );

@@ -4,49 +4,50 @@ import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import { ArrowRight, BarChart, CheckCircle2, Database, FileText, ShieldCheck, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import { QuizModal } from "./QuizModal";
 
 export function DataReadinessSection() {
   return (
-    <section className="py-24 lg:py-32 bg-slate-50 relative overflow-hidden text-foreground border-t border-slate-200">
+    <section className="section-padding bg-muted/20 relative overflow-hidden text-foreground border-t border-border">
 
       {/* Subtle Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.08)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Split Layout */}
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
 
             {/* Left - Content */}
             <div className="lg:pr-12">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
+              <h2 className="heading-section mb-6 md:mb-8">
                 Not sure where to start?
               </h2>
 
-              <p className="text-xl text-slate-600 leading-relaxed mb-10 max-w-2xl">
+              <p className="text-xl text-muted-foreground leading-relaxed mb-8 md:mb-10 max-w-2xl">
                 Take our 2-minute <span className="text-secondary font-semibold">Data Readiness Assessment</span>.
                 You'll get a comprehensive score, a recommended starting point, and a roadmap tailored to your maturity level.
               </p>
 
-              <div className="flex flex-nowrap items-stretch gap-2 sm:gap-4 w-full sm:w-auto">
-                <Link href="/assessment" className="flex-1 sm:flex-none">
+              <div className="flex flex-nowrap items-stretch gap-4 w-full sm:w-auto">
+                <QuizModal>
                   <Button
                     variant="hero"
                     size="xl"
-                    className="w-full sm:w-auto h-auto min-h-[3.5rem] py-3 px-3 sm:px-8 whitespace-normal text-center leading-tight shadow-xl shadow-forest/20 group font-bold tracking-wide"
+                    className="flex-1 sm:flex-none w-full sm:w-auto h-auto min-h-[3.5rem] py-3 px-3 sm:px-8 whitespace-normal text-center leading-tight shadow-xl shadow-forest/20 group font-bold tracking-wide cursor-pointer"
                   >
                     <span className="flex items-center justify-center gap-2">
                       Get Your Data Readiness Score
                       <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" />
                     </span>
                   </Button>
-                </Link>
+                </QuizModal>
 
                 <Link href="/resources/ai-roadmap" className="flex-1 sm:flex-none">
                   <Button
                     variant="hero-outline"
                     size="xl"
-                    className="w-full sm:w-auto h-auto min-h-[3.5rem] py-3 px-3 sm:px-8 whitespace-normal text-center leading-tight bg-white hover:bg-secondary/5 border-2 !text-[#064E3B] hover:!text-[#064E3B] font-bold shadow-sm transition-all duration-300"
+                    className="w-full sm:w-auto h-auto min-h-[3.5rem] py-3 px-3 sm:px-8 whitespace-normal text-center leading-tight bg-card hover:bg-secondary/5 border-2 text-forest hover:text-forest font-bold shadow-sm transition-all duration-300"
                   >
                     <span className="flex items-center justify-center gap-2">
                       <FileText className="w-5 h-5 shrink-0" />
@@ -57,17 +58,17 @@ export function DataReadinessSection() {
               </div>
 
               {/* Trust Indicators */}
-              <div className="mt-10 flex gap-6 text-sm text-slate-500 font-medium">
+              <div className="mt-8 md:mt-10 flex flex-wrap gap-4 md:gap-6 text-sm text-muted-foreground font-medium">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
                   Free & Instant
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
                   No Credit Card
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
                   Actionable PDF Report
                 </div>
               </div>
@@ -82,53 +83,53 @@ export function DataReadinessSection() {
                 whileInView={{ y: 0, rotateX: 0, opacity: 1 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200/60 overflow-hidden"
+                className="relative w-full max-w-md bg-card rounded-2xl shadow-2xl border border-border overflow-hidden"
               >
                 {/* Card Header */}
-                <div className="bg-slate-900 px-6 py-4 flex items-center justify-between">
+                <div className="bg-charcoal px-6 py-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
                       <BarChart className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                      <div className="text-white text-sm font-bold">Maturity Score</div>
-                      <div className="text-slate-400 text-xs">Generated for Acme Inc.</div>
+                      <div className="text-birch text-sm font-bold">Maturity Score</div>
+                      <div className="text-birch/70 text-xs">Generated for Acme Inc.</div>
                     </div>
                   </div>
-                  <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded text-xs font-mono uppercase">
+                  <span className="bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded text-xs font-mono uppercase">
                     Unified
                   </span>
                 </div>
 
                 {/* Card Body */}
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-8">
+                <div className="p-6 md:p-8">
+                  <div className="flex items-center justify-between mb-6 md:mb-8">
                     <div>
-                      <div className="text-5xl font-bold text-slate-900 tracking-tight">87<span className="text-2xl text-slate-400 font-medium">/100</span></div>
+                      <div className="text-5xl font-bold text-foreground tracking-tight">87<span className="text-2xl text-muted-foreground font-medium">/100</span></div>
                       <div className="text-primary font-bold mt-1">Advanced Architecture</div>
                     </div>
-                    <div className="h-16 w-16 rounded-full border-4 border-emerald-500/20 border-t-emerald-500 flex items-center justify-center">
-                      <TrendingUp className="w-6 h-6 text-emerald-600" />
+                    <div className="h-16 w-16 rounded-full border-4 border-primary/20 border-t-primary flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-primary" />
                     </div>
                   </div>
 
                   {/* Metrics List */}
                   <div className="space-y-4">
                     <MetricRow icon={Database} label="Data Integration" score="92%" color="bg-primary" width="w-[92%]" />
-                    <MetricRow icon={ShieldCheck} label="Governance" score="65%" color="bg-amber-400" width="w-[65%]" />
-                    <MetricRow icon={ArrowRight} label="AI Readiness" score="78%" color="bg-emerald-500" width="w-[78%]" />
+                    <MetricRow icon={ShieldCheck} label="Governance" score="65%" color="bg-forest/60" width="w-[65%]" />
+                    <MetricRow icon={ArrowRight} label="AI Readiness" score="78%" color="bg-primary" width="w-[78%]" />
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                  <div className="mt-6 md:mt-8 pt-6 border-t border-border flex items-center justify-between text-xs text-muted-foreground">
                     <span>Analysis completed in 1.4s</span>
-                    <span className="underline decoration-slate-300 underline-offset-2">View Full Report</span>
+                    <span className="underline decoration-border underline-offset-2">View Full Report</span>
                   </div>
                 </div>
               </motion.div>
 
               {/* Decorative Backdrop Blobs */}
               <div className="absolute top-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl -z-10 mix-blend-multiply" />
-              <div className="absolute -bottom-10 left-0 w-64 h-64 bg-emerald-400/20 rounded-full blur-3xl -z-10 mix-blend-multiply" />
+              <div className="absolute -bottom-10 left-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -z-10 mix-blend-multiply" />
 
             </div>
 
@@ -142,15 +143,15 @@ export function DataReadinessSection() {
 function MetricRow({ icon: Icon, label, score, color, width }) {
   return (
     <div className="flex items-center gap-4">
-      <div className="bg-slate-50 p-2 rounded-lg text-slate-500">
+      <div className="bg-muted p-2 rounded-lg text-muted-foreground">
         <Icon className="w-4 h-4" />
       </div>
       <div className="flex-1">
         <div className="flex justify-between text-sm mb-1.5">
-          <span className="font-semibold text-slate-700">{label}</span>
-          <span className="text-slate-500">{score}</span>
+          <span className="font-semibold text-foreground">{label}</span>
+          <span className="text-muted-foreground">{score}</span>
         </div>
-        <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+        <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
           <div className={`h-full ${width} ${color} rounded-full`} />
         </div>
       </div>

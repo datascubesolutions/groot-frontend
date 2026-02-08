@@ -13,7 +13,7 @@ const cards = [
       "We deploy your modern data platform — or fix what's broken.",
     link: "/services/data-engineering",
     icon: Database,
-    textGradient: "from-blue-400 to-cyan-400",
+    textGradient: "from-forest via-primary to-leaf",
   },
   {
     title: "DECISION INTELLIGENCE ENGINE",
@@ -22,7 +22,7 @@ const cards = [
       "We build dashboards your leadership actually trusts.",
     link: "/services/analytics",
     icon: TrendingUp,
-    textGradient: "from-emerald-400 to-teal-400",
+    textGradient: "from-leaf to-primary",
   },
   {
     title: "PRODUCTION-GRADE AI FOUNDRY",
@@ -31,24 +31,24 @@ const cards = [
       "We architect AI on governed data so pilots actually ship.",
     link: "/services/ai-automation",
     icon: Cpu,
-    textGradient: "from-purple-400 to-pink-400",
+    textGradient: "from-primary to-leaf",
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section className="bg-background py-20 md:py-24 relative overflow-hidden">
+    <section className="bg-background section-padding relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-forest/10 blur-[120px] rounded-full" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12 space-y-4">
           <h2 className="heading-section">
-            No rip-and-replace. We leverage your existing Microsoft investment and <span className="text-foreground">build alongside you.</span>
+            Our <span className="text-foreground">Services</span>
           </h2>
         </div>
 
@@ -59,10 +59,10 @@ export function ServicesSection() {
         */}
         <div className="w-full flex justify-center">
           <div className="relative transform transition-transform duration-300 lg:scale-[0.80] xl:scale-[0.90] 2xl:scale-100 lg:origin-top">
-            <div className="flex flex-col lg:flex-row justify-center items-center mx-auto rounded-2xl p-4 lg:gap-0 gap-8 flex-nowrap">
+            <div className="flex flex-col lg:flex-row justify-center items-center mx-auto rounded-2xl p-6 md:p-8 gap-8 lg:gap-0 flex-nowrap">
 
               {/* Card 1 (Left) */}
-              <div className="relative z-40 w-full max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-5 bg-card/50 backdrop-blur-sm border-0 shadow-sm transition-all duration-300 hover:shadow-md group overflow-visible flex-shrink-0">
+              <div className="relative z-40 w-full max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-6 bg-card/50 backdrop-blur-sm border-0 shadow-sm transition-all duration-300 hover:shadow-md group overflow-visible flex-shrink-0">
                 <div className="absolute inset-0 pointer-events-none z-0">
                   <svg className="w-full h-full overflow-visible" viewBox="0 0 288 448">
                     <defs>
@@ -105,7 +105,7 @@ export function ServicesSection() {
                   </div>
 
                   <div className="text-center">
-                    <h2 className="text-2xl font-bold text-foreground tracking-tight uppercase" style={{ margin: "0" }}>
+                    <h2 className="text-xl md:text-2xl font-bold text-foreground tracking-tight uppercase" style={{ margin: "0" }}>
                       {cards[0].title}
                     </h2>
                     <p className="text-sm font-semibold text-primary mt-2">
@@ -115,7 +115,7 @@ export function ServicesSection() {
 
                   <p className="max-w-sm text-center leading-relaxed text-muted-foreground text-sm">{cards[0].description}</p>
                   <Link href={cards[0].link || "#"}>
-                    <button className="mt-2 text-white bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
+                    <button className="mt-2 text-forest-foreground bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
                       Learn More
                     </button>
                   </Link>
@@ -123,7 +123,7 @@ export function ServicesSection() {
               </div>
 
               {/* Card 2 (Middle) */}
-              <div className="relative z-30 w-full max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-5 bg-card/50 backdrop-blur-sm border-0 shadow-sm transition-all duration-300 hover:shadow-md overflow-visible flex-shrink-0">
+              <div className="relative z-30 w-full max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-6 bg-card/50 backdrop-blur-sm border-0 shadow-sm transition-all duration-300 hover:shadow-md overflow-visible flex-shrink-0">
                 <div className="absolute inset-0 pointer-events-none z-0">
                   <svg className="w-full h-full overflow-visible" viewBox="0 0 288 448">
                     <motion.path
@@ -161,7 +161,7 @@ export function ServicesSection() {
                   </div>
 
                   <div className="text-center">
-                    <h2 className="text-2xl font-bold text-foreground tracking-tight uppercase" style={{ margin: "0" }}>
+                    <h2 className="text-xl md:text-2xl font-bold text-foreground tracking-tight uppercase" style={{ margin: "0" }}>
                       {cards[1].title}
                     </h2>
                     <p className="text-sm font-semibold text-primary mt-2">
@@ -170,7 +170,7 @@ export function ServicesSection() {
                   </div>
                   <p className="max-w-sm text-center leading-relaxed text-muted-foreground text-sm">{cards[1].description}</p>
                   <Link href={cards[1].link || "#"}>
-                    <button className="mt-2 text-white bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
+                    <button className="mt-2 text-forest-foreground bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
                       Learn More
                     </button>
                   </Link>
@@ -179,7 +179,7 @@ export function ServicesSection() {
 
 
               {/* Card 3 (Right) - Using the "Closing" SVG style */}
-              <div className="relative z-10 w-full max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg p-5 bg-card/50 backdrop-blur-sm border-0 shadow-sm transition-all duration-300 hover:shadow-md overflow-visible flex-shrink-0">
+              <div className="relative z-10 w-full max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg p-6 bg-card/50 backdrop-blur-sm border-0 shadow-sm transition-all duration-300 hover:shadow-md overflow-visible flex-shrink-0">
                 <div className="absolute inset-0 pointer-events-none z-0">
                   <svg className="w-full h-full overflow-visible" viewBox="0 0 288 448">
                     <motion.path
@@ -204,7 +204,7 @@ export function ServicesSection() {
                   </div>
 
                   <div className="text-center">
-                    <h2 className="text-2xl font-bold text-foreground tracking-tight uppercase" style={{ margin: "0" }}>
+                    <h2 className="text-xl md:text-2xl font-bold text-foreground tracking-tight uppercase" style={{ margin: "0" }}>
                       {cards[2].title}
                     </h2>
                     <p className="text-sm font-semibold text-primary mt-2">
@@ -213,7 +213,7 @@ export function ServicesSection() {
                   </div>
                   <p className="max-w-sm text-center leading-relaxed text-muted-foreground text-sm">{cards[2].description}</p>
                   <Link href={cards[2].link || "#"}>
-                    <button className="mt-2 text-white bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
+                    <button className="mt-2 text-forest-foreground bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
                       Learn More
                     </button>
                   </Link>

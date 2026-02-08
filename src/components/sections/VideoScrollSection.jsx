@@ -43,10 +43,13 @@ export default function VideoScrollSection() {
       className="relative bg-background z-20"
       style={{
         height: "100vh",
-        paddingTop: "80px", // Restored standard navbar height for proper alignment
+        paddingTop: "5rem", // 80px navbar clearance
       }}
     >
-      <div className="h-full w-full flex items-center justify-center">
+      {/* Seamless transition grid pattern */}
+      <div className="absolute top-0 inset-x-0 h-40 bg-[linear-gradient(to_right,hsl(var(--border)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.08)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black,transparent)] pointer-events-none" />
+
+      <div className="h-full w-full flex items-center justify-center relative z-10">
         {/*
           GoodData Structure:
           - Outer: .video-wrap with white BG, 12px padding, 30px radius, shadow
@@ -54,17 +57,11 @@ export default function VideoScrollSection() {
         */}
         <div
           ref={videoWrapRef}
-          className="will-change-transform backface-visibility-hidden transform-gpu" // Hardware acceleration hints
+          className="will-change-transform backface-visibility-hidden transform-gpu bg-background p-3 md:p-4 rounded-3xl md:rounded-[2rem] shadow-2xl border border-border/50"
           style={{
             width: "90%", // Wider base
             maxWidth: "1600px", // Cap max width so it doesn't get too large on wide screens
             height: "80vh", // Taller presence
-
-            borderRadius: "30px",
-            backgroundColor: "#FFFFFF", // White background acts as visual "border"
-            padding: "12px", // Creates the border effect
-            boxShadow:
-              "rgba(28, 13, 63, 0.07) 0px 60.86px 81.15px 0px, rgba(28, 13, 63, 0.05) 0px 60.36px 48.29px 0px, rgba(28, 13, 63, 0.04) 0px 32.27px 25.82px 0px, rgba(28, 13, 63, 0.04) 0px 18.09px 14.47px 0px, rgba(28, 13, 63, 0.03) 0px 9.61px 7.69px 0px, rgba(28, 13, 63, 0.02) 0px 4.00px 3.20px 0px",
           }}
         >
           {/* Inner video container */}

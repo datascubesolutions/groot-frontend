@@ -79,10 +79,6 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white_0%,hsl(160,20%,97%)_60%,hsl(160,20%,94%)_100%)] opacity-80 mix-blend-multiply"></div>
       </div>
 
-
-
-
-
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center justify-center gap-8 lg:gap-10 mt-4 lg:mt-0">
 
@@ -179,48 +175,53 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center max-w-4xl mx-auto space-y-6 relative"
+            className="text-center max-w-5xl mx-auto space-y-8 md:space-y-10 relative"
           >
-             {/* Glassmorphic Backdrop */}
+            {/* Glassmorphic Backdrop */}
             <div className="absolute inset-0 -z-10 bg-background/30 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl scale-[1.1] opacity-0 animate-in fade-in duration-1000 fill-mode-forwards" style={{ animationDelay: '1s' }} />
 
-            <div className="relative p-6 md:p-10 rounded-3xl">
+            <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50 border border-border mb-4"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 border border-border mb-4"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-foreground/80 drop-shadow-sm">Architecting Intelligence</span>
+                <span className="text-sm md:text-base font-bold uppercase tracking-[0.1em] text-foreground/80 drop-shadow-sm">MICROSOFT FABRIC & AI FOUNDRY SPECIALISTS</span>
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 text-foreground drop-shadow-sm">
-                Turning messy data into<br />
-                <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent">intelligent decisions</span>
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 md:mb-6 text-foreground drop-shadow-sm">
+                Your data wasn't built for <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent">what's coming.</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                We build the digital foundations that power the world's most ambitious companies. From raw infrastructure to agentic AI—engineered on Microsoft Cloud.
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
+                No rip-and-replace. We leverage your existing Microsoft<br className="hidden md:block" /> investment and build alongside you.
               </p>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
+                className="flex flex-col items-center gap-6 md:gap-8 justify-center pt-4"
               >
                 <Link href="/contact">
                   <Button variant="hero" size="xl" className="group text-lg px-8 shadow-lg shadow-mint/20">
-                    Start Your Journey
+                    Get Your Data Readiness Score
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link href="/services">
-                  <Button variant="hero-outline" size="xl" className="text-lg px-8 bg-background/50 hover:bg-background/80">
-                    Explore Our Platform
-                  </Button>
-                </Link>
+
+                {/* Tech Strip */}
+                <div className="flex items-center gap-4 text-sm md:text-base font-medium text-muted-foreground/80 tracking-wide">
+                  <span>Azure</span>
+                  <span className="w-1 h-1 rounded-full bg-border" />
+                  <span>Fabric</span>
+                  <span className="w-1 h-1 rounded-full bg-border" />
+                  <span>Purview</span>
+                  <span className="w-1 h-1 rounded-full bg-border" />
+                  <span>Power BI</span>
+                </div>
               </motion.div>
             </div>
           </motion.div>

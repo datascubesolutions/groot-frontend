@@ -39,7 +39,7 @@ export function Navbar() {
         }`}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         <nav className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 z-50 -ml-2">

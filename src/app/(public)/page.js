@@ -24,11 +24,6 @@ const PlatformPreviewSection = lazy(() =>
     default: mod.PlatformPreviewSection,
   }))
 );
-const HowWeWorkSection = lazy(() =>
-  import("@/components/sections/HowWeWorkSection").then((mod) => ({
-    default: mod.HowWeWorkSection,
-  }))
-);
 const ToolsSection = lazy(() =>
   import("@/components/sections/ToolsSection").then((mod) => ({
     default: mod.ToolsSection,
@@ -40,6 +35,7 @@ const DataReadinessSection = lazy(() =>
     default: mod.DataReadinessSection,
   }))
 );
+
 
 // Elite Demo Sections - BACKUP AT /elite-demo
 // const TestimonialsSection = lazy(() => import("@/components/sections/elite/TestimonialsSection"));
@@ -61,17 +57,14 @@ export default function HomePage() {
       <Suspense fallback={<SectionSkeleton />}>
         <VideoScrollSection />
       </Suspense>
-      {/* <Suspense fallback={<SectionSkeleton />}>
+      <Suspense fallback={<SectionSkeleton />}>
         <ClientLogosSection />
-      </Suspense> */}
-      <Suspense fallback={<SectionSkeleton />}>
-        <HowWeWorkSection />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <ServicesSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <ProcessTimelineSection />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <ServicesSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <PainPointsSection />

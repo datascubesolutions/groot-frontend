@@ -143,16 +143,30 @@
 }
 
 @layer components {
+  /* Section spacing – 8px grid, tighter gaps between sections */
+  .section-padding {
+    @apply py-12 md:py-16;
+  }
+
+  .container-padding {
+    @apply px-6 sm:px-8 lg:px-12;
+  }
+
+  /* Card spacing – consistent 8px grid */
+  .card-gap {
+    @apply gap-8;
+  }
+
+  .card-stack-gap {
+    @apply space-y-8 md:space-y-10;
+  }
+
   .text-gradient-primary {
     @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
   }
 
   .text-gradient-forest {
     @apply bg-gradient-to-r from-forest to-primary bg-clip-text text-transparent;
-  }
-
-  .bg-gradient-hero {
-    @apply bg-gradient-to-br from-mint via-background to-secondary;
   }
 
   .section-label {
@@ -164,8 +178,9 @@
     @apply text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground;
   }
 
+  /* Section titles – consistent size, weight, color */
   .heading-section {
-    @apply text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground;
   }
 
   .body-large {
@@ -185,12 +200,12 @@
 
   .card-corporate {
     @apply bg-card rounded-xl border border-border/50;
-    box-shadow: 0 4px 20px -2px hsl(var(--forest) / 0.06);
+    box-shadow: var(--shadow-card);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .card-corporate:hover {
-    box-shadow: 0 8px 30px -4px hsl(var(--forest) / 0.12);
+    box-shadow: var(--shadow-card-hover);
     transform: translateY(-2px);
   }
 }
@@ -233,5 +248,18 @@
       opacity: 1;
       transform: scale(1);
     }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
   }
 }

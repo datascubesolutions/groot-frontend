@@ -8,16 +8,16 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal text-birch py-16">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+    <footer className="bg-charcoal text-birch py-12 md:py-16">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 md:gap-16 mb-12 md:mb-16">
           {/* Brand */}
           <div className="lg:col-span-2">
             <ScrollReveal>
               <div className="flex items-center gap-2 mb-4">
                 <GrootLogoLight />
               </div>
-              <p className="text-birch/70 mb-6 max-w-sm">
+              <p className="text-birch/70 mb-6 md:mb-8 max-w-sm">
                 Turning messy data into intelligent decisions. Modern data
                 platforms, advanced analytics, and AI-powered solutions.
               </p>
@@ -50,7 +50,7 @@ export function Footer() {
           {/* Links */}
           <div>
             <ScrollReveal delay={0.1}>
-              <h4 className="font-semibold mb-4">Services</h4>
+              <h4 className="font-semibold mb-4 md:mb-5">Services</h4>
               <ul className="space-y-3">
                 {FOOTER_LINKS.services.map((link) => (
                   <li key={link.label}>
@@ -68,7 +68,7 @@ export function Footer() {
 
           <div>
             <ScrollReveal delay={0.2}>
-              <h4 className="font-semibold mb-4">Company</h4>
+              <h4 className="font-semibold mb-4 md:mb-5">Company</h4>
               <ul className="space-y-3">
                 {FOOTER_LINKS.company.map((link) => (
                   <li key={link.label}>
@@ -86,7 +86,7 @@ export function Footer() {
 
           <div>
             <ScrollReveal delay={0.3}>
-              <h4 className="font-semibold mb-4">Resources</h4>
+              <h4 className="font-semibold mb-4 md:mb-5">Resources</h4>
               <ul className="space-y-3">
                 {FOOTER_LINKS.resources.map((link) => (
                   <li key={link.label}>
@@ -105,7 +105,7 @@ export function Footer() {
 
         {/* Bottom */}
         <ScrollReveal delay={0.4}>
-          <div className="pt-8 border-t border-birch/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="pt-8 md:pt-10 border-t border-birch/10 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
             <p className="text-birch/50 text-sm">
               © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Groot Analytics. All rights reserved.
             </p>
@@ -125,13 +125,13 @@ export function Footer() {
 }
 
 const GrootLogoLight = () => (
-  <div className="relative h-40 w-auto">
+  <div className="relative h-12 w-auto">
     <Image
       src="/svg/logo.svg"
       alt="Groot Analytics Logo"
-      width={500}
-      height={180}
-      className="h-40 w-auto brightness-0 invert"
+      width={180}
+      height={48}
+      className="h-12 w-auto brightness-0 invert opacity-100"
     />
   </div>
 );

@@ -11,126 +11,131 @@ import {
 const phases = [
   {
     id: "01",
-    title: "DISCOVER & ASSESS",
+    title: "Discover & Assess",
     timeline: "WEEK 1-2",
     icon: FileSearch,
-    // Yellow Theme
-    bgColor: "bg-[#FFF9E6]",
-    iconBg: "bg-[#FFF9E6]",
-    borderColor: "border-[#FFE599]",
-    textColor: "text-[#B45F06]",
-    iconColor: "#F1C232",
+    tagline: "We learn your world first.",
     activities: [
-      "Understand your systems",
-      "Map data sources",
-      "Define goals"
+      "Deep-dive into your systems & data landscape",
+      "Map sources, flows, and ownership",
+      "Define clear success metrics & roadmap"
     ]
   },
   {
     id: "02",
-    title: "BUILD FOUNDATION",
+    title: "Build Foundation",
     timeline: "WEEK 3-6",
     icon: Users,
-    // Purple Theme
-    bgColor: "bg-[#F3E8FF]",
-    iconBg: "bg-[#F3E8FF]",
-    borderColor: "border-[#D8B4FE]",
-    textColor: "text-[#7E22CE]",
-    iconColor: "#A855F7",
+    tagline: "Governed from day one.",
     activities: [
-      "Deploy Fabric",
-      "Set up Purview",
-      "Governance framework",
-      "First pipelines"
+      "Deploy Azure Fabric & Purview",
+      "Establish governance & security framework",
+      "Stand up first production pipelines"
     ]
   },
   {
     id: "03",
-    title: "ENABLE & SCALE",
+    title: "Enable & Scale",
     timeline: "WEEK 7-12",
     icon: Workflow,
-    // Green/Teal Theme
-    bgColor: "bg-[#E6FFFA]",
-    iconBg: "bg-[#E6FFFA]",
-    borderColor: "border-[#81E6D9]",
-    textColor: "text-[#2C7A7B]",
-    iconColor: "#38B2AC",
+    tagline: "Insight that drives decisions.",
     activities: [
-      "Power BI dashboards",
-      "AI Foundry",
-      "User training",
-      "Enablement"
+      "Power BI dashboards leadership trusts",
+      "AI Foundry & Copilot integration",
+      "User training & enablement"
     ]
   },
   {
     id: "04",
-    title: "PROTECT YOUR INVESTMENT",
+    title: "Protect Your Investment",
     timeline: "ONGOING",
     icon: PackageCheck,
-    // Red/Pink Theme
-    bgColor: "bg-[#FFF5F5]",
-    iconBg: "bg-[#FFF5F5]",
-    borderColor: "border-[#FEB2B2]",
-    textColor: "text-[#C53030]",
-    iconColor: "#F56565",
+    tagline: "Built to last.",
     activities: [
-      "Ensure it doesn't rot",
-      "Pipeline monitoring",
-      "Data quality",
-      "New use cases"
+      "Continuous monitoring & optimization",
+      "Data quality & lineage tracking",
+      "New use cases & expansion"
     ]
   }
 ];
 
 export function HowWeWorkSection() {
   return (
-    <section className="py-12 relative overflow-visible">
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+    <section className="relative overflow-visible bg-background py-20 md:py-24">
+      {/* Background decor - matches ServicesSection, ProcessTimelineSection */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-forest/5 rounded-full blur-[100px]" />
+      </div>
 
+      <div className="container relative z-10 mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-label mb-4"
+          >
+            Our methodology
+          </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight"
+            className="heading-section mb-6"
           >
-            How we work
+            How we <span className="text-gradient-forest">work</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="body-large mx-auto max-w-2xl text-center"
+          >
+            A proven path from data chaos to governed insight — delivered in weeks, not years.
+          </motion.p>
         </div>
 
         {/* Timeline Desktop View */}
         <div className="hidden lg:block relative font-sans">
 
           {/* Top Row: Week Labels & Icons */}
-          <div className="grid grid-cols-4 gap-6 mb-0">
-            {phases.map((phase) => (
-              <div key={phase.id} className="flex flex-col items-center justify-end h-[140px]">
+          <div className="mb-0 grid grid-cols-4 gap-6">
+            {phases.map((phase, index) => (
+              <motion.div
+                key={phase.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="flex h-[160px] flex-col items-center justify-end"
+              >
                 {/* Week Label */}
-                <span className="mb-4 text-sm font-extrabold text-slate-500 uppercase tracking-wider block">
+                <span className="mb-4 block text-xs font-bold uppercase tracking-[0.2em] text-forest">
                   {phase.timeline}
                 </span>
 
-                {/* Icon */}
-                <div className={`w-[80px] h-[80px] rounded-lg ${phase.iconBg} flex items-center justify-center border border-transparent shadow-sm z-20 relative transition-transform duration-300 hover:-translate-y-1`}>
-                  <phase.icon className="w-9 h-9" style={{ color: phase.iconColor }} strokeWidth={1.5} />
+                {/* Icon Container - Gradient border, elevated */}
+                <div className="relative z-20 flex h-[88px] w-[88px] items-center justify-center rounded-2xl bg-white shadow-lg shadow-forest/10 ring-2 ring-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/15 hover:ring-primary/40">
+                  <phase.icon className="h-10 w-10 text-primary" strokeWidth={2} />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          {/* Middle: Horizontal Line & Connector */}
-          <div className="relative h-[60px] w-full">
-            {/* Main Line - Centered vertically - Thicker & Darker */}
-            <div className="absolute top-1/2 left-0 w-full h-[3px] bg-slate-300 -translate-y-1/2 z-0" />
+          {/* Middle: Horizontal Line & Connector - multi-color gradient, previous structure */}
+          <div className="relative h-[72px] w-full">
+            {/* Main Line - theme gradient (forest → primary) */}
+            <div className="absolute top-1/2 left-0 h-[2px] w-full -translate-y-1/2 bg-gradient-to-r from-forest/20 via-primary/70 to-forest/20 z-0" />
 
-            <div className="grid grid-cols-4 gap-6 h-full">
+            <div className="grid h-full grid-cols-4 gap-6">
               {phases.map((phase) => (
-                <div key={phase.id} className="relative h-full flex justify-center items-center">
-                  {/* Vertical Connector - Thicker & Darker */}
-                  <div className="w-[3px] h-full bg-slate-300" />
+                <div key={phase.id} className="relative flex h-full items-center justify-center">
+                  {/* Vertical Connector */}
+                  <div className="absolute top-0 left-1/2 h-full w-[2px] -translate-x-1/2 bg-gradient-to-b from-primary/30 via-primary/50 to-primary/30" />
                   {/* Marker at intersection */}
-                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#F97316] rounded-full border-2 border-white z-10`} />
+                  <div className="absolute top-1/2 left-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary shadow-md ring-4 ring-white" />
                 </div>
               ))}
             </div>
@@ -141,30 +146,40 @@ export function HowWeWorkSection() {
             {phases.map((phase, index) => (
               <motion.div
                 key={phase.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
+                transition={{ delay: index * 0.12 }}
                 className="w-full"
               >
-                <div className={`h-full ${phase.bgColor} rounded-lg p-6 relative transition-all duration-300 hover:shadow-lg border border-slate-100/50`}>
+                <div className="group relative h-full overflow-hidden rounded-2xl border-2 border-slate-200/80 bg-white p-8 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
+                  {/* Top accent - theme gradient (forest → primary) */}
+                  <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-forest via-primary to-forest" />
+                  {/* Left accent stripe - theme gradient */}
+                  <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-forest via-primary to-forest" />
 
-                  {/* Number - Inside Card, Top Right */}
-                  <div className={`absolute top-4 right-4 text-3xl font-bold ${phase.textColor} opacity-20`}>
+                  {/* Number - theme colors, visible */}
+                  <div className="absolute top-6 right-6 text-7xl font-black leading-none text-primary/40 pointer-events-none">
                     {phase.id}
                   </div>
 
                   {/* Title */}
-                  <h3 className={`text-[17px] font-extrabold ${phase.textColor} mb-4 uppercase leading-tight pr-8`}>
+                  <h3 className="mb-2 pr-16 text-xl font-bold tracking-tight text-forest">
                     {phase.title}
                   </h3>
+                  {/* Tagline */}
+                  <p className="mb-6 text-sm font-medium text-primary">
+                    {phase.tagline}
+                  </p>
 
                   {/* Bullet List */}
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-4">
                     {phase.activities.map((activity, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[13px] font-semibold text-slate-700">
-                        <div className={`mt-[6px] w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0`} />
-                        <span className="leading-snug">{activity}</span>
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="mt-2 flex h-2 w-2 shrink-0 rounded-full bg-primary ring-2 ring-primary/25" />
+                        <span className="text-[15px] font-medium leading-snug text-slate-700">
+                          {activity}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -175,7 +190,7 @@ export function HowWeWorkSection() {
         </div>
 
         {/* Mobile View */}
-        <div className="lg:hidden space-y-8 relative max-w-md mx-auto">
+        <div className="relative mx-auto max-w-md space-y-6 lg:hidden">
           {phases.map((phase, index) => (
             <motion.div
               key={phase.id}
@@ -184,30 +199,39 @@ export function HowWeWorkSection() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className={`${phase.bgColor} rounded-xl p-6 shadow-sm border border-slate-100`}>
-                <div className="flex items-center gap-4 mb-4">
-                  {/* Icon in Mobile */}
-                  <div className={`w-12 h-12 rounded-lg ${phase.iconBg} flex items-center justify-center shadow-sm shrink-0`}>
-                    <phase.icon className="w-6 h-6" style={{ color: phase.iconColor }} />
+              <div className="group relative overflow-hidden rounded-2xl border-2 border-slate-200/80 bg-white p-6 shadow-lg shadow-slate-200/40">
+                {/* Top accent - theme gradient */}
+                <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-forest via-primary to-forest" />
+                {/* Left accent stripe - theme gradient */}
+                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-forest via-primary to-forest" />
+                <div className="mb-5 flex items-start gap-4">
+                  {/* Icon */}
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 ring-2 ring-primary/20">
+                    <phase.icon className="h-7 w-7 text-primary" strokeWidth={2} />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-500 uppercase block mb-1">{phase.timeline}</span>
-                    <h3 className={`font-bold ${phase.textColor} text-lg`}>
+                    <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.15em] text-forest">
+                      {phase.timeline}
+                    </span>
+                    <h3 className="text-lg font-bold tracking-tight text-forest">
                       {phase.title}
                     </h3>
+                    <p className="mt-1 text-sm font-medium text-primary">
+                      {phase.tagline}
+                    </p>
                   </div>
                 </div>
 
-                <div className="bg-white/60 rounded-lg p-4">
-                  <ul className="space-y-2">
-                    {phase.activities.map((activity, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs font-medium text-slate-700">
-                        <div className="mt-1.5 w-1 h-1 rounded-full bg-slate-400 shrink-0" />
+                <ul className="space-y-3">
+                  {phase.activities.map((activity, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-2 flex h-2 w-2 shrink-0 rounded-full bg-primary ring-2 ring-primary/25" />
+                      <span className="text-[15px] font-medium leading-snug text-slate-700">
                         {activity}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
           ))}

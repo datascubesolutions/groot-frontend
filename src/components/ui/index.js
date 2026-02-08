@@ -49,7 +49,9 @@ export { Breadcrumb } from './Breadcrumb';
 // ============================================================================
 // Overlay (to be added)
 // ============================================================================
-// export { Modal } from './Modal';
+export {
+  Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger
+} from './Dialog';
 // export { Drawer } from './Drawer';
 // export { Tooltip } from './Tooltip';
 // export { Popover } from './Popover';
@@ -60,4 +62,6 @@ export { Breadcrumb } from './Breadcrumb';
 // export { Table } from './Table';
 // export { Avatar } from './Avatar';
 // export { List } from './List';
+export { Progress } from './Progress';
+export { RadioGroup, RadioGroupItem } from './RadioGroup';
 export { TextFlip } from './TextFlip';

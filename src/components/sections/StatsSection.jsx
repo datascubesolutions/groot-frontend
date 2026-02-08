@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const stats = [
   { value: 140, suffix: "+", label: "Fortune 500 Companies Globally" },
@@ -49,8 +48,11 @@ export const StatsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-16 bg-muted/30 border-y border-border">
-      <div className="container mx-auto px-6">
+    <section ref={ref} className="py-20 bg-muted/10 border-y border-border relative overflow-hidden">
+      {/* Subtle Grid overlay for Stats */}
+      <div className="absolute inset-0 grid-pattern-lg pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <motion.div
@@ -58,12 +60,14 @@ export const StatsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center p-6 bg-background rounded-2xl border border-border shadow-sm"
+              className="text-center p-6"
             >
-              <div className="text-4xl md:text-5xl font-serif text-primary mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-3">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.15em] text-forest/60 max-w-[150px] mx-auto leading-relaxed">
+                {stat.label}
+              </p>
             </motion.div>
           ))}
         </div>

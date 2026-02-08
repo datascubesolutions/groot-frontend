@@ -1,5 +1,10 @@
 :root {
-    /* Groot Analytics Brand Colors */
+    /* ═══════════════════════════════════════════════════════════════
+       GROOT ANALYTICS — Design Tokens (Industry Standard)
+       Single source of truth for colors. Use semantic tokens in components.
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* Base Surfaces */
     --background: 155 25% 97%; /* Soft Mint-Tinted White */
     --foreground: 200 28% 16%; /* Charcoal Bark #1F2933 */
 
@@ -9,16 +14,14 @@
     --popover: 0 0% 100%;
     --popover-foreground: 200 28% 16%;
 
-    /* Ocean Mint - Primary Brand */
+    /* Brand Colors — Ocean Mint (Primary), Deep Forest (Secondary) */
     --primary: 168 64% 51%; /* #2DD4BF */
     --primary-foreground: 200 28% 16%;
 
-    /* Deep Forest Green - Secondary */
-    --secondary: 161 88% 16%; /* #064E3B */
+    --secondary: 161 88% 16%; /* #064E3B — Deep Forest */
     --secondary-foreground: 150 20% 98%;
 
-    /* Fresh Leaf - Accent/CTA */
-    --accent: 142 71% 45%; /* #22C55E */
+    --accent: 142 71% 45%; /* #22C55E — Fresh Leaf */
     --accent-foreground: 150 20% 98%;
 
     --muted: 160 20% 94%;
@@ -33,10 +36,12 @@
 
     --radius: 0.75rem;
 
-    /* Custom Brand Tokens */
-    --mint: 168 64% 51%;
-    --mint-light: 168 64% 90%;
+    /* Brand Palette — Semantic Aliases */
     --forest: 161 88% 16%;
+    --forest-foreground: 150 20% 98%;
+    --mint: 168 64% 51%;
+    --mint-foreground: 200 28% 16%;
+    --mint-light: 168 64% 90%;
     --leaf: 142 71% 45%;
     --charcoal: 200 28% 16%;
     --birch: 150 20% 98%;
@@ -45,20 +50,39 @@
     --burgundy-dark: 340 75% 35%;
     --burgundy-light: 340 75% 55%;
 
+    /* Neutral Scale — Replaces raw Slate; use for cards, borders, text */
+    --neutral-50: 160 20% 98%;
+    --neutral-100: 160 15% 96%;
+    --neutral-200: 160 15% 92%;
+    --neutral-300: 200 12% 85%;
+    --neutral-400: 200 10% 60%;
+    --neutral-500: 200 10% 45%;
+    --neutral-600: 200 12% 35%;
+    --neutral-700: 200 15% 25%;
+    --neutral-800: 200 20% 18%;
+    --neutral-900: 200 28% 12%;
+
     /* Groot Dark Theme (Premium Deep Green) */
-    --groot-dark-primary: 168 76% 35%; /* Deep Teal (Rich Body) */
-    --groot-dark-forest: 162 90% 12%;   /* Obsidian Green (Deep Shadow) */
+    --groot-dark-primary: 168 76% 35%;
+    --groot-dark-forest: 162 90% 12%;
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--birch)) 0%, hsl(var(--mint-light)) 100%);
     --gradient-cta: linear-gradient(135deg, hsl(var(--forest)) 0%, hsl(var(--secondary)) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(var(--mint)) 0%, hsl(var(--leaf)) 100%);
 
-    /* Shadows */
+    /* Grid Pattern — Subtle (use for backgrounds) */
+    --grid-stroke: 200 10% 90% / 0.08;
+    --grid-stroke-subtle: 200 10% 90% / 0.05;
+
+    /* Shadows — Token-based, consistent */
     --shadow-sm: 0 1px 2px 0 hsl(var(--charcoal) / 0.05);
     --shadow-md: 0 4px 6px -1px hsl(var(--charcoal) / 0.1), 0 2px 4px -2px hsl(var(--charcoal) / 0.1);
     --shadow-lg: 0 10px 15px -3px hsl(var(--charcoal) / 0.1), 0 4px 6px -4px hsl(var(--charcoal) / 0.1);
     --shadow-glow: 0 0 40px hsl(var(--mint) / 0.3);
+    --shadow-card: 0 4px 20px -2px hsl(var(--forest) / 0.06);
+    --shadow-card-hover: 0 8px 30px -4px hsl(var(--forest) / 0.12);
+    --shadow-elevated: 0 60px 80px -20px hsl(var(--charcoal) / 0.07), 0 30px 48px -15px hsl(var(--charcoal) / 0.05);
 
     /* Sidebar */
     --sidebar-background: 150 20% 98%;
@@ -73,6 +97,18 @@
     /* Typography */
     --font-sans: var(--font-plus-jakarta-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Spacing – 8px grid (industry standard), tighter section gaps */
+    --section-padding-y: 3rem; /* 48px mobile */
+    --section-padding-y-md: 4rem; /* 64px desktop */
+    --container-padding-x: 1.5rem; /* 24px mobile */
+    --container-padding-x-sm: 2rem; /* 32px tablet */
+    --container-padding-x-lg: 3rem; /* 48px desktop */
+    --section-header-gap: 4rem; /* 64px */
+    --section-header-gap-md: 5rem; /* 80px */
+    --content-gap: 2rem; /* 32px */
+    --content-gap-md: 3rem; /* 48px */
+    --nav-height: 5rem; /* 80px for hero clearance */
   }
 
   .dark {

@@ -3,151 +3,151 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-// Asset Mapping
+// Asset Mapping – original positions, larger sizing for viewport
 const tools = [
   {
     name: "Databricks",
     src: "/svg/10787-icon-service-Azure-Databricks.svg",
-    // Position: Top Center
     position: "top-[25%] left-1/2 -translate-x-1/2 -translate-y-[40px]",
-    width: 140,
-    height: 40
+    width: 120,
+    height: 34,
   },
   {
     name: "Snowflake",
     src: "/svg/snowflake.png",
-    // Position: Top Right
     position: "top-[20%] right-[15%]",
-    width: 140,
-    height: 60
+    width: 120,
+    height: 52,
   },
   {
     name: "Tableau",
     src: "/svg/Tableau.svg",
-    // Position: Middle Right
     position: "top-[45%] right-[10%]",
-    width: 140,
-    height: 40
+    width: 120,
+    height: 38,
   },
   {
     name: "Power BI",
     src: "/svg/fabric_48_color.svg",
-    // Position: Bottom Right Center
     position: "bottom-[15%] right-[25%]",
-    width: 120,
-    height: 40
+    width: 115,
+    height: 38,
   },
   {
     name: "Azure",
     src: "/svg/azure-2.svg",
-    // Position: Bottom Left Center
     position: "bottom-[25%] left-[25%]",
-    width: 120,
-    height: 50
+    width: 115,
+    height: 48,
   },
-  // Removed Google Analytics (Groot Logo) as requested
 ];
 
 export function ToolsSection() {
   return (
-    <section className="py-24 relative overflow-visible bg-background min-h-[800px] flex items-center justify-center font-sans">
-
-      {/* Water Ripple Background (High Visibility Version) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] z-0 pointer-events-none flex items-center justify-center">
+    <section className="relative flex min-h-[680px] items-center justify-center overflow-visible bg-background section-padding md:min-h-[760px] font-sans">
+      {/* Ripple background – larger viewport */}
+      <div className="absolute top-1/2 left-1/2 z-0 flex h-[720px] w-[720px] -translate-x-1/2 -translate-y-1/2 items-center justify-center pointer-events-none md:h-[800px] md:w-[800px] lg:h-[880px] lg:w-[880px]">
         {[0, 1, 2].map((index) => (
           <motion.div
             key={index}
-            className="absolute border-2 border-blue-400/50 rounded-full"
-            initial={{ width: "350px", height: "350px", opacity: 1 }}
-            animate={{
-              width: "650px",
-              height: "650px",
-              opacity: 0
-            }}
+            className="absolute rounded-full border-2 border-mint/35"
+            initial={{ width: "320px", height: "320px", opacity: 1 }}
+            animate={{ width: "580px", height: "580px", opacity: 0 }}
             transition={{
               duration: 3.5,
               repeat: Infinity,
               delay: index * 1.2,
-              ease: "easeOut"
+              ease: "easeOut",
             }}
           />
         ))}
-        {/* Static base circles */}
-        <div className="absolute w-[350px] h-[350px] rounded-full border border-blue-200" />
-        <div className="absolute w-[550px] h-[550px] rounded-full border border-blue-100" />
+        <div className="absolute h-[320px] w-[320px] rounded-full border border-mint/10 md:h-[360px] md:w-[360px]" />
+        <div className="absolute h-[520px] w-[520px] rounded-full border border-mint/5 md:h-[600px] md:w-[600px] lg:h-[680px] lg:w-[680px]" />
       </div>
 
-      {/* Central Text Content */}
-      <div className="relative z-10 text-center flex flex-col items-center">
-        {/* Databricks Mini Logo above text */}
-        <div className="mb-4">
+      {/* Central content – scaled for larger viewport */}
+      <div className="relative z-10 flex flex-col items-center justify-center gap-6 md:gap-8 px-6 sm:px-8 lg:px-12 text-center">
+        {/* Icon above heading */}
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center md:h-16 md:w-16">
           <Image
             src="/svg/10787-icon-service-Azure-Databricks.svg"
-            alt="Databricks"
-            width={120}
-            height={30}
-            className="object-contain"
+            alt=""
+            width={56}
+            height={28}
+            className="h-full w-auto object-contain"
+            aria-hidden
           />
         </div>
 
-        {/* Main Heading (Original Layout) */}
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-800 tracking-tight leading-tight">
+        {/* Main heading */}
+        <h2 className="heading-section">
           <span className="relative inline-block">
             Favorite Tools
-            {/* Yellow Underline SVG Shape */}
-            <svg className="absolute w-full h-3 -bottom-1 left-0 text-yellow-400 z-[-1]" viewBox="0 0 100 10" preserveAspectRatio="none">
+            <svg
+              className="absolute -bottom-1 left-0 h-3 w-full text-primary md:h-3.5"
+              viewBox="0 0 100 10"
+              preserveAspectRatio="none"
+              aria-hidden
+            >
               <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" opacity="0.6" />
             </svg>
           </span>
-          <span className="font-light text-slate-400 mx-3">&</span>
-          Resource
+          <span className="mx-2 font-normal text-muted-foreground md:mx-2.5">&</span>
+          <span className="font-normal text-muted-foreground">Resource</span>
           <br />
-          Blog Teasers
+          <span className="mt-0.5 inline-block">Blog Teasers</span>
         </h2>
       </div>
 
-      {/* Floating Logos */}
+      {/* Floating logos – optimized padding and responsive positions */}
       {tools.map((tool, index) => (
         <motion.div
           key={tool.name}
-          className={`absolute ${tool.position} z-20`}
-          initial={{ opacity: 0, scale: 0.8 }}
+          className={`absolute z-20 ${tool.position}`}
+          initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: index * 0.1, duration: 0.5 }}
-          whileHover={{ scale: 1.1, y: -5 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.08, duration: 0.4 }}
+          whileHover={{ scale: 1.08, y: -4 }}
         >
-          {tool.name !== 'Databricks' && (
-            <div className="flex items-center justify-center p-4 bg-white/50 backdrop-blur-sm rounded-xl hover:shadow-sm transition-shadow">
+          {tool.name !== "Databricks" && (
+            <div className="flex items-center justify-center rounded-xl bg-card/60 p-3 backdrop-blur-sm transition-shadow hover:bg-card/80 hover:shadow-md md:p-4 border border-border/50">
               <Image
                 src={tool.src}
                 alt={tool.name}
                 width={tool.width}
                 height={tool.height}
-                className="object-contain"
+                className="h-9 w-auto max-h-12 object-contain md:h-10"
               />
             </div>
           )}
         </motion.div>
       ))}
 
-      {/* Manual Placements for missing ones (Original Placeholders) */}
-
-
-
-      {/* Google Analytics - Bottom Left Low */}
-      <div className="absolute bottom-[15%] left-[15%]">
-        <div className="flex items-center gap-2 bg-white/50 backdrop-blur-sm p-2 rounded-xl">
+      {/* Google Analytics */}
+      <motion.div
+        className="absolute bottom-[15%] left-[15%] z-20"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3, duration: 0.4 }}
+        whileHover={{ scale: 1.05 }}
+      >
+        <div className="flex items-center gap-2.5 rounded-xl bg-card/60 p-3 backdrop-blur-sm transition-shadow hover:bg-card/80 hover:shadow-md md:gap-3 md:p-3.5 border border-border/50">
           <Image
             src="/svg/google-analytics.svg"
             alt="Google Analytics"
             width={40}
             height={40}
-            className="object-contain"
+            className="h-9 w-9 shrink-0 object-contain md:h-10 md:w-10"
           />
-          <span className="font-bold text-slate-700 text-sm">Google<br />Analytics</span>
+          <span className="text-sm font-semibold leading-tight text-foreground md:text-base">
+            Google
+            <br />
+            Analytics
+          </span>
         </div>
-      </div>
-
+      </motion.div>
     </section>
   );
 }
