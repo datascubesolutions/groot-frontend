@@ -123,27 +123,37 @@ const ScoreGauge = ({ score }) => {
   const needleRotation = (score / 100) * 180 - 90; // -90 to 90 degrees
 
   return (
-    <div className="relative w-72 h-44 mx-auto mb-8 flex flex-col items-center justify-end overflow-hidden">
+    <div className="relative w-full max-w-[300px] mx-auto aspect-[1.8/1] flex flex-col items-center justify-end overflow-hidden">
+      {/* Glow Effect */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-emerald-500/10 blur-[50px] rounded-full pointer-events-none" />
+
       {/* SVG Arc */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <svg viewBox="0 0 200 110" className="w-full h-full">
+      <div className="absolute top-0 left-0 w-full h-full z-10">
+        <svg viewBox="0 0 200 110" className="w-full h-full overflow-visible">
           <defs>
             <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#ef4444" /> {/* Red */}
-              <stop offset="50%" stopColor="#f59e0b" /> {/* Orange */}
-              <stop offset="100%" stopColor="#10b981" /> {/* Green */}
+              <stop offset="25%" stopColor="#f97316" /> {/* Orange */}
+              <stop offset="50%" stopColor="#eab308" /> {/* Yellow */}
+              <stop offset="75%" stopColor="#84cc16" /> {/* Lime */}
+              <stop offset="100%" stopColor="#10b981" /> {/* Emerald */}
             </linearGradient>
-            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-              <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b" />
-            </marker>
+
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
           </defs>
 
           {/* Background Track */}
           <path
             d="M 20 100 A 80 80 0 0 1 180 100"
             fill="none"
-            stroke="#f1f5f9"
-            strokeWidth="12"
+            stroke="#e2e8f0"
+            strokeWidth="16" // Thicker track
             strokeLinecap="round"
           />
 
@@ -152,42 +162,49 @@ const ScoreGauge = ({ score }) => {
             d="M 20 100 A 80 80 0 0 1 180 100"
             fill="none"
             stroke="url(#gaugeGradient)"
-            strokeWidth="12"
+            strokeWidth="16"
             strokeLinecap="round"
+            filter="url(#glow)"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, ease: "circOut" }}
+            transition={{ duration: 1.5, ease: "circOut", delay: 0.1 }}
           />
 
-          {/* Tick Marks */}
-          <text x="20" y="115" className="text-[10px] font-bold fill-slate-400" textAnchor="middle">0</text>
-          <text x="100" y="35" className="text-[10px] font-bold fill-slate-400" textAnchor="middle">50</text>
-          <text x="180" y="115" className="text-[10px] font-bold fill-slate-400" textAnchor="middle">100</text>
+          {/* Ticks/Decorations */}
+          <g className="text-[8px] font-bold fill-slate-400 opacity-60">
+            <text x="20" y="118" textAnchor="middle">0</text>
+            <text x="100" y="15" textAnchor="middle">50</text>
+            <text x="180" y="118" textAnchor="middle">100</text>
+          </g>
         </svg>
 
         {/* Needle */}
         <motion.div
-          className="absolute bottom-[13px] left-1/2 w-1 h-[75px] bg-slate-800 origin-bottom rounded-full"
+          className="absolute bottom-[2%] left-1/2 w-1.5 h-[45%] bg-slate-800 origin-bottom rounded-full z-20 shadow-lg"
           style={{ translateX: "-50%" }}
           initial={{ rotate: -90 }}
           animate={{ rotate: needleRotation }}
-          transition={{ type: "spring", stiffness: 60, damping: 15, delay: 0.2 }}
+          transition={{ type: "spring", stiffness: 50, damping: 12, delay: 0.3 }}
         >
-          <div className="w-3 h-3 rounded-full bg-white border-4 border-slate-800 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+          <div className="w-4 h-4 rounded-full bg-slate-900 border-[3px] border-white absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-sm" />
+          <div className="w-8 h-8 rounded-full bg-slate-900 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 shadow-md z-10" />
         </motion.div>
       </div>
 
       {/* Score Text */}
       <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center"
+        className="relative z-20 text-center -mb-2"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 0.6 }}
       >
-        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block mb-1">Your Score</span>
-        <motion.h1 className="text-5xl font-black text-slate-900 leading-none">
-          {rounded}
-        </motion.h1>
+        <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 block mb-0.5">Your Readiness Score</span>
+        <div className="flex items-baseline justify-center gap-1">
+          <motion.h1 className="text-4xl sm:text-5xl font-black text-slate-900 leading-none">
+            {rounded}
+          </motion.h1>
+          <span className="text-xl text-slate-400 font-bold">/100</span>
+        </div>
       </motion.div>
     </div>
   );
@@ -533,81 +550,117 @@ export function QuizFlow({ onComplete }) {
   const renderResults = () => {
     const rec = getRecommendation(score);
     return (
-      <div className="py-4">
+      <div className="py-2 sm:py-6">
+        {/* Score Section */}
         <motion.div
-          className="text-center mb-8"
+          className="text-center mb-10 relative"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.5 }}
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 block">Your Data Readiness Score</span>
-          <motion.div
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-            className="text-7xl font-black text-slate-900 mb-4 tracking-tight"
-          >
-            {score}<span className="text-3xl text-slate-300 font-medium ml-1">/100</span>
-          </motion.div>
+          <ScoreGauge score={score} />
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className={cn("inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider border", rec.bgColor, rec.borderColor, rec.color)}
+            transition={{ delay: 0.8 }}
+            className="mt-6 flex justify-center"
           >
-            <span className={cn("w-2 h-2 rounded-full", rec.progressColor)} />
-            {rec.stage}
+            <div className={cn("inline-flex items-center gap-2.5 px-5 py-2 rounded-full text-base font-bold tracking-wide border shadow-sm backdrop-blur-sm bg-opacity-70", rec.bgColor, rec.borderColor, rec.color)}>
+              <span className={cn("w-2.5 h-2.5 rounded-full shadow-inner", rec.progressColor)} />
+              {rec.stage}
+            </div>
           </motion.div>
         </motion.div>
 
-        <div className={cn("p-6 rounded-2xl border mb-6 relative overflow-hidden", rec.bgColor, rec.borderColor)}>
+        {/* Breakdown Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className={cn("p-6 sm:p-8 rounded-3xl border mb-8 relative overflow-hidden shadow-lg", rec.bgColor, rec.borderColor)}
+        >
+          {/* Subtle pattern background */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
           <div className="relative z-10">
-            <p className="text-slate-700 text-base leading-relaxed mb-4 font-medium">
+            <h4 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+              <span className="w-1 h-6 bg-slate-900 rounded-full inline-block" />
+              Overview
+            </h4>
+            <p className="text-slate-700 text-lg leading-relaxed mb-6 font-medium">
               {rec.description}
             </p>
 
-            <div className="space-y-3">
-              <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Key Issues Identified:</h4>
-              <ul className="grid sm:grid-cols-2 gap-2">
+            <div className="bg-white/60 backdrop-blur-md rounded-2xl p-5 border border-white/50 shadow-sm">
+              <h4 className="font-bold text-slate-800 text-xs uppercase tracking-widest mb-4 opacity-80">Key Improvements Required:</h4>
+              <ul className="grid sm:grid-cols-2 gap-3">
                 {rec.issues.map((issue, i) => (
-                  <li key={i} className="flex items-center gap-2 text-slate-600 text-sm">
-                    <CheckCircle2 className={cn("w-4 h-4", rec.color)} />
+                  <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
+                    <CheckCircle2 className={cn("w-5 h-5 shrink-0 mt-0.5", rec.color)} />
                     {issue}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="p-6 rounded-2xl bg-slate-900 text-white mb-6 relative overflow-hidden group shadow-xl">
-          <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform duration-500">
-            <TrendingUp size={100} />
+        {/* Recommendation Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="p-8 rounded-3xl bg-slate-900 text-white mb-8 relative overflow-hidden group shadow-2xl ring-1 ring-white/10"
+        >
+          {/* Animated Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-0" />
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+            <TrendingUp size={140} />
           </div>
+
           <div className="relative z-10">
-            <h4 className="text-emerald-400 font-bold text-xs uppercase tracking-widest mb-1">Recommended Starting Point:</h4>
-            <h3 className="text-xl font-bold mb-2 text-white">→ {rec.bucket}</h3>
-            <p className="text-slate-300 text-sm leading-relaxed max-w-sm">
-              {rec.solution}
-            </p>
-          </div>
-        </div>
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
+              <div>
+                <h4 className="text-emerald-400 font-bold text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Recommended Starting Point
+                </h4>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-white tracking-tight">{rec.bucket}</h3>
+                <p className="text-slate-300 text-lg leading-relaxed max-w-lg mb-6 sm:mb-0">
+                  {rec.solution}
+                </p>
+              </div>
 
-        <div className="flex gap-4 mb-6">
-          <Button className="flex-1 py-6 h-auto text-base font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5 transition-all">
-            <Download className="mr-2 w-5 h-5" />
+              <div className="shrink-0">
+                <Button className="w-full sm:w-auto bg-white text-slate-900 hover:bg-emerald-50 hover:text-emerald-700 font-bold px-8 py-6 h-auto rounded-xl shadow-lg transition-all hover:scale-105" onClick={() => window.location.href = '/services'}>
+                  Explore Solution <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Action Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          <Button className="flex-1 py-4 h-auto text-lg font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-1 transition-all rounded-xl">
+            <Download className="mr-2 w-6 h-6" />
             Download AI Roadmap
           </Button>
-          <Button variant="outline" className="flex-1 py-6 h-auto text-base font-bold border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700">
-            <Calendar className="mr-2 w-5 h-5" />
+          <Button variant="outline" className="flex-1 py-4 h-auto text-lg font-bold border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 rounded-xl transition-all">
+            <Calendar className="mr-2 w-6 h-6" />
             Book a 30-min Call
           </Button>
-        </div>
+        </motion.div>
 
-        <div className="text-center pt-4 border-t border-slate-100">
-          <p className="text-xs text-slate-400">
-            Results sent to <span className="font-bold text-slate-900">{email}</span>
+        <div className="text-center pt-6 border-t border-slate-100">
+          <p className="text-sm text-slate-400">
+            Full analysis sent to <span className="font-bold text-slate-800">{email}</span>
           </p>
         </div>
       </div>
