@@ -1,4 +1,5 @@
 import { TechStackVisualizer } from "@/components/sections/TechStackVisualizer";
+import { ToolsSection } from "@/components/sections/ToolsSection";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
 
@@ -38,6 +39,9 @@ export default function TechnologiesPage() {
           <Button variant="hero" size="xl">Request Tech Consultation</Button>
         </div>
       </section>
+
+      {/* Favorite Tools & Resource Blog Teasers */}
+      <ToolsSection />
 
       {/* Interactive Tech Stack Section */}
       <section className="py-24 min-h-screen">

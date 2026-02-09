@@ -212,15 +212,24 @@ export function HeroSection() {
                   </Button>
                 </Link>
 
-                {/* Tech Strip */}
-                <div className="flex items-center gap-4 text-sm md:text-base font-medium text-muted-foreground/80 tracking-wide">
-                  <span>Azure</span>
-                  <span className="w-1 h-1 rounded-full bg-border" />
-                  <span>Fabric</span>
-                  <span className="w-1 h-1 rounded-full bg-border" />
-                  <span>Purview</span>
-                  <span className="w-1 h-1 rounded-full bg-border" />
-                  <span>Power BI</span>
+                {/* Tech Strip - Logos + Text (matches hero badge styling) */}
+                <div className="inline-flex flex-wrap items-center justify-center gap-6 md:gap-8 px-5 py-3 rounded-full bg-muted/50 border border-border/60 text-sm md:text-base font-medium text-foreground/75">
+                  <div className="flex items-center gap-2">
+                    <img src="/svg/azure-2.svg" alt="Azure" className="h-5 md:h-6 w-auto object-contain opacity-90" />
+                    <span>Azure</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <img src="/svg/fabric_48_color.svg" alt="Fabric" className="h-5 md:h-6 w-auto object-contain opacity-90" />
+                    <span>Fabric</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <img src="/svg/microsoft-purview-seeklogo.svg" alt="Purview" className="h-5 md:h-6 w-auto object-contain opacity-90" />
+                    <span>Purview</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <img src="/svg/power-bi-icon.svg" alt="Power BI" className="h-5 md:h-6 w-auto object-contain opacity-90" />
+                    <span>Power BI</span>
+                  </div>
                 </div>
               </motion.div>
             </div>

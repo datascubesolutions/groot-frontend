@@ -24,11 +24,6 @@ const PlatformPreviewSection = lazy(() =>
     default: mod.PlatformPreviewSection,
   }))
 );
-const ToolsSection = lazy(() =>
-  import("@/components/sections/ToolsSection").then((mod) => ({
-    default: mod.ToolsSection,
-  }))
-);
 const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
 const DataReadinessSection = lazy(() =>
   import("@/components/sections/DataReadinessSection").then((mod) => ({
@@ -68,9 +63,6 @@ export default function HomePage() {
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <PainPointsSection />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <ToolsSection />
       </Suspense>
       {/*
       <div className="theme-elite">

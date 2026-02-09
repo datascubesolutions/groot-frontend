@@ -1,9 +1,9 @@
 /**
  * Route Configuration
- * 
+ *
  * Centralized route definitions for type safety and maintainability.
  * This file serves as the single source of truth for all application routes.
- * 
+ *
  * @example
  * import { ROUTES } from '@/lib/routes';
  * <Link href={ROUTES.PUBLIC.HOME}>Home</Link>
@@ -87,8 +87,5 @@ export function isActiveRoute(currentPath, routePath) {
 
 // Route Metadata for SEO
 export {
-  ROUTE_METADATA,
-  getRouteMetadata,
-  getIndexableRoutes,
-  getRoutesByPriority,
+  getIndexableRoutes, getRouteMetadata, getRoutesByPriority, ROUTE_METADATA
 } from './metadata';
