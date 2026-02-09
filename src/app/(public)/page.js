@@ -56,10 +56,10 @@ export default function HomePage() {
         <ClientLogosSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
-        <ProcessTimelineSection />
+        <ServicesSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
-        <ServicesSection />
+        <ProcessTimelineSection />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <PainPointsSection />

@@ -139,7 +139,7 @@ export function SideParticles({ side = "left", variant = "chaotic" }) {
         outModes: { default: "out" },
       },
       number: {
-        value: 80, // Balanced density
+        value: 80, // Reduced density
         density: { enable: true, width: 400, height: 1000 },
       },
       opacity: { value: 0.9 },

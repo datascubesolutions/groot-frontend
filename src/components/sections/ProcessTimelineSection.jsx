@@ -83,9 +83,11 @@ export const ProcessTimelineSection = () => {
 
   return (
     <section ref={containerRef} className="py-12 md:py-16 relative overflow-hidden bg-background">
+      {/* Subtle gradient overlay - matches PainPointsSection for consistent depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/25 to-background pointer-events-none" />
       <div className="absolute inset-0 w-full h-full pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px] mix-blend-screen" />
-        <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-forest/5 rounded-full blur-[80px] mix-blend-screen" />
+        <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[80px]" />
+        <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-forest/10 rounded-full blur-[80px]" />
       </div>
 
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
@@ -113,7 +115,7 @@ export const ProcessTimelineSection = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto"
+            className="text-lg text-foreground/85 font-medium leading-relaxed max-w-2xl mx-auto"
           >
             Whether you are starting from zero or optimizing for AI, we have a roadmap for you.
           </motion.p>
@@ -166,8 +168,8 @@ const StepCard = ({ step, index }) => {
       <div className="flex-1 flex justify-center lg:justify-end order-1 lg:order-none w-full">
         <div
           className={`
-            relative group p-6 rounded-2xl backdrop-blur-sm bg-card/80 border border-border shadow-md
-            hover:border-primary/30 hover:shadow-lg transition-all duration-300 w-full max-w-md
+            relative group p-6 rounded-2xl backdrop-blur-sm bg-card border border-border shadow-lg shadow-charcoal/5
+            hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 w-full max-w-md
             ${isEven ? "lg:mr-auto" : "lg:ml-auto"}
           `}
         >
@@ -186,7 +188,7 @@ const StepCard = ({ step, index }) => {
 
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-1.5">
-                <span className="text-3xl font-bold opacity-20 font-serif">{step.id}</span>
+                <span className="text-3xl font-bold text-foreground/25 font-serif">{step.id}</span>
                 <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: step.color }}>
                   {step.subtitle}
                 </span>
@@ -195,7 +197,7 @@ const StepCard = ({ step, index }) => {
               <p className="font-medium text-sm mb-3" style={{ color: step.color }}>{step.tagline}</p>
               <ul className="space-y-2">
                 {step.activities.map((activity, i) => (
-                  <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm leading-relaxed">
+                  <li key={i} className="flex items-start gap-2 text-foreground/90 text-sm leading-relaxed">
                     <ArrowRight className="h-3.5 w-3.5 shrink-0 mt-0.5 opacity-70" style={{ color: step.color }} />
                     {activity}
                   </li>

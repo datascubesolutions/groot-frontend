@@ -63,7 +63,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative h-screen min-h-[100dvh] flex flex-col overflow-y-auto overflow-x-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-background">
         {/* Left Zone: Chaotic/Messy Data */}
@@ -79,18 +79,16 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white_0%,hsl(160,20%,97%)_60%,hsl(160,20%,94%)_100%)] opacity-80 mix-blend-multiply"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center justify-center gap-8 lg:gap-10 mt-4 lg:mt-0">
-
-          {/* Animated "GROOT" Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative flex items-center justify-center w-full max-w-5xl"
-          >
+      {/* GROOT Logo + Content - Logo fixed, gap pushes text below */}
+      <div className="flex-1 min-h-0 flex flex-col items-center justify-center gap-0 relative z-10 px-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="relative flex items-center justify-center w-full max-w-5xl"
+        >
             <motion.div
-              className="relative w-full h-48 md:h-64 lg:h-[22rem]"
+              className="relative w-full h-52 md:h-72 lg:h-[24rem]"
               animate={isPulsing ? {
                 scale: [1, 1.02, 1],
               } : {
@@ -151,7 +149,7 @@ export function HeroSection() {
               </svg>
 
               {/* Analytics Text - Animates after logo assembly */}
-              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[50px] md:-mt-[75px] lg:-mt-[155px] -ml-[25px] md:-ml-[45px] lg:-ml-[80px]">
+              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[55px] md:-mt-[85px] lg:-mt-[170px] -ml-[28px] md:-ml-[50px] lg:-ml-[88px]">
                 {"Analytics".split("").map((char, index) => (
                   <motion.span
                     key={index}
@@ -169,33 +167,36 @@ export function HeroSection() {
                 ))}
               </div>
             </motion.div>
-          </motion.div>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center max-w-5xl mx-auto space-y-8 md:space-y-10 relative"
-          >
+        {/* Content - "Your data" text, CTA, etc. */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="w-full pt-0 pb-6 md:pb-8 -mt-4"
+        >
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center space-y-3 md:space-y-4 relative">
             {/* Glassmorphic Backdrop */}
             <div className="absolute inset-0 -z-10 bg-background/30 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl scale-[1.1] opacity-0 animate-in fade-in duration-1000 fill-mode-forwards" style={{ animationDelay: '1s' }} />
 
-            <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl">
+            <div className="relative pt-0 pb-3 px-6 sm:px-8 md:px-10 rounded-3xl">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 border border-border mb-4"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 border border-border mb-2"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 <span className="text-sm md:text-base font-bold uppercase tracking-[0.1em] text-foreground/80 drop-shadow-sm">MICROSOFT FABRIC & AI FOUNDRY SPECIALISTS</span>
               </motion.div>
 
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 md:mb-6 text-foreground drop-shadow-sm">
-                Your data wasn't built for <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent">what's coming.</span>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-2 md:mb-3 text-foreground drop-shadow-sm">
+                Your data wasn't built for<br /><span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent whitespace-nowrap">what's coming.</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-3 md:mb-4">
                 No rip-and-replace. We leverage your existing Microsoft<br className="hidden md:block" /> investment and build alongside you.
               </p>
 
@@ -203,7 +204,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="flex flex-col items-center gap-6 md:gap-8 justify-center pt-4"
+                className="flex flex-col items-center gap-3 md:gap-4 justify-center pt-2"
               >
                 <Link href="/assessment">
                   <Button variant="hero" size="xl" className="group text-lg px-8 shadow-lg shadow-mint/20">
@@ -233,8 +234,9 @@ export function HeroSection() {
                 </div>
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
+        </motion.div>
       </div>
     </section>
   );
