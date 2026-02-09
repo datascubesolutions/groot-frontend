@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import { ArrowRight, BarChart, CheckCircle2, Database, FileText, ShieldCheck, TrendingUp } from "lucide-react";
 import Link from "next/link";
-import { QuizModal } from "./QuizModal";
+
 
 export function DataReadinessSection() {
   return (
@@ -30,7 +30,7 @@ export function DataReadinessSection() {
               </p>
 
               <div className="flex flex-nowrap items-stretch gap-4 w-full sm:w-auto">
-                <QuizModal>
+                <Link href="/assessment">
                   <Button
                     variant="hero"
                     size="xl"
@@ -41,7 +41,7 @@ export function DataReadinessSection() {
                       <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" />
                     </span>
                   </Button>
-                </QuizModal>
+                </Link>
 
                 <Link href="/resources/ai-roadmap" className="flex-1 sm:flex-none">
                   <Button

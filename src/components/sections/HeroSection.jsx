@@ -205,7 +205,7 @@ export function HeroSection() {
                 transition={{ delay: 0.8 }}
                 className="flex flex-col items-center gap-6 md:gap-8 justify-center pt-4"
               >
-                <Link href="/contact">
+                <Link href="/assessment">
                   <Button variant="hero" size="xl" className="group text-lg px-8 shadow-lg shadow-mint/20">
                     Get Your Data Readiness Score
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
