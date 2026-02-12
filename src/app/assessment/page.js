@@ -26,7 +26,7 @@ export default function AssessmentPage() {
           </div>
 
           {/* Footer Info */}
-          <div className="mt-12 text-center text-slate-400 text-sm">
+          <div className="mt-12 text-center text-slate-600 text-sm font-medium">
             <p>© 2026 Groot Analytics. Your data is handled securely according to our Privacy Policy.</p>
           </div>
         </div>

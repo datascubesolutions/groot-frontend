@@ -41,7 +41,7 @@ function BrandItem({ brand, index }) {
   return (
     <div ref={ref} className="flex items-center flex-shrink-0">
       <div
-        className={`px-8 md:px-12 py-6 md:py-8 flex items-center justify-center group gap-4 transition-all duration-500 ${isFocused ? "scale-110" : "scale-100 opacity-90"
+        className={`px-8 md:px-12 py-4 md:py-6 flex items-center justify-center group gap-4 transition-all duration-500 ${isFocused ? "scale-110" : "scale-100 opacity-90"
           }`}
       >
         <img
@@ -70,7 +70,7 @@ export function ClientLogosSection() {
   const seamlessBrands = [...brands, ...brands, ...brands, ...brands];
 
   return (
-    <section className="section-padding bg-background border-b border-border/40 overflow-hidden">
+    <section className="py-1 md:py-4 bg-background border-b border-border/40 overflow-hidden">
       <div className="w-full relative">
         <div
           className="flex overflow-hidden relative z-10"

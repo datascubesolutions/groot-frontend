@@ -15,7 +15,7 @@ import {
   Mail,
   TrendingUp
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Question weights
 const WEIGHTS = {
@@ -123,87 +123,91 @@ const ScoreGauge = ({ score }) => {
   const needleRotation = (score / 100) * 180 - 90; // -90 to 90 degrees
 
   return (
-    <div className="relative w-full max-w-[300px] mx-auto aspect-[1.8/1] flex flex-col items-center justify-end overflow-hidden">
-      {/* Glow Effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-emerald-500/10 blur-[50px] rounded-full pointer-events-none" />
+    <div className="w-full max-w-[360px] mx-auto flex flex-col items-center gap-6">
+      <div className="relative w-full aspect-[2/1] rounded-3xl bg-white shadow-[0_18px_45px_rgba(15,23,42,0.10)] border border-slate-100 overflow-hidden">
+        {/* Glow Effect */}
+        <div className="absolute inset-x-6 bottom-0 h-32 bg-emerald-500/5 blur-3xl pointer-events-none" />
 
-      {/* SVG Arc */}
-      <div className="absolute top-0 left-0 w-full h-full z-10">
-        <svg viewBox="0 0 200 110" className="w-full h-full overflow-visible">
-          <defs>
-            <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#ef4444" /> {/* Red */}
-              <stop offset="25%" stopColor="#f97316" /> {/* Orange */}
-              <stop offset="50%" stopColor="#eab308" /> {/* Yellow */}
-              <stop offset="75%" stopColor="#84cc16" /> {/* Lime */}
-              <stop offset="100%" stopColor="#10b981" /> {/* Emerald */}
-            </linearGradient>
+        {/* SVG Arc */}
+        <div className="absolute inset-x-6 bottom-4 top-4">
+          <svg viewBox="0 0 200 110" className="w-full h-full overflow-visible">
+            <defs>
+              <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#ef4444" /> {/* Red */}
+                <stop offset="25%" stopColor="#f97316" /> {/* Orange */}
+                <stop offset="50%" stopColor="#eab308" /> {/* Yellow */}
+                <stop offset="75%" stopColor="#84cc16" /> {/* Lime */}
+                <stop offset="100%" stopColor="#10b981" /> {/* Emerald */}
+              </linearGradient>
 
-            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-              <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
 
-          {/* Background Track */}
-          <path
-            d="M 20 100 A 80 80 0 0 1 180 100"
-            fill="none"
-            stroke="#e2e8f0"
-            strokeWidth="16" // Thicker track
-            strokeLinecap="round"
-          />
+            {/* Background Track */}
+            <path
+              d="M 20 100 A 80 80 0 0 1 180 100"
+              fill="none"
+              stroke="#e2e8f0"
+              strokeWidth="18"
+              strokeLinecap="round"
+            />
 
-          {/* Colored Arc */}
-          <motion.path
-            d="M 20 100 A 80 80 0 0 1 180 100"
-            fill="none"
-            stroke="url(#gaugeGradient)"
-            strokeWidth="16"
-            strokeLinecap="round"
-            filter="url(#glow)"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, ease: "circOut", delay: 0.1 }}
-          />
+            {/* Colored Arc */}
+            <motion.path
+              d="M 20 100 A 80 80 0 0 1 180 100"
+              fill="none"
+              stroke="url(#gaugeGradient)"
+              strokeWidth="18"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.5, ease: "circOut", delay: 0.1 }}
+            />
 
-          {/* Ticks/Decorations */}
-          <g className="text-[8px] font-bold fill-slate-400 opacity-60">
-            <text x="20" y="118" textAnchor="middle">0</text>
-            <text x="100" y="15" textAnchor="middle">50</text>
-            <text x="180" y="118" textAnchor="middle">100</text>
-          </g>
-        </svg>
+            {/* Ticks/Decorations */}
+            <g className="text-[9px] font-semibold fill-slate-400 opacity-70">
+              <text x="20" y="118" textAnchor="middle">0</text>
+              <text x="100" y="20" textAnchor="middle">50</text>
+              <text x="180" y="118" textAnchor="middle">100</text>
+            </g>
+          </svg>
 
-        {/* Needle */}
-        <motion.div
-          className="absolute bottom-[2%] left-1/2 w-1.5 h-[45%] bg-slate-800 origin-bottom rounded-full z-20 shadow-lg"
-          style={{ translateX: "-50%" }}
-          initial={{ rotate: -90 }}
-          animate={{ rotate: needleRotation }}
-          transition={{ type: "spring", stiffness: 50, damping: 12, delay: 0.3 }}
-        >
-          <div className="w-4 h-4 rounded-full bg-slate-900 border-[3px] border-white absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-sm" />
-          <div className="w-8 h-8 rounded-full bg-slate-900 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 shadow-md z-10" />
-        </motion.div>
+          {/* Needle */}
+          <motion.div
+            className="absolute bottom-[6%] left-1/2 w-1.5 h-[48%] bg-slate-900 origin-bottom rounded-full z-20 shadow-lg shadow-slate-900/40"
+            style={{ translateX: "-50%" }}
+            initial={{ rotate: -90 }}
+            animate={{ rotate: needleRotation }}
+            transition={{ type: "spring", stiffness: 55, damping: 14, delay: 0.3 }}
+          >
+            <div className="w-4 h-4 rounded-full bg-slate-900 border-[3px] border-white absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-sm" />
+            <div className="w-9 h-9 rounded-full bg-slate-900 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 shadow-md z-10 border border-slate-700/60" />
+          </motion.div>
+        </div>
       </div>
 
       {/* Score Text */}
       <motion.div
-        className="relative z-20 text-center -mb-2"
+        className="text-center"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
       >
-        <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 block mb-0.5">Your Readiness Score</span>
-        <div className="flex items-baseline justify-center gap-1">
-          <motion.h1 className="text-4xl sm:text-5xl font-black text-slate-900 leading-none">
+        <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 block mb-1">
+          Your Readiness Score
+        </span>
+        <div className="flex items-baseline justify-center gap-1.5">
+          <motion.span className="text-5xl sm:text-6xl font-black text-slate-900 leading-none tabular-nums">
             {rounded}
-          </motion.h1>
-          <span className="text-xl text-slate-400 font-bold">/100</span>
+          </motion.span>
+          <span className="text-xl text-slate-400 font-semibold">/100</span>
         </div>
       </motion.div>
     </div>
@@ -218,20 +222,43 @@ export function QuizFlow({ onComplete }) {
   const [sendPdf, setSendPdf] = useState(true);
   const [score, setScore] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showNextStep, setShowNextStep] = useState(false);
+  const advanceTimeoutRef = useRef(null);
+
+  useEffect(() => () => {
+    if (advanceTimeoutRef.current) clearTimeout(advanceTimeoutRef.current);
+  }, []);
 
   const currentQuestion = QUIZ_DATA[currentQIndex];
   const progress = ((currentQIndex + 1) / QUIZ_DATA.length) * 100;
 
   const handleNext = () => {
+    setShowNextStep(false);
     if (currentQIndex < QUIZ_DATA.length - 1) {
-      setCurrentQIndex(currentQIndex + 1);
+      setCurrentQIndex((i) => i + 1);
     } else {
       setStep("email");
     }
   };
 
+  const handleAnswerSelect = (val) => {
+    if (advanceTimeoutRef.current) clearTimeout(advanceTimeoutRef.current);
+    setShowNextStep(false);
+    setAnswers((prev) => ({ ...prev, [currentQuestion.id]: val }));
+    const isLastQuestion = currentQIndex === QUIZ_DATA.length - 1;
+    advanceTimeoutRef.current = setTimeout(() => {
+      advanceTimeoutRef.current = null;
+      if (isLastQuestion) {
+        setStep("email");
+      } else {
+        setCurrentQIndex((i) => i + 1);
+      }
+    }, 500);
+  };
+
   const handleBack = () => {
     if (currentQIndex > 0) {
+      setShowNextStep(true);
       setCurrentQIndex(currentQIndex - 1);
     } else {
       setStep("intro");
@@ -367,7 +394,7 @@ export function QuizFlow({ onComplete }) {
 
       <RadioGroup
         value={answers[currentQuestion.id]}
-        onValueChange={(val) => setAnswers({ ...answers, [currentQuestion.id]: val })}
+        onValueChange={handleAnswerSelect}
         className="space-y-3 mb-10"
       >
         {currentQuestion.options.map((option) => (
@@ -418,14 +445,16 @@ export function QuizFlow({ onComplete }) {
           <ArrowLeft className="mr-2 w-4 h-4" />
           Back
         </Button>
-        <Button
-          onClick={handleNext}
-          disabled={!answers[currentQuestion.id]}
-          className="px-8 bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:translate-y-0 disabled:shadow-none"
-        >
-          {currentQIndex === QUIZ_DATA.length - 1 ? "See Results" : "Next Step"}
-          <ArrowRight className="ml-2 w-4 h-4" />
-        </Button>
+        {showNextStep && answers[currentQuestion.id] && (
+          <Button
+            onClick={handleNext}
+            size="sm"
+            className="px-6 bg-emerald-600 hover:bg-emerald-700 text-white"
+          >
+            {currentQIndex === QUIZ_DATA.length - 1 ? "See Results" : "Next Step"}
+            <ArrowRight className="ml-2 w-4 h-4" />
+          </Button>
+        )}
       </div>
     </div>
   );
@@ -515,10 +544,10 @@ export function QuizFlow({ onComplete }) {
         description: "Your data platform needs work before you can drive reliable insights or enable AI. You're not alone — most companies we work with start here.",
         issues: ["Platform fragmentation", "Pipeline reliability", "Data governance gaps"],
         solution: "We deploy Azure + Fabric + Purview to give you a governed, production-grade data platform.",
-        color: "text-orange-600",
-        bgColor: "bg-orange-50",
-        borderColor: "border-orange-200",
-        progressColor: "bg-orange-500"
+        color: "text-rose-600",
+        bgColor: "bg-white",
+        borderColor: "border-slate-200",
+        progressColor: "bg-rose-500"
       };
     } else if (score <= 65) {
       return {
@@ -528,8 +557,8 @@ export function QuizFlow({ onComplete }) {
         issues: ["Dashboards not trusted", "Self-service gaps", "Data quality concerns"],
         solution: "We build Power BI dashboards on a semantic layer your leadership will actually trust.",
         color: "text-amber-600",
-        bgColor: "bg-amber-50",
-        borderColor: "border-amber-200",
+        bgColor: "bg-white",
+        borderColor: "border-slate-200",
         progressColor: "bg-amber-500"
       };
     } else {
@@ -611,10 +640,10 @@ export function QuizFlow({ onComplete }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="p-8 rounded-3xl bg-slate-900 text-white mb-8 relative overflow-hidden group shadow-2xl ring-1 ring-white/10"
+          className="p-8 rounded-3xl bg-slate-900 text-white mb-8 relative overflow-hidden group shadow-2xl ring-1 ring-slate-900/10"
         >
           {/* Animated Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 z-0" />
           <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
             <TrendingUp size={140} />
           </div>

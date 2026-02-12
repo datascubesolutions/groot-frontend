@@ -44,7 +44,7 @@ export function ServicesSection() {
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-forest/10 blur-[120px] rounded-full" />
       </div>
 
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="container mx-auto container-padding relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12 space-y-4">
           <h2 className="heading-section">

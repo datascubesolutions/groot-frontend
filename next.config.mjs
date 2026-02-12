@@ -1,37 +1,43 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactCompiler: true,
-  
+
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
-  
+
   // Image optimization
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
-  
+
   // Experimental features
   experimental: {
     optimizePackageImports: ["@/components", "@/lib"],
     // Enable optimized route prefetching
     optimizeCss: true,
   },
-  
+
   // Optimize route prefetching
   // Next.js automatically prefetches routes in viewport, but we ensure it's enabled
   // File-based routing is already in use via App Router
-  
+
   // External packages (optional dependencies)
   // Mark Sentry as external so it doesn't try to bundle it
   serverExternalPackages: ["@sentry/nextjs"],
-  
+
   // Headers for security
   async headers() {
     const isProduction = process.env.NODE_ENV === "production";
-    
+
     const baseHeaders = [
       {
         key: "X-Content-Type-Options",

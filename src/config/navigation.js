@@ -77,16 +77,11 @@ export const NAVIGATION_CONFIG = {
       href: '/solutions',
       type: 'dropdown',
       items: [
+        { label: 'Overview', href: '/solutions' },
         { label: 'Data Analytics', href: '/solutions/data-analytics' },
         { label: 'IoT Solutions', href: '/solutions/iot' },
         { label: 'Mobile Apps', href: '/solutions/mobile' },
-      ]
-    },
-    {
-      label: 'Technologies',
-      href: '/technologies',
-      type: 'dropdown',
-      items: [
+        { label: 'Technologies', href: '/technologies' },
         { label: 'React / Next.js', href: '/technologies/react' },
         { label: 'Node.js', href: '/technologies/node' },
         { label: 'Python / AI', href: '/technologies/python' },

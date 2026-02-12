@@ -4,7 +4,9 @@ import {
   ABOUT_LINKS,
   ABOUT_STATS,
   SERVICE_CATEGORIES,
-  SERVICE_STATS
+  SERVICE_STATS,
+  SOLUTION_CATEGORIES,
+  SOLUTION_STATS,
 } from "@/lib/constants/navigation";
 import { motion } from "framer-motion";
 import {
@@ -15,12 +17,20 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 
-export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
-  // Initialize with the first category from the constant
-  const [activeCategory, setActiveCategory] = useState(SERVICE_CATEGORIES[0]);
+const MENU_CONFIG = {
+  Services: { categories: SERVICE_CATEGORIES, stats: SERVICE_STATS },
+  Solutions: { categories: SOLUTION_CATEGORIES, stats: SOLUTION_STATS },
+  "About Us": { categories: null, stats: ABOUT_STATS },
+};
 
-  const stats = menuType === "Services" ? SERVICE_STATS : ABOUT_STATS;
-  const title = menuType === "Services" ? "Our Services" : "About Us";
+export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
+  const config = MENU_CONFIG[menuType] || MENU_CONFIG.Services;
+  const categories = config?.categories ?? SERVICE_CATEGORIES;
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
+
+  const stats = config?.stats ?? SERVICE_STATS;
+  const title = menuType === "Services" ? "Our Services" : menuType === "Solutions" ? "Our Solutions" : "About Us";
+  const isCategoryMenu = menuType === "Services" || menuType === "Solutions";
 
   return (
     <motion.div
@@ -32,12 +42,12 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
       onMouseLeave={onClose}
     >
       <div className="container mx-auto">
-        {menuType === "Services" ? (
+        {isCategoryMenu ? (
           <div className="flex flex-col lg:flex-row min-h-[320px]">
             {/* Sidebar - Categories */}
             <div className="w-full lg:w-1/4 bg-muted/30 border-r border-border py-4">
               <div className="flex flex-col w-full px-3">
-                {SERVICE_CATEGORIES.map((category) => (
+                {categories.map((category) => (
                   <div
                     key={category.slug}
                     className={`flex items-center justify-between px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 mb-1 ${activeCategory.slug === category.slug
@@ -59,13 +69,12 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
               </div>
             </div>
 
-            {/* Middle - Sub-services */}
+            {/* Middle - Sub-items */}
             <div className="w-full lg:w-1/2 p-6 bg-background">
               <div className="h-full flex flex-col">
                 <div className="mb-6 pb-3 border-b border-border/50 flex justify-between items-end">
                   <div>
                     <h3 className="text-xl font-bold text-foreground mb-1 flex items-center gap-2">
-                      {/* Icon needs to be rendered as component */}
                       <activeCategory.icon size={22} className="text-primary" />
                       {activeCategory.title}
                     </h3>
@@ -81,19 +90,22 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
                 </div>
 
                 <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-                  {activeCategory.subServices.map((sub) => (
-                    <Link
-                      key={sub.slug}
-                      href={`${activeCategory.href}/${sub.slug}`}
-                      onClick={onClose}
-                      className="group flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-muted/40 transition-colors border border-transparent hover:border-border/50"
-                    >
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0" />
-                      <span className="text-sm font-medium text-foreground/80 group-hover:text-primary transition-colors line-clamp-1">
-                        {sub.title}
-                      </span>
-                    </Link>
-                  ))}
+                  {activeCategory.subServices.map((sub) => {
+                    const subHref = sub.slug ? `${activeCategory.href}/${sub.slug}` : activeCategory.href;
+                    return (
+                      <Link
+                        key={sub.slug || sub.title}
+                        href={subHref}
+                        onClick={onClose}
+                        className="group flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-muted/40 transition-colors border border-transparent hover:border-border/50"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0" />
+                        <span className="text-sm font-medium text-foreground/80 group-hover:text-primary transition-colors line-clamp-1">
+                          {sub.title}
+                        </span>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>

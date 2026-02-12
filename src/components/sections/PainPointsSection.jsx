@@ -57,7 +57,7 @@ export function PainPointsSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.4)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.4)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)] pointer-events-none" />
 
-      <div className="container relative z-10 mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="container relative z-10 mx-auto container-padding">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 md:gap-10 lg:grid-cols-12 lg:gap-8 lg:items-start">
             {/* Left column: Header + Pain points */}

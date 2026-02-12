@@ -90,7 +90,7 @@ export const ProcessTimelineSection = () => {
         <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-forest/10 rounded-full blur-[80px]" />
       </div>
 
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="container mx-auto container-padding relative z-10">
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
           <motion.div

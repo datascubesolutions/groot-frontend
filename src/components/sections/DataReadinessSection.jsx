@@ -13,7 +13,7 @@ export function DataReadinessSection() {
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.08)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="container mx-auto container-padding relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Split Layout */}
           <div className="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
