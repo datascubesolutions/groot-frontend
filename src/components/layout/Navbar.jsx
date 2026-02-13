@@ -121,7 +121,7 @@ export function Navbar() {
             onClose={() => setActiveDropdown(null)}
             menuType={activeDropdown}
           />
-        )}
+        )}  
       </AnimatePresence>
 
       {/* Mobile Menu */}
