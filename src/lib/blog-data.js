@@ -47,7 +47,7 @@ export const BLOG_POSTS = [
     `,
         category: "Technology",
         author: {
-            name: "Dr. Sarah Chen",
+            name: "Dr. Priya Sharma",
             role: "Chief Data Scientist",
             avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
         },
@@ -108,7 +108,7 @@ export const BLOG_POSTS = [
     `,
         category: "Strategy",
         author: {
-            name: "Michael Ross",
+            name: "Arjun Mehta",
             role: "VP of Engineering",
             avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
         },
@@ -146,7 +146,7 @@ export const BLOG_POSTS = [
     `,
         category: "Engineering",
         author: {
-            name: "David Kim",
+            name: "Vikram Patel",
             role: "Cloud Architect",
             avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
         },
@@ -183,7 +183,7 @@ export const BLOG_POSTS = [
     `,
         category: "Case Studies",
         author: {
-            name: "Emily White",
+            name: "Ananya Iyer",
             role: "Product Manager",
             avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop"
         },
@@ -219,7 +219,7 @@ export const BLOG_POSTS = [
     `,
         category: "Security",
         author: {
-            name: "Marcus Johnson",
+            name: "Rohan Desai",
             role: "Security Officer",
             avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&auto=format&fit=crop"
         },
@@ -256,7 +256,7 @@ export const BLOG_POSTS = [
     `,
         category: "Engineering",
         author: {
-            name: "Sarah Chen",
+            name: "Neha Kapoor",
             role: "Chief Data Scientist",
             avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
         },
@@ -293,7 +293,7 @@ export const BLOG_POSTS = [
     `,
         category: "Strategy",
         author: {
-            name: "Michael Ross",
+            name: "Aditya Nair",
             role: "VP of Engineering",
             avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
         },

@@ -109,8 +109,8 @@ function TableOfContents({ content }) {
   return (
     <nav className="space-y-1" aria-label="Table of contents">
       <div className="flex items-center gap-2 mb-4">
-        <Hash className="h-3.5 w-3.5 text-primary" />
-        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+        <Hash className="h-3.5 w-3.5" style={{ color: "hsl(168, 64%, 51%)" }} />
+        <span className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "hsl(200, 15%, 40%)" }}>
           On this page
         </span>
       </div>
@@ -124,9 +124,10 @@ function TableOfContents({ content }) {
           }}
           className={`block text-[13px] leading-snug py-1.5 border-l-2 transition-all duration-300 ${h.level === 3 ? "pl-6" : "pl-4"
             } ${activeId === h.id
-              ? "border-primary text-primary font-semibold"
-              : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
+              ? "border-primary font-semibold"
+              : "border-transparent hover:border-border"
             }`}
+          style={{ color: activeId === h.id ? "hsl(168, 64%, 51%)" : "hsl(200, 15%, 40%)" }}
         >
           {h.text}
         </a>
@@ -591,19 +592,18 @@ export function BlogDetailContent({ post, relatedPosts }) {
             </motion.div>
           </div>
 
-          {/* ── Sidebar ── */}
           <aside className="hidden lg:block lg:col-span-4">
-            <div className="sticky top-24 space-y-8">
+            <div className="sticky top-24 space-y-6">
               {/* TOC Card */}
-              <div className="rounded-2xl border border-border bg-card p-6">
+              <div className="rounded-2xl p-6" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
                 <TableOfContents content={post.content} />
               </div>
 
               {/* Share Card */}
-              <div className="rounded-2xl border border-border bg-card p-6">
+              <div className="rounded-2xl p-6" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
                 <div className="flex items-center gap-2 mb-4">
-                  <Share2 className="h-3.5 w-3.5 text-primary" />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                  <Share2 className="h-3.5 w-3.5" style={{ color: "hsl(168, 64%, 51%)" }} />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "hsl(200, 15%, 40%)" }}>
                     Share article
                   </span>
                 </div>
@@ -611,32 +611,33 @@ export function BlogDetailContent({ post, relatedPosts }) {
               </div>
 
               {/* Bookmark Card */}
-              <div className="rounded-2xl border border-border bg-card p-6">
-                <div className="flex items-center gap-3 cursor-pointer group">
-                  <div className="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center flex-shrink-0 group-hover:bg-forest/20 transition-colors">
-                    <Bookmark className="h-4 w-4 text-forest" />
+              <div className="rounded-2xl p-6 cursor-pointer group" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors" style={{ backgroundColor: "hsl(161, 88%, 16%, 0.1)" }}>
+                    <Bookmark className="h-4 w-4" style={{ color: "hsl(161, 88%, 16%)" }} />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-foreground">Save for later</p>
-                    <p className="text-xs text-muted-foreground">Bookmark this article</p>
+                    <p className="text-sm font-semibold" style={{ color: "hsl(200, 28%, 16%)" }}>Save for later</p>
+                    <p className="text-xs" style={{ color: "hsl(200, 15%, 40%)" }}>Bookmark this article</p>
                   </div>
                 </div>
               </div>
 
               {/* Discussion Card */}
-              <div className="rounded-2xl border border-border bg-card p-6">
+              <div className="rounded-2xl p-6" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
                 <div className="flex items-center gap-2 mb-4">
-                  <MessageCircle className="h-3.5 w-3.5 text-primary" />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                  <MessageCircle className="h-3.5 w-3.5" style={{ color: "hsl(168, 64%, 51%)" }} />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "hsl(200, 15%, 40%)" }}>
                     Join discussion
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "hsl(200, 15%, 40%)" }}>
                   Have thoughts on this article? Share your insights with the community.
                 </p>
                 <Button
                   variant="outline"
-                  className="w-full rounded-xl border-border hover:bg-primary/5 hover:border-primary/30 hover:text-primary transition-all text-sm h-10"
+                  className="w-full rounded-xl transition-all text-sm h-10"
+                  style={{ borderColor: "hsl(160, 20%, 90%)", color: "hsl(200, 28%, 16%)" }}
                 >
                   <MessageCircle className="h-3.5 w-3.5 mr-2" />
                   Leave a comment
@@ -644,15 +645,16 @@ export function BlogDetailContent({ post, relatedPosts }) {
               </div>
 
               {/* Related Topics */}
-              <div className="rounded-2xl border border-border bg-card p-6">
-                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground block mb-3">
+              <div className="rounded-2xl p-6" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
+                <span className="text-[11px] font-bold uppercase tracking-[0.18em] block mb-3" style={{ color: "hsl(200, 15%, 40%)" }}>
                   Related Topics
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {["Data Engineering", "Machine Learning", "Cloud Infrastructure", "Business Intelligence", post.category].map((topic) => (
                     <span
                       key={topic}
-                      className="px-3 py-1.5 rounded-lg text-xs font-medium bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-primary/10 hover:text-primary transition-all cursor-pointer"
+                      style={{ backgroundColor: "hsl(160, 20%, 94%)", color: "hsl(200, 15%, 40%)" }}
                     >
                       {topic}
                     </span>
