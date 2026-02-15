@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function VideoScrollSection() {
   const sectionRef = useRef(null);
   const videoWrapRef = useRef(null);
+  const videoRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -37,6 +38,25 @@ export default function VideoScrollSection() {
     return () => ctx.revert();
   }, []);
 
+  // IntersectionObserver: play/pause video when visible
+  useLayoutEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => { });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       ref={sectionRef}
@@ -50,38 +70,34 @@ export default function VideoScrollSection() {
       <div className="absolute top-0 inset-x-0 h-40 bg-[linear-gradient(to_right,hsl(var(--border)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.08)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black,transparent)] pointer-events-none" />
 
       <div className="h-full w-full flex items-center justify-center relative z-10">
-        {/*
-          GoodData Structure:
-          - Outer: .video-wrap with white BG, 12px padding, 30px radius, shadow
-          - Inner: video with 18px radius (30 - 12 = 18 for perfect nesting)
-        */}
         <div
           ref={videoWrapRef}
           className="will-change-transform backface-visibility-hidden transform-gpu bg-background p-3 md:p-4 rounded-3xl md:rounded-[2rem] shadow-2xl border border-border/50"
           style={{
-            width: "90%", // Wider base
-            maxWidth: "1600px", // Cap max width so it doesn't get too large on wide screens
-            height: "80vh", // Taller presence
+            width: "90%",
+            maxWidth: "1600px",
+            height: "80vh",
           }}
         >
           {/* Inner video container */}
           <div
             className="overflow-hidden w-full h-full"
             style={{
-              borderRadius: "18px", // 30 - 12 = 18 (perfect nested radius)
+              borderRadius: "18px",
             }}
           >
             <video
+              ref={videoRef}
               className="w-full h-full object-cover block"
               style={{
-                pointerEvents: "none", // Prevent interaction with video
+                pointerEvents: "none",
               }}
-              autoPlay
               muted
               loop
               playsInline
               disablePictureInPicture
               controlsList="nodownload nofullscreen noremoteplayback"
+              preload="none"
             >
               <source src="/video/homepage-hero.mp4" type="video/mp4" />
             </video>

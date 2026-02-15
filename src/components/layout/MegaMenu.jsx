@@ -38,22 +38,27 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.2 }}
-      className="absolute top-full left-0 w-full bg-background border-t border-border shadow-2xl z-50"
+      className="absolute top-full left-0 w-full bg-background shadow-2xl z-50"
+      style={{ borderTop: "2.5px solid hsl(168, 76%, 48%)" }}
       onMouseLeave={onClose}
     >
       <div className="container mx-auto">
         {isCategoryMenu ? (
           <div className="flex flex-col lg:flex-row min-h-[320px]">
             {/* Sidebar - Categories */}
-            <div className="w-full lg:w-1/4 bg-muted/30 border-r border-border py-4">
+            <div className="w-full lg:w-1/4 border-r border-border py-4" style={{ background: "hsl(160, 25%, 96%)" }}>
               <div className="flex flex-col w-full px-3">
                 {categories.map((category) => (
                   <div
                     key={category.slug}
                     className={`flex items-center justify-between px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 mb-1 ${activeCategory.slug === category.slug
-                      ? "bg-primary text-primary-foreground shadow-md transform scale-[1.02]"
-                      : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
+                      ? "text-white shadow-md transform scale-[1.02]"
+                      : "text-foreground/70 hover:text-foreground hover:bg-white/60"
                       }`}
+                    style={activeCategory.slug === category.slug ? {
+                      background: "linear-gradient(135deg, hsl(168, 76%, 46%), hsl(162, 82%, 18%))",
+                      boxShadow: "0 4px 14px hsl(168, 76%, 46%, 0.35)",
+                    } : {}}
                     onMouseEnter={() => setActiveCategory(category)}
                   >
                     <span className={`text-sm ${activeCategory.slug === category.slug ? "font-bold" : "font-semibold"}`}>
@@ -75,7 +80,7 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
                 <div className="mb-6 pb-3 border-b border-border/50 flex justify-between items-end">
                   <div>
                     <h3 className="text-xl font-bold text-foreground mb-1 flex items-center gap-2">
-                      <activeCategory.icon size={22} className="text-primary" />
+                      <activeCategory.icon size={22} style={{ color: "hsl(168, 76%, 44%)" }} />
                       {activeCategory.title}
                     </h3>
                     <p className="text-sm text-muted-foreground/80 line-clamp-1">{activeCategory.description}</p>
@@ -83,7 +88,11 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
                   <Link
                     href={activeCategory.href}
                     onClick={onClose}
-                    className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-xs font-bold hover:bg-primary/90 transition-all shadow-sm ml-4 shrink-0"
+                    className="flex items-center gap-2 px-4 py-1.5 rounded-full text-white text-xs font-bold hover:opacity-90 transition-all shadow-sm ml-4 shrink-0"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(168, 76%, 46%), hsl(162, 82%, 18%))",
+                      boxShadow: "0 2px 10px hsl(168, 76%, 46%, 0.3)",
+                    }}
                   >
                     View All <TrendingUp size={14} strokeWidth={2.5} />
                   </Link>
@@ -99,8 +108,8 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
                         onClick={onClose}
                         className="group flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-muted/40 transition-colors border border-transparent hover:border-border/50"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0" />
-                        <span className="text-sm font-medium text-foreground/80 group-hover:text-primary transition-colors line-clamp-1">
+                        <div className="w-1.5 h-1.5 rounded-full shrink-0 transition-colors" style={{ background: "hsl(168, 76%, 48%, 0.45)" }} />
+                        <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors line-clamp-1" style={{ '--tw-text-opacity': 1 }}>
                           {sub.title}
                         </span>
                       </Link>
@@ -111,11 +120,18 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
             </div>
 
             {/* Right - Stats */}
-            <div className="w-full lg:w-1/4 p-6 border-l border-border bg-muted/10 flex flex-col justify-center">
+            <div className="w-full lg:w-1/4 p-6 border-l border-border flex flex-col justify-center" style={{ background: "hsl(160, 25%, 96%)" }}>
               <div className="space-y-6">
                 {stats.map((stat) => (
                   <div key={stat.label} className="flex gap-4 items-center group">
-                    <div className="p-2.5 bg-background shadow-sm rounded-xl text-primary border border-border group-hover:border-primary/50 transition-colors">
+                    <div
+                      className="p-2.5 rounded-xl border transition-colors"
+                      style={{
+                        background: "white",
+                        borderColor: "hsl(168, 76%, 48%, 0.25)",
+                        color: "hsl(168, 76%, 40%)",
+                      }}
+                    >
                       <stat.icon size={20} strokeWidth={2} />
                     </div>
                     <div>
@@ -162,7 +178,9 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
                       className="group flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
                       onClick={onClose}
                     >
-                      <div className="mt-1 p-2 rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <div className="mt-1 p-2 rounded-md text-white group-hover:shadow-md transition-all"
+                        style={{ background: "linear-gradient(135deg, hsl(168, 76%, 46%), hsl(162, 82%, 20%))" }}
+                      >
                         <item.icon size={20} />
                       </div>
                       <div>
@@ -182,7 +200,7 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   {stats.map((stat) => (
                     <div key={stat.label} className="flex flex-col items-center text-center sm:items-start sm:text-left">
-                      <div className="mb-2 p-3 bg-primary/5 rounded-full text-primary">
+                      <div className="mb-2 p-3 rounded-full" style={{ background: "hsl(168, 76%, 48%, 0.1)", color: "hsl(168, 76%, 40%)" }}>
                         <stat.icon size={24} />
                       </div>
                       <div className="text-3xl font-bold text-foreground mb-1">

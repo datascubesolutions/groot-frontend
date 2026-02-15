@@ -335,7 +335,7 @@ export function BlogDetailContent({ post, relatedPosts }) {
         {/* Hero Image — full bleed */}
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="relative w-full aspect-[3/1] md:aspect-[3/1] lg:aspect-[3.5/1] min-h-[300px] max-h-[520px]"
+          className="relative w-full aspect-[2.8/1] md:aspect-[3/1] lg:aspect-[3.2/1] min-h-[340px] max-h-[560px]"
         >
           <Image
             src={post.image || "/images/placeholder.jpg"}
@@ -344,10 +344,30 @@ export function BlogDetailContent({ post, relatedPosts }) {
             className="object-cover"
             priority
             sizes="100vw"
+            style={{ filter: "brightness(1.05) contrast(1.05)" }}
           />
-          {/* Strong overlays for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-black/40 to-black/20" />
-          <div className="absolute inset-0 bg-black/30" />
+          {/* Cinematic gradient overlay — dark at bottom for text, transparent at top to show image */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `
+                linear-gradient(to top,
+                  rgba(0,0,0,0.88) 0%,
+                  rgba(0,0,0,0.65) 30%,
+                  rgba(0,0,0,0.30) 55%,
+                  rgba(0,0,0,0.10) 75%,
+                  rgba(0,0,0,0.05) 100%
+                )
+              `,
+            }}
+          />
+          {/* Subtle teal tint at the very bottom for brand continuity */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-[40%]"
+            style={{
+              background: "linear-gradient(to top, hsl(168, 64%, 15%, 0.25), transparent)",
+            }}
+          />
         </motion.div>
 
         {/* Hero Content */}
@@ -358,17 +378,17 @@ export function BlogDetailContent({ post, relatedPosts }) {
               initial="hidden"
               animate="visible"
               className="max-w-3xl pb-10 md:pb-14"
-              style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}
+              style={{ textShadow: "0 2px 20px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.5)" }}
             >
               {/* Back */}
               <Link
                 href="/blog"
                 className="group inline-flex items-center gap-2.5 text-sm font-medium mb-6"
-                style={{ color: "rgba(255,255,255,0.9)" }}
+                style={{ color: "#ffffff" }}
               >
                 <div
                   className="h-8 w-8 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-105"
-                  style={{ border: "1px solid rgba(255,255,255,0.3)", background: "rgba(0,0,0,0.3)", backdropFilter: "blur(12px)" }}
+                  style={{ border: "1px solid rgba(255,255,255,0.4)", background: "rgba(0,0,0,0.4)", backdropFilter: "blur(16px)" }}
                 >
                   <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" style={{ color: "white" }} />
                 </div>
@@ -380,10 +400,10 @@ export function BlogDetailContent({ post, relatedPosts }) {
                 <span
                   className="inline-block px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] uppercase rounded-full"
                   style={{
-                    border: "1px solid hsl(168 64% 51% / 0.6)",
-                    color: "hsl(168, 64%, 65%)",
-                    background: "rgba(0,0,0,0.4)",
-                    backdropFilter: "blur(12px)",
+                    border: "1px solid hsl(168 64% 51% / 0.7)",
+                    color: "hsl(168, 64%, 72%)",
+                    background: "rgba(0,0,0,0.45)",
+                    backdropFilter: "blur(16px)",
                   }}
                 >
                   {post.category}
@@ -391,12 +411,18 @@ export function BlogDetailContent({ post, relatedPosts }) {
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1] mb-4" style={{ color: "#ffffff" }}>
+              <h1
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1] mb-4"
+                style={{ color: "#ffffff", textShadow: "0 3px 24px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.8)" }}
+              >
                 {post.title}
               </h1>
 
               {/* Excerpt */}
-              <p className="text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: "rgba(255,255,255,0.85)" }}>
+              <p
+                className="text-base md:text-lg leading-relaxed max-w-2xl"
+                style={{ color: "rgba(255,255,255,0.95)", textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}
+              >
                 {post.excerpt}
               </p>
             </motion.div>
