@@ -4,6 +4,7 @@ import Footer from "@/components/sections/Footer";
 import { OrganizationSchema, WebsiteSchema } from "@/components/seo/StructuredData";
 import { METADATA } from "@/lib/constants";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { Toaster } from "sonner";
 import "./accessibility.css";
 import "./globals.css";
 
@@ -107,6 +108,7 @@ export default function RootLayout({ children }) {
             </PublicLayoutWrapper>
           </div>
         </ErrorBoundary>
+        <Toaster position="top-right" richColors theme="dark" />
       </body>
     </html>
   );
