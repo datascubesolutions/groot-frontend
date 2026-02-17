@@ -199,7 +199,7 @@ export function HowWeWorkSection() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className="group relative overflow-hidden rounded-2xl border-2 border-slate-200/80 bg-white p-6 shadow-lg shadow-slate-200/40">
+              <div className="group relative overflow-hidden rounded-2xl border-2 border-slate-200 bg-white p-6 shadow-md shadow-slate-200/60">
                 {/* Top accent - theme gradient */}
                 <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-forest via-primary to-forest" />
                 {/* Left accent stripe - theme gradient */}

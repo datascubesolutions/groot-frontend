@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import {
   BarChart3,
+  FileText,
   LayoutDashboard,
   LogOut,
   Settings,
@@ -15,13 +16,18 @@ import { usePathname, useRouter } from "next/navigation";
 const navItems = [
   {
     title: "Dashboard",
-    href: "/admin",
+    href: "/admin/dashboard",
     icon: LayoutDashboard
   },
   {
     title: "Contacts",
     href: "/admin/contacts",
     icon: Users
+  },
+  {
+    title: "Blog",
+    href: "/admin/blogs",
+    icon: FileText
   },
   {
     title: "Analytics",

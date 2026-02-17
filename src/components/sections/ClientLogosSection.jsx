@@ -15,14 +15,14 @@ function BrandItem({ brand }) {
   return (
     <div className="flex items-center flex-shrink-0">
       <div
-        className="px-8 md:px-12 py-4 md:py-6 flex items-center justify-center group gap-4 transition-all duration-500 scale-100 opacity-90 hover:scale-110 hover:opacity-100"
+        className="px-4 md:px-12 py-3 md:py-6 flex items-center justify-center group gap-3 md:gap-4 transition-all duration-500 scale-100 opacity-90 hover:scale-110 hover:opacity-100"
       >
         <Image
           src={brand.logo}
           alt={`${brand.name} logo`}
           width={36}
           height={36}
-          className="h-9 w-auto object-contain transition-all duration-500 filter grayscale-[100%] contrast-125 opacity-100 group-hover:grayscale-0 group-hover:contrast-100 group-hover:opacity-100"
+          className="h-6 md:h-9 w-auto object-contain transition-all duration-500 filter grayscale-[100%] contrast-125 opacity-100 group-hover:grayscale-0 group-hover:contrast-100 group-hover:opacity-100"
         />
         <h3
           className="text-xl font-medium transition-colors duration-500 text-center text-nowrap tracking-tight text-muted-foreground group-hover:text-foreground"

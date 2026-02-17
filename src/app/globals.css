@@ -145,7 +145,7 @@
 @layer components {
   /* Section spacing – 8px grid, tighter gaps between sections */
   .section-padding {
-    @apply py-12 md:py-16;
+    @apply py-8 md:py-16;
   }
 
   .container-padding {
@@ -262,4 +262,112 @@
   .animate-shimmer {
     animation: shimmer 2s infinite;
   }
+}
+
+/* ── Markdown Preview Styles ─────────────────────────────────────────────── */
+.markdown-preview {
+  color: #d1d5db;
+  line-height: 1.75;
+}
+
+.markdown-preview .md-h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 1.25rem 0 0.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.markdown-preview .md-h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f3f4f6;
+  margin: 1rem 0 0.5rem;
+  line-height: 1.35;
+}
+
+.markdown-preview .md-h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin: 0.75rem 0 0.4rem;
+}
+
+.markdown-preview .md-p {
+  margin: 0.4rem 0;
+}
+
+.markdown-preview .md-ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.markdown-preview .md-ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.markdown-preview .md-ul li,
+.markdown-preview .md-ol li {
+  margin: 0.25rem 0;
+  padding-left: 0.25rem;
+}
+
+.markdown-preview .md-blockquote {
+  border-left: 3px solid rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1rem;
+  margin: 0.75rem 0;
+  color: #9ca3af;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.markdown-preview .md-inline-code {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-family: monospace;
+  font-size: 0.85em;
+  color: #a5b4fc;
+}
+
+.markdown-preview .md-codeblock {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: 0.85em;
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+.markdown-preview .md-link {
+  color: #6ee7b7;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.markdown-preview .md-link:hover {
+  color: #a7f3d0;
+}
+
+.markdown-preview .md-hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 1.25rem 0;
+}
+
+.markdown-preview .md-img {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0.75rem 0;
 }

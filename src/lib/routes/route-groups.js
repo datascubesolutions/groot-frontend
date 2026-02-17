@@ -1,9 +1,9 @@
 /**
  * Route Groups Configuration
- * 
+ *
  * Defines route groups for organizing pages in the app directory.
  * Route groups use parentheses in folder names and don't affect URL structure.
- * 
+ *
  * @example
  * (public) - Public pages
  * (app) - Authenticated application pages

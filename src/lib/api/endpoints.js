@@ -48,10 +48,9 @@ export const API_ENDPOINTS = {
 
     // Blog
     BLOG: {
-        LIST: '/blog/posts',
-        DETAIL: (slug) => `/blog/posts/${slug}`,
-        CATEGORIES: '/blog/categories',
-        TAGS: '/blog/tags',
+        CREATE: 'https://us-central1-datascube-2b74e.cloudfunctions.net/blog_create',
+        LIST: 'https://us-central1-datascube-2b74e.cloudfunctions.net/blog_list',
+        GET: 'https://us-central1-datascube-2b74e.cloudfunctions.net/blog_get',
     },
 
     // Projects

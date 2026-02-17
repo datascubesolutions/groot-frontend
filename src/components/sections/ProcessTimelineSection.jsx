@@ -98,9 +98,9 @@ export const ProcessTimelineSection = () => {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block mb-4 px-4 py-2 rounded-full border border-primary/20 bg-primary/5"
+              className="inline-block mb-4 px-4 py-2 rounded-full border border-primary/30 bg-primary/10"
             >
-              <span className="text-xs font-semibold text-primary tracking-widest uppercase">The Neural Process</span>
+              <span className="text-xs font-bold text-primary tracking-widest uppercase">The Neural Process</span>
             </m.div>
             <m.h2
               initial={{ opacity: 0, scale: 0.95 }}
@@ -116,7 +116,7 @@ export const ProcessTimelineSection = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-foreground/85 font-medium leading-relaxed max-w-2xl mx-auto"
+              className="text-lg text-foreground/90 md:text-foreground/85 font-medium leading-relaxed max-w-2xl mx-auto"
             >
               Whether you are starting from zero or optimizing for AI, we have a roadmap for you.
             </m.p>
@@ -180,7 +180,7 @@ const StepCard = ({ step, index }) => {
             style={{ background: `radial-gradient(circle at center, ${step.color}15, transparent 70%)` }}
           />
 
-          <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start">
+          <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start min-w-0">
             <div
               className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300"
               style={{ background: `linear-gradient(135deg, ${step.color}20, ${step.color}10)`, border: `1px solid ${step.color}30` }}
@@ -190,7 +190,7 @@ const StepCard = ({ step, index }) => {
 
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-1.5">
-                <span className="text-3xl font-bold text-foreground/25 font-serif">{step.id}</span>
+                <span className="text-3xl font-bold text-foreground/50 md:text-foreground/25 font-serif">{step.id}</span>
                 <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: step.color }}>
                   {step.subtitle}
                 </span>

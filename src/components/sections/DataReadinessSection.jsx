@@ -25,32 +25,32 @@ export function DataReadinessSection() {
                   Not sure where to start?
                 </h2>
 
-                <p className="text-xl text-muted-foreground leading-relaxed mb-8 md:mb-10 max-w-2xl">
+                <p className="text-xl text-foreground/85 md:text-muted-foreground font-medium md:font-normal leading-relaxed mb-8 md:mb-10 max-w-2xl">
                   Take our 2-minute <span className="text-secondary font-semibold">Data Readiness Assessment</span>.
                   You'll get a comprehensive score, a recommended starting point, and a roadmap tailored to your maturity level.
                 </p>
 
-                <div className="flex flex-nowrap items-stretch gap-4 w-full sm:w-auto">
-                  <Link href="/assessment">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-3xl">
+                  <Link href="/assessment" className="w-full">
                     <Button
                       variant="hero"
                       size="xl"
-                      className="flex-1 sm:flex-none w-full sm:w-auto h-auto min-h-[3.5rem] py-3 px-3 sm:px-8 whitespace-normal text-center leading-tight shadow-xl shadow-forest/20 group font-bold tracking-wide cursor-pointer"
+                      className="w-full h-auto min-h-[4rem] py-4 px-6 text-base md:text-lg text-center leading-tight shadow-xl shadow-forest/20 group font-bold tracking-wide cursor-pointer"
                     >
-                      <span className="flex items-center justify-center gap-2">
-                        Get Your Data Readiness Score
+                      <span className="flex items-center justify-center gap-3">
+                        Data Readiness Score
                         <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" />
                       </span>
                     </Button>
                   </Link>
 
-                  <Link href="/resources/ai-roadmap" className="flex-1 sm:flex-none">
+                  <Link href="/resources/ai-roadmap" className="w-full">
                     <Button
                       variant="hero-outline"
                       size="xl"
-                      className="w-full sm:w-auto h-auto min-h-[3.5rem] py-3 px-3 sm:px-8 whitespace-normal text-center leading-tight bg-card hover:bg-secondary/5 border-2 text-forest hover:text-forest font-bold shadow-sm transition-all duration-300"
+                      className="w-full h-auto min-h-[4rem] py-4 px-6 text-base md:text-lg text-center leading-tight bg-card hover:bg-secondary/5 border-2 text-forest hover:text-forest font-bold shadow-sm transition-all duration-300"
                     >
-                      <span className="flex items-center justify-center gap-2">
+                      <span className="flex items-center justify-center gap-3">
                         <FileText className="w-5 h-5 shrink-0" />
                         Download AI Roadmap
                       </span>
@@ -59,7 +59,7 @@ export function DataReadinessSection() {
                 </div>
 
                 {/* Trust Indicators */}
-                <div className="mt-8 md:mt-10 flex flex-wrap gap-4 md:gap-6 text-sm text-muted-foreground font-medium">
+                <div className="mt-8 md:mt-10 flex flex-wrap gap-4 md:gap-6 text-sm text-foreground/70 md:text-muted-foreground font-medium">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-primary" />
                     Free & Instant
@@ -84,7 +84,7 @@ export function DataReadinessSection() {
                   whileInView={{ y: 0, rotateX: 0, opacity: 1 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="relative w-full max-w-md bg-card rounded-2xl shadow-2xl border border-border overflow-hidden"
+                  className="relative w-full max-w-md mx-auto lg:mx-0 bg-card rounded-2xl shadow-2xl border border-border overflow-hidden"
                 >
                   {/* Card Header */}
                   <div className="bg-charcoal px-6 py-4 flex items-center justify-between">

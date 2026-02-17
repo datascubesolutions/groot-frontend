@@ -4,28 +4,93 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import { BlogControls } from "@/components/blog/BlogControls";
 import { BlogPageHeader } from "@/components/blog/BlogPageHeader";
 import { FeaturedPost } from "@/components/blog/FeaturedPost";
+import { BlogSkeleton } from "@/components/skeletons/BlogSkeleton";
 import { Button } from "@/components/ui/Button";
 import { BLOG_POSTS, CATEGORIES } from "@/lib/blog-data";
+import { blogService } from "@/services/blogService";
 import { AnimatePresence, motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function BlogListingPage() {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
+    const [apiPosts, setApiPosts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const postsPerPage = 6;
+
+    // Fetch API Posts
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const response = await blogService.list({ limit: 100 });
+                // Handle nested structure: response.result.data.blogs
+                const posts = response?.result?.data?.blogs || response?.result?.blogs || response?.blogs || [];
+
+                // Map API posts to match static data structure
+                const mappedPosts = posts.map(post => ({
+                    id: post.id,
+                    slug: post.slug,
+                    title: post.title,
+                    excerpt: post.excerpt,
+                    content: post.content,
+                    category: post.category ?
+                        post.category.charAt(0).toUpperCase() + post.category.slice(1).toLowerCase()
+                        : "General",
+                    author: {
+                        name: post.author?.name || "Groot Team",
+                        role: post.author?.designation || "Contributor",
+                        avatar: post.author?.avatar || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
+                    },
+                    date: post.createdAt?._seconds
+                        ? new Date(post.createdAt._seconds * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+                        : "Recently",
+                    readTime: post.readTime || "5 min read",
+                    image: post.coverImage || "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2600&auto=format&fit=crop",
+                    featured: post.isFeatured || false
+                }));
+
+                setApiPosts(mappedPosts);
+            } catch (error) {
+                console.error("Failed to fetch blog posts:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchPosts();
+    }, []);
+
+    // Helper to normalize text for comparison
+    const normalize = (text) => text?.toLowerCase().trim() || "";
+
+    // Combine Static & API Posts
+    const allPosts = useMemo(() => {
+        // Filter out published posts only if API returns status (assuming API returns all)
+        // For now, we just merge all. In a real app, we'd filter by status === 'PUBLISHED'
+        return [...apiPosts, ...BLOG_POSTS];
+    }, [apiPosts]);
+
+    // Derived Categories
+    const allCategories = useMemo(() => {
+        const cats = new Set(CATEGORIES);
+        apiPosts.forEach(post => {
+            if (post.category) cats.add(post.category);
+        });
+        return Array.from(cats);
+    }, [apiPosts]);
 
     // Filter Logic
     const filteredPosts = useMemo(() => {
-        return BLOG_POSTS.filter((post) => {
+        return allPosts.filter((post) => {
             const matchesCategory =
-                selectedCategory === "All" || post.category === selectedCategory;
+                selectedCategory === "All" || normalize(post.category) === normalize(selectedCategory);
             const matchesSearch =
-                post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+                normalize(post.title).includes(normalize(searchTerm)) ||
+                normalize(post.excerpt).includes(normalize(searchTerm));
             return matchesCategory && matchesSearch;
         });
-    }, [selectedCategory, searchTerm]);
+    }, [selectedCategory, searchTerm, allPosts]);
 
     // Featured Post Logic
     const showFeatured =
@@ -44,6 +109,10 @@ export default function BlogListingPage() {
         currentPage * postsPerPage
     );
 
+    if (isLoading) {
+        return <BlogSkeleton />;
+    }
+
     return (
         <main className="min-h-screen bg-background pb-32" role="main" id="blog-content">
             <BlogPageHeader />
@@ -53,7 +122,7 @@ export default function BlogListingPage() {
                 {/* Controls - Floating & Clean */}
                 <div className="mb-4">
                     <BlogControls
-                        categories={CATEGORIES}
+                        categories={allCategories}
                         selectedCategory={selectedCategory}
                         onSelectCategory={(cat) => {
                             setSelectedCategory(cat);
@@ -143,33 +212,40 @@ export default function BlogListingPage() {
                     <div className="mt-24 flex items-center justify-center gap-4">
                         <Button
                             variant="outline"
+                            size="icon"
                             disabled={currentPage === 1}
                             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                            className="rounded-full w-12 h-12 p-0"
+                            className="rounded-full w-10 h-10 border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5 disabled:opacity-30"
                         >
+                            <span className="sr-only">Previous</span>
                             &larr;
                         </Button>
 
                         <div className="flex items-center gap-2">
                             {Array.from({ length: totalPages }).map((_, i) => (
-                                <button
+                                <Button
                                     key={i}
+                                    variant={currentPage === i + 1 ? "default" : "outline"}
+                                    size="icon"
                                     onClick={() => setCurrentPage(i + 1)}
-                                    className={`h-2 w-2 rounded-full transition-all duration-300 ${currentPage === i + 1
-                                        ? "bg-primary w-8"
-                                        : "bg-muted-foreground/30 hover:bg-primary/50"
+                                    className={`w-10 h-10 rounded-full font-semibold transition-all duration-300 ${currentPage === i + 1
+                                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90 hover:-translate-y-0.5"
+                                        : "border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5"
                                         }`}
-                                    aria-label={`Page ${i + 1}`}
-                                />
+                                >
+                                    {i + 1}
+                                </Button>
                             ))}
                         </div>
 
                         <Button
                             variant="outline"
+                            size="icon"
                             disabled={currentPage === totalPages}
                             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                            className="rounded-full w-12 h-12 p-0"
+                            className="rounded-full w-10 h-10 border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5 disabled:opacity-30"
                         >
+                            <span className="sr-only">Next</span>
                             &rarr;
                         </Button>
                     </div>

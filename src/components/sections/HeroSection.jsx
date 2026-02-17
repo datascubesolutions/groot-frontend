@@ -10,6 +10,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { logoPaths } from "./logoData";
 
 export function HeroSection() {
+  const [textAnimationDone, setTextAnimationDone] = useState(false);
   const [isAssembled, setIsAssembled] = useState(false);
   const [isPulsing, setIsPulsing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -78,7 +79,7 @@ export function HeroSection() {
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <section className="relative h-screen min-h-[100dvh] flex flex-col overflow-y-auto overflow-x-hidden pt-20">
+      <section className="relative h-screen min-h-[100dvh] flex flex-col overflow-y-auto overflow-x-hidden pt-28 md:pt-20">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-background">
           {/* Particles deferred until assembly completes to free main thread */}
@@ -105,7 +106,7 @@ export function HeroSection() {
             className="relative flex items-center justify-center w-full max-w-5xl"
           >
             <m.div
-              className="relative w-full h-52 md:h-72 lg:h-[24rem]"
+              className="relative w-full aspect-[12/7] md:h-72 lg:h-[24rem]"
               animate={isPulsing ? {
                 scale: [1, 1.02, 1],
               } : {
@@ -175,7 +176,7 @@ export function HeroSection() {
               </svg>
 
               {/* Analytics Text - Animates after logo assembly */}
-              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[55px] md:-mt-[85px] lg:-mt-[170px] -ml-[28px] md:-ml-[50px] lg:-ml-[88px]">
+              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[14%] md:-mt-[85px] lg:-mt-[170px] -ml-[7%] md:-ml-[50px] lg:-ml-[88px]">
                 {"Analytics".split("").map((char, index) => (
                   <m.span
                     key={index}
@@ -200,6 +201,8 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
+            style={{ transform: textAnimationDone ? "none" : undefined }}
+            onAnimationComplete={() => setTextAnimationDone(true)}
             className="w-full pt-0 pb-6 md:pb-8 -mt-4"
           >
             <div className="container mx-auto max-w-5xl">
@@ -218,11 +221,11 @@ export function HeroSection() {
                     <span className="text-sm md:text-base font-bold uppercase tracking-[0.1em] text-foreground/80 drop-shadow-sm">MICROSOFT FABRIC & AI FOUNDRY SPECIALISTS</span>
                   </m.div>
 
-                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-2 md:mb-3 text-foreground drop-shadow-sm">
+                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-2 md:mb-3 text-foreground">
                     Your data wasn't built for<br /><span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent whitespace-nowrap">what's coming.</span>
                   </h1>
 
-                  <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-3 md:mb-4">
+                  <p className="text-lg md:text-xl text-foreground/80 md:text-muted-foreground font-medium md:font-normal max-w-3xl mx-auto leading-relaxed mb-3 md:mb-4">
                     No rip-and-replace. We leverage your existing Microsoft<br className="hidden md:block" /> investment and build alongside you.
                   </p>
 
@@ -240,7 +243,7 @@ export function HeroSection() {
                     </Link>
 
                     {/* Tech Strip - Logos + Text (matches hero badge styling) */}
-                    <div className="inline-flex flex-wrap items-center justify-center gap-6 md:gap-8 px-5 py-3 rounded-full bg-muted/50 border border-border/60 text-sm md:text-base font-medium text-foreground/75">
+                    <div className="inline-flex flex-wrap items-center justify-center gap-4 md:gap-8 px-5 py-3 rounded-full bg-muted/50 border border-border/60 text-sm md:text-base font-medium text-foreground/75">
                       <div className="flex items-center gap-2">
                         <Image src="/svg/azure-2.svg" alt="Azure" width={24} height={24} className="h-5 md:h-6 w-auto object-contain opacity-90" />
                         <span>Azure</span>

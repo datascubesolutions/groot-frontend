@@ -60,11 +60,11 @@ export function ServicesSection() {
         */}
           <div className="w-full flex justify-center">
             <div className="relative transform transition-transform duration-300 lg:scale-[0.80] xl:scale-[0.90] 2xl:scale-100 lg:origin-top">
-              <div className="flex flex-col lg:flex-row justify-center items-center mx-auto rounded-2xl p-6 md:p-8 gap-8 lg:gap-0 flex-nowrap">
+              <div className="flex flex-col lg:flex-row justify-center items-center mx-auto rounded-2xl p-6 md:p-8 gap-6 md:gap-8 lg:gap-0 flex-nowrap">
 
                 {/* Card 1 (Left) */}
-                <div className="relative z-40 w-full max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-6 bg-card/80 border-0 shadow-sm transition-all duration-300 hover:shadow-md group overflow-visible flex-shrink-0">
-                  <div className="absolute inset-0 pointer-events-none z-0">
+                <div className="relative z-40 w-full max-w-sm lg:max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-6 bg-card md:bg-card/80 border-0 shadow-sm transition-all duration-300 hover:shadow-md group overflow-visible flex-shrink-0">
+                  <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
                     <svg className="w-full h-full overflow-visible" viewBox="0 0 288 448">
                       <defs>
                         <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -114,7 +114,7 @@ export function ServicesSection() {
                       </p>
                     </div>
 
-                    <p className="max-w-sm text-center leading-relaxed text-muted-foreground text-sm">{cards[0].description}</p>
+                    <p className="max-w-sm text-center leading-relaxed text-foreground/80 md:text-muted-foreground font-medium md:font-normal text-sm">{cards[0].description}</p>
                     <Link href={cards[0].link || "#"}>
                       <button className="mt-2 text-forest-foreground bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
                         Learn More
@@ -124,8 +124,8 @@ export function ServicesSection() {
                 </div>
 
                 {/* Card 2 (Middle) */}
-                <div className="relative z-30 w-full max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-6 bg-card/80 border-0 shadow-sm transition-all duration-300 hover:shadow-md overflow-visible flex-shrink-0">
-                  <div className="absolute inset-0 pointer-events-none z-0">
+                <div className="relative z-30 w-full max-w-sm lg:max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-6 bg-card md:bg-card/80 border-0 shadow-sm transition-all duration-300 hover:shadow-md overflow-visible flex-shrink-0">
+                  <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
                     <svg className="w-full h-full overflow-visible" viewBox="0 0 288 448">
                       <m.path
                         d="M 0 0 H 288 V 100"
@@ -169,7 +169,7 @@ export function ServicesSection() {
                         {cards[1].subtitle}
                       </p>
                     </div>
-                    <p className="max-w-sm text-center leading-relaxed text-muted-foreground text-sm">{cards[1].description}</p>
+                    <p className="max-w-sm text-center leading-relaxed text-foreground/80 md:text-muted-foreground font-medium md:font-normal text-sm">{cards[1].description}</p>
                     <Link href={cards[1].link || "#"}>
                       <button className="mt-2 text-forest-foreground bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
                         Learn More
@@ -180,8 +180,8 @@ export function ServicesSection() {
 
 
                 {/* Card 3 (Right) - Using the "Closing" SVG style */}
-                <div className="relative z-10 w-full max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg p-6 bg-card/80 border-0 shadow-sm transition-all duration-300 hover:shadow-md overflow-visible flex-shrink-0">
-                  <div className="absolute inset-0 pointer-events-none z-0">
+                <div className="relative z-10 w-full max-w-sm lg:max-w-[18rem] lg:w-[18rem] h-[28rem] rounded-lg p-6 bg-card md:bg-card/80 border-0 shadow-sm transition-all duration-300 hover:shadow-md overflow-visible flex-shrink-0">
+                  <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
                     <svg className="w-full h-full overflow-visible" viewBox="0 0 288 448">
                       <m.path
                         d="M 0 0 H 288 V 448 H 0 V 348"
@@ -212,7 +212,7 @@ export function ServicesSection() {
                         {cards[2].subtitle}
                       </p>
                     </div>
-                    <p className="max-w-sm text-center leading-relaxed text-muted-foreground text-sm">{cards[2].description}</p>
+                    <p className="max-w-sm text-center leading-relaxed text-foreground/80 md:text-muted-foreground font-medium md:font-normal text-sm">{cards[2].description}</p>
                     <Link href={cards[2].link || "#"}>
                       <button className="mt-2 text-forest-foreground bg-forest hover:bg-forest/90 transition-colors duration-300 px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl font-medium text-sm tracking-wide">
                         Learn More

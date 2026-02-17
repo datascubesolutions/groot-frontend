@@ -19,7 +19,7 @@ import {
   Share2,
   Twitter,
 } from "lucide-react";
-import Image from "next/image";
+
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { RelatedPosts } from "./RelatedPosts";
@@ -337,13 +337,10 @@ export function BlogDetailContent({ post, relatedPosts }) {
           style={{ y: heroY, opacity: heroOpacity }}
           className="relative w-full aspect-[2.8/1] md:aspect-[3/1] lg:aspect-[3.2/1] min-h-[340px] max-h-[560px]"
         >
-          <Image
+          <img
             src={post.image || "/images/placeholder.jpg"}
             alt={post.title}
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
+            className="h-full w-full object-cover"
             style={{ filter: "brightness(1.05) contrast(1.05)" }}
           />
           {/* Cinematic gradient overlay — dark at bottom for text, transparent at top to show image */}
@@ -445,7 +442,7 @@ export function BlogDetailContent({ post, relatedPosts }) {
               <div className="h-11 w-11 rounded-full bg-gradient-to-br from-primary to-forest p-[2px] shadow-sm flex-shrink-0">
                 <div className="h-full w-full rounded-full bg-card overflow-hidden relative">
                   {post.author.avatar ? (
-                    <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
+                    <img src={post.author.avatar} alt={post.author.name} className="h-full w-full object-cover" />
                   ) : (
                     <div className="h-full w-full flex items-center justify-center bg-primary/10">
                       <span className="font-bold text-primary">{post.author.name.charAt(0)}</span>
@@ -538,7 +535,7 @@ export function BlogDetailContent({ post, relatedPosts }) {
                   <div className="h-16 w-16 sm:h-[72px] sm:w-[72px] rounded-2xl bg-gradient-to-br from-primary to-forest p-[2px] flex-shrink-0 shadow-md">
                     <div className="h-full w-full rounded-[14px] bg-card overflow-hidden relative">
                       {post.author.avatar ? (
-                        <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
+                        <img src={post.author.avatar} alt={post.author.name} className="h-full w-full object-cover" />
                       ) : (
                         <div className="h-full w-full flex items-center justify-center bg-primary/10">
                           <span className="font-bold text-primary text-2xl">{post.author.name.charAt(0)}</span>

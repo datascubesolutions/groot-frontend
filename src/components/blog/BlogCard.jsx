@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 export function BlogCard({ post }) {
@@ -14,12 +13,10 @@ export function BlogCard({ post }) {
             <article className="h-full flex flex-col gap-4">
                 {/* Image Container - Clean & Rounded */}
                 <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl bg-muted">
-                    <Image
+                    <img
                         src={post.image || "/images/placeholder.jpg"}
                         alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     {/* Subtle Overlay on Hover */}
                     <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/10" />
@@ -54,13 +51,11 @@ export function BlogCard({ post }) {
                     {/* Author - Minimal */}
                     <div className="mt-auto pt-4 flex items-center justify-between">
                         <div className="flex items-center gap-2.5">
-                            <div className="h-6 w-6 rounded-full bg-muted overflow-hidden">
+                            <div className="h-6 w-6 rounded-full bg-muted overflow-hidden flex items-center justify-center">
                                 {post.author.avatar ? (
-                                    <Image
+                                    <img
                                         src={post.author.avatar}
                                         alt={post.author.name}
-                                        width={24}
-                                        height={24}
                                         className="h-full w-full object-cover"
                                     />
                                 ) : (

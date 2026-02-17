@@ -90,7 +90,7 @@ export const ProductSection = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 + index * 0.05 }}
-                className="flex items-start gap-4 p-5 rounded-xl hover:bg-muted/50 hover:shadow-md transition-all duration-300 group"
+                className="flex items-start gap-4 p-5 rounded-xl bg-muted/20 border border-border/40 md:bg-transparent md:border-0 hover:bg-muted/50 hover:shadow-md transition-all duration-300 group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                   <div className="w-3 h-3 rounded-full bg-primary" />

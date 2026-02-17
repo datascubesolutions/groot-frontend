@@ -97,7 +97,7 @@ export function PainPointsSection() {
                       </h2>
                     </div>
                   </div>
-                  <p className="text-xl font-medium leading-relaxed text-muted-foreground md:text-2xl">
+                  <p className="text-xl font-medium leading-relaxed text-foreground/80 md:text-muted-foreground md:text-2xl">
                     We&apos;ve seen all three. Let&apos;s figure out which one you&apos;re facing.
                   </p>
                 </m.div>
@@ -108,14 +108,14 @@ export function PainPointsSection() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-50px" }}
-                  className="space-y-2"
+                  className="space-y-3 md:space-y-2"
                 >
                   {painPoints.map((point, index) => (
                     <m.div
                       key={point.id}
                       variants={itemVariants}
                       transition={{ duration: 0.35, ease: "easeOut" }}
-                      className="group flex items-start gap-4 rounded-xl py-4 md:py-5 px-4 md:px-5 -mx-4 md:-mx-5 transition-colors hover:bg-card/80"
+                      className="group flex items-start gap-4 rounded-xl py-4 md:py-5 px-4 md:px-5 -mx-4 md:-mx-5 transition-colors bg-muted/30 border border-border/40 md:bg-transparent md:border-0 hover:bg-card/80"
                     >
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary">
                         <point.icon className="h-5 w-5" strokeWidth={2} />
