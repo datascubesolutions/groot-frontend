@@ -172,27 +172,26 @@ export default function BlogListPage() {
       header: "DATE",
       accessorKey: "createdAt",
       className: "hidden md:table-cell",
-      cell: (row) => (
-        <span className="text-gray-400 font-medium text-xs uppercase tracking-wide">
-          {row.createdAt
-            ? new Date(
-              row.createdAt._seconds
-                ? row.createdAt._seconds * 1000
-                : row.createdAt
-            ).toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })
-            : "—"}
-        </span>
-      ),
+      cell: (row) => {
+        const dateVal = row.publishedAt || row.createdAt;
+        let dateStr = "—";
+        if (dateVal?._seconds) {
+          dateStr = new Date(dateVal._seconds * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+        } else if (dateVal) {
+          try { dateStr = new Date(dateVal).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); } catch { /* keep default */ }
+        }
+        return (
+          <span className="text-gray-400 font-medium text-xs uppercase tracking-wide">
+            {dateStr}
+          </span>
+        );
+      },
     },
   ];
 
   const publishedCount = data.filter((d) => d.status === "PUBLISHED").length;
   const draftCount = data.filter((d) => d.status === "DRAFT").length;
-  const featuredCount = data.filter((d) => d.isFeatured).length;
+  const featuredCount = data.filter((d) => String(d.isFeatured) === "true" || d.isFeatured === true).length;
 
   return (
     <div className="space-y-4 animate-fade-in pb-2">

@@ -12,7 +12,7 @@ export function FeaturedPost({ post }) {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                 {/* Image Side - Bleeding/Large */}
                 <div className="relative aspect-[16/10] lg:aspect-[4/3] w-full overflow-hidden rounded-2xl lg:rounded-3xl bg-muted shadow-2xl shadow-primary/5">
-                    <Link href={`/blog/${post.slug}`} className="block h-full w-full">
+                    <Link href={`/blog/${post.slug}?id=${post.id}`} className="block h-full w-full">
                         <img
                             src={post.image || "/images/placeholder.jpg"}
                             alt={post.title}
@@ -33,7 +33,7 @@ export function FeaturedPost({ post }) {
 
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
                             <Link
-                                href={`/blog/${post.slug}`}
+                                href={`/blog/${post.slug}?id=${post.id}`}
                                 className="block hover:text-forest transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest/50 focus-visible:ring-offset-2 rounded"
                             >
                                 {post.title}
@@ -71,7 +71,7 @@ export function FeaturedPost({ post }) {
                             variant="link"
                             className="p-0 h-auto font-semibold text-forest hover:text-forest/80 hover:underline underline-offset-4 group/btn transition-colors duration-300"
                         >
-                            <Link href={`/blog/${post.slug}`} className="flex items-center gap-2">
+                            <Link href={`/blog/${post.slug}?id=${post.id}`} className="flex items-center gap-2">
                                 Read Article
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                             </Link>

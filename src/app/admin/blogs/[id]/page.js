@@ -102,7 +102,7 @@ export default function BlogDetailPage() {
             content: blogData.content || "",
             category: blogData.category || "ENGINEERING",
             readTime: blogData.readTime || "5 min read",
-            isFeatured: blogData.isFeatured || false,
+            isFeatured: String(blogData.isFeatured) === "true" || blogData.isFeatured === true,
             status: blogData.status || "DRAFT",
           });
           setTags(blogData.tags || []);
@@ -249,14 +249,19 @@ export default function BlogDetailPage() {
 
   const formatDate = (dateValue) => {
     if (!dateValue) return "—";
-    const date = dateValue._seconds
-      ? new Date(dateValue._seconds * 1000)
-      : new Date(dateValue);
-    return date.toLocaleDateString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    });
+    try {
+      const date = dateValue._seconds
+        ? new Date(dateValue._seconds * 1000)
+        : new Date(dateValue);
+      if (isNaN(date.getTime())) return "—";
+      return date.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      });
+    } catch {
+      return "—";
+    }
   };
 
   // ===== LOADING STATE =====

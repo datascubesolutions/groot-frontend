@@ -20,6 +20,10 @@ import {
   Twitter,
 } from "lucide-react";
 
+import { BlogSkeleton } from "@/components/skeletons/BlogSkeleton";
+import { BLOG_POSTS } from "@/lib/blog-data";
+import { blogService } from "@/services/blogService";
+import { marked } from "marked";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { RelatedPosts } from "./RelatedPosts";
@@ -317,7 +321,10 @@ function ArticleContent({ content }) {
 /* ================================================================
    MAIN COMPONENT
    ================================================================ */
-export function BlogDetailContent({ post, relatedPosts }) {
+/* ================================================================
+   PRESENTATIONAL COMPONENT (Handles Animations)
+   ================================================================ */
+function BlogDetailView({ post, relatedPosts }) {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -703,4 +710,134 @@ export function BlogDetailContent({ post, relatedPosts }) {
       </div>
     </article>
   );
+}
+
+/* ================================================================
+   HELPERS
+   ================================================================ */
+const formatDate = (dateValue) => {
+  if (!dateValue) return "Recently";
+  if (dateValue?._seconds) {
+    return new Date(dateValue._seconds * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  }
+  try {
+    return new Date(dateValue).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  } catch {
+    return "Recently";
+  }
+};
+
+const mapApiPostToPost = (apiPost) => ({
+  id: apiPost.id,
+  slug: apiPost.slug,
+  title: apiPost.title,
+  excerpt: apiPost.excerpt,
+  content: apiPost.content,
+  category: apiPost.category
+    ? apiPost.category.charAt(0).toUpperCase() + apiPost.category.slice(1).toLowerCase()
+    : "General",
+  tags: apiPost.tags || [],
+  author: {
+    name: apiPost.author?.name || "Groot Team",
+    role: apiPost.author?.designation || apiPost.author?.role || "Contributor",
+    avatar: apiPost.author?.avatar,
+  },
+  date: formatDate(apiPost.publishedAt || apiPost.createdAt),
+  readTime: apiPost.readTime || "5 min read",
+  image: apiPost.coverImage || apiPost.image,
+  featured: String(apiPost.isFeatured) === "true" || apiPost.isFeatured === true,
+});
+
+/** Fetch full blog data from blog_get and parse markdown */
+const fetchFullPost = async (id) => {
+  const fullPostResponse = await blogService.getById(id);
+  let data = fullPostResponse?.result?.data || fullPostResponse?.result || fullPostResponse?.data || fullPostResponse;
+  if (data?.blog) data = data.blog;
+  if (data?.content) data.content = await marked.parse(data.content);
+  return data;
+};
+
+/* ================================================================
+   LOGIC CONTAINER / DATA FETCHING
+   ================================================================ */
+export function BlogDetailContent({ post: initialPost, slug, blogId, relatedPosts: initialRelatedPosts }) {
+  const [post, setPost] = useState(initialPost);
+  const [relatedPosts, setRelatedPosts] = useState(initialRelatedPosts);
+  const [loading, setLoading] = useState(!initialPost);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (post) return;
+
+    const fetchPostData = async () => {
+      setLoading(true);
+      try {
+        // 1. Check static posts
+        let foundPost = BLOG_POSTS.find((p) => p.slug === slug);
+
+        if (!foundPost) {
+          let apiPost = null;
+
+          if (blogId) {
+            // ✅ Fast path: We have the ID from the listing page — single API call
+            const fullData = await fetchFullPost(blogId);
+            if (fullData) apiPost = fullData;
+          } else {
+            // ⚠️ Fallback: Direct URL navigation — need list call first to find ID
+            const response = await blogService.list({ limit: 100 });
+            const apiPosts = response?.result?.data?.blogs || response?.result?.blogs || response?.blogs || [];
+            const match = apiPosts.find((p) => p.slug === slug);
+
+            if (match) {
+              try {
+                const fullData = await fetchFullPost(match.id);
+                apiPost = fullData ? { ...match, ...fullData } : match;
+              } catch (err) {
+                console.warn("Failed to fetch full post details, using list data:", err);
+                apiPost = match;
+              }
+            }
+          }
+
+          if (apiPost) {
+            foundPost = mapApiPostToPost(apiPost);
+          }
+        }
+
+        if (foundPost) {
+          setPost(foundPost);
+          if (!relatedPosts) {
+            const related = BLOG_POSTS.filter(
+              (p) => p.category === foundPost.category && p.id !== foundPost.id
+            ).slice(0, 3);
+            setRelatedPosts(related);
+          }
+        } else {
+          setError("Post not found");
+        }
+      } catch (err) {
+        console.error("Error fetching post:", err);
+        setError("Failed to load post");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (slug) fetchPostData();
+  }, [slug, blogId, post, relatedPosts]);
+
+  if (loading) return <BlogSkeleton />;
+  if (error || !post) return (
+    <div className="min-h-[50vh] flex items-center justify-center text-center p-8">
+      <div>
+        <h2 className="text-2xl font-bold mb-2">Post Not Found</h2>
+        <p className="text-muted-foreground mb-4">The blog post you are looking for does not exist or has been removed.</p>
+        <Link href="/blog">
+          <Button>Back to Blog</Button>
+        </Link>
+      </div>
+    </div>
+  );
+
+  return <BlogDetailView post={post} relatedPosts={relatedPosts} />;
 }

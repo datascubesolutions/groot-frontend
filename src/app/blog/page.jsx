@@ -28,27 +28,36 @@ export default function BlogListingPage() {
                 const posts = response?.result?.data?.blogs || response?.result?.blogs || response?.blogs || [];
 
                 // Map API posts to match static data structure
-                const mappedPosts = posts.map(post => ({
-                    id: post.id,
-                    slug: post.slug,
-                    title: post.title,
-                    excerpt: post.excerpt,
-                    content: post.content,
-                    category: post.category ?
-                        post.category.charAt(0).toUpperCase() + post.category.slice(1).toLowerCase()
-                        : "General",
-                    author: {
-                        name: post.author?.name || "Groot Team",
-                        role: post.author?.designation || "Contributor",
-                        avatar: post.author?.avatar || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
-                    },
-                    date: post.createdAt?._seconds
-                        ? new Date(post.createdAt._seconds * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
-                        : "Recently",
-                    readTime: post.readTime || "5 min read",
-                    image: post.coverImage || "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2600&auto=format&fit=crop",
-                    featured: post.isFeatured || false
-                }));
+                const mappedPosts = posts.map(post => {
+                    // Handle both Firestore timestamps and ISO strings
+                    let dateStr = "Recently";
+                    const dateVal = post.publishedAt || post.createdAt;
+                    if (dateVal?._seconds) {
+                        dateStr = new Date(dateVal._seconds * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+                    } else if (dateVal) {
+                        try { dateStr = new Date(dateVal).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); } catch { /* keep default */ }
+                    }
+
+                    return {
+                        id: post.id,
+                        slug: post.slug,
+                        title: post.title,
+                        excerpt: post.excerpt,
+                        content: post.content,
+                        category: post.category ?
+                            post.category.charAt(0).toUpperCase() + post.category.slice(1).toLowerCase()
+                            : "General",
+                        author: {
+                            name: post.author?.name || "Groot Team",
+                            role: post.author?.designation || "Contributor",
+                            avatar: post.author?.avatar || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
+                        },
+                        date: dateStr,
+                        readTime: post.readTime || "5 min read",
+                        image: post.coverImage || "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2600&auto=format&fit=crop",
+                        featured: String(post.isFeatured) === "true" || post.isFeatured === true
+                    };
+                });
 
                 setApiPosts(mappedPosts);
             } catch (error) {

@@ -6,7 +6,7 @@ import Link from "next/link";
 export function BlogCard({ post }) {
     return (
         <Link
-            href={`/blog/${post.slug}`}
+            href={`/blog/${post.slug}?id=${post.id}`}
             className="group block h-full outline-none"
             aria-label={`Read article: ${post.title}`}
         >
