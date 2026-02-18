@@ -234,8 +234,7 @@ export default function BlogDetailPage() {
         if (stage.image) formData.append(`stages[${i}].image`, stage.image);
       });
 
-      const token = localStorage.getItem("authToken") || "";
-      await blogService.create(formData, token);
+      await blogService.update(id, formData);
 
       toast.success("Blog post saved successfully!", { id: toastId });
       setTimeout(() => router.push("/admin/blogs"), 500);

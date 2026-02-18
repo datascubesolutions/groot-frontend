@@ -7,12 +7,14 @@ import Link from "next/link";
 export function FeaturedPost({ post }) {
     if (!post) return null;
 
+    const href = `/blog/${post.slug}?id=${post.id}${post.host ? `&host=${post.host}` : ""}`;
+
     return (
         <section className="group relative w-full">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                {/* Image Side - Bleeding/Large */}
+                {/* Image */}
                 <div className="relative aspect-[16/10] lg:aspect-[4/3] w-full overflow-hidden rounded-2xl lg:rounded-3xl bg-muted shadow-2xl shadow-primary/5">
-                    <Link href={`/blog/${post.slug}?id=${post.id}`} className="block h-full w-full">
+                    <Link href={href} className="block h-full w-full">
                         <img
                             src={post.image || "/images/placeholder.jpg"}
                             alt={post.title}
@@ -22,7 +24,7 @@ export function FeaturedPost({ post }) {
                     </Link>
                 </div>
 
-                {/* Content Side */}
+                {/* Content */}
                 <div className="flex flex-col justify-center space-y-6 lg:space-y-8">
                     <div className="space-y-4">
                         <div className="flex items-center gap-3 text-sm font-semibold tracking-wider text-forest uppercase">
@@ -33,7 +35,7 @@ export function FeaturedPost({ post }) {
 
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
                             <Link
-                                href={`/blog/${post.slug}?id=${post.id}`}
+                                href={href}
                                 className="block hover:text-forest transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest/50 focus-visible:ring-offset-2 rounded"
                             >
                                 {post.title}
@@ -49,11 +51,7 @@ export function FeaturedPost({ post }) {
                         <div className="flex items-center gap-3">
                             <div className="h-10 w-10 rounded-full bg-muted overflow-hidden ring-2 ring-background flex items-center justify-center">
                                 {post.author.avatar ? (
-                                    <img
-                                        src={post.author.avatar}
-                                        alt={post.author.name}
-                                        className="h-full w-full object-cover"
-                                    />
+                                    <img src={post.author.avatar} alt={post.author.name} className="h-full w-full object-cover" />
                                 ) : (
                                     <div className="h-full w-full bg-primary/10" />
                                 )}
@@ -71,7 +69,7 @@ export function FeaturedPost({ post }) {
                             variant="link"
                             className="p-0 h-auto font-semibold text-forest hover:text-forest/80 hover:underline underline-offset-4 group/btn transition-colors duration-300"
                         >
-                            <Link href={`/blog/${post.slug}?id=${post.id}`} className="flex items-center gap-2">
+                            <Link href={href} className="flex items-center gap-2">
                                 Read Article
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                             </Link>

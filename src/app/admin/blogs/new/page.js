@@ -195,10 +195,7 @@ export default function CreateBlogPage() {
         }
       });
 
-      // Get auth token
-      const token = localStorage.getItem("authToken") || "";
-
-      await blogService.create(formData, token);
+      await blogService.create(formData);
 
       toast.success("Blog post created successfully!", { id: toastId });
       setTimeout(() => router.push("/admin/blogs"), 500);

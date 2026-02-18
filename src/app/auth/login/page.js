@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { authService } from "@/services/authService";
 import { motion } from "framer-motion";
 import { ArrowRight, Eye, EyeOff, Loader2, Lock, Mail } from "lucide-react";
 import Image from "next/image";
@@ -9,9 +10,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
-
-const API_URL = "https://us-central1-datascube-2b74e.cloudfunctions.net/auth_login";
-const API_KEY = "AIzaSyDbykaKgJKuh_8VuO6TXZD4wT96vqwvJLM";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -32,34 +30,15 @@ export default function LoginPage() {
     const toastId = toast.loading("Signing you in...");
 
     try {
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), password, apiKey: API_KEY }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        const errorMsg = data.message || data.error?.message || data.error || "Invalid credentials";
-        throw new Error(errorMsg);
-      }
-
-      // Store auth data
-      if (data.token) localStorage.setItem("authToken", data.token);
-      if (data.user) localStorage.setItem("user", JSON.stringify(data.user));
-      localStorage.setItem("authResponse", JSON.stringify(data));
-
+      await authService.login(email, password);
       toast.success("Login successful! Redirecting...", { id: toastId });
-
-      // Navigate to admin panel
-      setTimeout(() => router.push("/admin/dashboard"), 500);
+      router.push("/admin/dashboard");
     } catch (err) {
-      if (err.name === "TypeError" && err.message === "Failed to fetch") {
-        toast.error("Network error. Please check your connection.", { id: toastId });
-      } else {
-        toast.error(err.message || "Login failed. Please try again.", { id: toastId });
-      }
+      const isNetworkError = err instanceof TypeError && err.message === "Failed to fetch";
+      toast.error(
+        isNetworkError ? "Network error. Please check your connection." : err.message || "Login failed. Please try again.",
+        { id: toastId }
+      );
     } finally {
       setIsLoading(false);
     }

@@ -12,6 +12,8 @@
 export const API_ENDPOINTS = {
     // Auth
     AUTH: {
+        /** Real Firebase Cloud Function used for login */
+        LOGIN_FN: 'https://us-central1-datascube-2b74e.cloudfunctions.net/auth_login',
         LOGIN: '/auth/login',
         LOGOUT: '/auth/logout',
         REGISTER: '/auth/register',
@@ -51,6 +53,8 @@ export const API_ENDPOINTS = {
         CREATE: 'https://us-central1-datascube-2b74e.cloudfunctions.net/blog_create',
         LIST: 'https://us-central1-datascube-2b74e.cloudfunctions.net/blog_list',
         GET: 'https://us-central1-datascube-2b74e.cloudfunctions.net/blog_get',
+        UPDATE: 'https://us-central1-datascube-2b74e.cloudfunctions.net/blog_update',
+        DELETE: 'https://us-central1-datascube-2b74e.cloudfunctions.net/blog_delete',
     },
 
     // Projects

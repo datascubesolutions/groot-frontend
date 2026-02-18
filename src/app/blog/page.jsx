@@ -1,264 +1,145 @@
-"use client";
-
-import { BlogCard } from "@/components/blog/BlogCard";
-import { BlogControls } from "@/components/blog/BlogControls";
+import { BlogListingClient } from "@/components/blog/BlogListingClient";
 import { BlogPageHeader } from "@/components/blog/BlogPageHeader";
-import { FeaturedPost } from "@/components/blog/FeaturedPost";
 import { BlogSkeleton } from "@/components/skeletons/BlogSkeleton";
-import { Button } from "@/components/ui/Button";
 import { BLOG_POSTS, CATEGORIES } from "@/lib/blog-data";
-import { blogService } from "@/services/blogService";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { fetchInternalBlogList } from "@/lib/blog-server";
+import { fetchHashnodePosts } from "@/lib/hashnode";
+import { isEnglish } from "@/lib/utils/language";
+import { Suspense } from "react";
 
-export default function BlogListingPage() {
-    const [selectedCategory, setSelectedCategory] = useState("All");
-    const [searchTerm, setSearchTerm] = useState("");
-    const [currentPage, setCurrentPage] = useState(1);
-    const [apiPosts, setApiPosts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const postsPerPage = 6;
+const POSTS_PER_PAGE = 6;
 
-    // Fetch API Posts
-    useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const response = await blogService.list({ limit: 100 });
-                // Handle nested structure: response.result.data.blogs
-                const posts = response?.result?.data?.blogs || response?.result?.blogs || response?.blogs || [];
+export const metadata = {
+    title: "Blog | Groot Analytics",
+    description:
+        "Expert perspectives on modern data stacks, AI engineering, and strategies shaping the next generation of enterprise intelligence.",
+};
 
-                // Map API posts to match static data structure
-                const mappedPosts = posts.map(post => {
-                    // Handle both Firestore timestamps and ISO strings
-                    let dateStr = "Recently";
-                    const dateVal = post.publishedAt || post.createdAt;
-                    if (dateVal?._seconds) {
-                        dateStr = new Date(dateVal._seconds * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-                    } else if (dateVal) {
-                        try { dateStr = new Date(dateVal).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); } catch { /* keep default */ }
-                    }
+// Revalidate the page every 5 minutes so new posts appear without a full redeploy
+export const revalidate = 300;
 
-                    return {
-                        id: post.id,
-                        slug: post.slug,
-                        title: post.title,
-                        excerpt: post.excerpt,
-                        content: post.content,
-                        category: post.category ?
-                            post.category.charAt(0).toUpperCase() + post.category.slice(1).toLowerCase()
-                            : "General",
-                        author: {
-                            name: post.author?.name || "Groot Team",
-                            role: post.author?.designation || "Contributor",
-                            avatar: post.author?.avatar || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
-                        },
-                        date: dateStr,
-                        readTime: post.readTime || "5 min read",
-                        image: post.coverImage || "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2600&auto=format&fit=crop",
-                        featured: String(post.isFeatured) === "true" || post.isFeatured === true
-                    };
-                });
+export default async function BlogListingPage({ searchParams }) {
+    const { category, q, page } = await searchParams;
 
-                setApiPosts(mappedPosts);
-            } catch (error) {
-                console.error("Failed to fetch blog posts:", error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+    const selectedCategory = category || "All";
+    const searchTerm = q || "";
+    const currentPage = Math.max(1, parseInt(page, 10) || 1);
 
-        fetchPosts();
-    }, []);
+    // ── Fetch all post sources in parallel ──────────────────────────────────
+    const [internalPosts, hashnodePosts] = await Promise.all([
+        fetchInternalBlogList(),
+        fetchHashnodePosts(15),
+    ]);
 
-    // Helper to normalize text for comparison
-    const normalize = (text) => text?.toLowerCase().trim() || "";
+    // ── Merge & deduplicate by id ────────────────────────────────────────────
+    const seenIds = new Set();
+    const allPosts = [];
 
-    // Combine Static & API Posts
-    const allPosts = useMemo(() => {
-        // Filter out published posts only if API returns status (assuming API returns all)
-        // For now, we just merge all. In a real app, we'd filter by status === 'PUBLISHED'
-        return [...apiPosts, ...BLOG_POSTS];
-    }, [apiPosts]);
+    for (const post of [...internalPosts, ...BLOG_POSTS, ...hashnodePosts]) {
+        if (!seenIds.has(post.id)) {
+            seenIds.add(post.id);
+            allPosts.push(post);
+        }
+    }
 
-    // Derived Categories
-    const allCategories = useMemo(() => {
-        const cats = new Set(CATEGORIES);
-        apiPosts.forEach(post => {
-            if (post.category) cats.add(post.category);
-        });
-        return Array.from(cats);
-    }, [apiPosts]);
+    // Sort newest first (publishedAt is a ms timestamp; fall back to date string)
+    allPosts.sort((a, b) => {
+        const ta = a.publishedAt ?? new Date(a.date === "Recently" ? 0 : a.date).getTime();
+        const tb = b.publishedAt ?? new Date(b.date === "Recently" ? 0 : b.date).getTime();
+        return tb - ta;
+    });
 
-    // Filter Logic
-    const filteredPosts = useMemo(() => {
-        return allPosts.filter((post) => {
-            const matchesCategory =
-                selectedCategory === "All" || normalize(post.category) === normalize(selectedCategory);
-            const matchesSearch =
-                normalize(post.title).includes(normalize(searchTerm)) ||
-                normalize(post.excerpt).includes(normalize(searchTerm));
-            return matchesCategory && matchesSearch;
-        });
-    }, [selectedCategory, searchTerm, allPosts]);
+    // ── Build category list ──────────────────────────────────────────────────
+    const categorySet = new Set(CATEGORIES);
+    for (const post of allPosts) {
+        if (post.category) categorySet.add(post.category);
+    }
+    const allCategories = Array.from(categorySet);
 
-    // Featured Post Logic
-    const showFeatured =
-        selectedCategory === "All" && searchTerm === "" && currentPage === 1;
+    // ── Filter ───────────────────────────────────────────────────────────────
+    const normalize = (s) => (s ?? "").toLowerCase().trim();
+
+    /**
+     * Returns true only if the image is hosted on a known, trusted CDN.
+     * Rejects unknown domains even if the URL ends in a valid image extension.
+     */
+    function isValidImageUrl(url) {
+        if (!url) return false;
+        try {
+            const { hostname } = new URL(url);
+            const trustedDomains = [
+                "cdn.hashnode.com",
+                "res.cloudinary.com",
+                "images.unsplash.com",
+                "miro.medium.com",
+                "substackcdn.com",
+                "dev-to-uploads.s3.amazonaws.com",
+                "media.dev.to",
+                "s3.amazonaws.com",
+                "storage.googleapis.com",
+                "raw.githubusercontent.com",
+                "user-images.githubusercontent.com",
+                "imgur.com",
+                "i.imgur.com",
+            ];
+            return trustedDomains.some((d) => hostname === d || hostname.endsWith(`.${d}`));
+        } catch {
+            return false;
+        }
+    }
+
+    const filteredPosts = allPosts.filter((post) => {
+        // Must have a valid, loadable image URL
+        if (!isValidImageUrl(post.image)) return false;
+
+        // Must be in English (check title + excerpt)
+        if (!isEnglish(`${post.title} ${post.excerpt}`)) return false;
+
+        const matchesCategory =
+            selectedCategory === "All" ||
+            normalize(post.category) === normalize(selectedCategory);
+        const matchesSearch =
+            !searchTerm ||
+            normalize(post.title).includes(normalize(searchTerm)) ||
+            normalize(post.excerpt).includes(normalize(searchTerm));
+        return matchesCategory && matchesSearch;
+    });
+
+    // ── Featured post (first page, no filters) ───────────────────────────────
+    const showFeatured = selectedCategory === "All" && !searchTerm && currentPage === 1;
     const featuredPost = showFeatured
-        ? filteredPosts.find((p) => p.featured) || filteredPosts[0]
+        ? filteredPosts.find((p) => p.featured) ?? filteredPosts[0] ?? null
         : null;
-    const listPosts = showFeatured
-        ? filteredPosts.filter((p) => p.id !== featuredPost?.id)
+
+    const listPosts = featuredPost
+        ? filteredPosts.filter((p) => p.id !== featuredPost.id)
         : filteredPosts;
 
-    // Pagination Logic
-    const totalPages = Math.ceil(listPosts.length / postsPerPage);
+    // ── Pagination ───────────────────────────────────────────────────────────
+    const totalPages = Math.max(1, Math.ceil(listPosts.length / POSTS_PER_PAGE));
+    const safePage = Math.min(currentPage, totalPages);
     const paginatedPosts = listPosts.slice(
-        (currentPage - 1) * postsPerPage,
-        currentPage * postsPerPage
+        (safePage - 1) * POSTS_PER_PAGE,
+        safePage * POSTS_PER_PAGE
     );
-
-    if (isLoading) {
-        return <BlogSkeleton />;
-    }
 
     return (
         <main className="min-h-screen bg-background pb-32" role="main" id="blog-content">
             <BlogPageHeader />
 
             <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-[1400px] relative z-10">
-
-                {/* Controls - Floating & Clean */}
-                <div className="mb-4">
-                    <BlogControls
-                        categories={allCategories}
+                <Suspense fallback={<BlogSkeleton />}>
+                    <BlogListingClient
+                        allCategories={allCategories}
                         selectedCategory={selectedCategory}
-                        onSelectCategory={(cat) => {
-                            setSelectedCategory(cat);
-                            setCurrentPage(1);
-                        }}
                         searchTerm={searchTerm}
-                        onSearchChange={(term) => {
-                            setSearchTerm(term);
-                            setCurrentPage(1);
-                        }}
+                        currentPage={safePage}
+                        totalPages={totalPages}
+                        totalFilteredCount={filteredPosts.length}
+                        featuredPost={featuredPost}
+                        paginatedPosts={paginatedPosts}
                     />
-                </div>
-
-                {/* Featured Post */}
-                <AnimatePresence mode="wait">
-                    {featuredPost && (
-                        <motion.div
-                            key="featured"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.5 }}
-                            className="mb-12 border-b border-border/40 pb-12"
-                        >
-                            <FeaturedPost post={featuredPost} />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
-                {/* Grid Heading */}
-                {(searchTerm || selectedCategory !== "All" || !showFeatured) && (
-                    <div className="mb-10 flex items-baseline justify-between border-b border-border/40 pb-4">
-                        <h2 className="text-2xl font-semibold tracking-tight">
-                            {searchTerm ? `Search: "${searchTerm}"` : selectedCategory}
-                        </h2>
-                        <span className="text-sm text-muted-foreground">
-                            {paginatedPosts.length} articles
-                        </span>
-                    </div>
-                )}
-
-                {/* Blog Grid */}
-                <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-                    <AnimatePresence mode="popLayout">
-                        {paginatedPosts.map((post, index) => (
-                            <motion.div
-                                key={post.id}
-                                layout
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                transition={{ duration: 0.3, delay: index * 0.05 }}
-                            >
-                                <BlogCard post={post} />
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
-                </div>
-
-                {/* Empty State */}
-                {paginatedPosts.length === 0 && (
-                    <div className="py-32 text-center">
-                        <div className="mx-auto h-16 w-16 mb-6 rounded-full bg-muted flex items-center justify-center text-muted-foreground">
-                            <span className="text-2xl">🔍</span>
-                        </div>
-                        <h3 className="text-xl font-semibold text-foreground">
-                            No articles found
-                        </h3>
-                        <p className="text-muted-foreground mt-2">
-                            Adjust your search or filters to find what you&apos;re looking for.
-                        </p>
-                        <Button
-                            variant="outline"
-                            className="mt-6"
-                            onClick={() => {
-                                setSelectedCategory("All");
-                                setSearchTerm("");
-                            }}
-                        >
-                            Clear filters
-                        </Button>
-                    </div>
-                )}
-
-                {/* Pagination Controls */}
-                {totalPages > 1 && (
-                    <div className="mt-24 flex items-center justify-center gap-4">
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            disabled={currentPage === 1}
-                            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                            className="rounded-full w-10 h-10 border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5 disabled:opacity-30"
-                        >
-                            <span className="sr-only">Previous</span>
-                            &larr;
-                        </Button>
-
-                        <div className="flex items-center gap-2">
-                            {Array.from({ length: totalPages }).map((_, i) => (
-                                <Button
-                                    key={i}
-                                    variant={currentPage === i + 1 ? "default" : "outline"}
-                                    size="icon"
-                                    onClick={() => setCurrentPage(i + 1)}
-                                    className={`w-10 h-10 rounded-full font-semibold transition-all duration-300 ${currentPage === i + 1
-                                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90 hover:-translate-y-0.5"
-                                        : "border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5"
-                                        }`}
-                                >
-                                    {i + 1}
-                                </Button>
-                            ))}
-                        </div>
-
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            disabled={currentPage === totalPages}
-                            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                            className="rounded-full w-10 h-10 border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5 disabled:opacity-30"
-                        >
-                            <span className="sr-only">Next</span>
-                            &rarr;
-                        </Button>
-                    </div>
-                )}
+                </Suspense>
             </div>
         </main>
     );

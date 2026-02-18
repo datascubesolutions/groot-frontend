@@ -1,0 +1,40 @@
+name: Update Blog Content
+
+on:
+  schedule:
+    # Run every Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Migration Script
+        env:
+          # Note: We need GHOST_ADMIN_KEY from secrets
+          NEXT_PUBLIC_GHOST_API_URL: ${{ secrets.NEXT_PUBLIC_GHOST_API_URL }}
+          # We use a specific secret for the Admin Key used in the script
+          GHOST_ADMIN_API_KEY: ${{ secrets.GHOST_ADMIN_API_KEY }}
+        run: |
+          # If the secret is not set, this step effectively does nothing or fails gracefully
+          if [ -z "$GHOST_ADMIN_API_KEY" ]; then
+            echo "GHOST_ADMIN_API_KEY not found. Skipping update."
+            exit 0
+          fi
+
+          # Overwrite the hardcoded key in the script with the environment variable if you modify the script
+          # Or better, update the script to perform: process.env.GHOST_ADMIN_API_KEY || 'hardcoded...'
+
+          node scripts/migrate-hashnode-to-ghost.js

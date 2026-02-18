@@ -260,6 +260,10 @@ export function HeroSection() {
                         <Image src="/svg/power-bi-icon.svg" alt="Power BI" width={24} height={24} className="h-5 md:h-6 w-auto object-contain opacity-90" />
                         <span>Power BI</span>
                       </div>
+                      <div className="flex items-center gap-2">
+                        <Image src="/svg/copilot-icon.svg" alt="Copilot" width={24} height={24} className="h-5 md:h-6 w-auto object-contain opacity-90" />
+                        <span>Copilot</span>
+                      </div>
                     </div>
                   </m.div>
                 </div>

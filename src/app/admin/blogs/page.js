@@ -94,7 +94,14 @@ export default function BlogListPage() {
             <button
               onClick={async () => {
                 toast.dismiss(t);
-                toast.success("Delete functionality coming soon");
+                const deleteToastId = toast.loading("Deleting post...");
+                try {
+                  await blogService.delete(id);
+                  toast.success("Blog post deleted successfully", { id: deleteToastId });
+                  fetchBlogs();
+                } catch (err) {
+                  toast.error(err?.message || "Failed to delete blog post", { id: deleteToastId });
+                }
               }}
               className="px-3 py-1.5 text-sm font-medium bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-sm"
             >
