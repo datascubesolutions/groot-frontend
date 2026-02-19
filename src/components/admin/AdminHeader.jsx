@@ -1,9 +1,11 @@
 "use client";
 
+import { useAdmin } from "@/app/admin/context";
 import { authService } from "@/services/authService";
-import { Bell, User } from "lucide-react";
+import { Bell, Menu, User } from "lucide-react";
 
 export function AdminHeader() {
+  const { setSidebarOpen } = useAdmin();
   const user = authService.getUser();
   const displayName = user?.displayName || user?.name || "Admin User";
   const displayRole = user?.role || "Super Admin";
@@ -11,6 +13,14 @@ export function AdminHeader() {
 
   return (
     <header className="h-16 border-b border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl sticky top-0 z-40 px-6 flex items-center justify-between gap-4">
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setSidebarOpen(true)}
+        className="lg:hidden p-2 -ml-2 text-muted-foreground hover:text-white transition-colors"
+      >
+        <Menu size={24} />
+      </button>
+
       <div className="flex-1 max-w-md hidden md:block" />
 
       {/* Actions */}

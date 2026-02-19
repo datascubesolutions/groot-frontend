@@ -36,8 +36,8 @@ export function DataTable({
 
   return (
     <div className="w-full space-y-4">
-      <div className="rounded-xl overflow-hidden shadow-none bg-transparent">
-        <table className="w-full text-sm border-separate border-spacing-y-3">
+      <div className="rounded-xl overflow-hidden shadow-none bg-transparent overflow-x-auto">
+        <table className="w-full text-sm border-separate border-spacing-y-3 min-w-[800px]">
           <thead>
             <tr className="bg-transparent">
               {columns.map((col, i) => (
