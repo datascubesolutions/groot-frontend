@@ -9,19 +9,16 @@ export const homepageService = {
     getHomepage: async () => {
         try {
             const response = await fetch(API_ENDPOINTS.HOMEPAGE.GET, {
-                method: "POST", // Firebase callable functions use POST
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ data: {} }),
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({}),
             });
 
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-
             const payload = await response.json();
-            return payload.result?.data || payload.data || null;
+            if (!response.ok || payload?.error) {
+                throw new Error(payload?.error?.message || "Failed to fetch homepage content");
+            }
+            return payload.data ?? null;
         } catch (error) {
             console.error("[homepageService.getHomepage]", error);
             throw error;
@@ -46,17 +43,16 @@ export const homepageService = {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
-                // We pass the data in the firebase callable function wrapper format { data: payload }
                 body: JSON.stringify({ data }),
             });
 
             const payload = await response.json();
 
-            if (!response.ok || payload.error) {
-                throw new Error(payload.error?.message || "Failed to update homepage content");
+            if (!response.ok || payload?.error) {
+                throw new Error(payload?.error?.message || "Failed to update homepage content");
             }
 
-            return payload.result?.data || payload.data || null;
+            return payload.data ?? null;
         } catch (error) {
             console.error("[homepageService.updateHomepage]", error);
             throw error;
