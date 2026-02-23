@@ -57,6 +57,12 @@ export const API_ENDPOINTS = {
         DELETE: 'https://us-central1-datascube-2b74e.cloudfunctions.net/blog_delete',
     },
 
+    // Homepage
+    HOMEPAGE: {
+        GET: 'https://us-central1-datascube-2b74e.cloudfunctions.net/homepage_get',
+        UPDATE: 'https://us-central1-datascube-2b74e.cloudfunctions.net/homepage_update',
+    },
+
     // Projects
     PROJECTS: {
         LIST: '/projects',

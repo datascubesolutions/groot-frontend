@@ -1,26 +1,23 @@
 "use client";
 
 import {
-  ABOUT_LINKS,
-  ABOUT_STATS,
-  SERVICE_CATEGORIES,
-  SERVICE_STATS,
-  SOLUTION_CATEGORIES,
-  SOLUTION_STATS,
+    ABOUT_LINKS,
+    SERVICE_CATEGORIES,
+    SOLUTION_CATEGORIES,
 } from "@/lib/constants/navigation";
 import { motion } from "framer-motion";
 import {
-  ChevronRight,
-  TrendingUp,
-  Users
+    ArrowRight,
+    ChevronRight,
+    TrendingUp
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 const MENU_CONFIG = {
-  Services: { categories: SERVICE_CATEGORIES, stats: SERVICE_STATS },
-  Solutions: { categories: SOLUTION_CATEGORIES, stats: SOLUTION_STATS },
-  "About Us": { categories: null, stats: ABOUT_STATS },
+  Services: { categories: SERVICE_CATEGORIES },
+  Solutions: { categories: SOLUTION_CATEGORIES },
+  "About Us": { categories: null },
 };
 
 export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
@@ -28,7 +25,6 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
   const categories = config?.categories ?? SERVICE_CATEGORIES;
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
-  const stats = config?.stats ?? SERVICE_STATS;
   const title = menuType === "Services" ? "Our Services" : menuType === "Solutions" ? "Our Solutions" : "About Us";
   const isCategoryMenu = menuType === "Services" || menuType === "Solutions";
 
@@ -53,7 +49,7 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
                     key={category.slug}
                     className={`flex items-center justify-between px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 mb-1 ${activeCategory.slug === category.slug
                       ? "text-white shadow-md transform scale-[1.02]"
-                      : "text-foreground/70 hover:text-foreground hover:bg-white/60"
+                      : "text-foreground hover:text-foreground hover:bg-white/60"
                       }`}
                     style={activeCategory.slug === category.slug ? {
                       background: "linear-gradient(135deg, hsl(168, 76%, 46%), hsl(162, 82%, 18%))",
@@ -88,11 +84,8 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
                   <Link
                     href={activeCategory.href}
                     onClick={onClose}
-                    className="flex items-center gap-2 px-4 py-1.5 rounded-full text-white text-xs font-bold hover:opacity-90 transition-all shadow-sm ml-4 shrink-0"
-                    style={{
-                      background: "linear-gradient(135deg, hsl(168, 76%, 46%), hsl(162, 82%, 18%))",
-                      boxShadow: "0 2px 10px hsl(168, 76%, 46%, 0.3)",
-                    }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full text-white text-xs font-bold transition-all shadow-md ml-4 shrink-0"
+                    style={{ background: "linear-gradient(135deg, hsl(168, 76%, 42%), hsl(162, 82%, 28%))" }}
                   >
                     View All <TrendingUp size={14} strokeWidth={2.5} />
                   </Link>
@@ -119,46 +112,22 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
               </div>
             </div>
 
-            {/* Right - Stats */}
-            <div className="w-full lg:w-1/4 p-6 border-l border-border flex flex-col justify-center" style={{ background: "hsl(160, 25%, 96%)" }}>
-              <div className="space-y-6">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="flex gap-4 items-center group">
-                    <div
-                      className="p-2.5 rounded-xl border transition-colors"
-                      style={{
-                        background: "white",
-                        borderColor: "hsl(168, 76%, 48%, 0.25)",
-                        color: "hsl(168, 76%, 40%)",
-                      }}
-                    >
-                      <stat.icon size={20} strokeWidth={2} />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-foreground leading-none tracking-tight">
-                        {stat.value}
-                      </div>
-                      <div className="text-[11px] text-muted-foreground font-bold uppercase tracking-wider mt-1">
-                        {stat.label}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-border">
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3].map(i => (
-                      <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-muted flex items-center justify-center text-[10px] text-muted-foreground font-bold">
-                        <Users size={12} />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-xs text-muted-foreground font-medium">
-                    <span className="font-bold text-foreground">Top-rated</span> support
-                  </div>
-                </div>
+            {/* Right - Value Proposition Panel */}
+            <div className="w-full lg:w-1/4 p-6 border-l border-border flex flex-col" style={{ background: "linear-gradient(180deg, hsl(160, 25%, 96%) 0%, hsl(160, 20%, 98%) 100%)" }}>
+              {/* CTA Card */}
+              <div className="mb-6 p-5 rounded-2xl bg-white border border-border/50 shadow-sm">
+                <h4 className="text-sm font-bold text-foreground mb-2">Free Consultation</h4>
+                <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
+                  Book a 30-minute strategy call. We'll assess your needs and recommend the right approach.
+                </p>
+                <Link
+                  href="/contact"
+                  onClick={onClose}
+                  className="flex items-center justify-center w-full py-2.5 px-4 rounded-lg text-white text-xs font-bold transition-all"
+                  style={{ background: "linear-gradient(135deg, hsl(168, 76%, 42%), hsl(162, 82%, 28%))" }}
+                >
+                  Schedule a Call
+                </Link>
               </div>
             </div>
           </div>
@@ -196,21 +165,48 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
                 </div>
               </div>
 
-              <div className="lg:w-1/3 border-t lg:border-t-0 lg:border-l border-border pt-8 lg:pt-0 lg:pl-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  {stats.map((stat) => (
-                    <div key={stat.label} className="flex flex-col items-center text-center sm:items-start sm:text-left">
-                      <div className="mb-2 p-3 rounded-full" style={{ background: "hsl(168, 76%, 48%, 0.1)", color: "hsl(168, 76%, 40%)" }}>
-                        <stat.icon size={24} />
-                      </div>
-                      <div className="text-3xl font-bold text-foreground mb-1">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm text-muted-foreground font-medium">
-                        {stat.label}
-                      </div>
-                    </div>
-                  ))}
+              <div className="lg:w-1/3 border-t lg:border-t-0 lg:border-l border-border pt-8 lg:pt-0 lg:pl-12 flex flex-col">
+                {/* CTA Card */}
+                <div className="p-5 rounded-2xl bg-gradient-to-br from-muted/50 to-background border border-border/50 mb-6">
+                  <h4 className="text-sm font-bold text-foreground mb-2">Get Started</h4>
+                  <p className="text-xs text-muted-foreground mb-4">
+                    Ready to transform your data? Let's discuss how we can help.
+                  </p>
+                  <Link
+                    href="/contact"
+                    onClick={onClose}
+                    className="flex items-center justify-center w-full py-2.5 px-4 rounded-lg text-white text-xs font-bold transition-all"
+                    style={{ background: "linear-gradient(135deg, hsl(168, 76%, 42%), hsl(162, 82%, 28%))" }}
+                  >
+                    Book a Call
+                  </Link>
+                </div>
+
+                {/* Quick Links */}
+                <div className="flex-1">
+                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">Quick Links</h4>
+                  <div className="space-y-2">
+                    {[
+                      { label: "Our Work", href: "/work", desc: "View case studies" },
+                      { label: "Industries", href: "/industries", desc: "Solutions by sector" },
+                      { label: "Contact Us", href: "/contact", desc: "Get in touch" },
+                    ].map((link) => (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        onClick={onClose}
+                        className="group flex items-center justify-between p-2.5 rounded-lg hover:bg-muted/50 transition-colors"
+                      >
+                        <div>
+                          <div className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                            {link.label}
+                          </div>
+                          <div className="text-[10px] text-muted-foreground">{link.desc}</div>
+                        </div>
+                        <ArrowRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-0.5" />
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

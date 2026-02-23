@@ -1,10 +1,12 @@
 "use client";
 
 import { useAdmin } from "@/app/admin/context";
+import { authService } from "@/services/authService";
 import { cn } from "@/lib/utils";
 import {
   BarChart3,
   FileText,
+  Home,
   LayoutDashboard,
   LogOut,
   Settings,
@@ -19,6 +21,11 @@ const navItems = [
     title: "Dashboard",
     href: "/admin/dashboard",
     icon: LayoutDashboard
+  },
+  {
+    title: "Home Page",
+    href: "/admin/home",
+    icon: Home
   },
   {
     title: "Contacts",
@@ -48,7 +55,8 @@ export function AdminSidebar() {
   const { sidebarOpen, setSidebarOpen } = useAdmin();
 
   const handleSignOut = () => {
-    // In a real app, you would clear auth tokens here
+    // Clear auth session and token using authService
+    authService.logout();
     router.push("/");
   };
 

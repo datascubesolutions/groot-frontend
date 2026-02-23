@@ -1,6 +1,7 @@
 "use client";
 
 import MarkdownEditor from "@/components/admin/MarkdownEditor";
+import { Skeleton } from "@/components/ui/Skeleton";
 import { getErrorMessage } from "@/lib/api/errors";
 import { blogService } from "@/services/blogService";
 import {
@@ -266,12 +267,31 @@ export default function BlogDetailPage() {
   // ===== LOADING STATE =====
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          <p className="text-gray-400 text-sm font-medium">
-            Loading blog post...
-          </p>
+      <div className="space-y-6 animate-pulse pb-8">
+        {/* Header Skeleton */}
+        <div className="flex items-center justify-between pb-4 border-b border-white/5">
+          <div className="flex items-center gap-4">
+            <Skeleton className="h-10 w-10 rounded-xl bg-white/5" />
+            <div className="space-y-2">
+              <Skeleton className="h-8 w-48 rounded-lg bg-white/5" />
+              <Skeleton className="h-4 w-32 bg-white/5" />
+            </div>
+          </div>
+          <Skeleton className="h-10 w-32 rounded-xl bg-white/5" />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Left Column */}
+          <div className="lg:col-span-2 space-y-6">
+            <Skeleton className="h-[120px] w-full rounded-2xl bg-white/5" />
+            <Skeleton className="h-[400px] w-full rounded-2xl bg-white/5" />
+            <Skeleton className="h-[200px] w-full rounded-2xl bg-white/5" />
+          </div>
+          {/* Right Column */}
+          <div className="space-y-6">
+            <Skeleton className="h-[300px] w-full rounded-2xl bg-white/5" />
+            <Skeleton className="h-[200px] w-full rounded-2xl bg-white/5" />
+          </div>
         </div>
       </div>
     );

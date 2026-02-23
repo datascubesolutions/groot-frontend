@@ -7,13 +7,13 @@ import { cn } from "@/lib/utils";
 import { Label } from "@radix-ui/react-label";
 import { animate, AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
 import {
-  ArrowLeft,
-  ArrowRight,
-  Calendar,
-  CheckCircle2,
-  Download,
-  Mail,
-  TrendingUp
+    ArrowLeft,
+    ArrowRight,
+    Calendar,
+    CheckCircle2,
+    Download,
+    Mail,
+    TrendingUp
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
