@@ -64,7 +64,6 @@ export const NAV_LINKS = [
       { label: "DevOps", href: "/microsoft/devops" },
     ],
   },
-  { label: "Our Work", href: "/work" },
   { label: "Blog", href: "/blog" },
   {
     label: "About Us",
@@ -141,7 +140,6 @@ export const FOOTER_LINKS = {
     { label: "Contact", href: "/contact" },
   ],
   resources: [
-    { label: "Our Work", href: "/work" },
     { label: "Industries", href: "/industries" },
     { label: "Solutions", href: "/solutions" },
     { label: "Blog", href: "/blog" },

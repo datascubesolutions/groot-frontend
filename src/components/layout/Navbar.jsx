@@ -57,7 +57,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 relative group py-2
-                    ${activeDropdown === link.label ? "text-primary" : "text-foreground/80 hover:text-primary"}`}
+                    ${activeDropdown === link.label ? "text-forest" : "text-foreground/80 hover:text-forest"}`}
                 >
                   {link.label}
                   {link.hasDropdown && (
@@ -67,7 +67,7 @@ export function Navbar() {
                         }`}
                     />
                   )}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-forest transition-all duration-300 group-hover:w-full" />
                 </Link>
 
                 {/* Regular Dropdown for non-MegaMenu links (Microsoft uses MegaMenu like Services) */}

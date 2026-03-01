@@ -87,11 +87,6 @@ export const NAVIGATION_CONFIG = {
       ]
     },
     {
-      label: 'Our Work',
-      href: '/work',
-      type: 'link'
-    },
-    {
       label: 'About Us',
       href: '/about',
       type: 'dropdown',

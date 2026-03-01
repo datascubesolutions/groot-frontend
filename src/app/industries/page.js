@@ -1,18 +1,50 @@
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
 import {
+  Brain,
   Building2,
   Cpu,
+  Database,
   Factory,
   Globe2,
+  Search,
   ShoppingCart,
-  Stethoscope
+  Stethoscope,
+  TrendingUp
 } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = {
-  title: "Industries | Groot Analytics",
-  description: "Specialized analytics and AI solutions across Financial Services, Manufacturing, Healthcare, Retail, and Technology.",
+  title: "Industries & Our Work | Groot Analytics",
+  description: "Specialized analytics and AI solutions across Financial Services, Manufacturing, Healthcare, Retail, and Technology. Explore our success stories and case studies.",
 };
+
+const caseStudies = [
+  {
+    category: "Data Engineering",
+    title: "Modernizing a Global Financial Data Lake",
+    client: "Tier 1 Investment Bank",
+    impact: "99.9% Pipeline Reliability",
+    description: "Built a cloud-native data architecture on Azure Databricks processing 5TB+ daily for real-time risk assessment.",
+    icon: Database
+  },
+  {
+    category: "AI & Automation",
+    title: "Intelligent Inventory Optimization AI",
+    client: "Retail Conglomerate",
+    impact: "18% Stockout Reduction",
+    description: "Deployed custom XGBoost models on Azure ML to predict demand spikes and automate reordering across 200+ locations.",
+    icon: Brain
+  },
+  {
+    category: "Strategy & BI",
+    title: "Decision Intelligence for PE Integration",
+    client: "Leading Private Equity Firm",
+    impact: "40% Faster Reporting",
+    description: "Designed a unified semantic layer on Snowflake and Power BI dashboards during a complex merger of three major entities.",
+    icon: TrendingUp
+  }
+];
 
 const industries = [
   {
@@ -71,7 +103,49 @@ export default function IndustriesPage() {
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10">
             Deep domain expertise combined with advanced analytics to solve industry-specific complex challenges.
           </p>
-          <Button variant="hero" size="lg">Consult Your Industry Expert</Button>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
+            <Button variant="hero" size="lg">Consult Your Industry Expert</Button>
+            <div className="relative group">
+              <input type="text" placeholder="Search by industry..." className="h-14 px-6 pr-12 rounded-full border border-border bg-background focus:ring-2 focus:ring-primary outline-none transition-all w-64 group-focus-within:w-80" />
+              <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies - Our Work */}
+      <section id="our-work" className="py-24 bg-muted/10 border-y border-border">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Success Stories</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Real problems solved with robust engineering and intelligent systems. Explore our impact across various domains.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {caseStudies.map((study, index) => (
+              <div key={index} className="group cursor-pointer">
+                <div className="aspect-[16/10] bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl border border-border mb-8 overflow-hidden relative flex items-center justify-center p-12">
+                  <study.icon size={80} className="text-primary/10 group-hover:scale-110 group-hover:text-primary/20 transition-all duration-500" />
+                  <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-md border border-border text-xs font-bold text-primary">{study.category}</div>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{study.title}</h3>
+                <div className="flex gap-4 mb-4 flex-wrap">
+                  <div className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">Client: {study.client}</div>
+                  <div className="text-xs font-bold text-primary bg-primary/5 px-2 py-1 rounded">Impact: {study.impact}</div>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-2">{study.description}</p>
+                <Link href="#" className="font-bold flex items-center gap-2 text-foreground hover:text-primary transition-colors">
+                  Read Full Story <TrendingUp size={16} />
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Link href="/contact">
+              <Button variant="hero" size="lg">Partner With Us</Button>
+            </Link>
+          </div>
         </div>
       </section>
 

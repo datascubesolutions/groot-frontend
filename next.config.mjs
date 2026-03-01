@@ -2,6 +2,16 @@
 const nextConfig = {
   reactCompiler: true,
 
+  async redirects() {
+    return [
+      {
+        source: "/work",
+        destination: "/industries#our-work",
+        permanent: true,
+      },
+    ];
+  },
+
   // Performance optimizations
   compress: true,
   poweredByHeader: false,

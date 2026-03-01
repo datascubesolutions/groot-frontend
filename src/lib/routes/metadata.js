@@ -25,9 +25,8 @@ export const getIndexableRoutes = () => [
     { path: '/services/dedicated-resources', priority: 0.9, changeFrequency: 'monthly' },
 
     // Other Main Pages
-    { path: '/industries', priority: 0.8, changeFrequency: 'monthly' },
+    { path: '/industries', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/solutions', priority: 0.8, changeFrequency: 'monthly' },
-    { path: '/work', priority: 0.8, changeFrequency: 'weekly' },
     { path: '/technologies', priority: 0.7, changeFrequency: 'monthly' },
     { path: '/contact', priority: 0.9, changeFrequency: 'yearly' },
 ];
