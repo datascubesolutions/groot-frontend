@@ -70,8 +70,8 @@ export function Navbar() {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
                 </Link>
 
-                {/* Regular Dropdown for non-MegaMenu links (Solutions uses MegaMenu like Services) */}
-                {link.hasDropdown && link.label !== "Services" && link.label !== "About Us" && link.label !== "Solutions" && activeDropdown === link.label && (
+                {/* Regular Dropdown for non-MegaMenu links (Microsoft uses MegaMenu like Services) */}
+                {link.hasDropdown && link.label !== "Services" && link.label !== "About Us" && link.label !== "Microsoft" && activeDropdown === link.label && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -113,9 +113,9 @@ export function Navbar() {
         </nav>
       </div>
 
-      {/* Mega Menu Dropdown (Services, Solutions, About Us) */}
+      {/* Mega Menu Dropdown (Services, Microsoft, About Us) */}
       <AnimatePresence>
-        {(activeDropdown === "Services" || activeDropdown === "Solutions" || activeDropdown === "About Us") && (
+        {(activeDropdown === "Services" || activeDropdown === "Microsoft" || activeDropdown === "About Us") && (
           <MegaMenu
             isOpen={true}
             onClose={() => setActiveDropdown(null)}

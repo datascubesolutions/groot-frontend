@@ -94,14 +94,6 @@ export const ProcessTimelineSection = () => {
         <div className="container mx-auto container-padding relative z-10">
           {/* Header */}
           <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-            <m.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-block mb-4 px-4 py-2 rounded-full border border-primary/30 bg-primary/10"
-            >
-              <span className="text-xs font-bold text-primary tracking-widest uppercase">The Neural Process</span>
-            </m.div>
             <m.h2
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}

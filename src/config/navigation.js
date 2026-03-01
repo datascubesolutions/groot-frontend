@@ -73,19 +73,17 @@ export const NAVIGATION_CONFIG = {
       ]
     },
     {
-      label: 'Solutions',
-      href: '/solutions',
+      label: 'Microsoft',
+      href: '/microsoft/fabric',
       type: 'dropdown',
       items: [
-        { label: 'Overview', href: '/solutions' },
-        { label: 'Data Analytics', href: '/solutions/data-analytics' },
-        { label: 'IoT Solutions', href: '/solutions/iot' },
-        { label: 'Mobile Apps', href: '/solutions/mobile' },
-        { label: 'Technologies', href: '/technologies' },
-        { label: 'React / Next.js', href: '/technologies/react' },
-        { label: 'Node.js', href: '/technologies/node' },
-        { label: 'Python / AI', href: '/technologies/python' },
-        { label: 'Cloud (AWS/Azure)', href: '/technologies/cloud' },
+        { label: 'Fabric', href: '/microsoft/fabric' },
+        { label: 'Power BI', href: '/microsoft/power-bi' },
+        { label: 'Copilot', href: '/microsoft/copilot' },
+        { label: 'AI Foundry', href: '/microsoft/ai-foundry' },
+        { label: 'Purview', href: '/microsoft/purview' },
+        { label: 'Azure', href: '/microsoft/azure' },
+        { label: 'DevOps', href: '/microsoft/devops' },
       ]
     },
     {

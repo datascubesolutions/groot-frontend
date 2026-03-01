@@ -55,6 +55,7 @@ module.exports = {
         charcoal: "hsl(var(--charcoal))",
         birch: "hsl(var(--birch))",
         teal: "hsl(var(--teal))",
+        "brand-red": "hsl(var(--brand-red))",
         burgundy: {
           DEFAULT: "hsl(var(--burgundy))",
           dark: "hsl(var(--burgundy-dark))",

@@ -1,10 +1,10 @@
 "use client";
 
+import { homepageService } from "@/services/homepageService";
 import { BriefcaseIcon, DocumentTextIcon, HomeIcon, ShieldExclamationIcon, UserGroupIcon, VideoCameraIcon, ViewColumnsIcon } from "@heroicons/react/24/outline";
 import { GripVertical, Image as ImageIcon, Plus, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { homepageService } from "@/services/homepageService";
 
 export default function AdminHomePage() {
   const [activeTab, setActiveTab] = useState("hero");
@@ -43,7 +43,8 @@ export default function AdminHomePage() {
     items: [
       { title: "FABRIC-READY FOUNDATION", description: "We deploy your modern data platform — or fix what's broken." },
       { title: "DECISION INTELLIGENCE ENGINE", description: "We build dashboards your leadership actually trusts." },
-      { title: "PRODUCTION-GRADE AI FOUNDRY", description: "We architect AI on governed data so pilots actually ship." }
+      { title: "PRODUCTION-GRADE AI FOUNDRY", description: "We architect AI on governed data so pilots actually ship." },
+      { title: "COPILOT DEPLOYMENT & AGENTS", description: "We deploy Copilot for adoption, not shelfware — with custom agents that work." }
     ]
   });
 
