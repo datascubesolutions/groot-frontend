@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import { ArrowRight, Database } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function FabricHero() {
@@ -47,6 +48,95 @@ export function FabricHero() {
                   <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
+            </motion.div>
+
+            {/* Technology Partners Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="pt-2"
+            >
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 px-8 py-8 sm:px-10 sm:py-8 max-w-xl">
+                <div className="flex flex-col gap-8">
+                  {/* Top row — Microsoft, Fabric, Power BI */}
+                  <div className="flex items-center justify-between gap-6 flex-wrap">
+                    {/* Microsoft */}
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <svg width="28" height="28" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" y="0" width="11" height="11" fill="#F25022" />
+                        <rect x="12" y="0" width="11" height="11" fill="#7FBA00" />
+                        <rect x="0" y="12" width="11" height="11" fill="#00A4EF" />
+                        <rect x="12" y="12" width="11" height="11" fill="#FFB900" />
+                      </svg>
+                      <span className="text-lg font-semibold text-gray-700 tracking-tight">Microsoft</span>
+                    </div>
+
+                    {/* Microsoft Fabric */}
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <Image
+                        src="/svg/fabric_48_color.svg"
+                        alt="Microsoft Fabric"
+                        width={32}
+                        height={32}
+                        className="h-8 w-8"
+                      />
+                      <span className="text-lg font-semibold text-gray-700 tracking-tight">Fabric</span>
+                    </div>
+
+                    {/* Power BI */}
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <Image
+                        src="/svg/power-bi-icon.svg"
+                        alt="Power BI"
+                        width={30}
+                        height={30}
+                        className="h-7 w-7"
+                      />
+                      <span className="text-lg font-semibold text-gray-700 tracking-tight">Power BI</span>
+                    </div>
+                  </div>
+
+                  {/* Bottom row — Azure, Purview, Copilot */}
+                  <div className="flex items-center justify-center gap-10 flex-wrap">
+                    {/* Azure */}
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <Image
+                        src="/svg/azure-2.svg"
+                        alt="Azure"
+                        width={28}
+                        height={28}
+                        className="h-7 w-auto"
+                      />
+                      <span className="text-lg font-semibold text-gray-700 tracking-tight">Azure</span>
+                    </div>
+
+                    {/* Microsoft Purview */}
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <Image
+                        src="/svg/microsoft-purview-seeklogo.svg"
+                        alt="Microsoft Purview"
+                        width={28}
+                        height={28}
+                        className="h-7 w-7"
+                      />
+                      <span className="text-lg font-semibold text-gray-700 tracking-tight">Purview</span>
+                    </div>
+
+                    {/* Copilot */}
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <Image
+                        src="/svg/copilot-icon.svg"
+                        alt="Copilot"
+                        width={28}
+                        height={28}
+                        className="h-7 w-7"
+                      />
+                      <span className="text-lg font-semibold text-gray-700 tracking-tight">Copilot</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
 
