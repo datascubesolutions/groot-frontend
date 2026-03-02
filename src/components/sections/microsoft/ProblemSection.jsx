@@ -35,7 +35,7 @@ export function ProblemSection({ tagline = "Sound familiar?", problems = [] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold italic text-forest leading-snug mb-8 border-l-4 border-forest pl-5"
             >
               {tagline}
             </motion.p>

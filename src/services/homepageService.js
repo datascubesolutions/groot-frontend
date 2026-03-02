@@ -1,5 +1,5 @@
 import { API_ENDPOINTS } from "@/lib/api/endpoints";
-import { authService } from "./authService";
+import { authPost } from "@/lib/api/auth";
 
 export const homepageService = {
     /**
@@ -11,14 +11,15 @@ export const homepageService = {
             const response = await fetch(API_ENDPOINTS.HOMEPAGE.GET, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({}),
+                body: JSON.stringify({ data: {} }),
             });
 
             const payload = await response.json();
             if (!response.ok || payload?.error) {
-                throw new Error(payload?.error?.message || "Failed to fetch homepage content");
+                throw new Error(payload?.error?.message || payload?.error || "Failed to fetch homepage content");
             }
-            return payload.data ?? null;
+            // Callable returns { result: { success, data, meta } }; HTTP onRequest returns { success, data, meta }
+            return payload.result?.data ?? payload.data ?? null;
         } catch (error) {
             console.error("[homepageService.getHomepage]", error);
             throw error;
@@ -27,35 +28,11 @@ export const homepageService = {
 
     /**
      * Update home page content.
-     * Requires authentication token.
-     * @param {Object} data 
+     * Requires authentication (Callable with auth).
+     * @param {Object} data - Updates to apply
      */
     updateHomepage: async (data) => {
-        try {
-            const token = authService.getToken();
-            if (!token) {
-                throw new Error("Authentication required to update homepage content.");
-            }
-
-            const response = await fetch(API_ENDPOINTS.HOMEPAGE.UPDATE, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({ data }),
-            });
-
-            const payload = await response.json();
-
-            if (!response.ok || payload?.error) {
-                throw new Error(payload?.error?.message || "Failed to update homepage content");
-            }
-
-            return payload.data ?? null;
-        } catch (error) {
-            console.error("[homepageService.updateHomepage]", error);
-            throw error;
-        }
+        const result = await authPost(API_ENDPOINTS.HOMEPAGE.UPDATE, { data: { updates: data } });
+        return result?.result?.data ?? result?.data ?? null;
     },
 };
