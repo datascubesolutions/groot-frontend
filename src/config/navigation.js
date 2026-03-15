@@ -12,7 +12,6 @@ import {
   Code,
   Cpu,
   Layers,
-  ShoppingCart,
   Zap
 } from 'lucide-react';
 
@@ -25,27 +24,27 @@ export const NAVIGATION_CONFIG = {
       columns: [
         {
           id: 'categories',
-          title: 'Categories',
+          title: 'Capabilities',
           items: [
-            { label: 'Software Product Development', href: '/services/software-product-development', icon: Code, active: true },
-            { label: 'AI-Powered Solutions', href: '/services/ai-solutions', icon: Cpu },
-            { label: 'Enterprise Applications', href: '/services/enterprise-applications', icon: Layers },
-            { label: 'Custom Software Solutions', href: '/services/custom-software', icon: Zap },
-            { label: 'Ecommerce & Growth Consulting', href: '/services/ecommerce', icon: ShoppingCart },
-            { label: 'CloudOps', href: '/services/cloudops', icon: Cloud },
+            { label: 'Define Your Roadmap', href: '/services/define-your-roadmap', icon: Cloud, active: true },
+            { label: 'Build Your Foundation', href: '/services/build-your-foundation', icon: Layers },
+            { label: 'Decision Intelligence', href: '/services/decision-intelligence', icon: Zap },
+            { label: 'AI That Ships', href: '/services', icon: Cpu },
+            { label: 'Scale Your Team', href: '/services', icon: Code },
           ]
         },
         {
           id: 'category-details',
-          title: 'Software Product Development', // Dynamic based on selection
+          title: 'Assessments & Strategy', // Dynamic based on selection ideally, but static for now
           items: [
-            { label: 'Product Strategy', href: '/services/software-product-development/strategy' },
-            { label: 'Software Architecture & Design', href: '/services/software-product-development/architecture' },
-            { label: 'MVP Development', href: '/services/software-product-development/mvp' },
-            { label: 'Software Product Development', href: '/services/software-product-development/development' },
-            { label: 'Platform Plugin Development', href: '/services/software-product-development/plugins' },
-            { label: 'Quality Assurance', href: '/services/software-product-development/qa' },
-            { label: 'CTO As A Service', href: '/services/software-product-development/cto-service' },
+            { label: 'Maturity Assessment', href: '/services/define-your-roadmap/maturity-assessment' },
+            { label: 'Enterprise Data Strategy', href: '/services/define-your-roadmap/enterprise-data-strategy' },
+            { label: 'Stack Evaluation', href: '/services/define-your-roadmap/stack-evaluation' },
+            { label: 'Data Modernization', href: '/services/build-your-foundation/data-modernization' },
+            { label: 'Data Integration', href: '/services/build-your-foundation/data-integration' },
+            { label: 'Executive Analytics', href: '/services/decision-intelligence/executive-analytics' },
+            { label: 'Semantic Modeling', href: '/services/decision-intelligence/semantic-modeling' },
+            { label: 'Self-Service Enablement', href: '/services/decision-intelligence/self-service-enablement' },
           ]
         },
         {

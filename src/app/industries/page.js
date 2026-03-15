@@ -97,7 +97,7 @@ export default function IndustriesPage() {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center justify-center bg-background border-b border-border overflow-hidden">
         <div className="container mx-auto px-6 text-center z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-foreground">
             Industries We Serve
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10">
@@ -125,18 +125,19 @@ export default function IndustriesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {caseStudies.map((study, index) => (
               <div key={index} className="group cursor-pointer">
-                <div className="aspect-[16/10] bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl border border-border mb-8 overflow-hidden relative flex items-center justify-center p-12">
-                  <study.icon size={80} className="text-primary/10 group-hover:scale-110 group-hover:text-primary/20 transition-all duration-500" />
-                  <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-md border border-border text-xs font-bold text-primary">{study.category}</div>
+                <div className="aspect-[16/10] bg-gradient-to-br from-emerald-500/5 to-blue-500/5 rounded-[2rem] border border-border/60 hover:border-emerald-500/40 mb-8 overflow-hidden relative flex items-center justify-center p-12 transition-all duration-500 shadow-sm hover:shadow-[0_0_30px_rgba(52,211,153,0.1)]">
+                  <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/5 transition-colors duration-500" />
+                  <study.icon size={80} className="text-emerald-500/10 group-hover:scale-110 group-hover:text-emerald-500/30 transition-all duration-500 relative z-10" />
+                  <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-md border border-emerald-500/20 text-xs font-bold text-emerald-400 z-10 uppercase tracking-wider">{study.category}</div>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{study.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition-colors text-foreground tracking-tight">{study.title}</h3>
                 <div className="flex gap-4 mb-4 flex-wrap">
-                  <div className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">Client: {study.client}</div>
-                  <div className="text-xs font-bold text-primary bg-primary/5 px-2 py-1 rounded">Impact: {study.impact}</div>
+                  <div className="text-xs font-medium text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-md border border-border/50">Client: {study.client}</div>
+                  <div className="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-md border border-emerald-500/20">Impact: {study.impact}</div>
                 </div>
                 <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-2">{study.description}</p>
-                <Link href="#" className="font-bold flex items-center gap-2 text-foreground hover:text-primary transition-colors">
-                  Read Full Story <TrendingUp size={16} />
+                <Link href="#" className="font-bold flex items-center gap-2 text-foreground group-hover:text-emerald-400 transition-colors uppercase tracking-wider text-sm">
+                  Read Full Story <TrendingUp size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             ))}
@@ -154,21 +155,24 @@ export default function IndustriesPage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industries.map((industry, index) => (
-              <div key={index} className="p-8 rounded-3xl bg-background border border-border hover:border-primary/50 transition-all duration-300 group shadow-sm hover:shadow-xl">
-                <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                  <industry.icon size={28} />
+              <div key={index} className="p-10 rounded-[2rem] bg-muted/20 backdrop-blur-sm border border-border/60 hover:border-emerald-500/30 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between">
+                <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/5 transition-colors duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-6 group-hover:bg-emerald-500/20 transition-all shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] ring-1 ring-emerald-500/30">
+                    <industry.icon size={28} />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 tracking-tight text-foreground">{industry.title}</h3>
+                  <p className="text-muted-foreground mb-6 text-sm leading-relaxed">{industry.description}</p>
+                  <ul className="space-y-3 mb-8 border-t border-border/50 pt-6">
+                    {industry.points.map((point, pIdx) => (
+                      <li key={pIdx} className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 shadow-[0_0_5px_rgba(52,211,153,0.5)] shrink-0" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{industry.title}</h3>
-                <p className="text-muted-foreground mb-6 text-sm">{industry.description}</p>
-                <ul className="space-y-2 mb-8 border-t border-border pt-6">
-                  {industry.points.map((point, pIdx) => (
-                    <li key={pIdx} className="flex items-center gap-2 text-sm text-foreground/80">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" className="w-full">Explore {industry.title}</Button>
+                <Button variant="outline" className="w-full relative z-10 group-hover:border-emerald-500/50 group-hover:text-emerald-400 transition-colors">Explore {industry.title}</Button>
               </div>
             ))}
           </div>

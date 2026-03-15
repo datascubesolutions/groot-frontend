@@ -128,10 +128,10 @@ export const ABOUT_LINKS = [
 
 export const FOOTER_LINKS = {
   services: [
-    { label: "Data Engineering", href: "/services/data-engineering" },
-    { label: "AI & Machine Learning", href: "/services/ai-automation" },
-    { label: "Business Intelligence", href: "/services/business-intelligence" },
-    { label: "Strategy & Advisory", href: "/services/strategy-advisory" },
+    { label: "Define Your Roadmap", href: "/services/define-your-roadmap" },
+    { label: "Build Your Foundation", href: "/services/build-your-foundation" },
+    { label: "Decision Intelligence", href: "/services/decision-intelligence" },
+    { label: "AI That Ships", href: "/services/ai-that-ships" },
   ],
   company: [
     { label: "About Us", href: "/about/who-we-are" },

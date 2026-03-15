@@ -10,14 +10,14 @@ export const metadata = {
 
 const ContactInfoItem = ({ icon: Icon, label, value, delay }) => (
   <div
-    className="flex gap-5 items-start p-4 rounded-2xl hover:bg-white/5 transition-colors group cursor-default"
+    className="flex gap-5 items-start p-4 rounded-[2rem] hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-emerald-500/20 shadow-sm hover:shadow-[0_0_20px_rgba(52,211,153,0.1)]"
   >
-    <div className="p-4 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.15)] group-hover:shadow-[0_0_30px_rgba(34,197,94,0.4)]">
+    <div className="p-4 rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-all duration-300 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:shadow-[0_0_30px_rgba(52,211,153,0.5)] ring-1 ring-emerald-500/30">
       <Icon size={24} />
     </div>
     <div className="space-y-1">
-      <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider">{label}</p>
-      <p className="text-xl font-medium text-foreground group-hover:text-gradient-primary transition-all">{value}</p>
+      <p className="text-sm font-bold text-emerald-500/80 uppercase tracking-widest">{label}</p>
+      <p className="text-xl font-bold text-foreground group-hover:text-emerald-400 transition-all">{value}</p>
     </div>
   </div>
 );
@@ -27,8 +27,8 @@ export default function ContactPage() {
     <main className="min-h-screen bg-background relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 animate-pulse" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808020_1px,transparent_1px),linear-gradient(to_bottom,#80808020_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
       </div>
 
@@ -46,9 +46,9 @@ export default function ContactPage() {
           />
 
           <div className="mt-12 mb-20 relative z-10">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-foreground">
               Let's build the <br />
-              <span className="text-gradient-primary">future together</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">future together</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
               Ready to modernize your data stack? Schedule a technical consultation to discuss your architecture, tooling, and roadmap.
@@ -77,14 +77,14 @@ export default function ContactPage() {
               </div>
 
               {/* Global Presence Card */}
-              <div className="relative p-8 rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 overflow-hidden group">
-                <div className="absolute inset-0 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all duration-700" />
-                <h3 className="relative text-xl font-bold text-foreground mb-4">Global Presence</h3>
-                <p className="relative text-muted-foreground mb-6">
+              <div className="relative p-10 rounded-[2rem] bg-[#0a0a0a] border border-white/5 overflow-hidden group hover:border-emerald-500/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_30px_rgba(52,211,153,0.15)]">
+                <div className="absolute inset-0 bg-emerald-500/5 blur-[80px] group-hover:bg-emerald-500/10 transition-all duration-700" />
+                <h3 className="relative text-2xl font-bold text-white mb-4">Global Presence</h3>
+                <p className="relative text-emerald-100/60 leading-relaxed max-w-sm mb-8">
                   Serving clients across North America, Europe, and Asia Pacific.
                 </p>
-                <div className="relative h-2 w-full bg-white/10 rounded-full overflow-hidden">
-                  <div className="absolute top-0 left-0 h-full w-1/3 bg-primary animate-shine" />
+                <div className="relative h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="absolute top-0 left-0 h-full w-1/3 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse" />
                 </div>
               </div>
             </div>
