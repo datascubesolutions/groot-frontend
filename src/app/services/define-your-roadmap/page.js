@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CheckCircle2, FileText, LayoutTemplate, Route, ShieldCheck, Target, Users } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef } from "react";
 
 const fadeIn = {
@@ -50,12 +51,9 @@ export default function DefineYourRoadmap() {
               variants={staggerContainer}
               className="lg:col-span-7 max-w-2xl"
             >
-              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold mb-8 border border-primary/20 uppercase tracking-widest text-sm">
-                Strategy & Advisory
-              </motion.div>
               <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1]">
                 Define Your <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-500">
+                <span className="text-[hsl(var(--secondary))]">
                   Data Roadmap
                 </span>
               </motion.h1>
@@ -84,81 +82,20 @@ export default function DefineYourRoadmap() {
               </motion.div>
             </motion.div>
 
-            {/* Right Visual (Abstract Architecture Map) */}
             <motion.div
-              initial={{ opacity: 0, x: 40, rotateY: 10 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative hidden lg:block lg:col-span-5 perspective-1000"
+              className="relative hidden lg:block lg:col-span-5"
             >
-              <div className="relative w-full aspect-square max-w-lg mx-auto">
-                <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
-
-                {/* Center Node */}
-                <motion.div
-                  animate={{ scale: [1, 1.05, 1], rotateZ: [0, 5, 0] }}
-                  transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-                  className="absolute top-[40%] left-[35%] w-32 h-32 bg-background/80 backdrop-blur-xl border-2 border-primary/50 rounded-3xl shadow-primary/30 shadow-2xl z-30 flex items-center justify-center transform -rotate-12"
-                >
-                  <Route className="w-12 h-12 text-primary" strokeWidth={1.5} />
-                </motion.div>
-
-                {/* Node 1 */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1 }}
-                  className="absolute top-[10%] right-[15%] w-24 h-24 bg-background/60 backdrop-blur-md border border-border/50 rounded-2xl p-4 shadow-xl z-20 flex flex-col items-center justify-center"
-                >
-                  <Target className="w-8 h-8 text-indigo-500 mb-2 opacity-80" />
-                  <div className="w-12 h-2 bg-indigo-500/20 rounded-full" />
-                </motion.div>
-
-                {/* Node 2 */}
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 2 }}
-                  className="absolute bottom-[20%] left-[10%] w-28 h-28 bg-background/60 backdrop-blur-md border border-border/50 rounded-2xl p-4 shadow-xl z-20 flex flex-col items-center justify-center"
-                >
-                  <Users className="w-8 h-8 text-blue-500 mb-2 opacity-80" />
-                  <div className="w-16 h-2 bg-blue-500/20 rounded-full" />
-                </motion.div>
-
-                {/* Node 3 */}
-                <motion.div
-                  animate={{ x: [0, 10, 0] }}
-                  transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute bottom-[10%] right-[20%] w-32 h-20 bg-background/60 backdrop-blur-md border border-border/50 rounded-2xl p-4 shadow-xl z-20 flex items-center gap-3"
-                >
-                  <FileText className="w-6 h-6 text-emerald-500 opacity-80 shrink-0" />
-                  <div className="flex flex-col gap-2 w-full">
-                    <div className="w-full h-2 bg-emerald-500/20 rounded-full" />
-                    <div className="w-2/3 h-2 bg-emerald-500/20 rounded-full" />
-                  </div>
-                </motion.div>
-
-                {/* SVG Connections */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" style={{ filter: "drop-shadow(0px 0px 4px rgba(59, 130, 246, 0.3))" }}>
-                  <motion.path
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 0.5 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    d="M240,240 Q320,160 380,110"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="2"
-                    fill="none"
-                    strokeDasharray="4 4"
-                  />
-                  <motion.path
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 0.3 }}
-                    transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-                    d="M200,280 Q150,300 120,380"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                    className="text-muted-foreground"
-                  />
-                </svg>
+              <div className="relative w-full aspect-square max-w-lg mx-auto transform-gpu overflow-hidden rounded-3xl shadow-2xl shadow-[hsl(var(--primary))/0.15]">
+                <Image
+                  src="/define_your_roadmap_hero.png"
+                  alt="Define Your Roadmap Strategy"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  priority
+                />
               </div>
             </motion.div>
           </div>

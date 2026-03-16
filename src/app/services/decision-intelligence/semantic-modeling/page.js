@@ -4,6 +4,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
 import { AlertCircle, CheckCircle2, ChevronRight, DatabaseZap, Network, BoxSelect, Gauge, Sigma } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const fadeIn = {
@@ -65,54 +66,19 @@ export default function SemanticModeling() {
 
             {/* Right Visual (Abstract Star Schema/Model) */}
             <motion.div 
-              initial={{ opacity: 0, x: 40, rotateY: -10 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-5 relative perspective-1000 hidden lg:block"
+              className="lg:col-span-5 relative hidden lg:block"
             >
-              <div className="relative w-full aspect-square max-w-lg mx-auto transform-gpu rotate-[-5deg] group hover:rotate-0 transition-transform duration-1000">
-                <div className="absolute inset-0 bg-blue-500/20 blur-[120px] rounded-full group-hover:bg-primary/30 transition-colors duration-1000" />
-                
-                {/* Central Fact Table */}
-                <motion.div 
-                  animate={{ y: [0, -10, 0] }} 
-                  transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                  className="absolute top-[35%] left-[35%] w-32 h-32 bg-background/80 backdrop-blur-xl border border-primary/50 text-primary rounded-xl shadow-2xl flex flex-col items-center justify-center z-30 ring-1 ring-inset ring-white/10"
-                >
-                  <BoxSelect className="w-8 h-8 mb-2" strokeWidth={1.5} />
-                  <span className="text-xs font-bold uppercase tracking-wider">Fact_Sales</span>
-                  {/* Connecting lines drawn visually below */}
-                </motion.div>
-
-                {/* Dimension Tables */}
-                <motion.div 
-                  animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
-                  className="absolute top-[10%] left-[50%] -translate-x-1/2 w-28 h-20 bg-blue-500/10 backdrop-blur-md border border-blue-500/30 rounded-xl flex flex-col items-center justify-center shadow-lg z-20"
-                >
-                  <span className="text-xs text-blue-500 font-bold uppercase tracking-wider">Dim_Time</span>
-                </motion.div>
-
-                <motion.div 
-                  animate={{ y: [0, -10, 0] }} transition={{ duration: 7, repeat: Infinity, delay: 1 }}
-                  className="absolute bottom-[20%] left-[10%] w-28 h-20 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/30 rounded-xl flex flex-col items-center justify-center shadow-lg z-20"
-                >
-                  <span className="text-xs text-emerald-500 font-bold uppercase tracking-wider">Dim_Store</span>
-                </motion.div>
-
-                <motion.div 
-                   animate={{ y: [0, -15, 0] }} transition={{ duration: 6, repeat: Infinity, delay: 1.5 }}
-                  className="absolute bottom-[20%] right-[10%] w-28 h-20 bg-amber-500/10 backdrop-blur-md border border-amber-500/30 rounded-xl flex flex-col items-center justify-center shadow-lg z-20"
-                >
-                  <span className="text-xs text-amber-500 font-bold uppercase tracking-wider">Dim_Product</span>
-                </motion.div>
-
-                {/* Abstract Data Flows/Connections */}
-                 <svg className="absolute inset-0 w-full h-full z-10 opacity-30 stroke-primary/50" style={{ strokeDasharray: "4 4" }}>
-                    <motion.line x1="50%" y1="15%" x2="50%" y2="40%" strokeWidth="2" animate={{ strokeDashoffset: [0, 20] }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} />
-                    <motion.line x1="25%" y1="70%" x2="40%" y2="60%" strokeWidth="2" animate={{ strokeDashoffset: [0, -20] }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} />
-                    <motion.line x1="75%" y1="70%" x2="60%" y2="60%" strokeWidth="2" animate={{ strokeDashoffset: [0, -20] }} transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }} />
-                 </svg>
-
+              <div className="relative w-full aspect-square max-w-lg mx-auto transform-gpu overflow-hidden rounded-3xl shadow-2xl shadow-[hsl(var(--primary))/0.15]">
+                <Image
+                  src="/semantic_modeling_star_schema.png"
+                  alt="Semantic Modeling and Star Schema"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  priority
+                />
               </div>
             </motion.div>
           </div>

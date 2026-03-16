@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CheckCircle2, Database, HardDrive, Layers, Server, Settings, Workflow } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef } from "react";
 
 const fadeIn = {
@@ -50,12 +51,9 @@ export default function BuildYourFoundation() {
               variants={staggerContainer}
               className="lg:col-span-7 max-w-2xl"
             >
-              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold mb-8 border border-primary/20 uppercase tracking-widest text-sm">
-                Data Engineering
-              </motion.div>
               <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-foreground">
                 Build a Data <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-500">
+                <span className="text-[hsl(var(--secondary))]">
                   Foundation
                 </span> That Scales
               </motion.h1>
@@ -84,79 +82,20 @@ export default function BuildYourFoundation() {
               </motion.div>
             </motion.div>
 
-            {/* Right Visual (Abstract Infrastructure) */}
             <motion.div
-              initial={{ opacity: 0, x: 40, rotateY: 10 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative hidden lg:block lg:col-span-5 perspective-1000"
+              className="relative hidden lg:block lg:col-span-5"
             >
-              <div className="relative w-full aspect-[4/5] max-w-lg mx-auto">
-                {/* Background glow */}
-                <div className="absolute inset-0 bg-emerald-500/20 blur-[100px] rounded-full" />
-
-                {/* Layer 1 (Top) */}
-                <motion.div
-                  animate={{ y: [0, -8, 0], rotateX: [55, 55, 55], rotateZ: [-35, -35, -35] }}
-                  transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                  className="absolute top-[10%] left-[15%] w-[80%] h-[40%] bg-[#123f2f]/90 backdrop-blur-md border border-emerald-400/30 rounded-3xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-30"
-                >
-                  <div className="flex items-center gap-3 mb-4 opacity-100">
-                    <Database className="text-emerald-400 w-6 h-6" />
-                    <div className="h-3 w-32 bg-emerald-400/20 rounded-full" />
-                  </div>
-                  <div className="grid grid-cols-4 gap-2 h-16">
-                    <div className="bg-emerald-400/10 rounded-lg border border-emerald-400/20" />
-                    <div className="bg-emerald-400/10 rounded-lg border border-emerald-400/20" />
-                    <div className="bg-emerald-400/10 rounded-lg border border-emerald-400/20" />
-                    <div className="bg-emerald-400/10 rounded-lg border border-emerald-400/20" />
-                  </div>
-                </motion.div>
-
-                {/* Layer 2 (Middle) */}
-                <motion.div
-                  animate={{ y: [0, 8, 0], rotateX: [55, 55, 55], rotateZ: [-35, -35, -35] }}
-                  transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
-                  className="absolute top-[35%] left-[10%] w-[80%] h-[40%] bg-[#0f2d22]/90 backdrop-blur-md border border-emerald-500/30 rounded-3xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-20"
-                >
-                  <div className="flex items-center gap-3 mb-4 opacity-100">
-                    <Workflow className="text-white w-6 h-6" />
-                    <div className="h-3 w-40 bg-white/20 rounded-full" />
-                  </div>
-                  <div className="flex justify-between items-center h-16 px-4">
-                    <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20" />
-                    <div className="flex-1 h-[2px] bg-gradient-to-r from-white/30 to-white/5 mx-2" />
-                    <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20" />
-                    <div className="flex-1 h-[2px] bg-gradient-to-r from-white/5 to-white/30 mx-2" />
-                    <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20" />
-                  </div>
-                </motion.div>
-
-                {/* Layer 3 (Bottom) */}
-                <motion.div
-                  animate={{ rotateX: [55, 55, 55], rotateZ: [-35, -35, -35] }}
-                  className="absolute top-[60%] left-[5%] w-[80%] h-[40%] bg-[#0a1f18]/90 backdrop-blur-md border border-emerald-600/30 rounded-3xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-10"
-                >
-                  <div className="flex items-center gap-3 mb-4 opacity-100">
-                    <HardDrive className="text-emerald-500 w-6 h-6" />
-                    <div className="h-3 w-24 bg-emerald-500/20 rounded-full" />
-                  </div>
-                  <div className="w-full h-16 bg-gradient-to-b from-emerald-500/10 to-transparent rounded-xl border border-emerald-500/20" />
-                </motion.div>
-
-                {/* Connecting Lines */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none z-25" style={{ filter: "drop-shadow(0px 0px 4px rgba(16, 185, 129, 0.4))" }}>
-                  <motion.path
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 0.6 }}
-                    transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                    d="M180,180 L180,300 M260,140 L260,260"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="2"
-                    fill="none"
-                    strokeDasharray="4 4"
-                  />
-                </svg>
+              <div className="relative w-full aspect-square max-w-lg mx-auto transform-gpu overflow-hidden rounded-3xl shadow-2xl shadow-[hsl(var(--primary))/0.15]">
+                <Image
+                  src="/build_your_foundation_hero.png"
+                  alt="Build Your Foundation Enterprise Data Architecture"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  priority
+                />
               </div>
             </motion.div>
           </div>

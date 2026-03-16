@@ -132,8 +132,8 @@ export default function DataModernization() {
                 <div className="w-14 h-14 bg-indigo-500/10 text-indigo-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Database size={28} />
                 </div>
-                <h4 className="text-2xl font-bold mb-4 text-foreground">Data Locked in Silos</h4>
-                <p className="text-lg text-muted-foreground leading-relaxed">You have an on-prem ERP, a cloud-based CRM, and three SaaS marketing tools. Your on-prem data warehouse can't easily integrate the SaaS data, so teams build their own isolated databases. When executives ask cross-functional questions, the answer is "we can't connect those two datasets."</p>
+                <h4 className="text-2xl font-bold mb-4 text-foreground">Talent Drain</h4>
+                <p className="text-lg text-foreground/80 leading-relaxed">Your best data engineers are spending 80% of their time maintaining brittle ETL pipelines and tuning indexes on over-burdened servers. They want to build AI and advanced analytics, but they're stuck doing plumbing. Modern talent demands modern tools.</p>
               </motion.div>
             </div>
             

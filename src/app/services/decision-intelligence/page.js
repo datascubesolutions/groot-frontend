@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { BarChart3, ChevronRight, DatabaseZap, LayoutDashboard, LineChart, PieChart, RefreshCw, Target, Users } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef } from "react";
 
 const fadeIn = {
@@ -50,12 +51,9 @@ export default function DecisionIntelligence() {
               variants={staggerContainer}
               className="max-w-2xl"
             >
-              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-8 border border-primary/20 uppercase tracking-widest">
-                Data Strategy
-              </motion.div>
               <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1]">
                 Decision <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">
+                <span className="text-[hsl(var(--secondary))]">
                   Intelligence
                 </span>
               </motion.h1>
@@ -76,70 +74,20 @@ export default function DecisionIntelligence() {
               </motion.div>
             </motion.div>
 
-            {/* Right Visual (Abstract Mock Data Dashboard) */}
             <motion.div
-              initial={{ opacity: 0, x: 40, rotateY: 10 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative hidden lg:block perspective-1000"
+              className="relative hidden lg:block"
             >
-              <div className="relative w-full aspect-square max-w-lg mx-auto">
-                {/* Background glow */}
-                <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
-
-                {/* Glass Card 1 */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                  className="absolute top-[10%] left-[5%] w-[60%] h-[40%] bg-background/60 backdrop-blur-xl border border-border/50 rounded-2xl p-6 shadow-2xl z-20"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="h-3 w-24 bg-muted rounded-full" />
-                    <BarChart3 className="text-primary opacity-70" />
-                  </div>
-                  <div className="h-8 w-32 bg-foreground/10 rounded-lg mb-4" />
-                  <div className="flex gap-2 items-end h-16">
-                    <div className="w-1/4 h-[40%] bg-primary/40 rounded-t-sm" />
-                    <div className="w-1/4 h-[70%] bg-primary/60 rounded-t-sm" />
-                    <div className="w-1/4 h-[50%] bg-primary/80 rounded-t-sm" />
-                    <div className="w-1/4 h-[100%] bg-primary rounded-t-sm" />
-                  </div>
-                </motion.div>
-
-                {/* Glass Card 2 */}
-                <motion.div
-                  animate={{ y: [0, 15, 0] }}
-                  transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
-                  className="absolute bottom-[15%] right-[5%] w-[55%] h-[45%] bg-background/60 backdrop-blur-xl border border-border/50 rounded-2xl p-6 shadow-2xl z-30 flex flex-col justify-between"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="h-3 w-20 bg-muted rounded-full" />
-                    <PieChart className="text-blue-500 opacity-70" />
-                  </div>
-                  <div className="flex justify-center my-4">
-                    <div className="w-24 h-24 rounded-full border-4 border-primary border-t-blue-500 opacity-80" />
-                  </div>
-                  <div className="flex justify-between w-full">
-                    <div className="h-2 w-12 bg-primary/50 rounded-full" />
-                    <div className="h-2 w-12 bg-blue-500/50 rounded-full" />
-                  </div>
-                </motion.div>
-
-                {/* Glass Card 3 */}
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 2 }}
-                  className="absolute top-[40%] right-[10%] w-[45%] h-[30%] bg-background/80 backdrop-blur-2xl border border-border/50 rounded-2xl p-5 shadow-xl z-10"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="h-2 w-16 bg-muted rounded-full" />
-                    <LineChart size={16} className="text-emerald-500 opacity-70" />
-                  </div>
-                  <div className="h-6 w-20 bg-foreground/10 rounded-md mb-2" />
-                  <svg className="w-full h-10" viewBox="0 0 100 30" preserveAspectRatio="none">
-                    <path d="M0,30 L20,15 L40,20 L60,5 L80,10 L100,0" fill="none" stroke="currentColor" strokeWidth="2" className="text-emerald-500 opacity-70" />
-                  </svg>
-                </motion.div>
+              <div className="relative w-full aspect-square max-w-lg mx-auto transform-gpu overflow-hidden rounded-3xl shadow-2xl shadow-[hsl(var(--primary))/0.15]">
+                <Image
+                  src="/decision_intelligence_hero.png"
+                  alt="Decision Intelligence and Executive Analytics Dashboard"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  priority
+                />
               </div>
             </motion.div>
           </div>
