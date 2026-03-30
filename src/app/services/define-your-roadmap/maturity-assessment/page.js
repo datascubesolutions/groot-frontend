@@ -2,6 +2,7 @@
 
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
+import { SERVICES_ENTRY_HREF } from "@/lib/constants/services";
 import { motion } from "framer-motion";
 import { Activity, AlertCircle, CheckCircle2, ChevronRight, PieChart, ShieldCheck, Target } from "lucide-react";
 import Image from "next/image";
@@ -23,10 +24,10 @@ const staggerContainer = {
 export default function MaturityAssessment() {
   return (
     <main className="pt-20 min-h-screen relative bg-background overflow-x-hidden selection:bg-forest/30">
-      <div className="container mx-auto px-6 max-w-7xl pt-4">
+      <div className="container mx-auto px-6 py-4">
         <Breadcrumb
           items={[
-            { label: "Services", href: "/services/define-your-roadmap/maturity-assessment" },
+            { label: "Services", href: SERVICES_ENTRY_HREF },
             { label: "Define Your Roadmap", href: "/services/define-your-roadmap" },
             { label: "Maturity Assessment", href: "/services/define-your-roadmap/maturity-assessment" },
           ]}
@@ -84,7 +85,7 @@ export default function MaturityAssessment() {
                   <span className="inline-block isolate mix-blend-normal text-black">A</span>
                   nalytics
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40 stroke-text">Maturity Eval</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40 stroke-text">Maturity Assessment</span>
                 </motion.h1>
 
                 <div className="grid md:grid-cols-2 gap-8 md:gap-16 max-w-5xl mt-8 bg-background/85 backdrop-blur-2xl p-8 md:p-12 rounded-[2rem] border border-border/60 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.2)] relative">
@@ -99,7 +100,7 @@ export default function MaturityAssessment() {
                       Evidence-based scoring, gap analysis, and prioritized recommendations so you can invest in Fabric and Azure with confidence — <strong className="text-foreground bg-forest/10 px-2 py-0.5 whitespace-nowrap">no guesswork, no vendor bias.</strong>
                     </motion.p>
                     <motion.div variants={fadeIn}>
-                      <Link href="/contact?service=maturity-assessment" passHref>
+                      <Link href="/contact?service=maturity-assessment">
                         <Button variant="hero" size="lg" className="px-8 h-16 w-full md:w-auto overflow-hidden group relative bg-foreground text-background hover:bg-forest hover:text-forest-foreground transition-all duration-500 rounded-none border-2 border-foreground shadow-[10px_10px_0px_0px_hsl(var(--forest)/0.3)] hover:shadow-none hover:translate-x-[10px] hover:translate-y-[10px]">
                           <span className="relative z-10 flex items-center font-black tracking-[0.15em] uppercase text-sm">
                             Schedule Assessment
@@ -200,7 +201,13 @@ export default function MaturityAssessment() {
                 <div className="relative border-[3px] border-foreground bg-card ml-0 mr-6 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] flex flex-col outline outline-1 outline-offset-4 outline-foreground/10">
                   
                   <div className="h-[280px] relative overflow-hidden bg-black border-b-[3px] border-forest">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Data Analytics Complexity" className="object-cover w-full h-full mix-blend-luminosity opacity-40 group-hover:scale-110 group-hover:opacity-70 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+                    <Image
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+                      alt="Data Analytics Complexity"
+                      fill
+                      className="object-cover mix-blend-luminosity opacity-40 group-hover:scale-110 group-hover:opacity-70 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]"
+                      sizes="(min-width: 768px) 420px, 100vw"
+                    />
                     
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
                     
@@ -435,10 +442,10 @@ export default function MaturityAssessment() {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-0 border-4 border-border/60 bg-muted/20">
-            <MethodPanel step={1} week="Week 1-2" title="Stakeholder Interviews" desc="We interview 8–12 stakeholders across business and IT to surface gaps between belief and reality." color="forest" />
-            <MethodPanel step={2} week="Week 2-3" title="Technical Review" desc="We review actual implemented architecture (Fabric, DF, Semantics) against documented design." color="cyan" />
+            <MethodPanel step={1} week="Week 1–2" title="Stakeholder Interviews" desc="We interview 8–12 stakeholders across business and IT to surface gaps between belief and reality." color="forest" />
+            <MethodPanel step={2} week="Week 2–3" title="Technical Review" desc="We review actual implemented architecture (Fabric, DF, Semantics) against documented design." color="cyan" />
             <MethodPanel step={3} week="Week 3" title="Analysis & Scoring" desc="Synthesis into defensible scores. Concrete evidence from your environment—no generic checklists." color="blue" />
-            <MethodPanel step={4} week="Week 3-4" title="Presentation & Alignment" desc="Present to leadership. Clear alignment on priorities—no sugar-coating, no buried findings." color="indigo" />
+            <MethodPanel step={4} week="Week 3–4" title="Presentation & Alignment" desc="Present to leadership. Clear alignment on priorities—no sugar-coating, no buried findings." color="indigo" />
           </div>
         </div>
       </section>
@@ -614,7 +621,13 @@ export default function MaturityAssessment() {
                 {/* Severe Cropped Image Grid */}
                 <div className="relative h-[280px] w-full bg-background p-1.5 pb-0">
                   <div className="relative w-full h-full overflow-hidden bg-black outline outline-1 outline-border/20">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Future Readiness" className="object-cover w-full h-full grayscale-[80%] opacity-80 group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+                    <Image
+                      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+                      alt="Future Readiness"
+                      fill
+                      className="object-cover grayscale-[80%] opacity-80 group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]"
+                      sizes="480px"
+                    />
                     <div className="absolute inset-0 bg-forest/20 mix-blend-overlay group-hover:bg-transparent transition-colors duration-1000" />
                     
                     {/* High tech overlay elements */}
@@ -668,8 +681,8 @@ export default function MaturityAssessment() {
               <div className="w-16 h-16 bg-cyan-500/10 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-10 border border-cyan-500/30 group-hover:scale-110 transition-transform duration-500 rounded-none shadow-[4px_4px_0_0_rgba(6,182,212,0.2)]">
                 <PieChart size={28} strokeWidth={2.5} />
               </div>
-              <h3 className="text-2xl font-black mb-4 text-foreground tracking-tight uppercase leading-[0.9] group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Platform<br />Evaluation</h3>
-              <p className="text-foreground/80 text-[0.95rem] font-medium leading-relaxed mb-10">Objective analysis to select the right tools and architecture for your specific needs.</p>
+              <h3 className="text-2xl font-black mb-4 text-foreground tracking-tight uppercase leading-[0.9] group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Stack<br />Evaluation</h3>
+              <p className="text-foreground/80 text-[0.95rem] font-medium leading-relaxed mb-10">Objective platform analysis to select the right tools and architecture for your specific needs.</p>
               <div className="pt-6 border-t-[3px] border-border group-hover:border-cyan-500/50 transition-colors">
                 <span className="text-cyan-600 dark:text-cyan-400 font-black flex items-center gap-3 text-sm uppercase tracking-[0.2em] group-hover:text-cyan-500 transition-colors">
                   LEARN MORE <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
@@ -715,7 +728,7 @@ export default function MaturityAssessment() {
                 Evidence-based scores, gap analysis, and prioritized recommendations — no vendor bias, no guesswork. Let&apos;s find your gaps before they find you.
               </p>
 
-              <Link href="/contact?service=maturity-assessment" passHref>
+              <Link href="/contact?service=maturity-assessment">
                 <Button variant="hero" size="lg" className="relative px-12 py-8 text-xl rounded-none border-4 border-foreground bg-transparent text-foreground hover:bg-forest hover:text-forest-foreground hover:border-forest transition-all duration-300 font-black uppercase tracking-[0.2em] shadow-[10px_10px_0_0_rgba(0,0,0,0.8)] dark:shadow-[10px_10px_0_0_rgba(255,255,255,0.2)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 group w-full sm:w-auto">
                   Schedule Assessment
                   <ChevronRight className="ml-4 w-8 h-8 group-hover:translate-x-3 transition-transform" />
