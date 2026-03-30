@@ -2,7 +2,6 @@
 
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
-import { SERVICES_ENTRY_HREF } from "@/lib/constants/services";
 import { motion } from "framer-motion";
 import { Activity, AlertCircle, CheckCircle2, ChevronRight, PieChart, ShieldCheck, Target } from "lucide-react";
 import Image from "next/image";
@@ -24,10 +23,10 @@ const staggerContainer = {
 export default function MaturityAssessment() {
   return (
     <main className="pt-20 min-h-screen relative bg-background overflow-x-hidden selection:bg-forest/30">
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-6 max-w-7xl pt-4">
         <Breadcrumb
           items={[
-            { label: "Services", href: SERVICES_ENTRY_HREF },
+            { label: "Services", href: "/services/define-your-roadmap/maturity-assessment" },
             { label: "Define Your Roadmap", href: "/services/define-your-roadmap" },
             { label: "Maturity Assessment", href: "/services/define-your-roadmap/maturity-assessment" },
           ]}
@@ -85,7 +84,7 @@ export default function MaturityAssessment() {
                   <span className="inline-block isolate mix-blend-normal text-black">A</span>
                   nalytics
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40 stroke-text">Maturity Assessment</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40 stroke-text">Maturity Eval</span>
                 </motion.h1>
 
                 <div className="grid md:grid-cols-2 gap-8 md:gap-16 max-w-5xl mt-8 bg-background/85 backdrop-blur-2xl p-8 md:p-12 rounded-[2rem] border border-border/60 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.2)] relative">
@@ -100,7 +99,7 @@ export default function MaturityAssessment() {
                       Evidence-based scoring, gap analysis, and prioritized recommendations so you can invest in Fabric and Azure with confidence — <strong className="text-foreground bg-forest/10 px-2 py-0.5 whitespace-nowrap">no guesswork, no vendor bias.</strong>
                     </motion.p>
                     <motion.div variants={fadeIn}>
-                      <Link href="/contact?service=maturity-assessment">
+                      <Link href="/contact?service=maturity-assessment" passHref>
                         <Button variant="hero" size="lg" className="px-8 h-16 w-full md:w-auto overflow-hidden group relative bg-foreground text-background hover:bg-forest hover:text-forest-foreground transition-all duration-500 rounded-none border-2 border-foreground shadow-[10px_10px_0px_0px_hsl(var(--forest)/0.3)] hover:shadow-none hover:translate-x-[10px] hover:translate-y-[10px]">
                           <span className="relative z-10 flex items-center font-black tracking-[0.15em] uppercase text-sm">
                             Schedule Assessment
@@ -124,7 +123,7 @@ export default function MaturityAssessment() {
 
             {/* Extreme sticky side column with data-viz to fill empty space */}
             <div className="md:w-[35%] md:sticky top-32 z-40 flex flex-col gap-6 -mt-16 ml-0 md:ml-4">
-              
+
               {/* Main Title Block */}
               <div className="bg-card/95 backdrop-blur-xl p-8 lg:p-10 border-l-8 border-y border-r border-forest shadow-[30px_30px_60px_-15px_rgba(0,0,0,0.15)] rounded-tr-[3rem] rounded-bl-[3rem]">
                 <h2 className="text-sm font-black uppercase tracking-[0.3em] text-forest mb-6 flex items-center gap-4">
@@ -139,9 +138,9 @@ export default function MaturityAssessment() {
                   These patterns show up in every industry we assess — from pipeline failures and master-data chaos to conflicting definitions that block trust in numbers.
                 </p>
               </div>
-              
+
               {/* Enhanced Visual Graph Block to Utilize Empty Space */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -149,11 +148,11 @@ export default function MaturityAssessment() {
                 className="hidden md:flex flex-col bg-card border-x border-b border-t-4 border-t-forest shadow-[10px_10px_30px_-15px_rgba(0,0,0,0.08)] p-8 relative overflow-hidden group rounded-br-[3rem]"
               >
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:16px_16px]"></div>
-                
+
                 <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-foreground/50 mb-8 z-10 flex items-center gap-2">
                   <Target size={14}/> Baseline Disconnect Telemetry
                 </h4>
-                
+
                 <div className="space-y-6 z-10 relative">
                   {[
                     { label: "Perceived Tech Readiness", score: 85, color: "bg-forest", expected: true },
@@ -168,7 +167,7 @@ export default function MaturityAssessment() {
                         <span className="text-foreground">{item.score}%</span>
                       </div>
                       <div className="h-1.5 w-full bg-muted overflow-hidden rounded-full flex shadow-inner">
-                         <motion.div 
+                         <motion.div
                            initial={{ width: 0 }}
                            whileInView={{ width: `${item.score}%` }}
                            transition={{ duration: 1.2, delay: i * 0.15, ease: "easeOut" }}
@@ -188,7 +187,7 @@ export default function MaturityAssessment() {
               </motion.div>
 
               {/* Premium Asymmetric Editorial Image Block */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -199,23 +198,17 @@ export default function MaturityAssessment() {
                 <div className="absolute top-10 bottom-0 left-6 right-0 bg-foreground shadow-[20px_20px_0px_0px_hsl(var(--forest))] transition-transform duration-700 group-hover:translate-x-2 group-hover:translate-y-2 -z-10" />
 
                 <div className="relative border-[3px] border-foreground bg-card ml-0 mr-6 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] flex flex-col outline outline-1 outline-offset-4 outline-foreground/10">
-                  
+
                   <div className="h-[280px] relative overflow-hidden bg-black border-b-[3px] border-forest">
-                    <Image
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
-                      alt="Data Analytics Complexity"
-                      fill
-                      className="object-cover mix-blend-luminosity opacity-40 group-hover:scale-110 group-hover:opacity-70 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]"
-                      sizes="(min-width: 768px) 420px, 100vw"
-                    />
-                    
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Data Analytics Complexity" className="object-cover w-full h-full mix-blend-luminosity opacity-40 group-hover:scale-110 group-hover:opacity-70 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-                    
+
                     {/* Data Viz Overlay elements */}
                     <div className="absolute top-0 bottom-0 left-[35%] w-px bg-forest/40 border-r border-dashed border-forest/40" />
                     <div className="absolute top-[60%] left-0 right-0 h-px bg-forest/40" />
                     <div className="absolute top-[60%] left-[35%] w-3 h-3 bg-forest -translate-x-1.5 -translate-y-1.5 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.5)]" />
-                    
+
                     <div className="absolute bottom-5 left-6 flex items-center gap-4 z-10">
                       <div className="w-12 h-12 bg-forest flex items-center justify-center text-forest-foreground shadow-[4px_4px_0_0_rgba(255,255,255,0.2)]">
                         <Activity size={24} strokeWidth={2.5} />
@@ -229,12 +222,12 @@ export default function MaturityAssessment() {
                       NOISE
                     </div>
                   </div>
-                  
+
                   <div className="px-8 py-8 relative bg-card">
                     <div className="absolute top-0 right-8 -translate-y-1/2 bg-foreground text-background text-[10px] font-black px-3 py-1 uppercase tracking-widest">
                       Critical
                     </div>
-                    
+
                     <h4 className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-forest mb-4 flex items-center gap-3">
                       <span className="w-6 h-px bg-forest"></span>
                       Architectural Entropy
@@ -246,7 +239,7 @@ export default function MaturityAssessment() {
                       Without deliberate realignment, your enterprise data layer degrades into a massive, fragile web of undocumented workarounds.
                     </p>
                   </div>
-                  
+
                 </div>
               </motion.div>
 
@@ -442,10 +435,10 @@ export default function MaturityAssessment() {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-0 border-4 border-border/60 bg-muted/20">
-            <MethodPanel step={1} week="Week 1–2" title="Stakeholder Interviews" desc="We interview 8–12 stakeholders across business and IT to surface gaps between belief and reality." color="forest" />
-            <MethodPanel step={2} week="Week 2–3" title="Technical Review" desc="We review actual implemented architecture (Fabric, DF, Semantics) against documented design." color="cyan" />
+            <MethodPanel step={1} week="Week 1-2" title="Stakeholder Interviews" desc="We interview 8–12 stakeholders across business and IT to surface gaps between belief and reality." color="forest" />
+            <MethodPanel step={2} week="Week 2-3" title="Technical Review" desc="We review actual implemented architecture (Fabric, DF, Semantics) against documented design." color="cyan" />
             <MethodPanel step={3} week="Week 3" title="Analysis & Scoring" desc="Synthesis into defensible scores. Concrete evidence from your environment—no generic checklists." color="blue" />
-            <MethodPanel step={4} week="Week 3–4" title="Presentation & Alignment" desc="Present to leadership. Clear alignment on priorities—no sugar-coating, no buried findings." color="indigo" />
+            <MethodPanel step={4} week="Week 3-4" title="Presentation & Alignment" desc="Present to leadership. Clear alignment on priorities—no sugar-coating, no buried findings." color="indigo" />
           </div>
         </div>
       </section>
@@ -465,14 +458,14 @@ export default function MaturityAssessment() {
                   sizes="(min-width: 1024px) 58vw, 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-background via-background/20 to-transparent" />
-  
+
                 <div className="absolute top-10 left-10 md:-left-10 text-[6rem] md:text-[14rem] font-black text-foreground/5 md:text-foreground/5 uppercase tracking-tighter leading-[0.8] mix-blend-multiply [writing-mode:vertical-rl] rotate-180">
                   CASE STUDY
                 </div>
               </div>
 
               {/* Relatable Space Filler for the Left Column */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "0px 0px -100px 0px" }}
@@ -482,17 +475,17 @@ export default function MaturityAssessment() {
                 <div className="absolute -right-10 -bottom-10 opacity-[0.03] group-hover:opacity-[0.06] group-hover:scale-110 group-hover:-rotate-12 transition-all duration-700 pointer-events-none">
                   <PieChart size={280} strokeWidth={1} />
                 </div>
-                
+
                 <div className="relative z-10 w-full flex flex-col justify-center">
                   <h3 className="text-lg font-black uppercase tracking-[0.25em] text-foreground mb-6 flex items-center gap-3">
                     <span className="w-8 h-1 bg-forest inline-block shrink-0"></span>
                     The ROI of Reality
                   </h3>
-                  
+
                   <p className="font-bold text-muted-foreground leading-relaxed text-base mb-8 border-l-[3px] border-forest/30 pl-6 h-full">
                     A maturity assessment isn&apos;t about pointing fingers. It&apos;s about eliminating invisible <strong className="text-foreground">technical debt constraints</strong> so you can stop wrestling with fractured pipelines and start scaling advanced analytics securely.
                   </p>
-                  
+
                   <div className="grid grid-cols-2 gap-8 mt-auto pt-6 border-t border-border/80 relative">
                     <div className="absolute top-6 bottom-0 left-1/2 w-px bg-border/60"></div>
                     <div className="flex flex-col">
@@ -501,7 +494,7 @@ export default function MaturityAssessment() {
                       </div>
                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/50 mt-2">Tech Debt Avoided</span>
                     </div>
-                    
+
                     <div className="flex flex-col pl-4">
                       <div className="flex items-baseline gap-2 mb-1">
                         <span className="text-5xl font-black text-forest uppercase tracking-tighter leading-[0.8]">+ 40%</span>
@@ -591,7 +584,7 @@ export default function MaturityAssessment() {
           <div className="mb-24 grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16 items-end relative">
             {/* Background absolute elements */}
             <div className="hidden lg:block absolute -top-12 right-[30%] w-[1px] h-[150%] bg-gradient-to-b from-transparent via-border to-transparent -z-10" />
-            
+
             <div className="md:col-span-12 lg:col-span-7 relative z-10 pt-8 pb-4">
               <div className="hidden lg:block absolute -left-12 top-0 bottom-0 w-2 bg-forest transition-transform duration-700 hover:scale-y-110 origin-bottom"></div>
               <h2 className="text-sm font-black uppercase tracking-[0.4em] text-forest mb-8 flex items-center gap-4">
@@ -606,8 +599,8 @@ export default function MaturityAssessment() {
                 Data maturity is not a static destination. Explore related services to help you define and execute a resilient, scalable, and high-impact enterprise data strategy.
               </p>
             </div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -617,38 +610,32 @@ export default function MaturityAssessment() {
               <div className="w-full max-w-[480px] bg-foreground text-background relative flex flex-col overflow-visible shadow-[30px_30px_0px_0px_hsl(var(--forest)/0.2)] group">
                 {/* Accent Corner */}
                 <div className="absolute -top-6 -right-6 w-20 h-20 border-t-[4px] border-r-[4px] border-forest z-30 transition-transform duration-700 group-hover:translate-x-2 group-hover:-translate-y-2" />
-                
+
                 {/* Severe Cropped Image Grid */}
                 <div className="relative h-[280px] w-full bg-background p-1.5 pb-0">
                   <div className="relative w-full h-full overflow-hidden bg-black outline outline-1 outline-border/20">
-                    <Image
-                      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
-                      alt="Future Readiness"
-                      fill
-                      className="object-cover grayscale-[80%] opacity-80 group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]"
-                      sizes="480px"
-                    />
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Future Readiness" className="object-cover w-full h-full grayscale-[80%] opacity-80 group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]" />
                     <div className="absolute inset-0 bg-forest/20 mix-blend-overlay group-hover:bg-transparent transition-colors duration-1000" />
-                    
+
                     {/* High tech overlay elements */}
                     <div className="absolute bottom-4 left-4 flex gap-2">
                        <div className="w-1.5 h-6 bg-forest shadow-[0_0_10px_rgba(34,197,94,0.6)]" />
                        <div className="w-1.5 h-4 bg-forest/60 mt-auto" />
                        <div className="w-1.5 h-8 bg-forest/30 mt-auto" />
                     </div>
-                    
+
                     <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2 py-1 border border-white/20">
                        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/80">Telemetry: Active</span>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="p-10 relative">
                   {/* Decorative watermark */}
                   <div className="absolute right-6 top-10 text-[3.5rem] text-background/10 font-black tracking-tighter rotate-90 select-none pointer-events-none group-hover:text-background/20 transition-colors duration-700">
                     FWD
                   </div>
-                  
+
                   <div className="flex items-center gap-4 mb-8 relative z-10 w-fit">
                     <div className="w-10 h-10 bg-transparent border-2 border-forest flex items-center justify-center group-hover:bg-forest group-hover:text-foreground text-forest transition-colors duration-500">
                       <Target size={18} strokeWidth={2.5} />
@@ -681,8 +668,8 @@ export default function MaturityAssessment() {
               <div className="w-16 h-16 bg-cyan-500/10 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-10 border border-cyan-500/30 group-hover:scale-110 transition-transform duration-500 rounded-none shadow-[4px_4px_0_0_rgba(6,182,212,0.2)]">
                 <PieChart size={28} strokeWidth={2.5} />
               </div>
-              <h3 className="text-2xl font-black mb-4 text-foreground tracking-tight uppercase leading-[0.9] group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Stack<br />Evaluation</h3>
-              <p className="text-foreground/80 text-[0.95rem] font-medium leading-relaxed mb-10">Objective platform analysis to select the right tools and architecture for your specific needs.</p>
+              <h3 className="text-2xl font-black mb-4 text-foreground tracking-tight uppercase leading-[0.9] group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Platform<br />Evaluation</h3>
+              <p className="text-foreground/80 text-[0.95rem] font-medium leading-relaxed mb-10">Objective analysis to select the right tools and architecture for your specific needs.</p>
               <div className="pt-6 border-t-[3px] border-border group-hover:border-cyan-500/50 transition-colors">
                 <span className="text-cyan-600 dark:text-cyan-400 font-black flex items-center gap-3 text-sm uppercase tracking-[0.2em] group-hover:text-cyan-500 transition-colors">
                   LEARN MORE <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
@@ -728,7 +715,7 @@ export default function MaturityAssessment() {
                 Evidence-based scores, gap analysis, and prioritized recommendations — no vendor bias, no guesswork. Let&apos;s find your gaps before they find you.
               </p>
 
-              <Link href="/contact?service=maturity-assessment">
+              <Link href="/contact?service=maturity-assessment" passHref>
                 <Button variant="hero" size="lg" className="relative px-12 py-8 text-xl rounded-none border-4 border-foreground bg-transparent text-foreground hover:bg-forest hover:text-forest-foreground hover:border-forest transition-all duration-300 font-black uppercase tracking-[0.2em] shadow-[10px_10px_0_0_rgba(0,0,0,0.8)] dark:shadow-[10px_10px_0_0_rgba(255,255,255,0.2)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 group w-full sm:w-auto">
                   Schedule Assessment
                   <ChevronRight className="ml-4 w-8 h-8 group-hover:translate-x-3 transition-transform" />
