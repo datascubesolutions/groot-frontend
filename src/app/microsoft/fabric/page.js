@@ -2,9 +2,9 @@ import { BenefitsSection } from "@/components/sections/microsoft/BenefitsSection
 import { CapabilitiesSection } from "@/components/sections/microsoft/CapabilitiesSection";
 import { DeliveryTimeline } from "@/components/sections/microsoft/DeliveryTimeline";
 import { ExampleSection } from "@/components/sections/microsoft/ExampleSection";
+import { FabricHero } from "@/components/sections/microsoft/FabricHero";
 import { FAQSection } from "@/components/sections/microsoft/FAQSection";
 import { MicrosoftCTA } from "@/components/sections/microsoft/MicrosoftCTA";
-import { FabricHero } from "@/components/sections/microsoft/FabricHero";
 import { ProblemSection } from "@/components/sections/microsoft/ProblemSection";
 import { Cpu, Database, Search, Share2, ShieldCheck, TrendingDown } from "lucide-react";
 
@@ -18,69 +18,90 @@ export default function FabricPage() {
   const problems = [
     {
       title: "The Scavenger Hunt",
-      description: "Your CFO asks a simple question: \"What's our revenue by region?\" You check the dashboard. The number looks wrong. You email Finance — they say their spreadsheet shows something different because they pull directly from the ERP. Sales jumps in with a third number from Salesforce. By 10 AM, you're in a meeting about the data instead of the decision the data was supposed to inform."
+      description: "Your CFO asks one question: \"What's our revenue by region?\" You check the dashboard — wrong number. Finance has a different one from the ERP. Sales has a third from Salesforce. By 10 AM, you're in a meeting about the data, not the decision. Sound familiar?",
+      outcome: "One source. One answer. Same meeting, different outcome."
     },
     {
       title: "The Trust Gap",
-      description: "You have dashboards. Dozens of them. But when the CEO presents to the board, someone always builds a fresh Excel file \"just to double-check.\" The reports exist. The trust doesn't."
+      description: "Dozens of dashboards. But when the CEO presents to the board, someone always builds a fresh Excel \"just to double-check.\" The reports exist. The trust doesn't. Decisions stall.",
+      outcome: "Governed data. Traceable lineage. Trust built in."
     },
     {
       title: "Governance by Hope",
-      description: "\"Who has access to customer data?\" The honest answer: you're not sure. Access was granted over time, nobody tracks revocations, and sensitive data moves through email attachments and shared drives. Audit season isn't preparation — it's panic."
+      description: "\"Who has access to customer data?\" The honest answer: you're not sure. Access sprawled over time. No one tracks revocations. Sensitive data in email, shared drives. Audit season = panic mode.",
+      outcome: "Sensitivity labels. Access policies. Audit-ready by default."
     }
   ];
 
   const benefits = [
     {
       title: "One Lake, One Truth",
-      description: "OneLake is Fabric's unified storage layer. All workloads — Data Factory, Lakehouse, Warehouse, Power BI — read and write to the same place. Your engineering team and your analysts finally work from identical data. No more reconciliation spreadsheets.",
-      icon: <Database className="w-7 h-7" />},
+      description: "Stop reconciling spreadsheets. OneLake unifies Data Factory, Lakehouse, Warehouse, and Power BI — everyone reads and writes to the same place. Engineering and analysts finally share one version of the truth.",
+      outcome: "Decisions in hours, not weeks.",
+      icon: <Database className="w-7 h-7" />
+    },
     {
-      title: "Governance That's Already There",
-      description: "Microsoft Purview isn't a separate purchase you configure later. It's built into Fabric. Sensitivity labels, data lineage, access policies — configured once, enforced everywhere. When someone asks \"where did this data come from?\" you can actually show them.",
-      icon: <ShieldCheck className="w-7 h-7" />},
+      title: "Governance Built In, Not Bolted On",
+      description: "Purview is inside Fabric — sensitivity labels, lineage, access policies. Configure once, enforce everywhere. When the board asks \"where did this come from?\" you show them. No scrambling.",
+      outcome: "Audit-ready without the scramble.",
+      icon: <ShieldCheck className="w-7 h-7" />
+    },
     {
-      title: "Everything Connects",
-      description: "Data Factory for ingestion. Lakehouse for transformation. Warehouse for SQL analytics. Power BI for visualization. Real-Time Intelligence for streaming. Data Science for ML. One platform. One capacity. One bill.",
-      icon: <Share2 className="w-7 h-7" />},
+      title: "One Platform. One Bill. Everything Connects.",
+      description: "Ingestion, transformation, analytics, streaming, ML — all in Fabric. No more juggling vendors, integrations, or surprise invoices. One capacity scales with you.",
+      outcome: "Simplicity that scales.",
+      icon: <Share2 className="w-7 h-7" />
+    },
     {
       title: "Query Without Copying",
-      description: "Fabric shortcuts let you access data in Azure Data Lake, Amazon S3, or Dataverse without moving it. Create a pointer, run your query. The data stays where it is. Less duplication, lower costs, fewer sync nightmares.",
-      icon: <Search className="w-7 h-7" />},
+      description: "Shortcuts point to Azure, S3, Dataverse — query where data lives. No duplication, no sync delays, no cost bloat. Less moving. More doing.",
+      outcome: "Access everything. Move nothing.",
+      icon: <Search className="w-7 h-7" />
+    },
     {
-      title: "AI-Ready by Default",
-      description: "Copilot in Fabric helps write SQL, build pipelines, and explore data using plain language. Your Lakehouse data is ready for Azure AI Foundry, RAG applications, and the AI workloads your competitors are already building.",
-      icon: <Cpu className="w-7 h-7" />},
+      title: "AI-Ready. Today.",
+      description: "Copilot writes SQL, builds pipelines, explores data in plain language. Your Lakehouse feeds Azure AI Foundry, RAG, and the workloads competitors are still planning.",
+      outcome: "Catch up — or get ahead.",
+      icon: <Cpu className="w-7 h-7" />
+    },
     {
-      title: "Predictable Costs",
-      description: "One capacity serves all workloads. You're not paying for idle Spark clusters, separate data warehouse compute, and Power BI Premium capacity. Scale the capacity up when you need it. Scale down when you don't.",
-      icon: <TrendingDown className="w-7 h-7" />}
+      title: "Predictable Costs. No Surprises.",
+      description: "One capacity for all workloads. No idle clusters. No separate warehouse bills. Scale up when you need it; scale down when you don't. Budget meets reality.",
+      outcome: "Cost clarity, every month.",
+      icon: <TrendingDown className="w-7 h-7" />
+    }
   ];
 
   const capabilities = [
     {
       title: "Workspace Architecture",
-      description: "We design your workspace structure — dev, test, prod separation, capacity allocation, team boundaries. A foundation that scales without needing to be rebuilt when you grow."
+      description: "Dev, test, prod separation. Capacity allocation. Team boundaries. We design a structure that scales — so you don't rebuild when you grow.",
+      outcome: "A foundation that grows with you."
     },
     {
       title: "Lakehouse with Medallion Architecture",
-      description: "Bronze layer preserves raw data exactly as it arrived. Silver layer cleans, validates, and standardizes. Gold layer contains business-ready datasets for analytics. Each layer has a purpose. Each transformation is traceable."
+      description: "Bronze preserves raw data. Silver cleans and standardizes. Gold delivers business-ready datasets. Every layer has a purpose. Every transformation is traceable.",
+      outcome: "From chaos to clarity. Lineage included."
     },
     {
       title: "Pipelines That Actually Run",
-      description: "We build ELT pipelines using Data Factory and Spark notebooks. Error handling, logging, monitoring, alerting — the production concerns that don't exist in a demo but matter when Finance depends on the data."
+      description: "ELT pipelines with error handling, logging, monitoring, alerting. The production rigor demos skip — but Finance needs when they depend on the numbers.",
+      outcome: "Data that arrives. On time. Every time."
     },
     {
       title: "Purview Configuration",
-      description: "Data catalog, sensitivity labels, lineage tracking, access policies. Configured during implementation, not as a separate project six months later when compliance asks uncomfortable questions."
+      description: "Catalog, sensitivity labels, lineage, access policies. Done during implementation — not six months later when compliance shows up with questions.",
+      outcome: "Governance from day one."
     },
     {
       title: "Private Endpoints",
-      description: "For organizations where data cannot traverse public internet, we configure managed private endpoints and workspace-level private links. Fabric connects to your sources through Azure Private Link. Traffic stays on Microsoft's backbone."
+      description: "When data can't touch the public internet, we configure managed private endpoints. Fabric connects via Azure Private Link. Traffic stays on Microsoft's backbone.",
+      outcome: "Enterprise security. Zero compromise."
     },
     {
       title: "Semantic Model Foundation",
-      description: "The certified semantic model that sits between your Lakehouse and Power BI. Consistent measures, documented relationships, row-level security. Analysts build reports on governed data, not raw tables with cryptic column names."
+      description: "The certified layer between Lakehouse and Power BI. Consistent measures, documented relationships, row-level security. Analysts build on governed data — not cryptic column names.",
+      outcome: "Self-service that doesn't create mess."
     }
   ];
 
@@ -88,25 +109,25 @@ export default function FabricPage() {
     {
       phase: "Week 1-2",
       title: "Discovery",
-      description: "We document your current sources and pain points. We design the target architecture. We identify the first 3-5 data sources. We establish governance requirements.",
+      description: "We map your sources, pain points, and target architecture. First 3-5 data sources identified. Governance requirements locked in. No guesswork — a clear path forward.",
       deliverable: "Architecture document and implementation roadmap"
     },
     {
       phase: "Week 3-4",
       title: "Environment Setup",
-      description: "We provision Fabric capacity and workspaces. We configure Purview integration. We set up private endpoints if required. We establish dev/test/prod strategy.",
+      description: "Fabric capacity and workspaces provisioned. Purview integrated. Private endpoints configured if needed. Dev/test/prod strategy in place. Your platform is live.",
       deliverable: "Production-ready Fabric environment"
     },
     {
       phase: "Week 5-8",
       title: "Pipeline Development",
-      description: "We build pipelines for your priority sources. We implement medallion layers. We configure refresh schedules and monitoring. We validate data quality at each stage.",
+      description: "Pipelines built for priority sources. Medallion layers implemented. Refresh schedules and monitoring configured. Data quality validated at every stage.",
       deliverable: "Data flowing into your Lakehouse"
     },
     {
       phase: "Week 9-10",
       title: "Analytics Foundation",
-      description: "We build the semantic model. We configure row-level security. We create initial dashboards with your team. We train analysts on self-service.",
+      description: "Semantic model built. Row-level security configured. Initial dashboards created with your team. Analysts trained on self-service. You're ready to scale.",
       deliverable: "Analysts running reports on governed data"
     }
   ];
@@ -147,37 +168,44 @@ export default function FabricPage() {
       <FabricHero />
 
       <ProblemSection
-        tagline="This is probably your Monday."
+        title="Same Question. Too Many Answers."
+        tagline="If this feels like your Monday, you're in the right place."
         problems={problems}
+        bridgeText="Fabric changes that. Here's how."
       />
 
       <BenefitsSection
-        title="What Fabric Actually Changes"
+        title="Why Leading Teams Choose Fabric"
+        subtitle="One platform. Unified data. Decisions, not debates."
         benefits={benefits}
       />
 
       <CapabilitiesSection
-        title="What You Actually Get"
+        title="What We Deliver — And Why It Matters"
+        subtitle="From fragmented sources to a production-ready platform. In 10 weeks."
         capabilities={capabilities}
       />
 
       <DeliveryTimeline
-        title="Ten Weeks to a Working Foundation"
+        title="From Chaos to Clarity in 10 Weeks"
+        subtitle="A proven path. No endless discovery. Real deliverables, every phase."
         timeline={timeline}
       />
 
       <ExampleSection
-        title="Private Equity Integration"
-        context="Private equity-backed portfolio company. Three acquisitions in two years. Three different ERPs — SAP, NetSuite, QuickBooks. CFO needs consolidated financials."
-        reality="Finance spent the first week of every month in Excel. Manual exports from each system. VLOOKUP hell. Board meetings delayed waiting for 'final' numbers that still came with asterisks and caveats."
+        title="Private Equity: 3 ERPs, 1 Truth"
+        outcomeMetric="10 days → 3 days"
+        outcomeMetricLabel="Monthly close"
+        context="PE-backed portfolio company. Three acquisitions. Three ERPs — SAP, NetSuite, QuickBooks. CFO needed consolidated financials. Fast."
+        reality="Finance spent the first week of every month in Excel. Manual exports. VLOOKUP hell. Board meetings delayed. 'Final' numbers still came with asterisks."
         build={[
           "Fabric Lakehouse with unified chart of accounts across all three ERPs",
           "Automated daily pipelines from SAP, NetSuite, and QuickBooks",
-          "Medallion architecture: raw data preserved, standardized in Silver, business-ready in Gold",
-          "Purview lineage from source system to executive dashboard",
+          "Medallion architecture: Bronze → Silver → Gold, fully traceable",
+          "Purview lineage from source to executive dashboard",
           "Flash report dashboard the CFO checks every morning"
         ]}
-        outcome="Monthly close: 10 days → 3 days. Finance team shifted from data wrestling to data analysis. Board receives weekly flash reports. Asterisks eliminated."
+        outcome="Monthly close: 10 days → 3 days. Finance shifted from data wrestling to analysis. Board gets weekly flash reports. Asterisks eliminated."
         linkText="See the PE approach"
         linkUrl="/industries/private-equity-ma"
       />
@@ -185,10 +213,17 @@ export default function FabricPage() {
       <FAQSection faqs={faqs} />
 
       <MicrosoftCTA
-        title="Ready to unify your data?"
-        description="We'll assess your current data landscape, identify quick wins, and map out what a Fabric foundation looks like for your organization."
+        title="Ready to stop chasing the same number?"
+        description="20+ Fabric implementations delivered. We'll assess your landscape, identify quick wins, and map a path to one source of truth."
         primaryCta="Get Your Data Readiness Assessment"
         primaryCtaLink="/contact?service=fabric-assessment"
+        secondaryCta="Talk to Our Team"
+        secondaryCtaLink="/contact"
+        stats={[
+          { value: "20+", label: "Fabric implementations" },
+          { value: "10", label: "Weeks to foundation" },
+          { value: "1", label: "Source of truth" }
+        ]}
       />
     </main>
   );

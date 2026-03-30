@@ -1,26 +1,69 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 
-export function CapabilitiesSection({ title = "What You Actually Get", capabilities = [] }) {
+export function CapabilitiesSection({ title = "What You Actually Get", subtitle, capabilities = [] }) {
   if (!capabilities || capabilities.length === 0) return null;
 
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
-      {/* Background gradients */}
+    <section className="py-16 md:py-24 bg-background text-foreground relative overflow-hidden border-t border-border/50">
+      {/* Animated Cinematic Background gradients */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-forest/5 blur-[150px] rounded-full pointer-events-none" />
-        <div className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-forest/5 blur-[150px] rounded-full pointer-events-none" />
+        <motion.div
+          animate={
+            reduceMotion
+              ? { scale: 1, opacity: 0.75 }
+              : { scale: [1, 1.1, 1], opacity: [0.6, 0.9, 0.6] }
+          }
+          transition={
+            reduceMotion
+              ? { duration: 0 }
+              : { duration: 15, repeat: Infinity, ease: "easeInOut" }
+          }
+          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-forest/5 blur-[150px] rounded-full pointer-events-none"
+        />
+        <motion.div
+          animate={
+            reduceMotion
+              ? { scale: 1, opacity: 0.65 }
+              : { scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }
+          }
+          transition={
+            reduceMotion
+              ? { duration: 0 }
+              : { duration: 18, repeat: Infinity, ease: "easeInOut", delay: 3 }
+          }
+          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-forest/5 blur-[150px] rounded-full pointer-events-none"
+        />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+      {/* Fabric Logo Watermark in Free Space */}
+      <div className="hidden xl:block absolute top-1/2 -translate-y-1/2 -left-64 w-[600px] h-[600px] opacity-[0.03] pointer-events-none z-0">
+        <Image src="/svg/fabric_48_color.svg" alt="Fabric Logo Background" fill className="object-contain" />
+      </div>
+
+      {/* Added Image on the Right Free Space */}
+      <div
+        className="hidden xl:block absolute top-[15%] -right-[10%] w-[500px] h-[500px] opacity-20 pointer-events-none mix-blend-screen z-0"
+        style={{
+          maskImage: "radial-gradient(ellipse at center, black 40%, transparent 70%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 70%)"
+        }}
+      >
+        <Image src="/images/fabric/server_capabilities.png" alt="Server Capabilities" fill className="object-contain" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Header - Centered Layout */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24 flex flex-col items-center antialiased">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-forest font-bold tracking-widest uppercase text-sm mb-4 block"
+            className="text-forest font-semibold tracking-widest uppercase text-sm mb-4 block"
           >
             Groot&apos;s Capabilities
           </motion.span>
@@ -29,7 +72,7 @@ export function CapabilitiesSection({ title = "What You Actually Get", capabilit
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black leading-tight mb-6 text-foreground"
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 text-foreground tracking-tight text-balance"
           >
             {title}
           </motion.h2>
@@ -38,9 +81,9 @@ export function CapabilitiesSection({ title = "What You Actually Get", capabilit
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground text-lg md:text-xl leading-relaxed"
+            className="text-muted-foreground/90 font-normal text-lg md:text-xl leading-relaxed text-balance"
           >
-            Everything you need to go from fragmented data to a governed, production-ready platform.
+            {subtitle || "Everything you need to go from fragmented data to a governed, production-ready platform."}
           </motion.p>
         </div>
 
@@ -53,28 +96,34 @@ export function CapabilitiesSection({ title = "What You Actually Get", capabilit
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-card border border-border/50 rounded-[2rem] p-8 hover:-translate-y-2 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-[0_20px_40px_rgba(22,78,60,0.08)] flex flex-col h-full"
+              className="group relative bg-card/60 backdrop-blur-2xl border border-border/50 hover:border-forest/40 rounded-[2rem] p-10 hover:-translate-y-2 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-[0_20px_40px_rgba(22,78,60,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col h-full z-10"
             >
               {/* Soft background glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-forest/5 blur-[60px] rounded-full pointer-events-none group-hover:bg-forest/15 transition-colors duration-700" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-forest/5 blur-[80px] rounded-full pointer-events-none group-hover:bg-forest/15 transition-colors duration-700" />
 
-              {/* Massive Number Watermark */}
-              <div className="absolute -right-6 -bottom-8 text-[140px] leading-none font-black text-forest/[0.05] group-hover:text-forest/[0.12] transition-colors duration-500 pointer-events-none select-none">
+              {/* Massive Number Watermark (Stroked) */}
+              <div
+                className="absolute -right-4 -bottom-6 text-[150px] leading-none font-black text-transparent pointer-events-none select-none transition-all duration-500 opacity-20 group-hover:opacity-40"
+                style={{ WebkitTextStroke: "2px #164e3c" }}
+              >
                 {String(index + 1).padStart(2, '0')}
               </div>
 
               {/* Content */}
-              <div className="relative z-10 flex-1 flex flex-col">
-                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4 group-hover:text-forest transition-colors duration-300">
+              <div className="relative z-10 flex-1 flex flex-col antialiased">
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-foreground mb-4 group-hover:text-forest transition-colors duration-300">
                   {capability.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed mt-auto text-base">
+                <p className="text-muted-foreground/90 font-normal leading-relaxed text-base lg:text-lg mb-3">
                   {capability.description}
                 </p>
+                {capability.outcome && (
+                  <p className="text-forest font-medium text-sm mt-auto">{capability.outcome}</p>
+                )}
               </div>
 
               {/* Animated bottom accent line */}
-              <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-forest/0 via-forest/40 to-forest/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out" />
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-forest/0 via-forest/40 to-forest/0 opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out" />
             </motion.div>
           ))}
         </div>

@@ -9,12 +9,14 @@
  * <Link href={ROUTES.PUBLIC.HOME}>Home</Link>
  */
 
+import { SERVICES_ENTRY_HREF } from "@/lib/constants/services";
+
 export const ROUTES = {
   // Public routes
   PUBLIC: {
     HOME: "/",
     ABOUT: "/about",
-    SERVICES: "/services",
+    SERVICES: SERVICES_ENTRY_HREF,
     CONTACT: "/contact",
     PRICING: "/pricing",
     BLOG: "/blog",

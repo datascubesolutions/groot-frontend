@@ -16,8 +16,8 @@ const ContactInfoItem = ({ icon: Icon, label, value, delay }) => (
       <Icon size={24} />
     </div>
     <div className="space-y-1">
-      <p className="text-sm font-bold text-emerald-500/80 uppercase tracking-widest">{label}</p>
-      <p className="text-xl font-bold text-foreground group-hover:text-emerald-400 transition-all">{value}</p>
+      <p className="text-xs font-semibold text-emerald-700 uppercase tracking-[0.18em]">{label}</p>
+      <p className="text-lg md:text-xl font-bold text-foreground/95 group-hover:text-emerald-600 transition-colors">{value}</p>
     </div>
   </div>
 );
@@ -62,7 +62,7 @@ export default function ContactPage() {
                 <ContactInfoItem
                   icon={Mail}
                   label="Email Us"
-                  value="contact@grootanalytics.com"
+                  value="hello@grootanalytics.com"
                 />
                 <ContactInfoItem
                   icon={Phone}
@@ -77,7 +77,7 @@ export default function ContactPage() {
               </div>
 
               {/* Global Presence Card */}
-              <div className="relative p-10 rounded-[2rem] bg-[#0a0a0a] border border-white/5 overflow-hidden group hover:border-emerald-500/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_30px_rgba(52,211,153,0.15)]">
+              {/* <div className="relative p-10 rounded-[2rem] bg-[#0a0a0a] border border-white/5 overflow-hidden group hover:border-emerald-500/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_30px_rgba(52,211,153,0.15)]">
                 <div className="absolute inset-0 bg-emerald-500/5 blur-[80px] group-hover:bg-emerald-500/10 transition-all duration-700" />
                 <h3 className="relative text-2xl font-bold text-white mb-4">Global Presence</h3>
                 <p className="relative text-emerald-100/60 leading-relaxed max-w-sm mb-8">
@@ -86,7 +86,7 @@ export default function ContactPage() {
                 <div className="relative h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                   <div className="absolute top-0 left-0 h-full w-1/3 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse" />
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Form Side */}

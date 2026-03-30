@@ -1,13 +1,41 @@
 "use client";
 import { Button } from "@/components/ui/Button";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Cloud } from "lucide-react";
 import Link from "next/link";
 
 export function AzureHero() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-32 md:pt-40 lg:pt-48 pb-16 md:pb-24 lg:pb-32 bg-grid-slate-50/50">
-      <div className="absolute inset-0 bg-background/90" />
+    <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-32 md:pt-40 lg:pt-48 pb-16 md:pb-24 lg:pb-32 bg-background text-foreground">
+      {/* Animated Cinematic Background Accents */}
+      <motion.div
+        animate={
+          reduceMotion
+            ? { scale: 1, opacity: 0.65 }
+            : { scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }
+        }
+        transition={
+          reduceMotion
+            ? { duration: 0 }
+            : { duration: 10, repeat: Infinity, ease: "easeInOut" }
+        }
+        className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest/5 blur-[150px] rounded-full pointer-events-none"
+      />
+      <motion.div
+        animate={
+          reduceMotion
+            ? { scale: 1, opacity: 0.55 }
+            : { scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }
+        }
+        transition={
+          reduceMotion
+            ? { duration: 0 }
+            : { duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }
+        }
+        className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-forest/5 blur-[150px] rounded-full pointer-events-none"
+      />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -17,8 +45,9 @@ export function AzureHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-foreground tracking-tight text-balance antialiased"
             >
+              <span className="text-forest font-semibold tracking-widest uppercase text-sm mb-4 block">Cloud Infrastructure</span>
               Azure Data Infrastructure
             </motion.h1>
 
@@ -26,7 +55,7 @@ export function AzureHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-xl text-muted-foreground leading-relaxed"
+              className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed font-normal max-w-2xl py-2 text-balance antialiased"
             >
               The foundation beneath your data platform. Storage, networking, security — configured for enterprise analytics.
             </motion.p>
@@ -37,12 +66,15 @@ export function AzureHero() {
               transition={{ delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <Link href="/contact?service=azure-assessment">
-                <Button className="w-full sm:w-auto bg-brand-red hover:bg-brand-red/90 text-white font-bold text-lg px-8 py-6 rounded-full shadow-lg shadow-brand-red/20 transition-all group">
+              <Button
+                asChild
+                className="w-full sm:w-auto bg-forest hover:bg-forest/90 text-white font-bold text-base px-8 py-7 rounded-full shadow-lg shadow-forest/20 transition-all group"
+              >
+                <Link href="/contact?service=azure-assessment">
                   Get Infrastructure Assessment
                   <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </motion.div>
           </div>
 
@@ -57,7 +89,7 @@ export function AzureHero() {
             <div className="absolute inset-0 bg-white/50 rounded-3xl shadow-xl transform -rotate-2 scale-105 pointer-events-none opacity-50" />
             <div className="relative bg-white rounded-3xl shadow-2xl border border-border overflow-hidden p-8 h-[400px]">
               <div className="relative w-full h-full flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-red/5 to-transparent blur-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest/5 to-transparent blur-2xl" />
 
                 {/* Isometric Servers Stacking */}
                 <div className="relative z-10 w-64 h-64 flex flex-col items-center justify-end perspective-1000 mt-12">
@@ -71,9 +103,9 @@ export function AzureHero() {
                     >
                       {/* Server lights */}
                       <div className="flex gap-2 w-full">
-                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity, delay: i }} className="w-2 h-2 rounded-full bg-brand-red/30" />
-                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity, delay: i + 0.2 }} className="w-2 h-2 rounded-full bg-brand-red/60" />
-                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.2, repeat: Infinity, delay: i + 0.4 }} className="w-2 h-2 rounded-full bg-brand-red" />
+                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity, delay: i }} className="w-2 h-2 rounded-full bg-forest/30" />
+                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity, delay: i + 0.2 }} className="w-2 h-2 rounded-full bg-forest/60" />
+                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.2, repeat: Infinity, delay: i + 0.4 }} className="w-2 h-2 rounded-full bg-forest" />
                         <div className="ml-auto w-12 h-2 rounded-full bg-muted" />
                       </div>
 
@@ -81,7 +113,7 @@ export function AzureHero() {
                       <motion.div
                         animate={{ x: [-100, 200] }}
                         transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
-                        className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-transparent via-brand-red/10 to-transparent skew-x-12"
+                        className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-transparent via-forest/10 to-transparent skew-x-12"
                       />
                     </motion.div>
                   ))}

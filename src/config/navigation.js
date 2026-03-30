@@ -19,7 +19,7 @@ export const NAVIGATION_CONFIG = {
   main: [
     {
       label: 'Services',
-      href: '/services',
+      href: '/services/define-your-roadmap/maturity-assessment',
       type: 'mega',
       columns: [
         {
@@ -29,8 +29,8 @@ export const NAVIGATION_CONFIG = {
             { label: 'Define Your Roadmap', href: '/services/define-your-roadmap', icon: Cloud, active: true },
             { label: 'Build Your Foundation', href: '/services/build-your-foundation', icon: Layers },
             { label: 'Decision Intelligence', href: '/services/decision-intelligence', icon: Zap },
-            { label: 'AI That Ships', href: '/services', icon: Cpu },
-            { label: 'Scale Your Team', href: '/services', icon: Code },
+            { label: 'AI That Ships', href: '/services/ai-that-ships', icon: Cpu },
+            { label: 'Scale Your Team', href: '/services/scale-your-team', icon: Code },
           ]
         },
         {

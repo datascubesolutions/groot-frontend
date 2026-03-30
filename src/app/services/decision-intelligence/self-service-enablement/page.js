@@ -25,7 +25,7 @@ export default function SelfServiceEnablement() {
     <main className="pt-20 min-h-screen relative bg-background">
       <Breadcrumb
         items={[
-          { label: "Services", href: "/services" },
+          { label: "Services", href: "/services/define-your-roadmap/maturity-assessment" },
           { label: "Decision Intelligence", href: "/services/decision-intelligence" },
           { label: "Self-Service Enablement", href: "/services/decision-intelligence/self-service-enablement" },
         ]}

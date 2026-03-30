@@ -25,7 +25,7 @@ export default function SemanticModeling() {
     <main className="pt-20 min-h-screen relative bg-background">
       <Breadcrumb
         items={[
-          { label: "Services", href: "/services" },
+          { label: "Services", href: "/services/define-your-roadmap/maturity-assessment" },
           { label: "Decision Intelligence", href: "/services/decision-intelligence" },
           { label: "Semantic Modeling", href: "/services/decision-intelligence/semantic-modeling" },
         ]}

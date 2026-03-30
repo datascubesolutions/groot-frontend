@@ -61,3 +61,10 @@ export const SERVICE_CATEGORIES = [
     subServices: []
   }
 ];
+
+/** Canonical URL when visiting `/services` (first category’s first offering). */
+export const SERVICES_ENTRY_HREF = (() => {
+  const cat = SERVICE_CATEGORIES[0];
+  const first = cat.subServices[0];
+  return first ? `${cat.href}/${first.slug}` : cat.href;
+})();

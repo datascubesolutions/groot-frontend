@@ -17,7 +17,7 @@ export const getIndexableRoutes = () => [
     { path: '/about/careers', priority: 0.9, changeFrequency: 'weekly' },
 
     // Services
-    { path: '/services', priority: 1.0, changeFrequency: 'monthly' },
+    { path: '/services/define-your-roadmap/maturity-assessment', priority: 1.0, changeFrequency: 'monthly' },
     { path: '/services/strategy-advisory', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/services/data-engineering', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/services/business-intelligence', priority: 0.9, changeFrequency: 'monthly' },

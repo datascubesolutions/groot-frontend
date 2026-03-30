@@ -52,6 +52,7 @@ export { Breadcrumb } from './Breadcrumb';
 export {
   Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger
 } from './Dialog';
+export { default as CookieConsent } from './CookieConsent';
 // export { Drawer } from './Drawer';
 // export { Tooltip } from './Tooltip';
 // export { Popover } from './Popover';

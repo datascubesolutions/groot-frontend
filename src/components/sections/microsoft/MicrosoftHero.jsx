@@ -58,7 +58,7 @@ export function MicrosoftHero({
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-muted/60 border border-border/80 mb-6 shadow-sm"
               >
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-forest animate-pulse" />
                 <span className="text-sm font-bold uppercase tracking-[0.08em] text-foreground/80">
                   {badge}
                 </span>
@@ -80,7 +80,7 @@ export function MicrosoftHero({
               className="flex flex-col sm:flex-row items-center gap-4 justify-center"
             >
               <Link href={primaryCtaLink}>
-                <Button variant="hero" size="xl" className="group text-lg px-8 shadow-lg shadow-primary/20 w-full sm:w-auto">
+                <Button variant="hero" size="xl" className="group text-lg px-8 bg-forest hover:bg-forest/90 text-white border-0 shadow-lg shadow-forest/20 w-full sm:w-auto">
                   {primaryCtaText}
                   <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
                 </Button>

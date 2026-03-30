@@ -1,5 +1,5 @@
 import { Award, Briefcase, CheckCircle, Clock, Cpu, Database, Globe, Layers, TrendingUp, Users } from "lucide-react";
-import { SERVICE_CATEGORIES } from "./services";
+import { SERVICE_CATEGORIES, SERVICES_ENTRY_HREF } from "./services";
 
 /** Categories for the Solutions mega menu (same structure as Services). */
 export const SOLUTION_CATEGORIES = [
@@ -48,7 +48,7 @@ export const SOLUTION_STATS = [
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services", hasDropdown: true },
+  { label: "Services", href: SERVICES_ENTRY_HREF, hasDropdown: true },
   { label: "Industries", href: "/industries" },
   {
     label: "Microsoft",
@@ -70,11 +70,7 @@ export const NAV_LINKS = [
     href: "/about",
     hasDropdown: true,
     subLinks: [
-      { label: "Who We Are", href: "/about/who-we-are" },
-      { label: "What We Do", href: "/about/what-we-do" },
-      { label: "How We Do It", href: "/about/how-we-do-it" },
-      { label: "Our Story", href: "/about/our-story" },
-      { label: "Why Join Us", href: "/about/why-join-us" },
+      { label: "About Us", href: "/about" },
       { label: "Careers", href: "/about/careers" },
       { label: "Contact Us", href: "/contact" },
     ]
@@ -83,34 +79,10 @@ export const NAV_LINKS = [
 
 export const ABOUT_LINKS = [
   {
-    title: "Who We Are",
-    href: "/about/who-we-are",
+    title: "About Us",
+    href: "/about",
     icon: Users,
-    description: "Our Team, Background & Engineering Philosophy"
-  },
-  {
-    title: "What We Do",
-    href: "/about/what-we-do",
-    icon: Database,
-    description: "End-to-End Analytics & Engineering Services"
-  },
-  {
-    title: "How We Do It",
-    href: "/about/how-we-do-it",
-    icon: CheckCircle,
-    description: "Our Proven Methodology & Delivery Framework"
-  },
-  {
-    title: "Our Story",
-    href: "/about/our-story",
-    icon: Award,
-    description: "From Private Equity Roots to Global Analytics"
-  },
-  {
-    title: "Why Join Us",
-    href: "/about/why-join-us",
-    icon: TrendingUp,
-    description: "Culture, Benefits & Career Growth"
+    description: "Our Story, Team & Approach"
   },
   {
     title: "Careers",
@@ -121,7 +93,7 @@ export const ABOUT_LINKS = [
   {
     title: "Contact Us",
     href: "/contact",
-    icon: Users,
+    icon: Globe,
     description: "Get in Touch with Our Team"
   }
 ];
@@ -134,10 +106,9 @@ export const FOOTER_LINKS = {
     { label: "AI That Ships", href: "/services/ai-that-ships" },
   ],
   company: [
-    { label: "About Us", href: "/about/who-we-are" },
-    { label: "Our Story", href: "/about/our-story" },
+    { label: "About Us", href: "/about" },
     { label: "Careers", href: "/about/careers" },
-    { label: "Contact", href: "/contact" },
+    { label: "Contact Us", href: "/contact" },
   ],
   resources: [
     { label: "Industries", href: "/industries" },

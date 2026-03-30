@@ -80,6 +80,7 @@ export const metadata = {
 };
 
 import { PublicLayoutWrapper } from "@/components/layout/PublicLayoutWrapper";
+import { CookieConsent } from "@/components/ui";
 
 // ... existing imports
 
@@ -109,6 +110,7 @@ export default function RootLayout({ children }) {
           </div>
         </ErrorBoundary>
         <Toaster position="top-right" richColors theme="dark" />
+        <CookieConsent />
       </body>
     </html>
   );

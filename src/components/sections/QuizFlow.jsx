@@ -662,7 +662,7 @@ export function QuizFlow({ onComplete }) {
               </div>
 
               <div className="shrink-0">
-                <Button className="w-full sm:w-auto bg-white text-slate-900 hover:bg-emerald-50 hover:text-emerald-700 font-bold px-8 py-6 h-auto rounded-xl shadow-lg transition-all hover:scale-105" onClick={() => window.location.href = '/services'}>
+                <Button className="w-full sm:w-auto bg-white text-slate-900 hover:bg-emerald-50 hover:text-emerald-700 font-bold px-8 py-6 h-auto rounded-xl shadow-lg transition-all hover:scale-105" onClick={() => window.location.href = '/services/define-your-roadmap/maturity-assessment'}>
                   Explore Solution <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </div>
