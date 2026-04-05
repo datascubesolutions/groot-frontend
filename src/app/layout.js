@@ -81,6 +81,8 @@ export const metadata = {
 
 import { PublicLayoutWrapper } from "@/components/layout/PublicLayoutWrapper";
 import { CookieConsent } from "@/components/ui";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import ScrollTracker from "@/components/analytics/ScrollTracker";
 
 // ... existing imports
 
@@ -94,6 +96,8 @@ export default function RootLayout({ children }) {
         <WebsiteSchema />
       </head>
       <body className={`${plusJakartaSans.variable} antialiased`} suppressHydrationWarning>
+        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        <ScrollTracker />
         <ErrorBoundary>
           <div className="flex flex-col min-h-screen">
             <PublicLayoutWrapper>

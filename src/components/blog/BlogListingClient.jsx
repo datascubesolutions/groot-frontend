@@ -157,52 +157,45 @@ export function BlogListingClient({
       )}
 
       {totalPages > 1 && (
-        <div className="mt-24 flex items-center justify-center gap-4">
-          <Button
-            variant="outline"
-            size="icon"
-            disabled={currentPage <= 1 || isPending}
-            onClick={() =>
-              updateParams({ page: Math.max(1, currentPage - 1) })
-            }
-            className="rounded-full w-10 h-10 border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5 disabled:opacity-30"
-          >
-            <span className="sr-only">Previous</span>
-            &larr;
-          </Button>
+        <div className="mt-24 flex justify-center">
+          <div className="inline-flex items-center px-3 py-3 sm:px-4 sm:py-4 gap-2 sm:gap-3 bg-card/60 backdrop-blur-md border border-border/80 rounded-2xl shadow-sm">
+            <button
+              disabled={currentPage <= 1 || isPending}
+              onClick={() => updateParams({ page: Math.max(1, currentPage - 1) })}
+              className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border/60 bg-background text-muted-foreground hover:border-forest/40 hover:text-forest disabled:opacity-40 transition-all duration-300 shadow-sm hover:shadow"
+            >
+              <span className="sr-only">Previous</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m15 18-6-6 6-6"/>
+              </svg>
+            </button>
 
-          <div className="flex items-center gap-2">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-              (page) => (
-                <Button
-                  key={page}
-                  variant={currentPage === page ? "default" : "outline"}
-                  size="icon"
-                  disabled={isPending}
-                  onClick={() => updateParams({ page })}
-                  className={`w-10 h-10 rounded-full font-semibold transition-all duration-300 ${currentPage === page
-                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90 hover:-translate-y-0.5"
-                    : "border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5"
-                    }`}
-                >
-                  {page}
-                </Button>
-              )
-            )}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                disabled={isPending}
+                onClick={() => updateParams({ page })}
+                className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full font-medium text-base sm:text-lg transition-all duration-300 shadow-sm ${
+                  currentPage === page
+                    ? "bg-forest text-forest-foreground border-transparent shadow-[0_6px_20px_hsl(var(--forest)/0.4)] scale-[1.02]"
+                    : "bg-background border border-border/60 text-foreground hover:border-forest/40 hover:bg-forest/5 hover:text-forest hover:shadow"
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+
+            <button
+              disabled={currentPage >= totalPages || isPending}
+              onClick={() => updateParams({ page: Math.min(totalPages, currentPage + 1) })}
+              className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border/60 bg-background text-muted-foreground hover:border-forest/40 hover:text-forest disabled:opacity-40 transition-all duration-300 shadow-sm hover:shadow"
+            >
+              <span className="sr-only">Next</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m9 18 6-6-6-6"/>
+              </svg>
+            </button>
           </div>
-
-          <Button
-            variant="outline"
-            size="icon"
-            disabled={currentPage >= totalPages || isPending}
-            onClick={() =>
-              updateParams({ page: Math.min(totalPages, currentPage + 1) })
-            }
-            className="rounded-full w-10 h-10 border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5 disabled:opacity-30"
-          >
-            <span className="sr-only">Next</span>
-            &rarr;
-          </Button>
         </div>
       )}
     </>

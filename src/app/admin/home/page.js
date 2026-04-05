@@ -2,6 +2,7 @@
 
 import { homepageService } from "@/services/homepageService";
 import { BriefcaseIcon, DocumentTextIcon, HomeIcon, ShieldExclamationIcon, UserGroupIcon, VideoCameraIcon, ViewColumnsIcon } from "@heroicons/react/24/outline";
+import { AdminSkeleton } from "@/components/admin/AdminSkeleton";
 import { GripVertical, Image as ImageIcon, Plus, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -129,11 +130,7 @@ export default function AdminHomePage() {
   };
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
-      </div>
-    );
+    return <AdminSkeleton type="builder" />;
   }
 
   return (

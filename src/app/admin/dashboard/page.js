@@ -3,6 +3,7 @@
 import { contactService } from "@/services/contactService";
 import { ArrowUpRight, BarChart3, FileText, Users } from "lucide-react";
 import Link from "next/link";
+import { AdminSkeleton } from "@/components/admin/AdminSkeleton";
 import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
@@ -58,6 +59,10 @@ export default function DashboardPage() {
       href: "/admin/analytics"
     }
   ];
+
+  if (isLoading) {
+    return <AdminSkeleton type="dashboard" />;
+  }
 
   return (
     <div className="space-y-8 animate-fade-in">

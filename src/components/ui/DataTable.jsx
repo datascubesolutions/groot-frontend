@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 
-import { Skeleton } from "@/components/ui/Skeleton";
+import { AdminSkeleton } from "@/components/admin/AdminSkeleton";
 
 export function DataTable({
   columns,
@@ -15,23 +15,7 @@ export function DataTable({
   actions
 }) {
   if (isLoading) {
-    return (
-      <div className="w-full space-y-4">
-        <div className="rounded-xl border border-white/10 bg-white/5 overflow-hidden backdrop-blur-sm shadow-2xl shadow-black/20 p-4 space-y-4">
-          <div className="flex items-center gap-4 mb-6">
-            <Skeleton className="h-8 w-1/4 bg-white/10" />
-            <Skeleton className="h-8 w-1/4 bg-white/10" />
-            <Skeleton className="h-8 w-1/4 bg-white/10" />
-            <Skeleton className="h-8 w-1/4 bg-white/10" />
-          </div>
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className="flex items-center gap-4">
-              <Skeleton className="h-12 w-full bg-white/5 rounded-lg" />
-            </div>
-          ))}
-        </div>
-      </div>
-    );
+    return <AdminSkeleton type="table" />;
   }
 
   return (

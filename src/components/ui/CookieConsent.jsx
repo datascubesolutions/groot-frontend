@@ -96,6 +96,20 @@ export default function CookieConsent() {
     localStorage.setItem("cookieConsent", isCustom ? "custom" : "true");
     localStorage.setItem("cookiePreferences", JSON.stringify(prefs));
     setIsVisible(false);
+
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("consent", "update", {
+        analytics_storage: prefs.performance ? "granted" : "denied",
+        ad_storage: prefs.advertising ? "granted" : "denied",
+        ad_user_data: prefs.advertising ? "granted" : "denied",
+        ad_personalization: prefs.advertising ? "granted" : "denied",
+        personalization_storage: prefs.functional ? "granted" : "denied",
+      });
+      // Trigger event to process queued tags after consent update
+      if (window.dataLayer) {
+        window.dataLayer.push({ event: "consent_update" });
+      }
+    }
   };
 
   const handleAcceptAll = () =>

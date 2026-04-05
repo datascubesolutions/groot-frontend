@@ -1,6 +1,7 @@
 "use client";
 
 import { DataTable } from "@/components/ui/DataTable";
+import { AdminSkeleton } from "@/components/admin/AdminSkeleton";
 import { useDebounce } from "@/hooks/useDebounce";
 import { getErrorMessage } from "@/lib/api/errors";
 import { blogService } from "@/services/blogService";
@@ -199,6 +200,10 @@ export default function BlogListPage() {
   const publishedCount = data.filter((d) => d.status === "PUBLISHED").length;
   const draftCount = data.filter((d) => d.status === "DRAFT").length;
   const featuredCount = data.filter((d) => String(d.isFeatured) === "true" || d.isFeatured === true).length;
+
+  if (isLoading && data.length === 0) {
+    return <AdminSkeleton type="table" />;
+  }
 
   return (
     <div className="space-y-4 animate-fade-in pb-2">

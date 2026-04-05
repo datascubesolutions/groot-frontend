@@ -9,7 +9,11 @@ import {
   Home,
   LayoutDashboard,
   LogOut,
-  Settings,
+  Building2,
+  Info,
+  LayoutGrid,
+  Briefcase,
+  UserPlus,
   Users
 } from "lucide-react";
 import Image from "next/image";
@@ -43,9 +47,29 @@ const navItems = [
     icon: BarChart3
   },
   {
-    title: "Settings",
-    href: "/admin/settings",
-    icon: Settings
+    title: "Services",
+    href: "/admin/services",
+    icon: Briefcase
+  },
+  {
+    title: "Industries",
+    href: "/admin/industries",
+    icon: Building2
+  },
+  {
+    title: "Microsoft Center",
+    href: "/admin/microsoft",
+    icon: LayoutGrid
+  },
+  {
+    title: "About Us",
+    href: "/admin/about",
+    icon: Info
+  },
+  {
+    title: "Careers",
+    href: "/admin/careers",
+    icon: UserPlus
   }
 ];
 

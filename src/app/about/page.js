@@ -1,415 +1,332 @@
 "use client";
 
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Database, Network, Zap } from "lucide-react";
 import Link from "next/link";
-import { LazyMotion, domAnimation, m } from "framer-motion";
-import { 
-  Database, 
-  Network, 
-  Target, 
-  Zap, 
-  Cpu,
-  ShieldCheck,
-  ArrowRight,
-  Workflow,
-  BarChart4,
-  ArrowRightLeft,
-  ChevronRight
-} from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
 
-export default function AboutPage() {
-  const [hoveredCapability, setHoveredCapability] = useState(null);
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+};
 
-  const capabilities = [
-    {
-      icon: Database,
-      title: "Data Foundations",
-      desc: "Microsoft Fabric implementations, Lakehouse architecture, robust pipelines, and enterprise governance with Microsoft Purview."
-    },
-    {
-      icon: BarChart4,
-      title: "Analytics & BI",
-      desc: "Sophisticated Power BI semantic models, high-performance executive dashboards, and enabling true self-service for business users."
-    },
-    {
-      icon: Workflow,
-      title: "System Integrations",
-      desc: "Reliably connecting disparate ERPs, CRMs, field service platforms, and bespoke SaaS applications into your unified data platform."
-    },
-    {
-      icon: ArrowRightLeft,
-      title: "Modern Migrations",
-      desc: "Seamlessly moving from legacy SQL Server, Azure Analysis Services, or Synapse to Microsoft Fabric without disrupting operations."
-    }
+const capabilities = [
+  {
+    id: "01",
+    title: "Data Foundations",
+    desc: "Robust Lakehouse architectures and fault-tolerant pipelines.",
+    details: "We lay down immutable foundations inside Microsoft Fabric. From landing zones to bronze/silver/gold semantic perfection, we engineer infrastructures built for extreme volume and zero downtime.",
+    icon: Database
+  },
+  {
+    id: "02",
+    title: "Analytics & BI",
+    desc: "Governed semantic models and executive performance dashboards.",
+    details: "Moving organizations from ad-hoc spreadsheet chaos into a singular, undeniable source of truth. We build Power BI ecosystems that executives trust and analysts can safely extend.",
+    icon: BarChart4
+  },
+  {
+    id: "03",
+    title: "System Integration",
+    desc: "Unifying fragmented ERPs, CRMs, and legacy data sources.",
+    details: "Fragmented systems are the enemy of velocity. We utilize Azure Data Factory and Fabric pipelines to ingest structured and unstructured telemetry into a unified enterprise graph.",
+    icon: Network
+  },
+  {
+    id: "04",
+    title: "Platform Migrations",
+    desc: "Seamless upgrades from legacy SQL or AAS to Fabric.",
+    details: "We eliminate technical debt by migrating outdated Analysis Services and legacy on-premise warehouses into modern Microsoft cloud topologies—without disrupting daily operations.",
+    icon: Zap
+  }
+];
+
+function BarChart4(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 3v18h18" />
+      <path d="M13 17V9" />
+      <path d="M18 17V5" />
+      <path d="M8 17v-3" />
+    </svg>
+  )
+}
+
+export default function AboutPage() {
+  const [activeAccordion, setActiveAccordion] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const teamIndex = [
+    { num: "01", category: "System Architecture", tools: ["Microsoft Fabric", "Azure Synapse", "Data Lake Gen2"] },
+    { num: "02", category: "Analytics Engineering", tools: ["Power BI", "DAX", "Tabular Editor", "Row-Level Security"] },
+    { num: "03", category: "Data Pipeline Ops", tools: ["Data Factory", "PySpark", "Python", "SQL Runtime"] },
+    { num: "04", category: "Data Governance", tools: ["Microsoft Purview", "Metadata Scanners", "Lineage Tracking"] }
   ];
 
   return (
-    <LazyMotion features={domAnimation} strict>
-      <main className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary relative overflow-hidden font-sans">
-        
-        {/* Subtle base grid */}
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+    <main className="min-h-screen bg-background font-sans selection:bg-forest/30 overflow-x-clip pt-20">
 
-        {/* --- 1. Immersive Abstract Hero --- */}
-        <section className="relative min-h-[90vh] flex items-center pt-24 pb-32 border-b border-border/50 bg-card overflow-hidden">
-          {/* Abstract Geometric Graphics / Deep aesthetic background */}
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-0 right-0 w-full lg:w-[65%] h-full opacity-30 lg:opacity-60 [mask-image:linear-gradient(to_left,black,transparent)] transition-all duration-1000">
-              <Image 
-                src="https://images.unsplash.com/photo-1618044733300-9472054094ee?q=80&w=2671&auto=format&fit=crop" 
-                alt="Abstract Architectural Data Structure"
-                fill
-                priority
-                className="object-cover object-center mix-blend-multiply"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent" />
+      {/* 1. The Monolith Hero (50/50 Split) */}
+      <section className="relative flex flex-col lg:flex-row min-h-[calc(100vh-60px)] border-b-[8px] border-foreground bg-[#0c1214]">
+
+        {/* Left - Engineering Core */}
+        <div className="lg:w-1/2 text-white flex flex-col justify-center px-8 lg:px-20 py-32 relative overflow-hidden">
+          {/* Massive Watermark */}
+          <div className="absolute top-1/2 -translate-y-1/2 -right-[20%] text-[10rem] lg:text-[18rem] font-black text-white/5 select-none pointer-events-none rotate-90 lg:rotate-0 transform origin-center font-mono">
+            GRT
           </div>
 
-          <div className="container mx-auto container-padding relative z-10">
-            <Breadcrumb items={[{ label: "About Us", href: "/about" }]} />
-
-            <div className="mt-16 max-w-4xl space-y-8">
-              <m.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="inline-flex items-center gap-3"
-              >
-                <span className="w-12 h-px bg-primary/60" />
-                <span className="text-primary font-bold uppercase tracking-[0.2em] text-sm">Our Mission</span>
-              </m.div>
-
-              <m.h1 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="text-5xl md:text-7xl lg:text-[6rem] font-black tracking-tighter text-foreground leading-[1.05] drop-shadow-sm text-balance"
-              >
-                We build data platforms <br className="hidden lg:block"/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest relative">
-                   that actually work.
-                </span>
-              </m.h1>
-
-              <m.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.6 }}
-                className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium text-balance max-w-2xl"
-              >
-                Microsoft Fabric. Power BI. Azure. We help modern enterprises unify scattered data, establish absolute governance, and drive decisions—without the bloated consulting timelines.
-              </m.p>
+          <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="relative z-10 w-full max-w-xl">
+            <div className="inline-flex items-center gap-4 mb-10">
+              <div className="w-12 h-1 bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.6)]"></div>
+              <span className="text-sm font-black uppercase tracking-[0.4em] text-emerald-400">Identity</span>
             </div>
-          </div>
-        </section>
 
-        {/* --- Metrics Float --- */}
-        <section className="relative z-20 -mt-16 container container-padding mx-auto">
-          <m.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-border/60 border border-border/80 bg-card/90 backdrop-blur-2xl rounded-[2.5rem] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] overflow-hidden"
+            <h1 className="text-[3.5rem] lg:text-[5rem] xl:text-[5.5rem] font-black leading-[0.85] tracking-tighter uppercase mb-10 drop-shadow-sm">
+              Engineering <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Absolute</span> <br />
+              Clarity.
+            </h1>
+
+            <p className="text-xl text-white/70 font-bold leading-relaxed border-l-[3px] border-emerald-400 pl-6">
+              We build data systems that do not break. No bloated consulting timelines, no generic advice—just ruthless execution within the Microsoft data ecosystem.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Right - Architectural Vision */}
+        <div className="lg:w-1/2 bg-card relative min-h-[50vh] lg:min-h-screen flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 overflow-hidden outline outline-1 outline-border group transform-gpu will-change-[opacity,transform]"
           >
-            {[
-              { label: "Consulting Bloat", value: "Zero" },
-              { label: "Microsoft Native", value: "100%" },
-              { label: "Faster Delivery", value: "3x" },
-              { label: "Focus", value: "Data & AI" }
-            ].map((stat, i) => (
-              <div key={i} className="p-10 flex flex-col justify-center items-center text-center group hover:bg-muted/30 transition-colors duration-500">
-                <span className="text-5xl lg:text-6xl font-black tracking-tighter text-foreground mb-3 group-hover:scale-105 transition-transform duration-500">{stat.value}</span>
-                <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">{stat.label}</span>
-              </div>
-            ))}
-          </m.div>
-        </section>
+            <img
+              src="/images/about/building_hq.png"
+              alt="Groot Analytics Architecture"
+              className="object-cover w-full h-full grayscale-[80%] contrast-125 group-hover:grayscale-[50%] group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.19,1,0.22,1)] transform-gpu will-change-[filter,transform]"
+            />
+            <div className="absolute inset-0 bg-forest/10 mix-blend-multiply" />
 
-        {/* --- 2. Editorial Sticky-Scroll Story (Retaining Original Content) --- */}
-        <section className="relative py-32 lg:py-48 bg-background">
-          {/* Subtle background abstract drawing */}
-          <div className="absolute top-40 right-10 opacity-5 pointer-events-none rotate-12">
-            <Network size={800} strokeWidth={0.5} />
-          </div>
-
-          <div className="container mx-auto container-padding">
-            <div className="grid lg:grid-cols-12 gap-16 lg:gap-8 items-start relative">
-              
-              {/* Sticky Left Column */}
-              <div className="lg:col-span-5 lg:sticky top-32 flex flex-col justify-center">
-                 <div className="inline-flex items-center gap-3 mb-6">
-                  <div className="h-px w-8 bg-primary/40 block"></div>
-                  <span className="text-primary font-bold uppercase tracking-[0.25em] text-xs">The Background</span>
-                </div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground mb-8 leading-[1.05]">
-                  The Origin <span className="text-gradient">Story</span>
-                </h2>
-                <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium">
-                  Groot Analytics was born from frustration with the status quo. Data was always a mess, and the traditional path to fixing it took too long. We decided to change the paradigm.
-                </p>
-              </div>
-
-              {/* Scrolling Right Column (The Original 4 Bento Blocks reformatted brilliantly) */}
-              <div className="lg:col-span-6 lg:col-start-7 space-y-12 md:space-y-20 relative z-10">
-                
-                {/* Block 1 */}
-                <m.div 
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8 }}
-                  className="bg-card p-10 md:p-12 rounded-[2.5rem] border border-border/80 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] relative group hover:-translate-y-2 transition-transform duration-500 overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-[radial-gradient(circle_at_top_right,hsl(var(--mint)/0.3),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                  <div className="w-16 h-16 rounded-2xl bg-muted text-primary flex items-center justify-center mb-8 shadow-sm relative z-10 border border-border/50 group-hover:bg-primary/5 transition-colors duration-500">
-                    <Network size={32} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-3xl font-bold mb-6 text-foreground tracking-tight relative z-10">The Familiar Problem</h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed relative z-10 font-medium">
-                    Executives need visibility—consolidated revenue, margins, operational KPIs. But data is trapped in isolated ERPs and sprawling Excel sheets. The standard consulting answer is a six-month slog of requirements gathering. By then, leaders are flying blind.
-                  </p>
-                </m.div>
-
-                {/* Block 2 */}
-                <m.div 
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8 }}
-                  className="bg-card p-10 md:p-12 rounded-[2.5rem] border border-border/80 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] relative group hover:-translate-y-2 transition-transform duration-500 overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-[radial-gradient(circle_at_top_right,hsl(var(--mint)/0.3),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                  <div className="w-16 h-16 rounded-2xl bg-muted text-primary flex items-center justify-center mb-8 shadow-sm relative z-10 border border-border/50 group-hover:bg-primary/5 transition-colors duration-500">
-                    <Zap size={32} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-3xl font-bold mb-6 text-foreground tracking-tight relative z-10">Our Approach</h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed relative z-10 font-medium">
-                    We lay down a Microsoft Fabric foundation in weeks, not months. The first integration is the hardest; by the third, it's a completely repeatable engine.
-                  </p>
-                </m.div>
-
-                {/* Block 3 */}
-                <m.div 
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8 }}
-                  className="bg-card p-10 md:p-12 rounded-[2.5rem] border border-border/80 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] relative group hover:-translate-y-2 transition-transform duration-500 overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-[radial-gradient(circle_at_top_right,hsl(var(--mint)/0.3),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                  <div className="w-16 h-16 rounded-2xl bg-muted text-primary flex items-center justify-center mb-8 shadow-sm relative z-10 border border-border/50 group-hover:bg-primary/5 transition-colors duration-500">
-                    <Cpu size={32} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-3xl font-bold mb-6 text-foreground tracking-tight relative z-10">Why Microsoft?</h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed relative z-10 font-medium">
-                    Most enterprises already own Microsoft 365, Power BI, and Azure. They don't need a new platform—they need experts to unlock what they already have.
-                  </p>
-                </m.div>
-
-                {/* Block 4 */}
-                <m.div 
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8 }}
-                  className="bg-card p-10 md:p-12 rounded-[2.5rem] border border-border/80 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] relative group hover:-translate-y-2 transition-transform duration-500 overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(168,76%,96%)_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                  <div className="w-16 h-16 rounded-2xl bg-muted text-primary flex items-center justify-center mb-8 shadow-sm relative z-10 border border-border/50 group-hover:bg-primary/5 transition-colors duration-500">
-                    <Target size={32} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-3xl font-bold mb-6 text-foreground tracking-tight relative z-10">Built for Business Value</h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed relative z-10 font-medium">
-                    We don't build tech for tech's sake. Every pipeline, model, and dashboard is tied directly to a business outcome: reducing manual reporting hours, uncovering margin leakage, or accelerating post-merger integration.
-                  </p>
-                </m.div>
-
-              </div>
+            {/* Reticle Overlays */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] border border-white/20 rounded-full flex items-center justify-center pointer-events-none">
+              <div className="w-[400px] h-[1px] bg-white/20 absolute"></div>
+              <div className="w-[1px] h-[400px] bg-white/20 absolute"></div>
+              <div className="w-4 h-4 border border-white/60 rounded-full"></div>
             </div>
-          </div>
-        </section>
 
-        {/* --- 3. Interactive Hover-Reveal Capabilities (Original Content) --- */}
-        <section className="py-32 bg-muted/30 border-y border-border/60 relative overflow-hidden">
-          <div className="absolute left-[-10%] bottom-[-10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-          
-          <div className="container mx-auto container-padding max-w-7xl relative z-10">
-            <div className="mb-20">
-               <div className="inline-flex items-center gap-3 mb-6">
-                <span className="text-primary font-bold uppercase tracking-[0.25em] text-xs">Ecosystem Expertise</span>
-                <div className="h-px w-24 bg-primary/40 block"></div>
-              </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground text-balance mb-6">
-                Core Capabilities
+            <div className="absolute bottom-8 right-8 bg-black/60 backdrop-blur-md px-4 py-2 border border-white/20 rounded-md">
+              <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-widest">+ SYSTEM ALIGNED</span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 2. The Architectural Ledger (Origin Story) */}
+      <section className="py-32 lg:py-48 bg-background relative border-b border-border/50">
+        <div className="absolute top-0 right-10 w-[1px] h-full bg-border/50"></div>
+        <div className="absolute top-0 right-20 w-[1px] h-full bg-border/50 hidden md:block"></div>
+
+        <div className="container mx-auto px-6 max-w-5xl relative">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}>
+            <h2 className="text-sm font-black text-forest uppercase tracking-[0.4em] mb-12">The Ledger</h2>
+
+            <p className="text-[2.2rem] md:text-[3.5rem] lg:text-[4.5rem] font-black leading-[1.1] tracking-tighter text-foreground/60">
+              Groot Analytics was forged from <span className="text-foreground">sheer frustration.</span> We watched PE firms and enterprises pour millions into
+              <span className="bg-foreground text-background px-4 py-1 mx-2 inline-block -skew-x-6 shadow-[8px_8px_0_hsl(var(--forest))] leading-none">bloated consulting</span>
+              projects that delivered PowerPoint slides instead of pipelines.
+            </p>
+
+            <div className="w-24 h-[4px] bg-forest my-16"></div>
+
+            <p className="text-[2.2rem] md:text-[3.5rem] lg:text-[4.5rem] font-black leading-[1.1] tracking-tighter text-foreground/60">
+              We shattered that paradigm. Every system we architect is built strictly for <span className="text-foreground">business velocity.</span>
+              <span className="bg-forest text-forest-foreground px-4 py-1 mx-2 inline-block border-2 border-forest-foreground/20 leading-none">We deploy in weeks.</span>
+              We operate exclusively within the Microsoft data stack because predictability scales.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 3. The Expansion Bellows (Core Capabilities) */}
+      <section className="bg-background pt-32 pb-40">
+        <div className="container mx-auto px-6 max-w-[1400px]">
+          <div className="mb-20">
+            <h2 className="text-xs font-mono font-bold text-foreground/50 uppercase tracking-[0.4em] mb-4 border-l-2 border-forest pl-4">Platform Blueprint</h2>
+            <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">Ecosystem <br /> Capabilities.</h3>
+          </div>
+
+          <div className="border-t-[3px] border-foreground flex flex-col">
+            {capabilities.map((cap, index) => {
+              const isActive = activeAccordion === index;
+              return (
+                <motion.div
+                  key={index}
+                  initial={false}
+                  animate={{
+                    backgroundColor: isActive ? "hsl(var(--card))" : "hsl(var(--background))",
+                    borderColor: isActive ? "hsl(var(--foreground))" : "hsl(var(--border))"
+                  }}
+                  className={`border-b-[3px] transition-colors duration-500 overflow-hidden cursor-pointer group flex flex-col justify-center relative`}
+                  onMouseEnter={() => setActiveAccordion(index)}
+                  onMouseLeave={() => setActiveAccordion(null)}
+                >
+                  {/* Subtle hover gradient tracker */}
+                  <div className={`absolute inset-0 bg-gradient-to-r from-forest/5 to-transparent opacity-0 transition-opacity duration-500 ${isActive ? 'opacity-100' : ''}`} />
+
+                  <div className="w-full flex items-center justify-between px-6 lg:px-12 py-10 relative z-10">
+                    <div className="flex items-center gap-8 lg:gap-16 w-full lg:w-2/3">
+                      <span className={`text-2xl font-mono font-black transition-colors duration-500 ${isActive ? 'text-forest' : 'text-muted-foreground'}`}>{cap.id}</span>
+                      <h4 className={`text-3xl lg:text-5xl font-black tracking-tight uppercase transition-colors duration-500 ${isActive ? 'text-foreground' : 'text-foreground/70'}`}>
+                        {cap.title}
+                      </h4>
+                    </div>
+                    <div className="hidden lg:flex w-1/3 justify-end items-center gap-6">
+                      <p className={`text-lg font-bold transition-all duration-500 text-right max-w-xs ${isActive ? 'text-foreground opacity-100 translate-x-0' : 'text-muted-foreground opacity-0 translate-x-4'}`}>
+                        {cap.desc}
+                      </p>
+                      <div className={`w-12 h-12 flex items-center justify-center border-[2px] transition-all duration-500 ${isActive ? 'bg-forest border-forest text-forest-foreground scale-110' : 'bg-transparent border-muted-foreground/30 text-muted-foreground'}`}>
+                        <cap.icon size={24} />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Expanding the bellows body */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                        className="px-6 lg:px-12 pb-10 relative z-10 w-full"
+                      >
+                        <div className="w-full lg:w-2/3 pl-[4rem] lg:pl-[6.5rem]">
+                          <div className="h-[2px] w-16 bg-forest mb-6"></div>
+                          <p className="text-xl text-muted-foreground font-medium leading-relaxed max-w-2xl">
+                            {cap.details}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. The Swiss Index (The Experts) */}
+      <section className="py-32 bg-muted/20 border-y-2 border-border/80">
+        <div className="container mx-auto px-6 max-w-[1400px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+            <div className="lg:col-span-5">
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-foreground mb-8">
+                The <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/30 stroke-text">Operators.</span>
               </h2>
-              <p className="text-xl text-muted-foreground font-medium leading-relaxed text-balance">
-                End-to-end data platform implementation across the entire Microsoft ecosystem.
+              <p className="text-xl font-bold text-foreground/80 leading-relaxed max-w-md">
+                A highly-curated index of our internal DNA. We deploy localized elite teams, bridging the absolute gap between business intent and technical reality.
               </p>
             </div>
-            
-            <div className="flex flex-col border-t border-border/60">
-              {capabilities.map((item, idx) => {
-                const isHovered = hoveredCapability === idx;
-                return (
-                  <div 
-                    key={idx} 
-                    className="group border-b border-border/60 relative overflow-hidden cursor-pointer"
-                    onMouseEnter={() => setHoveredCapability(idx)}
-                    onMouseLeave={() => setHoveredCapability(null)}
+
+            <div className="lg:col-span-7 flex flex-col">
+              <div className="border-t-[3px] border-foreground">
+                {teamIndex.map((row, idx) => (
+                  <div
+                    key={idx}
+                    className="group border-b border-border/80 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-crosshair relative"
+                    onMouseEnter={() => setHoveredIndex(idx)}
+                    onMouseLeave={() => setHoveredIndex(null)}
                   >
-                    {/* Hover backdrop fill */}
-                    <div 
-                      className={`absolute inset-0 bg-primary/5 transition-transform duration-500 ease-out origin-left ${isHovered ? 'scale-x-100' : 'scale-x-0'}`} 
-                    />
+                    {/* Premium dark hover background */}
+                    <div className="absolute inset-0 bg-[#0a1f14] opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
 
-                    <div className="py-10 px-4 md:px-8 flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
-                      <div className="flex items-center gap-8 md:w-5/12">
-                        <div className={`transition-all duration-500 ${isHovered ? 'text-primary scale-110' : 'text-muted-foreground'}`}>
-                          <item.icon size={40} strokeWidth={1.5} />
-                        </div>
-                        <h3 className={`text-3xl font-bold tracking-tight transition-colors duration-500 ${isHovered ? 'text-primary' : 'text-foreground'}`}>
-                          {item.title}
-                        </h3>
-                      </div>
-                      
-                      <div className="md:w-6/12 flex items-center gap-6">
-                        <p className={`text-lg transition-colors duration-500 ${isHovered ? 'text-foreground' : 'text-muted-foreground'} leading-relaxed font-medium`}>
-                          {item.desc}
-                        </p>
-                      </div>
-
-                      <div className="hidden md:flex justify-end w-1/12 text-muted-foreground">
-                         <ChevronRight size={32} className={`transition-transform duration-500 ${isHovered ? 'translate-x-2 text-primary opacity-100' : 'opacity-0 -translate-x-4'}`} strokeWidth={2} />
-                      </div>
+                    <div className="flex items-center gap-6 relative z-10 flex-shrink-0">
+                      <span className="text-xs font-mono font-bold text-muted-foreground group-hover:text-emerald-400 transition-colors duration-300">[{row.num}]</span>
+                      <h4 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-foreground group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
+                        {row.category}
+                      </h4>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
 
-        {/* --- 4. High-Contrast Authority Block (The Experts) - Original Content --- */}
-        <section className="py-32 bg-forest text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--mint)/0.15),transparent_50%)] pointer-events-none" />
-          
-          {/* Faint network abstraction overlay to give it a tech/data feel */}
-           <div className="absolute opacity-10 top-0 left-0 w-full h-full pointer-events-none">
-             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="dotGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <circle cx="2" cy="2" r="2" fill="currentColor"/>
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#dotGrid)" color="white"/>
-             </svg>
-          </div>
-
-          <div className="container mx-auto container-padding max-w-7xl relative z-10">
-            <div className="grid lg:grid-cols-5 gap-16 lg:gap-20 items-center">
-              
-              <div className="lg:col-span-2">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-8 text-white leading-[1.05]">
-                  The Experts Behind the Platform
-                </h2>
-                <p className="text-xl text-mint-light/80 leading-relaxed font-normal mb-10 text-balance">
-                  We are Data Engineers, Architects, Analytics Engineers, and Power BI Specialists. We've built production systems that run Fortune 500 operations. We know what actually works beyond the vendor demos.
-                </p>
-                <ul className="space-y-6">
-                  <li className="flex items-center gap-4 text-white text-lg font-medium">
-                     <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center shrink-0">
-                      <ShieldCheck size={24} className="text-primary" />
-                    </div>
-                    <span>Direct access to senior engineers.</span>
-                  </li>
-                  <li className="flex items-center gap-4 text-white text-lg font-medium">
-                    <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center shrink-0">
-                      <ShieldCheck size={24} className="text-primary" />
-                    </div>
-                    <span>Battle-tested across PE and healthcare.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="lg:col-span-3 grid sm:grid-cols-2 gap-6 items-start">
-                {[
-                  { title: "Microsoft Fabric & Azure", tools: ["Lakehouse", "Data Factory", "Synapse", "Purview"] },
-                  { title: "Power BI", tools: ["Semantic Modeling", "DAX", "RLS", "Performance Tuning"] },
-                  { title: "Data Engineering", tools: ["Python", "SQL", "PySpark", "APIs"] },
-                  { title: "Industries", tools: ["Private Equity", "Medical Device", "Construction", "Financial"] },
-                ].map((group, idx) => (
-                  <m.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    viewport={{ once: true }}
-                    key={idx} 
-                    className="p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors duration-300 shadow-xl"
-                  >
-                    <h4 className="font-bold text-white mb-6 tracking-wide text-lg">{group.title}</h4>
-                    <div className="flex flex-wrap gap-2.5">
-                      {group.tools.map((tool, i) => (
-                        <span key={i} className="px-4 py-2 text-sm rounded-xl bg-black/20 border border-white/10 text-mint-light/80 font-medium shadow-sm transition-colors hover:bg-primary/20 hover:text-white">
+                    <div className="relative z-10 flex flex-wrap gap-2 md:justify-end">
+                      {row.tools.map((tool, i) => (
+                        <span
+                          key={i}
+                          className="text-xs font-bold uppercase tracking-widest px-3 py-1.5 border transition-all duration-500 group-hover:bg-emerald-400/10 group-hover:text-emerald-400 group-hover:border-emerald-400/40 bg-muted/50 border-border/50 text-foreground/50"
+                          style={{
+                            transform: hoveredIndex === idx ? "translateX(0)" : "translateX(10px)",
+                            opacity: hoveredIndex === idx ? 1 : 0.5,
+                            transitionDelay: `${i * 0.04}s`
+                          }}
+                        >
                           {tool}
                         </span>
                       ))}
                     </div>
-                  </m.div>
+                  </div>
                 ))}
               </div>
+            </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* 5. The Geometric Anchor (Extreme CTA) */}
+      <section className="relative bg-background z-[50] overflow-hidden" style={{ paddingBottom: '60px' }}>
+        <div className="flex flex-col items-center pt-4 lg:pt-6 relative">
+
+          {/* The Lens — circle is centered, bottom half clipped by section overflow:hidden */}
+          <div className="relative w-[560px] h-[560px] md:w-[640px] md:h-[640px] lg:w-[720px] lg:h-[720px] flex flex-col items-center justify-center text-forest-foreground group">
+
+            {/* GPU Background layer */}
+            <div className="absolute inset-0 bg-forest rounded-full shadow-[0_0_80px_rgba(34,197,94,0.12)] group-hover:scale-[1.02] transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu will-change-transform z-0"></div>
+
+            <div className="text-center relative z-10 px-8 w-full -mt-16">
+              <div className="w-16 h-[2px] bg-forest-foreground/50 mx-auto mb-6"></div>
+              <h2 className="text-4xl md:text-5xl lg:text-[4rem] font-black tracking-tighter uppercase leading-[0.95] mb-6">
+                Ready to <br /> Anchor It?
+              </h2>
+              <p className="text-base md:text-lg font-bold max-w-sm mx-auto text-forest-foreground/80 leading-relaxed mb-8">
+                Step off the consulting treadmill. Establish a resilient, massive-scale data platform today.
+              </p>
+
+              <Link href="/contact" passHref>
+                <Button variant="hero" size="lg" className="px-8 py-6 text-lg rounded-none border-4 border-forest-foreground bg-forest-foreground text-forest font-black uppercase tracking-[0.2em] shadow-none hover:bg-transparent hover:text-forest-foreground transition-all duration-300">
+                  ENGAGE GROOT
+                  <ArrowRight className="ml-3 w-5 h-5" />
+                </Button>
+              </Link>
+            </div>
+
+            {/* Decorative elements */}
+            <div className="absolute left-8 md:left-14 top-[30%] text-forest-foreground/10 font-mono text-[4rem] lg:text-[6rem] font-black pointer-events-none select-none rotate-90 origin-left z-0">
+              ACT
+            </div>
+            <div className="absolute right-8 md:right-14 top-[30%] text-forest-foreground/10 font-mono text-[4rem] lg:text-[6rem] font-black pointer-events-none select-none -rotate-90 origin-right z-0">
+              NOW
             </div>
           </div>
-        </section>
 
-        {/* --- 5. Clean Typographic CTA (Original Content) --- */}
-        <section className="relative py-32 md:py-48 overflow-hidden bg-background">
-          {/* A beautiful glowing orb in the center */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-          
-          <div className="container mx-auto container-padding relative z-10">
-            <div className="flex flex-col items-center justify-center text-center">
-              <m.div
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true }}
-                className="max-w-4xl mx-auto"
-              >
-                <div className="inline-flex items-center justify-center mb-8">
-                  <span className="px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary font-bold tracking-[0.2em] uppercase text-xs shadow-sm">
-                    Ready to Scale?
-                  </span>
-                </div>
-                
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground tracking-tighter mb-8 leading-[1.05]">
-                  Ready to stop struggling <br className="hidden md:block" />
-                  with your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest">data?</span>
-                </h2>
-                
-                <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-12 max-w-3xl mx-auto leading-relaxed text-balance">
-                  Whether you're integrating an acquisition, replacing spreadsheets, or maximizing your Microsoft investment—let's build something that works.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                  <Link href="/contact">
-                    <Button variant="hero" size="xl" className="h-16 px-10 text-lg font-bold rounded-full shadow-[0_0_40px_-5px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_60px_-5px_hsl(var(--primary)/0.5)] transition-all group">
-                      Book a Consultation
-                      <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </div>
-              </m.div>
-            </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-      </main>
-    </LazyMotion>
+    </main>
   );
 }

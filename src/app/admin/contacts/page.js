@@ -1,6 +1,7 @@
 "use client";
 
 import { DataTable } from "@/components/ui/DataTable";
+import { AdminSkeleton } from "@/components/admin/AdminSkeleton";
 import { useDebounce } from "@/hooks/useDebounce";
 import { getErrorMessage } from "@/lib/api/errors";
 import { formatDate, getStatusColor } from "@/lib/utils";
@@ -173,6 +174,10 @@ export default function ContactsPage() {
     { label: 'New (Today)', value: '0', icon: Star, color: 'text-amber-400', bg: 'bg-amber-400/10' },
     { label: 'Pending', value: filteredData.filter(d => d.status === 'NEW').length, icon: Clock, color: 'text-emerald-400', bg: 'bg-emerald-400/10' },
   ];
+
+  if (isLoading && data.length === 0) {
+    return <AdminSkeleton type="table" />;
+  }
 
   return (
     <div className="space-y-4 animate-fade-in pb-2">

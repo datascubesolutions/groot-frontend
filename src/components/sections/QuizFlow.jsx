@@ -124,9 +124,9 @@ const ScoreGauge = ({ score }) => {
 
   return (
     <div className="w-full max-w-[360px] mx-auto flex flex-col items-center gap-6">
-      <div className="relative w-full aspect-[2/1] rounded-3xl bg-white shadow-[0_18px_45px_rgba(15,23,42,0.10)] border border-slate-100 overflow-hidden">
+      <div className="relative w-full aspect-[2/1] rounded-none bg-card shadow-[12px_12px_0_0_hsl(var(--foreground))] border-[4px] border-foreground overflow-hidden">
         {/* Glow Effect */}
-        <div className="absolute inset-x-6 bottom-0 h-32 bg-emerald-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute inset-x-6 bottom-0 h-32 bg-forest/5 blur-3xl pointer-events-none" />
 
         {/* SVG Arc */}
         <div className="absolute inset-x-6 bottom-4 top-4">
@@ -181,13 +181,13 @@ const ScoreGauge = ({ score }) => {
 
           {/* Needle */}
           <motion.div
-            className="absolute bottom-[6%] left-1/2 w-1.5 h-[48%] bg-slate-900 origin-bottom rounded-full z-20 shadow-lg shadow-slate-900/40"
+            className="absolute bottom-[6%] left-1/2 w-1.5 h-[48%] bg-slate-900 origin-bottom rounded-full z-20 shadow-lg shadow-foreground/20"
             style={{ translateX: "-50%" }}
             initial={{ rotate: -90 }}
             animate={{ rotate: needleRotation }}
             transition={{ type: "spring", stiffness: 55, damping: 14, delay: 0.3 }}
           >
-            <div className="w-4 h-4 rounded-full bg-slate-900 border-[3px] border-white absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-sm" />
+            <div className="w-4 h-4 rounded-full bg-slate-900 border-[3px] border-card absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-sm" />
             <div className="w-9 h-9 rounded-full bg-slate-900 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 shadow-md z-10 border border-slate-700/60" />
           </motion.div>
         </div>
@@ -200,14 +200,14 @@ const ScoreGauge = ({ score }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
       >
-        <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 block mb-1">
+        <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground block mb-1">
           Your Readiness Score
         </span>
         <div className="flex items-baseline justify-center gap-1.5">
-          <motion.span className="text-5xl sm:text-6xl font-black text-slate-900 leading-none tabular-nums">
+          <motion.span className="text-5xl sm:text-6xl font-black text-foreground leading-none tabular-nums">
             {rounded}
           </motion.span>
-          <span className="text-xl text-slate-400 font-semibold">/100</span>
+          <span className="text-xl text-muted-foreground/70 font-semibold">/100</span>
         </div>
       </motion.div>
     </div>
@@ -303,8 +303,8 @@ export function QuizFlow({ onComplete }) {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="mb-4"
       >
-        <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 mb-2">
-          Get Your <span className="text-emerald-600">Data Readiness Score</span>
+        <h2 className="text-4xl font-extrabold tracking-tight text-foreground mb-2">
+          Get Your <span className="text-forest">Data Readiness Score</span>
         </h2>
       </motion.div>
 
@@ -312,7 +312,7 @@ export function QuizFlow({ onComplete }) {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-lg text-slate-600 mb-8 font-medium"
+        className="text-lg text-muted-foreground mb-8 font-medium"
       >
         Answer 7 quick questions to find out:
       </motion.p>
@@ -330,10 +330,10 @@ export function QuizFlow({ onComplete }) {
             transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
             className="flex items-center gap-4"
           >
-            <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 text-emerald-600">
+            <div className="w-8 h-8 rounded-full bg-forest/10 flex items-center justify-center shrink-0 text-forest">
               <CheckCircle2 className="w-5 h-5" strokeWidth={2.5} />
             </div>
-            <span className="text-slate-700 text-lg font-medium">{text}</span>
+            <span className="text-foreground/80 text-lg font-medium">{text}</span>
           </motion.li>
         ))}
       </ul>
@@ -342,11 +342,11 @@ export function QuizFlow({ onComplete }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="flex items-center justify-center gap-2 mb-8 text-sm font-medium text-slate-500"
+        className="flex items-center justify-center gap-2 mb-8 text-sm font-medium text-muted-foreground"
       >
         <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-forest opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-forest"></span>
         </span>
         Takes about 2 minutes
       </motion.div>
@@ -359,7 +359,7 @@ export function QuizFlow({ onComplete }) {
         <Button
           onClick={() => setStep("questions")}
           size="lg"
-          className="w-full sm:w-auto px-10 py-6 text-lg font-bold shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/30 hover:-translate-y-0.5 transition-all duration-300 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl"
+          className="w-full sm:w-auto px-10 py-6 text-lg font-bold shadow-xl shadow-forest/20 hover:shadow-forest/30 hover:-translate-y-0.5 transition-all duration-300 bg-forest hover:bg-forest/90 text-white rounded-xl"
         >
           Start Assessment
           <ArrowRight className="ml-2 w-5 h-5" />
@@ -371,68 +371,99 @@ export function QuizFlow({ onComplete }) {
   const renderQuestion = () => (
     <div className="py-4 px-2">
       <div className="flex items-center justify-between mb-6">
-        <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
-          Question {currentQIndex + 1}/{QUIZ_DATA.length}
+        <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/70">
+          Question {currentQIndex + 1} of {QUIZ_DATA.length}
         </span>
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-emerald-600">{Math.round(progress)}%</span>
-        </div>
       </div>
 
-      <div className="mb-8 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-        <motion.div
-          className="h-full bg-emerald-500 rounded-full"
-          initial={{ width: 0 }}
-          animate={{ width: `${progress}%` }}
-          transition={{ duration: 0.5 }}
-        />
-      </div>
 
-      <h3 className="text-2xl font-bold text-slate-900 mb-8 leading-snug min-h-[4rem]">
+
+      <h3 className="text-[2rem] font-semibold tracking-tight text-foreground mb-8 leading-snug min-h-[4rem]">
         {currentQuestion.question}
       </h3>
 
       <RadioGroup
         value={answers[currentQuestion.id]}
         onValueChange={handleAnswerSelect}
-        className="space-y-3 mb-10"
+        className="space-y-4 mb-12"
       >
-        {currentQuestion.options.map((option) => (
-          <div key={option.id}>
-            <RadioGroupItem
-              value={option.id}
-              id={option.id}
-              className="peer sr-only"
-            />
-            <Label
-              htmlFor={option.id}
-              className={cn(
-                "flex items-center justify-between p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer group relative overflow-hidden",
-                "peer-data-[state=checked]:border-emerald-500 peer-data-[state=checked]:bg-emerald-50/50 peer-data-[state=checked]:shadow-md peer-data-[state=checked]:shadow-emerald-100",
-                "hover:border-emerald-200 hover:bg-slate-50",
-                "border-slate-100 bg-white"
-              )}
-            >
-              <span className={cn(
-                "text-base font-medium transition-colors relative z-10",
-                answers[currentQuestion.id] === option.id ? "text-emerald-900" : "text-slate-600"
-              )}>
-                {option.label}
-              </span>
-
-              <div className={cn(
-                "w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 relative z-10",
-                answers[currentQuestion.id] === option.id
-                  ? "border-emerald-500 bg-emerald-500"
-                  : "border-slate-200 group-hover:border-emerald-300"
-              )}>
-                {answers[currentQuestion.id] === option.id && (
-                  <CheckCircle2 className="w-4 h-4 text-white" strokeWidth={3} />
+        {currentQuestion.options.map((option, index) => {
+          const isSelected = answers[currentQuestion.id] === option.id;
+          const letter = String.fromCharCode(65 + index);
+          
+          return (
+            <div key={option.id}>
+              <RadioGroupItem
+                value={option.id}
+                id={option.id}
+                className="peer sr-only"
+              />
+              <Label
+                htmlFor={option.id}
+                className={cn(
+                  "flex items-center justify-between p-5 md:p-6 rounded-none border-[3px] transition-all duration-300 cursor-pointer group relative overflow-hidden shadow-[6px_6px_0_0_hsl(var(--foreground))]",
+                  "peer-data-[state=checked]:border-forest peer-data-[state=checked]:bg-forest/5 peer-data-[state=checked]:shadow-[8px_8px_0_0_hsl(var(--forest))] peer-data-[state=checked]:-translate-y-1",
+                  "hover:border-foreground hover:bg-muted/50 hover:-translate-y-1 hover:shadow-[10px_10px_0_0_hsl(var(--foreground))]",
+                  "border-foreground bg-card"
                 )}
-              </div>
-            </Label>
-          </div>
-        ))}
+              >
+                <div className="flex items-center gap-4 relative z-10 w-full pr-8">
+                  {/* Letter Key Box */}
+                  <div className={cn(
+                    "flex items-center justify-center w-8 h-8 rounded-none border-[2px] border-foreground text-sm font-bold transition-colors duration-300 shrink-0",
+                    isSelected 
+                      ? "bg-forest border-forest text-white shadow-sm" 
+                      : "bg-muted text-muted-foreground group-hover:bg-foreground/10 group-hover:text-foreground/80"
+                  )}>
+                    {letter}
+                  </div>
+                  
+                  {/* Option Label */}
+                  <span className={cn(
+                    "text-lg font-semibold transition-colors duration-300 leading-snug",
+                    isSelected ? "text-forest" : "text-foreground/80 group-hover:text-foreground"
+                  )}>
+                    {option.label}
+                  </span>
+                </div>
+
+                {/* Animated Checkmark */}
+                <div className={cn(
+                  "w-6 h-6 rounded-none border-[3px] flex items-center justify-center transition-all duration-300 relative z-10 shrink-0",
+                  isSelected
+                    ? "border-forest bg-forest shadow-[2px_2px_0_0_hsl(var(--foreground))]"
+                    : "border-foreground group-hover:border-forest"
+                )}>
+                  <AnimatePresence>
+                    {isSelected && (
+                      <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0, opacity: 0 }}
+                        transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                      >
+                        <CheckCircle2 className="w-4 h-4 text-white" strokeWidth={3} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Subtle Background Interaction (Pulse on active) */}
+                <AnimatePresence>
+                  {isSelected && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-forest/0 via-forest/5 to-forest/0 mix-blend-multiply"
+                      initial={{ opacity: 0, x: "-100%" }}
+                      animate={{ opacity: 1, x: "100%" }}
+                      transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}
+                    />
+                  )}
+                </AnimatePresence>
+
+              </Label>
+            </div>
+          );
+        })}
       </RadioGroup>
 
       <div className="flex items-center justify-between pt-6 border-t border-slate-50">
@@ -440,21 +471,11 @@ export function QuizFlow({ onComplete }) {
           variant="ghost"
           onClick={handleBack}
           size="sm"
-          className="px-4 text-slate-400 hover:text-slate-600 hover:bg-slate-50"
+          className="px-4 text-muted-foreground/70 hover:text-muted-foreground hover:bg-muted/50"
         >
           <ArrowLeft className="mr-2 w-4 h-4" />
           Back
         </Button>
-        {showNextStep && answers[currentQuestion.id] && (
-          <Button
-            onClick={handleNext}
-            size="sm"
-            className="px-6 bg-emerald-600 hover:bg-emerald-700 text-white"
-          >
-            {currentQIndex === QUIZ_DATA.length - 1 ? "See Results" : "Next Step"}
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
-        )}
       </div>
     </div>
   );
@@ -465,16 +486,16 @@ export function QuizFlow({ onComplete }) {
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6"
+        className="w-20 h-20 bg-forest/5 rounded-full flex items-center justify-center mx-auto mb-6"
       >
-        <Mail className="w-10 h-10 text-emerald-600" />
+        <Mail className="w-10 h-10 text-forest" />
       </motion.div>
 
       <motion.h2
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="text-3xl font-bold text-slate-900 mb-3"
+        className="text-3xl font-bold text-foreground mb-3"
       >
         Almost there!
       </motion.h2>
@@ -483,14 +504,14 @@ export function QuizFlow({ onComplete }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="text-base text-slate-600 mb-8 max-w-sm mx-auto"
+        className="text-base text-muted-foreground mb-8 max-w-sm mx-auto"
       >
         Where should we send your results and personalized roadmap?
       </motion.p>
 
       <form onSubmit={handleEmailSubmit} className="max-w-sm mx-auto space-y-6">
         <div className="text-left space-y-2">
-          <Label htmlFor="email" className="text-sm font-bold text-slate-700 ml-1">Work Email</Label>
+          <Label htmlFor="email" className="text-sm font-bold text-foreground/80 ml-1">Work Email</Label>
           <div className="relative">
             <Input
               id="email"
@@ -499,23 +520,23 @@ export function QuizFlow({ onComplete }) {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="h-12 pl-11 border-slate-200 focus:border-emerald-500 focus:ring-emerald-500/20"
+              className="h-12 pl-11 border-border focus:border-forest focus:ring-forest/20"
             />
-            <Mail className="absolute left-3.5 top-3.5 w-5 h-5 text-slate-400" />
+            <Mail className="absolute left-3.5 top-3.5 w-5 h-5 text-muted-foreground/70" />
           </div>
         </div>
 
-        <div className="flex items-start gap-3 text-left p-4 rounded-xl border border-slate-100 bg-slate-50/50">
+        <div className="flex items-start gap-3 text-left p-4 rounded-xl border border-border/60 bg-muted/30">
           <input
             type="checkbox"
             id="sendPdf"
             checked={sendPdf}
             onChange={(e) => setSendPdf(e.target.checked)}
-            className="mt-1 w-5 h-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+            className="mt-1 w-5 h-5 rounded border-slate-300 text-forest focus:ring-forest"
           />
-          <Label htmlFor="sendPdf" className="text-slate-600 cursor-pointer select-none">
-            <span className="font-bold text-slate-900 block text-sm">Send me the AI Roadmap PDF</span>
-            <span className="text-xs text-slate-500">Includes our 2026 data strategy guide.</span>
+          <Label htmlFor="sendPdf" className="text-muted-foreground cursor-pointer select-none">
+            <span className="font-bold text-foreground block text-sm">Send me the AI Roadmap PDF</span>
+            <span className="text-xs text-muted-foreground">Includes our 2026 data strategy guide.</span>
           </Label>
         </div>
 
@@ -523,13 +544,13 @@ export function QuizFlow({ onComplete }) {
           type="submit"
           disabled={isSubmitting}
           size="lg"
-          className="w-full py-6 text-lg font-bold shadow-xl shadow-emerald-500/20 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl transition-all hover:-translate-y-0.5"
+          className="w-full py-6 text-lg font-bold shadow-xl shadow-forest/20 bg-forest hover:bg-forest/90 text-white rounded-xl transition-all hover:-translate-y-0.5"
         >
           {isSubmitting ? "Calculating Score..." : "Get My Score"}
           {!isSubmitting && <ArrowRight className="ml-2 w-5 h-5" />}
         </Button>
 
-        <p className="text-xs text-slate-400 flex items-center justify-center gap-1">
+        <p className="text-xs text-muted-foreground/70 flex items-center justify-center gap-1">
           <CheckCircle2 className="w-3 h-3" /> No spam, we promise.
         </p>
       </form>
@@ -545,8 +566,8 @@ export function QuizFlow({ onComplete }) {
         issues: ["Platform fragmentation", "Pipeline reliability", "Data governance gaps"],
         solution: "We deploy Azure + Fabric + Purview to give you a governed, production-grade data platform.",
         color: "text-rose-600",
-        bgColor: "bg-white",
-        borderColor: "border-slate-200",
+        bgColor: "bg-card",
+        borderColor: "border-border",
         progressColor: "bg-rose-500"
       };
     } else if (score <= 65) {
@@ -557,8 +578,8 @@ export function QuizFlow({ onComplete }) {
         issues: ["Dashboards not trusted", "Self-service gaps", "Data quality concerns"],
         solution: "We build Power BI dashboards on a semantic layer your leadership will actually trust.",
         color: "text-amber-600",
-        bgColor: "bg-white",
-        borderColor: "border-slate-200",
+        bgColor: "bg-card",
+        borderColor: "border-border",
         progressColor: "bg-amber-500"
       };
     } else {
@@ -568,10 +589,10 @@ export function QuizFlow({ onComplete }) {
         description: "Your foundation is solid — you're ahead of most. Now it's time to accelerate AI initiatives and get pilots into production.",
         issues: ["AI pilots not reaching production", "MLOps gaps", "Copilot readiness"],
         solution: "We architect AI Foundry and Copilot on your governed data so pilots actually ship to production.",
-        color: "text-emerald-600",
-        bgColor: "bg-emerald-50",
-        borderColor: "border-emerald-200",
-        progressColor: "bg-emerald-500"
+        color: "text-forest",
+        bgColor: "bg-forest/5",
+        borderColor: "border-forest/20",
+        progressColor: "bg-forest"
       };
     }
   };
@@ -613,19 +634,19 @@ export function QuizFlow({ onComplete }) {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
           <div className="relative z-10">
-            <h4 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+            <h4 className="font-bold text-foreground text-lg mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-slate-900 rounded-full inline-block" />
               Overview
             </h4>
-            <p className="text-slate-700 text-lg leading-relaxed mb-6 font-medium">
+            <p className="text-foreground/80 text-lg leading-relaxed mb-6 font-medium">
               {rec.description}
             </p>
 
-            <div className="bg-white/60 backdrop-blur-md rounded-2xl p-5 border border-white/50 shadow-sm">
-              <h4 className="font-bold text-slate-800 text-xs uppercase tracking-widest mb-4 opacity-80">Key Improvements Required:</h4>
+            <div className="bg-card/60 backdrop-blur-md rounded-2xl p-5 border border-white/50 shadow-sm">
+              <h4 className="font-bold text-foreground text-xs uppercase tracking-widest mb-4 opacity-80">Key Improvements Required:</h4>
               <ul className="grid sm:grid-cols-2 gap-3">
                 {rec.issues.map((issue, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
+                  <li key={i} className="flex items-start gap-3 text-foreground/80 font-medium">
                     <CheckCircle2 className={cn("w-5 h-5 shrink-0 mt-0.5", rec.color)} />
                     {issue}
                   </li>
@@ -640,10 +661,10 @@ export function QuizFlow({ onComplete }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="p-8 rounded-3xl bg-slate-900 text-white mb-8 relative overflow-hidden group shadow-2xl ring-1 ring-slate-900/10"
+          className="p-8 rounded-3xl bg-slate-900 text-white mb-8 relative overflow-hidden group shadow-2xl ring-1 ring-border/50"
         >
           {/* Animated Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-forest to-slate-900 z-0" />
           <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
             <TrendingUp size={140} />
           </div>
@@ -651,18 +672,18 @@ export function QuizFlow({ onComplete }) {
           <div className="relative z-10">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
               <div>
-                <h4 className="text-emerald-400 font-bold text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <h4 className="text-forest font-bold text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-forest animate-pulse" />
                   Recommended Starting Point
                 </h4>
                 <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-white tracking-tight">{rec.bucket}</h3>
-                <p className="text-slate-300 text-lg leading-relaxed max-w-lg mb-6 sm:mb-0">
+                <p className="text-muted-foreground/50 text-lg leading-relaxed max-w-lg mb-6 sm:mb-0">
                   {rec.solution}
                 </p>
               </div>
 
               <div className="shrink-0">
-                <Button className="w-full sm:w-auto bg-white text-slate-900 hover:bg-emerald-50 hover:text-emerald-700 font-bold px-8 py-6 h-auto rounded-xl shadow-lg transition-all hover:scale-105" onClick={() => window.location.href = '/services/define-your-roadmap/maturity-assessment'}>
+                <Button className="w-full sm:w-auto bg-card text-foreground hover:bg-forest/5 hover:text-forest/90 font-bold px-8 py-6 h-auto rounded-xl shadow-lg transition-all hover:scale-105" onClick={() => window.location.href = '/services/define-your-roadmap/maturity-assessment'}>
                   Explore Solution <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </div>
@@ -677,19 +698,19 @@ export function QuizFlow({ onComplete }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <Button className="flex-1 py-4 h-auto text-lg font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-1 transition-all rounded-xl">
+          <Button className="flex-1 py-4 h-auto text-lg font-bold bg-forest hover:bg-forest text-white shadow-xl shadow-forest/20 hover:shadow-forest/40 hover:-translate-y-1 transition-all rounded-xl">
             <Download className="mr-2 w-6 h-6" />
             Download AI Roadmap
           </Button>
-          <Button variant="outline" className="flex-1 py-4 h-auto text-lg font-bold border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 rounded-xl transition-all">
+          <Button variant="outline" className="flex-1 py-4 h-auto text-lg font-bold border-2 border-border hover:border-slate-300 hover:bg-muted/50 text-foreground/80 rounded-xl transition-all">
             <Calendar className="mr-2 w-6 h-6" />
             Book a 30-min Call
           </Button>
         </motion.div>
 
-        <div className="text-center pt-6 border-t border-slate-100">
-          <p className="text-sm text-slate-400">
-            Full analysis sent to <span className="font-bold text-slate-800">{email}</span>
+        <div className="text-center pt-6 border-t border-border/60">
+          <p className="text-sm text-muted-foreground/70">
+            Full analysis sent to <span className="font-bold text-foreground">{email}</span>
           </p>
         </div>
       </div>
@@ -698,6 +719,17 @@ export function QuizFlow({ onComplete }) {
 
   return (
     <div className="max-w-4xl mx-auto">
+      {/* Top-Mounted Premium Progress Bar */}
+      {step === "questions" && (
+        <div className="fixed top-0 left-0 right-0 h-[3px] bg-muted z-50">
+          <motion.div
+            className="h-full bg-forest"
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.8, ease: "circOut" }}
+          />
+        </div>
+      )}
       <AnimatePresence mode="wait">
         <motion.div
           key={step === "questions" ? `${step}-${currentQIndex}` : step}
