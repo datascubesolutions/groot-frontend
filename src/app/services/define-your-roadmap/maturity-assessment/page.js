@@ -46,7 +46,7 @@ export default function MaturityAssessment() {
               initial={{ opacity: 0, scale: 0.95, filter: "blur(20px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:absolute top-5 right-0 lg:w-[48vw] lg:max-w-[700px] h-[400px] lg:h-[650px] -z-10 mb-10 lg:mb-0 rounded-tl-none rounded-br-[6rem] overflow-hidden grayscale-[40%] contrast-125 border-l-8 border-b-8 border-forest/30 shadow-2xl"
+              className="lg:absolute top-5 right-0 lg:w-[45vw] lg:max-w-[600px] h-[350px] lg:h-[550px] -z-10 mb-10 lg:mb-0 rounded-tl-none rounded-br-[5rem] overflow-hidden grayscale-[40%] contrast-125 border-l-8 border-b-8 border-forest/30 shadow-2xl"
             >
               <Image
                 src="/images/maturity/live_radar.png"
@@ -78,16 +78,16 @@ export default function MaturityAssessment() {
               </motion.div>
 
               <div className="max-w-[1050px]">
-                <motion.h1 variants={fadeIn} className="text-[3.5rem] md:text-[6rem] lg:text-[7.5rem] font-black mb-8 tracking-tighter leading-[0.85] indent-0 uppercase mix-blend-difference text-white drop-shadow-[0_0_30px_hsl(var(--forest)/0.3)]">
+                <motion.h1 variants={fadeIn} className="text-[2.5rem] sm:text-[3rem] md:text-[5rem] lg:text-[7.5rem] font-black mb-8 tracking-tighter leading-[0.85] indent-0 uppercase mix-blend-difference text-white drop-shadow-[0_0_30px_hsl(var(--forest)/0.3)]">
                   <span className="inline-block isolate mix-blend-normal text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40 stroke-text">Data</span>{" "}
                   <span className="text-mint">&amp;</span>{" "}
                   <span className="inline-block isolate mix-blend-normal text-black">A</span>
                   nalytics
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40 stroke-text">Maturity Eval</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40 stroke-text">Maturity Assessment</span>
                 </motion.h1>
 
-                <div className="grid md:grid-cols-2 gap-8 md:gap-16 max-w-5xl mt-8 bg-background/85 backdrop-blur-2xl p-8 md:p-12 rounded-[2rem] border border-border/60 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.2)] relative">
+                <div className="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-16 max-w-5xl mt-8 bg-background/85 backdrop-blur-2xl p-8 md:p-12 rounded-[2rem] border border-border/60 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.2)] relative">
                   <div className="absolute -inset-[2px] bg-gradient-to-b from-forest/30 to-transparent rounded-[2rem] -z-10" />
 
                   <motion.p variants={fadeIn} className="text-xl md:text-2xl text-foreground font-semibold leading-snug">
@@ -96,7 +96,6 @@ export default function MaturityAssessment() {
 
                   <div className="flex flex-col justify-between">
                     <motion.p variants={fadeIn} className="text-base text-muted-foreground leading-relaxed mb-8">
-                      Evidence-based scoring, gap analysis, and prioritized recommendations so you can invest in Fabric and Azure with confidence — <strong className="text-foreground bg-forest/10 px-2 py-0.5 whitespace-nowrap">no guesswork, no vendor bias.</strong>
                     </motion.p>
                     <motion.div variants={fadeIn}>
                       <Link href="/contact?service=maturity-assessment" passHref>
@@ -119,16 +118,16 @@ export default function MaturityAssessment() {
       {/* The Problem Section - Asymmetric, Watermarked Overlaps */}
       <section className="pt-10 pb-32 bg-background relative z-30">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="flex flex-col md:flex-row gap-8 lg:gap-24 items-start">
+          <div className="flex flex-col md:flex-row gap-8 lg:gap-10 lg:gap-24 items-start">
 
             {/* Extreme sticky side column with data-viz to fill empty space */}
             <div className="md:w-[35%] md:sticky top-32 z-40 flex flex-col gap-6 -mt-16 ml-0 md:ml-4">
 
               {/* Main Title Block */}
-              <div className="bg-card/95 backdrop-blur-xl p-8 lg:p-10 border-l-8 border-y border-r border-forest shadow-[30px_30px_60px_-15px_rgba(0,0,0,0.15)] rounded-tr-[3rem] rounded-bl-[3rem]">
+              <div className="bg-card/95 backdrop-blur-xl p-8 lg:p-6 md:p-10 border-l-8 border-y border-r border-forest shadow-[30px_30px_60px_-15px_rgba(0,0,0,0.15)] rounded-tr-[3rem] rounded-bl-[3rem]">
                 <h2 className="text-sm font-black uppercase tracking-[0.3em] text-forest mb-6 flex items-center gap-4">
                   <span className="w-12 h-1 bg-forest"></span>
-                  Field Observations
+                  What we see in the field
                 </h2>
                 <h3 className="text-[3.5rem] md:text-[4rem] font-black leading-[0.85] tracking-tighter text-foreground mb-8 uppercase">The cost of assuming readiness.</h3>
                 <p className="text-xl text-foreground/80 font-bold leading-relaxed mb-8">
@@ -192,7 +191,7 @@ export default function MaturityAssessment() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="hidden md:flex flex-col relative w-full lg:w-[120%] -ml-0 lg:-ml-[10%] mt-8 mb-8 z-50 group"
+                className="hidden md:flex flex-col relative w-full mt-8 mb-8 z-50 group"
               >
                 {/* Structural Offset Background */}
                 <div className="absolute top-10 bottom-0 left-6 right-0 bg-foreground shadow-[20px_20px_0px_0px_hsl(var(--forest))] transition-transform duration-700 group-hover:translate-x-2 group-hover:translate-y-2 -z-10" />
@@ -251,9 +250,9 @@ export default function MaturityAssessment() {
               {/* Problem 01 */}
               <motion.div
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
-                className="relative bg-card border-2 border-border p-10 lg:p-14 shadow-2xl z-10 w-full md:w-[90%] hover:scale-[1.02] hover:border-forest/30 transition-all duration-500 overflow-hidden group rounded-tl-[4rem] rounded-br-[4rem]"
+                className="relative bg-card border-2 border-border p-10 lg:p-12 shadow-2xl z-10 w-full md:w-[90%] hover:scale-[1.02] hover:border-forest/30 transition-all duration-500 overflow-hidden group rounded-tl-[3rem] rounded-br-[3rem]"
               >
-                <div className="absolute -top-10 -right-4 text-[12rem] md:text-[18rem] font-black text-rose-500/10 leading-[0.75] select-none pointer-events-none group-hover:text-rose-500/15 transition-colors duration-500 md:-rotate-12">01</div>
+                <div className="absolute -top-10 -right-4 text-[6rem] sm:text-[8rem] md:text-[18rem] font-black text-rose-500/10 leading-[0.75] select-none pointer-events-none group-hover:text-rose-500/15 transition-colors duration-500 md:-rotate-12">01</div>
                 <div className="relative z-10">
                   <div className="flex items-center gap-6 mb-8">
                     <div className="w-14 h-14 bg-rose-500 text-white flex items-center justify-center shadow-[5px_5px_0px_0px_rgba(244,63,94,0.3)] -rotate-6">
@@ -276,9 +275,9 @@ export default function MaturityAssessment() {
               {/* Problem 02 - Highly Overlapped */}
               <motion.div
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
-                className="relative bg-foreground text-background p-10 lg:p-14 shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.5)] z-20 w-full md:w-[95%] self-end -mt-16 sm:-mt-24 lg:-mt-32 hover:scale-[1.02] transition-transform duration-500 overflow-hidden group rounded-tr-[4rem] rounded-bl-[4rem]"
+                className="relative bg-foreground text-background p-8 lg:p-12 shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.5)] z-20 w-full md:w-[95%] self-end mt-6 sm:-mt-12 lg:-mt-24 hover:scale-[1.02] transition-transform duration-500 overflow-hidden group rounded-tr-[3rem] rounded-bl-[3rem]"
               >
-                <div className="absolute -bottom-8 -left-6 text-[12rem] md:text-[18rem] font-black text-background/10 leading-[0.75] select-none pointer-events-none group-hover:text-background/15 transition-colors duration-500 md:rotate-12">02</div>
+                <div className="absolute -bottom-8 -left-6 text-[6rem] sm:text-[8rem] md:text-[18rem] font-black text-background/10 leading-[0.75] select-none pointer-events-none group-hover:text-background/15 transition-colors duration-500 md:rotate-12">02</div>
                 <div className="relative z-10">
                   <div className="flex items-center gap-6 mb-8">
                     <div className="w-14 h-14 bg-amber-500 text-foreground flex items-center justify-center shadow-[5px_5px_0px_0px_rgba(245,158,11,0.5)] rotate-3">
@@ -301,9 +300,9 @@ export default function MaturityAssessment() {
               {/* Problem 03 - Dense nested overlap */}
               <motion.div
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
-                className="relative bg-card border-x-4 border-y border-orange-500 p-10 lg:p-14 shadow-[0_20px_60px_-15px_rgba(249,115,22,0.2)] z-30 w-full md:w-[90%] lg:w-[85%] -mt-16 sm:-mt-24 lg:-mt-20 hover:scale-[1.02] transition-transform duration-500 overflow-hidden group"
+                className="relative bg-card border-x-4 border-y border-orange-500 p-8 lg:p-12 shadow-[0_20px_60px_-15px_rgba(249,115,22,0.2)] z-30 w-full md:w-[90%] lg:w-[85%] mt-6 sm:-mt-10 lg:-mt-16 hover:scale-[1.02] transition-transform duration-500 overflow-hidden group rounded-tl-[3rem] rounded-br-[3rem]"
               >
-                <div className="absolute top-1/2 -translate-y-1/2 right-0 text-[12rem] md:text-[20rem] font-black text-orange-500/10 leading-[0.75] select-none pointer-events-none group-hover:scale-110 transition-transform duration-700">03</div>
+                <div className="absolute top-1/2 -translate-y-1/2 right-0 text-[6rem] sm:text-[8rem] md:text-[20rem] font-black text-orange-500/10 leading-[0.75] select-none pointer-events-none group-hover:scale-110 transition-transform duration-700">03</div>
                 <div className="relative z-10 md:w-4/5">
                   <div className="flex items-center gap-6 mb-8">
                     <div className="w-14 h-14 bg-orange-500 text-white flex items-center justify-center shadow-[5px_5px_0px_0px_rgba(249,115,22,0.3)] rotate-6">
@@ -329,7 +328,7 @@ export default function MaturityAssessment() {
       </section>
 
       {/* Deliverables Section - Zero Gap Interlocking Grid (Hardcore Blueprint Style) */}
-      <section className="py-24 bg-muted/20 relative border-t-[8px] border-b-2 border-foreground">
+      <section className="py-16 lg:py-24 bg-muted/20 relative border-t-[8px] border-b-2 border-foreground">
         {/* Subtle grid pattern background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
 
@@ -338,9 +337,9 @@ export default function MaturityAssessment() {
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b-4 border-forest pb-8">
             <div className="max-w-4xl">
               <h2 className="text-sm font-black uppercase tracking-[0.4em] text-forest mb-6 bg-forest/10 inline-block px-4 py-2 border border-forest/30">
-                [ THE SOLUTION: DELIVERABLES ]
+                [ DELIVERABLES ]
               </h2>
-              <h3 className="text-[3.5rem] md:text-[5.5rem] font-black tracking-tighter text-foreground uppercase leading-[0.85]">Clarity over<br />assumptions.</h3>
+              <h3 className="text-[2.5rem] md:text-[4.5rem] font-black tracking-tighter text-foreground uppercase leading-[0.85]">Clarity over<br />assumptions.</h3>
             </div>
             <p className="text-foreground/80 max-w-sm text-base font-bold leading-relaxed border-l-[3px] border-forest pl-6 bg-background/50 backdrop-blur-sm p-4">
               Every assessment produces the same high-quality artifacts — no shortcuts, no templated scores. You get evidence, priorities, and a path forward.
@@ -350,7 +349,7 @@ export default function MaturityAssessment() {
           <div className="border-[3px] border-foreground bg-foreground gap-[2px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-[2px] shadow-[20px_20px_0px_0px_hsl(var(--forest)/0.3)]">
 
             {/* Cell 1: 2-columns wide */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="col-span-1 md:col-span-2 bg-card p-10 lg:p-16 relative group overflow-hidden hover:bg-forest/5 transition-colors duration-500 flex flex-col justify-between min-h-[450px]">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="col-span-1 md:col-span-2 bg-card p-8 lg:p-12 relative group overflow-hidden hover:bg-forest/5 transition-colors duration-500 flex flex-col justify-between min-h-[350px]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.08),transparent_50%)] pointer-events-none" />
               <div className="relative z-10 flex items-start justify-between mb-16">
                 <PieChart className="w-16 h-16 text-forest group-hover:text-emerald-300 transition-colors duration-500" strokeWidth={1} />
@@ -360,28 +359,28 @@ export default function MaturityAssessment() {
                 <p className="text-sm font-black tracking-[0.2em] uppercase text-forest group-hover:text-emerald-300 group-hover:border-emerald-300/50 transition-colors duration-500 mb-4 inline-block border-b-2 border-forest/30 pb-1">Six dimensions, evidence-based scores</p>
                 <h4 className="text-4xl font-black mb-6 uppercase tracking-tight leading-[0.9] group-hover:text-white transition-colors duration-500">Maturity Scorecard</h4>
                 <p className="text-lg text-muted-foreground group-hover:text-emerald-50 transition-colors duration-500 font-semibold leading-relaxed">
-                  A scored assessment across Data Management, Analytics Capability, Governance, Technology, Organization, and Culture. Each dimension is rated with clear evidence — not gut feel. <strong className="text-foreground bg-forest/10 group-hover:text-white group-hover:bg-white/20 transition-colors duration-500 px-1">Scores are defensible and repeatable.</strong>
+                  A scored assessment across six dimensions: Data Management, Analytics Capability, Governance, Technology, Organization, and Culture. Each dimension rated with clear evidence from interviews and technical review — not gut feel.
                 </p>
               </div>
             </motion.div>
 
             {/* Cell 2 */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="bg-card p-10 lg:p-12 relative group hover:bg-cyan-500/5 transition-colors duration-500 flex flex-col justify-between min-h-[450px]">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="bg-card p-8 lg:p-12 relative group hover:bg-cyan-500/5 transition-colors duration-500 flex flex-col justify-between min-h-[350px]">
               <div className="relative z-10 flex items-start justify-between mb-14">
                 <Target className="w-12 h-12 text-cyan-500 group-hover:text-cyan-300 transition-colors duration-500" strokeWidth={1} />
                 <span className="text-[4rem] font-black text-foreground/5 leading-none tracking-tighter mix-blend-multiply dark:mix-blend-screen group-hover:text-cyan-500/30 transition-colors duration-500">D-02</span>
               </div>
               <div className="relative z-10">
                 <p className="text-[0.7rem] font-black tracking-[0.2em] uppercase text-cyan-500 group-hover:text-cyan-300 group-hover:border-cyan-300/50 transition-colors duration-500 mb-4 border-b border-cyan-500/30 pb-1 inline-block">Current state vs. target</p>
-                <h4 className="text-3xl font-black mb-6 tracking-tight uppercase leading-[0.9] group-hover:text-white transition-colors duration-500">Gap Analysis &amp; Strategy</h4>
+                <h4 className="text-3xl font-black mb-6 tracking-tight uppercase leading-[0.9] group-hover:text-white transition-colors duration-500">Gap Analysis</h4>
                 <p className="text-base text-muted-foreground group-hover:text-cyan-50 transition-colors duration-500 font-semibold leading-relaxed">
-                  Document where you are today vs. where you need to be. Gaps are <strong className="text-foreground group-hover:text-white transition-colors duration-500">prioritized by business impact</strong> and dependency order — not ease of implementation.
+                  For each dimension, we document where you are today vs. where you need to be. Gaps prioritized by business impact, not ease of implementation.
                 </p>
               </div>
             </motion.div>
 
             {/* Cell 3 */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="bg-card p-10 lg:p-12 relative group hover:bg-blue-500/5 transition-colors duration-500 flex flex-col justify-between min-h-[450px]">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="bg-card p-8 lg:p-12 relative group hover:bg-blue-500/5 transition-colors duration-500 flex flex-col justify-between min-h-[350px]">
               <div className="relative z-10 flex items-start justify-between mb-14">
                 <ShieldCheck className="w-12 h-12 text-blue-500 group-hover:text-blue-300 transition-colors duration-500" strokeWidth={1} />
                 <span className="text-[4rem] font-black text-foreground/5 leading-none tracking-tighter mix-blend-multiply dark:mix-blend-screen group-hover:text-blue-500/30 transition-colors duration-500">D-03</span>
@@ -390,29 +389,29 @@ export default function MaturityAssessment() {
                 <p className="text-[0.7rem] font-black tracking-[0.2em] uppercase text-blue-500 group-hover:text-blue-300 group-hover:border-blue-300/50 transition-colors duration-500 mb-4 border-b border-blue-500/30 pb-1 inline-block">Architecture review</p>
                 <h4 className="text-3xl font-black mb-6 tracking-tight uppercase leading-[0.9] group-hover:text-white transition-colors duration-500">Technical Findings</h4>
                 <p className="text-base text-muted-foreground group-hover:text-blue-50 transition-colors duration-500 font-semibold leading-relaxed">
-                  Concrete observations: Fabric/Azure config, pipeline reliability, semantics, Purview, and security — <strong className="text-foreground group-hover:text-white transition-colors duration-500">with specific improvement opportunities.</strong>
+                  Specific observations from our architecture review: Fabric/Azure configuration, pipeline reliability, Power BI semantic model design, Purview governance implementation, security configuration, and technical debt.
                 </p>
               </div>
             </motion.div>
 
             {/* Cell 4: Full width span below */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="col-span-1 md:col-span-2 lg:col-span-4 bg-foreground text-background p-10 lg:p-16 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12 group">
-              <div className="absolute top-0 right-0 w-[800px] h-full bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.25),transparent_60%)] opacity-50 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="col-span-1 md:col-span-2 lg:col-span-4 bg-foreground text-background p-10 lg:p-6 md:p-10 lg:p-16 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12 group">
+              <div className="absolute top-0 right-0 w-full max-w-[800px] h-full bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.25),transparent_60%)] opacity-50 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
               <div className="relative z-10 max-w-4xl">
                 <div className="flex items-center gap-6 mb-8">
                   <CheckCircle2 className="w-14 h-14 text-mint" />
                   <span className="text-[4rem] md:text-[6rem] font-black text-background/10 leading-none tracking-tighter">D-04</span>
                 </div>
-                <h4 className="text-[2.5rem] lg:text-[4.5rem] font-black mb-8 uppercase tracking-tight leading-[0.85] text-background">Prioritized Recommendations &amp; Exec Summary</h4>
+                <h4 className="text-[2rem] lg:text-[4.5rem] font-black mb-8 uppercase tracking-tight leading-[0.85] text-background">Prioritized Recommendations &amp; Exec Summary</h4>
                 <p className="text-xl text-background/80 font-bold leading-relaxed max-w-3xl border-l-[3px] border-forest pl-6">
-                  A prioritized set of recommendations with rationale and rough effort estimates. Delivered alongside a one-page executive summary so <span className="p-1 px-3 bg-white text-black font-black uppercase tracking-wider text-sm mx-1 shadow-[5px_5px_0px_0px_hsl(var(--forest))]">leadership can make decisions</span> — not just get informed.
+                  A prioritized set of recommendations with rationale and rough effort estimates. We explain why and in what order. Delivered alongside a one-page summary for leadership that drives decisions, not just informs.
                 </p>
               </div>
 
               {/* Twisted typography accent in the corner */}
               <div className="hidden lg:block relative z-10 pr-4">
-                <div className="[writing-mode:vertical-rl] text-[8rem] xl:text-[10rem] font-black text-background/5 select-none rotate-180 uppercase tracking-tighter leading-[0.75] group-hover:text-background/10 transition-colors">
+                <div className="[writing-mode:vertical-rl] text-[4rem] sm:text-[6rem] xl:text-[8rem] font-black text-background/5 select-none rotate-180 uppercase tracking-tighter leading-[0.75] group-hover:text-background/10 transition-colors">
                   ROADMAP
                 </div>
               </div>
@@ -423,11 +422,11 @@ export default function MaturityAssessment() {
       </section>
 
       {/* Methodology Section - Twisted Horizontal Flow */}
-      <section className="py-32 bg-background relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-[1400px]">
           <div className="border-b-8 border-foreground pb-12 mb-20 flex flex-col md:flex-row justify-between md:items-center gap-8 md:gap-10">
-            <h3 className="text-[clamp(2rem,10vw,7.5rem)] font-black tracking-tighter text-forest uppercase leading-none mb-0">
-              Methodology
+            <h3 className="text-[clamp(2rem,8vw,6rem)] font-black tracking-tighter text-forest uppercase leading-none mb-0">
+              Our process
             </h3>
             <p className="text-foreground font-black max-w-sm text-base uppercase tracking-[0.2em] md:text-right bg-forest/15 p-6 border border-forest/40">
               Interviews, technical review, and evidence-based scoring — <span className="text-forest">3–4 weeks to presentation.</span>
@@ -435,10 +434,10 @@ export default function MaturityAssessment() {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-0 border-4 border-border/60 bg-muted/20">
-            <MethodPanel step={1} week="Week 1-2" title="Stakeholder Interviews" desc="We interview 8–12 stakeholders across business and IT to surface gaps between belief and reality." color="forest" />
-            <MethodPanel step={2} week="Week 2-3" title="Technical Review" desc="We review actual implemented architecture (Fabric, DF, Semantics) against documented design." color="cyan" />
-            <MethodPanel step={3} week="Week 3" title="Analysis & Scoring" desc="Synthesis into defensible scores. Concrete evidence from your environment—no generic checklists." color="blue" />
-            <MethodPanel step={4} week="Week 3-4" title="Presentation & Alignment" desc="Present to leadership. Clear alignment on priorities—no sugar-coating, no buried findings." color="indigo" />
+            <MethodPanel step={1} week="Week 1-2" title="Stakeholder Interviews" desc="We interview 8-12 stakeholders across business and technology. We're looking for gaps between what teams believe about your data capabilities and what's actually happening." color="forest" />
+            <MethodPanel step={2} week="Week 2-3" title="Technical Review" desc="We review your current architecture: Azure/Fabric configuration, Data Factory pipelines, Lakehouse structure, Power BI semantic models, Purview catalog, and security settings. We look at what's documented and what's actually implemented." color="cyan" />
+            <MethodPanel step={3} week="Week 3" title="Analysis & Scoring" desc="We synthesize findings into a scored assessment. Each dimension rated with specific evidence and examples." color="blue" />
+            <MethodPanel step={4} week="Week 3-4" title="Presentation & Alignment" desc="We present findings to leadership and facilitate discussion. The goal is alignment on priorities and next steps." color="indigo" />
           </div>
         </div>
       </section>
@@ -449,7 +448,7 @@ export default function MaturityAssessment() {
           <div className="relative grid grid-cols-1 lg:grid-cols-12 lg:gap-0 lg:items-start">
             {/* Left side: Image + Relatable Value Box */}
             <div className="lg:col-span-8 lg:col-start-1 lg:row-start-1 flex flex-col h-full z-10">
-              <div className="relative h-[500px] min-h-[500px] lg:h-[800px] lg:min-h-[800px] shrink-0 overflow-hidden grayscale-[40%] contrast-[1.1] border-8 border-foreground">
+              <div className="relative h-[400px] min-h-[400px] lg:h-[650px] lg:min-h-[650px] shrink-0 overflow-hidden grayscale-[40%] contrast-[1.1] border-8 border-foreground">
                 <Image
                   src="/images/maturity/live_enterprise_alignment.png"
                   alt="Executive Team Discussing Data Strategy"
@@ -459,7 +458,7 @@ export default function MaturityAssessment() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-background via-background/20 to-transparent" />
 
-                <div className="absolute top-10 left-10 md:-left-10 text-[6rem] md:text-[14rem] font-black text-foreground/5 md:text-foreground/5 uppercase tracking-tighter leading-[0.8] mix-blend-multiply [writing-mode:vertical-rl] rotate-180">
+                <div className="absolute top-10 left-4 md:-left-10 text-[3rem] sm:text-[4rem] md:text-[10rem] font-black text-foreground/5 md:text-foreground/5 uppercase tracking-tighter leading-[0.8] mix-blend-multiply [writing-mode:vertical-rl] rotate-180">
                   CASE STUDY
                 </div>
               </div>
@@ -470,7 +469,7 @@ export default function MaturityAssessment() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="hidden lg:flex flex-1 mt-12 bg-card border border-border shadow-[20px_20px_60px_-15px_rgba(0,0,0,0.1)] mr-[10%] relative overflow-hidden group rounded-bl-[3rem] p-10 h-full"
+                className="hidden lg:flex flex-1 mt-12 bg-card border border-border shadow-[20px_20px_60px_-15px_rgba(0,0,0,0.1)] mr-[10%] relative overflow-hidden group rounded-bl-[3rem] p-6 md:p-10 h-full"
               >
                 <div className="absolute -right-10 -bottom-10 opacity-[0.03] group-hover:opacity-[0.06] group-hover:scale-110 group-hover:-rotate-12 transition-all duration-700 pointer-events-none">
                   <PieChart size={280} strokeWidth={1} />
@@ -506,18 +505,18 @@ export default function MaturityAssessment() {
               </motion.div>
             </div>
 
-            <div className="relative z-20 -mt-32 w-[95%] max-w-lg mx-auto lg:mx-0 lg:max-w-none lg:w-auto lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:mt-32 lg:self-start min-w-0 bg-card/95 backdrop-blur-2xl border-4 border-foreground shadow-[30px_30px_0px_0px_hsl(var(--forest))] p-8 sm:p-10 lg:p-12 overflow-visible">
+            <div className="relative z-20 -mt-20 w-[95%] max-w-lg mx-auto lg:mx-0 lg:max-w-none lg:w-auto lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:mt-24 lg:self-start min-w-0 bg-card/95 backdrop-blur-2xl border-4 border-foreground shadow-[20px_20px_0px_0px_hsl(var(--forest))] p-6 sm:p-10 lg:p-12 overflow-visible">
               <div className="flex items-center gap-4 mb-8">
                 <span className="w-4 h-4 bg-forest shrink-0 rounded-none shadow-[2px_2px_0px_0px_foreground]"></span>
                 <span className="text-sm font-black uppercase tracking-[0.3em] text-forest">Technology &amp; SaaS</span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground uppercase leading-[0.9] mb-10">
-                How a PE portfolio company realized their true <span className="bg-forest text-forest-foreground px-2 py-1 inline-block mt-2">data maturity gap.</span>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-foreground uppercase leading-[0.9] mb-8">
+                How we helped a PE portfolio company find their gaps<span className="bg-forest text-forest-foreground px-2 py-1 inline-block mt-2">.</span>
               </h2>
 
               <p className="text-xl font-bold text-foreground/80 leading-relaxed mb-10 border-l-[4px] border-forest pl-6 bg-muted/40 p-4">
-                They invested in Azure Analysis Services (AAS). Leadership believed they were “data mature.” But refresh failures increased, autoscaling failed, and the BI team was operating AAS and Power BI as separated siloes. Then came the assessment.
+                A PE-backed software company had invested in Azure Analysis Services (AAS) for enterprise data modeling. Leadership believed they were "data mature." But refresh failures were increasing, autoscaling wasn't working, and the BI team was frustrated with the complexity of managing AAS alongside Power BI.
               </p>
 
               <div className="mb-12 border-l-[4px] border-forest pl-4 sm:pl-6 min-w-0">
@@ -536,16 +535,18 @@ export default function MaturityAssessment() {
               </div>
 
               <div className="space-y-6 text-sm font-bold mb-12 text-muted-foreground border-l-2 border-forest/25 pl-4">
-                <p><span className="text-foreground uppercase tracking-widest bg-forest/10 py-1 px-3 text-xs mr-3 border border-forest/30">Tech</span> AAS models were solid, hitting scale limits. Coordinated through brittle runbooks.</p>
-                <p><span className="text-foreground uppercase tracking-widest bg-forest/10 py-1 px-3 text-xs mr-3 border border-forest/30">Gov</span> No Purview integration, lineage, or labels—impact analysis on schema changes impossible.</p>
-                <p><span className="text-foreground uppercase tracking-widest bg-forest/10 py-1 px-3 text-xs mr-3 border border-forest/30">Org</span> One senior dev owned the stack. Undocumented knowledge = single point of failure.</p>
+                <p><span className="text-foreground uppercase tracking-widest bg-forest/10 py-1 px-3 text-xs mr-3 border border-forest/30">Tech</span> AAS models were well-designed, but the platform was reaching its limits. No autoscaling. Manual runbooks for refresh management. XMLA endpoints weren't properly configured.</p>
+                <p><span className="text-foreground uppercase tracking-widest bg-forest/10 py-1 px-3 text-xs mr-3 border border-forest/30">Analytics</span> Good DAX measures, but models were disconnected from the modern Power BI Premium features (dataflows, deployment pipelines).</p>
+                <p><span className="text-foreground uppercase tracking-widest bg-forest/10 py-1 px-3 text-xs mr-3 border border-forest/30">Gov</span> No Purview integration. No lineage tracking. Sensitive data without classification.</p>
+                <p><span className="text-foreground uppercase tracking-widest bg-forest/10 py-1 px-3 text-xs mr-3 border border-forest/30">Org</span> One senior developer maintained everything. No documentation. Knowledge trapped in one person's head.</p>
+                <p><span className="text-foreground uppercase tracking-widest bg-forest/10 py-1 px-3 text-xs mr-3 border border-forest/30">Recommendation</span> Migrate from Azure Analysis Services to Microsoft Fabric. The assessment revealed that 80% of their pain points would be solved by the migration: autoscaling, simplified scheduling, native Power BI integration, and Fabric's built-in governance features.</p>
               </div>
 
               <Link
                 href="/industries/technology-saas"
                 className="inline-flex items-center gap-4 text-sm font-black text-background bg-foreground hover:bg-forest hover:text-forest-foreground px-8 py-5 transition-all uppercase tracking-[0.2em] group border-[3px] border-transparent hover:border-foreground"
               >
-                Read SaaS Work
+                See how we work with technology companies
                 <ChevronRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
               </Link>
             </div>
@@ -554,11 +555,11 @@ export default function MaturityAssessment() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-muted/40 border-t-2 border-border/60 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-forest/5 blur-[100px] rounded-full pointer-events-none" />
+      <section className="py-16 lg:py-24 bg-muted/40 border-t-2 border-border/60 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] max-w-full h-[500px] bg-forest/5 blur-[100px] rounded-full pointer-events-none" />
         <div className="container mx-auto px-6 max-w-5xl relative z-10">
           <div className="border-b-4 border-foreground pb-8 mb-16">
-            <h2 className="text-[3.5rem] md:text-[5rem] font-black tracking-tighter uppercase leading-[0.9]">Frequently<br />Asked Questions</h2>
+            <h2 className="text-[2.5rem] md:text-[5rem] font-black tracking-tighter uppercase leading-[0.9]">Frequently<br />Asked Questions</h2>
           </div>
           <div className="space-y-4">
             <FAQItem
@@ -578,10 +579,10 @@ export default function MaturityAssessment() {
       </section>
 
       {/* Related Services */}
-      <section className="py-24 bg-background relative overflow-hidden border-t border-border/60">
+      <section className="py-16 lg:py-24 bg-background relative overflow-hidden border-t border-border/60">
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           {/* Editorial Next Steps Header */}
-          <div className="mb-24 grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16 items-end relative">
+          <div className="mb-24 grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-10 lg:gap-16 items-end relative">
             {/* Background absolute elements */}
             <div className="hidden lg:block absolute -top-12 right-[30%] w-[1px] h-[150%] bg-gradient-to-b from-transparent via-border to-transparent -z-10" />
 
@@ -590,7 +591,7 @@ export default function MaturityAssessment() {
               <h2 className="text-sm font-black uppercase tracking-[0.4em] text-forest mb-8 flex items-center gap-4">
                 <span className="w-12 h-[2px] bg-forest"></span> Next Steps
               </h2>
-              <h3 className="text-[3.5rem] md:text-[5rem] lg:text-[6rem] font-black mb-10 tracking-tighter text-foreground uppercase leading-[0.85] drop-shadow-[5px_5px_0_rgba(0,0,0,0.02)]">
+              <h3 className="text-[2.5rem] md:text-[5rem] lg:text-[6rem] font-black mb-10 tracking-tighter text-foreground uppercase leading-[0.85] drop-shadow-[5px_5px_0_rgba(0,0,0,0.02)]">
                 Continue <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/30 stroke-text mix-blend-normal">Your</span><br />
                 Journey
@@ -630,7 +631,7 @@ export default function MaturityAssessment() {
                   </div>
                 </div>
 
-                <div className="p-10 relative">
+                <div className="p-6 md:p-10 relative">
                   {/* Decorative watermark */}
                   <div className="absolute right-6 top-10 text-[3.5rem] text-background/10 font-black tracking-tighter rotate-90 select-none pointer-events-none group-hover:text-background/20 transition-colors duration-700">
                     FWD
@@ -651,7 +652,7 @@ export default function MaturityAssessment() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-4 border-foreground bg-foreground p-1">
-            <Link href="/services/define-your-roadmap/enterprise-data-strategy" className="group block bg-card h-full p-10 border border-transparent hover:border-forest transition-colors duration-500">
+            <Link href="/services/define-your-roadmap/enterprise-data-strategy" className="group block bg-card h-full p-6 md:p-10 border border-transparent hover:border-forest transition-colors duration-500">
               <div className="w-16 h-16 bg-forest/10 flex items-center justify-center text-forest mb-10 border border-forest/30 group-hover:scale-110 transition-transform duration-500 rounded-none shadow-[4px_4px_0_0_hsl(var(--forest)/0.2)]">
                 <Target size={28} strokeWidth={2.5} />
               </div>
@@ -664,7 +665,7 @@ export default function MaturityAssessment() {
               </div>
             </Link>
 
-            <Link href="/services/define-your-roadmap/stack-evaluation" className="group block bg-card h-full p-10 border border-transparent hover:border-cyan-500 transition-colors duration-500">
+            <Link href="/services/define-your-roadmap/stack-evaluation" className="group block bg-card h-full p-6 md:p-10 border border-transparent hover:border-cyan-500 transition-colors duration-500">
               <div className="w-16 h-16 bg-cyan-500/10 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-10 border border-cyan-500/30 group-hover:scale-110 transition-transform duration-500 rounded-none shadow-[4px_4px_0_0_rgba(6,182,212,0.2)]">
                 <PieChart size={28} strokeWidth={2.5} />
               </div>
@@ -677,7 +678,7 @@ export default function MaturityAssessment() {
               </div>
             </Link>
 
-            <Link href="/services/build-your-foundation/foundation-build" className="group block bg-card h-full p-10 border border-transparent hover:border-blue-500 transition-colors duration-500">
+            <Link href="/services/build-your-foundation/foundation-build" className="group block bg-card h-full p-6 md:p-10 border border-transparent hover:border-blue-500 transition-colors duration-500">
               <div className="w-16 h-16 bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-10 border border-blue-500/30 group-hover:scale-110 transition-transform duration-500 rounded-none shadow-[4px_4px_0_0_rgba(59,130,246,0.2)]">
                 <CheckCircle2 size={28} strokeWidth={2.5} />
               </div>
@@ -694,13 +695,13 @@ export default function MaturityAssessment() {
       </section>
 
       {/* Extreme CTA Section */}
-      <section className="py-32 bg-muted/30 text-foreground relative overflow-hidden border-t-[12px] border-forest">
+      <section className="py-16 md:py-24 lg:py-32 bg-muted/30 text-foreground relative overflow-hidden border-t-[12px] border-forest">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[200%] bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.15),transparent_40%)] rounded-full blur-[100px] pointer-events-none" />
 
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
           <div className="text-center">
 
-            <h2 className="text-[4rem] md:text-[9rem] font-black mb-10 tracking-tighter text-foreground uppercase leading-[0.8] select-none">
+            <h2 className="text-[3rem] md:text-[7rem] font-black mb-10 tracking-tighter text-foreground uppercase leading-[0.8] select-none">
               <span className="text-forest underline decoration-forest/50 underline-offset-8">Know</span><br /> Where you<br />Stand.
             </h2>
 
@@ -712,7 +713,7 @@ export default function MaturityAssessment() {
                 A maturity assessment gives you the baseline you need to make confident Microsoft Fabric and Azure investments.
               </p>
               <p className="text-lg md:text-xl text-muted-foreground font-bold mx-auto mb-10 leading-relaxed border-t-2 border-border/50 pt-6">
-                Evidence-based scores, gap analysis, and prioritized recommendations — no vendor bias, no guesswork. Let&apos;s find your gaps before they find you.
+                Let's find your gaps before they find you.
               </p>
 
               <Link href="/contact?service=maturity-assessment" passHref>
@@ -746,7 +747,7 @@ function MethodPanel({ step, week, title, desc, color }) {
       whileInView="visible"
       viewport={{ once: true }}
       variants={fadeIn}
-      className={`flex-1 relative bg-card border-l lg:border-l-0 lg:border-t lg:border-b-0 border-b border-border/80 hover:border-foreground transition-colors duration-500 overflow-hidden group/panel flex flex-col lg:flex-row h-auto lg:h-[450px] shadow-sm hover:shadow-[10px_10px_0_0_rgba(0,0,0,1)] dark:hover:shadow-[10px_10px_0_0_rgba(255,255,255,0.2)] hover:z-10`}
+      className={`flex-1 relative bg-card border-l lg:border-l-0 lg:border-t lg:border-b-0 border-b border-border/80 hover:border-foreground transition-colors duration-500 overflow-hidden group/panel flex flex-col lg:flex-row h-auto lg:min-h-[350px] shadow-sm hover:shadow-[10px_10px_0_0_rgba(0,0,0,1)] dark:hover:shadow-[10px_10px_0_0_rgba(255,255,255,0.2)] hover:z-10`}
     >
       {/* Twisted Vertical Bar */}
       <div className={`bg-muted/40 p-6 flex lg:flex-col items-center justify-between border-r border-border/50 ${accent.bar} group-hover/panel:text-white transition-colors duration-500 min-w-[80px]`}>
@@ -757,7 +758,7 @@ function MethodPanel({ step, week, title, desc, color }) {
       </div>
 
       {/* Content Area */}
-      <div className="p-10 flex-1 flex flex-col relative z-10 group-hover/panel:-translate-y-2 transition-transform duration-500">
+      <div className="p-6 md:p-10 flex-1 flex flex-col relative z-10 group-hover/panel:-translate-y-2 transition-transform duration-500">
         <h4 className="text-2xl font-black tracking-tight uppercase leading-[0.9] mb-6 pr-4">{title}</h4>
         <p className="text-base text-foreground/70 font-bold leading-relaxed mt-auto">{desc}</p>
       </div>
@@ -770,7 +771,7 @@ function MethodPanel({ step, week, title, desc, color }) {
 
 export function FAQItem({ q, a }) {
   return (
-    <details className="group bg-card p-10 rounded-none border-[3px] border-border/80 hover:border-foreground transition-all duration-300 shadow-[5px_5px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.1)] hover:shadow-[10px_10px_0_0_foreground] [&_summary::-webkit-details-marker]:hidden cursor-pointer relative -mt-[3px]">
+    <details className="group bg-card p-6 md:p-10 rounded-none border-[3px] border-border/80 hover:border-foreground transition-all duration-300 shadow-[5px_5px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.1)] hover:shadow-[10px_10px_0_0_foreground] [&_summary::-webkit-details-marker]:hidden cursor-pointer relative -mt-[3px]">
       <summary className="flex justify-between items-center text-2xl font-black outline-none select-none uppercase tracking-tight pr-12">
         {q}
         <div className="absolute right-10 top-1/2 -translate-y-1/2 w-12 h-12 bg-forest/10 text-forest flex items-center justify-center shrink-0 group-open:rotate-90 group-open:bg-forest group-open:text-forest-foreground transition-all duration-300 shadow-[4px_4px_0_0_hsl(var(--forest)/0.3)] group-open:shadow-[2px_2px_0_0_foreground]">

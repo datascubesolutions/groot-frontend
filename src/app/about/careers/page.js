@@ -24,7 +24,7 @@ export default function CareersPage() {
       experience: "3+ Years",
       type: "Full-Time",
       location: "Remote",
-      desc: "Building data pipelines and infrastructure on Azure and Microsoft Fabric. Data Factory, Lakehouse implementation, source system integrations.",
+      desc: "Building data pipelines and infrastructure on Azure and Microsoft Fabric. Data Factory, Lakehouse implementation, source system integrations. 3+ years Azure experience. Strong SQL and Python.",
       subject: "Application: Azure Data Engineer"
     },
     {
@@ -32,7 +32,7 @@ export default function CareersPage() {
       experience: "2+ Years",
       type: "Full-Time",
       location: "Remote",
-      desc: "Microsoft Fabric implementations — Lakehouse, notebooks, pipelines, real-time analytics. Experience with Fabric, Databricks, or Spark.",
+      desc: "Microsoft Fabric implementations — Lakehouse, notebooks, pipelines, real-time analytics. 2+ years data engineering. Experience with Fabric, Databricks, or Spark environments.",
       subject: "Application: Fabric Data Engineer"
     },
     {
@@ -40,7 +40,7 @@ export default function CareersPage() {
       experience: "3+ Years",
       type: "Full-Time",
       location: "Remote",
-      desc: "The layer between raw data and business consumption. Gold layer datasets, transformation logic, data quality, semantic model design.",
+      desc: "The layer between raw data and business consumption. Gold layer datasets, transformation logic, data quality, semantic model design. 3+ years analytics engineering. Strong SQL.",
       subject: "Application: Analytics Engineer"
     },
     {
@@ -48,16 +48,16 @@ export default function CareersPage() {
       experience: "3+ Years",
       type: "Full-Time",
       location: "Remote",
-      desc: "Semantic models, DAX, reports that executives actually use. Strong DAX and data modeling fundamentals. Experience building semantic models.",
+      desc: "Semantic models, DAX, reports that executives actually use. 3+ years Power BI. Strong DAX and data modeling fundamentals. Experience building semantic models, not just reports.",
       subject: "Application: Power BI Developer"
     }
   ];
 
   const benefits = [
-    { icon: HeartHandshake, title: "Competitive Comp", desc: "Top-tier base salary with performance-based bonuses tied directly to firm success." },
-    { icon: MonitorSmartphone, title: "Remote Flexibility", desc: "Work from anywhere. We care about the output and client satisfaction, not your desk location." },
-    { icon: GraduationCap, title: "Professional Growth", desc: "Fully funded certifications, training budgets, and continuous learning on the newest Microsoft stack." },
-    { icon: Sparkles, title: "No Burnout Culture", desc: "Deadlines are real, but we respect your time. We don't celebrate 60-hour work weeks." }
+    { icon: HeartHandshake, title: "Competitive Comp", desc: "Competitive compensation with performance bonus." },
+    { icon: MonitorSmartphone, title: "Remote Flexibility", desc: "Remote flexibility. Equipment provided." },
+    { icon: GraduationCap, title: "Professional Growth", desc: "Professional development including certifications and training." },
+    { icon: Sparkles, title: "No Burnout Culture", desc: "Reasonable hours — deadlines are real, but we don't celebrate burnout." }
   ];
 
   const fadeIn = {
@@ -102,9 +102,9 @@ export default function CareersPage() {
                 </m.div>
                 
                 <m.h1 variants={fadeIn} className="text-6xl md:text-7xl lg:text-[6rem] font-black tracking-tighter mb-8 leading-[1.05] text-foreground text-balance">
-                  Do the best work <br className="hidden md:block" />
+                  Join the <br className="hidden md:block" />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest relative whitespace-nowrap">
-                    of your life.
+                    Team.
                     {/* Hand-drawn style decorative swoosh */}
                     <svg className="absolute -bottom-2 left-0 w-full h-4 text-primary opacity-30" viewBox="0 0 100 10" preserveAspectRatio="none">
                       <m.path 
@@ -121,7 +121,7 @@ export default function CareersPage() {
                 </m.h1>
                 
                 <m.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium max-w-xl text-balance">
-                  We're looking for driven Data Engineers, Analytics Engineers, and Power BI Developers who obsess over solving real business problems.
+                  We're hiring Data Engineers, Analytics Engineers, and Power BI Developers focused on the Microsoft stack.
                 </m.p>
               </m.div>
 
@@ -176,15 +176,15 @@ export default function CareersPage() {
                   transition={{ duration: 0.6 }}
                   className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-8 text-foreground leading-[1.05]"
                 >
-                  Who succeeds here?
+                  The people who do well here
                 </m.h2>
                 <div className="space-y-6 text-xl text-muted-foreground font-medium leading-relaxed max-w-lg">
                   <m.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
-                    We're looking for people with an <strong className="text-foreground font-black">ownership mindset</strong>. The kind who dig into the client's actual problem, not just the ticket they were handed.
+                    We're looking for people with an <strong className="text-foreground font-black">ownership mindset</strong>. The kind who dig into the client's actual problem, not just the ticket they were handed. You'll work in partnership with clients, not as a hands-off developer waiting for specs.
                   </m.p>
                   <m.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="h-px w-16 bg-primary/40 block my-8 origin-left" />
                   <m.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }}>
-                    If you see a gap and fill it without being asked, if you care whether the solution works for the business, and if you'd rather understand "why" than just ship "what"—you'll fit right in.
+                    If you're someone who sees a gap and fills it without being asked, who cares whether the solution actually works for the business, and who'd rather understand why than just ship what — you'll fit here.
                   </m.p>
                 </div>
               </div>
@@ -291,39 +291,36 @@ export default function CareersPage() {
                   <a 
                     key={idx} 
                     href={`mailto:careers@grootanalytics.com?subject=${job.subject}`}
-                    className="group block relative p-8 md:p-12 rounded-[2.5rem] bg-card/60 backdrop-blur-md border border-border shadow-lg hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] transition-all duration-700 overflow-hidden hover:-translate-x-2 lg:hover:-translate-x-4 hover:border-primary/60 hover:bg-card/80"
+                    className="group block relative p-8 md:p-12 rounded-[2.5rem] bg-card/60 backdrop-blur-md border-[2px] border-border shadow-sm hover:shadow-[12px_12px_0_hsl(var(--forest))] transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:border-forest hover:bg-card"
                   >
-                    {/* Complex internal glow and micro geometry */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-forest/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                    <div className="absolute -right-32 -top-32 w-96 h-96 bg-gradient-to-br from-primary/30 to-mint/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-                    <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-t from-forest/10 to-transparent rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--forest)/0.05),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    
                     <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-8 relative z-10">
                       
                       <div className="flex-1 w-full relative">
                         {/* Highly visible layered pills */}
                         <div className="flex flex-wrap items-center gap-2 mb-8">
-                          <span className="px-5 py-2 rounded-xl bg-forest/5 border border-forest/10 text-forest tracking-[0.1em] uppercase text-xs font-black shadow-inner shadow-black/5">{job.type}</span>
-                          <span className="px-5 py-2 rounded-xl bg-background border border-border shadow-sm text-foreground tracking-[0.1em] uppercase text-xs font-bold">{job.location}</span>
-                          <span className="px-5 py-2 rounded-xl bg-background border border-border shadow-sm text-foreground tracking-[0.1em] uppercase text-xs font-bold flex items-center gap-2">
-                             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> {job.experience}
+                          <span className="px-5 py-2 rounded-full bg-forest text-forest-foreground tracking-[0.1em] uppercase text-xs font-black shadow-sm">{job.type}</span>
+                          <span className="px-5 py-2 rounded-full bg-background border border-border shadow-sm text-foreground tracking-[0.1em] uppercase text-xs font-bold">{job.location}</span>
+                          <span className="px-5 py-2 rounded-full bg-background border border-border shadow-sm text-foreground tracking-[0.1em] uppercase text-xs font-bold flex items-center gap-2">
+                             <span className="w-1.5 h-1.5 rounded-full bg-forest animate-pulse" /> {job.experience}
                           </span>
                         </div>
                         
-                        <h3 className="text-3xl md:text-5xl font-black mb-6 text-foreground group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-forest transition-all duration-500 tracking-tight leading-[1.05]">
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-foreground group-hover:text-forest transition-colors duration-300 tracking-tight leading-[1.05]">
                           {job.title}
                         </h3>
                         
-                        <p className="text-muted-foreground font-medium text-lg leading-relaxed max-w-2xl relative z-10">
+                        <p className="text-muted-foreground font-medium text-lg lg:text-xl leading-relaxed max-w-2xl relative z-10 group-hover:text-foreground/80 transition-colors duration-300">
                           {job.desc}
                         </p>
                       </div>
                       
                       {/* Geometric Action Block */}
                       <div className="relative z-10 shrink-0 mt-4 xl:mt-0 flex flex-row xl:flex-col items-center xl:items-end justify-between xl:justify-start w-full xl:w-auto border-t xl:border-t-0 xl:border-l border-border/50 pt-6 xl:pt-0 xl:pl-8">
-                        <span className="text-sm font-bold text-muted-foreground uppercase tracking-widest group-hover:text-primary transition-colors xl:mb-12">Apply Now</span>
+                        <span className="text-sm font-black text-muted-foreground uppercase tracking-widest group-hover:text-forest transition-colors xl:mb-12">Apply Now</span>
                         
-                        <div className="flex items-center justify-center w-16 h-16 rounded-[1.5rem] bg-background border border-border text-foreground group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-md group-hover:shadow-[0_10px_30px_-5px_hsl(var(--primary)/0.4)] group-hover:scale-105 group-hover:rotate-12">
+                        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-background border-[2px] border-border text-foreground group-hover:bg-forest group-hover:border-forest group-hover:text-forest-foreground transition-all duration-300">
                           <ArrowRight size={24} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
@@ -466,7 +463,7 @@ export default function CareersPage() {
                       </div>
                       <div>
                         <p className="font-bold text-2xl text-white tracking-tight mb-2">Why Groot?</p>
-                        <p className="text-mint-light/80 font-medium text-lg leading-relaxed">A brief few sentences on what caught your eye about our approach.</p>
+                        <p className="text-mint-light/80 font-medium text-lg leading-relaxed">A few sentences on why Groot interests you.</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-6 relative">
@@ -474,8 +471,8 @@ export default function CareersPage() {
                         <CheckCircle2 size={28} strokeWidth={2.5} />
                       </div>
                       <div>
-                        <p className="font-bold text-2xl text-white tracking-tight mb-2">An Engineering Project</p>
-                        <p className="text-mint-light/80 font-medium text-lg leading-relaxed">Briefly describe the most complex data challenge you solved and how you architected it.</p>
+                        <p className="font-bold text-2xl text-white tracking-tight mb-2">A Data Project</p>
+                        <p className="text-mint-light/80 font-medium text-lg leading-relaxed">Brief description of a data project you're proud of.</p>
                       </div>
                     </li>
                   </ul>

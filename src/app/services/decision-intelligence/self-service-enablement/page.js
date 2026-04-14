@@ -32,10 +32,10 @@ export default function SelfServiceEnablement() {
       />
 
       {/* Hero Section - Split Layout */}
-      <section className="relative py-24 lg:py-32 overflow-hidden bg-background">
+      <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-background">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.15),transparent_50%)]" />
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             
             {/* Left Content */}
             <motion.div 
@@ -44,7 +44,7 @@ export default function SelfServiceEnablement() {
               variants={staggerContainer}
               className="lg:col-span-7 max-w-2xl"
             >
-              <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-foreground">
+              <motion.h1 variants={fadeIn} className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-foreground">
                 Self-Service <br />
                 <span className="text-[hsl(var(--secondary))]">
                   Enablement
@@ -86,9 +86,9 @@ export default function SelfServiceEnablement() {
       </section>
 
       {/* The Problem - Sticky Scroll */}
-      <section className="py-24 bg-muted/20 relative">
+      <section className="py-16 lg:py-24 bg-muted/20 relative">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
             
             {/* Sticky Sidebar */}
             <div className="lg:col-span-5 pl-0 lg:pl-4">
@@ -105,7 +105,7 @@ export default function SelfServiceEnablement() {
             <div className="lg:col-span-7 flex flex-col gap-8 pt-10">
               <motion.div 
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
-                className="bg-background/80 backdrop-blur-md p-10 rounded-[2rem] border border-border/60 hover:border-red-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
+                className="bg-background/80 backdrop-blur-md p-6 md:p-10 rounded-[2rem] border border-border/60 hover:border-red-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
               >
                 <div className="w-14 h-14 bg-red-500/10 text-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <AlertCircle size={28} />
@@ -121,7 +121,7 @@ export default function SelfServiceEnablement() {
 
               <motion.div 
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
-                className="bg-background/80 backdrop-blur-md p-10 rounded-[2rem] border border-border/60 hover:border-amber-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
+                className="bg-background/80 backdrop-blur-md p-6 md:p-10 rounded-[2rem] border border-border/60 hover:border-amber-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
               >
                 <div className="w-14 h-14 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <ShieldCheck size={28} />
@@ -141,7 +141,7 @@ export default function SelfServiceEnablement() {
       </section>
 
       {/* Deliverables - Bento Grid */}
-      <section className="py-32 bg-background relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,hsl(var(--primary)/0.05),transparent_40%)]" />
         <div className="container mx-auto px-6 relative z-10 max-w-7xl">
           <div className="text-center mb-20">
@@ -153,7 +153,7 @@ export default function SelfServiceEnablement() {
             {/* Large Feature 1 */}
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              className="md:col-span-8 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-primary/40 transition-colors shadow-sm relative overflow-hidden flex flex-col justify-end min-h-[300px]"
+              className="md:col-span-8 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-6 md:p-10 hover:border-primary/40 transition-colors shadow-sm relative overflow-hidden flex flex-col justify-end min-h-[300px]"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full" />
               <div className="relative z-10">
@@ -170,7 +170,7 @@ export default function SelfServiceEnablement() {
             {/* Feature 2 */}
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              className="md:col-span-4 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-blue-500/40 transition-colors shadow-sm relative overflow-hidden"
+              className="md:col-span-4 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-6 md:p-10 hover:border-blue-500/40 transition-colors shadow-sm relative overflow-hidden"
             >
                <div className="relative z-10">
                 <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/30 shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)] group-hover:bg-blue-500/20 transition-all duration-300">
@@ -186,7 +186,7 @@ export default function SelfServiceEnablement() {
             {/* Feature 3 */}
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              className="md:col-span-4 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-emerald-500/40 transition-colors shadow-sm relative overflow-hidden"
+              className="md:col-span-4 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-6 md:p-10 hover:border-emerald-500/40 transition-colors shadow-sm relative overflow-hidden"
             >
                <div className="relative z-10">
                 <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
@@ -202,7 +202,7 @@ export default function SelfServiceEnablement() {
             {/* Large Feature 4 */}
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              className="md:col-span-8 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-indigo-500/40 transition-colors shadow-sm relative overflow-hidden flex flex-col justify-end min-h-[300px]"
+              className="md:col-span-8 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-6 md:p-10 hover:border-indigo-500/40 transition-colors shadow-sm relative overflow-hidden flex flex-col justify-end min-h-[300px]"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[80px] rounded-full" />
               <div className="relative z-10">
@@ -220,7 +220,7 @@ export default function SelfServiceEnablement() {
       </section>
 
       {/* Methodology - Bento Grid */}
-      <section className="py-32 bg-muted/20 relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-muted/20 relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-400 mb-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.2)]">Methodology</h2>
@@ -260,11 +260,11 @@ export default function SelfServiceEnablement() {
       </section>
 
       {/* Real Example - Premium Section */}
-      <section className="py-32 bg-background relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
-          <div className="bg-primary/5 text-foreground rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-sm border border-primary/20">
+          <div className="bg-primary/5 text-foreground rounded-[3rem] p-6 md:p-10 lg:p-16 relative overflow-hidden shadow-sm border border-primary/20">
             {/* Decorative background glow */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[500px] max-w-full h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
             
             <div className="relative z-10">
               <div className="mb-8 inline-flex border border-primary/30 bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-bold uppercase tracking-wider">
@@ -322,7 +322,7 @@ export default function SelfServiceEnablement() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-muted/20">
+      <section className="py-16 lg:py-24 bg-muted/20">
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Frequently Asked Questions</h2>
@@ -345,7 +345,7 @@ export default function SelfServiceEnablement() {
       </section>
 
       {/* Related Services */}
-      <section className="py-24 bg-background">
+      <section className="py-16 lg:py-24 bg-background">
         <div className="container mx-auto px-6 max-w-5xl">
           <h2 className="text-3xl font-bold mb-10 text-center">Related Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -372,9 +372,9 @@ export default function SelfServiceEnablement() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-background border-t border-border">
+      <section className="py-16 lg:py-24 bg-background border-t border-border">
         <div className="container mx-auto px-6 max-w-5xl">
-          <div className="bg-primary/5 border border-primary/20 rounded-[3rem] p-12 md:p-16 text-center shadow-lg shadow-primary/5">
+          <div className="bg-primary/5 border border-primary/20 rounded-[3rem] p-12 md:p-10 lg:p-16 text-center shadow-lg shadow-primary/5">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Empower analysts, protect data.</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               Stop being the IT bottleneck. Let's build a Center of Excellence that scales analytics securely across your organization.

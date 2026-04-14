@@ -15,29 +15,29 @@ const capabilities = [
   {
     id: "01",
     title: "Data Foundations",
-    desc: "Robust Lakehouse architectures and fault-tolerant pipelines.",
-    details: "We lay down immutable foundations inside Microsoft Fabric. From landing zones to bronze/silver/gold semantic perfection, we engineer infrastructures built for extreme volume and zero downtime.",
+    desc: "Microsoft Fabric implementations and Lakehouse architecture.",
+    details: "We lay down robust foundations inside Microsoft Fabric. From Lakehouse implementations to sophisticated data pipelines and governance with Microsoft Purview.",
     icon: Database
   },
   {
     id: "02",
     title: "Analytics & BI",
-    desc: "Governed semantic models and executive performance dashboards.",
-    details: "Moving organizations from ad-hoc spreadsheet chaos into a singular, undeniable source of truth. We build Power BI ecosystems that executives trust and analysts can safely extend.",
+    desc: "Power BI semantic models and executive dashboards.",
+    details: "We build governed semantic models, executive dashboards, and self-service enablement tailored for leaders. We make your reporting the undeniable source of truth.",
     icon: BarChart4
   },
   {
     id: "03",
-    title: "System Integration",
-    desc: "Unifying fragmented ERPs, CRMs, and legacy data sources.",
-    details: "Fragmented systems are the enemy of velocity. We utilize Azure Data Factory and Fabric pipelines to ingest structured and unstructured telemetry into a unified enterprise graph.",
+    title: "Integrations",
+    desc: "Connecting enterprise systems to your data platform.",
+    details: "Connecting disparate ERPs, CRMs, field service systems, and SaaS applications into a unified data ecosystem for frictionless reporting and centralized control.",
     icon: Network
   },
   {
     id: "04",
-    title: "Platform Migrations",
-    desc: "Seamless upgrades from legacy SQL or AAS to Fabric.",
-    details: "We eliminate technical debt by migrating outdated Analysis Services and legacy on-premise warehouses into modern Microsoft cloud topologies—without disrupting daily operations.",
+    title: "Migrations",
+    desc: "Moving from legacy systems to Fabric successfully.",
+    details: "Moving seamlessly from legacy systems to Fabric. Whether it's SQL Server, Azure Analysis Services, or Synapse—we do it without breaking what's already working.",
     icon: Zap
   }
 ];
@@ -69,10 +69,10 @@ export default function AboutPage() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const teamIndex = [
-    { num: "01", category: "System Architecture", tools: ["Microsoft Fabric", "Azure Synapse", "Data Lake Gen2"] },
-    { num: "02", category: "Analytics Engineering", tools: ["Power BI", "DAX", "Tabular Editor", "Row-Level Security"] },
-    { num: "03", category: "Data Pipeline Ops", tools: ["Data Factory", "PySpark", "Python", "SQL Runtime"] },
-    { num: "04", category: "Data Governance", tools: ["Microsoft Purview", "Metadata Scanners", "Lineage Tracking"] }
+    { num: "01", category: "Microsoft Fabric & Azure", tools: ["Lakehouse", "Data Factory", "Synapse", "Purview"] },
+    { num: "02", category: "Power BI", tools: ["Semantic Modeling", "DAX", "Row-Level Security", "Performance Optimization"] },
+    { num: "03", category: "Data Engineering", tools: ["Python", "SQL", "PySpark", "API Integrations"] },
+    { num: "04", category: "Industries", tools: ["Private Equity", "Medical Device", "Construction", "Financial Services", "SaaS"] }
   ];
 
   return (
@@ -95,13 +95,13 @@ export default function AboutPage() {
             </div>
 
             <h1 className="text-[3.5rem] lg:text-[5rem] xl:text-[5.5rem] font-black leading-[0.85] tracking-tighter uppercase mb-10 drop-shadow-sm">
-              Engineering <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Absolute</span> <br />
-              Clarity.
+              We Build Data <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Platforms</span> <br />
+              That Work.
             </h1>
 
             <p className="text-xl text-white/70 font-bold leading-relaxed border-l-[3px] border-emerald-400 pl-6">
-              We build data systems that do not break. No bloated consulting timelines, no generic advice—just ruthless execution within the Microsoft data ecosystem.
+              Microsoft Fabric. Power BI. Azure. Helping companies unify their data and make better decisions.
             </p>
           </motion.div>
         </div>
@@ -140,23 +140,43 @@ export default function AboutPage() {
         <div className="absolute top-0 right-10 w-[1px] h-full bg-border/50"></div>
         <div className="absolute top-0 right-20 w-[1px] h-full bg-border/50 hidden md:block"></div>
 
-        <div className="container mx-auto px-6 max-w-5xl relative">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}>
-            <h2 className="text-sm font-black text-forest uppercase tracking-[0.4em] mb-12">The Ledger</h2>
+        <div className="container mx-auto px-6 max-w-[1400px] relative">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+            
+            <div className="lg:col-span-5 lg:sticky lg:top-32">
+              <h2 className="text-sm font-black text-forest uppercase tracking-[0.4em] mb-8">How We Got Here</h2>
+              <div className="w-24 h-[4px] bg-forest mb-12 hidden lg:block"></div>
+              
+              <p className="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.1] tracking-tighter text-foreground/90 mb-8">
+                Groot Analytics started with a pattern I kept seeing in <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40">private equity.</span>
+              </p>
+              
+              <p className="text-xl md:text-2xl font-bold leading-relaxed text-foreground/60 border-l-[3px] border-emerald-400 pl-6">
+                Why does every engagement start from scratch? <br/>
+                <span className="text-foreground font-black mt-2 inline-block">That question became Groot Analytics.</span>
+              </p>
+            </div>
 
-            <p className="text-[2.2rem] md:text-[3.5rem] lg:text-[4.5rem] font-black leading-[1.1] tracking-tighter text-foreground/60">
-              Groot Analytics was forged from <span className="text-foreground">sheer frustration.</span> We watched PE firms and enterprises pour millions into
-              <span className="bg-foreground text-background px-4 py-1 mx-2 inline-block -skew-x-6 shadow-[8px_8px_0_hsl(var(--forest))] leading-none">bloated consulting</span>
-              projects that delivered PowerPoint slides instead of pipelines.
-            </p>
+            <div className="lg:col-span-7">
+              <p className="text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed text-foreground/80 mb-10">
+                A PE firm acquires a company. Day one, the operating partners need visibility — consolidated revenue, margins, cash position, operational KPIs across the portfolio. Simple ask. But the acquired company's data is a mess. Different ERPs. No data warehouse. Finance runs on Excel. Operations tracks jobs in spreadsheets someone built three years ago.
+              </p>
+              <p className="text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed text-foreground/80 mb-10">
+                So begins the six-month slog. Consultants get hired. Requirements get gathered. Platforms get evaluated. By the time the dashboards are live, the PE firm has been flying blind for two quarters. <span className="text-foreground font-black">Decisions got made on gut feel and stale data.</span>
+              </p>
 
-            <div className="w-24 h-[4px] bg-forest my-16"></div>
+              <div className="w-16 h-[2px] bg-border my-16"></div>
 
-            <p className="text-[2.2rem] md:text-[3.5rem] lg:text-[4.5rem] font-black leading-[1.1] tracking-tighter text-foreground/60">
-              We shattered that paradigm. Every system we architect is built strictly for <span className="text-foreground">business velocity.</span>
-              <span className="bg-forest text-forest-foreground px-4 py-1 mx-2 inline-block border-2 border-forest-foreground/20 leading-none">We deploy in weeks.</span>
-              We operate exclusively within the Microsoft data stack because predictability scales.
-            </p>
+              <p className="text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed text-foreground/80 mb-10">
+                We start by building the PE firm's data foundation in Microsoft Fabric — a structure designed so that when the next acquisition closes, plugging in their data takes weeks, not months. <span className="bg-foreground text-background px-2 py-0.5 inline-block -skew-x-6 shadow-[4px_4px_0_hsl(var(--forest))] leading-none">The first portfolio company is the hardest. The second is faster. By the third, it's a repeatable process.</span>
+              </p>
+              <p className="text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed text-foreground/80 mb-10">
+                We specialize in Microsoft Fabric, Power BI, and Azure because that's what most mid-market companies already have. They don't need another platform — they need someone who can make what they already own actually work.
+              </p>
+              <p className="text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed text-foreground/80">
+                Today we work beyond PE: Medical device manufacturers. Construction companies. Financial services firms. The core problem is the same: data scattered across systems that needs to be unified, governed, and useful. We bring it together on the Microsoft stack, layer in AI where it adds value, and <span className="bg-forest text-forest-foreground px-2 py-0.5 inline-block border-2 border-forest-foreground/20 leading-none">get it done faster than the typical consulting timeline.</span>
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -165,8 +185,9 @@ export default function AboutPage() {
       <section className="bg-background pt-32 pb-40">
         <div className="container mx-auto px-6 max-w-[1400px]">
           <div className="mb-20">
-            <h2 className="text-xs font-mono font-bold text-foreground/50 uppercase tracking-[0.4em] mb-4 border-l-2 border-forest pl-4">Platform Blueprint</h2>
-            <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">Ecosystem <br /> Capabilities.</h3>
+            <h2 className="text-xs font-mono font-bold text-foreground/50 uppercase tracking-[0.4em] mb-4 border-l-2 border-forest pl-4">The Short Version</h2>
+            <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">What <br /> We Do.</h3>
+            <p className="text-xl md:text-2xl font-bold text-foreground/70 mt-6 max-w-2xl">We build data platforms and analytics on the Microsoft stack.</p>
           </div>
 
           <div className="border-t-[3px] border-foreground flex flex-col">
@@ -237,11 +258,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
             <div className="lg:col-span-5">
-              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-foreground mb-8">
-                The <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/30 stroke-text">Operators.</span>
+              <h2 className="text-xs font-mono font-bold text-foreground/50 uppercase tracking-[0.4em] mb-4 border-l-2 border-forest pl-4">Who Does The Work</h2>
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-foreground mb-8 mt-2">
+                Our <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/30 stroke-text">Team.</span>
               </h2>
               <p className="text-xl font-bold text-foreground/80 leading-relaxed max-w-md">
-                A highly-curated index of our internal DNA. We deploy localized elite teams, bridging the absolute gap between business intent and technical reality.
+                Data Engineers, Data Architects, Analytics Engineers, and Power BI developers. People who've built production systems and know what works beyond the vendor demo.
               </p>
             </div>
 
@@ -301,15 +323,15 @@ export default function AboutPage() {
             <div className="text-center relative z-10 px-8 w-full -mt-16">
               <div className="w-16 h-[2px] bg-forest-foreground/50 mx-auto mb-6"></div>
               <h2 className="text-4xl md:text-5xl lg:text-[4rem] font-black tracking-tighter uppercase leading-[0.95] mb-6">
-                Ready to <br /> Anchor It?
+                Let's <br /> Talk.
               </h2>
               <p className="text-base md:text-lg font-bold max-w-sm mx-auto text-forest-foreground/80 leading-relaxed mb-8">
-                Step off the consulting treadmill. Establish a resilient, massive-scale data platform today.
+                Whether you're integrating an acquisition, replacing spreadsheets, or trying to get more from your Microsoft investment — we're happy to have a conversation.
               </p>
 
               <Link href="/contact" passHref>
                 <Button variant="hero" size="lg" className="px-8 py-6 text-lg rounded-none border-4 border-forest-foreground bg-forest-foreground text-forest font-black uppercase tracking-[0.2em] shadow-none hover:bg-transparent hover:text-forest-foreground transition-all duration-300">
-                  ENGAGE GROOT
+                  Book a Conversation
                   <ArrowRight className="ml-3 w-5 h-5" />
                 </Button>
               </Link>

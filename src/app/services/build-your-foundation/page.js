@@ -39,10 +39,10 @@ export default function BuildYourFoundation() {
       </div>
 
       {/* Hero Section - Split Layout */}
-      <section className="relative py-20 lg:py-32 overflow-hidden bg-background">
+      <section className="relative py-20 lg:py-16 md:py-24 lg:py-32 overflow-hidden bg-background">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent_60%)]" />
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
             {/* Left Content */}
             <motion.div
@@ -51,7 +51,7 @@ export default function BuildYourFoundation() {
               variants={staggerContainer}
               className="lg:col-span-7 max-w-2xl"
             >
-              <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-foreground">
+              <motion.h1 variants={fadeIn} className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-foreground">
                 Build a Data <br />
                 <span className="text-[hsl(var(--secondary))]">
                   Foundation
@@ -103,9 +103,9 @@ export default function BuildYourFoundation() {
       </section>
 
       {/* Sticky Scroll Section - The Problem */}
-      <section id="problem" className="py-32 bg-muted/20 relative" ref={targetRef}>
+      <section id="problem" className="py-16 md:py-24 lg:py-32 bg-muted/20 relative" ref={targetRef}>
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
             {/* Sticky Sidebar */}
             <div className="lg:col-span-4 pl-0 lg:pl-4">
@@ -129,7 +129,7 @@ export default function BuildYourFoundation() {
             <div className="lg:col-span-8 flex flex-col gap-8">
               <motion.div
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
-                className="bg-background/80 backdrop-blur-md p-10 rounded-[2rem] border border-border/60 hover:border-emerald-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
+                className="bg-background/80 backdrop-blur-md p-6 md:p-10 rounded-[2rem] border border-border/60 hover:border-emerald-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
               >
                 <div className="h-16 w-16 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Settings size={32} />
@@ -140,7 +140,7 @@ export default function BuildYourFoundation() {
 
               <motion.div
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
-                className="bg-background/80 backdrop-blur-md p-10 rounded-[2rem] border border-border/60 hover:border-emerald-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
+                className="bg-background/80 backdrop-blur-md p-6 md:p-10 rounded-[2rem] border border-border/60 hover:border-emerald-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
               >
                 <div className="h-16 w-16 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Server size={32} />
@@ -154,7 +154,7 @@ export default function BuildYourFoundation() {
       </section>
 
       {/* What's Included */}
-      <section className="py-32 bg-background relative border-y border-border/40">
+      <section className="py-16 md:py-24 lg:py-32 bg-background relative border-y border-border/40">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.05)_1px,transparent_1px)] bg-[size:24px_24px]" />
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="text-center mb-20 max-w-3xl mx-auto">
@@ -184,7 +184,7 @@ export default function BuildYourFoundation() {
       </section>
 
       {/* Engineering Principles */}
-      <section className="py-32 bg-muted/30 relative text-foreground overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-muted/30 relative text-foreground overflow-hidden">
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-4">Methodology</h2>
@@ -213,9 +213,9 @@ export default function BuildYourFoundation() {
       </section>
 
       {/* Is this right for you & Starting Point combined */}
-      <section className="py-32 bg-background text-foreground border-y border-border/40">
+      <section className="py-16 md:py-24 lg:py-32 bg-background text-foreground border-y border-border/40">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-5">
               <h2 className="text-3xl md:text-5xl font-bold mb-10 tracking-tight text-foreground">Is this right for you?</h2>
               <div className="space-y-6">
@@ -229,7 +229,7 @@ export default function BuildYourFoundation() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-7 bg-muted/20 border border-border/60 p-10 rounded-[2.5rem] shadow-sm hover:shadow-glow transition-shadow duration-500"
+              className="lg:col-span-7 bg-muted/20 border border-border/60 p-6 md:p-10 rounded-[2.5rem] shadow-sm hover:shadow-glow transition-shadow duration-500"
             >
               <h2 className="text-3xl font-bold mb-10 tracking-tight text-emerald-600 dark:text-emerald-400">How we start</h2>
               <div className="space-y-6 relative">
@@ -255,7 +255,7 @@ export default function BuildYourFoundation() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden bg-background">
+      <section className="py-16 lg:py-24 relative overflow-hidden bg-background">
         <div className="absolute inset-0 bg-primary/5" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="border border-primary/20 bg-background/80 backdrop-blur-xl rounded-[3rem] p-12 md:p-20 max-w-5xl mx-auto shadow-sm shadow-primary/5 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
@@ -310,7 +310,7 @@ function ApproachCard({ step, title, desc }) {
   return (
     <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-      className="bg-background/80 backdrop-blur-sm border border-emerald-500/20 p-10 rounded-[2rem] h-full hover:bg-muted/50 transition-colors"
+      className="bg-background/80 backdrop-blur-sm border border-emerald-500/20 p-6 md:p-10 rounded-[2rem] h-full hover:bg-muted/50 transition-colors"
     >
       <div className="text-5xl font-black text-emerald-500/20 mb-6 font-mono -ml-2">{step}</div>
       <h3 className="text-2xl font-bold mb-4 text-foreground tracking-tight">{title}</h3>

@@ -4,8 +4,9 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 export const metadata = {
-  title: "Contact Us | Groot Analytics",
-  description: "Get in touch with Groot Analytics. Let's discuss your data, AI, and automation challenges.",
+  title: "Contact Groot Analytics | Microsoft Fabric & Power BI Consulting",
+  description: "Contact Groot Analytics for Microsoft Fabric implementations, Power BI consulting, and Azure data platform projects.",
+  keywords: "contact Microsoft Fabric consultant, Power BI consulting",
 };
 
 const ContactInfoItem = ({ icon: Icon, label, value, delay }) => (
@@ -47,11 +48,11 @@ export default function ContactPage() {
 
           <div className="mt-12 mb-20 relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-foreground">
-              Let's build the <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">future together</span>
+              Let's <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">Talk</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-              Ready to modernize your data stack? Schedule a technical consultation to discuss your architecture, tooling, and roadmap.
+              Have a project in mind or just want to explore what's possible — reach out.
             </p>
           </div>
 
@@ -59,34 +60,31 @@ export default function ContactPage() {
             {/* Contact Info Side */}
             <div className="lg:col-span-4 space-y-12">
               <div className="space-y-6">
+                <a href="#" className="block">
+                  <ContactInfoItem
+                    icon={Phone}
+                    label="Book a Call"
+                    value="30 mins to see if we can help"
+                  />
+                </a>
                 <ContactInfoItem
                   icon={Mail}
-                  label="Email Us"
+                  label="Email Directly"
                   value="hello@grootanalytics.com"
-                />
-                <ContactInfoItem
-                  icon={Phone}
-                  label="Call Us"
-                  value="+1 (555) 123-4567"
-                />
-                <ContactInfoItem
-                  icon={MapPin}
-                  label="Visit HQ"
-                  value="Tech Center Level 12, Innovation City"
                 />
               </div>
 
-              {/* Global Presence Card */}
-              {/* <div className="relative p-10 rounded-[2rem] bg-[#0a0a0a] border border-white/5 overflow-hidden group hover:border-emerald-500/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_30px_rgba(52,211,153,0.15)]">
+              {/* What Happens Next Card */}
+              <div className="relative p-8 rounded-[2rem] bg-[#0a0a0a] border border-white/5 overflow-hidden group hover:border-emerald-500/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_30px_rgba(52,211,153,0.15)] mt-12">
                 <div className="absolute inset-0 bg-emerald-500/5 blur-[80px] group-hover:bg-emerald-500/10 transition-all duration-700" />
-                <h3 className="relative text-2xl font-bold text-white mb-4">Global Presence</h3>
-                <p className="relative text-emerald-100/60 leading-relaxed max-w-sm mb-8">
-                  Serving clients across North America, Europe, and Asia Pacific.
-                </p>
-                <div className="relative h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                  <div className="absolute top-0 left-0 h-full w-1/3 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse" />
-                </div>
-              </div> */}
+                <h3 className="relative text-2xl font-bold text-white mb-6">What Happens Next</h3>
+                <ol className="relative text-emerald-100/80 leading-relaxed font-medium space-y-4 list-decimal pl-5">
+                  <li className="pl-2">We respond within one business day</li>
+                  <li className="pl-2">We schedule a conversation if there's a potential fit</li>
+                  <li className="pl-2">If we can help, we put together a clear proposal</li>
+                  <li className="pl-2">If we're not the right fit, we'll tell you</li>
+                </ol>
+              </div>
             </div>
 
             {/* Form Side */}

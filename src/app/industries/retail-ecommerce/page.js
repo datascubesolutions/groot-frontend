@@ -2,7 +2,7 @@
 
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
-import { ChevronRight, Truck, HardHat, Pickaxe, MapPin, SearchCheck, Plane } from "lucide-react";
+import { ChevronRight, ShoppingCart, Store, BarChart3, TrendingUp, Tags, Users } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -20,13 +20,13 @@ const staggerContainer = {
   }
 };
 
-export default function ConstructionFleetPage() {
+export default function RetailEcommercePage() {
   return (
     <main className="pt-20 min-h-screen relative bg-background">
       <Breadcrumb
         items={[
           { label: "Industries", href: "/industries" },
-          { label: "Construction & Fleet", href: "/industries/construction-fleet" },
+          { label: "Retail & E-Commerce", href: "/industries/retail-ecommerce" },
         ]}
       />
 
@@ -43,23 +43,23 @@ export default function ConstructionFleetPage() {
               variants={staggerContainer}
               className="lg:col-span-7 max-w-2xl"
             >
-              <div className="mb-6 inline-flex border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-500 rounded-full px-4 py-1.5 text-sm font-bold uppercase tracking-wider shadow-[0_0_15px_-3px_rgba(245,158,11,0.3)]">
+              <div className="mb-6 inline-flex border border-pink-500/30 bg-pink-500/10 text-pink-600 dark:text-pink-400 rounded-full px-4 py-1.5 text-sm font-bold uppercase tracking-wider shadow-[0_0_15px_-3px_rgba(236,72,153,0.3)]">
                 Industry Expertise
               </div>
               <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-foreground">
-                Construction <br />
+                Retail <br />
                 <span className="text-[hsl(var(--secondary))]">
-                  &amp; Fleet
+                  &amp; E-Commerce
                 </span>
               </motion.h1>
               <motion.p variants={fadeIn} className="text-xl md:text-2xl text-foreground/90 mb-10 leading-relaxed font-light">
-                Turn telematics and project data into bottom-line performance. We build analytics that track fleet utilization, reduce rental overruns, and defend project margins.
+                Omnichannel data strategy. We unite fragmented Shopify, POS, and digital marketing data into a single Lakehouse to identify your most valuable customers and drive margin.
               </motion.p>
               
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact?industry=construction" passHref>
-                  <Button variant="hero" size="lg" className="px-8 shadow-[0_0_20px_rgba(245,158,11,0.25)] group">
-                    Optimize Your Fleet
+                <Link href="/contact?industry=retail" passHref>
+                  <Button variant="hero" size="lg" className="px-8 shadow-[0_0_20px_rgba(236,72,153,0.25)] group">
+                    Unlock Omnichannel Value
                     <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -74,9 +74,9 @@ export default function ConstructionFleetPage() {
               className="lg:col-span-5 relative hidden lg:block"
             >
               <div className="relative w-full aspect-square max-w-lg mx-auto transform-gpu overflow-hidden rounded-3xl shadow-2xl shadow-[hsl(var(--primary))/0.15]">
-                <div className="absolute inset-0 bg-amber-500/5 border border-amber-500/20 backdrop-blur-sm rounded-3xl flex items-center justify-center">
-                  <div className="w-48 h-48 bg-amber-500/10 rounded-full blur-3xl absolute" />
-                  <Truck className="w-32 h-32 text-amber-500 opacity-80" strokeWidth={1} />
+                <div className="absolute inset-0 bg-pink-500/5 border border-pink-500/20 backdrop-blur-sm rounded-3xl flex items-center justify-center">
+                  <div className="w-48 h-48 bg-pink-500/10 rounded-full blur-3xl absolute" />
+                  <ShoppingCart className="w-32 h-32 text-pink-500 opacity-80" strokeWidth={1} />
                 </div>
               </div>
             </motion.div>
@@ -89,23 +89,23 @@ export default function ConstructionFleetPage() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.03)_1px,transparent_1px)] bg-[size:24px_24px]" />
         <div className="container mx-auto px-6 relative z-10 max-w-7xl">
           <div className="text-center mb-20 text-foreground">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-amber-500 mb-4 drop-shadow-[0_0_10px_rgba(245,158,11,0.2)]">Execution</h2>
-            <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">Operating with precision.</h3>
+            <h2 className="text-sm font-bold uppercase tracking-widest text-pink-500 mb-4 drop-shadow-[0_0_10px_rgba(236,72,153,0.2)]">Execution</h2>
+            <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">Solving the fragmented customer journey.</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-fr">
             {/* Feature 1 */}
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              className="md:col-span-4 bg-background/80 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-amber-500/40 transition-colors shadow-sm relative overflow-hidden"
+              className="md:col-span-4 bg-background/80 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-pink-500/40 transition-colors shadow-sm relative overflow-hidden"
             >
                <div className="relative z-10">
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500 ring-1 ring-amber-500/30 group-hover:bg-amber-500/20 transition-all duration-300">
-                  <MapPin className="w-6 h-6" strokeWidth={1.5} />
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/10 text-pink-500 ring-1 ring-pink-500/30 group-hover:bg-pink-500/20 transition-all duration-300">
+                  <Users className="w-6 h-6" strokeWidth={1.5} />
                 </div>
-                <h4 className="text-2xl font-bold mb-4 text-foreground">Connected Sites</h4>
+                <h4 className="text-2xl font-bold mb-4 text-foreground">Customer 360</h4>
                 <p className="text-muted-foreground leading-relaxed">
-                  Integrate structured ERP data with unstructured field reports and IoT sensor data to create a real-time digital twin of your construction sites.
+                  Stitching together e-commerce platforms, loyalty programs, in-store POS, and customer support tickets into a unified identity graph to understand true Customer Lifetime Value (CLV).
                 </p>
               </div>
             </motion.div>
@@ -113,15 +113,15 @@ export default function ConstructionFleetPage() {
             {/* Feature 2 */}
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              className="md:col-span-8 bg-background/80 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-amber-500/40 transition-colors shadow-sm relative overflow-hidden"
+              className="md:col-span-8 bg-background/80 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-pink-500/40 transition-colors shadow-sm relative overflow-hidden"
             >
                <div className="relative z-10">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500 ring-1 ring-amber-500/30 group-hover:bg-amber-500/20 transition-all duration-300">
-                  <Pickaxe className="w-7 h-7" strokeWidth={1.5} />
+                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-pink-500/10 text-pink-500 ring-1 ring-pink-500/30 group-hover:bg-pink-500/20 transition-all duration-300">
+                  <BarChart3 className="w-7 h-7" strokeWidth={1.5} />
                 </div>
-                <h4 className="text-3xl font-bold mb-4 text-foreground">Margin Protection</h4>
+                <h4 className="text-3xl font-bold mb-4 text-foreground">Margin Analytics Architecture</h4>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Don't wait until month-end close to realize a project is bleeding cash. We architect real-time semantic models that unite labor costs, material spend, and change orders so project managers can course-correct instantly.
+                  Moving beyond top-line revenue reporting. We design semantic models that allocate digital ad spend, shipping costs, and return rates down to the individual SKU and order level, revealing your true profitability.
                 </p>
               </div>
             </motion.div>
@@ -129,15 +129,15 @@ export default function ConstructionFleetPage() {
             {/* Feature 3 */}
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              className="md:col-span-12 bg-background/80 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-amber-500/40 transition-colors shadow-sm relative overflow-hidden"
+              className="md:col-span-12 bg-background/80 backdrop-blur-sm border border-border/60 rounded-[2rem] p-10 hover:border-pink-500/40 transition-colors shadow-sm relative overflow-hidden"
             >
                <div className="relative z-10">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500 ring-1 ring-amber-500/30 group-hover:bg-amber-500/20 transition-all duration-300">
-                  <SearchCheck className="w-7 h-7" strokeWidth={1.5} />
+                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-pink-500/10 text-pink-500 ring-1 ring-pink-500/30 group-hover:bg-pink-500/20 transition-all duration-300">
+                  <Store className="w-7 h-7" strokeWidth={1.5} />
                 </div>
-                <h4 className="text-3xl font-bold mb-4 text-foreground">Fleet Telematics Ecosystem</h4>
+                <h4 className="text-3xl font-bold mb-4 text-foreground">Omnichannel Executive Dashboards</h4>
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                  Connect natively to Samsara, Geotab, or OEM APIs. Ingest coordinate, fuel, and diagnostic data directly into Microsoft Fabric to build predictive maintenance pipelines that keep your heavy machinery operational.
+                  Stop debating which number is right. We build certified Power BI applications that allow executives to seamlessly drill down from high-level omnichannel metrics into specific regional or product category performance.
                 </p>
               </div>
             </motion.div>
@@ -156,27 +156,27 @@ export default function ConstructionFleetPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeIn}
-              className="p-10 bg-muted/20 backdrop-blur-sm rounded-[2rem] border border-border/60 hover:border-amber-500/30 transition-all duration-300 shadow-sm"
+              className="p-10 bg-muted/20 backdrop-blur-sm rounded-[2rem] border border-border/60 hover:border-pink-500/30 transition-all duration-300 shadow-sm"
             >
-              <div className="w-12 h-12 bg-amber-500/10 text-amber-500 rounded-xl flex items-center justify-center mb-6">
-                <HardHat className="w-6 h-6" />
+              <div className="w-12 h-12 bg-pink-500/10 text-pink-500 rounded-xl flex items-center justify-center mb-6">
+                <TrendingUp className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-foreground">Equipment Utilization & Allocation</h3>
+              <h3 className="text-2xl font-bold mb-4 text-foreground">Marketing Mix Modeling</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Track exact engine hours used versus hours rented. Generate dashboards that automatically flag idle rented equipment across job sites, saving hundreds of thousands in unnecessary overage fees.
+                Ingest data from Meta, Google Ads, TikTok, and direct mail to calculate true Return on Ad Spend (ROAS) and optimize your cross-channel marketing budget allocation.
               </p>
             </motion.div>
 
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeIn}
-              className="p-10 bg-muted/20 backdrop-blur-sm rounded-[2rem] border border-border/60 hover:border-amber-500/30 transition-all duration-300 shadow-sm"
+              className="p-10 bg-muted/20 backdrop-blur-sm rounded-[2rem] border border-border/60 hover:border-pink-500/30 transition-all duration-300 shadow-sm"
             >
-              <div className="w-12 h-12 bg-amber-500/10 text-amber-500 rounded-xl flex items-center justify-center mb-6">
-                <Truck className="w-6 h-6" />
+              <div className="w-12 h-12 bg-pink-500/10 text-pink-500 rounded-xl flex items-center justify-center mb-6">
+                <Tags className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-foreground">Driver Safety & Telematics</h3>
+              <h3 className="text-2xl font-bold mb-4 text-foreground">Dynamic Pricing Optimization</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Build enterprise safety rankings that aggregate harsh braking, speeding, and camera-event data from Samsara/Geotab into customized Power BI scorecards for regional safety managers.
+                Implement data pipelines that synthesize competitor pricing, inventory levels, and demand elasticity to recommend pricing adjustments that protect your margins.
               </p>
             </motion.div>
           </div>
@@ -186,14 +186,14 @@ export default function ConstructionFleetPage() {
       {/* CTA Section */}
       <section className="py-24 bg-background border-t border-border">
         <div className="container mx-auto px-6 max-w-5xl">
-          <div className="bg-amber-500/5 border border-amber-500/20 rounded-[3rem] p-12 md:p-16 text-center shadow-lg shadow-amber-500/5">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Don't fly blind on your job sites.</h2>
+          <div className="bg-pink-500/5 border border-pink-500/20 rounded-[3rem] p-12 md:p-16 text-center shadow-lg shadow-pink-500/5">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Stop operating in silos.</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              If you lack visibility into your major cost drivers—equipment, materials, and labor—it's time to build a professional-grade telemetry and ERP integration.
+              When your e-commerce platform doesn't talk to your physical stores, you lose. Let's architect a unified data strategy that scales.
             </p>
-            <Link href="/contact?industry=construction" passHref>
-              <Button variant="hero" size="lg" className="px-10 text-lg h-14 rounded-full bg-amber-600 hover:bg-amber-500 text-white shadow-[0_0_20px_rgba(245,158,11,0.3)]">
-                Optimize Your Fleet
+            <Link href="/contact?industry=retail" passHref>
+              <Button variant="hero" size="lg" className="px-10 text-lg h-14 rounded-full bg-pink-600 hover:bg-pink-500 text-white shadow-[0_0_20px_rgba(236,72,153,0.3)]">
+                Unlock Omnichannel Value
               </Button>
             </Link>
           </div>

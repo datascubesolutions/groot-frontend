@@ -17,7 +17,7 @@ export default function StackEvaluation() {
         ]}
       />
       
-      <section className="relative flex-grow flex flex-col justify-center items-center py-24 overflow-hidden bg-background">
+      <section className="relative flex-grow flex flex-col justify-center items-center py-16 lg:py-24 overflow-hidden bg-background">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.15),transparent_50%)]" />
         
         {/* Animated Background Elements */}
@@ -55,7 +55,7 @@ export default function StackEvaluation() {
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1] text-foreground"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 tracking-tight leading-[1.1] text-foreground"
           >
             Platform Evaluation
           </motion.h1>

@@ -303,7 +303,7 @@ export function QuizFlow({ onComplete }) {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="mb-4"
       >
-        <h2 className="text-4xl font-extrabold tracking-tight text-foreground mb-2">
+        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-2">
           Get Your <span className="text-forest">Data Readiness Score</span>
         </h2>
       </motion.div>
@@ -359,7 +359,7 @@ export function QuizFlow({ onComplete }) {
         <Button
           onClick={() => setStep("questions")}
           size="lg"
-          className="w-full sm:w-auto px-10 py-6 text-lg font-bold shadow-xl shadow-forest/20 hover:shadow-forest/30 hover:-translate-y-0.5 transition-all duration-300 bg-forest hover:bg-forest/90 text-white rounded-xl"
+          className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-6 text-base sm:text-lg font-bold shadow-xl shadow-forest/20 hover:shadow-forest/30 hover:-translate-y-0.5 transition-all duration-300 bg-forest hover:bg-forest/90 text-white rounded-xl"
         >
           Start Assessment
           <ArrowRight className="ml-2 w-5 h-5" />
@@ -369,8 +369,8 @@ export function QuizFlow({ onComplete }) {
   );
 
   const renderQuestion = () => (
-    <div className="py-4 px-2">
-      <div className="flex items-center justify-between mb-6">
+    <div className="py-2 sm:py-4 px-0 sm:px-2">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
         <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/70">
           Question {currentQIndex + 1} of {QUIZ_DATA.length}
         </span>
@@ -378,7 +378,7 @@ export function QuizFlow({ onComplete }) {
 
 
 
-      <h3 className="text-[2rem] font-semibold tracking-tight text-foreground mb-8 leading-snug min-h-[4rem]">
+      <h3 className="text-2xl md:text-[2rem] font-semibold tracking-tight text-foreground mb-8 leading-snug min-h-[4rem]">
         {currentQuestion.question}
       </h3>
 
@@ -401,16 +401,16 @@ export function QuizFlow({ onComplete }) {
               <Label
                 htmlFor={option.id}
                 className={cn(
-                  "flex items-center justify-between p-5 md:p-6 rounded-none border-[3px] transition-all duration-300 cursor-pointer group relative overflow-hidden shadow-[6px_6px_0_0_hsl(var(--foreground))]",
-                  "peer-data-[state=checked]:border-forest peer-data-[state=checked]:bg-forest/5 peer-data-[state=checked]:shadow-[8px_8px_0_0_hsl(var(--forest))] peer-data-[state=checked]:-translate-y-1",
-                  "hover:border-foreground hover:bg-muted/50 hover:-translate-y-1 hover:shadow-[10px_10px_0_0_hsl(var(--foreground))]",
+                  "flex items-center justify-between p-3 sm:p-5 md:p-6 rounded-none border-[3px] transition-all duration-300 cursor-pointer group relative overflow-hidden shadow-[4px_4px_0_0_hsl(var(--foreground))] sm:shadow-[6px_6px_0_0_hsl(var(--foreground))]",
+                  "peer-data-[state=checked]:border-forest peer-data-[state=checked]:bg-forest/5 peer-data-[state=checked]:shadow-[4px_4px_0_0_hsl(var(--forest))] sm:peer-data-[state=checked]:shadow-[8px_8px_0_0_hsl(var(--forest))] peer-data-[state=checked]:-translate-y-1",
+                  "hover:border-foreground hover:bg-muted/50 hover:-translate-y-1 hover:shadow-[6px_6px_0_0_hsl(var(--foreground))] sm:hover:shadow-[10px_10px_0_0_hsl(var(--foreground))]",
                   "border-foreground bg-card"
                 )}
               >
-                <div className="flex items-center gap-4 relative z-10 w-full pr-8">
+                <div className="flex items-center gap-2 sm:gap-4 relative z-10 w-full pr-2 sm:pr-8 min-w-0">
                   {/* Letter Key Box */}
                   <div className={cn(
-                    "flex items-center justify-center w-8 h-8 rounded-none border-[2px] border-foreground text-sm font-bold transition-colors duration-300 shrink-0",
+                    "flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-none border-[2px] border-foreground text-xs sm:text-sm font-bold transition-colors duration-300 shrink-0",
                     isSelected 
                       ? "bg-forest border-forest text-white shadow-sm" 
                       : "bg-muted text-muted-foreground group-hover:bg-foreground/10 group-hover:text-foreground/80"
@@ -420,7 +420,7 @@ export function QuizFlow({ onComplete }) {
                   
                   {/* Option Label */}
                   <span className={cn(
-                    "text-lg font-semibold transition-colors duration-300 leading-snug",
+                    "text-sm sm:text-lg font-semibold transition-colors duration-300 leading-snug w-full whitespace-normal break-words",
                     isSelected ? "text-forest" : "text-foreground/80 group-hover:text-foreground"
                   )}>
                     {option.label}
@@ -429,7 +429,7 @@ export function QuizFlow({ onComplete }) {
 
                 {/* Animated Checkmark */}
                 <div className={cn(
-                  "w-6 h-6 rounded-none border-[3px] flex items-center justify-center transition-all duration-300 relative z-10 shrink-0",
+                  "w-5 h-5 sm:w-6 sm:h-6 rounded-none border-[2px] sm:border-[3px] flex items-center justify-center transition-all duration-300 relative z-10 shrink-0 ml-1 sm:ml-0",
                   isSelected
                     ? "border-forest bg-forest shadow-[2px_2px_0_0_hsl(var(--foreground))]"
                     : "border-foreground group-hover:border-forest"
@@ -661,7 +661,7 @@ export function QuizFlow({ onComplete }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="p-8 rounded-3xl bg-slate-900 text-white mb-8 relative overflow-hidden group shadow-2xl ring-1 ring-border/50"
+          className="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white mb-8 relative overflow-hidden group shadow-2xl ring-1 ring-border/50"
         >
           {/* Animated Gradient Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-forest to-slate-900 z-0" />
@@ -682,9 +682,9 @@ export function QuizFlow({ onComplete }) {
                 </p>
               </div>
 
-              <div className="shrink-0">
-                <Button className="w-full sm:w-auto bg-card text-foreground hover:bg-forest/5 hover:text-forest/90 font-bold px-8 py-6 h-auto rounded-xl shadow-lg transition-all hover:scale-105" onClick={() => window.location.href = '/services/define-your-roadmap/maturity-assessment'}>
-                  Explore Solution <ArrowRight className="ml-2 w-5 h-5" />
+              <div className="shrink-0 w-full sm:w-auto">
+                <Button className="w-full sm:w-auto bg-card text-foreground hover:bg-forest/5 hover:text-forest/90 font-bold px-4 sm:px-8 py-4 sm:py-6 text-sm sm:text-base h-auto rounded-xl shadow-lg transition-all hover:scale-105" onClick={() => window.location.href = '/services/define-your-roadmap/maturity-assessment'}>
+                  <span>Explore Solution</span> <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 </Button>
               </div>
             </div>
@@ -698,13 +698,13 @@ export function QuizFlow({ onComplete }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <Button className="flex-1 py-4 h-auto text-lg font-bold bg-forest hover:bg-forest text-white shadow-xl shadow-forest/20 hover:shadow-forest/40 hover:-translate-y-1 transition-all rounded-xl">
-            <Download className="mr-2 w-6 h-6" />
-            Download AI Roadmap
+          <Button className="flex-1 py-4 h-auto text-sm sm:text-lg font-bold bg-forest hover:bg-forest text-white shadow-xl shadow-forest/20 hover:shadow-forest/40 hover:-translate-y-1 transition-all rounded-xl whitespace-normal break-words text-center">
+            <Download className="mr-2 w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
+            <span>Download AI Roadmap</span>
           </Button>
-          <Button variant="outline" className="flex-1 py-4 h-auto text-lg font-bold border-2 border-border hover:border-slate-300 hover:bg-muted/50 text-foreground/80 rounded-xl transition-all">
-            <Calendar className="mr-2 w-6 h-6" />
-            Book a 30-min Call
+          <Button variant="outline" className="flex-1 py-4 h-auto text-sm sm:text-lg font-bold border-2 border-border hover:border-slate-300 hover:bg-muted/50 text-foreground/80 rounded-xl transition-all whitespace-normal break-words text-center">
+            <Calendar className="mr-2 w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
+            <span>Book a 30-min Call</span>
           </Button>
         </motion.div>
 
