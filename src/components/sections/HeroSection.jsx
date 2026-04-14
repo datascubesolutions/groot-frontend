@@ -176,7 +176,7 @@ export function HeroSection() {
               </svg>
 
               {/* Analytics Text - Animates after logo assembly */}
-              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[14%] md:-mt-[85px] lg:-mt-[170px] -ml-[7%] md:-ml-[50px] lg:-ml-[88px]">
+              <div className="flex justify-center gap-[0.02em] md:gap-[0.04em] z-20 -mt-[23%] sm:-mt-[16%] md:-mt-[85px] lg:-mt-[170px] -ml-[7%] md:-ml-[50px] lg:-ml-[88px]">
                 {"Analytics".split("").map((char, index) => (
                   <m.span
                     key={index}
