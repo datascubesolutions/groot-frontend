@@ -6,6 +6,7 @@
  */
 
 import { ROUTE_METADATA } from '@/lib/routes/metadata';
+import { siteConfig } from "@/config/site.config";
 
 /**
  * Generate static metadata object for pages
@@ -27,11 +28,13 @@ export function generateMetadata({
   keywords,
   noIndex = false,
 }) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const url = `${siteUrl}${path}`;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
+  const normalizedPath = normalizePath(path);
+  const url = `${siteUrl}${normalizedPath}`;
   const ogImage = image ? `${siteUrl}${image}` : `${siteUrl}/og-image.jpg`;
 
   const metadata = {
+    metadataBase: new URL(siteUrl),
     title,
     description,
     keywords,
@@ -58,14 +61,18 @@ export function generateMetadata({
       description,
       images: [ogImage],
     },
+    robots: {
+      index: !noIndex,
+      follow: !noIndex,
+      googleBot: {
+        index: !noIndex,
+        follow: !noIndex,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
   };
-
-  if (noIndex) {
-    metadata.robots = {
-      index: false,
-      follow: false,
-    };
-  }
 
   return metadata;
 }
@@ -98,6 +105,18 @@ export function generateRouteMetadata(routeKey, overrides = {}) {
     noIndex: !routeMeta.indexable,
     ...overrides,
   });
+}
+
+function normalizePath(path = "/") {
+  if (!path) return "/";
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    try {
+      return new URL(path).pathname || "/";
+    } catch {
+      return "/";
+    }
+  }
+  return path.startsWith("/") ? path : `/${path}`;
 }
 
 
@@ -134,17 +153,22 @@ export function generateFAQSchema(faqs) {
  * @param {string} article.author - Author name
  * @param {string} article.image - Article image URL
  * @param {string} article.url - Article URL
+ * @param {number} [article.wordCount] - Word count
+ * @param {string[]} [article.keywords] - Article keywords
  * @returns {Object} JSON-LD structured data
  */
 export function generateArticleSchema(article) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: article.title,
     description: article.description,
     image: article.image,
     datePublished: article.datePublished,
     dateModified: article.dateModified || article.datePublished,
+    ...(article.wordCount ? { wordCount: article.wordCount } : {}),
+    ...(article.keywords?.length ? { keywords: article.keywords.join(", ") } : {}),
     author: {
       '@type': 'Person',
       name: article.author,
@@ -154,7 +178,9 @@ export function generateArticleSchema(article) {
       name: 'Groot Analytics',
       logo: {
         '@type': 'ImageObject',
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`,
+        url: `${siteUrl}/logo.png`,
+        width: 512,
+        height: 512,
       },
     },
     mainEntityOfPage: {
@@ -162,12 +188,34 @@ export function generateArticleSchema(article) {
       '@id': article.url,
     },
   };
+};
+
+/**
+ * Generate breadcrumb structured data.
+ *
+ * @param {Array<{name: string, path: string}>} items - Breadcrumb items
+ * @returns {Object} JSON-LD structured data
+ */
+export function generateBreadcrumbSchema(items = []) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${siteUrl}${normalizePath(item.path)}`,
+    })),
+  };
 }
 
-export default {
+const seoUtils = {
   generateMetadata,
   generateRouteMetadata,
-
   generateFAQSchema,
   generateArticleSchema,
+  generateBreadcrumbSchema,
 };
+
+export default seoUtils;

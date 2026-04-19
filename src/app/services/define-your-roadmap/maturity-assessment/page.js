@@ -199,7 +199,13 @@ export default function MaturityAssessment() {
                 <div className="relative border-[3px] border-foreground bg-card ml-0 mr-6 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] flex flex-col outline outline-1 outline-offset-4 outline-foreground/10">
 
                   <div className="h-[280px] relative overflow-hidden bg-black border-b-[3px] border-forest">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Data Analytics Complexity" className="object-cover w-full h-full mix-blend-luminosity opacity-40 group-hover:scale-110 group-hover:opacity-70 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+                    <Image
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+                      alt="Data Analytics Complexity"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 35vw"
+                      className="object-cover mix-blend-luminosity opacity-40 group-hover:scale-110 group-hover:opacity-70 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]"
+                    />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 
@@ -615,7 +621,13 @@ export default function MaturityAssessment() {
                 {/* Severe Cropped Image Grid */}
                 <div className="relative h-[280px] w-full bg-background p-1.5 pb-0">
                   <div className="relative w-full h-full overflow-hidden bg-black outline outline-1 outline-border/20">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Future Readiness" className="object-cover w-full h-full grayscale-[80%] opacity-80 group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+                    <Image
+                      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+                      alt="Future Readiness"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      className="object-cover grayscale-[80%] opacity-80 group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]"
+                    />
                     <div className="absolute inset-0 bg-forest/20 mix-blend-overlay group-hover:bg-transparent transition-colors duration-1000" />
 
                     {/* High tech overlay elements */}

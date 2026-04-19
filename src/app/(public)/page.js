@@ -1,5 +1,6 @@
 import { HeroSkeleton } from "@/components/skeletons/HeroSkeleton";
 import { SectionSkeleton } from "@/components/skeletons/SectionSkeleton";
+import { generateBreadcrumbSchema, generateRouteMetadata } from "@/lib/seo";
 import { lazy, Suspense } from "react";
 
 // Lazy load sections for better performance
@@ -38,33 +39,40 @@ const DataReadinessSection = lazy(() =>
 // const EnterpriseHeroSection = lazy(() => import("@/components/sections/elite/EnterpriseHeroSection"));
 
 export const metadata = {
-  title: "Groot Analytics - Microsoft Azure Data & AI Solutions",
-  description:
-    "Specializing in Microsoft Azure, Fabric, Databricks, and AI Foundry. Turning messy data into intelligent decisions with modern cloud technologies.",
+  ...generateRouteMetadata("home"),
 };
 
 export default function HomePage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+  ]);
+
   return (
-    <div className="min-h-screen bg-background">
-      <Suspense fallback={<HeroSkeleton />}>
-        <HeroSection />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <VideoScrollSection />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <ClientLogosSection />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <ServicesSection />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <ProcessTimelineSection />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <PainPointsSection />
-      </Suspense>
-      {/*
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="min-h-screen bg-background">
+        <Suspense fallback={<HeroSkeleton />}>
+          <HeroSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <VideoScrollSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <ClientLogosSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <ServicesSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <ProcessTimelineSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <PainPointsSection />
+        </Suspense>
+        {/*
       <div className="theme-elite">
         <Suspense fallback={<SectionSkeleton />}>
           <EnterpriseHeroSection />
@@ -84,6 +92,7 @@ export default function HomePage() {
         </Suspense>
       </div>
       */}
-    </div>
+      </div>
+    </>
   );
 }

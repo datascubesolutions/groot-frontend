@@ -7,6 +7,14 @@ export const metadata = {
   title: "Contact Groot Analytics | Microsoft Fabric & Power BI Consulting",
   description: "Contact Groot Analytics for Microsoft Fabric implementations, Power BI consulting, and Azure data platform projects.",
   keywords: "contact Microsoft Fabric consultant, Power BI consulting",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Groot Analytics | Microsoft Fabric & Power BI Consulting",
+    description: "Contact Groot Analytics for Microsoft Fabric implementations, Power BI consulting, and Azure data platform projects.",
+    url: "/contact",
+  },
 };
 
 const ContactInfoItem = ({ icon: Icon, label, value, delay }) => (
@@ -48,11 +56,11 @@ export default function ContactPage() {
 
           <div className="mt-12 mb-20 relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-foreground">
-              Let's <br />
+              Let&apos;s <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">Talk</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-              Have a project in mind or just want to explore what's possible — reach out.
+              Have a project in mind or just want to explore what&apos;s possible — reach out.
             </p>
           </div>
 
@@ -60,7 +68,13 @@ export default function ContactPage() {
             {/* Contact Info Side */}
             <div className="lg:col-span-4 space-y-12">
               <div className="space-y-6">
-                <a href="#" className="block">
+                {/* Book a Call — using a real anchor; replace href with your Calendly/booking URL */}
+                <a
+                  href="https://calendly.com/grootanalytics"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
                   <ContactInfoItem
                     icon={Phone}
                     label="Book a Call"
@@ -75,14 +89,14 @@ export default function ContactPage() {
               </div>
 
               {/* What Happens Next Card */}
-              <div className="relative p-8 rounded-[2rem] bg-[#0a0a0a] border border-white/5 overflow-hidden group hover:border-emerald-500/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_30px_rgba(52,211,153,0.15)] mt-12">
+              <div className="relative p-8 rounded-[2rem] bg-card/80 border border-border overflow-hidden group hover:border-emerald-500/30 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(52,211,153,0.15)] mt-12 backdrop-blur-sm">
                 <div className="absolute inset-0 bg-emerald-500/5 blur-[80px] group-hover:bg-emerald-500/10 transition-all duration-700" />
-                <h3 className="relative text-2xl font-bold text-white mb-6">What Happens Next</h3>
-                <ol className="relative text-emerald-100/80 leading-relaxed font-medium space-y-4 list-decimal pl-5">
+                <h3 className="relative text-2xl font-bold text-foreground mb-6">What Happens Next</h3>
+                <ol className="relative text-muted-foreground leading-relaxed font-medium space-y-4 list-decimal pl-5">
                   <li className="pl-2">We respond within one business day</li>
-                  <li className="pl-2">We schedule a conversation if there's a potential fit</li>
+                  <li className="pl-2">We schedule a conversation if there&apos;s a potential fit</li>
                   <li className="pl-2">If we can help, we put together a clear proposal</li>
-                  <li className="pl-2">If we're not the right fit, we'll tell you</li>
+                  <li className="pl-2">If we&apos;re not the right fit, we&apos;ll tell you</li>
                 </ol>
               </div>
             </div>

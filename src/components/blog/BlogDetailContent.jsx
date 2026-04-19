@@ -2,6 +2,8 @@
 
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { sanitizeHtml } from "@/lib/sanitize";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowLeft,
@@ -19,6 +21,7 @@ import {
   Share2,
   Twitter,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { RelatedPosts } from "./RelatedPosts";
@@ -145,10 +148,10 @@ function ShareButtons({ title, vertical = false }) {
   }, []);
 
   const items = [
-    { Icon: Twitter, label: "Twitter", href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}` },
-    { Icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/sharing/share-offsite/" },
-    { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/sharer/sharer.php" },
-    { Icon: Mail, label: "Email", href: `mailto:?subject=${encodeURIComponent(title)}` },
+    { Icon: Twitter, label: "Share on Twitter", href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}` },
+    { Icon: Linkedin, label: "Share on LinkedIn", href: "https://www.linkedin.com/sharing/share-offsite/" },
+    { Icon: Facebook, label: "Share on Facebook", href: "https://www.facebook.com/sharer/sharer.php" },
+    { Icon: Mail, label: "Share via Email", href: `mailto:?subject=${encodeURIComponent(title)}` },
   ];
 
   const btnClass =
@@ -157,12 +160,12 @@ function ShareButtons({ title, vertical = false }) {
   return (
     <div className={`flex ${vertical ? "flex-col" : ""} gap-2`}>
       {items.map(({ Icon, label, href }) => (
-        <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={btnClass} title={label}>
-          <Icon className="h-3.5 w-3.5" />
+        <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={btnClass} aria-label={label}>
+          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
         </a>
       ))}
-      <button onClick={handleCopy} className={btnClass} title="Copy link">
-        {copied ? <Check className="h-3.5 w-3.5 text-accent" /> : <Copy className="h-3.5 w-3.5" />}
+      <button onClick={handleCopy} className={btnClass} aria-label={copied ? "Link copied" : "Copy link"}>
+        {copied ? <Check className="h-3.5 w-3.5 text-accent" aria-hidden="true" /> : <Copy className="h-3.5 w-3.5" aria-hidden="true" />}
       </button>
     </div>
   );
@@ -222,18 +225,22 @@ const articleStyles = `
 
 function ArticleContent({ content }) {
   const ref = useRef(null);
+  // Sanitize content once to a stable value — safe to pass to dangerouslySetInnerHTML.
+  // sanitizeHtml strips <script>, on* handlers, javascript:/data: URIs.
+  const safeContent = sanitizeHtml(content);
 
   useEffect(() => {
     if (!ref.current) return;
     ref.current.querySelectorAll("h2, h3").forEach((el, idx) => {
       el.id = `heading-${idx}`;
     });
-  }, [content]);
+  }, [safeContent]);
 
   return (
     <>
+      {/* articleStyles is a static string defined in this file — not user input, safe. */}
       <style dangerouslySetInnerHTML={{ __html: articleStyles }} />
-      <div ref={ref} className="blog-article max-w-none" dangerouslySetInnerHTML={{ __html: content }} />
+      <div ref={ref} className="blog-article max-w-none" dangerouslySetInnerHTML={{ __html: safeContent }} />
     </>
   );
 }
@@ -243,9 +250,11 @@ function ArticleContent({ content }) {
    ================================================================ */
 function BlogDetailView({ post, relatedPosts }) {
   const heroRef = useRef(null);
+  const reducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.4]);
+  // Disable parallax for users who prefer reduced motion (mobile perf + accessibility)
+  const heroY = useTransform(scrollYProgress, [0, 1], reducedMotion ? ["0%", "0%"] : ["0%", "20%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], reducedMotion ? [1, 1] : [1, 0.4]);
 
   return (
     <article className="min-h-screen bg-background relative overflow-x-hidden">
@@ -257,10 +266,14 @@ function BlogDetailView({ post, relatedPosts }) {
           style={{ y: heroY, opacity: heroOpacity }}
           className="relative w-full aspect-[2.8/1] md:aspect-[3/1] lg:aspect-[3.2/1] min-h-[340px] max-h-[560px]"
         >
-          <img
+          {/* LCP image — priority load, next/image for optimized formats */}
+          <Image
             src={post.image || "/images/placeholder.jpg"}
             alt={post.title}
-            className="h-full w-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
             style={{ filter: "brightness(1.05) contrast(1.05)" }}
           />
           <div
@@ -346,10 +359,10 @@ function BlogDetailView({ post, relatedPosts }) {
               <div className="h-11 w-11 rounded-full bg-gradient-to-br from-primary to-forest p-[2px] shadow-sm flex-shrink-0">
                 <div className="h-full w-full rounded-full bg-card overflow-hidden relative">
                   {post.author.avatar ? (
-                    <img src={post.author.avatar} alt={post.author.name} className="h-full w-full object-cover" />
+                    <Image src={post.author.avatar} alt={post.author.name} width={44} height={44} className="h-full w-full object-cover" />
                   ) : (
                     <div className="h-full w-full flex items-center justify-center bg-primary/10">
-                      <span className="font-bold text-primary">{post.author.name.charAt(0)}</span>
+                      <span className="font-bold text-primary" aria-hidden="true">{post.author.name.charAt(0)}</span>
                     </div>
                   )}
                 </div>
@@ -429,10 +442,10 @@ function BlogDetailView({ post, relatedPosts }) {
                   <div className="h-16 w-16 sm:h-[72px] sm:w-[72px] rounded-2xl bg-gradient-to-br from-primary to-forest p-[2px] flex-shrink-0 shadow-md">
                     <div className="h-full w-full rounded-[14px] bg-card overflow-hidden">
                       {post.author.avatar ? (
-                        <img src={post.author.avatar} alt={post.author.name} className="h-full w-full object-cover" />
+                        <Image src={post.author.avatar} alt={post.author.name} width={72} height={72} className="h-full w-full object-cover" />
                       ) : (
                         <div className="h-full w-full flex items-center justify-center bg-primary/10">
-                          <span className="font-bold text-primary text-2xl">{post.author.name.charAt(0)}</span>
+                          <span className="font-bold text-primary text-2xl" aria-hidden="true">{post.author.name.charAt(0)}</span>
                         </div>
                       )}
                     </div>
@@ -446,12 +459,16 @@ function BlogDetailView({ post, relatedPosts }) {
                       Writing about the intersection of AI, analytics, and enterprise strategy.
                     </p>
                     <div className="mt-4 flex items-center gap-2">
-                      {[Twitter, Linkedin].map((Icon, i) => (
+                      {[
+                        { Icon: Twitter, label: "Follow on Twitter" },
+                        { Icon: Linkedin, label: "Connect on LinkedIn" },
+                      ].map(({ Icon, label }) => (
                         <button
-                          key={i}
+                          key={label}
+                          aria-label={label}
                           className="h-8 w-8 rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all"
                         >
-                          <Icon className="h-3.5 w-3.5" />
+                          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                         </button>
                       ))}
                     </div>
@@ -485,6 +502,7 @@ function BlogDetailView({ post, relatedPosts }) {
                   <div className="flex flex-col sm:flex-row gap-3 max-w-lg">
                     <input
                       type="email"
+                      aria-label="Email address for newsletter"
                       placeholder="your@email.com"
                       className="flex-1 h-12 px-4 rounded-xl border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
                     />
@@ -516,17 +534,22 @@ function BlogDetailView({ post, relatedPosts }) {
                 <ShareButtons title={post.title} />
               </div>
 
-              <div className="rounded-2xl p-6 cursor-pointer group" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
+              <button
+                type="button"
+                aria-label="Bookmark this article to save for later"
+                className="rounded-2xl p-6 group text-left w-full"
+                style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}
+              >
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(161, 88%, 16%, 0.1)" }}>
-                    <Bookmark className="h-4 w-4" style={{ color: "hsl(161, 88%, 16%)" }} />
+                    <Bookmark className="h-4 w-4" aria-hidden="true" style={{ color: "hsl(161, 88%, 16%)" }} />
                   </div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: "hsl(200, 28%, 16%)" }}>Save for later</p>
                     <p className="text-xs" style={{ color: "hsl(200, 15%, 40%)" }}>Bookmark this article</p>
                   </div>
                 </div>
-              </div>
+              </button>
 
               <div className="rounded-2xl p-6" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
                 <div className="flex items-center gap-2 mb-4">
@@ -556,13 +579,15 @@ function BlogDetailView({ post, relatedPosts }) {
                   {["Data Engineering", "Machine Learning", "Cloud Infrastructure", "Business Intelligence", post.category]
                     .filter((v, i, a) => a.indexOf(v) === i)
                     .map((topic) => (
-                      <span
+                      <button
                         key={topic}
-                        className="px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-primary/10 hover:text-primary transition-all cursor-pointer"
+                        type="button"
+                        aria-label={`Filter by topic: ${topic}`}
+                        className="px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-primary/10 hover:text-primary transition-all"
                         style={{ backgroundColor: "hsl(160, 20%, 94%)", color: "hsl(200, 15%, 40%)" }}
                       >
                         {topic}
-                      </span>
+                      </button>
                     ))}
                 </div>
               </div>

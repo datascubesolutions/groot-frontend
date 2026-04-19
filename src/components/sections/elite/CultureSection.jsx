@@ -2,6 +2,7 @@
 
 import { ArrowRight, ExternalLink, GraduationCap, Play, Users } from "lucide-react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { Suspense, useEffect, useState } from "react"; // Added useState, useEffect, Suspense
 
 // Lazy load Lottie component
@@ -37,10 +38,10 @@ const CultureSection = () => {
               Grow <span className="bg-gradient-to-r from-[hsl(168,76%,40%)] to-[hsl(142,71%,38%)] bg-clip-text text-transparent">With Us</span>
             </h2>
           </div>
-          <button className="btn-primary group self-start lg:self-auto">
+          <Link href="/about/careers" className="btn-primary group self-start lg:self-auto inline-flex items-center gap-2">
             <span>See Open Roles</span>
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </button>
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          </Link>
         </div>
 
         {/* Bento Grid Layout */}
@@ -66,13 +67,13 @@ const CultureSection = () => {
                 <p className="text-white/80 text-base lg:text-lg leading-relaxed mb-6 max-w-lg">
                   A home for the curious, our Academy is a living university, blending art, science, & business to grow explorers and first-principle thinkers.
                 </p>
-                <a
-                  href="#"
+                <Link
+                  href="/about/careers"
                   className="inline-flex items-center gap-2 text-primary font-semibold group/link"
                 >
                   <span>Explore</span>
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover/link:translate-x-1" />
-                </a>
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
+                </Link>
               </div>
             </div>
           </div>
@@ -101,9 +102,13 @@ const CultureSection = () => {
                 {/* Play Button Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/20 to-transparent">
                   <div className="relative">
-                    <div className="absolute inset-0 w-16 h-16 rounded-full bg-forest/30 animate-ping" style={{ animationDuration: '2s' }} />
-                    <button className="relative w-16 h-16 rounded-full bg-forest flex items-center justify-center shadow-xl shadow-forest/30 group-hover:scale-110 transition-transform">
-                      <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
+                    <div className="absolute inset-0 w-16 h-16 rounded-full bg-forest/30 animate-ping" style={{ animationDuration: '2s' }} aria-hidden="true" />
+                    <button
+                      className="relative w-16 h-16 rounded-full bg-forest flex items-center justify-center shadow-xl shadow-forest/30 group-hover:scale-110 transition-transform"
+                      aria-label="Play culture video"
+                      type="button"
+                    >
+                      <Play className="w-6 h-6 text-white ml-1" fill="currentColor" aria-hidden="true" />
                     </button>
                   </div>
                 </div>
@@ -113,9 +118,14 @@ const CultureSection = () => {
                 <h3 className="text-lg font-serif font-semibold text-foreground mb-2">
                   Ontologies and Agentic AI
                 </h3>
-                <a href="#" className="inline-flex items-center gap-2 text-primary font-semibold text-sm group/link">
+                <a
+                  href="https://www.linkedin.com/company/groot-analytics"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-primary font-semibold text-sm group/link"
+                >
                   <span>Watch On LinkedIn</span>
-                  <ExternalLink className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                  <ExternalLink className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" aria-hidden="true" />
                 </a>
               </div>
             </div>
@@ -133,10 +143,10 @@ const CultureSection = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                     A day of learning, laughter, and togetherness where families experience the curiosity and collaboration that define Groot.
                   </p>
-                  <a href="#" className="inline-flex items-center gap-2 text-primary font-semibold text-sm group/link">
+                  <Link href="/about/careers" className="inline-flex items-center gap-2 text-primary font-semibold text-sm group/link">
                     <span>Know More</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                  </a>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
+                  </Link>
                 </div>
               </div>
             </div>

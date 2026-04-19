@@ -18,11 +18,14 @@ import {
 import { useCallback, useRef, useState } from "react";
 
 // ── Basic Markdown → HTML renderer ────────────────────────────────────────────
+// SECURITY: This renderer is safe because it HTML-escapes ALL input FIRST
+// (replacing &, <, >) before applying Markdown transforms. This means no
+// user-controlled markup can reach the output. Do NOT remove the escape block.
 function renderMarkdown(md) {
   if (!md) return "";
 
   let html = md
-    // Escape HTML
+    // HTML-escape before any transforms — this is the XSS-prevention foundation
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
@@ -54,10 +57,14 @@ function renderMarkdown(md) {
   // Horizontal rule
   html = html.replace(/^---$/gm, '<hr class="md-hr" />');
 
-  // Links
+  // Links — guard href against javascript:/data:/vbscript: URIs
   html = html.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2" class="md-link" target="_blank" rel="noopener noreferrer">$1</a>'
+    (_, text, url) => {
+      // Strip dangerous URI schemes
+      const safeUrl = /^(?:javascript|data|vbscript):/i.test(url.trim()) ? '#' : url;
+      return `<a href="${safeUrl}" class="md-link" target="_blank" rel="noopener noreferrer">${text}</a>`;
+    }
   );
 
   // Images

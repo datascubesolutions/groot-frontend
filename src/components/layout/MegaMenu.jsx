@@ -154,14 +154,14 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
         ) : (
           <div className="flex flex-col lg:flex-row min-h-[280px]">
             {/* Left - About header area (same width as Services sidebar) */}
-            <div className="w-full lg:w-1/4 border-r border-border py-4 bg-muted/20 flex flex-col justify-center">
+            <div className="w-full lg:w-1/4 border-r border-border py-4 bg-muted/20 flex flex-col justify-center overflow-hidden">
               <div className="px-6 flex flex-col justify-center items-center text-center h-full">
-                <div className="relative w-full h-32 lg:h-40 mb-4 flex items-center justify-center">
+                <div className="relative w-full h-32 lg:h-40 mb-4 flex items-center justify-center overflow-hidden">
                   <Image 
                     src="/svg/Groot%20final%20logo.png" 
                     alt="Groot Analytics" 
                     fill
-                    className="object-contain scale-[2.2] brightness-0 opacity-80 dark:invert-0 drop-shadow-md"
+                    className="object-contain scale-[2.2] brightness-0 opacity-80 dark:invert-0 drop-shadow-md pointer-events-none"
                   />
                 </div>
                 <h3 className="text-[10px] font-bold text-forest uppercase tracking-[0.2em] mb-2 w-full text-left">
@@ -173,8 +173,8 @@ export function MegaMenu({ isOpen, onClose, menuType = "Services" }) {
               </div>
             </div>
 
-            {/* Middle - About links */}
-            <div className="w-full lg:w-1/2 p-6 bg-background flex flex-col justify-center">
+            {/* Middle - About links (z-10: stay above any scaled logo bleed from the left column) */}
+            <div className="relative z-10 w-full lg:w-1/2 p-6 bg-background flex flex-col justify-center">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
                 {ABOUT_LINKS.map((item) => (
                   <Link

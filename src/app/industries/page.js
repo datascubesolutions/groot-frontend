@@ -1,5 +1,6 @@
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
+import { generateBreadcrumbSchema, generateRouteMetadata } from "@/lib/seo";
 import {
   ArrowRight,
   Brain,
@@ -13,11 +14,11 @@ import {
   Stethoscope,
   TrendingUp
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Industries We Serve | Groot Analytics",
-  description: "Specialized analytics and AI solutions across Financial Services, Manufacturing, Healthcare, Retail, and Technology.",
+  ...generateRouteMetadata("industries"),
 };
 
 const caseStudies = [
@@ -96,15 +97,25 @@ const industries = [
 ];
 
 export default function IndustriesPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Industries", path: "/industries" },
+  ]);
+
   return (
-    <main className="bg-background min-h-screen font-sans selection:bg-primary/30 selection:text-forest">
-      <div className="pt-24 px-6 container mx-auto">
-        <Breadcrumb
-          items={[
-            { label: "Industries", href: "/industries" }
-          ]}
-        />
-      </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="bg-background min-h-screen font-sans selection:bg-primary/30 selection:text-forest">
+        <div className="pt-24 px-6 container mx-auto">
+          <Breadcrumb
+            items={[
+              { label: "Industries", href: "/industries" }
+            ]}
+          />
+        </div>
 
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background pt-10 pb-20">
@@ -128,12 +139,21 @@ export default function IndustriesPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6 items-center w-full">
-            <Button size="lg" className="h-[4.5rem] px-12 text-lg shadow-xl shadow-primary/15 font-bold rounded-full bg-forest text-white hover:bg-forest/90 transition-all duration-300 transform hover:-translate-y-1">
-              Consult Your Expert <ArrowRight size={22} className="ml-3" />
-            </Button>
+            <Link href="/contact">
+              <Button size="lg" className="h-[4.5rem] px-12 text-lg shadow-xl shadow-primary/15 font-bold rounded-full bg-forest text-white hover:bg-forest/90 transition-all duration-300 transform hover:-translate-y-1">
+                Consult Your Expert <ArrowRight size={22} className="ml-3" aria-hidden="true" />
+              </Button>
+            </Link>
             <div className="relative group w-full sm:w-auto">
-              <input type="text" placeholder="Search by industry..." className="h-[4.5rem] px-8 pr-16 rounded-full border border-border bg-card hover:border-primary/50 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all w-full sm:w-80 sm:group-focus-within:w-[28rem] shadow-sm text-foreground font-medium placeholder:text-muted-foreground text-lg" />
-              <Search className="absolute right-6 top-1/2 -translate-y-1/2 text-primary" size={24} />
+              <label htmlFor="industry-search" className="sr-only">Search by industry</label>
+              <input
+                id="industry-search"
+                type="search"
+                placeholder="Search by industry..."
+                aria-label="Search by industry"
+                className="h-[4.5rem] px-8 pr-16 rounded-full border border-border bg-card hover:border-primary/50 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all w-full sm:w-80 sm:group-focus-within:w-[28rem] shadow-sm text-foreground font-medium placeholder:text-muted-foreground text-lg"
+              />
+              <Search className="absolute right-6 top-1/2 -translate-y-1/2 text-primary" size={24} aria-hidden="true" />
             </div>
           </div>
         </div>
@@ -167,7 +187,14 @@ export default function IndustriesPage() {
                   <div className="w-full lg:w-[55%] relative">
                     <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden relative shadow-2xl shadow-foreground/5 ring-1 ring-border group-hover:shadow-[0_40px_80px_-20px_rgba(20,184,166,0.15)] transition-all duration-700 transform group-hover:-translate-y-4">
                       <div className="absolute inset-0 bg-forest/5 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-500" />
-                      <img src={study.image} alt={study.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                      <Image
+                        src={study.image}
+                        alt={study.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 55vw"
+                        {...(index === 0 ? { priority: true } : {})}
+                        className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
 
                       {/* Floating Labels */}
                       <div className="absolute top-10 left-10 px-6 py-2.5 rounded-full bg-card/95 backdrop-blur-md border border-border text-xs font-extrabold text-forest z-20 tracking-[0.15em] shadow-xl uppercase">
@@ -197,9 +224,10 @@ export default function IndustriesPage() {
                     </div>
 
                     <div>
-                      <Link href="#" className="inline-flex items-center gap-3 text-lg font-bold text-foreground group-hover:text-forest transition-colors tracking-wide relative after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:w-0 after:bg-forest after:transition-all group-hover:after:w-full">
-                        Read Case Study <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform duration-300" />
-                      </Link>
+                      {/* Case study detail pages are not yet available — link removed to avoid dead navigation */}
+                      <span className="inline-flex items-center gap-3 text-lg font-bold text-muted-foreground tracking-wide cursor-default" aria-label={`Case study: ${study.title} — coming soon`}>
+                        Read Case Study <ArrowRight size={22} aria-hidden="true" />
+                      </span>
                     </div>
                   </div>
 
@@ -236,7 +264,13 @@ export default function IndustriesPage() {
                   {/* Card Header Image Snippet */}
                   <div className="h-64 w-full relative overflow-hidden">
                     <div className="absolute inset-0 bg-forest/5 mix-blend-multiply z-10 transition-colors duration-500 group-hover:bg-transparent"></div>
-                    <img src={industry.image} alt={industry.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                    <Image
+                      src={industry.image}
+                      alt={industry.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    />
                     {/* Floating icon */}
                     <div className="absolute -bottom-10 left-10 z-20 flex items-center justify-center w-20 h-20 rounded-[1.5rem] bg-card border border-border shadow-md group-hover:scale-110 group-hover:bg-forest transition-all duration-500">
                       <Icon size={32} className="text-forest group-hover:text-white transition-colors duration-500" />
@@ -256,9 +290,11 @@ export default function IndustriesPage() {
                       ))}
                     </ul>
 
-                    <Button variant="ghost" className="w-full justify-between px-0 hover:bg-transparent hover:text-forest group-hover:text-forest font-bold text-foreground border-t border-border/50 pt-8 rounded-none h-auto text-lg">
-                      Explore Solutions <ArrowRight size={24} className="text-primary group-hover:translate-x-2 transition-transform duration-300" />
-                    </Button>
+                    <Link href="/services" className="mt-auto">
+                      <Button variant="ghost" className="w-full justify-between px-0 hover:bg-transparent hover:text-forest group-hover:text-forest font-bold text-foreground border-t border-border/50 pt-8 rounded-none h-auto text-lg">
+                        Explore Solutions <ArrowRight size={24} className="text-primary group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               );
@@ -283,12 +319,15 @@ export default function IndustriesPage() {
           <p className="text-2xl md:text-3xl text-muted-foreground mb-16 max-w-4xl mx-auto text-balance font-light leading-relaxed">
             Our data foundation transcends borders. Let's engineer a cohesive, intelligent strategy uniquely tuned to your specific market dynamics.
           </p>
-          <Button size="lg" className="h-[5rem] px-14 text-xl shadow-2xl shadow-forest/10 rounded-full font-extrabold bg-forest text-white hover:bg-forest/90 hover:-translate-y-1 transition-all duration-300 group">
-            Start the Conversation
-            <ArrowRight size={26} className="ml-4 group-hover:translate-x-2 transition-transform" />
-          </Button>
+          <Link href="/contact">
+            <Button size="lg" className="h-[5rem] px-14 text-xl shadow-2xl shadow-forest/10 rounded-full font-extrabold bg-forest text-white hover:bg-forest/90 hover:-translate-y-1 transition-all duration-300 group">
+              Start the Conversation
+              <ArrowRight size={26} className="ml-4 group-hover:translate-x-2 transition-transform" aria-hidden="true" />
+            </Button>
+          </Link>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

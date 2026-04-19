@@ -23,25 +23,29 @@ export function Footer() {
               </p>
               <div className="flex gap-4">
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/groot-analytics"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-birch/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
-                  aria-label="LinkedIn"
+                  aria-label="Follow Groot Analytics on LinkedIn"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-5 h-5" aria-hidden="true" />
                 </a>
                 <a
-                  href="#"
+                  href="https://twitter.com/grootanalytics"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-birch/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
-                  aria-label="Twitter"
+                  aria-label="Follow Groot Analytics on Twitter / X"
                 >
-                  <Twitter className="w-5 h-5" />
+                  <Twitter className="w-5 h-5" aria-hidden="true" />
                 </a>
                 <a
-                  href="#"
+                  href="mailto:hello@grootanalytics.com"
                   className="w-10 h-10 rounded-full bg-birch/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
-                  aria-label="Email"
+                  aria-label="Email Groot Analytics at hello@grootanalytics.com"
                 >
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-5 h-5" aria-hidden="true" />
                 </a>
               </div>
             </ScrollReveal>

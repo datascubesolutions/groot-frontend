@@ -4,15 +4,14 @@ import { BlogSkeleton } from "@/components/skeletons/BlogSkeleton";
 import { BLOG_POSTS, CATEGORIES } from "@/lib/blog-data";
 import { fetchInternalBlogList } from "@/lib/blog-server";
 import { fetchHashnodePosts } from "@/lib/hashnode";
+import { generateBreadcrumbSchema, generateRouteMetadata } from "@/lib/seo";
 import { isEnglish } from "@/lib/utils/language";
 import { Suspense } from "react";
 
 const POSTS_PER_PAGE = 6;
 
 export const metadata = {
-    title: "Blog | Groot Analytics",
-    description:
-        "Expert perspectives on modern data stacks, AI engineering, and strategies shaping the next generation of enterprise intelligence.",
+    ...generateRouteMetadata("blog"),
 };
 
 // Revalidate the page every 5 minutes so new posts appear without a full redeploy
@@ -122,25 +121,35 @@ export default async function BlogListingPage({ searchParams }) {
         (safePage - 1) * POSTS_PER_PAGE,
         safePage * POSTS_PER_PAGE
     );
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Blog", path: "/blog" },
+    ]);
 
     return (
-        <main className="min-h-screen bg-background pb-32" role="main" id="blog-content">
-            <BlogPageHeader />
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <main className="min-h-screen bg-background pb-32" role="main" id="blog-content">
+                <BlogPageHeader />
 
-            <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-[1400px] relative z-10">
-                <Suspense fallback={<BlogSkeleton />}>
-                    <BlogListingClient
-                        allCategories={allCategories}
-                        selectedCategory={selectedCategory}
-                        searchTerm={searchTerm}
-                        currentPage={safePage}
-                        totalPages={totalPages}
-                        totalFilteredCount={filteredPosts.length}
-                        featuredPost={featuredPost}
-                        paginatedPosts={paginatedPosts}
-                    />
-                </Suspense>
-            </div>
-        </main>
+                <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-[1400px] relative z-10">
+                    <Suspense fallback={<BlogSkeleton />}>
+                        <BlogListingClient
+                            allCategories={allCategories}
+                            selectedCategory={selectedCategory}
+                            searchTerm={searchTerm}
+                            currentPage={safePage}
+                            totalPages={totalPages}
+                            totalFilteredCount={filteredPosts.length}
+                            featuredPost={featuredPost}
+                            paginatedPosts={paginatedPosts}
+                        />
+                    </Suspense>
+                </div>
+            </main>
+        </>
     );
 }

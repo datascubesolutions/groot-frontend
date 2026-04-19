@@ -1,95 +1,79 @@
-"use client";
+import { siteConfig } from "@/config/site.config";
 
-/**
- * Structured Data Component
- * Adds JSON-LD structured data for SEO
- */
-
-export function OrganizationSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Groot Analytics",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-    logo: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/logo.png`,
-    description:
-      "Data Engineering & AI Solutions - Turning messy data into intelligent decisions",
-    sameAs: [
-      // Add social media links
-    ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "Customer Service",
-      email: "contact@grootanalytics.com",
-    },
-  };
-
+function JsonLd({ schema }) {
   return (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
   );
+}
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
+
+export function OrganizationSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${baseUrl}/#organization`,
+    name: siteConfig.name,
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
+    description:
+      "Data engineering, analytics, and AI solutions for enterprise transformation.",
+    email: "contact@grootanalytics.com",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: "contact@grootanalytics.com",
+      availableLanguage: ["en"],
+    },
+  };
+
+  return <JsonLd schema={schema} />;
 }
 
 export function WebsiteSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Groot Analytics",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/search?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
+    "@id": `${baseUrl}/#website`,
+    name: siteConfig.name,
+    url: baseUrl,
+    publisher: {
+      "@id": `${baseUrl}/#organization`,
     },
+    inLanguage: "en",
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <JsonLd schema={schema} />;
 }
 
 export function ServiceSchema({ services = [] }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: "Data Engineering & AI Solutions",
+    serviceType: "Data Engineering, Analytics, and AI Consulting",
     provider: {
-      "@type": "Organization",
-      name: "Groot Analytics",
+      "@id": `${baseUrl}/#organization`,
     },
-    areaServed: "Worldwide",
-    availableChannel: {
-      "@type": "ServiceChannel",
-      serviceUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-      serviceType: "Online",
+    areaServed: {
+      "@type": "Place",
+      name: "Global",
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Data Services",
-      itemListElement: services.map((service, index) => ({
+      name: "Data and AI Services",
+      itemListElement: services.map((service) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
           name: service.name,
           description: service.description,
         },
-        position: index + 1,
       })),
     },
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <JsonLd schema={schema} />;
 }

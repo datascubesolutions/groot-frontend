@@ -8,16 +8,21 @@ import { useState } from "react";
 
 const InputGroup = ({ label, name, type = "text", value, onChange, error, placeholder, required = false }) => (
   <div className="space-y-1.5 group">
-    <label className="text-xs font-semibold text-muted-foreground ml-1 uppercase tracking-wider group-focus-within:text-primary transition-colors">
-      {label} {required && <span className="text-primary">*</span>}
+    <label htmlFor={name} className="text-xs font-semibold text-muted-foreground ml-1 uppercase tracking-wider group-focus-within:text-primary transition-colors">
+      {label} {required && <span className="text-primary" aria-hidden="true">*</span>}
+      {required && <span className="sr-only">(required)</span>}
     </label>
     <div className="relative">
       <input
+        id={name}
         type={type}
         name={name}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        aria-required={required}
+        aria-invalid={!!error}
+        aria-describedby={error ? `${name}-error` : undefined}
         className={cn(
           "w-full h-12 px-4 rounded-xl bg-white/40 border-2 transition-all duration-300 outline-none text-foreground font-medium",
           "placeholder:text-muted-foreground/80",
@@ -35,6 +40,7 @@ const InputGroup = ({ label, name, type = "text", value, onChange, error, placeh
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 10 }}
             className="absolute right-3 top-3 text-red-500"
+            aria-hidden="true"
           >
             <AlertCircle size={18} />
           </motion.div>
@@ -43,6 +49,8 @@ const InputGroup = ({ label, name, type = "text", value, onChange, error, placeh
     </div>
     {error && (
       <motion.p
+        id={`${name}-error`}
+        role="alert"
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: 1, height: "auto" }}
         className="text-xs text-red-500 ml-1"
@@ -55,16 +63,21 @@ const InputGroup = ({ label, name, type = "text", value, onChange, error, placeh
 
 const TextAreaGroup = ({ label, name, value, onChange, error, placeholder, required = false }) => (
   <div className="space-y-1.5 group">
-    <label className="text-xs font-semibold text-muted-foreground ml-1 uppercase tracking-wider group-focus-within:text-primary transition-colors">
-      {label} {required && <span className="text-primary">*</span>}
+    <label htmlFor={name} className="text-xs font-semibold text-muted-foreground ml-1 uppercase tracking-wider group-focus-within:text-primary transition-colors">
+      {label} {required && <span className="text-primary" aria-hidden="true">*</span>}
+      {required && <span className="sr-only">(required)</span>}
     </label>
     <div className="relative">
       <textarea
+        id={name}
         name={name}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
         rows={5}
+        aria-required={required}
+        aria-invalid={!!error}
+        aria-describedby={error ? `${name}-error` : undefined}
         className={cn(
           "w-full p-4 rounded-xl bg-white/40 border-2 transition-all duration-300 outline-none resize-none text-foreground font-medium",
           "placeholder:text-muted-foreground/80",
@@ -78,6 +91,8 @@ const TextAreaGroup = ({ label, name, value, onChange, error, placeholder, requi
     </div>
     {error && (
       <motion.p
+        id={`${name}-error`}
+        role="alert"
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: 1, height: "auto" }}
         className="text-xs text-red-500 ml-1"
@@ -90,14 +105,16 @@ const TextAreaGroup = ({ label, name, value, onChange, error, placeholder, requi
 
 const SelectGroup = ({ label, name, value, onChange, options, required = false }) => (
   <div className="space-y-1.5 group">
-    <label className="text-xs font-semibold text-muted-foreground ml-1 uppercase tracking-wider group-focus-within:text-primary transition-colors">
-      {label} {required && <span className="text-primary">*</span>}
+    <label htmlFor={name} className="text-xs font-semibold text-muted-foreground ml-1 uppercase tracking-wider group-focus-within:text-primary transition-colors">
+      {label} {required && <span className="text-primary" aria-hidden="true">*</span>}
     </label>
     <div className="relative">
       <select
+        id={name}
         name={name}
         value={value}
         onChange={onChange}
+        aria-required={required}
         className={cn(
           "w-full h-12 px-4 rounded-xl bg-white/40 border-2 border-gray-200 transition-all duration-300 outline-none text-foreground font-medium appearance-none",
           "hover:bg-white/60 hover:border-primary/30",
@@ -110,7 +127,7 @@ const SelectGroup = ({ label, name, value, onChange, options, required = false }
           </option>
         ))}
       </select>
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none group-focus-within:text-primary transition-colors">
+      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none group-focus-within:text-primary transition-colors" aria-hidden="true">
         <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function FeaturedPost({ post }) {
@@ -15,10 +16,14 @@ export function FeaturedPost({ post }) {
                 {/* Image */}
                 <div className="relative aspect-[16/10] lg:aspect-[4/3] w-full overflow-hidden rounded-2xl lg:rounded-3xl bg-muted shadow-2xl shadow-primary/5">
                     <Link href={href} className="block h-full w-full">
-                        <img
+                        {/* Featured post LCP image — load with priority */}
+                        <Image
                             src={post.image || "/images/placeholder.jpg"}
                             alt={post.title}
-                            className="h-full w-full object-cover transition-all duration-700 group-hover:scale-105"
+                            fill
+                            priority
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            className="object-cover transition-all duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-transparent" />
                     </Link>
@@ -51,7 +56,7 @@ export function FeaturedPost({ post }) {
                         <div className="flex items-center gap-3">
                             <div className="h-10 w-10 rounded-full bg-muted overflow-hidden ring-2 ring-background flex items-center justify-center">
                                 {post.author.avatar ? (
-                                    <img src={post.author.avatar} alt={post.author.name} className="h-full w-full object-cover" />
+                                    <Image src={post.author.avatar} alt={post.author.name} width={40} height={40} className="h-full w-full object-cover" />
                                 ) : (
                                     <div className="h-full w-full bg-primary/10" />
                                 )}

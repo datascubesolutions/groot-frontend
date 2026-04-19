@@ -2,7 +2,9 @@ import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import { Navbar } from "@/components/layout";
 import Footer from "@/components/sections/Footer";
 import { OrganizationSchema, WebsiteSchema } from "@/components/seo/StructuredData";
+import { siteConfig } from "@/config/site.config";
 import { METADATA } from "@/lib/constants";
+import { env } from "@/lib/env";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { Toaster } from "sonner";
 import "./accessibility.css";
@@ -23,6 +25,14 @@ export const metadata = {
     template: `%s | ${METADATA.TITLE}`,
   },
   description: METADATA.DESCRIPTION,
+  applicationName: siteConfig.name,
+  category: "technology",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   keywords: [
     "data engineering",
     "AI solutions",
@@ -34,17 +44,15 @@ export const metadata = {
   authors: [{ name: "Groot Analytics" }],
   creator: "Groot Analytics",
   publisher: "Groot Analytics",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-    siteName: "Groot Analytics",
+    url: process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url,
+    siteName: siteConfig.name,
     title: METADATA.TITLE,
     description: METADATA.DESCRIPTION,
     images: [
@@ -63,12 +71,17 @@ export const metadata = {
     images: ["/og-image.jpg"],
     creator: "@grootanalytics",
   },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   robots: {
-    index: true,
-    follow: true,
+    index: env.IS_PRODUCTION,
+    follow: env.IS_PRODUCTION,
     googleBot: {
-      index: true,
-      follow: true,
+      index: env.IS_PRODUCTION,
+      follow: env.IS_PRODUCTION,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -88,8 +101,6 @@ import { Suspense } from "react";
 // ... existing imports
 
 export default function RootLayout({ children }) {
-
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
