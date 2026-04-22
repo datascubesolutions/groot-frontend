@@ -1,13 +1,18 @@
-// @ts-nocheck
-/**
- * Breadcrumb Component
- *
- * Displays navigation breadcrumbs for page hierarchy
- */
-
 import { ChevronRight, Home } from "lucide-react";
 import Link from "next/link";
 
+/**
+ * @typedef {Object} BreadcrumbItem
+ * @property {string} label
+ * @property {string} href
+ */
+
+/**
+ * Navigation breadcrumbs for page hierarchy.
+ *
+ * @param {Object} props
+ * @param {BreadcrumbItem[]} [props.items]
+ */
 export function Breadcrumb({ items = [] }) {
   return (
     <nav
