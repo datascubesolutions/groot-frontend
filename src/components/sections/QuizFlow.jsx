@@ -808,21 +808,21 @@ export function QuizFlow({ onComplete }) {
           <div className="relative z-10">
             <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
               <div>
-                <h4 className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-forest">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-forest" />
+                <h4 className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-400">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
                   Recommended Starting Point
                 </h4>
                 <h3 className="mb-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
                   {rec.bucket}
                 </h3>
-                <p className="mb-6 max-w-lg text-lg leading-relaxed text-muted-foreground/50 sm:mb-0">
+                <p className="mb-6 max-w-lg text-lg leading-relaxed text-slate-300 sm:mb-0">
                   {rec.solution}
                 </p>
               </div>
 
               <div className="w-full shrink-0 sm:w-auto">
                 <Button
-                  className="h-auto w-full rounded-xl bg-card px-4 py-4 text-sm font-bold text-foreground shadow-lg transition-all hover:scale-105 hover:bg-forest/5 hover:text-forest/90 sm:w-auto sm:px-8 sm:py-6 sm:text-base"
+                  className="h-auto w-full rounded-xl bg-white px-4 py-4 text-sm font-bold text-forest shadow-lg transition-all hover:scale-105 hover:bg-forest/5 hover:text-forest/90 sm:w-auto sm:px-8 sm:py-6 sm:text-base"
                   onClick={() =>
                     (window.location.href =
                       "/services/define-your-roadmap/maturity-assessment")

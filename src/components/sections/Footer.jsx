@@ -12,11 +12,11 @@ export function Footer() {
   return (
     <footer className="bg-charcoal py-12 text-birch md:py-16">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="mb-12 grid gap-12 md:mb-16 md:grid-cols-2 md:gap-16 lg:grid-cols-5">
-          {/* Brand */}
-          <div className="lg:col-span-2">
+        <div className="mb-12 grid items-start gap-12 md:mb-16 md:grid-cols-2 md:gap-16 lg:grid-cols-5">
+          {/* Brand — top-aligned with Services / Company / Resources headings */}
+          <div className="min-w-0 lg:col-span-2">
             <ScrollReveal>
-              <div className="mb-4 flex items-center gap-2">
+              <div className="mb-3 flex items-start">
                 <GrootLogoLight />
               </div>
               <p className="mb-6 max-w-sm text-birch/70 md:mb-8">
@@ -54,7 +54,7 @@ export function Footer() {
           </div>
 
           {/* Links */}
-          <div>
+          <div className="min-w-0">
             <ScrollReveal delay={0.1}>
               <h4 className="mb-4 font-semibold md:mb-5">Services</h4>
               <ul className="space-y-3">
@@ -72,7 +72,7 @@ export function Footer() {
             </ScrollReveal>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <ScrollReveal delay={0.2}>
               <h4 className="mb-4 font-semibold md:mb-5">Company</h4>
               <ul className="space-y-3">
@@ -90,7 +90,7 @@ export function Footer() {
             </ScrollReveal>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <ScrollReveal delay={0.3}>
               <h4 className="mb-4 font-semibold md:mb-5">Resources</h4>
               <ul className="space-y-3">
@@ -137,16 +137,15 @@ export function Footer() {
   );
 }
 
+/** Footer mark: larger than column titles but still `object-contain` + max-width so it stays crisp; grid uses `items-start` so columns stay top-aligned. */
 const GrootLogoLight = () => (
-  <div className="relative h-12 w-auto">
-    <Image
-      src="/svg/logo.svg"
-      alt={`${siteConfig.name} logo`}
-      width={180}
-      height={48}
-      className="h-12 w-auto opacity-100 brightness-0 invert"
-    />
-  </div>
+  <Image
+    src="/svg/logo.svg"
+    alt="Groot Analytics Logo"
+    width={500}
+    height={180}
+    className="block h-16 w-auto max-w-[min(100%,19rem)] object-contain object-left opacity-100 brightness-0 invert sm:h-[4.5rem] sm:max-w-[min(100%,21rem)] md:h-20 md:max-w-[min(100%,24rem)] lg:h-24"
+  />
 );
 
 export default Footer;

@@ -2,7 +2,6 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { siteConfig } from "@/config/site.config";
 import { NAV_LINKS, SERVICE_CATEGORIES } from "@/lib/constants/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -226,13 +225,13 @@ const ServicesMobileMenu = ({ setIsMobileMenuOpen }) => {
 };
 
 const GrootLogo = () => (
-  <div className="relative flex h-10 w-auto max-h-full items-center sm:h-11">
+  <div className="relative h-40 w-auto">
     <Image
       src="/svg/logo.svg"
-      alt={`${siteConfig.name} logo`}
-      width={220}
-      height={48}
-      className="h-10 w-auto max-h-full object-contain object-left sm:h-11"
+      alt="Groot Analytics Logo"
+      width={500}
+      height={180}
+      className="h-40 w-auto"
       priority
     />
   </div>
