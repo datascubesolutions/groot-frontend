@@ -1,8 +1,9 @@
 // @ts-nocheck
+import { siteConfig } from "@/config/site.config";
+
 export const METADATA = {
-  TITLE: "Groot Analytics - Data Engineering & AI Solutions",
-  DESCRIPTION:
-    "Turning messy data into intelligent decisions. Modern data platforms, advanced analytics, and AI-powered solutions.",
+  TITLE: `${siteConfig.name} - Data Engineering & AI Solutions`,
+  DESCRIPTION: siteConfig.longDescription,
 };
 
 export const CONTAINER_MAX_WIDTH = "1280px";

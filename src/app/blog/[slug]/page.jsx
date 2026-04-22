@@ -18,7 +18,7 @@ export async function generateMetadata({ params, searchParams }) {
   const post = await resolvePost(slug, await searchParams);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
   const canonicalUrl = `${siteUrl}/blog/${slug}`;
-  const defaultImage = `${siteUrl}/og-image.jpg`;
+  const defaultImage = `${siteUrl}/og-image.png`;
 
   if (post) {
     const publishedIso = getIsoDate(post);
@@ -80,7 +80,7 @@ export default async function BlogDetailPage({ params, searchParams }) {
         datePublished: getIsoDate(post),
         dateModified: getIsoDate(post),
         author: post.author?.name || "Groot Team",
-        image: post.image || `${siteUrl}/og-image.jpg`,
+        image: post.image || `${siteUrl}/og-image.png`,
         url: `${siteUrl}/blog/${slug}`,
         wordCount: getWordCount(post.content),
         keywords: post.tags?.length

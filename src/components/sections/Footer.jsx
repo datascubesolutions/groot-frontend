@@ -1,6 +1,7 @@
 // @ts-nocheck
 "use client";
 
+import { siteConfig } from "@/config/site.config";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { FOOTER_LINKS } from "@/lib/constants/navigation";
 import { Linkedin, Mail, Twitter } from "lucide-react";
@@ -113,7 +114,7 @@ export function Footer() {
           <div className="flex flex-col items-center justify-between gap-4 border-t border-birch/10 pt-8 md:flex-row md:gap-6 md:pt-10">
             <p className="text-sm text-birch/50">
               © <span suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}
-              Groot Analytics. All rights reserved.
+              {siteConfig.name}. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-birch/50">
               <Link
@@ -140,7 +141,7 @@ const GrootLogoLight = () => (
   <div className="relative h-12 w-auto">
     <Image
       src="/svg/logo.svg"
-      alt="Groot Analytics Logo"
+      alt={`${siteConfig.name} logo`}
       width={180}
       height={48}
       className="h-12 w-auto opacity-100 brightness-0 invert"

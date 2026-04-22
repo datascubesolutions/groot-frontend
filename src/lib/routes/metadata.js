@@ -8,7 +8,7 @@ export const ROUTE_METADATA = {
     description:
       "Turn messy data into intelligent decisions with modern data engineering, analytics, and AI implementation services.",
     path: "/",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["data engineering", "analytics consulting", "enterprise AI"],
     indexable: true,
     priority: 1.0,
@@ -19,7 +19,7 @@ export const ROUTE_METADATA = {
     description:
       "Learn how Groot Analytics helps enterprises modernize data platforms and deliver measurable business outcomes with AI.",
     path: "/about",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["about groot analytics", "data and ai consulting company"],
     indexable: true,
     priority: 0.8,
@@ -30,7 +30,7 @@ export const ROUTE_METADATA = {
     description:
       "Join Groot Analytics and work on modern data, analytics, and AI projects that power enterprise transformation.",
     path: "/about/careers",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["data engineering jobs", "ai consulting careers"],
     indexable: true,
     priority: 0.7,
@@ -41,7 +41,7 @@ export const ROUTE_METADATA = {
     description:
       "Talk to Groot Analytics about your data engineering, BI, or AI initiatives and get an expert implementation plan.",
     path: "/contact",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["contact analytics consultant", "data engineering consultation"],
     indexable: true,
     priority: 0.8,
@@ -52,7 +52,7 @@ export const ROUTE_METADATA = {
     description:
       "Explore Groot Analytics services spanning strategy, data foundation, decision intelligence, and AI delivery.",
     path: "/services",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["data services", "analytics services", "ai services"],
     indexable: true,
     priority: 0.9,
@@ -63,7 +63,7 @@ export const ROUTE_METADATA = {
     description:
       "Assess your current data stack, uncover architecture gaps, and define a practical modernization roadmap with Groot Analytics.",
     path: "/services/define-your-roadmap/stack-evaluation",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: [
       "data stack evaluation",
       "modern data architecture assessment",
@@ -78,7 +78,7 @@ export const ROUTE_METADATA = {
     description:
       "See how Groot Analytics delivers domain-specific analytics and AI solutions across financial services, healthcare, retail, and more.",
     path: "/industries",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["industry analytics solutions", "vertical ai solutions"],
     indexable: true,
     priority: 0.9,
@@ -89,7 +89,7 @@ export const ROUTE_METADATA = {
     description:
       "Expert insights on modern data stacks, analytics engineering, and enterprise AI implementation.",
     path: "/blog",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["analytics blog", "data engineering insights", "ai strategy"],
     indexable: true,
     priority: 0.8,
@@ -100,7 +100,7 @@ export const ROUTE_METADATA = {
     description:
       "Implement Microsoft Fabric, Power BI, Copilot, and Azure solutions with enterprise-grade architecture and delivery support.",
     path: "/solutions",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["microsoft fabric consulting", "power bi consulting"],
     indexable: true,
     priority: 0.8,
@@ -111,7 +111,7 @@ export const ROUTE_METADATA = {
     description:
       "Discover the cloud, analytics, and AI technologies we use to build scalable data platforms and decision systems.",
     path: "/technologies",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["analytics technologies", "cloud data platforms"],
     indexable: true,
     priority: 0.7,
@@ -122,7 +122,7 @@ export const ROUTE_METADATA = {
     description:
       "Explore the Groot Analytics decision intelligence platform for faster insight delivery and enterprise-grade analytics outcomes.",
     path: "/platform",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["decision intelligence platform", "analytics platform"],
     indexable: true,
     priority: 0.7,
@@ -133,7 +133,7 @@ export const ROUTE_METADATA = {
     description:
       "Review how Groot Analytics collects, uses, and protects data across our website and services.",
     path: "/privacy",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["privacy policy", "data privacy"],
     indexable: true,
     priority: 0.3,
@@ -144,7 +144,7 @@ export const ROUTE_METADATA = {
     description:
       "Read the terms and conditions governing your use of Groot Analytics website and services.",
     path: "/terms",
-    image: "/og-image.jpg",
+    image: "/og-image.png",
     keywords: ["terms of service", "website terms"],
     indexable: true,
     priority: 0.3,

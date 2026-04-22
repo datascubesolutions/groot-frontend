@@ -46,9 +46,9 @@ export const metadata = {
     "data platform",
     "business intelligence",
   ],
-  authors: [{ name: "Groot Analytics" }],
-  creator: "Groot Analytics",
-  publisher: "Groot Analytics",
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url),
   alternates: {
     canonical: "/",
@@ -62,10 +62,10 @@ export const metadata = {
     description: METADATA.DESCRIPTION,
     images: [
       {
-        url: "/og-image.jpg",
+        url: siteConfig.assets.ogImagePath,
         width: 1200,
         height: 630,
-        alt: "Groot Analytics",
+        alt: siteConfig.name,
       },
     ],
   },
@@ -73,12 +73,15 @@ export const metadata = {
     card: "summary_large_image",
     title: METADATA.TITLE,
     description: METADATA.DESCRIPTION,
-    images: ["/og-image.jpg"],
+    images: [siteConfig.assets.ogImagePath],
     creator: "@grootanalytics",
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: siteConfig.assets.logoPath, type: "image/png", sizes: "32x32" },
+    ],
+    shortcut: "/icon.svg",
     apple: "/apple-touch-icon.png",
   },
   appleWebApp: {

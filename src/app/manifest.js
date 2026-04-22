@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site.config";
 export default function manifest() {
   return {
     name: siteConfig.name,
-    short_name: siteConfig.name,
+    short_name: siteConfig.shortName,
     description: siteConfig.description,
     start_url: "/",
     display: "standalone",
@@ -11,14 +11,15 @@ export default function manifest() {
     theme_color: "#1db954",
     icons: [
       {
-        src: "/favicon.ico",
-        sizes: "any",
-        type: "image/x-icon",
-      },
-      {
         src: "/icon.svg",
         sizes: "any",
         type: "image/svg+xml",
+      },
+      {
+        src: siteConfig.assets.logoPath,
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any",
       },
       {
         src: "/apple-touch-icon.png",

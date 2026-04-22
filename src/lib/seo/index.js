@@ -32,7 +32,9 @@ export function generateMetadata({
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
   const normalizedPath = normalizePath(path);
   const url = `${siteUrl}${normalizedPath}`;
-  const ogImage = image ? `${siteUrl}${image}` : `${siteUrl}/og-image.jpg`;
+  const ogImage = image
+    ? `${siteUrl}${image}`
+    : `${siteUrl}${siteConfig.assets.ogImagePath}`;
 
   const metadata = {
     metadataBase: new URL(siteUrl),
@@ -91,8 +93,8 @@ export function generateRouteMetadata(routeKey, overrides = {}) {
   if (!routeMeta) {
     console.warn(`Route metadata not found for key: ${routeKey}`);
     return generateMetadata({
-      title: "Groot Analytics",
-      description: "Data Engineering & AI Solutions",
+      title: siteConfig.name,
+      description: siteConfig.description,
       ...overrides,
     });
   }
@@ -176,10 +178,10 @@ export function generateArticleSchema(article) {
     },
     publisher: {
       "@type": "Organization",
-      name: "Groot Analytics",
+      name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/logo.png`,
+        url: `${siteUrl}${siteConfig.assets.logoPath}`,
         width: 512,
         height: 512,
       },

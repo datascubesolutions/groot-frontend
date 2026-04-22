@@ -13,13 +13,17 @@ function JsonLd({ schema }) {
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
 
 export function OrganizationSchema() {
+  const logoUrl = `${baseUrl}${siteConfig.assets.logoPath}`;
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${baseUrl}/#organization`,
     name: siteConfig.name,
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
+    logo: logoUrl,
+    ...(siteConfig.alternateNames?.length > 0 && {
+      alternateName: siteConfig.alternateNames,
+    }),
     description:
       "Data engineering, analytics, and AI solutions for enterprise transformation.",
     email: "contact@grootanalytics.com",
@@ -45,6 +49,9 @@ export function WebsiteSchema() {
       "@id": `${baseUrl}/#organization`,
     },
     inLanguage: "en",
+    ...(siteConfig.alternateNames?.length > 0 && {
+      alternateName: siteConfig.alternateNames,
+    }),
   };
 
   return <JsonLd schema={schema} />;

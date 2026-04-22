@@ -4,6 +4,8 @@
  * Structured data and schema generation
  */
 
+import { siteConfig } from "@/config/site.config";
+
 /**
  * Generate Organization schema
  * @param {Object} config - Organization configuration
@@ -16,9 +18,9 @@ export const generateOrganizationSchema = (config = {}) => {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: config.name || "Groot Analytics",
+    name: config.name || siteConfig.name,
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
+    logo: `${baseUrl}${siteConfig.assets.logoPath}`,
     description:
       config.description ||
       "Modern data, analytics, and AI solutions for enterprise transformation",
@@ -129,7 +131,7 @@ export const generateJobPostingSchema = (job) => {
       "@type": "Organization",
       name: "Groot Analytics",
       sameAs: baseUrl,
-      logo: `${baseUrl}/logo.png`,
+      logo: `${baseUrl}${siteConfig.assets.logoPath}`,
     },
     jobLocation: {
       "@type": "Place",
