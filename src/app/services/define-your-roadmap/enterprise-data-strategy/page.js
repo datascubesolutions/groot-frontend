@@ -1,4 +1,4 @@
-// @ts-nocheck — Framer Motion easing literals vs strict TS; page is valid JS.
+// @ts-nocheck
 "use client";
 
 import { Breadcrumb } from "@/components/ui/Breadcrumb";

@@ -1,4 +1,4 @@
-// @ts-nocheck — Framer Motion / Breadcrumb strict TS noise; page is valid JS.
+// @ts-nocheck
 "use client";
 
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
