@@ -1,10 +1,12 @@
+// @ts-nocheck
 export const BLOG_POSTS = [
-    {
-        id: "1",
-        slug: "future-of-ai-analytics-2024",
-        title: "The Future of AI in Enterprise Analytics: 2026 Outlook",
-        excerpt: "Discover how generative AI is reshaping the landscape of business intelligence and potential pitfalls to avoid in your adoption strategy.",
-        content: `
+  {
+    id: "1",
+    slug: "future-of-ai-analytics-2024",
+    title: "The Future of AI in Enterprise Analytics: 2026 Outlook",
+    excerpt:
+      "Discover how generative AI is reshaping the landscape of business intelligence and potential pitfalls to avoid in your adoption strategy.",
+    content: `
       <h2>The Generative Shift</h2>
       <p>Artificial Intelligence is no longer just a buzzword; it's the backbone of modern enterprise analytics. As we move into 2026, the integration of Large Language Models (LLMs) with traditional BI tools is creating a new paradigm of "Conversational Analytics". Organizations that embrace this shift early are gaining competitive advantages that compound over time.</p>
 
@@ -45,23 +47,26 @@ export const BLOG_POSTS = [
 
       <p>The question is no longer whether to adopt AI in analytics, but how quickly you can do so responsibly. The competitive window is narrowing, and the organizations that move decisively today will define the industry standards of tomorrow.</p>
     `,
-        category: "Technology",
-        author: {
-            name: "Dr. Priya Sharma",
-            role: "Chief Data Scientist",
-            avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
-        },
-        date: "Oct 24, 2023",
-        readTime: "5 min read",
-        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2600&auto=format&fit=crop", // Futuristic Robot/AI
-        featured: true,
+    category: "Technology",
+    author: {
+      name: "Dr. Priya Sharma",
+      role: "Chief Data Scientist",
+      avatar:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
     },
-    {
-        id: "2",
-        slug: "data-maturity-guide",
-        title: "A Comprehensive Guide to Assessing Your Data Maturity",
-        excerpt: "Is your organization truly data-driven? Learn how to evaluate your current state and build a roadmap for data excellence.",
-        content: `
+    date: "Oct 24, 2023",
+    readTime: "5 min read",
+    image:
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2600&auto=format&fit=crop", // Futuristic Robot/AI
+    featured: true,
+  },
+  {
+    id: "2",
+    slug: "data-maturity-guide",
+    title: "A Comprehensive Guide to Assessing Your Data Maturity",
+    excerpt:
+      "Is your organization truly data-driven? Learn how to evaluate your current state and build a roadmap for data excellence.",
+    content: `
       <h2>Understanding Data Maturity</h2>
       <p>Data maturity is not just about having a data warehouse; it's about how effectively your organization uses data to drive decision-making at every level. Most companies overestimate their data maturity — a recent survey found that 73% of executives believe they are "data-driven," while only 24% of their organizations actually have a data-driven culture.</p>
 
@@ -106,23 +111,26 @@ export const BLOG_POSTS = [
 
       <p>The most successful data transformations are gradual and iterative. Don't try to jump from Stage 1 to Stage 5 in a single initiative. Instead, focus on steady, measurable progress that builds organizational confidence and capability over time.</p>
     `,
-        category: "Strategy",
-        author: {
-            name: "Arjun Mehta",
-            role: "VP of Engineering",
-            avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
-        },
-        date: "Oct 18, 2023",
-        readTime: "8 min read",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop", // Charts/Data
-        featured: false,
+    category: "Strategy",
+    author: {
+      name: "Arjun Mehta",
+      role: "VP of Engineering",
+      avatar:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop",
     },
-    {
-        id: "3",
-        slug: "optimizing-cloud-costs",
-        title: "Optimizing Cloud Data Costs Without Sacrificing Performance",
-        excerpt: "Practical strategies for managing your cloud spend while maintaining high-speed query performance for your analytics dashboards.",
-        content: `
+    date: "Oct 18, 2023",
+    readTime: "8 min read",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop", // Charts/Data
+    featured: false,
+  },
+  {
+    id: "3",
+    slug: "optimizing-cloud-costs",
+    title: "Optimizing Cloud Data Costs Without Sacrificing Performance",
+    excerpt:
+      "Practical strategies for managing your cloud spend while maintaining high-speed query performance for your analytics dashboards.",
+    content: `
       <h2>The Cloud Cost Challenge</h2>
       <p>Cloud costs can spiral out of control if not managed properly. As organizations migrate more workloads to the cloud, the promise of "pay only for what you use" often turns into unexpectedly high bills. Understanding where your money goes is the first step to optimization.</p>
 
@@ -144,23 +152,26 @@ export const BLOG_POSTS = [
 
       <p>Modern cloud-native data platforms like Groot provide built-in cost monitoring dashboards that track spending by team, project, and query pattern—giving you the granular visibility needed to make informed optimization decisions.</p>
     `,
-        category: "Engineering",
-        author: {
-            name: "Vikram Patel",
-            role: "Cloud Architect",
-            avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
-        },
-        date: "Oct 12, 2023",
-        readTime: "6 min read",
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop", // Cloud/Network
-        featured: false,
+    category: "Engineering",
+    author: {
+      name: "Vikram Patel",
+      role: "Cloud Architect",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
     },
-    {
-        id: "4",
-        slug: "retail-analytics-case-study",
-        title: "Case Study: How Retail Giants Predict Consumer Trends",
-        excerpt: "An in-depth look at the predictive models used by top retail brands to forecast demand and optimize inventory.",
-        content: `
+    date: "Oct 12, 2023",
+    readTime: "6 min read",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop", // Cloud/Network
+    featured: false,
+  },
+  {
+    id: "4",
+    slug: "retail-analytics-case-study",
+    title: "Case Study: How Retail Giants Predict Consumer Trends",
+    excerpt:
+      "An in-depth look at the predictive models used by top retail brands to forecast demand and optimize inventory.",
+    content: `
       <h2>The Challenge</h2>
       <p>In the fast-paced world of retail, anticipating customer needs is everything. With margins thinning and competition intensifying, major retailers are turning to advanced predictive analytics to stay ahead.</p>
 
@@ -181,23 +192,26 @@ export const BLOG_POSTS = [
 
       <p>The most impactful insight? Localized models outperform global ones. A store in Miami has fundamentally different demand patterns than one in Minneapolis, and the models need to account for these micro-market dynamics.</p>
     `,
-        category: "Case Studies",
-        author: {
-            name: "Ananya Iyer",
-            role: "Product Manager",
-            avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop"
-        },
-        date: "Oct 05, 2023",
-        readTime: "4 min read",
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2670&auto=format&fit=crop", // Retail Store
-        featured: false,
+    category: "Case Studies",
+    author: {
+      name: "Ananya Iyer",
+      role: "Product Manager",
+      avatar:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
     },
-    {
-        id: "5",
-        slug: "secure-data-sharing",
-        title: "Secure Data Sharing in the Age of Privacy Regulations",
-        excerpt: "Navigating GDPR, CCPA, and data sharing protocols in a global enterprise environment.",
-        content: `
+    date: "Oct 05, 2023",
+    readTime: "4 min read",
+    image:
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2670&auto=format&fit=crop", // Retail Store
+    featured: false,
+  },
+  {
+    id: "5",
+    slug: "secure-data-sharing",
+    title: "Secure Data Sharing in the Age of Privacy Regulations",
+    excerpt:
+      "Navigating GDPR, CCPA, and data sharing protocols in a global enterprise environment.",
+    content: `
       <h2>The Privacy Landscape in 2024</h2>
       <p>Privacy is paramount. With GDPR enforcement actions exceeding €4.5 billion in cumulative fines and CCPA giving California consumers unprecedented control over their data, enterprises can no longer treat privacy as an afterthought.</p>
 
@@ -217,23 +231,26 @@ export const BLOG_POSTS = [
       <h3>Emerging Technologies</h3>
       <p>Technologies like differential privacy, homomorphic encryption, and federated learning are enabling new paradigms where organizations can derive insights from sensitive data without ever exposing the raw information. This is particularly transformative for healthcare and financial services where data sharing has historically been blocked by regulatory concerns.</p>
     `,
-        category: "Security",
-        author: {
-            name: "Rohan Desai",
-            role: "Security Officer",
-            avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&auto=format&fit=crop"
-        },
-        date: "Sep 28, 2023",
-        readTime: "7 min read",
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2670&auto=format&fit=crop", // Security/Lock
-        featured: false,
+    category: "Security",
+    author: {
+      name: "Rohan Desai",
+      role: "Security Officer",
+      avatar:
+        "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&auto=format&fit=crop",
     },
-    {
-        id: "6",
-        slug: "real-time-dashboards",
-        title: "Building Real-Time Dashboards: Websockets vs Polling",
-        excerpt: "Technical deep dive into the pros and cons of different real-time data fetching strategies for frontend applications.",
-        content: `
+    date: "Sep 28, 2023",
+    readTime: "7 min read",
+    image:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2670&auto=format&fit=crop", // Security/Lock
+    featured: false,
+  },
+  {
+    id: "6",
+    slug: "real-time-dashboards",
+    title: "Building Real-Time Dashboards: Websockets vs Polling",
+    excerpt:
+      "Technical deep dive into the pros and cons of different real-time data fetching strategies for frontend applications.",
+    content: `
       <h2>The Real-Time Imperative</h2>
       <p>When speed matters, every millisecond counts. Modern business users expect their dashboards to reflect reality in near real-time, not yesterday's batch-processed snapshot. But implementing real-time data fetching comes with significant architectural trade-offs.</p>
 
@@ -254,23 +271,26 @@ export const BLOG_POSTS = [
         "Choose the right tool for the job. WebSockets for collaborative features, SSE for dashboards, and polling for compatibility-critical environments."
       </blockquote>
     `,
-        category: "Engineering",
-        author: {
-            name: "Neha Kapoor",
-            role: "Chief Data Scientist",
-            avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
-        },
-        date: "Sep 20, 2023",
-        readTime: "9 min read",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop", // Dashboard/Code
-        featured: false,
+    category: "Engineering",
+    author: {
+      name: "Neha Kapoor",
+      role: "Chief Data Scientist",
+      avatar:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
     },
-    {
-        id: "7",
-        slug: "data-governance-essentials",
-        title: "Data Governance Essentials for the Modern Enterprise",
-        excerpt: "Why data governance is the unsung hero of successful AI implementation and how to establish a framework that works.",
-        content: `
+    date: "Sep 20, 2023",
+    readTime: "9 min read",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop", // Dashboard/Code
+    featured: false,
+  },
+  {
+    id: "7",
+    slug: "data-governance-essentials",
+    title: "Data Governance Essentials for the Modern Enterprise",
+    excerpt:
+      "Why data governance is the unsung hero of successful AI implementation and how to establish a framework that works.",
+    content: `
       <h2>Why Governance Matters More Than Ever</h2>
       <p>Data governance is often overlooked in the rush to adopt AI, but it's the foundation upon which all successful data initiatives are built. Without clear ownership, quality standards, and access policies, even the most sophisticated AI models will produce unreliable results.</p>
 
@@ -291,24 +311,26 @@ export const BLOG_POSTS = [
 
       <p>Tools like data catalogs, lineage trackers, and policy engines are essential infrastructure—but they only work when backed by executive sponsorship and clear accountability.</p>
     `,
-        category: "Strategy",
-        author: {
-            name: "Aditya Nair",
-            role: "VP of Engineering",
-            avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
-        },
-        date: "Sep 15, 2023",
-        readTime: "6 min read",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop", // Using a placeholder reuse or similar
-        featured: false,
-    }
+    category: "Strategy",
+    author: {
+      name: "Aditya Nair",
+      role: "VP of Engineering",
+      avatar:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop",
+    },
+    date: "Sep 15, 2023",
+    readTime: "6 min read",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop", // Using a placeholder reuse or similar
+    featured: false,
+  },
 ];
 
 export const CATEGORIES = [
-    "All",
-    "Technology",
-    "Strategy",
-    "Engineering",
-    "Case Studies",
-    "Security"
+  "All",
+  "Technology",
+  "Strategy",
+  "Engineering",
+  "Case Studies",
+  "Security",
 ];

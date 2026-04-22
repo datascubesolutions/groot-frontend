@@ -74,12 +74,12 @@ src/components/
 
 ```javascript
 // Single centralized import
-import { Button, Card, HeroSection, ErrorBoundary } from '@/components';
+import { Button, Card, HeroSection, ErrorBoundary } from "@/components";
 
 // Category-specific imports
-import { Button, Input, Card } from '@/components/ui';
-import { HeroSection, Footer } from '@/components/sections';
-import { Breadcrumbs } from '@/components/seo';
+import { Button, Input, Card } from "@/components/ui";
+import { HeroSection, Footer } from "@/components/sections";
+import { Breadcrumbs } from "@/components/seo";
 ```
 
 ## 📚 Library Organization
@@ -179,10 +179,10 @@ All SEO metadata is centralized in `lib/routes/metadata.js`:
 ```javascript
 export const ROUTE_METADATA = {
   HOME: {
-    path: '/',
-    title: 'Groot Analytics - Data Engineering',
-    description: 'Turning messy data into decisions',
-    changeFrequency: 'daily',
+    path: "/",
+    title: "Groot Analytics - Data Engineering",
+    description: "Turning messy data into decisions",
+    changeFrequency: "daily",
     priority: 1.0,
     indexable: true,
   },
@@ -195,7 +195,7 @@ export const ROUTE_METADATA = {
 The sitemap (`app/sitemap.js`) automatically generates from route metadata:
 
 ```javascript
-import { getIndexableRoutes } from '@/lib/routes/metadata';
+import { getIndexableRoutes } from "@/lib/routes/metadata";
 
 export default function sitemap() {
   const routes = getIndexableRoutes();
@@ -211,6 +211,7 @@ export default function sitemap() {
 ### Structured Data
 
 JSON-LD structured data components available:
+
 - `OrganizationSchema`
 - `WebsiteSchema`
 - `ServiceSchema`
@@ -222,18 +223,18 @@ JSON-LD structured data components available:
 
 ```javascript
 // From main entry points
-import { Button, Card } from '@/components';
-import { cn, ROUTES, generateMetadata } from '@/lib';
-import { useForm, useDisclosure } from '@/hooks';
-import { siteConfig, themeConfig } from '@/config';
+import { Button, Card } from "@/components";
+import { cn, ROUTES, generateMetadata } from "@/lib";
+import { useForm, useDisclosure } from "@/hooks";
+import { siteConfig, themeConfig } from "@/config";
 ```
 
 ### Direct Imports (When needed)
 
 ```javascript
 // For tree-shaking or specific needs
-import { Button } from '@/components/ui/Button';
-import { validateEmail } from '@/lib/validators/rules';
+import { Button } from "@/components/ui/Button";
+import { validateEmail } from "@/lib/validators/rules";
 ```
 
 ## 🎨 Styling Architecture

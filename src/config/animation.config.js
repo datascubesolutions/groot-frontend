@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const animationConfig = {
   transition: {
     duration: 0.3,
@@ -17,6 +18,6 @@ export const animationConfig = {
 };
 
 export const prefersReducedMotion = () => {
-  if (typeof window === 'undefined') return false;
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 };

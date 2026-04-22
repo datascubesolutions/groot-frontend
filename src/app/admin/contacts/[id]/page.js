@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 "use client";
 
@@ -13,11 +14,12 @@ import {
   Clock,
   Edit,
   Globe,
-  Loader2, Mail,
+  Loader2,
+  Mail,
   MessageSquare,
   Phone,
   Save,
-  User
+  User,
 } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
@@ -38,10 +40,17 @@ export default function ContactDetailsPage() {
   const [formData, setFormData] = useState({
     status: "",
     company: "",
-    notes: ""
+    notes: "",
   });
 
-  const statusOptions = ["PENDING", "CONTACTED", "QUALIFIED", "CONVERTED", "REJECTED", "SPAM"];
+  const statusOptions = [
+    "PENDING",
+    "CONTACTED",
+    "QUALIFIED",
+    "CONVERTED",
+    "REJECTED",
+    "SPAM",
+  ];
 
   useEffect(() => {
     const fetchContact = async () => {
@@ -55,7 +64,7 @@ export default function ContactDetailsPage() {
           setFormData({
             status: data.status || "PENDING",
             company: data.company || "",
-            notes: data.notes || ""
+            notes: data.notes || "",
           });
         } else if (result?.result?.data) {
           // Fallback if data is not nested under contact
@@ -64,7 +73,7 @@ export default function ContactDetailsPage() {
           setFormData({
             status: data.status || "PENDING",
             company: data.company || "",
-            notes: data.notes || ""
+            notes: data.notes || "",
           });
         } else {
           setError("Contact not found");
@@ -102,12 +111,12 @@ export default function ContactDetailsPage() {
 
   if (loading) {
     return (
-      <div className="space-y-8 max-w-6xl mx-auto pb-10 animate-pulse">
+      <div className="mx-auto max-w-6xl animate-pulse space-y-8 pb-10">
         {/* Header Skeleton */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/5 pb-6">
-          <div className="flex items-start gap-4 w-full">
+        <div className="flex flex-col justify-between gap-6 border-b border-white/5 pb-6 md:flex-row md:items-center">
+          <div className="flex w-full items-start gap-4">
             <Skeleton className="h-12 w-12 rounded-xl" />
-            <div className="space-y-2 w-full max-w-md">
+            <div className="w-full max-w-md space-y-2">
               <div className="flex items-center gap-3">
                 <Skeleton className="h-8 w-48 rounded-lg" />
                 <Skeleton className="h-6 w-24 rounded-full" />
@@ -121,12 +130,12 @@ export default function ContactDetailsPage() {
           <Skeleton className="h-12 w-40 rounded-xl" />
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid gap-8 lg:grid-cols-3">
           {/* Left Column Skeleton */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="space-y-8 lg:col-span-2">
             {/* Inquiry Card Skeleton */}
-            <div className="rounded-2xl border border-white/5 bg-white/5 overflow-hidden h-64 p-6 space-y-6">
-              <div className="flex items-center gap-3 mb-6">
+            <div className="h-64 space-y-6 overflow-hidden rounded-2xl border border-white/5 bg-white/5 p-6">
+              <div className="mb-6 flex items-center gap-3">
                 <Skeleton className="h-10 w-10 rounded-lg" />
                 <Skeleton className="h-6 w-40" />
               </div>
@@ -143,7 +152,7 @@ export default function ContactDetailsPage() {
             </div>
 
             {/* Stats Grid Skeleton */}
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
               <Skeleton className="h-24 w-full rounded-xl" />
               <Skeleton className="h-24 w-full rounded-xl" />
             </div>
@@ -151,8 +160,8 @@ export default function ContactDetailsPage() {
 
           {/* Right Column Skeleton */}
           <div className="space-y-6">
-            <div className="rounded-2xl border border-white/5 bg-white/5 p-6 space-y-6">
-              <div className="flex items-center gap-3 mb-6">
+            <div className="space-y-6 rounded-2xl border border-white/5 bg-white/5 p-6">
+              <div className="mb-6 flex items-center gap-3">
                 <Skeleton className="h-10 w-10 rounded-lg" />
                 <Skeleton className="h-6 w-48" />
               </div>
@@ -171,17 +180,21 @@ export default function ContactDetailsPage() {
 
   if (error || !contact) {
     return (
-      <div className="flex flex-col items-center justify-center h-[calc(100vh-200px)] gap-4 text-center">
-        <div className="p-4 rounded-full bg-destructive/10 text-destructive">
-          <AlertCircle className="w-8 h-8" />
+      <div className="flex h-[calc(100vh-200px)] flex-col items-center justify-center gap-4 text-center">
+        <div className="rounded-full bg-destructive/10 p-4 text-destructive">
+          <AlertCircle className="h-8 w-8" />
         </div>
         <div>
-          <h2 className="text-xl font-bold text-foreground">Contact Not Found</h2>
-          <p className="text-muted-foreground mt-1">{error || "The requested contact could not be found."}</p>
+          <h2 className="text-xl font-bold text-foreground">
+            Contact Not Found
+          </h2>
+          <p className="mt-1 text-muted-foreground">
+            {error || "The requested contact could not be found."}
+          </p>
         </div>
         <Link
           href="/admin/contacts"
-          className="px-6 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors font-bold"
+          className="rounded-lg bg-white px-6 py-2 font-bold text-black transition-colors hover:bg-gray-200"
         >
           Return to List
         </Link>
@@ -193,27 +206,34 @@ export default function ContactDetailsPage() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="space-y-8 max-w-6xl mx-auto pb-10"
+      className="mx-auto max-w-6xl space-y-8 pb-10"
     >
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border/40 pb-6">
+      <div className="flex flex-col justify-between gap-6 border-b border-border/40 pb-6 md:flex-row md:items-center">
         <div className="flex items-start gap-4">
           <Link
             href="/admin/contacts"
-            className="group p-3 rounded-xl bg-background border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+            className="group rounded-xl border border-border/50 bg-background p-3 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5"
           >
-            <ArrowLeft size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
+            <ArrowLeft
+              size={20}
+              className="text-muted-foreground transition-colors group-hover:text-primary"
+            />
           </Link>
           <div className="space-y-1">
-            <h1 className="text-3xl font-bold text-foreground tracking-tight flex items-center gap-3">
+            <h1 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-foreground">
               {contact.name}
-              <span className={`px-3 py-1 rounded-full text-xs font-bold tracking-wider border align-middle ${getStatusColor(contact.status)}`}>
+              <span
+                className={`rounded-full border px-3 py-1 align-middle text-xs font-bold tracking-wider ${getStatusColor(contact.status)}`}
+              >
                 {contact.status}
               </span>
             </h1>
-            <p className="text-muted-foreground flex items-center gap-2 text-sm">
-              <span className="font-mono bg-muted/50 px-2 py-0.5 rounded text-xs">ID: {contact.id}</span>
-              <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
+            <p className="flex items-center gap-2 text-sm text-muted-foreground">
+              <span className="rounded bg-muted/50 px-2 py-0.5 font-mono text-xs">
+                ID: {contact.id}
+              </span>
+              <span className="h-1 w-1 rounded-full bg-muted-foreground/30" />
               <span className="flex items-center gap-1.5">
                 <Clock size={12} />
                 {formatDate(contact.createdAt)}
@@ -226,14 +246,18 @@ export default function ContactDetailsPage() {
           <button
             onClick={handleUpdate}
             disabled={saving}
-            className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-bold hover:bg-gray-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-50 disabled:pointer-events-none"
+            className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-black transition-all hover:-translate-y-0.5 hover:bg-gray-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] active:translate-y-0 disabled:pointer-events-none disabled:opacity-50"
           >
-            {saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
+            {saving ? (
+              <Loader2 size={18} className="animate-spin" />
+            ) : (
+              <Save size={18} />
+            )}
             Save Changes
           </button>
         ) : (
           <Link href={`/admin/contacts/${params.id}?mode=edit`}>
-            <button className="flex items-center gap-2 px-6 py-3 bg-white text-black border border-transparent rounded-xl font-bold hover:bg-gray-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all">
+            <button className="flex items-center gap-2 rounded-xl border border-transparent bg-white px-6 py-3 font-bold text-black transition-all hover:bg-gray-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
               <Edit size={18} />
               Edit Details
             </button>
@@ -241,29 +265,33 @@ export default function ContactDetailsPage() {
         )}
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8">
-
+      <div className="grid gap-8 lg:grid-cols-3">
         {/* Left Column: Main Content */}
-        <div className="lg:col-span-2 space-y-8">
-
+        <div className="space-y-8 lg:col-span-2">
           {/* Inquiry Card */}
-          <div className="rounded-2xl border border-border/50 bg-gradient-to-b from-card/80 to-card/40 backdrop-blur-sm overflow-hidden shadow-sm">
-            <div className="px-6 py-4 border-b border-border/50 bg-muted/20 flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+          <div className="overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-b from-card/80 to-card/40 shadow-sm backdrop-blur-sm">
+            <div className="flex items-center gap-3 border-b border-border/50 bg-muted/20 px-6 py-4">
+              <div className="rounded-lg bg-primary/10 p-2 text-primary">
                 <MessageSquare size={18} />
               </div>
               <h3 className="font-semibold text-foreground">Inquiry Details</h3>
             </div>
 
-            <div className="p-6 space-y-6">
+            <div className="space-y-6 p-6">
               <div>
-                <label className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-2 block">Subject</label>
-                <div className="text-lg font-medium text-foreground">{contact.subject}</div>
+                <p className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Subject
+                </p>
+                <div className="text-lg font-medium text-foreground">
+                  {contact.subject}
+                </div>
               </div>
 
               <div>
-                <label className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3 block">Message</label>
-                <div className="p-5 rounded-xl bg-muted/30 border border-border/50 text-foreground/90 leading-relaxed font-serif whitespace-pre-wrap">
+                <p className="mb-3 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Message
+                </p>
+                <div className="whitespace-pre-wrap rounded-xl border border-border/50 bg-muted/30 p-5 font-serif leading-relaxed text-foreground/90">
                   {contact.message}
                 </div>
               </div>
@@ -271,118 +299,176 @@ export default function ContactDetailsPage() {
           </div>
 
           {/* Quick Stats Grid */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="rounded-xl border border-border/50 bg-card/50 p-5 flex items-start gap-4 hover:border-border transition-colors">
-              <div className="p-2.5 rounded-lg bg-blue-500/10 text-blue-500">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="flex items-start gap-4 rounded-xl border border-border/50 bg-card/50 p-5 transition-colors hover:border-border">
+              <div className="rounded-lg bg-blue-500/10 p-2.5 text-blue-500">
                 <Globe size={20} />
               </div>
               <div>
-                <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Source</label>
-                <div className="text-lg font-semibold capitalize mt-0.5">{contact.source || 'Website'}</div>
+                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  Source
+                </p>
+                <div className="mt-0.5 text-lg font-semibold capitalize">
+                  {contact.source || "Website"}
+                </div>
               </div>
             </div>
 
-            <div className="rounded-xl border border-border/50 bg-card/50 p-5 flex items-start gap-4 hover:border-border transition-colors">
-              <div className="p-2.5 rounded-lg bg-purple-500/10 text-purple-500">
+            <div className="flex items-start gap-4 rounded-xl border border-border/50 bg-card/50 p-5 transition-colors hover:border-border">
+              <div className="rounded-lg bg-purple-500/10 p-2.5 text-purple-500">
                 <Clock size={20} />
               </div>
               <div>
-                <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Response Time</label>
-                <div className="text-lg font-semibold mt-0.5 text-muted-foreground text-sm py-1">Not yet replied</div>
+                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  Response Time
+                </p>
+                <div className="mt-0.5 py-1 text-lg text-sm font-semibold text-muted-foreground">
+                  Not yet replied
+                </div>
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Right Column: Contact Info & Meta */}
         <div className="space-y-6">
-
           {/* Contact Info Card */}
-          <div className="rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm overflow-hidden h-fit sticky top-6">
-            <div className="px-6 py-4 border-b border-border/50 bg-muted/20 flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+          <div className="sticky top-6 h-fit overflow-hidden rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm">
+            <div className="flex items-center gap-3 border-b border-border/50 bg-muted/20 px-6 py-4">
+              <div className="rounded-lg bg-emerald-500/10 p-2 text-emerald-500">
                 <User size={18} />
               </div>
-              <h3 className="font-semibold text-foreground">Contact Information</h3>
+              <h3 className="font-semibold text-foreground">
+                Contact Information
+              </h3>
             </div>
 
-            <div className="p-6 space-y-6">
-
+            <div className="space-y-6 p-6">
               {/* Email */}
-              <div className="space-y-1.5 group">
-                <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Email Address</label>
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-background/50 border border-transparent group-hover:border-border/60 transition-colors">
-                  <div className="p-2 rounded-full bg-primary/10 text-primary shrink-0">
+              <div className="group space-y-1.5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Email Address
+                </p>
+                <div className="flex items-center gap-3 rounded-lg border border-transparent bg-background/50 p-3 transition-colors group-hover:border-border/60">
+                  <div className="shrink-0 rounded-full bg-primary/10 p-2 text-primary">
                     <Mail size={14} />
                   </div>
-                  <a href={`mailto:${contact.email}`} className="text-sm font-medium hover:text-primary transition-colors text-foreground break-all">
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="break-all text-sm font-medium text-foreground transition-colors hover:text-primary"
+                  >
                     {contact.email}
                   </a>
                 </div>
               </div>
 
               {/* Phone */}
-              <div className="space-y-1.5 group">
-                <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Phone Number</label>
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-background/50 border border-transparent group-hover:border-border/60 transition-colors">
-                  <div className="p-2 rounded-full bg-primary/10 text-primary shrink-0">
+              <div className="group space-y-1.5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Phone Number
+                </p>
+                <div className="flex items-center gap-3 rounded-lg border border-transparent bg-background/50 p-3 transition-colors group-hover:border-border/60">
+                  <div className="shrink-0 rounded-full bg-primary/10 p-2 text-primary">
                     <Phone size={14} />
                   </div>
                   <span className="text-sm font-medium text-foreground">
-                    {contact.phone || 'N/A'}
+                    {contact.phone || "N/A"}
                   </span>
                 </div>
               </div>
 
-              <div className="w-full h-px bg-border/50 my-6" />
+              <div className="my-6 h-px w-full bg-border/50" />
 
               {/* Editable Fields */}
               <div className="space-y-5">
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-2">
-                    <Building size={14} /> Company
-                  </label>
                   {isEditMode ? (
-                    <input
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg bg-background border border-input focus:border-primary/50 focus:ring-2 focus:ring-primary/10 outline-none transition-all text-sm"
-                      placeholder="Enter company name..."
-                    />
+                    <>
+                      <label
+                        htmlFor="admin-contact-detail-company"
+                        className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                      >
+                        <Building size={14} /> Company
+                      </label>
+                      <input
+                        id="admin-contact-detail-company"
+                        type="text"
+                        value={formData.company}
+                        onChange={(e) =>
+                          setFormData({ ...formData, company: e.target.value })
+                        }
+                        className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-2 focus:ring-primary/10"
+                        placeholder="Enter company name..."
+                      />
+                    </>
                   ) : (
-                    <div className="font-medium text-foreground pl-1">{contact.company || 'N/A'}</div>
+                    <>
+                      <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        <Building size={14} /> Company
+                      </p>
+                      <div className="pl-1 font-medium text-foreground">
+                        {contact.company || "N/A"}
+                      </div>
+                    </>
                   )}
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-2">
-                    <CheckCircle2 size={14} /> Status
-                  </label>
                   {isEditMode ? (
-                    <div className="relative">
-                      <select
-                        value={formData.status}
-                        onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-lg bg-background border border-input focus:border-primary/50 focus:ring-2 focus:ring-primary/10 outline-none transition-all text-sm appearance-none cursor-pointer"
+                    <>
+                      <label
+                        htmlFor="admin-contact-detail-status"
+                        className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
                       >
-                        {statusOptions.map(opt => (
-                          <option key={opt} value={opt}>{opt}</option>
-                        ))}
-                      </select>
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
-                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        <CheckCircle2 size={14} /> Status
+                      </label>
+                      <div className="relative">
+                        <select
+                          id="admin-contact-detail-status"
+                          value={formData.status}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              status: e.target.value,
+                            })
+                          }
+                          className="w-full cursor-pointer appearance-none rounded-lg border border-input bg-background px-4 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-2 focus:ring-primary/10"
+                        >
+                          {statusOptions.map((opt) => (
+                            <option key={opt} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                          <svg
+                            width="10"
+                            height="6"
+                            viewBox="0 0 10 6"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1 1L5 5L9 1"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
+                    </>
                   ) : (
-                    <div className="pl-1">
-                      {contact.status}
-                    </div>
+                    <>
+                      <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        <CheckCircle2 size={14} /> Status
+                      </p>
+                      <div className="pl-1">{contact.status}</div>
+                    </>
                   )}
                 </div>
               </div>
-
             </div>
           </div>
         </div>

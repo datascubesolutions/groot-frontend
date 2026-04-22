@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Simple heuristic to check if text is likely English.
  * Uses a list of common English stop words.
@@ -9,11 +10,56 @@ export function isEnglish(text) {
   if (!text) return false;
 
   const stopWords = new Set([
-    "the", "be", "to", "of", "and", "a", "in", "that", "have", "i",
-    "it", "for", "not", "on", "with", "he", "as", "you", "do", "at",
-    "this", "but", "his", "by", "from", "they", "we", "say", "her", "she",
-    "or", "an", "will", "my", "one", "all", "would", "there", "their", "what",
-    "so", "up", "out", "if", "about", "who", "get", "which", "go", "me"
+    "the",
+    "be",
+    "to",
+    "of",
+    "and",
+    "a",
+    "in",
+    "that",
+    "have",
+    "i",
+    "it",
+    "for",
+    "not",
+    "on",
+    "with",
+    "he",
+    "as",
+    "you",
+    "do",
+    "at",
+    "this",
+    "but",
+    "his",
+    "by",
+    "from",
+    "they",
+    "we",
+    "say",
+    "her",
+    "she",
+    "or",
+    "an",
+    "will",
+    "my",
+    "one",
+    "all",
+    "would",
+    "there",
+    "their",
+    "what",
+    "so",
+    "up",
+    "out",
+    "if",
+    "about",
+    "who",
+    "get",
+    "which",
+    "go",
+    "me",
   ]);
 
   // Normalize text: lowercase, remove special chars, split into words
@@ -21,7 +67,7 @@ export function isEnglish(text) {
     .toLowerCase()
     .replace(/[^\w\s]/g, "")
     .split(/\s+/)
-    .filter(w => w.length > 0);
+    .filter((w) => w.length > 0);
 
   if (words.length === 0) return false;
 

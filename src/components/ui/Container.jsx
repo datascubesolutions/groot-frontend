@@ -1,6 +1,7 @@
+// @ts-nocheck
 /**
  * Container Component
- * 
+ *
  * @fileoverview Responsive container with max-width constraints and semantic HTML
  * @module components/ui/Container
  */

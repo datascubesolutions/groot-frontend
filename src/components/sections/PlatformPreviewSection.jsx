@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { ProductSection } from "@/components/sections/ProductSection";

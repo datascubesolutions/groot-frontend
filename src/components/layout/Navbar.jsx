@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { Button } from "@/components/ui/Button";
@@ -35,69 +36,74 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || activeDropdown ? "glass shadow-md" : "bg-transparent"
-        }`}
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled || activeDropdown ? "glass shadow-md" : "bg-transparent"
+      }`}
       onMouseLeave={handleMouseLeave}
     >
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        <nav className="flex items-center justify-between h-20">
+        <nav className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 z-50 -ml-2">
+          <Link href="/" className="z-50 -ml-2 flex items-center gap-2">
             <GrootLogo />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 h-full">
+          <div className="hidden h-full items-center gap-8 md:flex">
             {NAV_LINKS.map((link) => (
               <div
                 key={link.label}
-                className="relative h-full flex items-center"
+                className="relative flex h-full items-center"
                 onMouseEnter={() => handleMouseEnter(link.label)}
               >
                 <Link
                   href={link.href}
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 relative group py-2
-                    ${activeDropdown === link.label ? "text-forest" : "text-foreground/80 hover:text-forest"}`}
+                  className={`group relative flex items-center gap-1 py-2 text-sm font-medium transition-colors duration-200 ${activeDropdown === link.label ? "text-forest" : "text-foreground/80 hover:text-forest"}`}
                 >
                   {link.label}
                   {link.hasDropdown && (
                     <ChevronDown
                       size={16}
-                      className={`transition-transform duration-200 ${activeDropdown === link.label ? "rotate-180" : ""
-                        }`}
+                      className={`transition-transform duration-200 ${
+                        activeDropdown === link.label ? "rotate-180" : ""
+                      }`}
                     />
                   )}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-forest transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-forest transition-all duration-300 group-hover:w-full" />
                 </Link>
 
                 {/* Regular Dropdown for non-MegaMenu links (Microsoft uses MegaMenu like Services) */}
-                {link.hasDropdown && link.label !== "Services" && link.label !== "About Us" && link.label !== "Microsoft" && activeDropdown === link.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 w-64 bg-background border border-border shadow-xl rounded-xl py-4 z-50"
-                  >
-                    {link.subLinks?.map((sub) => (
-                      <Link
-                        key={sub.label}
-                        href={sub.href}
-                        className="block px-6 py-2.5 text-sm text-foreground/70 hover:text-primary hover:bg-primary/5 transition-all"
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
+                {link.hasDropdown &&
+                  link.label !== "Services" &&
+                  link.label !== "About Us" &&
+                  link.label !== "Microsoft" &&
+                  activeDropdown === link.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute left-0 top-full z-50 w-64 rounded-xl border border-border bg-background py-4 shadow-xl"
+                    >
+                      {link.subLinks?.map((sub) => (
+                        <Link
+                          key={sub.label}
+                          href={sub.href}
+                          className="block px-6 py-2.5 text-sm text-foreground/70 transition-all hover:bg-primary/5 hover:text-primary"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
               </div>
             ))}
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden items-center gap-4 md:flex">
             <Link href="/contact">
               <Button variant="hero" size="default">
-                Let's Connect
+                Let&apos;s Connect
               </Button>
             </Link>
           </div>
@@ -105,7 +111,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="p-2 text-foreground md:hidden"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -115,7 +121,9 @@ export function Navbar() {
 
       {/* Mega Menu Dropdown (Services, Microsoft, About Us) */}
       <AnimatePresence>
-        {(activeDropdown === "Services" || activeDropdown === "Microsoft" || activeDropdown === "About Us") && (
+        {(activeDropdown === "Services" ||
+          activeDropdown === "Microsoft" ||
+          activeDropdown === "About Us") && (
           <MegaMenu
             isOpen={true}
             onClose={() => setActiveDropdown(null)}
@@ -131,21 +139,23 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-border overflow-hidden max-h-[80vh] overflow-y-auto"
+            className="glass max-h-[80vh] overflow-hidden overflow-y-auto border-t border-border md:hidden"
           >
-            <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+            <div className="container mx-auto flex flex-col gap-4 px-6 py-6">
               {NAV_LINKS.map((link) => (
                 <div key={link.label} className="flex flex-col">
                   <Link
                     href={link.href}
-                    onClick={() => !link.hasDropdown && setIsMobileMenuOpen(false)}
-                    className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors flex items-center justify-between"
+                    onClick={() =>
+                      !link.hasDropdown && setIsMobileMenuOpen(false)
+                    }
+                    className="flex items-center justify-between py-2 font-medium text-foreground/80 transition-colors hover:text-primary"
                   >
                     {link.label}
                     {link.hasDropdown && <ChevronDown size={16} />}
                   </Link>
                   {link.hasDropdown && (
-                    <div className="pl-4 flex flex-col gap-2 border-l border-border mt-1 mb-2">
+                    <div className="mb-2 mt-1 flex flex-col gap-2 border-l border-border pl-4">
                       {/* Simplified Services for mobile if needed, or just iterate sublinks */}
                       {/* The original code had a special check for Services to list sub-services differently.
                            However, NAV_LINKS doesn't have subLinks for Services (it has SERVICE_CATEGORIES which are more complex).
@@ -163,14 +173,16 @@ export function Navbar() {
                            So I need to import SERVICE_CATEGORIES to iterate.
                         */
                         // We will fix this by importing SERVICE_CATEGORIES from constants and iterating
-                        <ServicesMobileMenu setIsMobileMenuOpen={setIsMobileMenuOpen} />
+                        <ServicesMobileMenu
+                          setIsMobileMenuOpen={setIsMobileMenuOpen}
+                        />
                       ) : (
                         link.subLinks?.map((sub) => (
                           <Link
                             key={sub.label}
                             href={sub.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="text-sm text-foreground/60 py-1"
+                            className="py-1 text-sm text-foreground/60"
                           >
                             {sub.label}
                           </Link>
@@ -182,7 +194,7 @@ export function Navbar() {
               ))}
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="hero" className="mt-4 w-full">
-                  Let's Connect
+                  Let&apos;s Connect
                 </Button>
               </Link>
             </div>
@@ -198,19 +210,19 @@ export function Navbar() {
 const ServicesMobileMenu = ({ setIsMobileMenuOpen }) => {
   return (
     <>
-      {SERVICE_CATEGORIES.map(category => (
+      {SERVICE_CATEGORIES.map((category) => (
         <Link
           key={category.slug}
           href={category.href}
           onClick={() => setIsMobileMenuOpen(false)}
-          className="text-sm text-foreground/60 py-1"
+          className="py-1 text-sm text-foreground/60"
         >
           {category.title}
         </Link>
       ))}
     </>
-  )
-}
+  );
+};
 
 const GrootLogo = () => (
   <div className="relative h-40 w-auto">

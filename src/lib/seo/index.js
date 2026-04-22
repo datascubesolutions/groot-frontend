@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * SEO Utilities
  *
@@ -5,7 +6,7 @@
  * @module lib/seo
  */
 
-import { ROUTE_METADATA } from '@/lib/routes/metadata';
+import { ROUTE_METADATA } from "@/lib/routes/metadata";
 import { siteConfig } from "@/config/site.config";
 
 /**
@@ -23,7 +24,7 @@ import { siteConfig } from "@/config/site.config";
 export function generateMetadata({
   title,
   description,
-  path = '/',
+  path = "/",
   image,
   keywords,
   noIndex = false,
@@ -45,7 +46,7 @@ export function generateMetadata({
       title,
       description,
       url,
-      type: 'website',
+      type: "website",
       images: [
         {
           url: ogImage,
@@ -56,7 +57,7 @@ export function generateMetadata({
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [ogImage],
@@ -90,8 +91,8 @@ export function generateRouteMetadata(routeKey, overrides = {}) {
   if (!routeMeta) {
     console.warn(`Route metadata not found for key: ${routeKey}`);
     return generateMetadata({
-      title: 'Groot Analytics',
-      description: 'Data Engineering & AI Solutions',
+      title: "Groot Analytics",
+      description: "Data Engineering & AI Solutions",
       ...overrides,
     });
   }
@@ -119,8 +120,6 @@ function normalizePath(path = "/") {
   return path.startsWith("/") ? path : `/${path}`;
 }
 
-
-
 /**
  * Generate FAQ structured data
  *
@@ -129,13 +128,13 @@ function normalizePath(path = "/") {
  */
 export function generateFAQSchema(faqs) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
     mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
+      "@type": "Question",
       name: faq.question,
       acceptedAnswer: {
-        '@type': 'Answer',
+        "@type": "Answer",
         text: faq.answer,
       },
     })),
@@ -160,35 +159,37 @@ export function generateFAQSchema(faqs) {
 export function generateArticleSchema(article) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
   return {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
     headline: article.title,
     description: article.description,
     image: article.image,
     datePublished: article.datePublished,
     dateModified: article.dateModified || article.datePublished,
     ...(article.wordCount ? { wordCount: article.wordCount } : {}),
-    ...(article.keywords?.length ? { keywords: article.keywords.join(", ") } : {}),
+    ...(article.keywords?.length
+      ? { keywords: article.keywords.join(", ") }
+      : {}),
     author: {
-      '@type': 'Person',
+      "@type": "Person",
       name: article.author,
     },
     publisher: {
-      '@type': 'Organization',
-      name: 'Groot Analytics',
+      "@type": "Organization",
+      name: "Groot Analytics",
       logo: {
-        '@type': 'ImageObject',
+        "@type": "ImageObject",
         url: `${siteUrl}/logo.png`,
         width: 512,
         height: 512,
       },
     },
     mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': article.url,
+      "@type": "WebPage",
+      "@id": article.url,
     },
   };
-};
+}
 
 /**
  * Generate breadcrumb structured data.

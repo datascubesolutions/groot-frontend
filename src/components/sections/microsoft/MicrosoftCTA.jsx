@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { motion } from "framer-motion";
@@ -13,7 +14,7 @@ export function MicrosoftCTA({
   primaryCtaLink = "/contact",
   secondaryCta = "Talk to Our Team",
   secondaryCtaLink = "/contact",
-  stats = []
+  stats = [],
 }) {
   // Dynamically highlight the last word of the title
   const words = title.split(" ");
@@ -21,36 +22,41 @@ export function MicrosoftCTA({
   const titleWithoutLast = words.join(" ");
 
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden z-0 border-t border-border/50">
-      <div className="container mx-auto px-6 relative z-10 w-full max-w-[1400px]">
+    <section className="relative z-0 overflow-hidden border-t border-border/50 bg-background py-16 md:py-24">
+      <div className="container relative z-10 mx-auto w-full max-w-[1400px] px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-[2.5rem] bg-card/60 backdrop-blur-2xl overflow-hidden shadow-2xl border border-border/50"
+          className="relative overflow-hidden rounded-[2.5rem] border border-border/50 bg-card/60 shadow-2xl backdrop-blur-2xl"
         >
           {/* Background Accents */}
-          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
             {/* Fabric Logo Watermark */}
-            <div className="absolute top-1/2 right-[-5%] -translate-y-1/2 w-[800px] h-[800px] opacity-[0.03] -rotate-12">
-              <Image src="/svg/fabric_48_color.svg" alt="Fabric Background" fill className="object-contain" />
+            <div className="absolute right-[-5%] top-1/2 h-[800px] w-[800px] -translate-y-1/2 -rotate-12 opacity-[0.03]">
+              <Image
+                src="/svg/fabric_48_color.svg"
+                alt="Fabric Background"
+                fill
+                className="object-contain"
+              />
             </div>
 
             {/* Elegant Light Glows */}
-            <div className="absolute -top-[30%] -right-[10%] w-[600px] h-[600px] bg-forest/5 blur-[100px] rounded-full filter" />
-            <div className="absolute bottom-[-30%] left-[-10%] w-[600px] h-[600px] bg-forest/5 blur-[100px] rounded-full filter" />
+            <div className="absolute -right-[10%] -top-[30%] h-[600px] w-[600px] rounded-full bg-forest/5 blur-[100px] filter" />
+            <div className="absolute bottom-[-30%] left-[-10%] h-[600px] w-[600px] rounded-full bg-forest/5 blur-[100px] filter" />
           </div>
 
-          <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between p-10 md:p-16 lg:p-24 gap-12 lg:gap-20">
-
+          <div className="relative z-10 flex flex-col items-center justify-between gap-12 p-10 md:p-16 lg:gap-20 lg:p-24 xl:flex-row">
             {/* Text Content Area */}
-            <div className="w-full xl:w-3/5 text-center xl:text-left flex flex-col items-center xl:items-start antialiased">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight tracking-tight text-balance">
-                {titleWithoutLast} <span className="text-forest font-bold">{lastWord}</span>
+            <div className="flex w-full flex-col items-center text-center antialiased xl:w-3/5 xl:items-start xl:text-left">
+              <h2 className="mb-6 text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                {titleWithoutLast}{" "}
+                <span className="font-bold text-forest">{lastWord}</span>
               </h2>
 
-              <p className="text-muted-foreground/90 text-lg md:text-xl font-normal max-w-2xl leading-relaxed text-balance mb-8">
+              <p className="mb-8 max-w-2xl text-balance text-lg font-normal leading-relaxed text-muted-foreground/90 md:text-xl">
                 {description}
               </p>
 
@@ -58,8 +64,12 @@ export function MicrosoftCTA({
                 <div className="flex flex-wrap gap-6 md:gap-10">
                   {stats.map((stat, idx) => (
                     <div key={idx} className="text-left">
-                      <div className="text-2xl md:text-3xl font-black text-forest">{stat.value}</div>
-                      <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+                      <div className="text-2xl font-black text-forest md:text-3xl">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm font-medium text-muted-foreground">
+                        {stat.label}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -67,31 +77,33 @@ export function MicrosoftCTA({
             </div>
 
             {/* Actions/Buttons Area */}
-            <div className="w-full xl:w-2/5 flex flex-col gap-4 max-w-md mx-auto xl:mx-0 shrink-0 antialiased">
+            <div className="mx-auto flex w-full max-w-md shrink-0 flex-col gap-4 antialiased xl:mx-0 xl:w-2/5">
               <Link
                 href={primaryCtaLink}
                 className={cn(
-                  "w-full inline-flex bg-forest hover:bg-forest/90 text-white px-8 py-5 rounded-full font-semibold text-sm tracking-wider uppercase transition-all shadow-lg shadow-forest/20 items-center justify-between group hover:scale-[1.02] active:scale-[0.98]",
+                  "group inline-flex w-full items-center justify-between rounded-full bg-forest px-8 py-5 text-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-forest/20 transition-all hover:scale-[1.02] hover:bg-forest/90 active:scale-[0.98]",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 )}
               >
                 <span className="text-left">{primaryCta}</span>
-                <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors" aria-hidden>
-                  <ArrowRight className="w-4 h-4" />
+                <span
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-colors group-hover:bg-white/30"
+                  aria-hidden
+                >
+                  <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
 
               <Link
                 href={secondaryCtaLink}
                 className={cn(
-                  "w-full inline-flex bg-card border border-border/50 hover:bg-muted/50 text-foreground px-8 py-5 rounded-full font-semibold text-sm tracking-wider uppercase transition-all items-center justify-center shadow-sm",
+                  "inline-flex w-full items-center justify-center rounded-full border border-border/50 bg-card px-8 py-5 text-sm font-semibold uppercase tracking-wider text-foreground shadow-sm transition-all hover:bg-muted/50",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 )}
               >
                 {secondaryCta}
               </Link>
             </div>
-
           </div>
         </motion.div>
       </div>

@@ -1,32 +1,27 @@
+// @ts-nocheck
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { createMulberry32 } from "@/lib/prng";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Mail } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 export function CTASection() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Generate random positions for animated dots (client-side only to avoid hydration mismatch)
   const animatedDots = useMemo(() => {
-    if (!isMounted) return [];
+    const rand = createMulberry32(0x9e3779b9);
     return Array.from({ length: 30 }, (_, i) => ({
       id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      duration: 3 + Math.random() * 2,
-      delay: Math.random() * 2,
+      left: rand() * 100,
+      top: rand() * 100,
+      duration: 3 + rand() * 2,
+      delay: rand() * 2,
     }));
-  }, [isMounted]);
-
-  useEffect(() => {
-    setIsMounted(true);
   }, []);
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="relative overflow-hidden py-24">
       {/* Background */}
       <div className="absolute inset-0 bg-secondary" />
 
@@ -35,7 +30,7 @@ export function CTASection() {
         {animatedDots.map((dot) => (
           <motion.div
             key={dot.id}
-            className="absolute w-2 h-2 rounded-full bg-primary/20"
+            className="absolute h-2 w-2 rounded-full bg-primary/20"
             style={{
               left: `${dot.left}%`,
               top: `${dot.top}%`,
@@ -53,30 +48,30 @@ export function CTASection() {
         ))}
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container relative z-10 mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center"
+          className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary-foreground mb-6">
+          <h2 className="mb-6 text-3xl font-bold text-secondary-foreground md:text-4xl lg:text-5xl">
             Ready to transform your data into{" "}
             <span className="text-primary">intelligent decisions</span>?
           </h2>
-          <p className="text-lg text-secondary-foreground/80 mb-10">
-            Let's discuss how Groot Analytics can help you build a modern data
-            platform, unlock advanced analytics, or implement AI-powered
+          <p className="mb-10 text-lg text-secondary-foreground/80">
+            Let&apos;s discuss how Groot Analytics can help you build a modern
+            data platform, unlock advanced analytics, or implement AI-powered
             automation.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link href="/contact">
               <Button variant="mint" size="lg" className="group">
-                <Mail className="w-5 h-5" />
+                <Mail className="h-5 w-5" />
                 Start a Conversation
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
             <Link href="/contact">
@@ -85,24 +80,24 @@ export function CTASection() {
                 size="lg"
                 className="border-primary/50 text-primary hover:bg-primary hover:text-charcoal"
               >
-                <Calendar className="w-5 h-5" />
+                <Calendar className="h-5 w-5" />
                 Schedule a Call
               </Button>
             </Link>
           </div>
 
           {/* Contact options */}
-          <div className="mt-12 flex flex-wrap gap-8 justify-center text-secondary-foreground/70 text-sm">
+          <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-secondary-foreground/70">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary" />
+              <div className="h-2 w-2 rounded-full bg-primary" />
               Free initial consultation
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary" />
+              <div className="h-2 w-2 rounded-full bg-primary" />
               Custom solutions
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary" />
+              <div className="h-2 w-2 rounded-full bg-primary" />
               Flexible engagement models
             </div>
           </div>

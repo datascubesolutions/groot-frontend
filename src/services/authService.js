@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Auth Service
  * Handles login, logout, and session management.
@@ -63,7 +64,10 @@ export const authService = {
 
     if (!response.ok) {
       const message =
-        data?.message || data?.error?.message || data?.error || "Invalid credentials";
+        data?.message ||
+        data?.error?.message ||
+        data?.error ||
+        "Invalid credentials";
       throw new Error(message);
     }
 

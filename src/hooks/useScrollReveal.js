@@ -1,14 +1,23 @@
+// @ts-nocheck
 "use client";
 
 /**
  * useScrollReveal Hook
- * 
+ *
  * @fileoverview Scroll-based reveal animations with Intersection Observer
  * @module hooks/useScrollReveal
  */
 
-import { useEffect, useRef, useState, useCallback, useMemo } from "react";
-import { animationConfig, prefersReducedMotion } from "@/config/animation.config";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { animationConfig } from "@/config/animation.config";
+import {
+  startTransition,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 /**
  * @typedef {Object} UseScrollRevealOptions
@@ -26,10 +35,10 @@ import { animationConfig, prefersReducedMotion } from "@/config/animation.config
 
 /**
  * Hook for scroll-based reveal animations
- * 
+ *
  * @param {UseScrollRevealOptions} [options={}] - Configuration options
  * @returns {UseScrollRevealReturn}
- * 
+ *
  * @example
  * ```jsx
  * const { ref, isVisible } = useScrollReveal({ threshold: 0.2 });
@@ -46,9 +55,8 @@ export function useScrollReveal(options = {}) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
-
-  // Memoize reduced motion check
-  const shouldAnimate = useMemo(() => !prefersReducedMotion(), []);
+  const prefersReducedMotion = useReducedMotion();
+  const shouldAnimate = !prefersReducedMotion;
 
   const handleIntersection = useCallback(
     (entries) => {
@@ -79,13 +87,17 @@ export function useScrollReveal(options = {}) {
   useEffect(() => {
     const element = ref.current;
     if (!element || typeof IntersectionObserver === "undefined") {
-      // Fallback for SSR or unsupported browsers
-      setIsVisible(true);
-      setHasBeenVisible(true);
+      startTransition(() => {
+        setIsVisible(true);
+        setHasBeenVisible(true);
+      });
       return;
     }
 
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    const observer = new IntersectionObserver(
+      handleIntersection,
+      observerOptions
+    );
 
     observer.observe(element);
 

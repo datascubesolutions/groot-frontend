@@ -6,8 +6,8 @@ Enterprise-grade Next.js application built with React 19 and Tailwind CSS. Desig
 
 - **Framework**: Next.js 16.1.1
 - **React**: 19.2.3
-- **Styling**: Tailwind CSS 4
-- **Fonts**: Geist Sans & Geist Mono
+- **Styling**: Tailwind CSS 3
+- **Fonts**: Plus Jakarta Sans
 - **CI/CD**: GitHub Actions
 - **Deployment**: Vercel (configurable)
 
@@ -125,10 +125,10 @@ NEXT_PUBLIC_ENV=development
 
 ### Required Environment Variables
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `NEXT_PUBLIC_SITE_URL` | Public site URL | `http://localhost:3000` |
-| `NEXT_PUBLIC_ENV` | Environment (development/staging/production) | `development` |
+| Variable               | Description                                  | Default                 |
+| ---------------------- | -------------------------------------------- | ----------------------- |
+| `NEXT_PUBLIC_SITE_URL` | Public site URL                              | `http://localhost:3000` |
+| `NEXT_PUBLIC_ENV`      | Environment (development/staging/production) | `development`           |
 
 ## 📚 Documentation
 

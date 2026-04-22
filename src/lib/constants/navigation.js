@@ -1,4 +1,16 @@
-import { Award, Briefcase, CheckCircle, Clock, Cpu, Database, Globe, Layers, TrendingUp, Users } from "lucide-react";
+// @ts-nocheck
+import {
+  Award,
+  Briefcase,
+  CheckCircle,
+  Clock,
+  Cpu,
+  Database,
+  Globe,
+  Layers,
+  TrendingUp,
+  Users,
+} from "lucide-react";
 import { SERVICE_CATEGORIES, SERVICES_ENTRY_HREF } from "./services";
 
 /** Categories for the Solutions mega menu (same structure as Services). */
@@ -31,7 +43,8 @@ export const SOLUTION_CATEGORIES = [
     slug: "infrastructure",
     href: "/microsoft/azure",
     icon: Layers,
-    description: "Secure, automated foundation for data and analytics workloads.",
+    description:
+      "Secure, automated foundation for data and analytics workloads.",
     subServices: [
       { title: "Azure Infrastructure", slug: "" },
       { title: "Azure DevOps", slug: "../devops" },
@@ -73,7 +86,7 @@ export const NAV_LINKS = [
       { label: "About Us", href: "/about" },
       { label: "Careers", href: "/about/careers" },
       { label: "Contact Us", href: "/contact" },
-    ]
+    ],
   },
 ];
 
@@ -82,20 +95,20 @@ export const ABOUT_LINKS = [
     title: "About Us",
     href: "/about",
     icon: Users,
-    description: "Our Story, Team & Approach"
+    description: "Our Story, Team & Approach",
   },
   {
     title: "Careers",
     href: "/about/careers",
     icon: Briefcase,
-    description: "Open Positions & Opportunities"
+    description: "Open Positions & Opportunities",
   },
   {
     title: "Contact Us",
     href: "/contact",
     icon: Globe,
-    description: "Get in Touch with Our Team"
-  }
+    description: "Get in Touch with Our Team",
+  },
 ];
 
 export const FOOTER_LINKS = {

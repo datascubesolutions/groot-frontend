@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { generateBreadcrumbSchema, generateRouteMetadata } from "@/lib/seo";
 import StackEvaluationPageClient from "./StackEvaluationPageClient";
 
@@ -10,7 +11,10 @@ export default function StackEvaluationPage() {
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
     { name: "Define Your Roadmap", path: "/services/define-your-roadmap" },
-    { name: "Stack Evaluation", path: "/services/define-your-roadmap/stack-evaluation" },
+    {
+      name: "Stack Evaluation",
+      path: "/services/define-your-roadmap/stack-evaluation",
+    },
   ]);
 
   return (

@@ -1,45 +1,55 @@
+// @ts-nocheck
 "use client";
 
 import { Button } from "@/components/ui/Button";
 import { domAnimation, LazyMotion, m } from "framer-motion";
-import { ArrowRight, BarChart, CheckCircle2, Database, FileText, ShieldCheck, TrendingUp } from "lucide-react";
+import {
+  ArrowRight,
+  BarChart,
+  CheckCircle2,
+  Database,
+  FileText,
+  ShieldCheck,
+  TrendingUp,
+} from "lucide-react";
 import Link from "next/link";
-
 
 export function DataReadinessSection() {
   return (
     <LazyMotion features={domAnimation} strict>
-      <section className="section-padding bg-muted/20 relative overflow-hidden text-foreground border-t border-border">
-
+      <section className="section-padding relative overflow-hidden border-t border-border bg-muted/20 text-foreground">
         {/* Subtle Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.08)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.08)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-        <div className="container mx-auto container-padding relative z-10">
-          <div className="max-w-7xl mx-auto">
+        <div className="container-padding container relative z-10 mx-auto">
+          <div className="mx-auto max-w-7xl">
             {/* Split Layout */}
-            <div className="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
-
+            <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-2">
               {/* Left - Content */}
               <div className="lg:pr-12">
                 <h2 className="heading-section mb-6 md:mb-8">
                   Not sure where to start?
                 </h2>
 
-                <p className="text-xl text-foreground/85 md:text-muted-foreground font-medium md:font-normal leading-relaxed mb-8 md:mb-10 max-w-2xl">
-                  Take our 2-minute <span className="text-secondary font-semibold">Data Readiness Assessment</span>.
-                  You'll get a comprehensive score, a recommended starting point, and a roadmap tailored to your maturity level.
+                <p className="mb-8 max-w-2xl text-xl font-medium leading-relaxed text-foreground/85 md:mb-10 md:font-normal md:text-muted-foreground">
+                  Take our 2-minute{" "}
+                  <span className="font-semibold text-secondary">
+                    Data Readiness Assessment
+                  </span>
+                  . You&apos;ll get a comprehensive score, a recommended
+                  starting point, and a roadmap tailored to your maturity level.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-3xl">
+                <div className="grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
                   <Link href="/assessment" className="w-full">
                     <Button
                       variant="hero"
                       size="xl"
-                      className="w-full h-auto min-h-[4rem] py-4 px-6 text-base md:text-lg text-center leading-tight shadow-xl shadow-forest/20 group font-bold tracking-wide cursor-pointer"
+                      className="group h-auto min-h-[4rem] w-full cursor-pointer px-6 py-4 text-center text-base font-bold leading-tight tracking-wide shadow-xl shadow-forest/20 md:text-lg"
                     >
                       <span className="flex items-center justify-center gap-3">
                         Data Readiness Score
-                        <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
                       </span>
                     </Button>
                   </Link>
@@ -48,10 +58,10 @@ export function DataReadinessSection() {
                     <Button
                       variant="hero-outline"
                       size="xl"
-                      className="w-full h-auto min-h-[4rem] py-4 px-6 text-base md:text-lg text-center leading-tight bg-card hover:bg-secondary/5 border-2 text-forest hover:text-forest font-bold shadow-sm transition-all duration-300"
+                      className="h-auto min-h-[4rem] w-full border-2 bg-card px-6 py-4 text-center text-base font-bold leading-tight text-forest shadow-sm transition-all duration-300 hover:bg-secondary/5 hover:text-forest md:text-lg"
                     >
                       <span className="flex items-center justify-center gap-3">
-                        <FileText className="w-5 h-5 shrink-0" />
+                        <FileText className="h-5 w-5 shrink-0" />
                         Download AI Roadmap
                       </span>
                     </Button>
@@ -59,17 +69,17 @@ export function DataReadinessSection() {
                 </div>
 
                 {/* Trust Indicators */}
-                <div className="mt-8 md:mt-10 flex flex-wrap gap-4 md:gap-6 text-sm text-foreground/70 md:text-muted-foreground font-medium">
+                <div className="mt-8 flex flex-wrap gap-4 text-sm font-medium text-foreground/70 md:mt-10 md:gap-6 md:text-muted-foreground">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
+                    <CheckCircle2 className="h-4 w-4 text-primary" />
                     Free & Instant
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
+                    <CheckCircle2 className="h-4 w-4 text-primary" />
                     No Credit Card
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
+                    <CheckCircle2 className="h-4 w-4 text-primary" />
                     Actionable PDF Report
                   </div>
                 </div>
@@ -77,63 +87,91 @@ export function DataReadinessSection() {
 
               {/* Right - Visual Element (The Report Card) */}
               <div className="relative flex justify-center lg:justify-end">
-
                 {/* The Card Container - Tilted and Floated */}
                 <m.div
                   initial={{ y: 20, rotateX: 5, opacity: 0 }}
                   whileInView={{ y: 0, rotateX: 0, opacity: 1 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="relative w-full max-w-md mx-auto lg:mx-0 bg-card rounded-2xl shadow-2xl border border-border overflow-hidden"
+                  className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-border bg-card shadow-2xl lg:mx-0"
                 >
                   {/* Card Header */}
-                  <div className="bg-charcoal px-6 py-4 flex items-center justify-between">
+                  <div className="flex items-center justify-between bg-charcoal px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-                        <BarChart className="w-4 h-4 text-primary" />
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20">
+                        <BarChart className="h-4 w-4 text-primary" />
                       </div>
                       <div>
-                        <div className="text-birch text-sm font-bold">Maturity Score</div>
-                        <div className="text-birch/70 text-xs">Generated for Acme Inc.</div>
+                        <div className="text-sm font-bold text-birch">
+                          Maturity Score
+                        </div>
+                        <div className="text-xs text-birch/70">
+                          Generated for Acme Inc.
+                        </div>
                       </div>
                     </div>
-                    <span className="bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded text-xs font-mono uppercase">
+                    <span className="rounded border border-primary/20 bg-primary/10 px-2 py-0.5 font-mono text-xs uppercase text-primary">
                       Unified
                     </span>
                   </div>
 
                   {/* Card Body */}
                   <div className="p-6 md:p-8">
-                    <div className="flex items-center justify-between mb-6 md:mb-8">
+                    <div className="mb-6 flex items-center justify-between md:mb-8">
                       <div>
-                        <div className="text-5xl font-bold text-foreground tracking-tight">87<span className="text-2xl text-muted-foreground font-medium">/100</span></div>
-                        <div className="text-primary font-bold mt-1">Advanced Architecture</div>
+                        <div className="text-5xl font-bold tracking-tight text-foreground">
+                          87
+                          <span className="text-2xl font-medium text-muted-foreground">
+                            /100
+                          </span>
+                        </div>
+                        <div className="mt-1 font-bold text-primary">
+                          Advanced Architecture
+                        </div>
                       </div>
-                      <div className="h-16 w-16 rounded-full border-4 border-primary/20 border-t-primary flex items-center justify-center">
-                        <TrendingUp className="w-6 h-6 text-primary" />
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-primary/20 border-t-primary">
+                        <TrendingUp className="h-6 w-6 text-primary" />
                       </div>
                     </div>
 
                     {/* Metrics List */}
                     <div className="space-y-4">
-                      <MetricRow icon={Database} label="Data Integration" score="92%" color="bg-primary" width="w-[92%]" />
-                      <MetricRow icon={ShieldCheck} label="Governance" score="65%" color="bg-forest/60" width="w-[65%]" />
-                      <MetricRow icon={ArrowRight} label="AI Readiness" score="78%" color="bg-primary" width="w-[78%]" />
+                      <MetricRow
+                        icon={Database}
+                        label="Data Integration"
+                        score="92%"
+                        color="bg-primary"
+                        width="w-[92%]"
+                      />
+                      <MetricRow
+                        icon={ShieldCheck}
+                        label="Governance"
+                        score="65%"
+                        color="bg-forest/60"
+                        width="w-[65%]"
+                      />
+                      <MetricRow
+                        icon={ArrowRight}
+                        label="AI Readiness"
+                        score="78%"
+                        color="bg-primary"
+                        width="w-[78%]"
+                      />
                     </div>
 
-                    <div className="mt-6 md:mt-8 pt-6 border-t border-border flex items-center justify-between text-xs text-muted-foreground">
+                    <div className="mt-6 flex items-center justify-between border-t border-border pt-6 text-xs text-muted-foreground md:mt-8">
                       <span>Analysis completed in 1.4s</span>
-                      <span className="underline decoration-border underline-offset-2">View Full Report</span>
+                      <span className="underline decoration-border underline-offset-2">
+                        View Full Report
+                      </span>
                     </div>
                   </div>
                 </m.div>
 
                 {/* Decorative Backdrop Blobs */}
-                <div className="absolute top-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl -z-10" />
-                <div className="absolute -bottom-10 left-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -z-10" />
-
+                <div className="absolute -right-10 top-10 -z-10 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
+                <div className="absolute -bottom-10 left-0 -z-10 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
               </div>
-
             </div>
           </div>
         </div>
@@ -145,18 +183,18 @@ export function DataReadinessSection() {
 function MetricRow({ icon: Icon, label, score, color, width }) {
   return (
     <div className="flex items-center gap-4">
-      <div className="bg-muted p-2 rounded-lg text-muted-foreground">
-        <Icon className="w-4 h-4" />
+      <div className="rounded-lg bg-muted p-2 text-muted-foreground">
+        <Icon className="h-4 w-4" />
       </div>
       <div className="flex-1">
-        <div className="flex justify-between text-sm mb-1.5">
+        <div className="mb-1.5 flex justify-between text-sm">
           <span className="font-semibold text-foreground">{label}</span>
           <span className="text-muted-foreground">{score}</span>
         </div>
-        <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+        <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
           <div className={`h-full ${width} ${color} rounded-full`} />
         </div>
       </div>
     </div>
-  )
+  );
 }

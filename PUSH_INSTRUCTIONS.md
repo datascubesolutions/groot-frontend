@@ -55,6 +55,7 @@ git push -u origin production
 ## Repository Description
 
 After pushing, update repository description on GitHub:
+
 - Go to repository → Settings → General
 - Description: "Enterprise-grade Next.js frontend with React 19, Tailwind CSS, and CI/CD"
 - Website: (your production URL)

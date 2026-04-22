@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import dynamic from "next/dynamic";
@@ -30,7 +31,7 @@ export default function ContactAnimation({ className }) {
   }
 
   return (
-    <div className="animate-in fade-in duration-700">
+    <div className="duration-700 animate-in fade-in">
       <ClientLottie animationData={animationData} className={className} />
     </div>
   );

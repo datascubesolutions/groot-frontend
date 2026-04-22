@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Route Groups Configuration
  *

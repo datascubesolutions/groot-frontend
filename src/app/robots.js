@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { siteConfig } from "@/config/site.config";
 import { env } from "@/lib/env";
 

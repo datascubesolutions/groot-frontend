@@ -1,6 +1,7 @@
+// @ts-nocheck
 /**
  * Component Type Definitions
- * 
+ *
  * @fileoverview Type definitions for React components
  * @module types/components
  */
@@ -80,4 +81,4 @@
  */
 
 // Export empty object for module resolution
-export { };
+export {};

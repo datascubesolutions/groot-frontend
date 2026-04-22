@@ -77,7 +77,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -86,7 +87,8 @@
 }
 
 @keyframes pulseSubtle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -101,7 +103,11 @@
   }
   50% {
     opacity: 1;
-    transform: translate(calc(var(--start-x, 0) * 0.3), calc(var(--start-y, 0) * 0.3)) scale(1.2);
+    transform: translate(
+        calc(var(--start-x, 0) * 0.3),
+        calc(var(--start-y, 0) * 0.3)
+      )
+      scale(1.2);
   }
   100% {
     opacity: 1;
@@ -110,7 +116,8 @@
 }
 
 @keyframes dotFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0);
   }
   25% {

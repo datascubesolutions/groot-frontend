@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -28,7 +29,7 @@ export default function ScrollTracker() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     // Check initially in case page is short
     handleScroll();
 

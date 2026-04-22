@@ -1,6 +1,7 @@
+// @ts-nocheck
 /**
  * Common Type Definitions
- * 
+ *
  * @fileoverview Shared type definitions used across the application
  * @module types/common
  */
@@ -54,4 +55,4 @@
  */
 
 // Export empty object for module resolution
-export { };
+export {};

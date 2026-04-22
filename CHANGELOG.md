@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Comprehensive CI/CD workflows (GitHub Actions)
 - Testing framework (Jest, React Testing Library, Playwright)
 - TypeScript configuration
@@ -21,18 +22,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - E2E testing setup
 
 ### Changed
+
 - Enhanced metadata with Open Graph and Twitter cards
 - Improved ErrorBoundary with error tracking integration
 - Added lazy loading for page sections
 - Updated package.json with testing dependencies
 
 ### Fixed
+
 - TypeScript configuration
 - Code formatting standards
 
 ## [0.1.0] - 2025-01-XX
 
 ### Added
+
 - Initial project setup
 - Next.js 16 with App Router
 - React 19

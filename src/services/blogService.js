@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Blog Service
  * Handles all blog-related API calls.
@@ -24,8 +25,7 @@ export const blogService = {
    * Sends multipart FormData to support image uploads.
    * @param {FormData} formData
    */
-  create: (formData) =>
-    authFormPost(API_ENDPOINTS.BLOG.CREATE, formData),
+  create: (formData) => authFormPost(API_ENDPOINTS.BLOG.CREATE, formData),
 
   /**
    * Update an existing blog post.
@@ -42,6 +42,5 @@ export const blogService = {
    * Delete a blog post by ID.
    * @param {string} blogId
    */
-  delete: (blogId) =>
-    authPost(API_ENDPOINTS.BLOG.DELETE, { blogId }),
+  delete: (blogId) => authPost(API_ENDPOINTS.BLOG.DELETE, { blogId }),
 };

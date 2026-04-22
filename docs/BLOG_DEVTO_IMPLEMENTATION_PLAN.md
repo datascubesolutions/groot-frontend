@@ -16,10 +16,10 @@ Production-safe, server-side Dev.to integration with source-aware routing and de
 
 ## 2. Routing
 
-| Source   | URL pattern           | Example                    |
-|----------|------------------------|----------------------------|
-| Internal | `/blog/[slug]`         | `/blog/future-of-ai-analytics-2024` |
-| Dev.to   | `/blog/devto/[slug]`   | `/blog/devto/12345--my-article`     |
+| Source   | URL pattern          | Example                             |
+| -------- | -------------------- | ----------------------------------- |
+| Internal | `/blog/[slug]`       | `/blog/future-of-ai-analytics-2024` |
+| Dev.to   | `/blog/devto/[slug]` | `/blog/devto/12345--my-article`     |
 
 - **No** `?id=` or `?source=devto`; routing is fully path-based.
 - Dev.to detail page derives numeric id from the first segment before `--` in `[slug]`.
@@ -124,19 +124,19 @@ Filters and pagination are URL-driven (`?category=&q=&page=`); no client-side fe
 
 ## 11. File summary
 
-| File | Role |
-|------|------|
-| `src/lib/devto.js` | Server-only Dev.to fetch with caching |
-| `src/lib/mappers/devto.js` | Tag→category map + defensive list/detail mappers |
-| `src/lib/blog-server.js` | Server-only internal list/get + normalizers |
-| `src/app/blog/page.jsx` | Async server listing: fetch, merge, sort, filter, paginate |
-| `src/app/blog/[slug]/page.jsx` | Internal detail: server resolve, then BlogDetailContent |
-| `src/app/blog/devto/[slug]/page.jsx` | Dev.to detail: fetch by id, sanitize, DevtoArticleView |
-| `src/components/blog/BlogListingClient.jsx` | Client: controls + grid from server state, URL-driven |
-| `src/components/blog/BlogCard.jsx` | Source-aware href + Dev.to badge |
-| `src/components/blog/FeaturedPost.jsx` | Source-aware href + Dev.to label |
-| `src/components/blog/DevtoArticleView.jsx` | Client wrapper for Dev.to detail (BlogDetailView) |
-| `src/components/blog/BlogDetailContent.jsx` | Internal only; presentational with post + relatedPosts |
+| File                                        | Role                                                       |
+| ------------------------------------------- | ---------------------------------------------------------- |
+| `src/lib/devto.js`                          | Server-only Dev.to fetch with caching                      |
+| `src/lib/mappers/devto.js`                  | Tag→category map + defensive list/detail mappers           |
+| `src/lib/blog-server.js`                    | Server-only internal list/get + normalizers                |
+| `src/app/blog/page.jsx`                     | Async server listing: fetch, merge, sort, filter, paginate |
+| `src/app/blog/[slug]/page.jsx`              | Internal detail: server resolve, then BlogDetailContent    |
+| `src/app/blog/devto/[slug]/page.jsx`        | Dev.to detail: fetch by id, sanitize, DevtoArticleView     |
+| `src/components/blog/BlogListingClient.jsx` | Client: controls + grid from server state, URL-driven      |
+| `src/components/blog/BlogCard.jsx`          | Source-aware href + Dev.to badge                           |
+| `src/components/blog/FeaturedPost.jsx`      | Source-aware href + Dev.to label                           |
+| `src/components/blog/DevtoArticleView.jsx`  | Client wrapper for Dev.to detail (BlogDetailView)          |
+| `src/components/blog/BlogDetailContent.jsx` | Internal only; presentational with post + relatedPosts     |
 
 ---
 

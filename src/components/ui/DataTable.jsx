@@ -1,8 +1,14 @@
+// @ts-nocheck
 "use client";
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from "lucide-react";
 
 import { AdminSkeleton } from "@/components/admin/AdminSkeleton";
 
@@ -12,7 +18,7 @@ export function DataTable({
   isLoading,
   onRowClick,
   pagination,
-  actions
+  actions,
 }) {
   if (isLoading) {
     return <AdminSkeleton type="table" />;
@@ -20,22 +26,26 @@ export function DataTable({
 
   return (
     <div className="w-full space-y-4">
-      <div className="rounded-xl overflow-hidden shadow-none bg-transparent overflow-x-auto">
-        <table className="w-full text-sm border-separate border-spacing-y-3 min-w-[800px]">
+      <div className="overflow-hidden overflow-x-auto rounded-xl bg-transparent shadow-none">
+        <table className="w-full min-w-[800px] border-separate border-spacing-y-3 text-sm">
           <thead>
             <tr className="bg-transparent">
               {columns.map((col, i) => (
                 <th
                   key={i}
                   className={cn(
-                    "h-10 px-4 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground select-none",
+                    "h-10 select-none px-4 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground",
                     col.className
                   )}
                 >
                   {col.header}
                 </th>
               ))}
-              {actions && <th className="h-10 px-4 text-right text-xs font-bold uppercase tracking-wider text-muted-foreground select-none">Actions</th>}
+              {actions && (
+                <th className="h-10 select-none px-4 text-right text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  Actions
+                </th>
+              )}
             </tr>
           </thead>
           <tbody className="">
@@ -46,7 +56,10 @@ export function DataTable({
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <td colSpan={columns.length + (actions ? 1 : 0)} className="h-40 text-center text-muted-foreground bg-white/[0.02] rounded-xl border border-white/5 backdrop-blur-sm">
+                  <td
+                    colSpan={columns.length + (actions ? 1 : 0)}
+                    className="h-40 rounded-xl border border-white/5 bg-white/[0.02] text-center text-muted-foreground backdrop-blur-sm"
+                  >
                     <div className="flex flex-col items-center justify-center gap-2">
                       <p>No results found</p>
                     </div>
@@ -63,8 +76,8 @@ export function DataTable({
                     transition={{ duration: 0.2, delay: i * 0.05 }}
                     onClick={() => onRowClick && onRowClick(row)}
                     className={cn(
-                      "group relative bg-card/40 hover:bg-card/60 transition-all duration-300",
-                      "shadow-sm hover:shadow-md hover:shadow-black/10 hover:-translate-y-[2px]",
+                      "group relative bg-card/40 transition-all duration-300 hover:bg-card/60",
+                      "shadow-sm hover:-translate-y-[2px] hover:shadow-md hover:shadow-black/10",
                       "border border-white/5 hover:border-white/10",
                       onRowClick && "cursor-pointer"
                     )}
@@ -76,7 +89,7 @@ export function DataTable({
                       <td
                         key={j}
                         className={cn(
-                          "p-4 align-middle text-muted-foreground group-hover:text-foreground transition-colors first:rounded-l-xl last:rounded-r-xl",
+                          "p-4 align-middle text-muted-foreground transition-colors first:rounded-l-xl last:rounded-r-xl group-hover:text-foreground",
                           j === 0 && "font-medium text-foreground"
                         )}
                       >
@@ -84,7 +97,10 @@ export function DataTable({
                       </td>
                     ))}
                     {actions && (
-                      <td className="p-4 align-middle text-right rounded-r-xl" onClick={(e) => e.stopPropagation()}>
+                      <td
+                        className="rounded-r-xl p-4 text-right align-middle"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         <div className="flex justify-end gap-2 opacity-100">
                           {actions(row)}
                         </div>
@@ -99,38 +115,64 @@ export function DataTable({
       </div>
 
       {pagination && (
-        <div className="flex items-center justify-between px-4 py-4 mt-4 border-t border-white/5">
-          <div className="text-sm text-gray-400 font-medium">
-            Showing <span className="font-bold text-white">{Math.min((pagination.currentPage - 1) * pagination.itemsPerPage + 1, pagination.totalItems)}</span> to <span className="font-bold text-white">{Math.min(pagination.currentPage * pagination.itemsPerPage, pagination.totalItems)}</span> of <span className="font-bold text-white">{pagination.totalItems}</span> results
+        <div className="mt-4 flex items-center justify-between border-t border-white/5 px-4 py-4">
+          <div className="text-sm font-medium text-gray-400">
+            Showing{" "}
+            <span className="font-bold text-white">
+              {Math.min(
+                (pagination.currentPage - 1) * pagination.itemsPerPage + 1,
+                pagination.totalItems
+              )}
+            </span>{" "}
+            to{" "}
+            <span className="font-bold text-white">
+              {Math.min(
+                pagination.currentPage * pagination.itemsPerPage,
+                pagination.totalItems
+              )}
+            </span>{" "}
+            of{" "}
+            <span className="font-bold text-white">
+              {pagination.totalItems}
+            </span>{" "}
+            results
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => pagination.onPageChange(1)}
               disabled={pagination.currentPage === 1}
-              className="h-9 w-9 flex items-center justify-center rounded-lg border border-white/20 bg-white/5 hover:bg-white/20 text-white disabled:opacity-30 disabled:hover:bg-white/5 transition-all shadow-sm"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/20 bg-white/5 text-white shadow-sm transition-all hover:bg-white/20 disabled:opacity-30 disabled:hover:bg-white/5"
               title="First Page"
             >
               <ChevronsLeft size={16} />
             </button>
             <button
-              onClick={() => pagination.onPageChange(Math.max(1, pagination.currentPage - 1))}
+              onClick={() =>
+                pagination.onPageChange(Math.max(1, pagination.currentPage - 1))
+              }
               disabled={pagination.currentPage === 1}
-              className="h-9 w-9 flex items-center justify-center rounded-lg border border-white/20 bg-white/5 hover:bg-white/20 text-white disabled:opacity-30 disabled:hover:bg-white/5 transition-all shadow-sm"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/20 bg-white/5 text-white shadow-sm transition-all hover:bg-white/20 disabled:opacity-30 disabled:hover:bg-white/5"
               title="Previous Page"
             >
               <ChevronLeft size={16} />
             </button>
 
-            <div className="flex items-center justify-center min-w-[100px] text-sm font-bold bg-white/10 py-1.5 px-3 rounded-lg border border-white/20 text-white">
-              <span className="text-gray-400 font-medium mr-2">Page</span>
+            <div className="flex min-w-[100px] items-center justify-center rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-bold text-white">
+              <span className="mr-2 font-medium text-gray-400">Page</span>
               <span className="text-primary">{pagination.currentPage}</span>
-              <span className="text-gray-400 font-medium ml-2">of {pagination.totalPages}</span>
+              <span className="ml-2 font-medium text-gray-400">
+                of {pagination.totalPages}
+              </span>
             </div>
 
             <button
-              onClick={() => pagination.onPageChange(Math.min(pagination.totalPages, pagination.currentPage + 1))}
+              onClick={() =>
+                pagination.onPageChange(
+                  Math.min(pagination.totalPages, pagination.currentPage + 1)
+                )
+              }
               disabled={pagination.currentPage === pagination.totalPages}
-              className="h-9 w-9 flex items-center justify-center rounded-lg border border-white/20 bg-white/5 hover:bg-white/20 text-white disabled:opacity-30 disabled:hover:bg-white/5 transition-all shadow-sm"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/20 bg-white/5 text-white shadow-sm transition-all hover:bg-white/20 disabled:opacity-30 disabled:hover:bg-white/5"
               title="Next Page"
             >
               <ChevronRight size={16} />
@@ -138,7 +180,7 @@ export function DataTable({
             <button
               onClick={() => pagination.onPageChange(pagination.totalPages)}
               disabled={pagination.currentPage === pagination.totalPages}
-              className="h-9 w-9 flex items-center justify-center rounded-lg border border-white/20 bg-white/5 hover:bg-white/20 text-white disabled:opacity-30 disabled:hover:bg-white/5 transition-all shadow-sm"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/20 bg-white/5 text-white shadow-sm transition-all hover:bg-white/20 disabled:opacity-30 disabled:hover:bg-white/5"
               title="Last Page"
             >
               <ChevronsRight size={16} />

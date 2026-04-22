@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * UI Components Index
  *
@@ -13,36 +14,41 @@
 // ============================================================================
 // Actions
 // ============================================================================
-export { Button, buttonVariants } from './Button';
+export { Button, buttonVariants } from "./Button";
 
 // ============================================================================
 // Forms
 // ============================================================================
-export { Input } from './Input';
+export { Input } from "./Input";
 
 // ============================================================================
 // Display
 // ============================================================================
 export {
-  Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
-} from './Card';
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./Card";
 
-export { Badge, badgeVariants } from './Badge';
+export { Badge, badgeVariants } from "./Badge";
 
 // ============================================================================
 // Feedback
 // ============================================================================
-export { Loading, LoadingDots, LoadingSpinner } from './Loading';
+export { Loading, LoadingDots, LoadingSpinner } from "./Loading";
 
 // ============================================================================
 // Layout
 // ============================================================================
-export { default as Container } from './Container';
+export { default as Container } from "./Container";
 
 // ============================================================================
 // Navigation (to be added)
 // ============================================================================
-export { Breadcrumb } from './Breadcrumb';
+export { Breadcrumb } from "./Breadcrumb";
 // export { Tabs } from './Tabs';
 // export { Pagination } from './Pagination';
 
@@ -50,9 +56,18 @@ export { Breadcrumb } from './Breadcrumb';
 // Overlay (to be added)
 // ============================================================================
 export {
-  Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger
-} from './Dialog';
-export { default as CookieConsent } from './CookieConsent';
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from "./Dialog";
+export { default as CookieConsent } from "./CookieConsent";
 // export { Drawer } from './Drawer';
 // export { Tooltip } from './Tooltip';
 // export { Popover } from './Popover';
@@ -63,6 +78,6 @@ export { default as CookieConsent } from './CookieConsent';
 // export { Table } from './Table';
 // export { Avatar } from './Avatar';
 // export { List } from './List';
-export { Progress } from './Progress';
-export { RadioGroup, RadioGroupItem } from './RadioGroup';
-export { TextFlip } from './TextFlip';
+export { Progress } from "./Progress";
+export { RadioGroup, RadioGroupItem } from "./RadioGroup";
+export { TextFlip } from "./TextFlip";

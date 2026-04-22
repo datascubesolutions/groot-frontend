@@ -37,3 +37,12 @@ next-env.d.ts
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Large generated / asset JSON (Prettier is slow and noisy on these)
+public/lottie/**/*.json
+
+# Broken / non-app generator script (invalid JS for Prettier parser)
+generate_unique_heroes.js
+
+# Playwright HTML report output
+playwright-report/**

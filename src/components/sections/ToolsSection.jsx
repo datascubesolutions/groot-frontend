@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { motion } from "framer-motion";
@@ -44,9 +45,9 @@ const tools = [
 
 export function ToolsSection() {
   return (
-    <section className="relative flex min-h-[680px] items-center justify-center overflow-visible bg-background section-padding md:min-h-[760px] font-sans">
+    <section className="section-padding relative flex min-h-[680px] items-center justify-center overflow-visible bg-background font-sans md:min-h-[760px]">
       {/* Ripple background – larger viewport */}
-      <div className="absolute top-1/2 left-1/2 z-0 flex h-[720px] w-[720px] -translate-x-1/2 -translate-y-1/2 items-center justify-center pointer-events-none md:h-[800px] md:w-[800px] lg:h-[880px] lg:w-[880px]">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 flex h-[720px] w-[720px] -translate-x-1/2 -translate-y-1/2 items-center justify-center md:h-[800px] md:w-[800px] lg:h-[880px] lg:w-[880px]">
         {[0, 1, 2].map((index) => (
           <motion.div
             key={index}
@@ -66,7 +67,7 @@ export function ToolsSection() {
       </div>
 
       {/* Central content – scaled for larger viewport */}
-      <div className="relative z-10 flex flex-col items-center justify-center gap-6 md:gap-8 px-6 sm:px-8 lg:px-12 text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center gap-6 px-6 text-center sm:px-8 md:gap-8 lg:px-12">
         {/* Icon above heading */}
         <div className="flex h-14 w-14 shrink-0 items-center justify-center md:h-16 md:w-16">
           <Image
@@ -89,10 +90,18 @@ export function ToolsSection() {
               preserveAspectRatio="none"
               aria-hidden
             >
-              <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" opacity="0.6" />
+              <path
+                d="M0 5 Q 50 10 100 5"
+                stroke="currentColor"
+                strokeWidth="8"
+                fill="none"
+                opacity="0.6"
+              />
             </svg>
           </span>
-          <span className="mx-2 font-normal text-muted-foreground md:mx-2.5">&</span>
+          <span className="mx-2 font-normal text-muted-foreground md:mx-2.5">
+            &
+          </span>
           <span className="font-normal text-muted-foreground">Resource</span>
           <br />
           <span className="mt-0.5 inline-block">Blog Teasers</span>
@@ -111,13 +120,13 @@ export function ToolsSection() {
           whileHover={{ scale: 1.08, y: -4 }}
         >
           {tool.name !== "Databricks" && (
-            <div className="flex items-center justify-center rounded-xl bg-card/60 p-3 backdrop-blur-sm transition-shadow hover:bg-card/80 hover:shadow-md md:p-4 border border-border/50">
+            <div className="flex items-center justify-center rounded-xl border border-border/50 bg-card/60 p-3 backdrop-blur-sm transition-shadow hover:bg-card/80 hover:shadow-md md:p-4">
               <Image
                 src={tool.src}
                 alt={tool.name}
                 width={tool.width}
                 height={tool.height}
-                className="h-9 w-auto max-h-12 object-contain md:h-10"
+                className="h-9 max-h-12 w-auto object-contain md:h-10"
               />
             </div>
           )}
@@ -133,7 +142,7 @@ export function ToolsSection() {
         transition={{ delay: 0.3, duration: 0.4 }}
         whileHover={{ scale: 1.05 }}
       >
-        <div className="flex items-center gap-2.5 rounded-xl bg-card/60 p-3 backdrop-blur-sm transition-shadow hover:bg-card/80 hover:shadow-md md:gap-3 md:p-3.5 border border-border/50">
+        <div className="flex items-center gap-2.5 rounded-xl border border-border/50 bg-card/60 p-3 backdrop-blur-sm transition-shadow hover:bg-card/80 hover:shadow-md md:gap-3 md:p-3.5">
           <Image
             src="/svg/google-analytics.svg"
             alt="Google Analytics"

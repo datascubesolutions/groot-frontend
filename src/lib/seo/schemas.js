@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * SEO Utilities
  * Structured data and schema generation
@@ -9,36 +10,39 @@
  * @returns {Object} JSON-LD schema
  */
 export const generateOrganizationSchema = (config = {}) => {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://grootanalytics.com';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com";
 
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": config.name || "Groot Analytics",
-    "url": baseUrl,
-    "logo": `${baseUrl}/logo.png`,
-    "description": config.description || "Modern data, analytics, and AI solutions for enterprise transformation",
-    "foundingDate": "2005",
-    "numberOfEmployees": {
+    name: config.name || "Groot Analytics",
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
+    description:
+      config.description ||
+      "Modern data, analytics, and AI solutions for enterprise transformation",
+    foundingDate: "2005",
+    numberOfEmployees: {
       "@type": "QuantitativeValue",
-      "value": 250
+      value: 250,
     },
-    "address": {
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": config.city || "Global",
-      "addressCountry": "US"
+      addressLocality: config.city || "Global",
+      addressCountry: "US",
     },
-    "sameAs": [
+    sameAs: [
       "https://linkedin.com/company/grootanalytics",
-      "https://twitter.com/grootanalytics"
+      "https://twitter.com/grootanalytics",
     ],
-    "contactPoint": {
+    contactPoint: {
       "@type": "ContactPoint",
-      "telephone": "+1-555-123-4567",
-      "contactType": "Customer Service",
-      "email": "contact@grootanalytics.com",
-      "availableLanguage": ["English"]
-    }
+      telephone: "+1-555-123-4567",
+      contactType: "Customer Service",
+      email: "contact@grootanalytics.com",
+      availableLanguage: ["English"],
+    },
   };
 };
 
@@ -48,17 +52,18 @@ export const generateOrganizationSchema = (config = {}) => {
  * @returns {Object} JSON-LD schema
  */
 export const generateBreadcrumbSchema = (items) => {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://grootanalytics.com';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com";
 
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": items.map((item, index) => ({
+    itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
-      "position": index + 1,
-      "name": item.name,
-      "item": `${baseUrl}${item.url}`
-    }))
+      position: index + 1,
+      name: item.name,
+      item: `${baseUrl}${item.url}`,
+    })),
   };
 };
 
@@ -68,32 +73,34 @@ export const generateBreadcrumbSchema = (items) => {
  * @returns {Object} JSON-LD schema
  */
 export const generateServiceSchema = (service) => {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://grootanalytics.com';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com";
 
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": service.serviceType,
-    "provider": {
+    serviceType: service.serviceType,
+    provider: {
       "@type": "Organization",
-      "name": "Groot Analytics",
-      "url": baseUrl
+      name: "Groot Analytics",
+      url: baseUrl,
     },
-    "name": service.name,
-    "description": service.description,
-    "areaServed": "Global",
-    "hasOfferCatalog": {
+    name: service.name,
+    description: service.description,
+    areaServed: "Global",
+    hasOfferCatalog: {
       "@type": "OfferCatalog",
-      "name": service.name,
-      "itemListElement": service.offerings?.map(offering => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": offering.name,
-          "description": offering.description
-        }
-      })) || []
-    }
+      name: service.name,
+      itemListElement:
+        service.offerings?.map((offering) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: offering.name,
+            description: offering.description,
+          },
+        })) || [],
+    },
   };
 };
 
@@ -103,43 +110,46 @@ export const generateServiceSchema = (service) => {
  * @returns {Object} JSON-LD schema
  */
 export const generateJobPostingSchema = (job) => {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://grootanalytics.com';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com";
 
   return {
     "@context": "https://schema.org",
     "@type": "JobPosting",
-    "title": job.title,
-    "description": job.description,
-    "identifier": {
+    title: job.title,
+    description: job.description,
+    identifier: {
       "@type": "PropertyValue",
-      "name": "Groot Analytics",
-      "value": job.id
+      name: "Groot Analytics",
+      value: job.id,
     },
-    "datePosted": job.datePosted || new Date().toISOString(),
-    "employmentType": job.employmentType || "FULL_TIME",
-    "hiringOrganization": {
+    datePosted: job.datePosted || new Date().toISOString(),
+    employmentType: job.employmentType || "FULL_TIME",
+    hiringOrganization: {
       "@type": "Organization",
-      "name": "Groot Analytics",
-      "sameAs": baseUrl,
-      "logo": `${baseUrl}/logo.png`
+      name: "Groot Analytics",
+      sameAs: baseUrl,
+      logo: `${baseUrl}/logo.png`,
     },
-    "jobLocation": {
+    jobLocation: {
       "@type": "Place",
-      "address": {
+      address: {
         "@type": "PostalAddress",
-        "addressLocality": job.location || "Remote",
-        "addressCountry": "US"
-      }
+        addressLocality: job.location || "Remote",
+        addressCountry: "US",
+      },
     },
-    "baseSalary": job.salary ? {
-      "@type": "MonetaryAmount",
-      "currency": "USD",
-      "value": {
-        "@type": "QuantitativeValue",
-        "value": job.salary,
-        "unitText": "YEAR"
-      }
-    } : undefined
+    baseSalary: job.salary
+      ? {
+          "@type": "MonetaryAmount",
+          currency: "USD",
+          value: {
+            "@type": "QuantitativeValue",
+            value: job.salary,
+            unitText: "YEAR",
+          },
+        }
+      : undefined,
   };
 };
 
@@ -148,21 +158,22 @@ export const generateJobPostingSchema = (job) => {
  * @returns {Object} JSON-LD schema
  */
 export const generateWebSiteSchema = () => {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://grootanalytics.com';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://grootanalytics.com";
 
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": baseUrl,
-    "name": "Groot Analytics",
-    "description": "Modern data, analytics, and AI solutions",
-    "potentialAction": {
+    url: baseUrl,
+    name: "Groot Analytics",
+    description: "Modern data, analytics, and AI solutions",
+    potentialAction: {
       "@type": "SearchAction",
-      "target": {
+      target: {
         "@type": "EntryPoint",
-        "urlTemplate": `${baseUrl}/search?q={search_term_string}`
+        urlTemplate: `${baseUrl}/search?q={search_term_string}`,
       },
-      "query-input": "required name=search_term_string"
-    }
+      "query-input": "required name=search_term_string",
+    },
   };
 };

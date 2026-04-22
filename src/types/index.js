@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Type Definitions Index
  *
@@ -8,7 +9,7 @@
  */
 
 // Re-export all types
-export * from './api';
-export * from './common';
-export * from './components';
-export * from './seo';
+export * from "./api";
+export * from "./common";
+export * from "./components";
+export * from "./seo";

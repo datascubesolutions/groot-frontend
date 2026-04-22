@@ -21,7 +21,7 @@ test.describe("Home Page", () => {
   test("should be responsive on mobile", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto("/");
-    
+
     const heroContent = page.locator("h1").first();
     await expect(heroContent).toBeVisible();
   });

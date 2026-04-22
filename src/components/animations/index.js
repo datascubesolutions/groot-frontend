@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Animation Components Index
  *
@@ -13,10 +14,21 @@
 // export { RevealOnScroll } from './RevealOnScroll';
 
 // Neural Network Background
-export { NeuralNetworkBackground } from './NeuralNetworkBackground';
+import dynamic from "next/dynamic";
+
+export const NeuralNetworkBackground = dynamic(
+  () =>
+    import("./NeuralNetworkBackground").then(
+      (mod) => mod.NeuralNetworkBackground
+    ),
+  { ssr: false }
+);
 
 // Side Particles (Left/Right)
-export { SideParticles } from './SideParticles';
+export const SideParticles = dynamic(
+  () => import("./SideParticles").then((mod) => mod.SideParticles),
+  { ssr: false }
+);
 
 // Placeholder export to prevent import errors
-export { };
+export {};

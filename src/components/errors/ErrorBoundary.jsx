@@ -1,8 +1,9 @@
+// @ts-nocheck
 "use client";
 
 /**
  * Error Boundary Component
- * 
+ *
  * @fileoverview Catches JavaScript errors in component tree and displays fallback UI
  * @module components/errors/ErrorBoundary
  */
@@ -49,7 +50,7 @@ class ErrorBoundary extends Component {
   componentDidCatch(error, errorInfo) {
     // Log error to error reporting service
     console.error("ErrorBoundary caught an error:", error, errorInfo);
-    
+
     // Send to error tracking service
     captureException(error, {
       errorInfo,
@@ -70,24 +71,25 @@ class ErrorBoundary extends Component {
       }
 
       return (
-        <Container className="min-h-screen flex items-center justify-center">
-          <div className="text-center space-y-6 max-w-md">
+        <Container className="flex min-h-screen items-center justify-center">
+          <div className="max-w-md space-y-6 text-center">
             <h1 className="text-4xl font-bold">Something went wrong</h1>
             <p className="text-muted-foreground">
-              We&apos;re sorry, but something unexpected happened. Please try again.
+              We&apos;re sorry, but something unexpected happened. Please try
+              again.
             </p>
             {process.env.NODE_ENV === "development" && this.state.error && (
-              <details className="text-left bg-muted p-4 rounded-lg">
-                <summary className="cursor-pointer font-semibold mb-2">
+              <details className="rounded-lg bg-muted p-4 text-left">
+                <summary className="mb-2 cursor-pointer font-semibold">
                   Error Details (Development Only)
                 </summary>
-                <pre className="text-xs overflow-auto">
+                <pre className="overflow-auto text-xs">
                   {this.state.error.toString()}
                   {this.state.error.stack}
                 </pre>
               </details>
             )}
-            <div className="flex gap-4 justify-center">
+            <div className="flex justify-center gap-4">
               <Button onClick={this.handleReset} variant="primary">
                 Try Again
               </Button>

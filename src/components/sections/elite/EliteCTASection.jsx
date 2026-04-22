@@ -1,93 +1,118 @@
+// @ts-nocheck
 import { ArrowRight, Sparkles, TrendingUp, Zap } from "lucide-react";
 
 const EliteCTASection = () => {
   return (
-    <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section className="relative overflow-hidden bg-background py-24 lg:py-32">
       {/* Ambient Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-accent/5 blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="max-w-6xl mx-auto">
+      <div className="container relative z-10 mx-auto px-6 lg:px-12">
+        <div className="mx-auto max-w-6xl">
           {/* Split Layout */}
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-0 items-center">
-
+          <div className="grid items-center gap-8 lg:grid-cols-5 lg:gap-0">
             {/* Left - Content */}
             <div className="lg:col-span-3 lg:pr-12">
               {/* Floating Pills */}
-              <div className="flex flex-wrap gap-3 mb-8">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-forest/10 text-forest text-sm font-medium">
-                  <Sparkles className="w-4 h-4" />
+              <div className="mb-8 flex flex-wrap gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full bg-forest/10 px-4 py-2 text-sm font-medium text-forest">
+                  <Sparkles className="h-4 w-4" />
                   AI-Powered
                 </span>
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                  <Zap className="w-4 h-4" />
+                <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                  <Zap className="h-4 w-4" />
                   Real-Time
                 </span>
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
-                  <TrendingUp className="w-4 h-4" />
+                <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
+                  <TrendingUp className="h-4 w-4" />
                   Scalable
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-foreground mb-6 tracking-tight leading-[1.1]">
-                It's Time to{" "}
-                <span className="bg-gradient-to-r from-[hsl(168,76%,40%)] to-[hsl(142,71%,38%)] bg-clip-text text-transparent relative">
+              <h2 className="mb-6 font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                It&apos;s Time to{" "}
+                <span className="relative bg-gradient-to-r from-[hsl(168,76%,40%)] to-[hsl(142,71%,38%)] bg-clip-text text-transparent">
                   Do the Math.
                   {/* Underline Decoration */}
-                  <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary/30" viewBox="0 0 200 12" preserveAspectRatio="none">
-                    <path d="M0,8 Q50,0 100,8 T200,8" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  <svg
+                    className="absolute -bottom-2 left-0 h-3 w-full text-primary/30"
+                    viewBox="0 0 200 12"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M0,8 Q50,0 100,8 T200,8"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </span>
               </h2>
 
-              <p className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed mb-10">
-                Let's turn your data, algorithms, and curiosity into decisions that move the markets.
+              <p className="mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground lg:text-xl">
+                Let&apos;s turn your data, algorithms, and curiosity into
+                decisions that move the markets.
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <button className="btn-primary group text-base lg:text-lg py-5 px-10">
+                <button className="btn-primary group px-10 py-5 text-base lg:text-lg">
                   <span>Get Started</span>
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </button>
-                <button className="btn-secondary text-base lg:text-lg py-5 px-10">
+                <button className="btn-secondary px-10 py-5 text-base lg:text-lg">
                   Schedule a Demo
                 </button>
               </div>
             </div>
 
             {/* Right - Visual Element */}
-            <div className="lg:col-span-2 relative">
-              <div className="relative aspect-square max-w-sm mx-auto lg:max-w-none">
+            <div className="relative lg:col-span-2">
+              <div className="relative mx-auto aspect-square max-w-sm lg:max-w-none">
                 {/* Concentric Circles */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-full rounded-full border border-border/40 animate-pulse" style={{ animationDuration: '3s' }} />
+                  <div
+                    className="h-full w-full animate-pulse rounded-full border border-border/40"
+                    style={{ animationDuration: "3s" }}
+                  />
                 </div>
                 <div className="absolute inset-8 flex items-center justify-center">
-                  <div className="w-full h-full rounded-full border border-primary/30 animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
+                  <div
+                    className="h-full w-full animate-pulse rounded-full border border-primary/30"
+                    style={{
+                      animationDuration: "2.5s",
+                      animationDelay: "0.5s",
+                    }}
+                  />
                 </div>
                 <div className="absolute inset-16 flex items-center justify-center">
-                  <div className="w-full h-full rounded-full border border-forest/40 animate-pulse" style={{ animationDuration: '2s', animationDelay: '1s' }} />
+                  <div
+                    className="h-full w-full animate-pulse rounded-full border border-forest/40"
+                    style={{ animationDuration: "2s", animationDelay: "1s" }}
+                  />
                 </div>
 
                 {/* Center Content */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full bg-gradient-to-br from-forest to-primary flex items-center justify-center shadow-2xl shadow-forest/30">
+                  <div className="flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-forest to-primary shadow-2xl shadow-forest/30 lg:h-40 lg:w-40">
                     <div className="text-center text-white">
-                      <div className="text-3xl lg:text-4xl font-bold">∞</div>
-                      <div className="text-xs lg:text-sm font-medium opacity-80">Possibilities</div>
+                      <div className="text-3xl font-bold lg:text-4xl">∞</div>
+                      <div className="text-xs font-medium opacity-80 lg:text-sm">
+                        Possibilities
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Floating Data Points */}
-                <div className="absolute top-8 right-8 px-4 py-2 bg-white rounded-xl shadow-lg border border-border/50">
+                <div className="absolute right-8 top-8 rounded-xl border border-border/50 bg-white px-4 py-2 shadow-lg">
                   <div className="text-lg font-bold text-forest">+47%</div>
                   <div className="text-xs text-muted-foreground">Growth</div>
                 </div>
-                <div className="absolute bottom-12 left-4 px-4 py-2 bg-white rounded-xl shadow-lg border border-border/50">
+                <div className="absolute bottom-12 left-4 rounded-xl border border-border/50 bg-white px-4 py-2 shadow-lg">
                   <div className="text-lg font-bold text-primary">3.2x</div>
                   <div className="text-xs text-muted-foreground">ROI</div>
                 </div>

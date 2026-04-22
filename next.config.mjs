@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactCompiler: true,
+  // Smaller source maps in production reduce build output size (default is false).
+  productionBrowserSourceMaps: false,
 
   async redirects() {
     return [
@@ -35,7 +37,13 @@ const nextConfig = {
 
   // Experimental features
   experimental: {
-    optimizePackageImports: ["@/components", "@/lib"],
+    optimizePackageImports: [
+      "@/components",
+      "@/lib",
+      "framer-motion",
+      "recharts",
+      "lucide-react",
+    ],
     // Enable optimized route prefetching
     optimizeCss: true,
   },
@@ -45,14 +53,33 @@ const nextConfig = {
   // File-based routing is already in use via App Router
 
   // External packages (optional dependencies)
-  // Mark Sentry as external so it doesn't try to bundle it
-  serverExternalPackages: ["@sentry/nextjs"],
+  serverExternalPackages: [],
 
   // Headers for security
   async headers() {
     const isProduction = process.env.NODE_ENV === "production";
 
+    const cspHeader = `
+      default-src 'self';
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com;
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' blob: data: https://images.unsplash.com https://res.cloudinary.com https://www.google-analytics.com;
+      font-src 'self' data:;
+      connect-src 'self' https://region1.google-analytics.com https://www.google-analytics.com wss:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+      upgrade-insecure-requests;
+    `
+      .replace(/\s{2,}/g, " ")
+      .trim();
+
     const baseHeaders = [
+      {
+        key: "Content-Security-Policy",
+        value: cspHeader,
+      },
       {
         key: "X-Content-Type-Options",
         value: "nosniff",

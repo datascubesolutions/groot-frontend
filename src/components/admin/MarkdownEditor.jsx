@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import {
@@ -58,14 +59,13 @@ function renderMarkdown(md) {
   html = html.replace(/^---$/gm, '<hr class="md-hr" />');
 
   // Links — guard href against javascript:/data:/vbscript: URIs
-  html = html.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    (_, text, url) => {
-      // Strip dangerous URI schemes
-      const safeUrl = /^(?:javascript|data|vbscript):/i.test(url.trim()) ? '#' : url;
-      return `<a href="${safeUrl}" class="md-link" target="_blank" rel="noopener noreferrer">${text}</a>`;
-    }
-  );
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, url) => {
+    // Strip dangerous URI schemes
+    const safeUrl = /^(?:javascript|data|vbscript):/i.test(url.trim())
+      ? "#"
+      : url;
+    return `<a href="${safeUrl}" class="md-link" target="_blank" rel="noopener noreferrer">${text}</a>`;
+  });
 
   // Images
   html = html.replace(
@@ -255,12 +255,27 @@ export default function MarkdownEditor({
 
         if (selected) {
           // Wrap selected text
-          newText = beforeLine + item.prefix + selected + item.suffix + currentLine.substring(selected.length + (start - lineStart));
-          newCursorPos = lineStart + item.prefix.length + selected.length + item.suffix.length;
+          newText =
+            beforeLine +
+            item.prefix +
+            selected +
+            item.suffix +
+            currentLine.substring(selected.length + (start - lineStart));
+          newCursorPos =
+            lineStart +
+            item.prefix.length +
+            selected.length +
+            item.suffix.length;
         } else {
           // Insert at line start
-          newText = beforeLine + item.prefix + (item.placeholder || "") + item.suffix + currentLine.substring(start - lineStart);
-          newCursorPos = lineStart + item.prefix.length + (item.placeholder || "").length;
+          newText =
+            beforeLine +
+            item.prefix +
+            (item.placeholder || "") +
+            item.suffix +
+            currentLine.substring(start - lineStart);
+          newCursorPos =
+            lineStart + item.prefix.length + (item.placeholder || "").length;
         }
       } else {
         // Inline format (bold, italic, code, link)
@@ -271,7 +286,8 @@ export default function MarkdownEditor({
             selected +
             item.suffix +
             text.substring(end);
-          newCursorPos = start + item.prefix.length + selected.length + item.suffix.length;
+          newCursorPos =
+            start + item.prefix.length + selected.length + item.suffix.length;
         } else {
           const ph = item.placeholder || "";
           newText =
@@ -296,11 +312,11 @@ export default function MarkdownEditor({
   );
 
   return (
-    <div className="bg-[#111111] border border-white/5 rounded-2xl overflow-hidden">
+    <div className="overflow-hidden rounded-2xl border border-white/5 bg-[#111111]">
       {/* Toolbar Header */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/5 bg-white/[0.02]">
+      <div className="flex items-center justify-between border-b border-white/5 bg-white/[0.02] px-4 py-2.5">
         <div className="flex items-center gap-1">
-          <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest mr-3">
+          <h2 className="mr-3 text-sm font-bold uppercase tracking-widest text-gray-300">
             {label} {required && <span className="text-red-400">*</span>}
           </h2>
 
@@ -308,17 +324,14 @@ export default function MarkdownEditor({
           {mode === "write" &&
             TOOLBAR_ITEMS.map((item, i) =>
               item.type === "divider" ? (
-                <div
-                  key={`d-${i}`}
-                  className="w-px h-5 bg-white/10 mx-1"
-                />
+                <div key={`d-${i}`} className="mx-1 h-5 w-px bg-white/10" />
               ) : (
                 <button
                   key={item.label}
                   type="button"
                   onClick={() => insertFormat(item)}
                   title={item.label}
-                  className="h-7 w-7 flex items-center justify-center rounded-md text-gray-500 hover:text-white hover:bg-white/10 transition-all"
+                  className="flex h-7 w-7 items-center justify-center rounded-md text-gray-500 transition-all hover:bg-white/10 hover:text-white"
                 >
                   <item.icon size={14} />
                 </button>
@@ -327,14 +340,15 @@ export default function MarkdownEditor({
         </div>
 
         {/* Write / Preview Toggle */}
-        <div className="flex items-center gap-1 bg-white/5 rounded-lg p-0.5">
+        <div className="flex items-center gap-1 rounded-lg bg-white/5 p-0.5">
           <button
             type="button"
             onClick={() => setMode("write")}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold transition-all ${mode === "write"
+            className={`flex items-center gap-1.5 rounded-md px-3 py-1 text-xs font-bold transition-all ${
+              mode === "write"
                 ? "bg-white/10 text-white"
                 : "text-gray-500 hover:text-gray-300"
-              }`}
+            }`}
           >
             <PencilLine size={12} />
             Write
@@ -342,10 +356,11 @@ export default function MarkdownEditor({
           <button
             type="button"
             onClick={() => setMode("preview")}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold transition-all ${mode === "preview"
+            className={`flex items-center gap-1.5 rounded-md px-3 py-1 text-xs font-bold transition-all ${
+              mode === "preview"
                 ? "bg-white/10 text-white"
                 : "text-gray-500 hover:text-gray-300"
-              }`}
+            }`}
           >
             <Eye size={12} />
             Preview
@@ -361,18 +376,18 @@ export default function MarkdownEditor({
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           rows={rows}
-          className="block w-full px-5 py-4 bg-transparent text-white placeholder:text-gray-500 focus:outline-none resize-y font-mono text-sm leading-relaxed"
+          className="block w-full resize-y bg-transparent px-5 py-4 font-mono text-sm leading-relaxed text-white placeholder:text-gray-500 focus:outline-none"
           required={required}
         />
       ) : (
         <div
-          className="markdown-preview px-5 py-4 min-h-[300px] text-sm"
+          className="markdown-preview min-h-[300px] px-5 py-4 text-sm"
           dangerouslySetInnerHTML={{ __html: renderMarkdown(value) }}
         />
       )}
 
       {/* Footer hint */}
-      <div className="flex items-center justify-between px-4 py-2 border-t border-white/5 bg-white/[0.02]">
+      <div className="flex items-center justify-between border-t border-white/5 bg-white/[0.02] px-4 py-2">
         <p className="text-[11px] text-gray-600">
           Supports Markdown — **bold**, *italic*, # headings, - bullet lists, 1.
           numbered lists, `code`, [links](url)

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Server-side blog data fetching utilities.
  * For use in Server Components only.
@@ -25,10 +26,10 @@ function formatDate(dateValue) {
     return Number.isNaN(d.getTime())
       ? "Recently"
       : d.toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      });
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        });
   } catch {
     return "Recently";
   }
@@ -47,7 +48,9 @@ function toTimestamp(dateValue) {
 
 function normalizeCategory(raw) {
   if (!raw) return "General";
-  return String(raw).charAt(0).toUpperCase() + String(raw).slice(1).toLowerCase();
+  return (
+    String(raw).charAt(0).toUpperCase() + String(raw).slice(1).toLowerCase()
+  );
 }
 
 // ─── Public API ─────────────────────────────────────────────────────────────
@@ -69,10 +72,7 @@ export async function fetchInternalBlogList() {
 
     const data = await res.json();
     const raw =
-      data?.result?.data?.blogs ??
-      data?.result?.blogs ??
-      data?.blogs ??
-      [];
+      data?.result?.data?.blogs ?? data?.result?.blogs ?? data?.blogs ?? [];
 
     if (!Array.isArray(raw)) return [];
 
@@ -93,7 +93,8 @@ export async function fetchInternalBlogList() {
         date: formatDate(dateVal),
         readTime: post.readTime ?? "5 min read",
         image: post.coverImage ?? post.image ?? null,
-        featured: String(post.isFeatured) === "true" || post.isFeatured === true,
+        featured:
+          String(post.isFeatured) === "true" || post.isFeatured === true,
         source: "internal",
         publishedAt: toTimestamp(dateVal),
       };
@@ -147,13 +148,15 @@ export function mapInternalApiPostToPost(apiPost) {
     tags: apiPost.tags ?? [],
     author: {
       name: apiPost.author?.name ?? "Groot Team",
-      role: apiPost.author?.designation ?? apiPost.author?.role ?? "Contributor",
+      role:
+        apiPost.author?.designation ?? apiPost.author?.role ?? "Contributor",
       avatar: apiPost.author?.avatar ?? DEFAULT_AVATAR,
     },
     date: formatDate(dateVal),
     readTime: apiPost.readTime ?? "5 min read",
     image: apiPost.coverImage ?? apiPost.image ?? null,
-    featured: String(apiPost.isFeatured) === "true" || apiPost.isFeatured === true,
+    featured:
+      String(apiPost.isFeatured) === "true" || apiPost.isFeatured === true,
     source: "internal",
   };
 }

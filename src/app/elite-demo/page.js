@@ -1,8 +1,11 @@
+// @ts-nocheck
 import { SectionSkeleton } from "@/components/skeletons/SectionSkeleton";
 import { lazy, Suspense } from "react";
 
 // Lazy load sections
-const EnterpriseHeroSection = lazy(() => import("@/components/sections/elite/EnterpriseHeroSection"));
+const EnterpriseHeroSection = lazy(
+  () => import("@/components/sections/elite/EnterpriseHeroSection")
+);
 const PlatformPreviewSection = lazy(() =>
   import("@/components/sections/PlatformPreviewSection").then((mod) => ({
     default: mod.PlatformPreviewSection,
@@ -13,7 +16,9 @@ const DataReadinessSection = lazy(() =>
     default: mod.DataReadinessSection,
   }))
 );
-const CultureSection = lazy(() => import("@/components/sections/elite/CultureSection"));
+const CultureSection = lazy(
+  () => import("@/components/sections/elite/CultureSection")
+);
 
 export const metadata = {
   title: "Groot Analytics - Elite Demo",

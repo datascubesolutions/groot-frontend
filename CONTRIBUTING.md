@@ -69,6 +69,7 @@ footer (optional)
 ```
 
 Types:
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation
@@ -78,6 +79,7 @@ Types:
 - `chore`: Maintenance
 
 Example:
+
 ```
 feat(ui): add new Card component
 
@@ -89,6 +91,7 @@ feat(ui): add new Card component
 ## 🧪 Testing
 
 ### Unit Tests
+
 ```bash
 npm run test
 npm run test:watch
@@ -96,6 +99,7 @@ npm run test:coverage
 ```
 
 ### E2E Tests
+
 ```bash
 npm run test:e2e
 ```
@@ -123,23 +127,28 @@ npm run test:e2e
 
 ```markdown
 ## Description
+
 Brief description of changes
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] Unit tests added/updated
 - [ ] E2E tests added/updated
 - [ ] Manual testing completed
 
 ## Screenshots (if applicable)
+
 Add screenshots here
 
 ## Checklist
+
 - [ ] Code follows style guidelines
 - [ ] Self-review completed
 - [ ] Comments added for complex code
@@ -151,6 +160,7 @@ Add screenshots here
 ## 🐛 Reporting Bugs
 
 Use GitHub Issues with:
+
 - Clear title and description
 - Steps to reproduce
 - Expected vs actual behavior
@@ -160,6 +170,7 @@ Use GitHub Issues with:
 ## 💡 Suggesting Features
 
 Use GitHub Issues with:
+
 - Clear description of the feature
 - Use case/justification
 - Potential implementation approach

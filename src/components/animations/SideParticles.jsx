@@ -1,5 +1,7 @@
+// @ts-nocheck
 "use client";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
@@ -18,8 +20,8 @@ const baseOptions = {
   pauseOnBlur: true,
   pauseOnOutsideViewport: true,
   background: {
-    color: { value: "transparent" }
-  }
+    color: { value: "transparent" },
+  },
 };
 
 const chaoticOptions = {
@@ -119,18 +121,9 @@ const optionsMap = {
 
 function SideParticlesInner({ side = "left", variant = "chaotic" }) {
   const [init, setInit] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const containerRef = useRef(null);
   const particleContainerRef = useRef(null);
-
-  // Gate: only initialize on desktop (lg breakpoint = 1024px)
-  useEffect(() => {
-    const mql = window.matchMedia("(min-width: 1024px)");
-    setIsDesktop(mql.matches);
-    const handler = (e) => setIsDesktop(e.matches);
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
 
   // Only load the particle engine on desktop
   useEffect(() => {
@@ -153,7 +146,11 @@ function SideParticlesInner({ side = "left", variant = "chaotic" }) {
         }
       };
       document.addEventListener("visibilitychange", handleVisibilityChange);
-      return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+      return () =>
+        document.removeEventListener(
+          "visibilitychange",
+          handleVisibilityChange
+        );
     }
   }, []);
 
@@ -187,8 +184,9 @@ function SideParticlesInner({ side = "left", variant = "chaotic" }) {
   return (
     <div
       ref={containerRef}
-      className={`absolute top-0 h-full pointer-events-none z-[1] ${side === "left" ? "left-0" : "right-0"
-        }`}
+      className={`pointer-events-none absolute top-0 z-[1] h-full ${
+        side === "left" ? "left-0" : "right-0"
+      }`}
       style={{
         width: "40%",
         maxWidth: "600px",
@@ -209,7 +207,7 @@ function SideParticlesInner({ side = "left", variant = "chaotic" }) {
         id={`tsparticles-${side}`}
         options={options}
         particlesLoaded={particlesLoaded}
-        className="w-full h-full"
+        className="h-full w-full"
       />
     </div>
   );

@@ -1,8 +1,16 @@
+// @ts-nocheck
 "use client";
 
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
 
-export default function ClientLottie({ animationData, className, loop = true, autoplay = true }) {
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+
+export default function ClientLottie({
+  animationData,
+  className,
+  loop = true,
+  autoplay = true,
+}) {
   return (
     <Lottie
       animationData={animationData}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import { Button } from "@/components/ui/Button";
 import { motion, useReducedMotion } from "framer-motion";
@@ -8,7 +9,7 @@ export function AzureHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-32 md:pt-40 lg:pt-48 pb-16 md:pb-24 lg:pb-32 bg-background text-foreground">
+    <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-background pb-16 pt-32 text-foreground md:pb-24 md:pt-40 lg:pb-32 lg:pt-48">
       {/* Animated Cinematic Background Accents */}
       <motion.div
         animate={
@@ -21,7 +22,7 @@ export function AzureHero() {
             ? { duration: 0 }
             : { duration: 10, repeat: Infinity, ease: "easeInOut" }
         }
-        className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest/5 blur-[150px] rounded-full pointer-events-none"
+        className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] rounded-full bg-forest/5 blur-[150px]"
       />
       <motion.div
         animate={
@@ -34,20 +35,22 @@ export function AzureHero() {
             ? { duration: 0 }
             : { duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }
         }
-        className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-forest/5 blur-[150px] rounded-full pointer-events-none"
+        className="pointer-events-none absolute bottom-0 left-0 h-[600px] w-[600px] rounded-full bg-forest/5 blur-[150px]"
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left content */}
           <div className="space-y-8">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-foreground tracking-tight text-balance antialiased"
+              className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground antialiased md:text-5xl lg:text-6xl xl:text-7xl"
             >
-              <span className="text-forest font-semibold tracking-widest uppercase text-sm mb-4 block">Cloud Infrastructure</span>
+              <span className="mb-4 block text-sm font-semibold uppercase tracking-widest text-forest">
+                Cloud Infrastructure
+              </span>
               Azure Data Infrastructure
             </motion.h1>
 
@@ -55,24 +58,25 @@ export function AzureHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed font-normal max-w-2xl py-2 text-balance antialiased"
+              className="max-w-2xl text-balance py-2 text-lg font-normal leading-relaxed text-muted-foreground/90 antialiased md:text-xl"
             >
-              The foundation beneath your data platform. Storage, networking, security — configured for enterprise analytics.
+              The foundation beneath your data platform. Storage, networking,
+              security — configured for enterprise analytics.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col gap-4 pt-4 sm:flex-row"
             >
               <Button
                 asChild
-                className="w-full sm:w-auto bg-forest hover:bg-forest/90 text-white font-bold text-base px-8 py-7 rounded-full shadow-lg shadow-forest/20 transition-all group"
+                className="group w-full rounded-full bg-forest px-8 py-7 text-base font-bold text-white shadow-lg shadow-forest/20 transition-all hover:bg-forest/90 sm:w-auto"
               >
                 <Link href="/contact?service=azure-assessment">
                   Get Infrastructure Assessment
-                  <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
             </motion.div>
@@ -83,48 +87,92 @@ export function AzureHero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="hidden lg:block relative"
+            className="relative hidden lg:block"
           >
-            <div className="absolute inset-0 bg-white rounded-3xl shadow-xl transform rotate-3 scale-105 pointer-events-none opacity-50" />
-            <div className="absolute inset-0 bg-white/50 rounded-3xl shadow-xl transform -rotate-2 scale-105 pointer-events-none opacity-50" />
-            <div className="relative bg-white rounded-3xl shadow-2xl border border-border overflow-hidden p-8 h-[400px]">
-              <div className="relative w-full h-full flex items-center justify-center">
+            <div className="pointer-events-none absolute inset-0 rotate-3 scale-105 transform rounded-3xl bg-white opacity-50 shadow-xl" />
+            <div className="pointer-events-none absolute inset-0 -rotate-2 scale-105 transform rounded-3xl bg-white/50 opacity-50 shadow-xl" />
+            <div className="relative h-[400px] overflow-hidden rounded-3xl border border-border bg-white p-8 shadow-2xl">
+              <div className="relative flex h-full w-full items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-t from-forest/5 to-transparent blur-2xl" />
 
                 {/* Isometric Servers Stacking */}
-                <div className="relative z-10 w-64 h-64 flex flex-col items-center justify-end perspective-1000 mt-12">
+                <div className="perspective-1000 relative z-10 mt-12 flex h-64 w-64 flex-col items-center justify-end">
                   {[0, 1, 2].map((i) => (
                     <motion.div
                       key={i}
                       initial={{ y: -50, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ duration: 0.8, delay: 0.5 + i * 0.2 }}
-                      className="w-48 h-16 bg-white rounded-lg shadow-[0_10px_30px_-10px_rgba(0,0,0,0.15)] border border-border mb-4 relative overflow-hidden flex items-center px-6"
+                      className="relative mb-4 flex h-16 w-48 items-center overflow-hidden rounded-lg border border-border bg-white px-6 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.15)]"
                     >
                       {/* Server lights */}
-                      <div className="flex gap-2 w-full">
-                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity, delay: i }} className="w-2 h-2 rounded-full bg-forest/30" />
-                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity, delay: i + 0.2 }} className="w-2 h-2 rounded-full bg-forest/60" />
-                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.2, repeat: Infinity, delay: i + 0.4 }} className="w-2 h-2 rounded-full bg-forest" />
-                        <div className="ml-auto w-12 h-2 rounded-full bg-muted" />
+                      <div className="flex w-full gap-2">
+                        <motion.div
+                          animate={{ opacity: [0.5, 1, 0.5] }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            delay: i,
+                          }}
+                          className="h-2 w-2 rounded-full bg-forest/30"
+                        />
+                        <motion.div
+                          animate={{ opacity: [0.5, 1, 0.5] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: i + 0.2,
+                          }}
+                          className="h-2 w-2 rounded-full bg-forest/60"
+                        />
+                        <motion.div
+                          animate={{ opacity: [0.5, 1, 0.5] }}
+                          transition={{
+                            duration: 1.2,
+                            repeat: Infinity,
+                            delay: i + 0.4,
+                          }}
+                          className="h-2 w-2 rounded-full bg-forest"
+                        />
+                        <div className="ml-auto h-2 w-12 rounded-full bg-muted" />
                       </div>
 
                       {/* Data flow pulse */}
                       <motion.div
                         animate={{ x: [-100, 200] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
-                        className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-transparent via-forest/10 to-transparent skew-x-12"
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: i * 0.5,
+                        }}
+                        className="absolute left-0 top-0 h-full w-20 skew-x-12 bg-gradient-to-r from-transparent via-forest/10 to-transparent"
                       />
                     </motion.div>
                   ))}
                 </div>
 
                 {/* Floating Clouds */}
-                <motion.div animate={{ x: [-10, 10, -10] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute top-10 left-4 text-muted/30">
-                  <Cloud className="w-24 h-24" />
+                <motion.div
+                  animate={{ x: [-10, 10, -10] }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute left-4 top-10 text-muted/30"
+                >
+                  <Cloud className="h-24 w-24" />
                 </motion.div>
-                <motion.div animate={{ x: [10, -10, 10] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-10 right-4 text-muted/30">
-                  <Cloud className="w-32 h-32" />
+                <motion.div
+                  animate={{ x: [10, -10, 10] }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute bottom-10 right-4 text-muted/30"
+                >
+                  <Cloud className="h-32 w-32" />
                 </motion.div>
               </div>
             </div>

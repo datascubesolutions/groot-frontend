@@ -15,7 +15,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background font-sans text-foreground antialiased;
     font-family: var(--font-sans);
   }
 }
@@ -23,7 +23,11 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--mint)) 0%, hsl(var(--forest)) 100%);
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--mint)) 0%,
+      hsl(var(--forest)) 100%
+    );
   }
 
   .bg-gradient-hero {
@@ -43,11 +47,14 @@
   }
 
   .glass {
-    @apply backdrop-blur-md bg-background/80 border border-border/50;
+    @apply border border-border/50 bg-background/80 backdrop-blur-md;
   }
 
   .dot-pattern {
-    background-image: radial-gradient(hsl(var(--mint) / 0.3) 1px, transparent 1px);
+    background-image: radial-gradient(
+      hsl(var(--mint) / 0.3) 1px,
+      transparent 1px
+    );
     background-size: 24px 24px;
   }
 
@@ -175,33 +182,35 @@
   }
 
   .heading-display {
-    @apply text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground;
+    @apply text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl;
   }
 
   /* Section titles – consistent size, weight, color */
   .heading-section {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground;
+    @apply text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl;
   }
 
   .body-large {
-    @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+    @apply text-lg leading-relaxed text-muted-foreground md:text-xl;
     font-family: var(--font-sans);
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-forest text-forest-foreground font-semibold rounded-full transition-all duration-300 hover:bg-primary hover:shadow-lg;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 font-semibold text-forest-foreground transition-all duration-300 hover:bg-primary hover:shadow-lg;
     font-family: var(--font-sans);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-forest font-semibold rounded-full border-2 border-forest transition-all duration-300 hover:bg-forest hover:text-forest-foreground;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-forest bg-transparent px-8 py-4 font-semibold text-forest transition-all duration-300 hover:bg-forest hover:text-forest-foreground;
     font-family: var(--font-sans);
   }
 
   .card-corporate {
-    @apply bg-card rounded-xl border border-border/50;
+    @apply rounded-xl border border-border/50 bg-card;
     box-shadow: var(--shadow-card);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
   }
 
   .card-corporate:hover {
@@ -224,8 +233,12 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slideUp {

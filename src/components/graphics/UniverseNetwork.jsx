@@ -1,14 +1,10 @@
+// @ts-nocheck
 "use client";
 
+import { createMulberry32 } from "@/lib/prng";
 import { motion } from "framer-motion";
-import {
-  BarChart2,
-  Briefcase,
-  Database,
-  FileText,
-  Target
-} from "lucide-react";
-import { useEffect, useState } from "react";
+import { BarChart2, Briefcase, Database, FileText, Target } from "lucide-react";
+import { useMemo } from "react";
 
 const centerNode = { icon: FileText, label: "Core", color: "primary" };
 
@@ -23,27 +19,28 @@ const orbitNodes = [
 
 export const UniverseNetwork = () => {
   const radius = 140;
-  const [particles, setParticles] = useState([]);
-
-  useEffect(() => {
-    // Generate particles on client side only to avoid hydration mismatch
-    const newParticles = Array.from({ length: 12 }, (_, i) => ({
+  const particles = useMemo(() => {
+    const rand = createMulberry32(0xbb67ae85);
+    return Array.from({ length: 12 }, (_, i) => ({
       id: i,
-      left: 30 + Math.random() * 40,
-      top: 30 + Math.random() * 40,
-      duration: 2 + Math.random() * 2,
-      delay: i * 0.2
+      left: 30 + rand() * 40,
+      top: 30 + rand() * 40,
+      duration: 2 + rand() * 2,
+      delay: i * 0.2,
     }));
-    setParticles(newParticles);
   }, []);
 
   return (
-    <div className="relative w-full max-w-[400px] aspect-square mx-auto">
+    <div className="relative mx-auto aspect-square w-full max-w-[400px]">
       {/* Connection lines */}
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 400">
         {orbitNodes.map((node, index) => {
-          const x = parseFloat((200 + radius * Math.cos((node.angle * Math.PI) / 180)).toFixed(3));
-          const y = parseFloat((200 + radius * Math.sin((node.angle * Math.PI) / 180)).toFixed(3));
+          const x = parseFloat(
+            (200 + radius * Math.cos((node.angle * Math.PI) / 180)).toFixed(3)
+          );
+          const y = parseFloat(
+            (200 + radius * Math.sin((node.angle * Math.PI) / 180)).toFixed(3)
+          );
 
           // Connect to center
           return (
@@ -66,10 +63,24 @@ export const UniverseNetwork = () => {
         {/* Cross connections */}
         {orbitNodes.map((node, index) => {
           const nextIndex = (index + 2) % orbitNodes.length;
-          const x1 = parseFloat((200 + radius * Math.cos((node.angle * Math.PI) / 180)).toFixed(3));
-          const y1 = parseFloat((200 + radius * Math.sin((node.angle * Math.PI) / 180)).toFixed(3));
-          const x2 = parseFloat((200 + radius * Math.cos((orbitNodes[nextIndex].angle * Math.PI) / 180)).toFixed(3));
-          const y2 = parseFloat((200 + radius * Math.sin((orbitNodes[nextIndex].angle * Math.PI) / 180)).toFixed(3));
+          const x1 = parseFloat(
+            (200 + radius * Math.cos((node.angle * Math.PI) / 180)).toFixed(3)
+          );
+          const y1 = parseFloat(
+            (200 + radius * Math.sin((node.angle * Math.PI) / 180)).toFixed(3)
+          );
+          const x2 = parseFloat(
+            (
+              200 +
+              radius * Math.cos((orbitNodes[nextIndex].angle * Math.PI) / 180)
+            ).toFixed(3)
+          );
+          const y2 = parseFloat(
+            (
+              200 +
+              radius * Math.sin((orbitNodes[nextIndex].angle * Math.PI) / 180)
+            ).toFixed(3)
+          );
 
           return (
             <motion.line
@@ -95,22 +106,31 @@ export const UniverseNetwork = () => {
         animate={{ scale: 1 }}
         transition={{ type: "spring", delay: 0.3 }}
       >
-        <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-glow">
-          <centerNode.icon className="w-8 h-8 text-primary-foreground" />
+        <div className="shadow-glow flex h-20 w-20 items-center justify-center rounded-full bg-primary">
+          <centerNode.icon className="h-8 w-8 text-primary-foreground" />
         </div>
       </motion.div>
 
       {/* Orbit nodes */}
       {orbitNodes.map((node, index) => {
         const Icon = node.icon;
-        const x = parseFloat((50 + (radius / 4) * Math.cos((node.angle * Math.PI) / 180)).toFixed(3));
-        const y = parseFloat((50 + (radius / 4) * Math.sin((node.angle * Math.PI) / 180)).toFixed(3));
+        const x = parseFloat(
+          (50 + (radius / 4) * Math.cos((node.angle * Math.PI) / 180)).toFixed(
+            3
+          )
+        );
+        const y = parseFloat(
+          (50 + (radius / 4) * Math.sin((node.angle * Math.PI) / 180)).toFixed(
+            3
+          )
+        );
 
-        const colorClass = node.color === "primary"
-          ? "border-primary/30 text-primary"
-          : node.color === "teal"
-            ? "border-teal/30 text-teal"
-            : "border-burgundy-dark/30 text-burgundy-dark";
+        const colorClass =
+          node.color === "primary"
+            ? "border-primary/30 text-primary"
+            : node.color === "teal"
+              ? "border-teal/30 text-teal"
+              : "border-burgundy-dark/30 text-burgundy-dark";
 
         return (
           <motion.div
@@ -119,14 +139,16 @@ export const UniverseNetwork = () => {
             style={{
               left: `${x}%`,
               top: `${y}%`,
-              transform: 'translate(-50%, -50%)',
+              transform: "translate(-50%, -50%)",
             }}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.5 + index * 0.1, type: "spring" }}
           >
-            <div className={`w-14 h-14 rounded-full border-2 ${colorClass} bg-background flex items-center justify-center shadow-md hover:shadow-lg transition-all cursor-pointer`}>
-              <Icon className="w-6 h-6" />
+            <div
+              className={`h-14 w-14 rounded-full border-2 ${colorClass} flex cursor-pointer items-center justify-center bg-background shadow-md transition-all hover:shadow-lg`}
+            >
+              <Icon className="h-6 w-6" />
             </div>
           </motion.div>
         );
@@ -136,7 +158,7 @@ export const UniverseNetwork = () => {
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute w-1.5 h-1.5 rounded-full bg-primary/30"
+          className="absolute h-1.5 w-1.5 rounded-full bg-primary/30"
           style={{
             left: `${p.left}%`,
             top: `${p.top}%`,

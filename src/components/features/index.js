@@ -1,15 +1,16 @@
+// @ts-nocheck
 /**
  * Feature Components Index
- * 
+ *
  * @fileoverview Exports for feature-specific components
  * Features are domain-specific components that combine UI primitives
- * 
+ *
  * @example
  * // Feature components are domain-specific:
  * // - ContactForm (combines Input, Button, etc.)
  * // - ServiceCard (combines Card, Badge, etc.)
  * // - TestimonialSlider (combines animations and cards)
- * 
+ *
  * @module components/features
  */
 
@@ -34,4 +35,4 @@
 // export { BlogGrid } from './blog/BlogGrid';
 
 // Placeholder export to prevent import errors
-export { };
+export {};

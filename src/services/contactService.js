@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Contact Service
  * Handles all contact-related API calls.

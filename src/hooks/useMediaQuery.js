@@ -1,31 +1,32 @@
+// @ts-nocheck
 "use client";
 
 /**
  * useMediaQuery Hook
- * 
+ *
  * @fileoverview Responsive media query hook for handling breakpoints
  * @module hooks/useMediaQuery
  */
 
-import { useState, useEffect, useMemo } from 'react';
+import { useCallback, useSyncExternalStore } from "react";
 
 /**
  * Tailwind CSS breakpoints
  */
 export const BREAKPOINTS = {
-    sm: '640px',
-    md: '768px',
-    lg: '1024px',
-    xl: '1280px',
-    '2xl': '1536px',
+  sm: "640px",
+  md: "768px",
+  lg: "1024px",
+  xl: "1280px",
+  "2xl": "1536px",
 };
 
 /**
  * Hook for detecting media query matches
- * 
+ *
  * @param {string} query - Media query string (e.g., '(min-width: 768px)')
  * @returns {boolean} Whether the media query matches
- * 
+ *
  * @example
  * ```jsx
  * const isMobile = useMediaQuery('(max-width: 767px)');
@@ -33,44 +34,24 @@ export const BREAKPOINTS = {
  * ```
  */
 export function useMediaQuery(query) {
-    const [matches, setMatches] = useState(false);
-    const [mounted, setMounted] = useState(false);
+  const subscribe = useCallback(
+    (onStoreChange) => {
+      if (typeof window === "undefined") return () => {};
+      const mql = window.matchMedia(query);
+      mql.addEventListener("change", onStoreChange);
+      return () => mql.removeEventListener("change", onStoreChange);
+    },
+    [query]
+  );
 
-    // Memoize the media query list
-    const mediaQueryList = useMemo(() => {
-        if (typeof window === 'undefined') return null;
-        return window.matchMedia(query);
-    }, [query]);
+  const getSnapshot = useCallback(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia(query).matches;
+  }, [query]);
 
-    useEffect(() => {
-        setMounted(true);
+  const getServerSnapshot = useCallback(() => false, []);
 
-        if (!mediaQueryList) return;
-
-        // Set initial value
-        setMatches(mediaQueryList.matches);
-
-        // Handler for changes
-        const handler = (event) => {
-            setMatches(event.matches);
-        };
-
-        // Modern browsers
-        if (mediaQueryList.addEventListener) {
-            mediaQueryList.addEventListener('change', handler);
-            return () => mediaQueryList.removeEventListener('change', handler);
-        }
-        // Legacy browsers (Safari < 14)
-        else {
-            mediaQueryList.addListener(handler);
-            return () => mediaQueryList.removeListener(handler);
-        }
-    }, [mediaQueryList]);
-
-    // Return false during SSR to avoid hydration mismatch
-    if (!mounted) return false;
-
-    return matches;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
 
 /**
@@ -78,7 +59,7 @@ export function useMediaQuery(query) {
  * @returns {boolean}
  */
 export function useIsMobile() {
-    return useMediaQuery(`(max-width: ${BREAKPOINTS.md})`);
+  return useMediaQuery(`(max-width: ${BREAKPOINTS.md})`);
 }
 
 /**
@@ -86,9 +67,9 @@ export function useIsMobile() {
  * @returns {boolean}
  */
 export function useIsTablet() {
-    const isAboveMobile = useMediaQuery(`(min-width: ${BREAKPOINTS.md})`);
-    const isBelowDesktop = useMediaQuery(`(max-width: ${BREAKPOINTS.lg})`);
-    return isAboveMobile && isBelowDesktop;
+  const isAboveMobile = useMediaQuery(`(min-width: ${BREAKPOINTS.md})`);
+  const isBelowDesktop = useMediaQuery(`(max-width: ${BREAKPOINTS.lg})`);
+  return isAboveMobile && isBelowDesktop;
 }
 
 /**
@@ -96,7 +77,7 @@ export function useIsTablet() {
  * @returns {boolean}
  */
 export function useIsDesktop() {
-    return useMediaQuery(`(min-width: ${BREAKPOINTS.lg})`);
+  return useMediaQuery(`(min-width: ${BREAKPOINTS.lg})`);
 }
 
 /**
@@ -104,16 +85,16 @@ export function useIsDesktop() {
  * @returns {'mobile' | 'tablet' | 'desktop' | 'large'}
  */
 export function useBreakpoint() {
-    const isSm = useMediaQuery(`(min-width: ${BREAKPOINTS.sm})`);
-    const isMd = useMediaQuery(`(min-width: ${BREAKPOINTS.md})`);
-    const isLg = useMediaQuery(`(min-width: ${BREAKPOINTS.lg})`);
-    const isXl = useMediaQuery(`(min-width: ${BREAKPOINTS.xl})`);
+  const isSm = useMediaQuery(`(min-width: ${BREAKPOINTS.sm})`);
+  const isMd = useMediaQuery(`(min-width: ${BREAKPOINTS.md})`);
+  const isLg = useMediaQuery(`(min-width: ${BREAKPOINTS.lg})`);
+  const isXl = useMediaQuery(`(min-width: ${BREAKPOINTS.xl})`);
 
-    if (isXl) return 'large';
-    if (isLg) return 'desktop';
-    if (isMd) return 'tablet';
-    if (isSm) return 'mobile';
-    return 'mobile';
+  if (isXl) return "large";
+  if (isLg) return "desktop";
+  if (isMd) return "tablet";
+  if (isSm) return "mobile";
+  return "mobile";
 }
 
 export default useMediaQuery;

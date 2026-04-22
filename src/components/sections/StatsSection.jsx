@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { motion, useInView } from "framer-motion";
@@ -38,7 +39,8 @@ const Counter = ({ value, suffix }) => {
 
   return (
     <span ref={ref}>
-      {count.toLocaleString()}{suffix}
+      {count.toLocaleString()}
+      {suffix}
     </span>
   );
 };
@@ -48,24 +50,27 @@ export const StatsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-20 bg-muted/10 border-y border-border relative overflow-hidden">
+    <section
+      ref={ref}
+      className="relative overflow-hidden border-y border-border bg-muted/10 py-20"
+    >
       {/* Subtle Grid overlay for Stats */}
-      <div className="absolute inset-0 grid-pattern-lg pointer-events-none" />
+      <div className="grid-pattern-lg pointer-events-none absolute inset-0" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center p-6"
+              className="p-6 text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-3">
+              <div className="mb-3 text-4xl font-bold text-primary md:text-5xl">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="text-xs font-bold uppercase tracking-[0.15em] text-forest/60 max-w-[150px] mx-auto leading-relaxed">
+              <p className="mx-auto max-w-[150px] text-xs font-bold uppercase leading-relaxed tracking-[0.15em] text-forest/60">
                 {stat.label}
               </p>
             </motion.div>

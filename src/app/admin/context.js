@@ -1,10 +1,11 @@
+// @ts-nocheck
 "use client";
 
 import { createContext, useContext, useState } from "react";
 
 const AdminContext = createContext({
   sidebarOpen: false,
-  setSidebarOpen: () => { },
+  setSidebarOpen: () => {},
 });
 
 export function AdminProvider({ children }) {

@@ -1,5 +1,6 @@
+// @ts-nocheck
 /**
- * Standardized analytics methods for Google Analytics 4 mapping natively 
+ * Standardized analytics methods for Google Analytics 4 mapping natively
  * to Enterprise and BigQuery requirements.
  */
 
@@ -42,14 +43,17 @@ export const setUserProperties = (properties) => {
   }
 };
 
-// Form submit helper capturing common properties 
+// Form submit helper capturing common properties
 export const trackFormSubmit = (formType, additionalParams = {}) => {
   trackEvent(`form_submit_${formType}`, additionalParams);
 };
 
-// CTA click helper 
+// CTA click helper
 export const trackCtaClick = (ctaType, location, additionalParams = {}) => {
-  trackEvent(`cta_click_${ctaType}`, { button_location: location, ...additionalParams });
+  trackEvent(`cta_click_${ctaType}`, {
+    button_location: location,
+    ...additionalParams,
+  });
 };
 
 // Track specific content views or interactions

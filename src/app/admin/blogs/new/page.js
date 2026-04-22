@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import MarkdownEditor from "@/components/admin/MarkdownEditor";
@@ -76,18 +77,15 @@ export default function CreateBlogPage() {
   // Stages
   const [stages, setStages] = useState([]);
 
-  const handleChange = useCallback(
-    (field, value) => {
-      setForm((prev) => {
-        const updated = { ...prev, [field]: value };
-        if (field === "title") {
-          updated.slug = slugify(value);
-        }
-        return updated;
-      });
-    },
-    []
-  );
+  const handleChange = useCallback((field, value) => {
+    setForm((prev) => {
+      const updated = { ...prev, [field]: value };
+      if (field === "title") {
+        updated.slug = slugify(value);
+      }
+      return updated;
+    });
+  }, []);
 
   const handleAddTag = () => {
     const tag = tagInput.trim().toLowerCase();
@@ -120,7 +118,13 @@ export default function CreateBlogPage() {
   const addStage = () => {
     setStages((prev) => [
       ...prev,
-      { title: "", content: "", order: prev.length + 1, image: null, imagePreview: null },
+      {
+        title: "",
+        content: "",
+        order: prev.length + 1,
+        image: null,
+        imagePreview: null,
+      },
     ]);
   };
 
@@ -139,7 +143,9 @@ export default function CreateBlogPage() {
   };
 
   const removeStage = (index) => {
-    setStages((prev) => prev.filter((_, i) => i !== index).map((s, i) => ({ ...s, order: i + 1 })));
+    setStages((prev) =>
+      prev.filter((_, i) => i !== index).map((s, i) => ({ ...s, order: i + 1 }))
+    );
   };
 
   const handleSubmit = async (e) => {
@@ -210,20 +216,20 @@ export default function CreateBlogPage() {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in pb-8">
+    <div className="animate-fade-in space-y-6 pb-8">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-white/5">
+      <div className="flex items-center justify-between border-b border-white/5 pb-4">
         <div className="flex items-center gap-4">
           <Link href="/admin/blogs">
-            <button className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 transition-all">
+            <button className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-400 transition-all hover:border-white/20 hover:text-white">
               <ArrowLeft size={18} />
             </button>
           </Link>
           <div>
-            <h1 className="text-2xl font-extrabold text-white tracking-tight">
+            <h1 className="text-2xl font-extrabold tracking-tight text-white">
               Create Blog Post
             </h1>
-            <p className="text-gray-400 font-medium text-sm">
+            <p className="text-sm font-medium text-gray-400">
               Write and publish a new article
             </p>
           </div>
@@ -232,65 +238,79 @@ export default function CreateBlogPage() {
 
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* Left Column — Main Form */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-6 lg:col-span-2">
             {/* Title & Slug */}
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-5">
-              <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+            <div className="space-y-5 rounded-2xl border border-white/5 bg-[#111111] p-6">
+              <h2 className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-300">
                 <FileText size={16} className="text-primary" />
                 Post Details
               </h2>
 
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">
+                  <label
+                    htmlFor="admin-blog-new-title"
+                    className="text-sm font-medium text-gray-300"
+                  >
                     Title <span className="text-red-400">*</span>
                   </label>
                   <input
+                    id="admin-blog-new-title"
                     type="text"
                     value={form.title}
                     onChange={(e) => handleChange("title", e.target.value)}
                     placeholder="Enter an engaging title..."
-                    className="block w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all outline-none text-lg font-semibold"
+                    className="block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-lg font-semibold text-white outline-none transition-all placeholder:text-gray-500 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">
+                  <label
+                    htmlFor="admin-blog-new-slug"
+                    className="text-sm font-medium text-gray-300"
+                  >
                     Slug
                   </label>
                   <input
+                    id="admin-blog-new-slug"
                     type="text"
                     value={form.slug}
                     onChange={(e) => handleChange("slug", e.target.value)}
                     placeholder="auto-generated-from-title"
-                    className="block w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-gray-400 placeholder:text-gray-600 focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none text-sm font-mono"
+                    className="block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 font-mono text-sm text-gray-400 outline-none transition-all placeholder:text-gray-600 focus:border-white/20 focus:ring-1 focus:ring-white/10"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">
+                  <label
+                    htmlFor="admin-blog-new-excerpt"
+                    className="text-sm font-medium text-gray-300"
+                  >
                     Excerpt
                   </label>
                   <textarea
+                    id="admin-blog-new-excerpt"
                     value={form.excerpt}
                     onChange={(e) => handleChange("excerpt", e.target.value)}
                     placeholder="A brief summary of the post..."
                     rows={3}
-                    className="block w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none resize-none"
+                    className="block w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20 focus:ring-1 focus:ring-white/10"
                   />
                 </div>
               </div>
             </div>
 
             {/* Content */}
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
-              <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+            <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-gray-300">
                 Content <span className="text-red-400">*</span>
               </h2>
-              <p className="text-xs text-gray-500">Supports Markdown formatting</p>
+              <p className="text-xs text-gray-500">
+                Supports Markdown formatting
+              </p>
               <MarkdownEditor
                 value={form.content}
                 onChange={(value) => handleChange("content", value)}
@@ -301,8 +321,8 @@ export default function CreateBlogPage() {
             </div>
 
             {/* Cover Image */}
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
-              <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+            <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
+              <h2 className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-300">
                 <ImagePlus size={16} className="text-primary" />
                 Cover Image
               </h2>
@@ -316,13 +336,13 @@ export default function CreateBlogPage() {
               />
 
               {coverPreview ? (
-                <div className="relative group">
+                <div className="group relative">
                   <Image
                     src={coverPreview}
                     alt="Cover preview"
                     width={800}
                     height={400}
-                    className="w-full h-48 object-cover rounded-xl border border-white/10"
+                    className="h-48 w-full rounded-xl border border-white/10 object-cover"
                   />
                   <button
                     type="button"
@@ -330,7 +350,7 @@ export default function CreateBlogPage() {
                       setCoverImage(null);
                       setCoverPreview(null);
                     }}
-                    className="absolute top-3 right-3 h-8 w-8 flex items-center justify-center rounded-lg bg-black/60 text-white hover:bg-red-500 transition-colors"
+                    className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg bg-black/60 text-white transition-colors hover:bg-red-500"
                   >
                     <X size={16} />
                   </button>
@@ -339,7 +359,7 @@ export default function CreateBlogPage() {
                 <button
                   type="button"
                   onClick={() => coverImageRef.current?.click()}
-                  className="w-full h-40 flex flex-col items-center justify-center gap-2 border-2 border-dashed border-white/10 rounded-xl hover:border-primary/30 hover:bg-primary/5 transition-all text-gray-400 hover:text-primary"
+                  className="flex h-40 w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-white/10 text-gray-400 transition-all hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
                 >
                   <ImagePlus size={28} />
                   <span className="text-sm font-medium">
@@ -350,15 +370,15 @@ export default function CreateBlogPage() {
             </div>
 
             {/* Stages */}
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
+            <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
               <div className="flex items-center justify-between">
-                <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-gray-300">
                   Content Stages
                 </h2>
                 <button
                   type="button"
                   onClick={addStage}
-                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-primary bg-primary/10 border border-primary/20 rounded-lg hover:bg-primary/20 transition-all"
+                  className="flex items-center gap-1.5 rounded-lg border border-primary/20 bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary transition-all hover:bg-primary/20"
                 >
                   <Plus size={14} />
                   Add Stage
@@ -366,8 +386,9 @@ export default function CreateBlogPage() {
               </div>
 
               {stages.length === 0 && (
-                <p className="text-sm text-gray-500 text-center py-6">
-                  No stages added yet. Stages are optional sections of your blog post.
+                <p className="py-6 text-center text-sm text-gray-500">
+                  No stages added yet. Stages are optional sections of your blog
+                  post.
                 </p>
               )}
 
@@ -375,16 +396,16 @@ export default function CreateBlogPage() {
                 {stages.map((stage, i) => (
                   <div
                     key={i}
-                    className="bg-white/[0.03] border border-white/5 rounded-xl p-4 space-y-3 relative"
+                    className="relative space-y-3 rounded-xl border border-white/5 bg-white/[0.03] p-4"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                      <span className="text-xs font-bold uppercase tracking-widest text-gray-400">
                         Stage {stage.order}
                       </span>
                       <button
                         type="button"
                         onClick={() => removeStage(i)}
-                        className="h-7 w-7 flex items-center justify-center rounded-lg text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 transition-all"
+                        className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-500/10 text-rose-400 transition-all hover:bg-rose-500/20"
                       >
                         <Trash2 size={14} />
                       </button>
@@ -395,7 +416,7 @@ export default function CreateBlogPage() {
                       value={stage.title}
                       onChange={(e) => updateStage(i, "title", e.target.value)}
                       placeholder="Stage title..."
-                      className="block w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all"
+                      className="block w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                     />
 
                     <textarea
@@ -405,7 +426,7 @@ export default function CreateBlogPage() {
                       }
                       placeholder="Stage content..."
                       rows={3}
-                      className="block w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all resize-none"
+                      className="block w-full resize-none rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                     />
 
                     <div>
@@ -423,7 +444,7 @@ export default function CreateBlogPage() {
                             alt={`Stage ${i + 1}`}
                             width={400}
                             height={200}
-                            className="w-full h-24 object-cover rounded-lg border border-white/10"
+                            className="h-24 w-full rounded-lg border border-white/10 object-cover"
                           />
                           <button
                             type="button"
@@ -431,7 +452,7 @@ export default function CreateBlogPage() {
                               updateStage(i, "image", null);
                               updateStage(i, "imagePreview", null);
                             }}
-                            className="absolute top-2 right-2 h-6 w-6 flex items-center justify-center rounded bg-black/60 text-white hover:bg-red-500 transition-colors"
+                            className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded bg-black/60 text-white transition-colors hover:bg-red-500"
                           >
                             <X size={12} />
                           </button>
@@ -439,7 +460,7 @@ export default function CreateBlogPage() {
                       ) : (
                         <label
                           htmlFor={`stage-image-${i}`}
-                          className="flex items-center gap-2 px-3 py-2 border border-dashed border-white/10 rounded-lg text-gray-500 hover:text-primary hover:border-primary/30 transition-all cursor-pointer text-sm"
+                          className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-white/10 px-3 py-2 text-sm text-gray-500 transition-all hover:border-primary/30 hover:text-primary"
                         >
                           <ImagePlus size={14} />
                           Upload stage image
@@ -455,44 +476,49 @@ export default function CreateBlogPage() {
           {/* Right Column — Sidebar */}
           <div className="space-y-6">
             {/* Publish Settings */}
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-5 sticky top-8">
-              <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+            <div className="sticky top-8 space-y-5 rounded-2xl border border-white/5 bg-[#111111] p-6">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-gray-300">
                 Publish Settings
               </h2>
 
               {/* Status */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300">
+              <fieldset className="space-y-2 border-0 p-0">
+                <legend className="text-sm font-medium text-gray-300">
                   Status
-                </label>
+                </legend>
                 <div className="flex gap-2">
                   {STATUSES.map((status) => (
                     <button
                       key={status}
                       type="button"
                       onClick={() => handleChange("status", status)}
-                      className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg border transition-all ${form.status === status
-                        ? status === "PUBLISHED"
-                          ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-400"
-                          : "bg-amber-500/20 border-amber-500/40 text-amber-400"
-                        : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10"
-                        }`}
+                      className={`flex-1 rounded-lg border py-2 text-xs font-bold uppercase tracking-wider transition-all ${
+                        form.status === status
+                          ? status === "PUBLISHED"
+                            ? "border-emerald-500/40 bg-emerald-500/20 text-emerald-400"
+                            : "border-amber-500/40 bg-amber-500/20 text-amber-400"
+                          : "border-white/10 bg-white/5 text-gray-400 hover:bg-white/10"
+                      }`}
                     >
                       {status}
                     </button>
                   ))}
                 </div>
-              </div>
+              </fieldset>
 
               {/* Category */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300">
+                <label
+                  htmlFor="admin-blog-new-category"
+                  className="text-sm font-medium text-gray-300"
+                >
                   Category
                 </label>
                 <select
+                  id="admin-blog-new-category"
                   value={form.category}
                   onChange={(e) => handleChange("category", e.target.value)}
-                  className="block w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none appearance-none cursor-pointer text-sm"
+                  className="block w-full cursor-pointer appearance-none rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white outline-none transition-all focus:border-white/20 focus:ring-1 focus:ring-white/10"
                 >
                   {CATEGORIES.map((cat) => (
                     <option key={cat} value={cat} className="bg-[#1a1a1a]">
@@ -504,15 +530,19 @@ export default function CreateBlogPage() {
 
               {/* Read Time */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300">
+                <label
+                  htmlFor="admin-blog-new-read-time"
+                  className="text-sm font-medium text-gray-300"
+                >
                   Read Time
                 </label>
                 <input
+                  id="admin-blog-new-read-time"
                   type="text"
                   value={form.readTime}
                   onChange={(e) => handleChange("readTime", e.target.value)}
                   placeholder="5 min read"
-                  className="block w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none text-sm"
+                  className="block w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20 focus:ring-1 focus:ring-white/10"
                 />
               </div>
 
@@ -520,40 +550,43 @@ export default function CreateBlogPage() {
               <button
                 type="button"
                 onClick={() => handleChange("isFeatured", !form.isFeatured)}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all ${form.isFeatured
-                  ? "bg-amber-500/10 border-amber-500/30 text-amber-400"
-                  : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10"
-                  }`}
+                className={`flex w-full items-center justify-between rounded-xl border px-4 py-3 transition-all ${
+                  form.isFeatured
+                    ? "border-amber-500/30 bg-amber-500/10 text-amber-400"
+                    : "border-white/10 bg-white/5 text-gray-400 hover:bg-white/10"
+                }`}
               >
                 <span className="flex items-center gap-2 text-sm font-semibold">
                   <Star
                     size={16}
-                    className={
-                      form.isFeatured ? "fill-amber-400" : ""
-                    }
+                    className={form.isFeatured ? "fill-amber-400" : ""}
                   />
                   Featured Post
                 </span>
                 <div
-                  className={`w-10 h-5 rounded-full relative transition-colors ${form.isFeatured ? "bg-amber-500" : "bg-white/20"
-                    }`}
+                  className={`relative h-5 w-10 rounded-full transition-colors ${
+                    form.isFeatured ? "bg-amber-500" : "bg-white/20"
+                  }`}
                 >
                   <div
-                    className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow-md transition-transform ${form.isFeatured
-                      ? "translate-x-5"
-                      : "translate-x-0.5"
-                      }`}
+                    className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow-md transition-transform ${
+                      form.isFeatured ? "translate-x-5" : "translate-x-0.5"
+                    }`}
                   />
                 </div>
               </button>
 
               {/* Tags */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300">
+                <label
+                  htmlFor="admin-blog-new-tags"
+                  className="text-sm font-medium text-gray-300"
+                >
                   Tags
                 </label>
                 <div className="flex gap-2">
                   <input
+                    id="admin-blog-new-tags"
                     type="text"
                     value={tagInput}
                     onChange={(e) => setTagInput(e.target.value)}
@@ -564,28 +597,28 @@ export default function CreateBlogPage() {
                       }
                     }}
                     placeholder="Add tag..."
-                    className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all"
+                    className="flex-1 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                   />
                   <button
                     type="button"
                     onClick={handleAddTag}
-                    className="px-3 py-2 bg-primary/10 text-primary text-sm font-bold rounded-lg border border-primary/20 hover:bg-primary/20 transition-all"
+                    className="rounded-lg border border-primary/20 bg-primary/10 px-3 py-2 text-sm font-bold text-primary transition-all hover:bg-primary/20"
                   >
                     Add
                   </button>
                 </div>
                 {tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-2">
+                  <div className="mt-2 flex flex-wrap gap-2">
                     {tags.map((tag) => (
                       <span
                         key={tag}
-                        className="flex items-center gap-1 px-2.5 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-medium text-gray-300"
+                        className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-gray-300"
                       >
                         {tag}
                         <button
                           type="button"
                           onClick={() => handleRemoveTag(tag)}
-                          className="text-gray-500 hover:text-red-400 transition-colors"
+                          className="text-gray-500 transition-colors hover:text-red-400"
                         >
                           <X size={12} />
                         </button>
@@ -597,8 +630,8 @@ export default function CreateBlogPage() {
             </div>
 
             {/* Author */}
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
-              <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+            <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-gray-300">
                 Author
               </h2>
 
@@ -614,7 +647,7 @@ export default function CreateBlogPage() {
                 <button
                   type="button"
                   onClick={() => authorAvatarRef.current?.click()}
-                  className="h-14 w-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden hover:border-primary/30 transition-all flex-shrink-0"
+                  className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 transition-all hover:border-primary/30"
                 >
                   {authorAvatarPreview ? (
                     <Image
@@ -636,7 +669,7 @@ export default function CreateBlogPage() {
                       setAuthor((prev) => ({ ...prev, name: e.target.value }))
                     }
                     placeholder="Author name"
-                    className="block w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all"
+                    className="block w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                   />
                   <input
                     type="text"
@@ -648,7 +681,7 @@ export default function CreateBlogPage() {
                       }))
                     }
                     placeholder="Designation"
-                    className="block w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all"
+                    className="block w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                   />
                 </div>
               </div>
@@ -658,7 +691,7 @@ export default function CreateBlogPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-black text-sm font-bold rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-black shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all duration-300 hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>

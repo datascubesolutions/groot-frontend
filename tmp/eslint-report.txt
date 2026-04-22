@@ -1,0 +1,898 @@
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/blogs/[id]/page.js
+  358:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  371:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  382:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  570:19  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  595:19  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  613:19  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  656:19  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/blogs/new/page.js
+  253:19  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  267:19  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  280:19  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  474:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  499:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  517:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  561:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/blogs/page.js
+  74:6  warning  React Hook useEffect has a missing dependency: 'fetchBlogs'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/careers/page.jsx
+  101:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  114:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  127:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/contacts/[id]/page.js
+  282:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  291:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  308:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  322:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  349:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  367:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  385:19  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  406:19  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/contacts/new/page.js
+  115:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  130:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  145:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  167:15  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  193:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  211:17  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/contacts/page.js
+  84:6  warning  React Hook useEffect has a missing dependency: 'fetchContacts'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/home/page.js
+  113:6   warning  React Hook useEffect has a missing dependency: 'fetchContent'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  256:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  269:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  282:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  295:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  310:23  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  326:23  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  360:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  386:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  459:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  476:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  573:23  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  590:23  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  776:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  808:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+  824:21  warning  A form label must be associated with a control                                                                   jsx-a11y/label-has-associated-control
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/industries/page.jsx
+  132:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  145:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  158:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/microsoft/page.jsx
+  107:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  120:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  133:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+
+/home/hexylon/Datascube/groot/groot-frontend/src/app/admin/services/page.jsx
+  155:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  168:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+  181:21  warning  A form label must be associated with a control  jsx-a11y/label-has-associated-control
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/admin/AdminSkeleton.jsx
+   28:10  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  26 |       >
+  27 |         {/* Hero Welcome */}
+> 28 |         <PulseBlock className="h-40 rounded-3xl sm:h-48" />
+     |          ^^^^^^^^^^ This component is created during render
+  29 |
+  30 |         {/* KPI Grid */}
+  31 |         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                                                                                                                   react-hooks/static-components
+   53:10  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  51 |
+  52 |         {/* Main Chart Area */}
+> 53 |         <PulseBlock className="h-[320px] w-full rounded-2xl" />
+     |          ^^^^^^^^^^ This component is created during render
+  54 |
+  55 |         {/* Bottom Metrics Grid */}
+  56 |         <div className="grid gap-6 lg:grid-cols-3">
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                                                                                                                     react-hooks/static-components
+   57:12  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  55 |         {/* Bottom Metrics Grid */}
+  56 |         <div className="grid gap-6 lg:grid-cols-3">
+> 57 |           <PulseBlock className="h-[280px] rounded-2xl" />
+     |            ^^^^^^^^^^ This component is created during render
+  58 |           <PulseBlock className="h-[280px] rounded-2xl" />
+  59 |           <PulseBlock className="h-[280px] rounded-2xl" />
+  60 |         </div>
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                   react-hooks/static-components
+   58:12  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  56 |         <div className="grid gap-6 lg:grid-cols-3">
+  57 |           <PulseBlock className="h-[280px] rounded-2xl" />
+> 58 |           <PulseBlock className="h-[280px] rounded-2xl" />
+     |            ^^^^^^^^^^ This component is created during render
+  59 |           <PulseBlock className="h-[280px] rounded-2xl" />
+  60 |         </div>
+  61 |       </div>
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                                          react-hooks/static-components
+   59:12  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  57 |           <PulseBlock className="h-[280px] rounded-2xl" />
+  58 |           <PulseBlock className="h-[280px] rounded-2xl" />
+> 59 |           <PulseBlock className="h-[280px] rounded-2xl" />
+     |            ^^^^^^^^^^ This component is created during render
+  60 |         </div>
+  61 |       </div>
+  62 |     );
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                                                                                       react-hooks/static-components
+   83:14  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  81 |         <div className="flex-1 rounded-2xl border border-white/5 bg-white/[0.02] p-6 lg:p-8">
+  82 |           <div className="space-y-8">
+> 83 |             <PulseBlock className="mb-8 h-10 w-1/3 rounded-lg" />
+     |              ^^^^^^^^^^ This component is created during render
+  84 |
+  85 |             {/* Sub form fields mock */}
+  86 |             <div className="space-y-4">
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                  react-hooks/static-components
+   87:16  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  85 |             {/* Sub form fields mock */}
+  86 |             <div className="space-y-4">
+> 87 |               <PulseBlock className="h-12 w-full rounded-xl" />
+     |                ^^^^^^^^^^ This component is created during render
+  88 |               <PulseBlock className="h-24 w-full rounded-xl" />
+  89 |               <PulseBlock className="h-12 w-full rounded-xl" />
+  90 |             </div>
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (   react-hooks/static-components
+   88:16  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  86 |             <div className="space-y-4">
+  87 |               <PulseBlock className="h-12 w-full rounded-xl" />
+> 88 |               <PulseBlock className="h-24 w-full rounded-xl" />
+     |                ^^^^^^^^^^ This component is created during render
+  89 |               <PulseBlock className="h-12 w-full rounded-xl" />
+  90 |             </div>
+  91 |
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                                            react-hooks/static-components
+   89:16  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  87 |               <PulseBlock className="h-12 w-full rounded-xl" />
+  88 |               <PulseBlock className="h-24 w-full rounded-xl" />
+> 89 |               <PulseBlock className="h-12 w-full rounded-xl" />
+     |                ^^^^^^^^^^ This component is created during render
+  90 |             </div>
+  91 |
+  92 |             <div className="mt-8 flex justify-end border-t border-white/10 pt-6">
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (  react-hooks/static-components
+   93:16  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  91 |
+  92 |             <div className="mt-8 flex justify-end border-t border-white/10 pt-6">
+> 93 |               <PulseBlock className="h-10 w-32 rounded-xl bg-white/10" />
+     |                ^^^^^^^^^^ This component is created during render
+  94 |             </div>
+  95 |           </div>
+  96 |         </div>
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                                                                                        react-hooks/static-components
+  107:12  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  105 |       <div className="flex items-end justify-between border-b border-white/5 pb-4">
+  106 |         <div className="space-y-2">
+> 107 |           <PulseBlock className="h-8 w-40 rounded-lg" />
+      |            ^^^^^^^^^^ This component is created during render
+  108 |           <PulseBlock className="h-4 w-64 rounded-md" />
+  109 |         </div>
+  110 |         <div className="flex gap-3">
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (      react-hooks/static-components
+  108:12  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  106 |         <div className="space-y-2">
+  107 |           <PulseBlock className="h-8 w-40 rounded-lg" />
+> 108 |           <PulseBlock className="h-4 w-64 rounded-md" />
+      |            ^^^^^^^^^^ This component is created during render
+  109 |         </div>
+  110 |         <div className="flex gap-3">
+  111 |           <PulseBlock className="h-10 w-[200px] rounded-xl" />
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                           react-hooks/static-components
+  111:12  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  109 |         </div>
+  110 |         <div className="flex gap-3">
+> 111 |           <PulseBlock className="h-10 w-[200px] rounded-xl" />
+      |            ^^^^^^^^^^ This component is created during render
+  112 |           <PulseBlock className="h-10 w-32 rounded-xl" />
+  113 |         </div>
+  114 |       </div>
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                                                                                           react-hooks/static-components
+  112:12  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  110 |         <div className="flex gap-3">
+  111 |           <PulseBlock className="h-10 w-[200px] rounded-xl" />
+> 112 |           <PulseBlock className="h-10 w-32 rounded-xl" />
+      |            ^^^^^^^^^^ This component is created during render
+  113 |         </div>
+  114 |       </div>
+  115 |
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                                                                                                          react-hooks/static-components
+  127:12  warning  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  125 |         {/* Header Row */}
+  126 |         <div className="flex h-12 items-center bg-white/[0.02] px-6">
+> 127 |           <PulseBlock className="h-4 w-full rounded-md" />
+      |            ^^^^^^^^^^ This component is created during render
+  128 |         </div>
+  129 |         {/* Data Rows */}
+  130 |         {[1, 2, 3, 4, 5].map((i) => (
+
+  11 | export function AdminSkeleton({ type = "table", className }) {
+  12 |   // Repeated generic pulsing row
+> 13 |   const PulseBlock = ({ className }) => (
+     |                      ^^^^^^^^^^^^^^^^^^^^
+> 14 |     <div
+     | ^^^^^^^^
+> 15 |       className={cn(
+     | ^^^^^^^^
+> 16 |         "animate-pulse rounded-xl border border-white/5 bg-white/5",
+     | ^^^^^^^^
+> 17 |         className
+     | ^^^^^^^^
+> 18 |       )}
+     | ^^^^^^^^
+> 19 |     />
+     | ^^^^^^^^
+> 20 |   );
+     | ^^^^ The component is created during render here
+  21 |
+  22 |   if (type === "dashboard") {
+  23 |     return (                                                         react-hooks/static-components
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/animations/SideParticles.jsx
+  130:5  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  128 |   useEffect(() => {
+  129 |     const mql = window.matchMedia("(min-width: 1024px)");
+> 130 |     setIsDesktop(mql.matches);
+      |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  131 |     const handler = (e) => setIsDesktop(e.matches);
+  132 |     mql.addEventListener("change", handler);
+  133 |     return () => mql.removeEventListener("change", handler);  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/blog/BlogDetailContent.jsx
+  87:5  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  85 |     const doc = parser.parseFromString(content, "text/html");
+  86 |     const elements = doc.querySelectorAll("h2, h3");
+> 87 |     setHeadings(
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  88 |       Array.from(elements).map((el, index) => ({
+  89 |         id: `heading-${index}`,
+  90 |         text: el.textContent,  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/blog/BlogListingClient.jsx
+  42:5  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  40 |
+  41 |   useEffect(() => {
+> 42 |     setLocalSearch(searchTerm ?? "");
+     |     ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  43 |   }, [searchTerm]);
+  44 |
+  45 |   const updateParams = useCallback(  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/graphics/NetworkVisualization.jsx
+  67:18  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  65 |     return Array.from({ length: 8 }, (_, i) => ({
+  66 |       id: i,
+> 67 |       left: 20 + Math.random() * 60,
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  68 |       top: 20 + Math.random() * 60,
+  69 |       duration: 3 + Math.random() * 2,
+  70 |       delay: i * 0.3,  react-hooks/purity
+  68:17  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  66 |       id: i,
+  67 |       left: 20 + Math.random() * 60,
+> 68 |       top: 20 + Math.random() * 60,
+     |                 ^^^^^^^^^^^^^ Cannot call impure function
+  69 |       duration: 3 + Math.random() * 2,
+  70 |       delay: i * 0.3,
+  71 |     }));                                            react-hooks/purity
+  69:21  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  67 |       left: 20 + Math.random() * 60,
+  68 |       top: 20 + Math.random() * 60,
+> 69 |       duration: 3 + Math.random() * 2,
+     |                     ^^^^^^^^^^^^^ Cannot call impure function
+  70 |       delay: i * 0.3,
+  71 |     }));
+  72 |   }, [isMounted]);                                  react-hooks/purity
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/graphics/UniverseNetwork.jsx
+  32:5  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  30 |       delay: i * 0.2,
+  31 |     }));
+> 32 |     setParticles(newParticles);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  33 |   }, []);
+  34 |
+  35 |   return (  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/sections/CTASection.jsx
+  18:13  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  16 |     return Array.from({ length: 30 }, (_, i) => ({
+  17 |       id: i,
+> 18 |       left: Math.random() * 100,
+     |             ^^^^^^^^^^^^^ Cannot call impure function
+  19 |       top: Math.random() * 100,
+  20 |       duration: 3 + Math.random() * 2,
+  21 |       delay: Math.random() * 2,  react-hooks/purity
+  19:12  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  17 |       id: i,
+  18 |       left: Math.random() * 100,
+> 19 |       top: Math.random() * 100,
+     |            ^^^^^^^^^^^^^ Cannot call impure function
+  20 |       duration: 3 + Math.random() * 2,
+  21 |       delay: Math.random() * 2,
+  22 |     }));                                             react-hooks/purity
+  20:21  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  18 |       left: Math.random() * 100,
+  19 |       top: Math.random() * 100,
+> 20 |       duration: 3 + Math.random() * 2,
+     |                     ^^^^^^^^^^^^^ Cannot call impure function
+  21 |       delay: Math.random() * 2,
+  22 |     }));
+  23 |   }, [isMounted]);                              react-hooks/purity
+  21:14  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  19 |       top: Math.random() * 100,
+  20 |       duration: 3 + Math.random() * 2,
+> 21 |       delay: Math.random() * 2,
+     |              ^^^^^^^^^^^^^ Cannot call impure function
+  22 |     }));
+  23 |   }, [isMounted]);
+  24 |                                                                      react-hooks/purity
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/sections/HeroSection.jsx
+  40:30  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  38 |     return logoPaths.map((d, index) => {
+  39 |       const direction = directions[index % directions.length];
+> 40 |       const distance = 400 + Math.random() * 300;
+     |                              ^^^^^^^^^^^^^ Cannot call impure function
+  41 |
+  42 |       return {
+  43 |         id: index,  react-hooks/purity
+  47:16  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  45 |         initialX: direction.x * distance,
+  46 |         initialY: direction.y * distance,
+> 47 |         delay: Math.random() * 0.8,
+     |                ^^^^^^^^^^^^^ Cannot call impure function
+  48 |       };
+  49 |     });
+  50 |   }, [isMounted]);                                                react-hooks/purity
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/sections/QuizFlow.jsx
+  162:6  warning  React Hook useEffect has a missing dependency: 'count'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/sections/microsoft/AIFoundryHero.jsx
+  118:42  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  116 |                       transition={{
+  117 |                         duration: 2,
+> 118 |                         delay: (i % 4) * Math.random(),
+      |                                          ^^^^^^^^^^^^^ Cannot call impure function
+  119 |                         repeat: Infinity,
+  120 |                         repeatType: "reverse",
+  121 |                         repeatDelay: Math.random() * 2,                                                       react-hooks/purity
+  121:38  warning  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  119 |                         repeat: Infinity,
+  120 |                         repeatType: "reverse",
+> 121 |                         repeatDelay: Math.random() * 2,
+      |                                      ^^^^^^^^^^^^^ Cannot call impure function
+  122 |                       }}
+  123 |                       className="flex aspect-square w-full items-center justify-center rounded-xl border border-border bg-white shadow-sm"
+  124 |                     >  react-hooks/purity
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/sections/microsoft/MicrosoftHero.jsx
+  23:5  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  21 |
+  22 |   useEffect(() => {
+> 23 |     setIsMounted(true);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  24 |   }, []);
+  25 |
+  26 |   return (  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/components/ui/CookieConsent.jsx
+  93:23  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  91 |     try {
+  92 |       const savedPrefs = JSON.parse(localStorage.getItem("cookiePreferences"));
+> 93 |       if (savedPrefs) setPreferences(savedPrefs);
+     |                       ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  94 |     } catch {
+  95 |       /* ignore */
+  96 |     }  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/hooks/useAdminAuth.js
+  30:7  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  28 |   useEffect(() => {
+  29 |     if (!authService.isAuthenticated()) {
+> 30 |       setIsAuthed(false);
+     |       ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  31 |       routerRef.current.replace("/auth/login");
+  32 |     } else {
+  33 |       setIsAuthed(true);  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/hooks/useLocalStorage.js
+  38:9  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  36 |       const item = window.localStorage.getItem(key);
+  37 |       if (item !== null) {
+> 38 |         setStoredValue(JSON.parse(item));
+     |         ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  39 |       }
+  40 |     } catch (error) {
+  41 |       console.warn(`Error reading localStorage key "${key}":`, error);  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/hooks/useMediaQuery.js
+  47:5  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  45 |
+  46 |   useEffect(() => {
+> 47 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  48 |
+  49 |     if (!mediaQueryList) return;
+  50 |  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/hooks/useReducedMotion.js
+  32:5  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  30 |
+  31 |     // Set initial value
+> 32 |     setReducedMotion(mediaQuery.matches);
+     |     ^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  33 |
+  34 |     // Listen for changes (e.g. user toggling OS setting)
+  35 |     const handler = (event) => setReducedMotion(event.matches);  react-hooks/set-state-in-effect
+
+/home/hexylon/Datascube/groot/groot-frontend/src/hooks/useScrollReveal.js
+  87:7  warning  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  85 |     if (!element || typeof IntersectionObserver === "undefined") {
+  86 |       // Fallback for SSR or unsupported browsers
+> 87 |       setIsVisible(true);
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  88 |       setHasBeenVisible(true);
+  89 |       return;
+  90 |     }  react-hooks/set-state-in-effect
+
+✖ 96 problems (0 errors, 96 warnings)

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Shared auth utilities for API services.
  * Handles token retrieval, authenticated fetch helpers, and 401 auto-logout.

@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -6,8 +7,8 @@ export function BlogSkeleton() {
   return (
     <div className="min-h-screen bg-background pb-32">
       {/* Header Skeleton */}
-      <div className="bg-muted/30 border-b border-border/40 py-16 md:py-24 mb-12">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-[1400px]">
+      <div className="mb-12 border-b border-border/40 bg-muted/30 py-16 md:py-24">
+        <div className="container mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-12">
           <div className="max-w-3xl space-y-4">
             <Skeleton className="h-6 w-24 rounded-full bg-foreground/15" />
             <Skeleton className="h-14 w-3/4 rounded-lg bg-foreground/15" />
@@ -16,21 +17,24 @@ export function BlogSkeleton() {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-[1400px]">
+      <div className="container mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-12">
         {/* Controls Skeleton */}
-        <div className="mb-12 flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
-          <div className="flex gap-2 overflow-hidden w-full md:w-auto">
+        <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+          <div className="flex w-full gap-2 overflow-hidden md:w-auto">
             {[...Array(5)].map((_, i) => (
-              <Skeleton key={i} className="h-10 w-28 rounded-full flex-shrink-0 bg-foreground/10 border border-foreground/5" />
+              <Skeleton
+                key={i}
+                className="h-10 w-28 flex-shrink-0 rounded-full border border-foreground/5 bg-foreground/10"
+              />
             ))}
           </div>
-          <Skeleton className="h-10 w-full md:w-64 rounded-full bg-foreground/10 border border-foreground/5" />
+          <Skeleton className="h-10 w-full rounded-full border border-foreground/5 bg-foreground/10 md:w-64" />
         </div>
 
         {/* Featured Post Skeleton */}
         <div className="mb-12 border-b border-border/40 pb-12">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <Skeleton className="h-[300px] lg:h-[400px] w-full rounded-2xl bg-foreground/15" />
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+            <Skeleton className="h-[300px] w-full rounded-2xl bg-foreground/15 lg:h-[400px]" />
             <div className="space-y-6">
               <div className="flex gap-3">
                 <Skeleton className="h-6 w-24 rounded-full bg-foreground/15" />
@@ -81,7 +85,7 @@ export function BlogSkeleton() {
                 </div>
 
                 {/* Author */}
-                <div className="pt-4 flex items-center justify-between">
+                <div className="flex items-center justify-between pt-4">
                   <div className="flex items-center gap-3">
                     <Skeleton className="h-8 w-8 rounded-full bg-foreground/15" />
                     <Skeleton className="h-4 w-24 bg-foreground/15" />

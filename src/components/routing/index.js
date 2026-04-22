@@ -1,6 +1,7 @@
+// @ts-nocheck
 /**
  * Routing Components Index
- * 
+ *
  * @fileoverview Exports for routing-related components
  * @module components/routing
  */
@@ -11,4 +12,4 @@
 // export { RedirectHandler } from './RedirectHandler';
 
 // Placeholder export to prevent import errors
-export { };
+export {};

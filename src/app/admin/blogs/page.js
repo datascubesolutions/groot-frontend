@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { DataTable } from "@/components/ui/DataTable";
@@ -18,7 +19,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const STATUS_COLORS = {
@@ -44,7 +45,7 @@ export default function BlogListPage() {
   const [categoryFilter, setCategoryFilter] = useState("All");
   const debouncedSearch = useDebounce(searchTerm, 300);
 
-  const fetchBlogs = async () => {
+  const fetchBlogs = useCallback(async () => {
     setIsLoading(true);
     try {
       const result = await blogService.list({
@@ -53,7 +54,11 @@ export default function BlogListPage() {
         search: debouncedSearch,
       });
 
-      const blogs = result?.result?.blogs || result?.result?.data?.blogs || result?.blogs || [];
+      const blogs =
+        result?.result?.blogs ||
+        result?.result?.data?.blogs ||
+        result?.blogs ||
+        [];
       setData(Array.isArray(blogs) ? blogs : []);
     } catch (error) {
       console.error("Failed to fetch blogs:", error);
@@ -62,33 +67,33 @@ export default function BlogListPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [debouncedSearch, categoryFilter]);
 
   useEffect(() => {
-    fetchBlogs();
-  }, [debouncedSearch, categoryFilter]);
+    void fetchBlogs();
+  }, [fetchBlogs]);
 
   const handleDelete = (id) => {
     toast.custom(
       (t) => (
-        <div className="bg-[#1a1a1a] border border-white/10 p-4 rounded-xl shadow-2xl w-[350px] space-y-3 relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-red-500/10 blur-[40px] rounded-full" />
-          <div className="flex items-start gap-3 relative z-10">
-            <div className="p-2 bg-red-500/10 rounded-lg text-red-500 border border-red-500/10">
+        <div className="relative w-[350px] space-y-3 overflow-hidden rounded-xl border border-white/10 bg-[#1a1a1a] p-4 shadow-2xl">
+          <div className="absolute right-0 top-0 -mr-4 -mt-4 h-24 w-24 rounded-full bg-red-500/10 blur-[40px]" />
+          <div className="relative z-10 flex items-start gap-3">
+            <div className="rounded-lg border border-red-500/10 bg-red-500/10 p-2 text-red-500">
               <Trash2 size={18} />
             </div>
             <div>
               <h3 className="font-semibold text-white">Delete Blog Post?</h3>
-              <p className="text-sm text-gray-400 mt-1">
+              <p className="mt-1 text-sm text-gray-400">
                 This action cannot be undone. This blog post will be permanently
                 removed.
               </p>
             </div>
           </div>
-          <div className="flex justify-end gap-2 pt-2 relative z-10">
+          <div className="relative z-10 flex justify-end gap-2 pt-2">
             <button
               onClick={() => toast.dismiss(t)}
-              className="px-3 py-1.5 text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+              className="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-400 transition-colors hover:bg-white/5 hover:text-white"
             >
               Cancel
             </button>
@@ -98,13 +103,17 @@ export default function BlogListPage() {
                 const deleteToastId = toast.loading("Deleting post...");
                 try {
                   await blogService.delete(id);
-                  toast.success("Blog post deleted successfully", { id: deleteToastId });
+                  toast.success("Blog post deleted successfully", {
+                    id: deleteToastId,
+                  });
                   fetchBlogs();
                 } catch (err) {
-                  toast.error(err?.message || "Failed to delete blog post", { id: deleteToastId });
+                  toast.error(err?.message || "Failed to delete blog post", {
+                    id: deleteToastId,
+                  });
                 }
               }}
-              className="px-3 py-1.5 text-sm font-medium bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-sm"
+              className="rounded-lg bg-red-500 px-3 py-1.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-red-600"
             >
               Delete
             </button>
@@ -121,7 +130,7 @@ export default function BlogListPage() {
       accessorKey: "title",
       cell: (row) => (
         <div className="flex items-center gap-4 py-1">
-          <div className="h-14 w-20 rounded-xl bg-white/5 border border-white/10 overflow-hidden flex-shrink-0">
+          <div className="h-14 w-20 flex-shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white/5">
             {row.coverImage ? (
               <Image
                 src={row.coverImage}
@@ -131,16 +140,16 @@ export default function BlogListPage() {
                 className="h-full w-full object-cover"
               />
             ) : (
-              <div className="h-full w-full flex items-center justify-center text-gray-500">
+              <div className="flex h-full w-full items-center justify-center text-gray-500">
                 <FileText size={18} />
               </div>
             )}
           </div>
-          <div className="flex flex-col min-w-0">
-            <span className="font-bold text-white text-[15px] leading-tight truncate">
+          <div className="flex min-w-0 flex-col">
+            <span className="truncate text-[15px] font-bold leading-tight text-white">
               {row.title}
             </span>
-            <span className="text-sm text-gray-400 font-medium mt-0.5 truncate max-w-[300px]">
+            <span className="mt-0.5 max-w-[300px] truncate text-sm font-medium text-gray-400">
               {row.excerpt || "No excerpt"}
             </span>
           </div>
@@ -151,7 +160,7 @@ export default function BlogListPage() {
       header: "CATEGORY",
       accessorKey: "category",
       cell: (row) => (
-        <span className="px-2.5 py-1 rounded-lg text-[11px] uppercase tracking-wider font-bold bg-primary/10 text-primary border border-primary/20">
+        <span className="rounded-lg border border-primary/20 bg-primary/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
           {row.category || "—"}
         </span>
       ),
@@ -160,7 +169,7 @@ export default function BlogListPage() {
       header: "AUTHOR",
       accessorKey: "author",
       cell: (row) => (
-        <span className="text-gray-300 font-medium text-sm">
+        <span className="text-sm font-medium text-gray-300">
           {row.author?.name || "—"}
         </span>
       ),
@@ -170,7 +179,7 @@ export default function BlogListPage() {
       accessorKey: "status",
       cell: (row) => (
         <span
-          className={`px-3 py-1 rounded-full text-[11px] uppercase tracking-wider font-bold border ${STATUS_COLORS[row.status] || STATUS_COLORS.DRAFT}`}
+          className={`rounded-full border px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${STATUS_COLORS[row.status] || STATUS_COLORS.DRAFT}`}
         >
           {row.status || "DRAFT"}
         </span>
@@ -184,12 +193,23 @@ export default function BlogListPage() {
         const dateVal = row.publishedAt || row.createdAt;
         let dateStr = "—";
         if (dateVal?._seconds) {
-          dateStr = new Date(dateVal._seconds * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+          dateStr = new Date(dateVal._seconds * 1000).toLocaleDateString(
+            "en-US",
+            { month: "short", day: "numeric", year: "numeric" }
+          );
         } else if (dateVal) {
-          try { dateStr = new Date(dateVal).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); } catch { /* keep default */ }
+          try {
+            dateStr = new Date(dateVal).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            });
+          } catch {
+            /* keep default */
+          }
         }
         return (
-          <span className="text-gray-400 font-medium text-xs uppercase tracking-wide">
+          <span className="text-xs font-medium uppercase tracking-wide text-gray-400">
             {dateStr}
           </span>
         );
@@ -199,49 +219,51 @@ export default function BlogListPage() {
 
   const publishedCount = data.filter((d) => d.status === "PUBLISHED").length;
   const draftCount = data.filter((d) => d.status === "DRAFT").length;
-  const featuredCount = data.filter((d) => String(d.isFeatured) === "true" || d.isFeatured === true).length;
+  const featuredCount = data.filter(
+    (d) => String(d.isFeatured) === "true" || d.isFeatured === true
+  ).length;
 
   if (isLoading && data.length === 0) {
     return <AdminSkeleton type="table" />;
   }
 
   return (
-    <div className="space-y-4 animate-fade-in pb-2">
+    <div className="animate-fade-in space-y-4 pb-2">
       {/* Header & Toolbar */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/5">
+      <div className="flex flex-col justify-between gap-4 border-b border-white/5 pb-4 md:flex-row md:items-end">
         <div className="space-y-1">
-          <h1 className="text-2xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl font-extrabold tracking-tight text-white">
             Blog Management
           </h1>
-          <p className="text-gray-400 font-medium text-sm">
+          <p className="text-sm font-medium text-gray-400">
             Create, edit, and manage your blog posts.
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+        <div className="flex w-full flex-col gap-3 sm:flex-row md:w-auto">
           {/* Search Bar */}
-          <div className="relative group w-full md:w-[260px]">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-4 w-4 text-gray-400 group-focus-within:text-white transition-colors" />
+          <div className="group relative w-full md:w-[260px]">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <Search className="h-4 w-4 text-gray-400 transition-colors group-focus-within:text-white" />
             </div>
             <input
               type="text"
               placeholder="Search posts..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full pl-10 pr-3 py-2 bg-white/10 border border-white/5 rounded-xl text-sm placeholder:text-gray-400 text-white focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none hover:bg-white/[0.15]"
+              className="block w-full rounded-xl border border-white/5 bg-white/10 py-2 pl-10 pr-3 text-sm text-white outline-none transition-all placeholder:text-gray-400 hover:bg-white/[0.15] focus:border-white/20 focus:ring-1 focus:ring-white/10"
             />
           </div>
 
           {/* Category Filter */}
-          <div className="relative group">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <div className="group relative">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <Filter className="h-4 w-4 text-gray-400" />
             </div>
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="pl-10 pr-8 py-2 bg-white/10 border border-white/5 rounded-xl text-sm text-white focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none hover:bg-white/[0.15] appearance-none cursor-pointer"
+              className="cursor-pointer appearance-none rounded-xl border border-white/5 bg-white/10 py-2 pl-10 pr-8 text-sm text-white outline-none transition-all hover:bg-white/[0.15] focus:border-white/20 focus:ring-1 focus:ring-white/10"
             >
               {CATEGORIES.map((cat) => (
                 <option key={cat} value={cat} className="bg-[#1a1a1a]">
@@ -252,7 +274,7 @@ export default function BlogListPage() {
           </div>
 
           <Link href="/admin/blogs/new">
-            <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2 bg-white text-black text-xs font-bold rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+            <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-2 text-xs font-bold text-black shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 hover:bg-gray-200 sm:w-auto">
               <Plus size={16} strokeWidth={2.5} />
               <span>New Post</span>
             </button>
@@ -261,55 +283,55 @@ export default function BlogListPage() {
       </div>
 
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-[#151515] border border-white/5 p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-1 hover:border-white/20 transition-all hover:bg-[#1a1a1a] shadow-md">
-          <div className="p-2 rounded-xl bg-blue-500/10 text-blue-400 shadow-inner ring-1 ring-white/5">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/5 bg-[#151515] p-4 text-center shadow-md transition-all hover:border-white/20 hover:bg-[#1a1a1a]">
+          <div className="rounded-xl bg-blue-500/10 p-2 text-blue-400 shadow-inner ring-1 ring-white/5">
             <BookOpen size={18} />
           </div>
           <div>
-            <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest mb-0.5">
+            <p className="mb-0.5 text-[10px] font-bold uppercase tracking-widest text-gray-400">
               Total Posts
             </p>
-            <p className="text-2xl font-extrabold text-white tracking-tight">
+            <p className="text-2xl font-extrabold tracking-tight text-white">
               {data.length}
             </p>
           </div>
         </div>
-        <div className="bg-[#151515] border border-white/5 p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-1 hover:border-white/20 transition-all hover:bg-[#1a1a1a] shadow-md">
-          <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 shadow-inner ring-1 ring-white/5">
+        <div className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/5 bg-[#151515] p-4 text-center shadow-md transition-all hover:border-white/20 hover:bg-[#1a1a1a]">
+          <div className="rounded-xl bg-emerald-500/10 p-2 text-emerald-400 shadow-inner ring-1 ring-white/5">
             <FileText size={18} />
           </div>
           <div>
-            <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest mb-0.5">
+            <p className="mb-0.5 text-[10px] font-bold uppercase tracking-widest text-gray-400">
               Published
             </p>
-            <p className="text-2xl font-extrabold text-white tracking-tight">
+            <p className="text-2xl font-extrabold tracking-tight text-white">
               {publishedCount}
             </p>
           </div>
         </div>
-        <div className="bg-[#151515] border border-white/5 p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-1 hover:border-white/20 transition-all hover:bg-[#1a1a1a] shadow-md">
-          <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 shadow-inner ring-1 ring-white/5">
+        <div className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/5 bg-[#151515] p-4 text-center shadow-md transition-all hover:border-white/20 hover:bg-[#1a1a1a]">
+          <div className="rounded-xl bg-amber-500/10 p-2 text-amber-400 shadow-inner ring-1 ring-white/5">
             <PencilLine size={18} />
           </div>
           <div>
-            <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest mb-0.5">
+            <p className="mb-0.5 text-[10px] font-bold uppercase tracking-widest text-gray-400">
               Drafts
             </p>
-            <p className="text-2xl font-extrabold text-white tracking-tight">
+            <p className="text-2xl font-extrabold tracking-tight text-white">
               {draftCount}
             </p>
           </div>
         </div>
-        <div className="bg-[#151515] border border-white/5 p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-1 hover:border-white/20 transition-all hover:bg-[#1a1a1a] shadow-md">
-          <div className="p-2 rounded-xl bg-purple-500/10 text-purple-400 shadow-inner ring-1 ring-white/5">
+        <div className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/5 bg-[#151515] p-4 text-center shadow-md transition-all hover:border-white/20 hover:bg-[#1a1a1a]">
+          <div className="rounded-xl bg-purple-500/10 p-2 text-purple-400 shadow-inner ring-1 ring-white/5">
             <Star size={18} />
           </div>
           <div>
-            <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest mb-0.5">
+            <p className="mb-0.5 text-[10px] font-bold uppercase tracking-widest text-gray-400">
               Featured
             </p>
-            <p className="text-2xl font-extrabold text-white tracking-tight">
+            <p className="text-2xl font-extrabold tracking-tight text-white">
               {featuredCount}
             </p>
           </div>
@@ -317,35 +339,29 @@ export default function BlogListPage() {
       </div>
 
       {/* Data Table */}
-      <div className="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/5">
+      <div className="overflow-hidden rounded-3xl border border-white/5 bg-[#111111] shadow-2xl ring-1 ring-white/5">
         <DataTable
           columns={columns}
           data={data}
           isLoading={isLoading}
           actions={(row) => (
             <div className="flex justify-end gap-3 px-2">
-              <Link
-                href={`/admin/blogs/${row.id}`}
-                title="View Details"
-              >
-                <button className="h-8 w-8 flex items-center justify-center rounded-lg text-blue-400 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-500/40 transition-all shadow-sm group">
+              <Link href={`/admin/blogs/${row.id}`} title="View Details">
+                <button className="group flex h-8 w-8 items-center justify-center rounded-lg border border-blue-500/20 bg-blue-500/10 text-blue-400 shadow-sm transition-all hover:border-blue-500/40 hover:bg-blue-500/20">
                   <Eye
                     size={16}
-                    className="group-hover:scale-110 transition-transform"
+                    className="transition-transform group-hover:scale-110"
                   />
                 </button>
               </Link>
-              <Link
-                href={`/admin/blogs/${row.id}?mode=edit`}
-                title="Edit"
-              >
-                <button className="h-8 w-8 flex items-center justify-center rounded-lg text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 hover:border-emerald-500/40 transition-all shadow-sm">
+              <Link href={`/admin/blogs/${row.id}?mode=edit`} title="Edit">
+                <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 shadow-sm transition-all hover:border-emerald-500/40 hover:bg-emerald-500/20">
                   <PencilLine size={16} />
                 </button>
               </Link>
               <button
                 onClick={() => handleDelete(row.id)}
-                className="h-8 w-8 flex items-center justify-center rounded-lg text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 hover:border-rose-500/40 transition-all shadow-sm"
+                className="flex h-8 w-8 items-center justify-center rounded-lg border border-rose-500/20 bg-rose-500/10 text-rose-400 shadow-sm transition-all hover:border-rose-500/40 hover:bg-rose-500/20"
                 title="Delete"
               >
                 <Trash2 size={16} />

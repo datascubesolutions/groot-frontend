@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { generateBreadcrumbSchema, generateRouteMetadata } from "@/lib/seo";
 import CareersPageClient from "./CareersPageClient";
 

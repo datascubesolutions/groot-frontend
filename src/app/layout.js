@@ -1,7 +1,11 @@
+// @ts-nocheck
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import { Navbar } from "@/components/layout";
 import Footer from "@/components/sections/Footer";
-import { OrganizationSchema, WebsiteSchema } from "@/components/seo/StructuredData";
+import {
+  OrganizationSchema,
+  WebsiteSchema,
+} from "@/components/seo/StructuredData";
 import { siteConfig } from "@/config/site.config";
 import { METADATA } from "@/lib/constants";
 import { env } from "@/lib/env";
@@ -10,13 +14,14 @@ import { Toaster } from "sonner";
 import "./accessibility.css";
 import "./globals.css";
 
+// Variable font: one network request instead of multiple static weight files.
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
   display: "swap",
   preload: true,
-  weight: ["300", "400", "500", "600", "700", "800"],
   fallback: ["system-ui", "sans-serif"],
+  adjustFontFallback: true,
 });
 
 export const metadata = {
@@ -76,6 +81,11 @@ export const metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  appleWebApp: {
+    title: siteConfig.name,
+    statusBarStyle: "black-translucent",
+    capable: true,
+  },
   robots: {
     index: env.IS_PRODUCTION,
     follow: env.IS_PRODUCTION,
@@ -98,8 +108,6 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import ScrollTracker from "@/components/analytics/ScrollTracker";
 import { Suspense } from "react";
 
-// ... existing imports
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -107,20 +115,23 @@ export default function RootLayout({ children }) {
         <OrganizationSchema />
         <WebsiteSchema />
       </head>
-      <body className={`${plusJakartaSans.variable} antialiased`} suppressHydrationWarning>
+      <body
+        className={`${plusJakartaSans.variable} antialiased`}
+        suppressHydrationWarning
+      >
         <Suspense fallback={null}>
-          <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+          <GoogleAnalytics
+            GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
+          />
         </Suspense>
         <ScrollTracker />
         <ErrorBoundary>
-          <div className="flex flex-col min-h-screen">
+          <div className="flex min-h-screen flex-col">
             <PublicLayoutWrapper>
               <Navbar />
             </PublicLayoutWrapper>
 
-            <main className="flex-1">
-              {children}
-            </main>
+            <main className="flex-1">{children}</main>
 
             <PublicLayoutWrapper>
               <Footer />

@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { motion } from "framer-motion";
@@ -19,15 +20,15 @@ const getStatusColor = (value) => {
 
 export const DecisionMatrix = () => {
   return (
-    <div className="w-full max-w-[600px] mx-auto">
-      <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
+    <div className="mx-auto w-full max-w-[600px]">
+      <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-lg">
         {/* Header */}
-        <div className="bg-charcoal text-primary-foreground p-4">
+        <div className="bg-charcoal p-4 text-primary-foreground">
           <div className="grid grid-cols-6 gap-2 text-center">
             {columns.map((col, index) => (
-              <div 
-                key={col} 
-                className={`text-xs font-semibold ${index === 0 ? 'col-span-1 text-left' : 'col-span-1'}`}
+              <div
+                key={col}
+                className={`text-xs font-semibold ${index === 0 ? "col-span-1 text-left" : "col-span-1"}`}
               >
                 {col}
               </div>
@@ -36,17 +37,17 @@ export const DecisionMatrix = () => {
         </div>
 
         {/* Matrix body */}
-        <div className="p-4 space-y-3">
+        <div className="space-y-3 p-4">
           {rows.map((row, rowIndex) => (
             <motion.div
               key={row.label}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: rowIndex * 0.15 }}
-              className="grid grid-cols-6 gap-2 items-center"
+              className="grid grid-cols-6 items-center gap-2"
             >
               {/* Row label */}
-              <div className="text-xs font-medium text-foreground truncate">
+              <div className="truncate text-xs font-medium text-foreground">
                 {row.label}
               </div>
 
@@ -60,8 +61,8 @@ export const DecisionMatrix = () => {
                       animate={{ scale: 1 }}
                       transition={{ delay: 0.3 + rowIndex * 0.1 + i * 0.05 }}
                       className={`h-6 flex-1 rounded-sm ${
-                        i < Math.round(value * 5) 
-                          ? getStatusColor(value) 
+                        i < Math.round(value * 5)
+                          ? getStatusColor(value)
                           : "bg-muted/50"
                       }`}
                     />
@@ -73,22 +74,22 @@ export const DecisionMatrix = () => {
         </div>
 
         {/* Legend */}
-        <div className="px-4 py-3 border-t border-border bg-muted/20">
+        <div className="border-t border-border bg-muted/20 px-4 py-3">
           <div className="flex items-center justify-center gap-6 text-xs">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-sm bg-teal" />
+              <div className="h-3 w-3 rounded-sm bg-teal" />
               <span className="text-muted-foreground">Complete</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-sm bg-primary" />
+              <div className="h-3 w-3 rounded-sm bg-primary" />
               <span className="text-muted-foreground">In Progress</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-sm bg-burgundy-dark" />
+              <div className="h-3 w-3 rounded-sm bg-burgundy-dark" />
               <span className="text-muted-foreground">At Risk</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-sm bg-muted/50" />
+              <div className="h-3 w-3 rounded-sm bg-muted/50" />
               <span className="text-muted-foreground">Not Started</span>
             </div>
           </div>

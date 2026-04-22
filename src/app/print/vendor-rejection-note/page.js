@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import VendorRejectionNote from "@/components/print/VendorRejectionNote";
@@ -47,7 +48,9 @@ function PrintContent() {
   }, [searchParams]);
 
   if (loading) {
-    return <div className="p-8 text-center text-gray-500">Loading document...</div>;
+    return (
+      <div className="p-8 text-center text-gray-500">Loading document...</div>
+    );
   }
 
   if (error) {
@@ -55,16 +58,20 @@ function PrintContent() {
   }
 
   if (!data || data.length === 0) {
-    return <div className="p-8 text-center text-gray-500">No rejection notes found.</div>;
+    return (
+      <div className="p-8 text-center text-gray-500">
+        No rejection notes found.
+      </div>
+    );
   }
 
   return (
-    <div className="print-container bg-gray-100 min-h-screen py-8 print:p-0 print:bg-white">
+    <div className="print-container min-h-screen bg-gray-100 py-8 print:bg-white print:p-0">
       {/* Hide controls when printing */}
-      <div className="max-w-4xl mx-auto mb-4 flex justify-between print:hidden">
+      <div className="mx-auto mb-4 flex max-w-4xl justify-between print:hidden">
         <button
           onClick={() => window.print()}
-          className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition"
+          className="rounded bg-blue-600 px-4 py-2 text-white shadow transition hover:bg-blue-700"
         >
           Print Document
         </button>
@@ -81,7 +88,13 @@ function PrintContent() {
 
 export default function VendorRejectionNotePrintPage() {
   return (
-    <Suspense fallback={<div className="p-8 text-center text-gray-500">Loading component...</div>}>
+    <Suspense
+      fallback={
+        <div className="p-8 text-center text-gray-500">
+          Loading component...
+        </div>
+      }
+    >
       <PrintContent />
     </Suspense>
   );

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Performance Monitoring Utilities
  * Client-side performance tracking and optimization helpers

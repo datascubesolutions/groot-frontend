@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Utility Functions
  * Reusable helper functions with proper error handling

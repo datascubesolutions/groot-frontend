@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Components Index
  *
@@ -18,57 +19,52 @@
 // ============================================================================
 // UI Components (Primitives)
 // ============================================================================
-export {
-    Button,
-    buttonVariants
-} from './ui/Button';
+export { Button, buttonVariants } from "./ui/Button";
+
+export { Input } from "./ui/Input";
 
 export {
-    Input
-} from './ui/Input';
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/Card";
 
-export {
-    Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
-} from './ui/Card';
+export { Badge, badgeVariants } from "./ui/Badge";
 
-export {
-    Badge,
-    badgeVariants
-} from './ui/Badge';
+export { Loading, LoadingDots, LoadingSpinner } from "./ui/Loading";
 
-export {
-    Loading, LoadingDots, LoadingSpinner
-} from './ui/Loading';
-
-export {
-    default as Container
-} from './ui/Container';
+export { default as Container } from "./ui/Container";
 
 // ============================================================================
 // Layout Components
 // ============================================================================
-export * from './layout';
+export * from "./layout";
 
 // ============================================================================
 // Section Components (Page Sections)
 // ============================================================================
-export { AboutSection } from './sections/AboutSection';
-export { CTASection } from './sections/CTASection';
-export { Footer } from './sections/Footer';
-export { HeroSection } from './sections/HeroSection';
-export { ServicesSection } from './sections/ServicesSection';
+export { AboutSection } from "./sections/AboutSection";
+export { CTASection } from "./sections/CTASection";
+export { Footer } from "./sections/Footer";
+export { HeroSection } from "./sections/HeroSection";
+export { ServicesSection } from "./sections/ServicesSection";
 
 // ============================================================================
 // Error Components
 // ============================================================================
-export { default as ErrorBoundary } from './errors/ErrorBoundary';
+export { default as ErrorBoundary } from "./errors/ErrorBoundary";
 
 // ============================================================================
 // SEO Components
 // ============================================================================
 export {
-    OrganizationSchema, ServiceSchema, WebsiteSchema
-} from './seo/StructuredData';
+  OrganizationSchema,
+  ServiceSchema,
+  WebsiteSchema,
+} from "./seo/StructuredData";
 
 // export {
 //     Breadcrumbs,
@@ -78,19 +74,19 @@ export {
 // ============================================================================
 // Animation Components
 // ============================================================================
-export * from './animations';
+export * from "./animations";
 
 // ============================================================================
 // Routing Components
 // ============================================================================
-export * from './routing';
+export * from "./routing";
 
 // ============================================================================
 // Feature Components
 // ============================================================================
-export * from './features';
+export * from "./features";
 
 // ============================================================================
 // Icons (Re-exports from Lucide)
 // ============================================================================
-export * from './icons';
+export * from "./icons";

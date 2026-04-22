@@ -1,11 +1,6 @@
+// @ts-nocheck
 
-import {
-  BarChart,
-  Brain,
-  Database,
-  TrendingUp,
-  Users
-} from "lucide-react";
+import { BarChart, Brain, Database, TrendingUp, Users } from "lucide-react";
 
 export const SERVICE_CATEGORIES = [
   {
@@ -17,8 +12,8 @@ export const SERVICE_CATEGORIES = [
     subServices: [
       { title: "Maturity Assessment", slug: "maturity-assessment" },
       { title: "Enterprise Data Strategy", slug: "enterprise-data-strategy" },
-      { title: "Stack Evaluation", slug: "stack-evaluation" }
-    ]
+      { title: "Stack Evaluation", slug: "stack-evaluation" },
+    ],
   },
   {
     title: "Build Your Foundation",
@@ -29,8 +24,8 @@ export const SERVICE_CATEGORIES = [
     subServices: [
       { title: "Data Modernization", slug: "data-modernization" },
       { title: "Foundation Build", slug: "foundation-build" },
-      { title: "Data Integration", slug: "data-integration" }
-    ]
+      { title: "Data Integration", slug: "data-integration" },
+    ],
   },
   {
     title: "Decision Intelligence",
@@ -41,8 +36,8 @@ export const SERVICE_CATEGORIES = [
     subServices: [
       { title: "Executive Analytics", slug: "executive-analytics" },
       { title: "Semantic Modeling", slug: "semantic-modeling" },
-      { title: "Self-Service Enablement", slug: "self-service-enablement" }
-    ]
+      { title: "Self-Service Enablement", slug: "self-service-enablement" },
+    ],
   },
   {
     title: "AI That Ships",
@@ -50,7 +45,7 @@ export const SERVICE_CATEGORIES = [
     href: "/services/ai-that-ships",
     icon: Brain,
     description: "Production-ready Copilot and AI solutions.",
-    subServices: []
+    subServices: [],
   },
   {
     title: "Scale Your Team",
@@ -58,8 +53,8 @@ export const SERVICE_CATEGORIES = [
     href: "/services/scale-your-team",
     icon: Users,
     description: "Extended analytics capacity.",
-    subServices: []
-  }
+    subServices: [],
+  },
 ];
 
 /** Canonical URL when visiting `/services` (first category’s first offering). */

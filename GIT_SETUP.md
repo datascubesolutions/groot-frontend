@@ -1,6 +1,7 @@
 # Git Setup Instructions
 
 ## Current Status
+
 ✅ Git repository initialized
 ✅ Branches created: `main`, `develop`, `production`
 ✅ .gitignore configured to exclude unwanted files
@@ -45,9 +46,11 @@ git checkout develop
 ### 3. Configure GitHub Secrets
 
 After pushing, configure secrets in GitHub:
+
 - Settings → Secrets and variables → Actions
 
 Required secrets:
+
 - `VERCEL_TOKEN`
 - `VERCEL_ORG_ID`
 - `VERCEL_PROJECT_ID`
@@ -101,10 +104,12 @@ git checkout branch-name
 ## Authentication
 
 Git is configured with:
+
 - Email: datascubesolutions@gmail.com
 - Name: Datascube Solutions
 
 For GitHub authentication, use:
+
 - Personal Access Token (recommended)
 - Or SSH keys
 

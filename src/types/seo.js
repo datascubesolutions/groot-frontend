@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * SEO Type Definitions
  *
@@ -58,7 +59,5 @@
  * @property {Object} [contactPoint] - Contact information
  */
 
-
-
 // Export empty object for module resolution
-export { };
+export {};

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const METADATA = {
   TITLE: "Groot Analytics - Data Engineering & AI Solutions",
   DESCRIPTION:

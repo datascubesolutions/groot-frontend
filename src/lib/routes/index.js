@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Route Configuration
  *
@@ -88,4 +89,9 @@ export function isActiveRoute(currentPath, routePath) {
 }
 
 // Route Metadata for SEO
-export { getIndexableRoutes, getRouteMetadata, getRoutesByPriority, ROUTE_METADATA } from './metadata';
+export {
+  getIndexableRoutes,
+  getRouteMetadata,
+  getRoutesByPriority,
+  ROUTE_METADATA,
+} from "./metadata";

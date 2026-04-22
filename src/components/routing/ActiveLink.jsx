@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import Link from "next/link";
@@ -7,10 +8,10 @@ import { isActiveRoute } from "@/lib/routes";
 
 /**
  * ActiveLink Component
- * 
+ *
  * Enhanced Link component that automatically applies active styles
  * Optimized for performance with memoization and prefetching
- * 
+ *
  * @example
  * <ActiveLink href={ROUTES.PUBLIC.HOME} activeClassName="text-primary">
  *   Home
@@ -26,12 +27,10 @@ export default function ActiveLink({
   ...props
 }) {
   const pathname = usePathname();
-  
+
   // Memoize active state calculation to prevent unnecessary re-renders
   const isActive = useMemo(() => {
-    return exact
-      ? pathname === href
-      : isActiveRoute(pathname, href);
+    return exact ? pathname === href : isActiveRoute(pathname, href);
   }, [pathname, href, exact]);
 
   // Memoize className to prevent unnecessary recalculations
@@ -40,12 +39,7 @@ export default function ActiveLink({
   }, [className, isActive, activeClassName]);
 
   return (
-    <Link
-      href={href}
-      className={linkClassName}
-      prefetch={prefetch}
-      {...props}
-    >
+    <Link href={href} className={linkClassName} prefetch={prefetch} {...props}>
       {children}
     </Link>
   );

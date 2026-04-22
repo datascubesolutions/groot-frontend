@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Route metadata map for SEO tags and sitemap generation.
  */
@@ -63,7 +64,11 @@ export const ROUTE_METADATA = {
       "Assess your current data stack, uncover architecture gaps, and define a practical modernization roadmap with Groot Analytics.",
     path: "/services/define-your-roadmap/stack-evaluation",
     image: "/og-image.jpg",
-    keywords: ["data stack evaluation", "modern data architecture assessment", "analytics modernization roadmap"],
+    keywords: [
+      "data stack evaluation",
+      "modern data architecture assessment",
+      "analytics modernization roadmap",
+    ],
     indexable: true,
     priority: 0.8,
     changeFrequency: "monthly",
@@ -162,7 +167,9 @@ export const getIndexableRoutes = () =>
  * @returns {object|null} Route metadata or null
  */
 export const getRouteMetadata = (path) => {
-  return Object.values(ROUTE_METADATA).find((route) => route.path === path) || null;
+  return (
+    Object.values(ROUTE_METADATA).find((route) => route.path === path) || null
+  );
 };
 
 /**

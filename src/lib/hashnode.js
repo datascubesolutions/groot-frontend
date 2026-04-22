@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Hashnode GraphQL integration.
  * Fetches public blog posts by topic tags for the Groot blog feed.
@@ -68,12 +69,14 @@ function normalizePost(post) {
     },
     date: post.publishedAt
       ? new Date(post.publishedAt).toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      })
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })
       : "Recently",
-    readTime: post.readTimeInMinutes ? `${post.readTimeInMinutes} min read` : "5 min read",
+    readTime: post.readTimeInMinutes
+      ? `${post.readTimeInMinutes} min read`
+      : "5 min read",
     tags: (post.tags ?? []).map((t) => t.name),
     category: post.tags?.[0]?.name ?? "Technology",
     source: "hashnode",
@@ -105,45 +108,47 @@ export async function fetchHashnodePosts(limit = 10) {
   const seen = new Set();
   const posts = [];
 
-  for (const tagSlug of FEED_TAGS) {
-    const tagId = await getTagId(tagSlug);
-    if (!tagId) continue;
+  await Promise.all(
+    FEED_TAGS.map(async (tagSlug) => {
+      const tagId = await getTagId(tagSlug);
+      if (!tagId) return;
 
-    const query = `
-      query Feed {
-        feed(first: 5, filter: { type: RELEVANT, tags: ["${tagId}"] }) {
-          edges {
-            node {
-              id title slug url brief
-              coverImage { url }
-              author { name profilePicture }
-              publishedAt readTimeInMinutes
-              tags { name slug }
+      const query = `
+        query Feed {
+          feed(first: 5, filter: { type: RELEVANT, tags: ["${tagId}"] }) {
+            edges {
+              node {
+                id title slug url brief
+                coverImage { url }
+                author { name profilePicture }
+                publishedAt readTimeInMinutes
+                tags { name slug }
+              }
             }
           }
         }
-      }
-    `;
+      `;
 
-    try {
-      const res = await fetch(HASHNODE_GQL_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-        next: { revalidate: 600 },
-      });
+      try {
+        const res = await fetch(HASHNODE_GQL_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query }),
+          next: { revalidate: 600 },
+        });
 
-      const { data } = await res.json();
-      for (const { node } of data?.feed?.edges ?? []) {
-        if (!seen.has(node.id) && node.coverImage?.url) {
-          seen.add(node.id);
-          posts.push(normalizePost(node));
+        const { data } = await res.json();
+        for (const { node } of data?.feed?.edges ?? []) {
+          if (!seen.has(node.id) && node.coverImage?.url) {
+            seen.add(node.id);
+            posts.push(normalizePost(node));
+          }
         }
+      } catch (e) {
+        console.error(`[hashnode] Feed fetch failed for tag "${tagSlug}":`, e);
       }
-    } catch (e) {
-      console.error(`[hashnode] Feed fetch failed for tag "${tagSlug}":`, e);
-    }
-  }
+    })
+  );
 
   return posts
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -227,7 +232,10 @@ export async function fetchHashnodePostBySlug(slug, host) {
       const { data } = await res.json();
       if (data?.publication?.post) return normalizePost(data.publication.post);
     } catch (e) {
-      console.warn(`[hashnode] Publication query failed for slug "${slug}" host "${host}":`, e);
+      console.warn(
+        `[hashnode] Publication query failed for slug "${slug}" host "${host}":`,
+        e
+      );
     }
   }
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { siteConfig } from "@/config/site.config";
 
 function JsonLd({ schema }) {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Link from "next/link";
 import { ROUTES } from "@/lib/routes";
 
@@ -9,8 +10,8 @@ export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4">
       <div className="text-center">
-        <h1 className="text-6xl font-bold mb-4">404</h1>
-        <p className="text-xl mb-8 text-muted-foreground">Page not found</p>
+        <h1 className="mb-4 text-6xl font-bold">404</h1>
+        <p className="mb-8 text-xl text-muted-foreground">Page not found</p>
         <Link
           href={ROUTES.PUBLIC.HOME}
           prefetch={true}

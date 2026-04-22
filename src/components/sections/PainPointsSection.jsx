@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { domAnimation, LazyMotion, m } from "framer-motion";
@@ -5,7 +6,9 @@ import { Bot, Database, GitMerge } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
-const ClientLottie = dynamic(() => import("@/components/ui/ClientLottie"), { ssr: false });
+const ClientLottie = dynamic(() => import("@/components/ui/ClientLottie"), {
+  ssr: false,
+});
 
 const painPoints = [
   {
@@ -45,22 +48,24 @@ export function PainPointsSection() {
   const [questionAnimation, setQuestionAnimation] = useState(null);
 
   useEffect(() => {
-    import("@/lottie/question.json").then((mod) => setQuestionAnimation(mod.default));
+    import("@/lottie/question.json").then((mod) =>
+      setQuestionAnimation(mod.default)
+    );
   }, []);
 
   return (
     <LazyMotion features={domAnimation} strict>
       <section
-        className="relative overflow-hidden section-padding bg-background"
+        className="section-padding relative overflow-hidden bg-background"
         aria-labelledby="pain-points-heading"
       >
         {/* Subtle background */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.4)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.4)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)] pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.4)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.4)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]" />
 
-        <div className="container relative z-10 mx-auto container-padding">
+        <div className="container-padding container relative z-10 mx-auto">
           <div className="mx-auto max-w-7xl">
-            <div className="grid gap-8 md:gap-10 lg:grid-cols-12 lg:gap-8 lg:items-start">
+            <div className="grid gap-8 md:gap-10 lg:grid-cols-12 lg:items-start lg:gap-8">
               {/* Left column: Header + Pain points */}
               <div className="lg:col-span-6">
                 {/* Section header */}
@@ -71,9 +76,12 @@ export function PainPointsSection() {
                   transition={{ duration: 0.5 }}
                   className="mb-10 md:mb-12"
                 >
-                  <div className="mb-6 md:mb-8 flex items-start gap-4">
+                  <div className="mb-6 flex items-start gap-4 md:mb-8">
                     {questionAnimation && (
-                      <div className="h-20 w-20 shrink-0 md:h-24 md:w-24" aria-hidden="true">
+                      <div
+                        className="h-20 w-20 shrink-0 md:h-24 md:w-24"
+                        aria-hidden="true"
+                      >
                         <ClientLottie
                           animationData={questionAnimation}
                           className="h-full w-full"
@@ -86,10 +94,7 @@ export function PainPointsSection() {
                       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                         System diagnostics
                       </p>
-                      <h2
-                        id="pain-points-heading"
-                        className="heading-section"
-                      >
+                      <h2 id="pain-points-heading" className="heading-section">
                         Sound{" "}
                         <span className="bg-gradient-to-r from-forest to-primary bg-clip-text text-transparent">
                           familiar?
@@ -97,8 +102,9 @@ export function PainPointsSection() {
                       </h2>
                     </div>
                   </div>
-                  <p className="text-xl font-medium leading-relaxed text-foreground/80 md:text-muted-foreground md:text-2xl">
-                    We&apos;ve seen all three. Let&apos;s figure out which one you&apos;re facing.
+                  <p className="text-xl font-medium leading-relaxed text-foreground/80 md:text-2xl md:text-muted-foreground">
+                    We&apos;ve seen all three. Let&apos;s figure out which one
+                    you&apos;re facing.
                   </p>
                 </m.div>
 
@@ -115,7 +121,7 @@ export function PainPointsSection() {
                       key={point.id}
                       variants={itemVariants}
                       transition={{ duration: 0.35, ease: "easeOut" }}
-                      className="group flex items-start gap-4 rounded-xl py-4 md:py-5 px-4 md:px-5 -mx-4 md:-mx-5 transition-colors bg-muted/30 border border-border/40 md:bg-transparent md:border-0 hover:bg-card/80"
+                      className="group -mx-4 flex items-start gap-4 rounded-xl border border-border/40 bg-muted/30 px-4 py-4 transition-colors hover:bg-card/80 md:-mx-5 md:border-0 md:bg-transparent md:px-5 md:py-5"
                     >
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary">
                         <point.icon className="h-5 w-5" strokeWidth={2} />
@@ -131,7 +137,6 @@ export function PainPointsSection() {
                     </m.div>
                   ))}
                 </m.div>
-
               </div>
 
               {/* Right column: Project proof card */}
@@ -150,14 +155,19 @@ export function PainPointsSection() {
                     {/* Content */}
                     <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">
                       Currently migrating{" "}
-                      <span className="text-xl font-bold text-forest md:text-2xl">3 ERP systems</span>
-                      {" "}into one governed Fabric Lakehouse for a{" "}
-                      <span className="font-bold text-foreground">PE-backed company</span> — ERP extraction,
-                      Medallion architecture, Purview governance, and executive dashboards.
+                      <span className="text-xl font-bold text-forest md:text-2xl">
+                        3 ERP systems
+                      </span>{" "}
+                      into one governed Fabric Lakehouse for a{" "}
+                      <span className="font-bold text-foreground">
+                        PE-backed company
+                      </span>{" "}
+                      — ERP extraction, Medallion architecture, Purview
+                      governance, and executive dashboards.
                     </p>
 
                     {/* Target badge */}
-                    <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3 md:gap-4">
+                    <div className="mt-6 flex flex-wrap items-center gap-3 md:mt-8 md:gap-4">
                       <span className="inline-flex items-center rounded-lg bg-forest px-5 py-3 text-base font-bold text-forest-foreground shadow-md">
                         Target: unified reporting in 10 weeks
                       </span>

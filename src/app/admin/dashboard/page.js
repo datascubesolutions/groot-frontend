@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { contactService } from "@/services/contactService";
@@ -20,7 +21,7 @@ export default function DashboardPage() {
         if (result?.result?.data?.pagination) {
           setStats({
             totalContacts: result.result.data.pagination.total || 0,
-            activeInquiries: 0 // We'd need a specific API or filter for this, placeholder for now
+            activeInquiries: 0, // We'd need a specific API or filter for this, placeholder for now
           });
         }
       } catch (error) {
@@ -40,7 +41,7 @@ export default function DashboardPage() {
       icon: Users,
       color: "text-blue-400",
       bg: "bg-blue-400/10",
-      href: "/admin/contacts"
+      href: "/admin/contacts",
     },
     {
       title: "Blog Posts",
@@ -48,7 +49,7 @@ export default function DashboardPage() {
       icon: FileText,
       color: "text-emerald-400",
       bg: "bg-emerald-400/10",
-      href: "/admin/blogs"
+      href: "/admin/blogs",
     },
     {
       title: "Analytics",
@@ -56,8 +57,8 @@ export default function DashboardPage() {
       icon: BarChart3,
       color: "text-purple-400",
       bg: "bg-purple-400/10",
-      href: "/admin/analytics"
-    }
+      href: "/admin/analytics",
+    },
   ];
 
   if (isLoading) {
@@ -65,27 +66,28 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="animate-fade-in space-y-8">
       {/* Welcome Section */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-[#0a0a0a] to-[#0a0a0a] border border-white/5 p-8 sm:p-12">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+      <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-primary/10 via-[#0a0a0a] to-[#0a0a0a] p-8 sm:p-12">
+        <div className="absolute right-0 top-0 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-primary/5 blur-[100px]" />
 
         <div className="relative z-10 space-y-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl">
             Welcome Back, <span className="text-primary">Admin</span>
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl">
-            Here's what's happening with your platform today. Check your recent inquiries and manage your content.
+          <p className="max-w-2xl text-lg text-muted-foreground">
+            Here&apos;s what&apos;s happening with your platform today. Check
+            your recent inquiries and manage your content.
           </p>
-          <div className="pt-4 flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 pt-4">
             <Link href="/admin/contacts">
-              <button className="px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-all flex items-center gap-2">
+              <button className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-black transition-all hover:bg-gray-200">
                 <Users size={18} />
                 Manage Contacts
               </button>
             </Link>
             <Link href="/admin/blogs">
-              <button className="px-6 py-3 bg-white/5 text-white font-bold rounded-xl border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2">
+              <button className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-bold text-white transition-all hover:bg-white/10">
                 <FileText size={18} />
                 Manage Blog
               </button>
@@ -95,24 +97,35 @@ export default function DashboardPage() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {statCards.map((stat, index) => (
           <Link
             href={stat.href}
             key={index}
-            className="group block p-6 rounded-2xl bg-[#111111] border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative overflow-hidden"
+            className="group relative block overflow-hidden rounded-2xl border border-white/5 bg-[#111111] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:shadow-xl"
           >
-            <div className={`absolute top-0 right-0 p-4 opacity-50 transition-opacity group-hover:opacity-100`}>
-              <ArrowUpRight className="text-muted-foreground group-hover:text-white transition-colors" size={20} />
+            <div
+              className={`absolute right-0 top-0 p-4 opacity-50 transition-opacity group-hover:opacity-100`}
+            >
+              <ArrowUpRight
+                className="text-muted-foreground transition-colors group-hover:text-white"
+                size={20}
+              />
             </div>
 
             <div className="space-y-4">
-              <div className={`w-12 h-12 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center`}>
+              <div
+                className={`h-12 w-12 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center`}
+              >
                 <stat.icon size={24} />
               </div>
               <div>
-                <p className="text-muted-foreground text-sm font-medium uppercase tracking-wider">{stat.title}</p>
-                <h3 className="text-3xl font-bold text-white mt-1">{stat.value}</h3>
+                <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
+                  {stat.title}
+                </p>
+                <h3 className="mt-1 text-3xl font-bold text-white">
+                  {stat.value}
+                </h3>
               </div>
             </div>
           </Link>

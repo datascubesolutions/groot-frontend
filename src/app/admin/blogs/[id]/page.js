@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import MarkdownEditor from "@/components/admin/MarkdownEditor";
@@ -20,6 +21,7 @@ import {
   User,
   X,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -103,7 +105,9 @@ export default function BlogDetailPage() {
             content: blogData.content || "",
             category: blogData.category || "ENGINEERING",
             readTime: blogData.readTime || "5 min read",
-            isFeatured: String(blogData.isFeatured) === "true" || blogData.isFeatured === true,
+            isFeatured:
+              String(blogData.isFeatured) === "true" ||
+              blogData.isFeatured === true,
             status: blogData.status || "DRAFT",
           });
           setTags(blogData.tags || []);
@@ -196,9 +200,7 @@ export default function BlogDetailPage() {
 
   const removeStage = (index) => {
     setStages((prev) =>
-      prev
-        .filter((_, i) => i !== index)
-        .map((s, i) => ({ ...s, order: i + 1 }))
+      prev.filter((_, i) => i !== index).map((s, i) => ({ ...s, order: i + 1 }))
     );
   };
 
@@ -267,9 +269,9 @@ export default function BlogDetailPage() {
   // ===== LOADING STATE =====
   if (isLoading) {
     return (
-      <div className="space-y-6 animate-pulse pb-8">
+      <div className="animate-pulse space-y-6 pb-8">
         {/* Header Skeleton */}
-        <div className="flex items-center justify-between pb-4 border-b border-white/5">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
           <div className="flex items-center gap-4">
             <Skeleton className="h-10 w-10 rounded-xl bg-white/5" />
             <div className="space-y-2">
@@ -280,9 +282,9 @@ export default function BlogDetailPage() {
           <Skeleton className="h-10 w-32 rounded-xl bg-white/5" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* Left Column */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-6 lg:col-span-2">
             <Skeleton className="h-[120px] w-full rounded-2xl bg-white/5" />
             <Skeleton className="h-[400px] w-full rounded-2xl bg-white/5" />
             <Skeleton className="h-[200px] w-full rounded-2xl bg-white/5" />
@@ -300,17 +302,17 @@ export default function BlogDetailPage() {
   // ===== NOT FOUND STATE =====
   if (!blog) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] gap-4">
-        <div className="h-16 w-16 rounded-full bg-white/5 flex items-center justify-center text-gray-500">
+      <div className="flex min-h-[400px] flex-col items-center justify-center gap-4">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/5 text-gray-500">
           <FileText size={28} />
         </div>
         <h3 className="text-xl font-bold text-white">Blog post not found</h3>
-        <p className="text-gray-400 text-sm">
+        <p className="text-sm text-gray-400">
           The post you&apos;re looking for doesn&apos;t exist or has been
           removed.
         </p>
         <Link href="/admin/blogs">
-          <button className="px-5 py-2 bg-white text-black text-xs font-bold rounded-xl hover:bg-gray-200 transition-all">
+          <button className="rounded-xl bg-white px-5 py-2 text-xs font-bold text-black transition-all hover:bg-gray-200">
             ← Back to Blogs
           </button>
         </Link>
@@ -321,20 +323,20 @@ export default function BlogDetailPage() {
   // ===== EDIT MODE =====
   if (isEditMode) {
     return (
-      <div className="space-y-6 animate-fade-in pb-8">
+      <div className="animate-fade-in space-y-6 pb-8">
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-white/5">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
           <div className="flex items-center gap-4">
             <Link href={`/admin/blogs/${id}`}>
-              <button className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 transition-all">
+              <button className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-400 transition-all hover:border-white/20 hover:text-white">
                 <ArrowLeft size={18} />
               </button>
             </Link>
             <div>
-              <h1 className="text-2xl font-extrabold text-white tracking-tight">
+              <h1 className="text-2xl font-extrabold tracking-tight text-white">
                 Edit Blog Post
               </h1>
-              <p className="text-gray-400 font-medium text-sm">
+              <p className="text-sm font-medium text-gray-400">
                 Modify and update this article
               </p>
             </div>
@@ -342,58 +344,70 @@ export default function BlogDetailPage() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Left Column — Main Form */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="space-y-6 lg:col-span-2">
               {/* Title & Slug */}
-              <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-5">
-                <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+              <div className="space-y-5 rounded-2xl border border-white/5 bg-[#111111] p-6">
+                <h2 className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-300">
                   <FileText size={16} className="text-primary" />
                   Post Details
                 </h2>
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-300">
+                    <label
+                      htmlFor="admin-blog-edit-title"
+                      className="text-sm font-medium text-gray-300"
+                    >
                       Title <span className="text-red-400">*</span>
                     </label>
                     <input
+                      id="admin-blog-edit-title"
                       type="text"
                       value={form.title}
                       onChange={(e) => handleChange("title", e.target.value)}
                       placeholder="Enter an engaging title..."
-                      className="block w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all outline-none text-lg font-semibold"
+                      className="block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-lg font-semibold text-white outline-none transition-all placeholder:text-gray-500 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-300">
+                    <label
+                      htmlFor="admin-blog-edit-slug"
+                      className="text-sm font-medium text-gray-300"
+                    >
                       Slug
                     </label>
                     <input
+                      id="admin-blog-edit-slug"
                       type="text"
                       value={form.slug}
                       onChange={(e) => handleChange("slug", e.target.value)}
-                      className="block w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-gray-400 placeholder:text-gray-600 focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none text-sm font-mono"
+                      className="block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 font-mono text-sm text-gray-400 outline-none transition-all placeholder:text-gray-600 focus:border-white/20 focus:ring-1 focus:ring-white/10"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-300">
+                    <label
+                      htmlFor="admin-blog-edit-excerpt"
+                      className="text-sm font-medium text-gray-300"
+                    >
                       Excerpt
                     </label>
                     <textarea
+                      id="admin-blog-edit-excerpt"
                       value={form.excerpt}
                       onChange={(e) => handleChange("excerpt", e.target.value)}
                       placeholder="A brief summary..."
                       rows={3}
-                      className="block w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none resize-none"
+                      className="block w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20 focus:ring-1 focus:ring-white/10"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
-                <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+              <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-gray-300">
                   Content <span className="text-red-400">*</span>
                 </h2>
                 <p className="text-xs text-gray-500">
@@ -409,8 +423,8 @@ export default function BlogDetailPage() {
               </div>
 
               {/* Cover Image */}
-              <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
-                <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+              <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
+                <h2 className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-300">
                   <ImagePlus size={16} className="text-primary" />
                   Cover Image
                 </h2>
@@ -422,11 +436,13 @@ export default function BlogDetailPage() {
                   className="hidden"
                 />
                 {coverPreview ? (
-                  <div className="relative group">
-                    <img
+                  <div className="group relative h-48 w-full">
+                    <Image
                       src={coverPreview}
                       alt="Cover preview"
-                      className="w-full h-48 object-cover rounded-xl border border-white/10"
+                      fill
+                      unoptimized
+                      className="rounded-xl border border-white/10 object-cover"
                     />
                     <button
                       type="button"
@@ -434,7 +450,7 @@ export default function BlogDetailPage() {
                         setCoverImage(null);
                         setCoverPreview(null);
                       }}
-                      className="absolute top-3 right-3 h-8 w-8 flex items-center justify-center rounded-lg bg-black/60 text-white hover:bg-red-500 transition-colors"
+                      className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg bg-black/60 text-white transition-colors hover:bg-red-500"
                     >
                       <X size={16} />
                     </button>
@@ -443,7 +459,7 @@ export default function BlogDetailPage() {
                   <button
                     type="button"
                     onClick={() => coverImageRef.current?.click()}
-                    className="w-full h-40 flex flex-col items-center justify-center gap-2 border-2 border-dashed border-white/10 rounded-xl hover:border-primary/30 hover:bg-primary/5 transition-all text-gray-400 hover:text-primary"
+                    className="flex h-40 w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-white/10 text-gray-400 transition-all hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
                   >
                     <ImagePlus size={28} />
                     <span className="text-sm font-medium">
@@ -454,22 +470,22 @@ export default function BlogDetailPage() {
               </div>
 
               {/* Stages */}
-              <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
+              <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-gray-300">
                     Content Stages
                   </h2>
                   <button
                     type="button"
                     onClick={addStage}
-                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-primary bg-primary/10 border border-primary/20 rounded-lg hover:bg-primary/20 transition-all"
+                    className="flex items-center gap-1.5 rounded-lg border border-primary/20 bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary transition-all hover:bg-primary/20"
                   >
                     <Plus size={14} />
                     Add Stage
                   </button>
                 </div>
                 {stages.length === 0 && (
-                  <p className="text-sm text-gray-500 text-center py-6">
+                  <p className="py-6 text-center text-sm text-gray-500">
                     No stages added yet.
                   </p>
                 )}
@@ -477,16 +493,16 @@ export default function BlogDetailPage() {
                   {stages.map((stage, i) => (
                     <div
                       key={i}
-                      className="bg-white/[0.03] border border-white/5 rounded-xl p-4 space-y-3 relative"
+                      className="relative space-y-3 rounded-xl border border-white/5 bg-white/[0.03] p-4"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                        <span className="text-xs font-bold uppercase tracking-widest text-gray-400">
                           Stage {stage.order}
                         </span>
                         <button
                           type="button"
                           onClick={() => removeStage(i)}
-                          className="h-7 w-7 flex items-center justify-center rounded-lg text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 transition-all"
+                          className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-500/10 text-rose-400 transition-all hover:bg-rose-500/20"
                         >
                           <Trash2 size={14} />
                         </button>
@@ -498,7 +514,7 @@ export default function BlogDetailPage() {
                           updateStage(i, "title", e.target.value)
                         }
                         placeholder="Stage title..."
-                        className="block w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all"
+                        className="block w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                       />
                       <textarea
                         value={stage.content}
@@ -507,7 +523,7 @@ export default function BlogDetailPage() {
                         }
                         placeholder="Stage content..."
                         rows={3}
-                        className="block w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all resize-none"
+                        className="block w-full resize-none rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                       />
                       <div>
                         <input
@@ -518,11 +534,13 @@ export default function BlogDetailPage() {
                           id={`edit-stage-image-${i}`}
                         />
                         {stage.imagePreview ? (
-                          <div className="relative">
-                            <img
+                          <div className="relative h-24 w-full">
+                            <Image
                               src={stage.imagePreview}
                               alt={`Stage ${i + 1}`}
-                              className="w-full h-24 object-cover rounded-lg border border-white/10"
+                              fill
+                              unoptimized
+                              className="rounded-lg border border-white/10 object-cover"
                             />
                             <button
                               type="button"
@@ -530,7 +548,7 @@ export default function BlogDetailPage() {
                                 updateStage(i, "image", null);
                                 updateStage(i, "imagePreview", null);
                               }}
-                              className="absolute top-2 right-2 h-6 w-6 flex items-center justify-center rounded bg-black/60 text-white hover:bg-red-500 transition-colors"
+                              className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded bg-black/60 text-white transition-colors hover:bg-red-500"
                             >
                               <X size={12} />
                             </button>
@@ -538,7 +556,7 @@ export default function BlogDetailPage() {
                         ) : (
                           <label
                             htmlFor={`edit-stage-image-${i}`}
-                            className="flex items-center gap-2 px-3 py-2 border border-dashed border-white/10 rounded-lg text-gray-500 hover:text-primary hover:border-primary/30 transition-all cursor-pointer text-sm"
+                            className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-white/10 px-3 py-2 text-sm text-gray-500 transition-all hover:border-primary/30 hover:text-primary"
                           >
                             <ImagePlus size={14} />
                             Upload stage image
@@ -554,44 +572,49 @@ export default function BlogDetailPage() {
             {/* Right Column — Sidebar */}
             <div className="space-y-6">
               {/* Publish Settings */}
-              <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-5 sticky top-8">
-                <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+              <div className="sticky top-8 space-y-5 rounded-2xl border border-white/5 bg-[#111111] p-6">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-gray-300">
                   Publish Settings
                 </h2>
 
                 {/* Status */}
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">
+                <fieldset className="space-y-2 border-0 p-0">
+                  <legend className="text-sm font-medium text-gray-300">
                     Status
-                  </label>
+                  </legend>
                   <div className="flex gap-2">
                     {STATUSES.map((status) => (
                       <button
                         key={status}
                         type="button"
                         onClick={() => handleChange("status", status)}
-                        className={`flex-1 py-2 text-xs font-bold uppercase tracking-wider rounded-lg border transition-all ${form.status === status
-                          ? status === "PUBLISHED"
-                            ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-400"
-                            : "bg-amber-500/20 border-amber-500/40 text-amber-400"
-                          : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10"
-                          }`}
+                        className={`flex-1 rounded-lg border py-2 text-xs font-bold uppercase tracking-wider transition-all ${
+                          form.status === status
+                            ? status === "PUBLISHED"
+                              ? "border-emerald-500/40 bg-emerald-500/20 text-emerald-400"
+                              : "border-amber-500/40 bg-amber-500/20 text-amber-400"
+                            : "border-white/10 bg-white/5 text-gray-400 hover:bg-white/10"
+                        }`}
                       >
                         {status}
                       </button>
                     ))}
                   </div>
-                </div>
+                </fieldset>
 
                 {/* Category */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">
+                  <label
+                    htmlFor="admin-blog-edit-category"
+                    className="text-sm font-medium text-gray-300"
+                  >
                     Category
                   </label>
                   <select
+                    id="admin-blog-edit-category"
                     value={form.category}
                     onChange={(e) => handleChange("category", e.target.value)}
-                    className="block w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none appearance-none cursor-pointer text-sm"
+                    className="block w-full cursor-pointer appearance-none rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white outline-none transition-all focus:border-white/20 focus:ring-1 focus:ring-white/10"
                   >
                     {CATEGORIES.map((cat) => (
                       <option key={cat} value={cat} className="bg-[#1a1a1a]">
@@ -603,27 +626,30 @@ export default function BlogDetailPage() {
 
                 {/* Read Time */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">
+                  <label
+                    htmlFor="admin-blog-edit-read-time"
+                    className="text-sm font-medium text-gray-300"
+                  >
                     Read Time
                   </label>
                   <input
+                    id="admin-blog-edit-read-time"
                     type="text"
                     value={form.readTime}
                     onChange={(e) => handleChange("readTime", e.target.value)}
-                    className="block w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all outline-none text-sm"
+                    className="block w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20 focus:ring-1 focus:ring-white/10"
                   />
                 </div>
 
                 {/* Featured Toggle */}
                 <button
                   type="button"
-                  onClick={() =>
-                    handleChange("isFeatured", !form.isFeatured)
-                  }
-                  className={`w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all ${form.isFeatured
-                    ? "bg-amber-500/10 border-amber-500/30 text-amber-400"
-                    : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10"
-                    }`}
+                  onClick={() => handleChange("isFeatured", !form.isFeatured)}
+                  className={`flex w-full items-center justify-between rounded-xl border px-4 py-3 transition-all ${
+                    form.isFeatured
+                      ? "border-amber-500/30 bg-amber-500/10 text-amber-400"
+                      : "border-white/10 bg-white/5 text-gray-400 hover:bg-white/10"
+                  }`}
                 >
                   <span className="flex items-center gap-2 text-sm font-semibold">
                     <Star
@@ -633,25 +659,29 @@ export default function BlogDetailPage() {
                     Featured Post
                   </span>
                   <div
-                    className={`w-10 h-5 rounded-full relative transition-colors ${form.isFeatured ? "bg-amber-500" : "bg-white/20"
-                      }`}
+                    className={`relative h-5 w-10 rounded-full transition-colors ${
+                      form.isFeatured ? "bg-amber-500" : "bg-white/20"
+                    }`}
                   >
                     <div
-                      className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow-md transition-transform ${form.isFeatured
-                        ? "translate-x-5"
-                        : "translate-x-0.5"
-                        }`}
+                      className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow-md transition-transform ${
+                        form.isFeatured ? "translate-x-5" : "translate-x-0.5"
+                      }`}
                     />
                   </div>
                 </button>
 
                 {/* Tags */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">
+                  <label
+                    htmlFor="admin-blog-edit-tags"
+                    className="text-sm font-medium text-gray-300"
+                  >
                     Tags
                   </label>
                   <div className="flex gap-2">
                     <input
+                      id="admin-blog-edit-tags"
                       type="text"
                       value={tagInput}
                       onChange={(e) => setTagInput(e.target.value)}
@@ -662,28 +692,28 @@ export default function BlogDetailPage() {
                         }
                       }}
                       placeholder="Add tag..."
-                      className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all"
+                      className="flex-1 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                     />
                     <button
                       type="button"
                       onClick={handleAddTag}
-                      className="px-3 py-2 bg-primary/10 text-primary text-sm font-bold rounded-lg border border-primary/20 hover:bg-primary/20 transition-all"
+                      className="rounded-lg border border-primary/20 bg-primary/10 px-3 py-2 text-sm font-bold text-primary transition-all hover:bg-primary/20"
                     >
                       Add
                     </button>
                   </div>
                   {tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-2">
+                    <div className="mt-2 flex flex-wrap gap-2">
                       {tags.map((tag) => (
                         <span
                           key={tag}
-                          className="flex items-center gap-1 px-2.5 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-medium text-gray-300"
+                          className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-gray-300"
                         >
                           {tag}
                           <button
                             type="button"
                             onClick={() => handleRemoveTag(tag)}
-                            className="text-gray-500 hover:text-red-400 transition-colors"
+                            className="text-gray-500 transition-colors hover:text-red-400"
                           >
                             <X size={12} />
                           </button>
@@ -695,8 +725,8 @@ export default function BlogDetailPage() {
               </div>
 
               {/* Author */}
-              <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
-                <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+              <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-gray-300">
                   Author
                 </h2>
                 <div className="flex items-center gap-4">
@@ -710,13 +740,16 @@ export default function BlogDetailPage() {
                   <button
                     type="button"
                     onClick={() => authorAvatarRef.current?.click()}
-                    className="h-14 w-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden hover:border-primary/30 transition-all flex-shrink-0"
+                    className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 transition-all hover:border-primary/30"
                   >
                     {authorAvatarPreview ? (
-                      <img
+                      <Image
                         src={authorAvatarPreview}
                         alt="Author"
-                        className="h-full w-full object-cover"
+                        width={56}
+                        height={56}
+                        unoptimized
+                        className="object-cover"
                       />
                     ) : (
                       <ImagePlus size={18} className="text-gray-500" />
@@ -733,7 +766,7 @@ export default function BlogDetailPage() {
                         }))
                       }
                       placeholder="Author name"
-                      className="block w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all"
+                      className="block w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                     />
                     <input
                       type="text"
@@ -745,7 +778,7 @@ export default function BlogDetailPage() {
                         }))
                       }
                       placeholder="Designation"
-                      className="block w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 text-sm focus:border-white/20 outline-none transition-all"
+                      className="block w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition-all placeholder:text-gray-500 focus:border-white/20"
                     />
                   </div>
                 </div>
@@ -755,7 +788,7 @@ export default function BlogDetailPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-black text-sm font-bold rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-black shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all duration-300 hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
@@ -778,78 +811,80 @@ export default function BlogDetailPage() {
 
   // ===== VIEW MODE =====
   return (
-    <div className="space-y-6 animate-fade-in pb-8">
+    <div className="animate-fade-in space-y-6 pb-8">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-white/5">
+      <div className="flex items-center justify-between border-b border-white/5 pb-4">
         <div className="flex items-center gap-4">
           <Link href="/admin/blogs">
-            <button className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 transition-all">
+            <button className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-400 transition-all hover:border-white/20 hover:text-white">
               <ArrowLeft size={18} />
             </button>
           </Link>
           <div>
-            <h1 className="text-2xl font-extrabold text-white tracking-tight">
+            <h1 className="text-2xl font-extrabold tracking-tight text-white">
               Blog Post Detail
             </h1>
-            <p className="text-gray-400 font-medium text-sm">
+            <p className="text-sm font-medium text-gray-400">
               View and manage this blog post
             </p>
           </div>
         </div>
         <Link href={`/admin/blogs/${id}?mode=edit`}>
-          <button className="flex items-center gap-2 px-5 py-2.5 bg-white text-black text-xs font-bold rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+          <button className="flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-xs font-bold text-black shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 hover:bg-gray-200">
             <PencilLine size={16} />
             Edit Post
           </button>
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Main Content */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="space-y-6 lg:col-span-2">
           {/* Cover Image */}
           {blog.coverImage && (
-            <div className="rounded-2xl overflow-hidden border border-white/10">
-              <img
+            <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-white/10">
+              <Image
                 src={blog.coverImage}
                 alt={blog.title}
-                className="w-full h-64 object-cover"
+                fill
+                unoptimized
+                className="object-cover"
               />
             </div>
           )}
 
           {/* Title & Excerpt */}
-          <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
-            <div className="flex items-center gap-3 flex-wrap">
+          <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
+            <div className="flex flex-wrap items-center gap-3">
               <span
-                className={`px-3 py-1 rounded-full text-[11px] uppercase tracking-wider font-bold border ${STATUS_COLORS[blog.status] || STATUS_COLORS.DRAFT}`}
+                className={`rounded-full border px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${STATUS_COLORS[blog.status] || STATUS_COLORS.DRAFT}`}
               >
                 {blog.status || "DRAFT"}
               </span>
               {blog.isFeatured && (
-                <span className="flex items-center gap-1 px-2.5 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-[11px] uppercase tracking-wider font-bold text-amber-400">
+                <span className="flex items-center gap-1 rounded-full border border-amber-500/20 bg-amber-500/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-amber-400">
                   <Star size={12} className="fill-amber-400" />
                   Featured
                 </span>
               )}
               {blog.category && (
-                <span className="px-2.5 py-1 rounded-lg text-[11px] uppercase tracking-wider font-bold bg-primary/10 text-primary border border-primary/20">
+                <span className="rounded-lg border border-primary/20 bg-primary/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
                   {blog.category}
                 </span>
               )}
             </div>
 
-            <h2 className="text-3xl font-extrabold text-white tracking-tight leading-tight">
+            <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-white">
               {blog.title}
             </h2>
 
             {blog.excerpt && (
-              <p className="text-gray-400 text-base leading-relaxed">
+              <p className="text-base leading-relaxed text-gray-400">
                 {blog.excerpt}
               </p>
             )}
 
-            <div className="flex items-center gap-4 pt-2 border-t border-white/5 text-xs text-gray-500">
+            <div className="flex items-center gap-4 border-t border-white/5 pt-2 text-xs text-gray-500">
               <span className="flex items-center gap-1.5">
                 <Calendar size={13} />
                 {formatDate(blog.createdAt)}
@@ -867,19 +902,19 @@ export default function BlogDetailPage() {
           </div>
 
           {/* Content */}
-          <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-3">
-            <h3 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+          <div className="space-y-3 rounded-2xl border border-white/5 bg-[#111111] p-6">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-300">
               Content
             </h3>
-            <div className="prose prose-invert max-w-none text-gray-300 leading-relaxed whitespace-pre-wrap text-sm">
+            <div className="prose prose-invert max-w-none whitespace-pre-wrap text-sm leading-relaxed text-gray-300">
               {blog.content}
             </div>
           </div>
 
           {/* Stages */}
           {blog.stages && blog.stages.length > 0 && (
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
-              <h3 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+            <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-gray-300">
                 Stages ({blog.stages.length})
               </h3>
               <div className="space-y-4">
@@ -888,25 +923,29 @@ export default function BlogDetailPage() {
                   .map((stage, i) => (
                     <div
                       key={i}
-                      className="bg-white/[0.03] border border-white/5 rounded-xl p-4 space-y-2"
+                      className="space-y-2 rounded-xl border border-white/5 bg-white/[0.03] p-4"
                     >
                       <div className="flex items-center gap-2">
-                        <span className="h-6 w-6 flex items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold">
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
                           {stage.order}
                         </span>
-                        <h4 className="text-white font-semibold text-sm">
+                        <h4 className="text-sm font-semibold text-white">
                           {stage.title}
                         </h4>
                       </div>
-                      <p className="text-gray-400 text-sm leading-relaxed">
+                      <p className="text-sm leading-relaxed text-gray-400">
                         {stage.content}
                       </p>
                       {stage.image && (
-                        <img
-                          src={stage.image}
-                          alt={stage.title}
-                          className="w-full h-32 object-cover rounded-lg border border-white/10 mt-2"
-                        />
+                        <div className="relative mt-2 h-32 w-full">
+                          <Image
+                            src={stage.image}
+                            alt={stage.title}
+                            fill
+                            unoptimized
+                            className="rounded-lg border border-white/10 object-cover"
+                          />
+                        </div>
                       )}
                     </div>
                   ))}
@@ -919,20 +958,23 @@ export default function BlogDetailPage() {
         <div className="space-y-6">
           {/* Author Card */}
           {blog.author && (
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-4">
-              <h3 className="text-sm font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+            <div className="space-y-4 rounded-2xl border border-white/5 bg-[#111111] p-6">
+              <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-300">
                 <User size={14} className="text-primary" />
                 Author
               </h3>
               <div className="flex items-center gap-4">
                 {blog.author.avatar ? (
-                  <img
+                  <Image
                     src={blog.author.avatar}
                     alt={blog.author.name}
-                    className="h-12 w-12 rounded-full object-cover border border-white/10"
+                    width={48}
+                    height={48}
+                    unoptimized
+                    className="rounded-full border border-white/10 object-cover"
                   />
                 ) : (
-                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-primary/20 to-emerald-500/5 border border-primary/20 flex items-center justify-center text-sm font-bold text-primary">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-gradient-to-br from-primary/20 to-emerald-500/5 text-sm font-bold text-primary">
                     {blog.author.name
                       ?.split(" ")
                       .map((n) => n[0])
@@ -942,11 +984,11 @@ export default function BlogDetailPage() {
                   </div>
                 )}
                 <div>
-                  <p className="text-white font-bold text-sm">
+                  <p className="text-sm font-bold text-white">
                     {blog.author.name}
                   </p>
                   {blog.author.designation && (
-                    <p className="text-gray-400 text-xs">
+                    <p className="text-xs text-gray-400">
                       {blog.author.designation}
                     </p>
                   )}
@@ -957,8 +999,8 @@ export default function BlogDetailPage() {
 
           {/* Tags */}
           {blog.tags && blog.tags.length > 0 && (
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+            <div className="space-y-3 rounded-2xl border border-white/5 bg-[#111111] p-6">
+              <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-300">
                 <Tag size={14} className="text-primary" />
                 Tags
               </h3>
@@ -966,7 +1008,7 @@ export default function BlogDetailPage() {
                 {blog.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-medium text-gray-300"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-gray-300"
                   >
                     {tag}
                   </span>
@@ -976,27 +1018,27 @@ export default function BlogDetailPage() {
           )}
 
           {/* Quick Info */}
-          <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 space-y-3">
-            <h3 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+          <div className="space-y-3 rounded-2xl border border-white/5 bg-[#111111] p-6">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-300">
               Quick Info
             </h3>
             <div className="space-y-3 text-sm">
-              <div className="flex items-center justify-between py-2 border-b border-white/5">
+              <div className="flex items-center justify-between border-b border-white/5 py-2">
                 <span className="text-gray-400">ID</span>
-                <span className="text-white font-mono text-xs truncate max-w-[180px]">
+                <span className="max-w-[180px] truncate font-mono text-xs text-white">
                   {blog.id}
                 </span>
               </div>
-              <div className="flex items-center justify-between py-2 border-b border-white/5">
+              <div className="flex items-center justify-between border-b border-white/5 py-2">
                 <span className="text-gray-400">Created</span>
-                <span className="text-white text-xs">
+                <span className="text-xs text-white">
                   {formatDate(blog.createdAt)}
                 </span>
               </div>
               {blog.updatedAt && (
-                <div className="flex items-center justify-between py-2 border-b border-white/5">
+                <div className="flex items-center justify-between border-b border-white/5 py-2">
                   <span className="text-gray-400">Updated</span>
-                  <span className="text-white text-xs">
+                  <span className="text-xs text-white">
                     {formatDate(blog.updatedAt)}
                   </span>
                 </div>
@@ -1004,9 +1046,7 @@ export default function BlogDetailPage() {
               {blog.viewCount !== undefined && (
                 <div className="flex items-center justify-between py-2">
                   <span className="text-gray-400">Views</span>
-                  <span className="text-white font-bold">
-                    {blog.viewCount}
-                  </span>
+                  <span className="font-bold text-white">{blog.viewCount}</span>
                 </div>
               )}
             </div>

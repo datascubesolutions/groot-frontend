@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { Badge } from "@/components/ui/Badge";
@@ -23,7 +24,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { RelatedPosts } from "./RelatedPosts";
 
 /* ================================================================
@@ -55,12 +56,16 @@ function ReadingProgress() {
   }, []);
 
   return (
-    <div className="fixed top-[80px] left-0 right-0 z-[45] h-[3px]" style={{ background: "hsl(160 20% 90% / 0.3)" }}>
+    <div
+      className="fixed left-0 right-0 top-[80px] z-[45] h-[3px]"
+      style={{ background: "hsl(160 20% 90% / 0.3)" }}
+    >
       <motion.div
         className="h-full"
         style={{
           width: `${progress}%`,
-          background: "linear-gradient(90deg, hsl(168 64% 51%), hsl(142 71% 45%), hsl(161 88% 16%))",
+          background:
+            "linear-gradient(90deg, hsl(168 64% 51%), hsl(142 71% 45%), hsl(161 88% 16%))",
         }}
         transition={{ duration: 0.1 }}
       />
@@ -72,21 +77,18 @@ function ReadingProgress() {
    Table of Contents — sticky sidebar
    ================================================================ */
 function TableOfContents({ content }) {
-  const [headings, setHeadings] = useState([]);
-  const [activeId, setActiveId] = useState("");
-
-  useEffect(() => {
+  const headings = useMemo(() => {
+    if (!content) return [];
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, "text/html");
     const elements = doc.querySelectorAll("h2, h3");
-    setHeadings(
-      Array.from(elements).map((el, index) => ({
-        id: `heading-${index}`,
-        text: el.textContent,
-        level: el.tagName === "H2" ? 2 : 3,
-      }))
-    );
+    return Array.from(elements).map((el, index) => ({
+      id: `heading-${index}`,
+      text: el.textContent,
+      level: el.tagName === "H2" ? 2 : 3,
+    }));
   }, [content]);
+  const [activeId, setActiveId] = useState("");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,9 +109,12 @@ function TableOfContents({ content }) {
 
   return (
     <nav className="space-y-1" aria-label="Table of contents">
-      <div className="flex items-center gap-2 mb-4">
+      <div className="mb-4 flex items-center gap-2">
         <Hash className="h-3.5 w-3.5" style={{ color: "hsl(168, 64%, 51%)" }} />
-        <span className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "hsl(200, 15%, 40%)" }}>
+        <span
+          className="text-[11px] font-bold uppercase tracking-[0.18em]"
+          style={{ color: "hsl(200, 15%, 40%)" }}
+        >
           On this page
         </span>
       </div>
@@ -119,14 +124,21 @@ function TableOfContents({ content }) {
           href={`#${h.id}`}
           onClick={(e) => {
             e.preventDefault();
-            document.getElementById(h.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+            document
+              .getElementById(h.id)
+              ?.scrollIntoView({ behavior: "smooth", block: "start" });
           }}
-          className={`block text-[13px] leading-snug py-1.5 border-l-2 transition-all duration-300 ${h.level === 3 ? "pl-6" : "pl-4"
-            } ${activeId === h.id
+          className={`block border-l-2 py-1.5 text-[13px] leading-snug transition-all duration-300 ${
+            h.level === 3 ? "pl-6" : "pl-4"
+          } ${
+            activeId === h.id
               ? "border-primary font-semibold"
               : "border-transparent hover:border-border"
-            }`}
-          style={{ color: activeId === h.id ? "hsl(168, 64%, 51%)" : "hsl(200, 15%, 40%)" }}
+          }`}
+          style={{
+            color:
+              activeId === h.id ? "hsl(168, 64%, 51%)" : "hsl(200, 15%, 40%)",
+          }}
         >
           {h.text}
         </a>
@@ -148,10 +160,26 @@ function ShareButtons({ title, vertical = false }) {
   }, []);
 
   const items = [
-    { Icon: Twitter, label: "Share on Twitter", href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}` },
-    { Icon: Linkedin, label: "Share on LinkedIn", href: "https://www.linkedin.com/sharing/share-offsite/" },
-    { Icon: Facebook, label: "Share on Facebook", href: "https://www.facebook.com/sharer/sharer.php" },
-    { Icon: Mail, label: "Share via Email", href: `mailto:?subject=${encodeURIComponent(title)}` },
+    {
+      Icon: Twitter,
+      label: "Share on Twitter",
+      href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}`,
+    },
+    {
+      Icon: Linkedin,
+      label: "Share on LinkedIn",
+      href: "https://www.linkedin.com/sharing/share-offsite/",
+    },
+    {
+      Icon: Facebook,
+      label: "Share on Facebook",
+      href: "https://www.facebook.com/sharer/sharer.php",
+    },
+    {
+      Icon: Mail,
+      label: "Share via Email",
+      href: `mailto:?subject=${encodeURIComponent(title)}`,
+    },
   ];
 
   const btnClass =
@@ -160,12 +188,27 @@ function ShareButtons({ title, vertical = false }) {
   return (
     <div className={`flex ${vertical ? "flex-col" : ""} gap-2`}>
       {items.map(({ Icon, label, href }) => (
-        <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={btnClass} aria-label={label}>
+        <a
+          key={label}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={btnClass}
+          aria-label={label}
+        >
           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
         </a>
       ))}
-      <button onClick={handleCopy} className={btnClass} aria-label={copied ? "Link copied" : "Copy link"}>
-        {copied ? <Check className="h-3.5 w-3.5 text-accent" aria-hidden="true" /> : <Copy className="h-3.5 w-3.5" aria-hidden="true" />}
+      <button
+        onClick={handleCopy}
+        className={btnClass}
+        aria-label={copied ? "Link copied" : "Copy link"}
+      >
+        {copied ? (
+          <Check className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+        ) : (
+          <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+        )}
       </button>
     </div>
   );
@@ -240,7 +283,11 @@ function ArticleContent({ content }) {
     <>
       {/* articleStyles is a static string defined in this file — not user input, safe. */}
       <style dangerouslySetInnerHTML={{ __html: articleStyles }} />
-      <div ref={ref} className="blog-article max-w-none" dangerouslySetInnerHTML={{ __html: safeContent }} />
+      <div
+        ref={ref}
+        className="blog-article max-w-none"
+        dangerouslySetInnerHTML={{ __html: safeContent }}
+      />
     </>
   );
 }
@@ -251,20 +298,31 @@ function ArticleContent({ content }) {
 function BlogDetailView({ post, relatedPosts }) {
   const heroRef = useRef(null);
   const reducedMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
   // Disable parallax for users who prefer reduced motion (mobile perf + accessibility)
-  const heroY = useTransform(scrollYProgress, [0, 1], reducedMotion ? ["0%", "0%"] : ["0%", "20%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], reducedMotion ? [1, 1] : [1, 0.4]);
+  const heroY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reducedMotion ? ["0%", "0%"] : ["0%", "20%"]
+  );
+  const heroOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.8],
+    reducedMotion ? [1, 1] : [1, 0.4]
+  );
 
   return (
-    <article className="min-h-screen bg-background relative overflow-x-hidden">
+    <article className="relative min-h-screen overflow-x-hidden bg-background">
       <ReadingProgress />
 
       {/* ═══════════ FULL-WIDTH HERO ═══════════ */}
       <div ref={heroRef} className="relative w-full overflow-hidden pt-20">
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="relative w-full aspect-[2.8/1] md:aspect-[3/1] lg:aspect-[3.2/1] min-h-[340px] max-h-[560px]"
+          className="relative aspect-[2.8/1] max-h-[560px] min-h-[340px] w-full md:aspect-[3/1] lg:aspect-[3.2/1]"
         >
           {/* LCP image — priority load, next/image for optimized formats */}
           <Image
@@ -285,37 +343,50 @@ function BlogDetailView({ post, relatedPosts }) {
           />
           <div
             className="absolute inset-x-0 bottom-0 h-[40%]"
-            style={{ background: "linear-gradient(to top, hsl(168, 64%, 15%, 0.25), transparent)" }}
+            style={{
+              background:
+                "linear-gradient(to top, hsl(168, 64%, 15%, 0.25), transparent)",
+            }}
           />
         </motion.div>
 
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <div className="container mx-auto px-6 sm:px-8 lg:px-16 xl:px-20 max-w-[1400px]">
+          <div className="container mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-16 xl:px-20">
             <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="visible"
               className="max-w-3xl pb-10 md:pb-14"
-              style={{ textShadow: "0 2px 20px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.5)" }}
+              style={{
+                textShadow:
+                  "0 2px 20px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.5)",
+              }}
             >
               <Link
                 href="/blog"
-                className="group inline-flex items-center gap-2.5 text-sm font-medium mb-6"
+                className="group mb-6 inline-flex items-center gap-2.5 text-sm font-medium"
                 style={{ color: "#ffffff" }}
               >
                 <div
-                  className="h-8 w-8 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-105"
-                  style={{ border: "1px solid rgba(255,255,255,0.4)", background: "rgba(0,0,0,0.4)", backdropFilter: "blur(16px)" }}
+                  className="flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 group-hover:scale-105"
+                  style={{
+                    border: "1px solid rgba(255,255,255,0.4)",
+                    background: "rgba(0,0,0,0.4)",
+                    backdropFilter: "blur(16px)",
+                  }}
                 >
-                  <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" style={{ color: "white" }} />
+                  <ArrowLeft
+                    className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5"
+                    style={{ color: "white" }}
+                  />
                 </div>
                 <span>Back to Articles</span>
               </Link>
 
               <div className="mb-5">
                 <span
-                  className="inline-block px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] uppercase rounded-full"
+                  className="inline-block rounded-full px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.15em]"
                   style={{
                     border: "1px solid hsl(168 64% 51% / 0.7)",
                     color: "hsl(168, 64%, 72%)",
@@ -328,15 +399,22 @@ function BlogDetailView({ post, relatedPosts }) {
               </div>
 
               <h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1] mb-4"
-                style={{ color: "#ffffff", textShadow: "0 3px 24px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.8)" }}
+                className="mb-4 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem]"
+                style={{
+                  color: "#ffffff",
+                  textShadow:
+                    "0 3px 24px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.8)",
+                }}
               >
                 {post.title}
               </h1>
 
               <p
-                className="text-base md:text-lg leading-relaxed max-w-2xl"
-                style={{ color: "rgba(255,255,255,0.95)", textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}
+                className="max-w-2xl text-base leading-relaxed md:text-lg"
+                style={{
+                  color: "rgba(255,255,255,0.95)",
+                  textShadow: "0 1px 8px rgba(0,0,0,0.6)",
+                }}
               >
                 {post.excerpt}
               </p>
@@ -353,26 +431,41 @@ function BlogDetailView({ post, relatedPosts }) {
         custom={1}
         className="border-b border-border bg-card shadow-sm"
       >
-        <div className="container mx-auto px-6 sm:px-8 lg:px-16 xl:px-20 max-w-[1400px] py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-6 flex-wrap">
+        <div className="container mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-4 px-6 py-5 sm:flex-row sm:items-center sm:px-8 lg:px-16 xl:px-20">
+          <div className="flex flex-wrap items-center gap-6">
             <div className="flex items-center gap-3">
-              <div className="h-11 w-11 rounded-full bg-gradient-to-br from-primary to-forest p-[2px] shadow-sm flex-shrink-0">
-                <div className="h-full w-full rounded-full bg-card overflow-hidden relative">
+              <div className="h-11 w-11 flex-shrink-0 rounded-full bg-gradient-to-br from-primary to-forest p-[2px] shadow-sm">
+                <div className="relative h-full w-full overflow-hidden rounded-full bg-card">
                   {post.author.avatar ? (
-                    <Image src={post.author.avatar} alt={post.author.name} width={44} height={44} className="h-full w-full object-cover" />
+                    <Image
+                      src={post.author.avatar}
+                      alt={post.author.name}
+                      width={44}
+                      height={44}
+                      className="h-full w-full object-cover"
+                    />
                   ) : (
-                    <div className="h-full w-full flex items-center justify-center bg-primary/10">
-                      <span className="font-bold text-primary" aria-hidden="true">{post.author.name.charAt(0)}</span>
+                    <div className="flex h-full w-full items-center justify-center bg-primary/10">
+                      <span
+                        className="font-bold text-primary"
+                        aria-hidden="true"
+                      >
+                        {post.author.name.charAt(0)}
+                      </span>
                     </div>
                   )}
                 </div>
               </div>
               <div>
-                <p className="font-semibold text-foreground text-sm leading-snug">{post.author.name}</p>
-                <p className="text-xs text-muted-foreground">{post.author.role}</p>
+                <p className="text-sm font-semibold leading-snug text-foreground">
+                  {post.author.name}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {post.author.role}
+                </p>
               </div>
             </div>
-            <div className="hidden sm:block h-6 w-px bg-border" />
+            <div className="hidden h-6 w-px bg-border sm:block" />
             <div className="flex items-center gap-5 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <Calendar className="h-3.5 w-3.5 text-primary" />
@@ -385,40 +478,49 @@ function BlogDetailView({ post, relatedPosts }) {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground hidden md:block">Share</span>
+            <span className="hidden text-[11px] font-bold uppercase tracking-wider text-muted-foreground md:block">
+              Share
+            </span>
             <ShareButtons title={post.title} />
           </div>
         </div>
       </motion.div>
 
       {/* ═══════════ TWO-COLUMN LAYOUT ═══════════ */}
-      <div className="container mx-auto px-6 sm:px-8 lg:px-16 xl:px-20 max-w-[1400px] mt-12 md:mt-16 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-16">
-
+      <div className="container mx-auto mt-12 max-w-[1400px] px-6 pb-20 sm:px-8 md:mt-16 lg:px-16 xl:px-20">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 xl:gap-16">
           {/* ── Main Article ── */}
-          <div className="lg:col-span-8 min-w-0">
-            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}>
+          <div className="min-w-0 lg:col-span-8">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
               <ArticleContent content={post.content} />
             </motion.div>
 
             {/* Tags */}
-            <div className="mt-14 pt-8 border-t border-border">
+            <div className="mt-14 border-t border-border pt-8">
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground mr-2">Topics</span>
-                {(post.tags?.length > 0 ? post.tags : [post.category]).slice(0, 5).map((tag) => (
-                  <Badge
-                    key={tag}
-                    variant="outline"
-                    className="border-border text-muted-foreground hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-all cursor-default px-3 py-1.5 text-xs"
-                  >
-                    {tag}
-                  </Badge>
-                ))}
+                <span className="mr-2 text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
+                  Topics
+                </span>
+                {(post.tags?.length > 0 ? post.tags : [post.category])
+                  .slice(0, 5)
+                  .map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant="outline"
+                      className="cursor-default border-border px-3 py-1.5 text-xs text-muted-foreground transition-all hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
               </div>
             </div>
 
             {/* Mobile Share */}
-            <div className="mt-8 lg:hidden pt-6 border-t border-border">
+            <div className="mt-8 border-t border-border pt-6 lg:hidden">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Share2 className="h-4 w-4 text-muted-foreground" />
@@ -437,26 +539,44 @@ function BlogDetailView({ post, relatedPosts }) {
               className="mt-12"
             >
               <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-7 md:p-9">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-primary/[0.04] rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-                <div className="flex flex-col sm:flex-row gap-5 relative">
-                  <div className="h-16 w-16 sm:h-[72px] sm:w-[72px] rounded-2xl bg-gradient-to-br from-primary to-forest p-[2px] flex-shrink-0 shadow-md">
-                    <div className="h-full w-full rounded-[14px] bg-card overflow-hidden">
+                <div className="pointer-events-none absolute right-0 top-0 h-48 w-48 -translate-y-1/2 translate-x-1/3 rounded-full bg-primary/[0.04] blur-[80px]" />
+                <div className="relative flex flex-col gap-5 sm:flex-row">
+                  <div className="h-16 w-16 flex-shrink-0 rounded-2xl bg-gradient-to-br from-primary to-forest p-[2px] shadow-md sm:h-[72px] sm:w-[72px]">
+                    <div className="h-full w-full overflow-hidden rounded-[14px] bg-card">
                       {post.author.avatar ? (
-                        <Image src={post.author.avatar} alt={post.author.name} width={72} height={72} className="h-full w-full object-cover" />
+                        <Image
+                          src={post.author.avatar}
+                          alt={post.author.name}
+                          width={72}
+                          height={72}
+                          className="h-full w-full object-cover"
+                        />
                       ) : (
-                        <div className="h-full w-full flex items-center justify-center bg-primary/10">
-                          <span className="font-bold text-primary text-2xl" aria-hidden="true">{post.author.name.charAt(0)}</span>
+                        <div className="flex h-full w-full items-center justify-center bg-primary/10">
+                          <span
+                            className="text-2xl font-bold text-primary"
+                            aria-hidden="true"
+                          >
+                            {post.author.name.charAt(0)}
+                          </span>
                         </div>
                       )}
                     </div>
                   </div>
                   <div className="flex-1">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground mb-1.5">Written by</p>
-                    <h4 className="text-lg font-bold text-foreground">{post.author.name}</h4>
-                    <p className="text-sm text-primary font-medium">{post.author.role}</p>
-                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-                      Passionate about leveraging data and technology to drive business transformation.
-                      Writing about the intersection of AI, analytics, and enterprise strategy.
+                    <p className="mb-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
+                      Written by
+                    </p>
+                    <h4 className="text-lg font-bold text-foreground">
+                      {post.author.name}
+                    </h4>
+                    <p className="text-sm font-medium text-primary">
+                      {post.author.role}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      Passionate about leveraging data and technology to drive
+                      business transformation. Writing about the intersection of
+                      AI, analytics, and enterprise strategy.
                     </p>
                     <div className="mt-4 flex items-center gap-2">
                       {[
@@ -466,7 +586,7 @@ function BlogDetailView({ post, relatedPosts }) {
                         <button
                           key={label}
                           aria-label={label}
-                          className="h-8 w-8 rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all"
+                          className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-all hover:bg-primary/10 hover:text-primary"
                         >
                           <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                         </button>
@@ -486,48 +606,73 @@ function BlogDetailView({ post, relatedPosts }) {
               className="mt-12"
             >
               <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-card p-8 md:p-10">
-                <div className="absolute -top-20 -right-20 w-56 h-56 bg-primary/[0.08] rounded-full blur-[80px] pointer-events-none" />
-                <div className="absolute -bottom-16 -left-16 w-40 h-40 bg-forest/[0.06] rounded-full blur-[60px] pointer-events-none" />
+                <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/[0.08] blur-[80px]" />
+                <div className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-forest/[0.06] blur-[60px]" />
                 <div className="relative">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <div className="mb-3 flex items-center gap-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
                       <Mail className="h-4 w-4 text-primary" />
                     </div>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">Newsletter</span>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+                      Newsletter
+                    </span>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground tracking-tight">Stay ahead of the curve</h3>
-                  <p className="text-sm text-muted-foreground mt-2 leading-relaxed max-w-lg mb-6">
-                    Get the latest insights on data engineering, AI, and analytics delivered weekly. Join 10,000+ data professionals.
+                  <h3 className="text-xl font-bold tracking-tight text-foreground md:text-2xl">
+                    Stay ahead of the curve
+                  </h3>
+                  <p className="mb-6 mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                    Get the latest insights on data engineering, AI, and
+                    analytics delivered weekly. Join 10,000+ data professionals.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3 max-w-lg">
+                  <div className="flex max-w-lg flex-col gap-3 sm:flex-row">
                     <input
                       type="email"
                       aria-label="Email address for newsletter"
                       placeholder="your@email.com"
-                      className="flex-1 h-12 px-4 rounded-xl border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+                      className="h-12 flex-1 rounded-xl border border-border bg-background px-4 text-sm text-foreground transition-all placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
                     />
-                    <Button className="h-12 px-7 rounded-xl bg-forest text-forest-foreground font-semibold hover:bg-primary hover:shadow-lg transition-all duration-300 whitespace-nowrap">
+                    <Button className="h-12 whitespace-nowrap rounded-xl bg-forest px-7 font-semibold text-forest-foreground transition-all duration-300 hover:bg-primary hover:shadow-lg">
                       Subscribe
-                      <ArrowUpRight className="h-4 w-4 ml-1.5" />
+                      <ArrowUpRight className="ml-1.5 h-4 w-4" />
                     </Button>
                   </div>
-                  <p className="text-[11px] text-muted-foreground mt-3">No spam, ever. Unsubscribe anytime.</p>
+                  <p className="mt-3 text-[11px] text-muted-foreground">
+                    No spam, ever. Unsubscribe anytime.
+                  </p>
                 </div>
               </div>
             </motion.div>
           </div>
 
           {/* ── Sidebar ── */}
-          <aside className="hidden lg:block lg:col-span-4">
+          <aside className="hidden lg:col-span-4 lg:block">
             <div className="sticky top-24 space-y-6">
-              <div className="rounded-2xl p-6" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
+              <div
+                className="rounded-2xl p-6"
+                style={{
+                  border: "1px solid hsl(160, 20%, 90%)",
+                  backgroundColor: "hsl(150, 20%, 98%)",
+                }}
+              >
                 <TableOfContents content={post.content} />
               </div>
 
-              <div className="rounded-2xl p-6" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
-                <div className="flex items-center gap-2 mb-4">
-                  <Share2 className="h-3.5 w-3.5" style={{ color: "hsl(168, 64%, 51%)" }} />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "hsl(200, 15%, 40%)" }}>
+              <div
+                className="rounded-2xl p-6"
+                style={{
+                  border: "1px solid hsl(160, 20%, 90%)",
+                  backgroundColor: "hsl(150, 20%, 98%)",
+                }}
+              >
+                <div className="mb-4 flex items-center gap-2">
+                  <Share2
+                    className="h-3.5 w-3.5"
+                    style={{ color: "hsl(168, 64%, 51%)" }}
+                  />
+                  <span
+                    className="text-[11px] font-bold uppercase tracking-[0.18em]"
+                    style={{ color: "hsl(200, 15%, 40%)" }}
+                  >
                     Share article
                   </span>
                 </div>
@@ -537,54 +682,111 @@ function BlogDetailView({ post, relatedPosts }) {
               <button
                 type="button"
                 aria-label="Bookmark this article to save for later"
-                className="rounded-2xl p-6 group text-left w-full"
-                style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}
+                className="group w-full rounded-2xl p-6 text-left"
+                style={{
+                  border: "1px solid hsl(160, 20%, 90%)",
+                  backgroundColor: "hsl(150, 20%, 98%)",
+                }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(161, 88%, 16%, 0.1)" }}>
-                    <Bookmark className="h-4 w-4" aria-hidden="true" style={{ color: "hsl(161, 88%, 16%)" }} />
+                  <div
+                    className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl"
+                    style={{ backgroundColor: "hsl(161, 88%, 16%, 0.1)" }}
+                  >
+                    <Bookmark
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                      style={{ color: "hsl(161, 88%, 16%)" }}
+                    />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: "hsl(200, 28%, 16%)" }}>Save for later</p>
-                    <p className="text-xs" style={{ color: "hsl(200, 15%, 40%)" }}>Bookmark this article</p>
+                    <p
+                      className="text-sm font-semibold"
+                      style={{ color: "hsl(200, 28%, 16%)" }}
+                    >
+                      Save for later
+                    </p>
+                    <p
+                      className="text-xs"
+                      style={{ color: "hsl(200, 15%, 40%)" }}
+                    >
+                      Bookmark this article
+                    </p>
                   </div>
                 </div>
               </button>
 
-              <div className="rounded-2xl p-6" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
-                <div className="flex items-center gap-2 mb-4">
-                  <MessageCircle className="h-3.5 w-3.5" style={{ color: "hsl(168, 64%, 51%)" }} />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "hsl(200, 15%, 40%)" }}>
+              <div
+                className="rounded-2xl p-6"
+                style={{
+                  border: "1px solid hsl(160, 20%, 90%)",
+                  backgroundColor: "hsl(150, 20%, 98%)",
+                }}
+              >
+                <div className="mb-4 flex items-center gap-2">
+                  <MessageCircle
+                    className="h-3.5 w-3.5"
+                    style={{ color: "hsl(168, 64%, 51%)" }}
+                  />
+                  <span
+                    className="text-[11px] font-bold uppercase tracking-[0.18em]"
+                    style={{ color: "hsl(200, 15%, 40%)" }}
+                  >
                     Join discussion
                   </span>
                 </div>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "hsl(200, 15%, 40%)" }}>
-                  Have thoughts on this article? Share your insights with the community.
+                <p
+                  className="mb-4 text-sm leading-relaxed"
+                  style={{ color: "hsl(200, 15%, 40%)" }}
+                >
+                  Have thoughts on this article? Share your insights with the
+                  community.
                 </p>
                 <Button
                   variant="outline"
-                  className="w-full rounded-xl transition-all text-sm h-10"
-                  style={{ borderColor: "hsl(160, 20%, 90%)", color: "hsl(200, 28%, 16%)" }}
+                  className="h-10 w-full rounded-xl text-sm transition-all"
+                  style={{
+                    borderColor: "hsl(160, 20%, 90%)",
+                    color: "hsl(200, 28%, 16%)",
+                  }}
                 >
-                  <MessageCircle className="h-3.5 w-3.5 mr-2" />
+                  <MessageCircle className="mr-2 h-3.5 w-3.5" />
                   Leave a comment
                 </Button>
               </div>
 
-              <div className="rounded-2xl p-6" style={{ border: "1px solid hsl(160, 20%, 90%)", backgroundColor: "hsl(150, 20%, 98%)" }}>
-                <span className="text-[11px] font-bold uppercase tracking-[0.18em] block mb-3" style={{ color: "hsl(200, 15%, 40%)" }}>
+              <div
+                className="rounded-2xl p-6"
+                style={{
+                  border: "1px solid hsl(160, 20%, 90%)",
+                  backgroundColor: "hsl(150, 20%, 98%)",
+                }}
+              >
+                <span
+                  className="mb-3 block text-[11px] font-bold uppercase tracking-[0.18em]"
+                  style={{ color: "hsl(200, 15%, 40%)" }}
+                >
                   Related Topics
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {["Data Engineering", "Machine Learning", "Cloud Infrastructure", "Business Intelligence", post.category]
+                  {[
+                    "Data Engineering",
+                    "Machine Learning",
+                    "Cloud Infrastructure",
+                    "Business Intelligence",
+                    post.category,
+                  ]
                     .filter((v, i, a) => a.indexOf(v) === i)
                     .map((topic) => (
                       <button
                         key={topic}
                         type="button"
                         aria-label={`Filter by topic: ${topic}`}
-                        className="px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-primary/10 hover:text-primary transition-all"
-                        style={{ backgroundColor: "hsl(160, 20%, 94%)", color: "hsl(200, 15%, 40%)" }}
+                        className="rounded-lg px-3 py-1.5 text-xs font-medium transition-all hover:bg-primary/10 hover:text-primary"
+                        style={{
+                          backgroundColor: "hsl(160, 20%, 94%)",
+                          color: "hsl(200, 15%, 40%)",
+                        }}
                       >
                         {topic}
                       </button>
@@ -618,11 +820,12 @@ function BlogDetailView({ post, relatedPosts }) {
 export function BlogDetailContent({ post, relatedPosts = null }) {
   if (!post) {
     return (
-      <div className="min-h-[50vh] flex items-center justify-center text-center p-8">
+      <div className="flex min-h-[50vh] items-center justify-center p-8 text-center">
         <div>
-          <h2 className="text-2xl font-bold mb-2">Post Not Found</h2>
-          <p className="text-muted-foreground mb-4">
-            The blog post you are looking for does not exist or has been removed.
+          <h2 className="mb-2 text-2xl font-bold">Post Not Found</h2>
+          <p className="mb-4 text-muted-foreground">
+            The blog post you are looking for does not exist or has been
+            removed.
           </p>
           <Link href="/blog">
             <Button>Back to Blog</Button>

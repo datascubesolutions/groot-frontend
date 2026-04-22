@@ -1,6 +1,7 @@
 # Hero Page & GROOT Animation - In-Depth Analysis
 
 ## Overview
+
 The Hero page (`HeroSection.jsx`) is the landing section of the GROOT Analytics website, featuring a sophisticated animated logo assembly sequence that creates a memorable first impression. The animation uses Framer Motion for smooth, performant animations.
 
 ---
@@ -8,6 +9,7 @@ The Hero page (`HeroSection.jsx`) is the landing section of the GROOT Analytics 
 ## 1. Component Architecture
 
 ### File Structure
+
 - **Main Component**: `src/components/sections/HeroSection.jsx`
 - **Logo Data**: `src/components/sections/logoData.js` (56 SVG path elements)
 - **Dependencies**:
@@ -16,10 +18,11 @@ The Hero page (`HeroSection.jsx`) is the landing section of the GROOT Analytics 
   - Custom Button component with hero variants
 
 ### Component State Management
+
 ```javascript
-const [isAssembled, setIsAssembled] = useState(false);  // Controls logo assembly
-const [isPulsing, setIsPulsing] = useState(false);       // Controls post-assembly pulse
-const [isMounted, setIsMounted] = useState(false);       // Prevents SSR hydration issues
+const [isAssembled, setIsAssembled] = useState(false); // Controls logo assembly
+const [isPulsing, setIsPulsing] = useState(false); // Controls post-assembly pulse
+const [isMounted, setIsMounted] = useState(false); // Prevents SSR hydration issues
 ```
 
 ---
@@ -29,20 +32,24 @@ const [isMounted, setIsMounted] = useState(false);       // Prevents SSR hydrati
 ### 2.1 Animation Phases
 
 #### Phase 1: Initial Mount (0ms)
+
 - Component mounts, `isMounted` set to `true`
 - Logo elements are generated with random starting positions
 - All paths start invisible (`opacity: 0`)
 
 #### Phase 2: Logo Container Entry (400ms delay)
+
 ```javascript
 initial={{ opacity: 0, scale: 0.8 }}
 animate={{ opacity: 1, scale: 1 }}
 transition={{ duration: 0.8, delay: 0.4 }}
 ```
+
 - SVG container fades in and scales up
 - Creates anticipation for the logo assembly
 
 #### Phase 3: Logo Assembly (800ms delay)
+
 - `isAssembled` state changes to `true` at 800ms
 - Each path element animates from its starting position to final position
 - **Duration**: 1.5 seconds per path
@@ -50,12 +57,14 @@ transition={{ duration: 0.8, delay: 0.4 }}
 - **Staggered Delays**: Random delays (0-0.8s) create organic, non-uniform assembly
 
 #### Phase 4: "Analytics" Text Animation (2.2s delay)
+
 - Individual character animations start after logo assembly
 - Each letter fades in with blur effect
 - Sequential delay: `2.2 + index * 0.08` seconds
 - Creates a typewriter-like reveal effect
 
 #### Phase 5: Continuous Pulse (3.5s delay)
+
 ```javascript
 animate={isPulsing ? {
   scale: [1, 1.02, 1],
@@ -66,6 +75,7 @@ transition={{
   ease: "easeInOut"
 }}
 ```
+
 - Subtle breathing effect on the entire logo
 - 2% scale variation
 - Infinite loop for continuous visual interest
@@ -76,18 +86,19 @@ The GROOT logo consists of **56 SVG path elements**, each representing a segment
 
 ```javascript
 const directions = [
-  { x: -1, y: -1, name: 'top-left' },
-  { x: 1, y: -1, name: 'top-right' },
-  { x: -1, y: 1, name: 'bottom-left' },
-  { x: 1, y: 1, name: 'bottom-right' },
-  { x: 0, y: -1, name: 'top' },
-  { x: 0, y: 1, name: 'bottom' },
-  { x: -1, y: 0, name: 'left' },
-  { x: 1, y: 0, name: 'right' },
+  { x: -1, y: -1, name: "top-left" },
+  { x: 1, y: -1, name: "top-right" },
+  { x: -1, y: 1, name: "bottom-left" },
+  { x: 1, y: 1, name: "bottom-right" },
+  { x: 0, y: -1, name: "top" },
+  { x: 0, y: 1, name: "bottom" },
+  { x: -1, y: 0, name: "left" },
+  { x: 1, y: 0, name: "right" },
 ];
 ```
 
 **Distribution Logic**:
+
 - Each path is assigned a direction using modulo: `directions[index % 8]`
 - Distance from center: `400 + Math.random() * 300` pixels (400-700px range)
 - Creates a radial explosion effect where pieces come from all directions
@@ -95,6 +106,7 @@ const directions = [
 ### 2.3 Animation Properties
 
 #### Initial State (Before Assembly)
+
 ```javascript
 initial={{
   x: item.initialX,        // Offset from center (400-700px)
@@ -105,6 +117,7 @@ initial={{
 ```
 
 #### Final State (After Assembly)
+
 ```javascript
 animate={isAssembled ? {
   x: 0,                    // Center position
@@ -115,6 +128,7 @@ animate={isAssembled ? {
 ```
 
 #### Transition Configuration
+
 ```javascript
 transition={{
   duration: 1.5,           // 1.5 seconds per path
@@ -126,6 +140,7 @@ transition={{
 ```
 
 **Spring Physics Explained**:
+
 - **Stiffness (60)**: Medium-high tension, creates snappy but controlled motion
 - **Damping (15)**: Moderate resistance, prevents excessive oscillation
 - **Result**: Natural, organic movement with slight overshoot and settle
@@ -133,6 +148,7 @@ transition={{
 ### 2.4 Visual Styling
 
 #### Gradient Fill
+
 ```javascript
 <linearGradient id="groot-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
   <stop offset="0%" stopColor="hsl(var(--burgundy))" />
@@ -142,15 +158,18 @@ transition={{
 ```
 
 **Color Progression**:
+
 - **Burgundy** → **Forest** → **Primary (Mint)**
 - Diagonal gradient (bottom-left to top-right)
 - Creates depth and visual interest
 - Uses CSS custom properties for theme consistency
 
 #### SVG ViewBox
+
 ```javascript
-viewBox="105 55 220 120"
+viewBox = "105 55 220 120";
 ```
+
 - Defines the visible area of the SVG
 - Allows responsive scaling without distortion
 - Maintains aspect ratio across screen sizes
@@ -162,20 +181,24 @@ viewBox="105 55 220 120"
 ### 3.1 Background Layers
 
 #### Grid Pattern with Vignette
+
 ```css
 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),
     linear-gradient(to_bottom,#80808012_1px,transparent_1px)]
 bg-[size:24px_24px]
 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]
 ```
+
 - Subtle grid pattern (12% opacity gray)
 - Radial mask creates vignette effect (fades at edges)
 - Adds texture without distraction
 
 #### Radial Gradient Overlay
+
 ```css
 bg-[radial-gradient(circle_800px_at_50%_50%,hsl(var(--mint)/0.15),transparent)]
 ```
+
 - Mint-colored radial glow at center
 - 15% opacity for subtle depth
 - 800px radius creates soft focus on logo area
@@ -185,18 +208,21 @@ bg-[radial-gradient(circle_800px_at_50%_50%,hsl(var(--mint)/0.15),transparent)]
 Two animated cards positioned on left and right sides:
 
 #### Left Card: Data Ingestion
+
 - **Position**: `top-[35%] left-[5%]`
 - **Content**: Database icon, "Ingestion" label, animated progress bars
 - **Animation**: Slides in from left (`x: -50 → 0`) at 1s delay
 - **Visual**: Glass morphism effect with backdrop blur
 
 #### Right Card: Live Impact
+
 - **Position**: `top-[35%] right-[5%]`
 - **Content**: Zap icon, "Live Impact" label, animated bar chart
 - **Animation**: Slides in from right (`x: 50 → 0`) at 1.2s delay
 - **Visual**: Gradient background, pulsing graph bars
 
 **Purpose**:
+
 - Reinforces brand messaging (Extract → Refine → Deliver)
 - Adds visual interest and context
 - Only visible on XL screens (`hidden xl:block`)
@@ -204,22 +230,27 @@ Two animated cards positioned on left and right sides:
 ### 3.3 Text Content Animations
 
 #### Badge Animation (0.7s delay)
+
 ```javascript
 initial={{ opacity: 0, scale: 0.9 }}
 animate={{ opacity: 1, scale: 1 }}
 ```
+
 - "Extract • Refine • Deliver" badge
 - Subtle scale-up effect
 
 #### Heading Animation (0.6s delay)
+
 ```javascript
 initial={{ opacity: 0, y: 30 }}
 animate={{ opacity: 1, y: 0 }}
 ```
+
 - Main heading slides up
 - Gradient text on key phrase: "intelligent decisions"
 
 #### CTA Buttons (0.8s delay)
+
 - Two buttons: "Start a Project" (hero variant) and "Explore Services" (outline variant)
 - Slide up animation
 - Hover effects with transform and shadow
@@ -231,17 +262,20 @@ animate={{ opacity: 1, y: 0 }}
 ### 4.1 React Optimizations
 
 #### useMemo for Logo Elements
+
 ```javascript
 const logoElements = useMemo(() => {
   if (!isMounted) return [];
   // ... calculation
 }, [isMounted, logoPaths]);
 ```
+
 - Prevents recalculation on every render
 - Only recalculates when `isMounted` or `logoPaths` change
 - Returns empty array during SSR to prevent hydration mismatches
 
 #### Conditional Rendering
+
 - Logo elements only render after `isMounted` is true
 - Prevents SSR/client mismatch issues
 - Reduces initial render cost
@@ -249,12 +283,14 @@ const logoElements = useMemo(() => {
 ### 4.2 Animation Optimizations
 
 #### Framer Motion Benefits
+
 - **Hardware Acceleration**: Uses CSS transforms (GPU-accelerated)
 - **Will-change**: Automatically applies `will-change` for animated properties
 - **Batching**: Groups multiple animations efficiently
 - **Spring Physics**: More performant than CSS keyframes for complex animations
 
 #### SVG Optimization
+
 - Single SVG element with multiple paths (not 56 separate SVGs)
 - Reuses gradient definition
 - Minimal DOM nodes
@@ -262,20 +298,24 @@ const logoElements = useMemo(() => {
 ### 4.3 Responsive Design
 
 #### Logo Sizing
+
 ```javascript
-className="w-full h-48 md:h-64 lg:h-[22rem]"
+className = "w-full h-48 md:h-64 lg:h-[22rem]";
 ```
+
 - Mobile: 192px height
 - Tablet: 256px height
 - Desktop: 352px height
 - Maintains aspect ratio via viewBox
 
 #### Text Scaling
+
 - Heading: `text-4xl md:text-5xl lg:text-7xl`
 - Body: `text-lg md:text-xl`
 - Analytics text: `text-lg md:text-2xl lg:text-4xl`
 
 #### Conditional Elements
+
 - Satellite cards hidden on mobile (`hidden xl:block`)
 - Reduces complexity and improves mobile performance
 
@@ -305,6 +345,7 @@ className="w-full h-48 md:h-64 lg:h-[22rem]"
 ## 6. Technical Details
 
 ### 6.1 SVG Path Data
+
 - **Total Paths**: 56 individual path elements
 - **Format**: SVG path commands (M, c, l, etc.)
 - **Source**: `logoData.js` exports array of path strings
@@ -313,16 +354,19 @@ className="w-full h-48 md:h-64 lg:h-[22rem]"
 ### 6.2 Framer Motion Configuration
 
 #### Transform Properties
+
 - Uses `x` and `y` transforms (not `translateX`/`translateY`)
 - More performant as it uses CSS transforms
 - Applied directly to SVG path elements
 
 #### Spring Animation
+
 ```javascript
-type: "spring"
-stiffness: 60    // Higher = snappier
-damping: 15      // Higher = less bounce
+type: "spring";
+stiffness: 60; // Higher = snappier
+damping: 15; // Higher = less bounce
 ```
+
 - Natural physics-based motion
 - No predefined easing curves
 - Adapts to different screen refresh rates
@@ -344,16 +388,19 @@ Mount → isMounted (true)
 ## 7. Accessibility Considerations
 
 ### 7.1 Reduced Motion Support
+
 - Framer Motion respects `prefers-reduced-motion`
 - Animation durations can be reduced via CSS
 - Critical content remains visible without animation
 
 ### 7.2 Semantic HTML
+
 - Uses `<section>` for main container
 - Proper heading hierarchy (h1)
 - Button elements for CTAs (keyboard accessible)
 
 ### 7.3 Visual Indicators
+
 - Pulsing dot in badge indicates active state
 - Clear visual hierarchy guides user attention
 - Sufficient color contrast for text
@@ -391,21 +438,25 @@ Mount → isMounted (true)
 ## 9. Potential Improvements
 
 ### 9.1 Performance
+
 - Consider `will-change` hints for animated properties
 - Lazy load satellite cards on desktop
 - Reduce number of animated paths if performance issues occur
 
 ### 9.2 User Experience
+
 - Add skip animation button for returning visitors
 - Store animation state in localStorage
 - Consider intersection observer to trigger animation on scroll into view
 
 ### 9.3 Accessibility
+
 - Add ARIA labels for animated logo
 - Provide text alternative for logo
 - Ensure keyboard navigation works with animations
 
 ### 9.4 Code Quality
+
 - Extract animation constants to config file
 - Create reusable animation variants
 - Add JSDoc comments for complex logic
@@ -415,11 +466,13 @@ Mount → isMounted (true)
 ## 10. Dependencies
 
 ### Core Dependencies
+
 - `framer-motion@12.23.26` - Animation library
 - `react@19.2.3` - React framework
 - `next@16.1.1` - Next.js framework
 
 ### UI Dependencies
+
 - `lucide-react` - Icon library
 - `@radix-ui/react-slot` - Component composition
 - `class-variance-authority` - Variant management
@@ -429,6 +482,7 @@ Mount → isMounted (true)
 ## Conclusion
 
 The GROOT animation is a sophisticated, well-executed piece of web animation that:
+
 - Creates a memorable first impression
 - Reinforces brand identity through motion
 - Maintains good performance through optimization
@@ -436,6 +490,7 @@ The GROOT animation is a sophisticated, well-executed piece of web animation tha
 - Adapts responsively across devices
 
 The implementation demonstrates best practices in:
+
 - React performance optimization
 - Framer Motion usage
 - Responsive design

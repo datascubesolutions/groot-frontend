@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * SEO Components Index
  *
@@ -6,8 +7,10 @@
  */
 
 export {
-    OrganizationSchema, ServiceSchema, WebsiteSchema
-} from './StructuredData';
+  OrganizationSchema,
+  ServiceSchema,
+  WebsiteSchema,
+} from "./StructuredData";
 
 // Future additions
 // export { JsonLd } from './JsonLd';

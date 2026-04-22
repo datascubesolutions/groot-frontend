@@ -36,13 +36,17 @@ export function HeroSection() {
 ## Customization
 
 ### Particle Count
+
 Adjust the `number.value` in the component:
+
 - **Low density**: 50-70 particles (better performance)
 - **Medium density**: 80-100 particles (balanced)
 - **High density**: 120-150 particles (more connections, may impact performance)
 
 ### Colors
+
 Modify these values in the component:
+
 ```js
 particles: {
   color: { value: "#004d40" },  // Node color
@@ -54,19 +58,25 @@ particles: {
 ```
 
 ### Movement Speed
+
 Adjust `move.speed`:
+
 - **0.3-0.5**: Very slow, subtle
 - **0.6-0.8**: Moderate (current setting)
 - **1.0-1.5**: Faster, more dynamic
 
 ### Connection Distance
+
 Modify `links.distance`:
+
 - **100-120**: Fewer connections, cleaner look
 - **150**: Current setting, balanced
 - **180-200**: More connections, denser network
 
 ### Hover Interaction
+
 Adjust `interactivity.modes.grab.distance`:
+
 - **100**: Close proximity needed
 - **140**: Current setting
 - **200**: Wider interaction area

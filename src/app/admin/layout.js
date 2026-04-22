@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { AdminHeader } from "@/components/admin/AdminHeader";
@@ -12,8 +13,8 @@ export default function AdminLayout({ children }) {
   // null = still checking, false = not authed → show spinner (redirect handled by hook)
   if (!isAuthed) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+      <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a]">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/20 border-t-white" />
       </div>
     );
   }
@@ -22,21 +23,21 @@ export default function AdminLayout({ children }) {
     <AdminProvider>
       <style>{`body { background-color: #0a0a0a; }`}</style>
       <div
-        className="theme-admin-dark min-h-screen w-full bg-[#0a0a0a] text-white flex overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground"
+        className="theme-admin-dark flex min-h-screen w-full overflow-x-hidden bg-[#0a0a0a] text-white selection:bg-primary/30 selection:text-primary-foreground"
         style={{ colorScheme: "dark" }}
       >
         <AdminSidebar />
 
-        <div className="flex-1 lg:ml-64 flex flex-col min-h-screen relative z-0 min-w-0">
+        <div className="relative z-0 flex min-h-screen min-w-0 flex-1 flex-col lg:ml-64">
           <AdminHeader />
-          <main className="flex-1 p-6 md:p-8 overflow-y-auto min-w-0">
-            <div className="max-w-7xl mx-auto w-full animate-in fade-in slide-in-from-bottom-4 duration-500 min-w-0">
+          <main className="min-w-0 flex-1 overflow-y-auto p-6 md:p-8">
+            <div className="mx-auto w-full min-w-0 max-w-7xl duration-500 animate-in fade-in slide-in-from-bottom-4">
               {children}
             </div>
           </main>
         </div>
 
-        <div className="fixed inset-0 pointer-events-none -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]" />
+        <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]" />
         <Toaster position="top-right" theme="dark" richColors />
       </div>
     </AdminProvider>

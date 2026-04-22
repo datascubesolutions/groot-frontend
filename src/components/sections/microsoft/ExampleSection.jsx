@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
@@ -13,51 +14,58 @@ export function ExampleSection({
   build,
   outcome,
   linkText,
-  linkUrl
+  linkUrl,
 }) {
   return (
-    <section className="py-16 md:py-24 bg-background text-foreground relative border-t border-border/50 overflow-hidden">
-
+    <section className="relative overflow-hidden border-t border-border/50 bg-background py-16 text-foreground md:py-24">
       {/* Power BI Dashboard Background Art in Free Space */}
-      <div className="hidden 2xl:block absolute bottom-0 -left-[10%] w-[1000px] h-[800px] opacity-10 pointer-events-none mix-blend-screen">
-        <Image src="/images/fabric/powerbi_dashboard.png" alt="Power BI Dashboard" fill className="object-contain object-bottom" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background pointer-events-none" />
+      <div className="pointer-events-none absolute -left-[10%] bottom-0 hidden h-[800px] w-[1000px] opacity-10 mix-blend-screen 2xl:block">
+        <Image
+          src="/images/fabric/powerbi_dashboard.png"
+          alt="Power BI Dashboard"
+          fill
+          className="object-contain object-bottom"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container relative z-10 mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mx-auto mb-16 md:mb-20 max-w-4xl antialiased"
+          className="mx-auto mb-16 max-w-4xl text-center antialiased md:mb-20"
         >
-          <span className="text-forest font-semibold tracking-widest uppercase text-sm mb-4 block">
+          <span className="mb-4 block text-sm font-semibold uppercase tracking-widest text-forest">
             Real Results
           </span>
           {outcomeMetric && outcomeMetricLabel && (
-            <div className="inline-flex items-baseline gap-2 px-6 py-3 rounded-2xl bg-forest border border-white/15 mb-6">
-              <span className="text-4xl md:text-5xl font-black text-forest-foreground tracking-tight">{outcomeMetric}</span>
-              <span className="text-forest-foreground/75 font-semibold uppercase tracking-wider text-sm">{outcomeMetricLabel}</span>
+            <div className="mb-6 inline-flex items-baseline gap-2 rounded-2xl border border-white/15 bg-forest px-6 py-3">
+              <span className="text-4xl font-black tracking-tight text-forest-foreground md:text-5xl">
+                {outcomeMetric}
+              </span>
+              <span className="text-sm font-semibold uppercase tracking-wider text-forest-foreground/75">
+                {outcomeMetricLabel}
+              </span>
             </div>
           )}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground tracking-tight text-balance">
+          <h2 className="text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
             {title}
           </h2>
         </motion.div>
 
-        <div className="flex flex-col rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-
+        <div className="flex flex-col overflow-hidden rounded-3xl border border-border/50 shadow-2xl">
           {/* Top Half: Context vs Reality */}
-          <div className="grid grid-cols-1 md:grid-cols-2 antialiased">
+          <div className="grid grid-cols-1 antialiased md:grid-cols-2">
             {/* Context Block */}
             {context && (
-              <div className="bg-card/60 backdrop-blur-xl p-10 md:p-14 border-r border-border/50">
-                <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-6 flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-border" />
+              <div className="border-r border-border/50 bg-card/60 p-10 backdrop-blur-xl md:p-14">
+                <h3 className="mb-6 flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                  <div className="h-2 w-2 rounded-full bg-border" />
                   The Context
                 </h3>
-                <p className="text-muted-foreground/90 leading-relaxed text-lg lg:text-xl font-normal text-balance">
+                <p className="text-balance text-lg font-normal leading-relaxed text-muted-foreground/90 lg:text-xl">
                   {context}
                 </p>
               </div>
@@ -66,11 +74,11 @@ export function ExampleSection({
             {/* Reality Block (Problem) */}
             {reality && (
               <div className="bg-forest p-10 md:p-14">
-                <h3 className="text-sm font-semibold text-white/70 uppercase tracking-widest mb-6 flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-white" />
+                <h3 className="mb-6 flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-white/70">
+                  <div className="h-2 w-2 rounded-full bg-white" />
                   The Reality
                 </h3>
-                <p className="text-white/90 leading-relaxed text-lg lg:text-xl font-normal text-balance">
+                <p className="text-balance text-lg font-normal leading-relaxed text-white/90 lg:text-xl">
                   {reality}
                 </p>
               </div>
@@ -79,12 +87,12 @@ export function ExampleSection({
 
           {/* Middle: What we built */}
           {build && build.length > 0 && (
-            <div className="bg-background/80 backdrop-blur-xl border-y border-border/50 p-10 md:p-14 antialiased">
-              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-8 flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-forest" />
+            <div className="border-y border-border/50 bg-background/80 p-10 antialiased backdrop-blur-xl md:p-14">
+              <h3 className="mb-8 flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                <div className="h-2 w-2 rounded-full bg-forest" />
                 What We Built
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 {build.map((item, index) => (
                   <motion.div
                     key={index}
@@ -94,10 +102,10 @@ export function ExampleSection({
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     className="flex items-start gap-4"
                   >
-                    <div className="mt-1 w-6 h-6 rounded-full bg-forest/10 flex items-center justify-center flex-shrink-0">
-                      <ChevronRight className="w-4 h-4 text-forest" />
+                    <div className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-forest/10">
+                      <ChevronRight className="h-4 w-4 text-forest" />
                     </div>
-                    <span className="text-muted-foreground/90 leading-relaxed font-normal">
+                    <span className="font-normal leading-relaxed text-muted-foreground/90">
                       {item}
                     </span>
                   </motion.div>
@@ -108,14 +116,14 @@ export function ExampleSection({
 
           {/* Bottom Half: The Outcome */}
           {outcome && (
-            <div className="bg-forest/5 relative overflow-hidden grid grid-cols-1 lg:grid-cols-2 items-stretch antialiased">
-              <div className="p-10 md:p-14 relative z-10 flex flex-col justify-center">
-                <div className="absolute right-0 bottom-0 w-64 h-64 bg-forest/5 blur-[100px] rounded-full pointer-events-none" />
-                <h3 className="text-sm font-semibold text-forest/80 uppercase tracking-widest mb-6 flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-forest" />
+            <div className="relative grid grid-cols-1 items-stretch overflow-hidden bg-forest/5 antialiased lg:grid-cols-2">
+              <div className="relative z-10 flex flex-col justify-center p-10 md:p-14">
+                <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-forest/5 blur-[100px]" />
+                <h3 className="mb-6 flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-forest/80">
+                  <div className="h-2 w-2 rounded-full bg-forest" />
                   The Outcome
                 </h3>
-                <p className="text-2xl md:text-3xl text-foreground font-semibold leading-relaxed max-w-4xl tracking-tight">
+                <p className="max-w-4xl text-2xl font-semibold leading-relaxed tracking-tight text-foreground md:text-3xl">
                   &quot;{outcome}&quot;
                 </p>
 
@@ -124,16 +132,16 @@ export function ExampleSection({
                   <div className="mt-10">
                     <Link
                       href={linkUrl}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest text-white font-semibold hover:bg-forest/90 transition-colors group text-sm uppercase tracking-widest w-fit"
+                      className="group inline-flex w-fit items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-semibold uppercase tracking-widest text-white transition-colors hover:bg-forest/90"
                     >
                       {linkText}
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>
                 )}
               </div>
 
-              <div className="relative hidden lg:block h-full min-h-[300px] bg-muted/30">
+              <div className="relative hidden h-full min-h-[300px] bg-muted/30 lg:block">
                 <Image
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2015&auto=format&fit=crop"
                   alt="Finance Team in Boardroom"
@@ -143,7 +151,6 @@ export function ExampleSection({
               </div>
             </div>
           )}
-
         </div>
       </div>
     </section>

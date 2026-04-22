@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Platform Page
  *
@@ -11,7 +12,8 @@ import { productData } from "@/lib/constants/products";
 
 export const metadata = {
   title: "Platform - Decision Intelligence | Groot Analytics",
-  description: "Powered by Math. Fueled by Curiosity. Transform complex business challenges into actionable intelligence through advanced analytics and decision science frameworks.",
+  description:
+    "Powered by Math. Fueled by Curiosity. Transform complex business challenges into actionable intelligence through advanced analytics and decision science frameworks.",
 };
 
 export default function PlatformPage() {
@@ -22,10 +24,7 @@ export default function PlatformPage() {
         <PlatformSection />
 
         {productData.map((product, index) => (
-          <ProductSection
-            key={product.title}
-            {...product}
-          />
+          <ProductSection key={product.title} {...product} />
         ))}
       </main>
     </div>

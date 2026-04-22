@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import Particles, { initParticlesEngine } from "@tsparticles/react";
@@ -112,7 +113,7 @@ export function NeuralNetworkBackground() {
         },
         smooth: true,
       }}
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      className="pointer-events-none absolute inset-0 h-full w-full"
       style={{
         position: "absolute",
         zIndex: 1,

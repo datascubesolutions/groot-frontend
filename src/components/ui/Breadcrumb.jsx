@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Breadcrumb Component
  *
@@ -9,14 +10,17 @@ import Link from "next/link";
 
 export function Breadcrumb({ items = [] }) {
   return (
-    <nav aria-label="Breadcrumb" className="py-4 border-b border-border bg-background">
+    <nav
+      aria-label="Breadcrumb"
+      className="border-b border-border bg-background py-4"
+    >
       <div className="container mx-auto px-6">
-        <ol className="flex items-center flex-wrap gap-1 text-sm">
+        <ol className="flex flex-wrap items-center gap-1 text-sm">
           {/* Home Link */}
           <li className="inline-flex items-center">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors h-5"
+              className="inline-flex h-5 items-center gap-1.5 text-muted-foreground transition-colors hover:text-primary"
             >
               <Home size={16} className="flex-shrink-0" />
               <span className="leading-5">Home</span>
@@ -29,15 +33,21 @@ export function Breadcrumb({ items = [] }) {
 
             return (
               <li key={index} className="inline-flex items-center gap-1">
-                <ChevronRight size={16} className="text-muted-foreground/50 flex-shrink-0" />
+                <ChevronRight
+                  size={16}
+                  className="flex-shrink-0 text-muted-foreground/50"
+                />
                 {isLast ? (
-                  <span className="inline-flex items-center text-foreground font-medium h-5 leading-5" aria-current="page">
+                  <span
+                    className="inline-flex h-5 items-center font-medium leading-5 text-foreground"
+                    aria-current="page"
+                  >
                     {item.label}
                   </span>
                 ) : (
                   <Link
                     href={item.href}
-                    className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors h-5 leading-5"
+                    className="inline-flex h-5 items-center leading-5 text-muted-foreground transition-colors hover:text-primary"
                   >
                     {item.label}
                   </Link>

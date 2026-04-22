@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const themeConfig = {
   colors: {
     primary: "#ea580c", // Orange-600

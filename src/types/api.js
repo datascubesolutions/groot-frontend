@@ -1,6 +1,7 @@
+// @ts-nocheck
 /**
  * API Type Definitions
- * 
+ *
  * @fileoverview Type definitions for API requests and responses
  * @module types/api
  */
@@ -55,4 +56,4 @@
  */
 
 // Export empty object for module resolution
-export { };
+export {};

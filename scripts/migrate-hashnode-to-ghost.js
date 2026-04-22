@@ -1,27 +1,36 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 // Configuration
-const GHOST_URL = process.env.NEXT_PUBLIC_GHOST_API_URL || 'https://amit-yadav.ghost.io';
-const GHOST_ADMIN_API_KEY = process.env.GHOST_ADMIN_API_KEY || '69957f0e6d04f6000134a630:38252793d6129e983d6dc9d4eb027b85dd249a7598204d00a9219e6d7d9bffa2';
-const HASHNODE_GQL_URL = 'https://gql.hashnode.com';
+const GHOST_URL =
+  process.env.NEXT_PUBLIC_GHOST_API_URL || "https://amit-yadav.ghost.io";
+const GHOST_ADMIN_API_KEY =
+  process.env.GHOST_ADMIN_API_KEY ||
+  "69957f0e6d04f6000134a630:38252793d6129e983d6dc9d4eb027b85dd249a7598204d00a9219e6d7d9bffa2";
+const HASHNODE_GQL_URL = "https://gql.hashnode.com";
 
 // Targeted tags for premium AI/ML content
-const TAGS = ['data-science', 'machine-learning', 'artificial-intelligence', 'deep-learning', 'python'];
+const TAGS = [
+  "data-science",
+  "machine-learning",
+  "artificial-intelligence",
+  "deep-learning",
+  "python",
+];
 
 // Helper to generate Ghost Admin Token
 function getToken() {
-  const [id, secret] = GHOST_ADMIN_API_KEY.split(':');
-  return jwt.sign({}, Buffer.from(secret, 'hex'), {
+  const [id, secret] = GHOST_ADMIN_API_KEY.split(":");
+  return jwt.sign({}, Buffer.from(secret, "hex"), {
     keyid: id,
-    algorithm: 'HS256',
-    expiresIn: '5m',
-    audience: `/admin/`
+    algorithm: "HS256",
+    expiresIn: "5m",
+    audience: `/admin/`,
   });
 }
 
 // Fetch posts from Hashnode via GraphQL
 async function fetchHashnodePosts() {
-  console.log('Fetching premium articles from Hashnode...');
+  console.log("Fetching premium articles from Hashnode...");
 
   // 1. Get Tag IDs first
   const tagIds = [];
@@ -29,9 +38,9 @@ async function fetchHashnodePosts() {
     try {
       const query = `query { tag(slug: "${slug}") { id } }`;
       const res = await fetch(HASHNODE_GQL_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
       });
       const { data } = await res.json();
       if (data?.tag?.id) {
@@ -43,7 +52,7 @@ async function fetchHashnodePosts() {
   }
 
   if (tagIds.length === 0) {
-    console.error('No valid tags found.');
+    console.error("No valid tags found.");
     return [];
   }
 
@@ -86,14 +95,17 @@ async function fetchHashnodePosts() {
 
     try {
       const res = await fetch(HASHNODE_GQL_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
       });
       const { data, errors } = await res.json();
 
       if (errors) {
-        console.error(`GraphQL Error for tag ${tagId}:`, JSON.stringify(errors));
+        console.error(
+          `GraphQL Error for tag ${tagId}:`,
+          JSON.stringify(errors)
+        );
         continue;
       }
 
@@ -124,8 +136,8 @@ async function fetchHashnodePosts() {
 async function createGhostPost(article) {
   const token = getToken();
   const headers = {
-    'Authorization': `Ghost ${token}`,
-    'Content-Type': 'application/json'
+    Authorization: `Ghost ${token}`,
+    "Content-Type": "application/json",
   };
 
   // Prepare Ghost Post Object
@@ -134,32 +146,39 @@ async function createGhostPost(article) {
   htmlContent += `<hr/><p><em>This article was originally published on <a href="${article.url}">Hashnode</a> by ${article.author.name}.</em></p>`;
 
   const postData = {
-    posts: [{
-      title: article.title,
-      slug: article.slug,
-      html: htmlContent,
-      feature_image: article.coverImage?.url,
-      status: 'published',
-      published_at: article.publishedAt,
-      tags: article.tags ? article.tags.map(t => ({ name: t.name, slug: t.slug })) : [],
-      custom_excerpt: article.brief
-    }]
+    posts: [
+      {
+        title: article.title,
+        slug: article.slug,
+        html: htmlContent,
+        feature_image: article.coverImage?.url,
+        status: "published",
+        published_at: article.publishedAt,
+        tags: article.tags
+          ? article.tags.map((t) => ({ name: t.name, slug: t.slug }))
+          : [],
+        custom_excerpt: article.brief,
+      },
+    ],
   };
 
   try {
     const res = await fetch(`${GHOST_URL}/ghost/api/admin/posts/?source=html`, {
-      method: 'POST',
+      method: "POST",
       headers,
-      body: JSON.stringify(postData)
+      body: JSON.stringify(postData),
     });
 
     if (!res.ok) {
       const err = await res.json();
-      if (err.errors && err.errors[0].message.includes('slug')) {
+      if (err.errors && err.errors[0].message.includes("slug")) {
         console.log(`Skipping existing post: ${article.title}`);
         return;
       }
-      console.error(`Failed to create post "${article.title}":`, JSON.stringify(err, null, 2));
+      console.error(
+        `Failed to create post "${article.title}":`,
+        JSON.stringify(err, null, 2)
+      );
     } else {
       console.log(`Successfully created: ${article.title}`);
     }
@@ -174,9 +193,9 @@ async function main() {
 
   for (const article of articles) {
     await createGhostPost(article);
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 500));
   }
-  console.log('Hashnode Migration complete!');
+  console.log("Hashnode Migration complete!");
 }
 
 main();
