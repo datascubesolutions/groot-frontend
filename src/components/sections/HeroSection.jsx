@@ -76,7 +76,7 @@ export function HeroSection() {
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <section className="relative flex h-screen min-h-[100dvh] flex-col overflow-y-auto overflow-x-hidden pt-28 md:pt-20">
+      <section className="relative flex h-screen min-h-[100dvh] flex-col overflow-hidden pt-28 md:pt-20">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-background">
           {/* Particles deferred until assembly completes to free main thread */}
@@ -91,7 +91,7 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
           {/* Data Architect Radial Gradient: White center -> Faint Mint Edges */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white_0%,hsl(160,20%,97%)_60%,hsl(160,20%,94%)_100%)] opacity-80 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white_0%,hsl(160,20%,97%)_60%,hsl(160,20%,94%)_100%)] opacity-80 md:mix-blend-multiply"></div>
         </div>
 
         {/* GROOT Logo + Content - Logo fixed, gap pushes text below */}
@@ -208,7 +208,7 @@ export function HeroSection() {
                       delay: 2.2 + index * 0.08,
                       ease: "easeOut",
                     }}
-                    className="select-none bg-gradient-to-br from-[hsl(var(--groot-dark-primary))] to-[hsl(var(--groot-dark-forest))] bg-fixed bg-clip-text pb-1 font-sans text-base font-bold tracking-normal text-transparent md:text-xl lg:text-3xl"
+                    className="select-none bg-gradient-to-br from-[hsl(var(--groot-dark-primary))] to-[hsl(var(--groot-dark-forest))] bg-clip-text pb-1 font-sans text-base font-bold tracking-normal text-transparent md:text-xl lg:text-3xl"
                   >
                     {char}
                   </m.span>
@@ -267,11 +267,11 @@ export function HeroSection() {
                     transition={{ delay: 0.8 }}
                     className="flex flex-col items-center justify-center gap-3 pt-2 md:gap-4"
                   >
-                    <Link href="/assessment">
+                    <Link href="/assessment" className="w-full sm:w-auto">
                       <Button
                         variant="hero"
                         size="xl"
-                        className="group px-8 text-lg shadow-lg shadow-mint/20"
+                        className="group flex w-full items-center justify-center gap-2 px-6 py-4 text-base shadow-lg shadow-mint/20 sm:w-auto md:px-8 md:text-lg"
                       >
                         Get Your Data Readiness Score
                         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

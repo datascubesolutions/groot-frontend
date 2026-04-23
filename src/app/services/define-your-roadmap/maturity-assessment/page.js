@@ -66,7 +66,7 @@ export default function MaturityAssessment() {
               initial={{ opacity: 0, scale: 0.95, filter: "blur(20px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="right-0 top-5 -z-10 mb-10 h-[350px] overflow-hidden rounded-br-[5rem] rounded-tl-none border-b-8 border-l-8 border-forest/30 shadow-2xl contrast-125 grayscale-[40%] lg:absolute lg:mb-0 lg:h-[550px] lg:w-[45vw] lg:max-w-[600px]"
+              className="right-0 top-5 -z-10 mb-10 h-[350px] overflow-hidden rounded-br-[5rem] rounded-tl-none border-b-8 border-l-8 border-forest/30 shadow-2xl contrast-125 grayscale-[40%] lg:absolute lg:mb-0 lg:h-[550px] lg:w-[65vw] lg:max-w-[850px]"
             >
               <Image
                 src="/images/maturity/live_radar.png"
@@ -75,7 +75,7 @@ export default function MaturityAssessment() {
                 className="object-cover opacity-90 mix-blend-overlay"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent lg:w-[60%]" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent lg:w-[15%]" />
             </motion.div>
 
             {/* Twisted Text Layer */}
@@ -108,7 +108,7 @@ export default function MaturityAssessment() {
                   <span className="stroke-text isolate inline-block bg-gradient-to-r from-foreground to-foreground/40 bg-clip-text text-transparent mix-blend-normal">
                     Data
                   </span>{" "}
-                  <span className="text-mint">&amp;</span>{" "}
+                  <span className="text-mint isolate mix-blend-normal">&amp;</span>{" "}
                   Analytics
                   <br />
                   <span className="stroke-text bg-gradient-to-r from-foreground to-foreground/40 bg-clip-text text-transparent">
