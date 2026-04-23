@@ -14,6 +14,15 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [expandedMobileMenus, setExpandedMobileMenus] = useState({});
+
+  const toggleMobileMenu = (label, e) => {
+    e.preventDefault();
+    setExpandedMobileMenus((prev) => ({
+      ...prev,
+      [label]: !prev[label],
+    }));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,14 +51,14 @@ export function Navbar() {
       onMouseLeave={handleMouseLeave}
     >
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        <nav className="flex h-20 items-center justify-between">
+        <nav className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
           <Link href="/" className="z-50 -ml-2 flex items-center gap-2">
             <GrootLogo />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden h-full items-center gap-8 md:flex">
+          <div className="hidden h-full items-center gap-5 lg:gap-7 md:flex">
             {NAV_LINKS.map((link) => (
               <div
                 key={link.label}
@@ -139,23 +148,40 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="glass max-h-[80vh] overflow-hidden overflow-y-auto border-t border-border md:hidden"
+            className="glass max-h-[85vh] overflow-hidden overflow-y-auto border-t border-border md:hidden"
           >
-            <div className="container mx-auto flex flex-col gap-4 px-6 py-6">
+            <div className="container mx-auto flex flex-col gap-2 px-6 py-4">
               {NAV_LINKS.map((link) => (
                 <div key={link.label} className="flex flex-col">
                   <Link
-                    href={link.href}
-                    onClick={() =>
-                      !link.hasDropdown && setIsMobileMenuOpen(false)
-                    }
-                    className="flex items-center justify-between py-2 font-medium text-foreground/80 transition-colors hover:text-primary"
+                    href={link.hasDropdown ? "#" : link.href}
+                    onClick={(e) => {
+                      if (link.hasDropdown) {
+                        toggleMobileMenu(link.label, e);
+                      } else {
+                        setIsMobileMenuOpen(false);
+                      }
+                    }}
+                    className="flex items-center justify-between py-1.5 text-[15px] font-medium text-foreground/80 transition-colors hover:text-primary"
                   >
                     {link.label}
-                    {link.hasDropdown && <ChevronDown size={16} />}
+                    {link.hasDropdown && (
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${
+                          expandedMobileMenus[link.label] ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
                   </Link>
-                  {link.hasDropdown && (
-                    <div className="mb-2 mt-1 flex flex-col gap-2 border-l border-border pl-4">
+                  <AnimatePresence>
+                    {link.hasDropdown && expandedMobileMenus[link.label] && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="mb-1 mt-1 flex flex-col gap-1 overflow-hidden border-l border-border pl-3"
+                      >
                       {/* Simplified Services for mobile if needed, or just iterate sublinks */}
                       {/* The original code had a special check for Services to list sub-services differently.
                            However, NAV_LINKS doesn't have subLinks for Services (it has SERVICE_CATEGORIES which are more complex).
@@ -188,12 +214,13 @@ export function Navbar() {
                           </Link>
                         ))
                       )}
-                    </div>
-                  )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="hero" className="mt-4 w-full">
+                <Button variant="hero" className="mt-2 w-full">
                   Let&apos;s Connect
                 </Button>
               </Link>
@@ -225,13 +252,13 @@ const ServicesMobileMenu = ({ setIsMobileMenuOpen }) => {
 };
 
 const GrootLogo = () => (
-  <div className="relative h-40 w-auto">
+  <div className="relative h-32 w-auto md:h-40">
     <Image
       src="/svg/logo.svg"
       alt="Groot Analytics Logo"
       width={500}
       height={180}
-      className="h-40 w-auto"
+      className="h-full w-auto object-contain"
       priority
     />
   </div>

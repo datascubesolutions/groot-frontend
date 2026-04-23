@@ -39,7 +39,7 @@ export default function VideoScrollSection() {
       ref={sectionRef}
       className="relative z-20 bg-background"
       style={{
-        height: "calc(100vh + 800px)", // 800px simulates the scroll distance
+        height: "calc(100vh + clamp(400px, 50vw, 800px))", // Shorter scroll distance on mobile
       }}
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden pt-[5rem]">
@@ -47,12 +47,14 @@ export default function VideoScrollSection() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(to_right,hsl(var(--border)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.08)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
 
         <motion.div
-          className="backface-visibility-hidden relative z-10 transform-gpu rounded-3xl border border-border/50 bg-background p-3 shadow-2xl will-change-transform md:rounded-[2rem] md:p-4"
+          className="relative z-10 transform-gpu rounded-3xl border border-border/50 bg-background p-3 shadow-2xl will-change-transform md:rounded-[2rem] md:p-4"
           style={{
             scale,
             width: "90%",
             maxWidth: "1600px",
             height: "80vh",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           {/* Inner video container */}
