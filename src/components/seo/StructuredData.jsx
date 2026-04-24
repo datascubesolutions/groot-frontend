@@ -85,3 +85,56 @@ export function ServiceSchema({ services = [] }) {
 
   return <JsonLd schema={schema} />;
 }
+
+export function SiteNavigationSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "SiteNavigationElement",
+        "position": 1,
+        "name": "About Us",
+        "description": "Learn how Groot Analytics helps enterprises modernize data platforms.",
+        "url": `${baseUrl}/about`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 2,
+        "name": "Services",
+        "description": "Data engineering, analytics, and AI implementation services.",
+        "url": `${baseUrl}/services`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 3,
+        "name": "Solutions",
+        "description": "Microsoft Fabric, Power BI, and Copilot solutions.",
+        "url": `${baseUrl}/solutions`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 4,
+        "name": "Industries",
+        "description": "Domain-specific analytics solutions for your industry.",
+        "url": `${baseUrl}/industries`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 5,
+        "name": "Blog",
+        "description": "Expert insights on data stacks and AI implementation.",
+        "url": `${baseUrl}/blog`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 6,
+        "name": "Contact",
+        "description": "Get in touch with our data engineering experts.",
+        "url": `${baseUrl}/contact`
+      }
+    ]
+  };
+
+  return <JsonLd schema={schema} />;
+}

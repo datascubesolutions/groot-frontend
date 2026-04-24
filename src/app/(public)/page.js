@@ -4,43 +4,20 @@ import { SectionSkeleton } from "@/components/skeletons/SectionSkeleton";
 import { generateBreadcrumbSchema, generateRouteMetadata } from "@/lib/seo";
 import { lazy, Suspense } from "react";
 
-// Lazy load sections for better performance
-const HeroSection = lazy(() => import("@/components/sections/HeroSection"));
-const ClientLogosSection = lazy(
-  () => import("@/components/sections/ClientLogosSection")
-);
-const VideoScrollSection = lazy(
-  () => import("@/components/sections/VideoScrollSection")
-);
-const ServicesSection = lazy(
-  () => import("@/components/sections/ServicesSection")
-);
-const PainPointsSection = lazy(() =>
-  import("@/components/sections/PainPointsSection").then((mod) => ({
-    default: mod.PainPointsSection,
-  }))
-);
-const ProcessTimelineSection = lazy(() =>
-  import("@/components/sections/ProcessTimelineSection").then((mod) => ({
-    default: mod.ProcessTimelineSection,
-  }))
-);
-const PlatformPreviewSection = lazy(() =>
-  import("@/components/sections/PlatformPreviewSection").then((mod) => ({
-    default: mod.PlatformPreviewSection,
-  }))
-);
-const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
-const DataReadinessSection = lazy(() =>
-  import("@/components/sections/DataReadinessSection").then((mod) => ({
-    default: mod.DataReadinessSection,
-  }))
-);
+import HeroSection from "@/components/sections/HeroSection";
+import ClientLogosSection from "@/components/sections/ClientLogosSection";
+import VideoScrollSection from "@/components/sections/VideoScrollSection";
+import ServicesSection from "@/components/sections/ServicesSection";
+import { PainPointsSection } from "@/components/sections/PainPointsSection";
+import { ProcessTimelineSection } from "@/components/sections/ProcessTimelineSection";
+import { PlatformPreviewSection } from "@/components/sections/PlatformPreviewSection";
+import AboutSection from "@/components/sections/AboutSection";
+import { DataReadinessSection } from "@/components/sections/DataReadinessSection";
 
 // Elite Demo Sections - BACKUP AT /elite-demo
-// const TestimonialsSection = lazy(() => import("@/components/sections/elite/TestimonialsSection"));
-// const CultureSection = lazy(() => import("@/components/sections/elite/CultureSection"));
-// const EnterpriseHeroSection = lazy(() => import("@/components/sections/elite/EnterpriseHeroSection"));
+// import TestimonialsSection from "@/components/sections/elite/TestimonialsSection";
+// import CultureSection from "@/components/sections/elite/CultureSection";
+// import EnterpriseHeroSection from "@/components/sections/elite/EnterpriseHeroSection";
 
 export const metadata = {
   ...generateRouteMetadata("home"),
