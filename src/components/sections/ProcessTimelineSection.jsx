@@ -118,7 +118,7 @@ export const ProcessTimelineSection = () => {
               className="heading-section mb-4 md:mb-6"
             >
               How we{" "}
-              <span className="bg-gradient-to-r from-forest to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-forest to-forest/70 bg-clip-text text-transparent">
                 work
               </span>
             </m.h2>
@@ -212,7 +212,7 @@ const StepCard = ({ step, index }) => {
             }}
           />
 
-          <div className="relative z-10 flex min-w-0 flex-col items-start gap-6 md:flex-row">
+          <div className="relative z-10 flex min-w-0 flex-col items-center gap-5 text-center md:flex-row md:items-start md:text-left md:gap-6">
             <div
               className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105"
               style={{
@@ -223,41 +223,37 @@ const StepCard = ({ step, index }) => {
               <step.icon className="h-6 w-6" style={{ color: step.color }} />
             </div>
 
-            <div className="flex-1">
-              <div className="mb-1.5 flex items-center gap-3">
-                <span className="font-serif text-3xl font-bold text-foreground/50 md:text-foreground/25">
+            <div className="flex flex-1 flex-col items-center md:items-start">
+              <div className="mb-1.5 flex items-center justify-center gap-3 md:justify-start">
+                <span className="font-serif text-3xl font-bold text-foreground/80 md:text-foreground/60">
                   {step.id}
                 </span>
-                <span
-                  className="text-[10px] font-bold uppercase tracking-[0.2em]"
-                  style={{ color: step.color }}
-                >
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-forest/80">
                   {step.subtitle}
                 </span>
               </div>
               <h3 className="mb-2 text-xl font-bold text-foreground md:text-2xl">
                 {step.title}
               </h3>
-              <p
-                className="mb-3 text-sm font-medium"
-                style={{ color: step.color }}
-              >
+              <p className="mb-4 text-sm font-medium text-foreground/70">
                 {step.tagline}
               </p>
-              <ul className="space-y-2">
-                {step.activities.map((activity, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 text-sm leading-relaxed text-foreground/90"
-                  >
-                    <ArrowRight
-                      className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-70"
-                      style={{ color: step.color }}
-                    />
-                    {activity}
-                  </li>
-                ))}
-              </ul>
+              <div className="w-full sm:w-auto">
+                <ul className="inline-block space-y-2 text-left">
+                  {step.activities.map((activity, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-foreground/90"
+                    >
+                      <ArrowRight
+                        className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-70"
+                        style={{ color: step.color }}
+                      />
+                      <span>{activity}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

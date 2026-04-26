@@ -162,7 +162,11 @@ export function Navbar() {
                         setIsMobileMenuOpen(false);
                       }
                     }}
-                    className="flex items-center justify-between py-1.5 text-[15px] font-medium text-foreground/80 transition-colors hover:text-primary"
+                    className={`flex items-center justify-between py-1.5 text-[15px] font-medium transition-colors ${
+                      expandedMobileMenus[link.label]
+                        ? "text-forest"
+                        : "text-foreground/80 hover:text-forest"
+                    }`}
                   >
                     {link.label}
                     {link.hasDropdown && (
@@ -208,7 +212,7 @@ export function Navbar() {
                             key={sub.label}
                             href={sub.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="py-1 text-sm text-foreground/60"
+                            className="block py-2 text-[15px] font-medium text-foreground/80 transition-all hover:translate-x-1 hover:text-forest"
                           >
                             {sub.label}
                           </Link>
@@ -242,7 +246,7 @@ const ServicesMobileMenu = ({ setIsMobileMenuOpen }) => {
           key={category.slug}
           href={category.href}
           onClick={() => setIsMobileMenuOpen(false)}
-          className="py-1 text-sm text-foreground/60"
+          className="block py-2 text-[15px] font-medium text-foreground/80 transition-all hover:translate-x-1 hover:text-forest"
         >
           {category.title}
         </Link>

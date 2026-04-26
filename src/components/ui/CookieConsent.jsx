@@ -145,66 +145,76 @@ export default function CookieConsent() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-[9999] flex justify-center p-4 sm:p-5"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-[9999] flex justify-center p-4 pt-12 sm:p-6 sm:pt-16"
       aria-live="polite"
     >
       <div
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="cookie-consent-title"
-        className={`pointer-events-auto flex max-h-[85vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-border bg-card text-card-foreground shadow-[var(--shadow-elevated)] transition-all duration-300 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-          }`}
+        className={`pointer-events-auto relative w-full max-w-lg transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+        }`}
       >
+        {/* Floating Cookie Icon */}
         {view === "banner" && (
-          <div className="p-6 sm:p-7">
-            <div className="mb-5 flex items-start justify-between gap-4">
-              <h2
-                id="cookie-consent-title"
-                className="pr-2 text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl"
-              >
-                Cookies and privacy
-              </h2>
-              <button
-                type="button"
-                onClick={handleRejectAll}
-                aria-label="Reject non-essential cookies"
-                className="shrink-0 rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                <X className="h-5 w-5" strokeWidth={2} />
-              </button>
-            </div>
-            <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-              We use cookies to run the site, understand usage, and tailor
-              content. You can accept all, reject non-essential cookies, or
-              manage categories.
-            </p>
-            <div className="flex flex-col gap-2.5">
-              <button
-                type="button"
-                onClick={handleAcceptAll}
-                className="w-full rounded-xl bg-forest px-4 py-3 text-sm font-semibold text-forest-foreground transition-colors duration-200 hover:bg-forest/90"
-              >
-                Accept all
-              </button>
-              <div className="flex gap-2.5">
-                <button
-                  type="button"
-                  onClick={() => setView("preferences")}
-                  className="flex-1 rounded-xl border border-border bg-transparent px-4 py-3 text-sm font-medium text-foreground transition-colors duration-200 hover:bg-muted"
+          <div className="absolute -top-10 left-1/2 z-10 -translate-x-1/2 transform text-[64px] leading-none drop-shadow-xl transition-transform duration-500 hover:rotate-12 hover:scale-110 cursor-default">
+            🍪
+          </div>
+        )}
+
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cookie-consent-title"
+          className="flex max-h-[85vh] w-full flex-col overflow-hidden rounded-2xl border border-border bg-card text-card-foreground shadow-2xl"
+        >
+          {view === "banner" && (
+            <div className="p-6 pt-8 sm:p-8 sm:pt-10">
+              <div className="mb-4 flex items-start justify-between gap-4">
+                <h2
+                  id="cookie-consent-title"
+                  className="text-xl font-bold tracking-tight text-foreground sm:text-2xl"
                 >
-                  Manage preferences
-                </button>
+                  We value your privacy
+                </h2>
                 <button
                   type="button"
                   onClick={handleRejectAll}
-                  className="flex-1 rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-foreground"
+                  aria-label="Reject non-essential cookies"
+                  className="-mr-2 -mt-2 shrink-0 rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 >
-                  Reject
+                  <X className="h-5 w-5" strokeWidth={2} />
                 </button>
               </div>
+              <p className="mb-8 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+                We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. You can accept all, reject non-essential cookies, or manage your preferences.
+              </p>
+              
+              <div className="flex flex-col gap-3">
+                <button
+                  type="button"
+                  onClick={handleAcceptAll}
+                  className="w-full rounded-xl bg-forest px-4 py-3.5 text-sm font-bold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-forest/90 hover:shadow-lg"
+                >
+                  Accept all cookies
+                </button>
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setView("preferences")}
+                    className="flex-1 rounded-xl border-2 border-border bg-transparent px-4 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:border-forest/30 hover:bg-forest/5 hover:text-forest"
+                  >
+                    Manage preferences
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleRejectAll}
+                    className="flex-1 rounded-xl border-2 border-border bg-transparent px-4 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:border-foreground/20 hover:bg-muted"
+                  >
+                    Reject all
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {view === "preferences" && (
           <div className="flex max-h-[85vh] flex-col">
@@ -291,5 +301,6 @@ export default function CookieConsent() {
         )}
       </div>
     </div>
-  );
+  </div>
+);
 }

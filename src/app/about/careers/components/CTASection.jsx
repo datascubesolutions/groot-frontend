@@ -21,7 +21,7 @@ const APPLICATION_STEPS = [
 
 const STYLES = {
   section:
-    "py-32 md:py-48 bg-background relative border-t border-border/50 overflow-hidden",
+    "py-20 md:py-32 bg-background relative border-t border-border/50 overflow-hidden",
   glowRight:
     "absolute top-0 right-0 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3",
   glowLeft:

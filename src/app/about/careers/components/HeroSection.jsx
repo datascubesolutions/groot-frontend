@@ -7,7 +7,7 @@ import { Sparkles } from "lucide-react";
 import Image from "next/image";
 
 const STYLES = {
-  section: "relative z-10 pt-32 pb-32 border-b border-border/50 bg-card/30",
+  section: "relative z-10 pt-24 pb-20 border-b border-border/50 bg-card/30",
   container: "container mx-auto container-padding",
   grid: "mt-16 lg:mt-24 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center",
   textContent: "max-w-2xl",
@@ -15,7 +15,7 @@ const STYLES = {
   badgeLine: "w-12 h-px bg-primary/60",
   badgeText: "text-primary font-bold uppercase tracking-[0.2em] text-sm",
   heading:
-    "text-6xl md:text-7xl lg:text-[6rem] font-black tracking-tighter mb-8 leading-[1.05] text-foreground text-balance",
+    "text-5xl md:text-7xl lg:text-[6rem] font-black tracking-tighter mb-8 leading-[1.05] text-foreground text-balance",
   headingAccent:
     "text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest relative whitespace-nowrap",
   swoosh: "absolute -bottom-2 left-0 w-full h-4 text-primary opacity-30",
@@ -30,9 +30,9 @@ const STYLES = {
   image:
     "object-cover object-center group-hover:scale-105 transition-transform duration-1000",
   glassCard:
-    "absolute bottom-8 left-8 right-8 p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 z-20 shadow-xl flex items-center justify-between",
+    "absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 p-4 sm:p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 z-20 shadow-xl flex items-center justify-between",
   glassTitle: "text-white font-bold text-lg leading-tight tracking-tight",
-  glassSubtitle: "text-white/80 font-medium text-sm mt-1",
+  glassSubtitle: "text-white/80 font-medium text-xs sm:text-sm mt-1",
   glassIconWrapper:
     "w-12 h-12 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/5 backdrop-blur-sm shadow-inner",
   glassIcon: "text-white w-5 h-5",

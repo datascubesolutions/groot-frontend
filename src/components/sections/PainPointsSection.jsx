@@ -91,12 +91,12 @@ export function PainPointsSection() {
                       </div>
                     )}
                     <div>
-                      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-forest">
                         System diagnostics
                       </p>
                       <h2 id="pain-points-heading" className="heading-section">
                         Sound{" "}
-                        <span className="bg-gradient-to-r from-forest to-primary bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-forest to-forest/70 bg-clip-text text-transparent">
                           familiar?
                         </span>
                       </h2>
@@ -127,7 +127,7 @@ export function PainPointsSection() {
                         <point.icon className="h-5 w-5" strokeWidth={2} />
                       </span>
                       <div className="min-w-0 flex-1 pt-0.5">
-                        <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-primary">
+                        <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-forest/90">
                           {point.category}
                         </span>
                         <p className="text-lg font-semibold leading-snug text-foreground md:text-xl">

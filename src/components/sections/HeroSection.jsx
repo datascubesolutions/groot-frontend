@@ -193,7 +193,7 @@ export function HeroSection() {
               </svg>
 
               {/* Analytics Text - Animates after logo assembly */}
-              <div className="z-20 -ml-[7%] -mt-[23%] flex justify-center gap-[0.02em] sm:-mt-[16%] md:-ml-[50px] md:-mt-[85px] md:gap-[0.04em] lg:-ml-[88px] lg:-mt-[170px]">
+              <div className="z-20 -ml-[7%] -mt-[25%] flex justify-center gap-[0.02em] sm:-mt-[18%] md:-ml-[50px] md:-mt-[85px] md:gap-[0.04em] lg:-ml-[88px] lg:-mt-[170px]">
                 {"Analytics".split("").map((char, index) => (
                   <m.span
                     key={index}
@@ -271,10 +271,10 @@ export function HeroSection() {
                       <Button
                         variant="hero"
                         size="xl"
-                        className="group flex w-full items-center justify-center gap-2 px-6 py-4 text-base shadow-lg shadow-mint/20 sm:w-auto md:px-8 md:text-lg"
+                        className="group flex w-full items-center justify-center gap-1.5 px-3 py-4 text-sm shadow-lg shadow-mint/20 xs:px-4 sm:w-auto sm:gap-2 sm:px-6 sm:text-base md:px-8 md:text-lg"
                       >
                         Get Your Data Readiness Score
-                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 sm:h-5 sm:w-5" />
                       </Button>
                     </Link>
 

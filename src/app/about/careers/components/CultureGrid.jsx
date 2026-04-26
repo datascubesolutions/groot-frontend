@@ -5,7 +5,7 @@ import { m, useReducedMotion } from "framer-motion";
 import { Workflow, Cpu } from "lucide-react";
 
 const STYLES = {
-  section: "py-32 md:py-48 bg-background relative overflow-hidden",
+  section: "py-20 md:py-32 bg-background relative overflow-hidden",
   ambientLighting:
     "absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,hsl(152,76%,96%)_0%,transparent_60%)] pointer-events-none",
   container: "container mx-auto container-padding relative z-10",
@@ -21,13 +21,20 @@ const STYLES = {
   connectorLine:
     "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block z-0 mix-blend-multiply opacity-50",
   card1:
-    "p-10 lg:p-12 rounded-[2.5rem] bg-card border border-border shadow-[0_10px_40px_-20px_rgba(0,0,0,0.05)] relative z-10 hover:-translate-y-2 transition-transform duration-500 overflow-hidden group",
+    "p-8 lg:p-12 rounded-[2.5rem] bg-card border border-border shadow-sm hover:shadow-xl relative z-10 hover:-translate-y-2 transition-all duration-500 overflow-hidden group flex flex-col",
   card2:
-    "p-10 lg:p-12 rounded-[2.5rem] bg-card border border-border shadow-[0_10px_40px_-20px_rgba(0,0,0,0.05)] relative z-10 hover:-translate-y-2 transition-transform duration-500 overflow-hidden group md:translate-y-16",
+    "p-8 lg:p-12 rounded-[2.5rem] bg-card border border-border shadow-sm hover:shadow-xl relative z-10 hover:-translate-y-2 transition-all duration-500 overflow-hidden group md:translate-y-16 flex flex-col",
+  cardHoverBg:
+    "absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none",
   cardIconWrapper:
-    "w-16 h-16 rounded-2xl bg-muted text-primary flex items-center justify-center mb-8 border border-border/50 group-hover:bg-primary/5 group-hover:scale-110 transition-all duration-500",
-  cardTitle: "text-2xl font-bold mb-4 text-foreground tracking-tight",
-  cardDesc: "text-muted-foreground font-medium leading-relaxed",
+    "w-16 h-16 rounded-2xl bg-background text-primary flex items-center justify-center mb-8 border border-border/80 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 group-hover:border-primary transition-all duration-500 relative z-10 shadow-sm",
+  cardTitle:
+    "text-2xl font-bold mb-4 text-foreground tracking-tight group-hover:text-primary transition-colors relative z-10",
+  cardDesc: "text-muted-foreground font-medium leading-relaxed relative z-10 flex-grow",
+  cardTagsWrapper:
+    "mt-8 pt-8 border-t border-border/50 flex flex-wrap gap-2 relative z-10",
+  cardTag:
+    "px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase",
 };
 
 export default function CultureGrid() {
@@ -117,14 +124,19 @@ export default function CultureGrid() {
               transition={{ duration: shouldReduceMotion ? 0.3 : 0.6 }}
               className={STYLES.card1}
             >
+              <div className={STYLES.cardHoverBg} aria-hidden="true" />
               <div className={STYLES.cardIconWrapper} aria-hidden="true">
                 <Workflow size={32} strokeWidth={1.5} />
               </div>
               <h3 className={STYLES.cardTitle}>Partnership, Not Tickets</h3>
               <p className={STYLES.cardDesc}>
                 You work in direct partnership with clients. No layers of PMs
-                translating requirements.
+                translating requirements. You own the architecture and the outcome.
               </p>
+              <div className={STYLES.cardTagsWrapper}>
+                <span className={STYLES.cardTag}>Direct Access</span>
+                <span className={STYLES.cardTag}>High Ownership</span>
+              </div>
             </m.div>
 
             <m.div
@@ -137,14 +149,19 @@ export default function CultureGrid() {
               }}
               className={STYLES.card2}
             >
+              <div className={STYLES.cardHoverBg} aria-hidden="true" />
               <div className={STYLES.cardIconWrapper} aria-hidden="true">
                 <Cpu size={32} strokeWidth={1.5} />
               </div>
               <h3 className={STYLES.cardTitle}>Flat & Remote</h3>
               <p className={STYLES.cardDesc}>
                 We operate remote-first with direct access to senior team
-                members and architects.
+                members and architects. No corporate bureaucracy, just focused engineering.
               </p>
+              <div className={STYLES.cardTagsWrapper}>
+                <span className={STYLES.cardTag}>Remote-First</span>
+                <span className={STYLES.cardTag}>Zero Red-Tape</span>
+              </div>
             </m.div>
           </div>
         </div>

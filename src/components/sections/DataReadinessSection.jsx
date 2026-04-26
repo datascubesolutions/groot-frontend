@@ -69,17 +69,17 @@ export function DataReadinessSection() {
                 </div>
 
                 {/* Trust Indicators */}
-                <div className="mt-8 flex flex-wrap gap-4 text-sm font-medium text-foreground/70 md:mt-10 md:gap-6 md:text-muted-foreground">
+                <div className="mt-8 flex flex-wrap gap-4 text-sm font-medium text-foreground/80 md:mt-10 md:gap-6">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
+                    <CheckCircle2 className="h-4 w-4 text-forest" />
                     Free & Instant
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
+                    <CheckCircle2 className="h-4 w-4 text-forest" />
                     No Credit Card
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
+                    <CheckCircle2 className="h-4 w-4 text-forest" />
                     Actionable PDF Report
                   </div>
                 </div>
@@ -159,11 +159,14 @@ export function DataReadinessSection() {
                       />
                     </div>
 
-                    <div className="mt-6 flex items-center justify-between border-t border-border pt-6 text-xs text-muted-foreground md:mt-8">
+                    <div className="mt-6 flex items-center justify-between border-t border-border pt-6 text-xs text-foreground/80 md:mt-8">
                       <span>Analysis completed in 1.4s</span>
-                      <span className="underline decoration-border underline-offset-2">
-                        View Full Report
-                      </span>
+                      <Link
+                        href="/assessment"
+                        className="flex items-center gap-1.5 rounded-full bg-forest px-4 py-1.5 text-xs font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-forest/90 hover:shadow-md"
+                      >
+                        View Full Report <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
                     </div>
                   </div>
                 </m.div>

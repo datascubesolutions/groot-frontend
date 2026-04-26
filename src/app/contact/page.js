@@ -21,7 +21,7 @@ export const metadata = {
 };
 
 const ContactInfoItem = ({ icon: Icon, label, value, delay }) => (
-  <div className="group flex cursor-default items-start gap-5 rounded-[2rem] border border-transparent p-4 shadow-sm transition-all duration-300 hover:border-emerald-500/20 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(52,211,153,0.1)]">
+  <div className="group flex cursor-default items-start gap-4 rounded-3xl border border-transparent p-3 shadow-sm transition-all duration-300 hover:border-emerald-500/20 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(52,211,153,0.1)] sm:gap-5 sm:rounded-[2rem] sm:p-4">
     <div className="rounded-xl bg-emerald-500/10 p-4 text-emerald-400 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] ring-1 ring-emerald-500/30 transition-all duration-300 group-hover:bg-emerald-500/20 group-hover:shadow-[0_0_30px_rgba(52,211,153,0.5)]">
       <Icon size={24} />
     </div>
@@ -56,13 +56,13 @@ export default function ContactPage() {
           <Breadcrumb items={[{ label: "Contact Us", href: "/contact" }]} />
 
           <div className="relative z-10 mb-20 mt-12">
-            <h1 className="mb-8 text-5xl font-bold tracking-tight text-foreground md:text-7xl">
-              Let&apos;s <br />
-              <span className="bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent">
+            <h1 className="mb-6 text-[3.5rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:mb-8 sm:text-5xl md:text-[5rem] lg:text-[7rem]">
+              Let&apos;s{" "}
+              <span className="bg-gradient-to-r from-forest to-forest/60 bg-clip-text text-transparent">
                 Talk
               </span>
             </h1>
-            <p className="max-w-2xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
+            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl md:text-2xl">
               Have a project in mind or just want to explore what&apos;s
               possible — reach out.
             </p>
@@ -93,7 +93,7 @@ export default function ContactPage() {
               </div>
 
               {/* What Happens Next Card */}
-              <div className="group relative mt-12 overflow-hidden rounded-[2rem] border border-border bg-card/80 p-8 shadow-xl backdrop-blur-sm transition-all duration-500 hover:border-emerald-500/30 hover:shadow-[0_0_30px_rgba(52,211,153,0.15)]">
+              <div className="group relative mt-12 overflow-hidden rounded-[2rem] border border-border bg-card/80 p-6 shadow-xl backdrop-blur-sm transition-all duration-500 hover:border-emerald-500/30 hover:shadow-[0_0_30px_rgba(52,211,153,0.15)] sm:p-8">
                 <div className="absolute inset-0 bg-emerald-500/5 blur-[80px] transition-all duration-700 group-hover:bg-emerald-500/10" />
                 <h3 className="relative mb-6 text-2xl font-bold text-foreground">
                   What Happens Next

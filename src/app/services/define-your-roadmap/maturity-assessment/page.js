@@ -103,7 +103,7 @@ export default function MaturityAssessment() {
               <div className="max-w-[1050px]">
                 <motion.h1
                   variants={fadeIn}
-                  className="mb-8 indent-0 text-[2.5rem] font-black uppercase leading-[0.85] tracking-tighter text-white mix-blend-difference drop-shadow-[0_0_30px_hsl(var(--forest)/0.3)] sm:text-[3rem] md:text-[5rem] lg:text-[7.5rem]"
+                  className="mb-8 indent-0 text-[2rem] font-black uppercase leading-[0.95] tracking-tighter text-white mix-blend-difference drop-shadow-[0_0_30px_hsl(var(--forest)/0.3)] sm:text-[3rem] sm:leading-[0.85] md:text-[5rem] lg:text-[7.5rem]"
                 >
                   <span className="stroke-text isolate inline-block bg-gradient-to-r from-foreground to-foreground/40 bg-clip-text text-transparent mix-blend-normal">
                     Data
@@ -116,7 +116,7 @@ export default function MaturityAssessment() {
                   </span>
                 </motion.h1>
 
-                <div className="relative mt-8 grid max-w-5xl gap-8 rounded-[2rem] border border-border/60 bg-background/85 p-8 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.2)] backdrop-blur-2xl md:grid-cols-2 md:gap-10 md:p-12 lg:gap-16">
+                <div className="relative mt-8 grid max-w-5xl gap-6 rounded-3xl border border-border/60 bg-background/85 p-6 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.2)] backdrop-blur-2xl sm:gap-8 sm:rounded-[2rem] sm:p-8 md:grid-cols-2 md:gap-10 md:p-12 lg:gap-16">
                   <div className="absolute -inset-[2px] -z-10 rounded-[2rem] bg-gradient-to-b from-forest/30 to-transparent" />
 
                   <motion.p
@@ -347,7 +347,7 @@ export default function MaturityAssessment() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeIn}
-                className="group relative z-10 w-full overflow-hidden rounded-br-[3rem] rounded-tl-[3rem] border-2 border-border bg-card p-10 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-forest/30 md:w-[90%] lg:p-12"
+                className="group relative z-10 w-full overflow-hidden rounded-br-[2.5rem] rounded-tl-[2.5rem] border-2 border-border bg-card p-6 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-forest/30 sm:rounded-br-[3rem] sm:rounded-tl-[3rem] sm:p-10 md:w-[90%] lg:p-12"
               >
                 <div className="pointer-events-none absolute -right-4 -top-10 select-none text-[6rem] font-black leading-[0.75] text-rose-500/10 transition-colors duration-500 group-hover:text-rose-500/15 sm:text-[8rem] md:-rotate-12 md:text-[18rem]">
                   01
@@ -387,7 +387,7 @@ export default function MaturityAssessment() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeIn}
-                className="group relative z-20 mt-6 w-full self-end overflow-hidden rounded-bl-[3rem] rounded-tr-[3rem] bg-foreground p-8 text-background shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.5)] transition-transform duration-500 hover:scale-[1.02] sm:-mt-12 md:w-[95%] lg:-mt-24 lg:p-12"
+                className="group relative z-20 mt-6 w-full self-end overflow-hidden rounded-bl-[2.5rem] rounded-tr-[2.5rem] bg-foreground p-6 text-background shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.5)] transition-transform duration-500 hover:scale-[1.02] sm:-mt-12 sm:rounded-bl-[3rem] sm:rounded-tr-[3rem] sm:p-8 md:w-[95%] lg:-mt-24 lg:p-12"
               >
                 <div className="pointer-events-none absolute -bottom-8 -left-6 select-none text-[6rem] font-black leading-[0.75] text-background/10 transition-colors duration-500 group-hover:text-background/15 sm:text-[8rem] md:rotate-12 md:text-[18rem]">
                   02
@@ -428,7 +428,7 @@ export default function MaturityAssessment() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeIn}
-                className="group relative z-30 mt-6 w-full overflow-hidden rounded-br-[3rem] rounded-tl-[3rem] border-x-4 border-y border-orange-500 bg-card p-8 shadow-[0_20px_60px_-15px_rgba(249,115,22,0.2)] transition-transform duration-500 hover:scale-[1.02] sm:-mt-10 md:w-[90%] lg:-mt-16 lg:w-[85%] lg:p-12"
+                className="group relative z-30 mt-6 w-full overflow-hidden rounded-br-[2.5rem] rounded-tl-[2.5rem] border-x-4 border-y border-orange-500 bg-card p-6 shadow-[0_20px_60px_-15px_rgba(249,115,22,0.2)] transition-transform duration-500 hover:scale-[1.02] sm:-mt-10 sm:rounded-br-[3rem] sm:rounded-tl-[3rem] sm:p-8 md:w-[90%] lg:-mt-16 lg:w-[85%] lg:p-12"
               >
                 <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none text-[6rem] font-black leading-[0.75] text-orange-500/10 transition-transform duration-700 group-hover:scale-110 sm:text-[8rem] md:text-[20rem]">
                   03
@@ -476,7 +476,7 @@ export default function MaturityAssessment() {
               <h2 className="mb-6 inline-block border border-forest/30 bg-forest/10 px-4 py-2 text-sm font-black uppercase tracking-[0.4em] text-forest">
                 [ DELIVERABLES ]
               </h2>
-              <h3 className="text-[2.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground md:text-[4.5rem]">
+              <h3 className="text-[2rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:text-[2.5rem] md:text-[4.5rem]">
                 Clarity over
                 <br />
                 assumptions.
@@ -496,7 +496,7 @@ export default function MaturityAssessment() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="group relative col-span-1 flex min-h-[350px] flex-col justify-between overflow-hidden bg-card p-8 transition-colors duration-500 hover:bg-forest/5 md:col-span-2 lg:p-12"
+              className="group relative col-span-1 flex min-h-[300px] flex-col justify-between overflow-hidden bg-card p-6 transition-colors duration-500 hover:bg-forest/5 sm:min-h-[350px] sm:p-8 md:col-span-2 lg:p-12"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.08),transparent_50%)]" />
               <div className="relative z-10 mb-16 flex items-start justify-between">
@@ -530,7 +530,7 @@ export default function MaturityAssessment() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="group relative flex min-h-[350px] flex-col justify-between bg-card p-8 transition-colors duration-500 hover:bg-cyan-500/5 lg:p-12"
+              className="group relative flex min-h-[300px] flex-col justify-between bg-card p-6 transition-colors duration-500 hover:bg-cyan-500/5 sm:min-h-[350px] sm:p-8 lg:p-12"
             >
               <div className="relative z-10 mb-14 flex items-start justify-between">
                 <Target
@@ -562,7 +562,7 @@ export default function MaturityAssessment() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="group relative flex min-h-[350px] flex-col justify-between bg-card p-8 transition-colors duration-500 hover:bg-blue-500/5 lg:p-12"
+              className="group relative flex min-h-[300px] flex-col justify-between bg-card p-6 transition-colors duration-500 hover:bg-blue-500/5 sm:min-h-[350px] sm:p-8 lg:p-12"
             >
               <div className="relative z-10 mb-14 flex items-start justify-between">
                 <ShieldCheck
@@ -595,7 +595,7 @@ export default function MaturityAssessment() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="group relative col-span-1 flex flex-col items-center justify-between gap-12 overflow-hidden bg-foreground p-10 text-background md:col-span-2 md:flex-row md:p-10 lg:col-span-4 lg:p-16 lg:p-6"
+              className="group relative col-span-1 flex flex-col items-center justify-between gap-12 overflow-hidden bg-foreground p-8 text-background sm:p-10 md:col-span-2 md:flex-row lg:col-span-4 lg:p-16 lg:px-6"
             >
               <div className="pointer-events-none absolute right-0 top-0 h-full w-full max-w-[800px] bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.25),transparent_60%)] opacity-50 transition-opacity duration-700 group-hover:opacity-100" />
 
@@ -680,7 +680,7 @@ export default function MaturityAssessment() {
           <div className="relative grid grid-cols-1 lg:grid-cols-12 lg:items-start lg:gap-0">
             {/* Left side: Image + Relatable Value Box */}
             <div className="z-10 flex h-full flex-col lg:col-span-8 lg:col-start-1 lg:row-start-1">
-              <div className="relative h-[400px] min-h-[400px] shrink-0 overflow-hidden border-8 border-foreground contrast-[1.1] grayscale-[40%] lg:h-[650px] lg:min-h-[650px]">
+              <div className="relative h-[300px] min-h-[300px] shrink-0 overflow-hidden border-[6px] border-foreground contrast-[1.1] grayscale-[40%] sm:h-[400px] sm:min-h-[400px] sm:border-8 lg:h-[650px] lg:min-h-[650px]">
                 <Image
                   src="/images/maturity/live_enterprise_alignment.png"
                   alt="Executive Team Discussing Data Strategy"
@@ -713,7 +713,7 @@ export default function MaturityAssessment() {
                     The ROI of Reality
                   </h3>
 
-                  <p className="mb-8 h-full border-l-[3px] border-forest/30 pl-6 text-base font-bold leading-relaxed text-muted-foreground">
+                  <p className="mb-8 border-l-[3px] border-forest/30 pl-6 text-base font-bold leading-relaxed text-muted-foreground">
                     A maturity assessment isn&apos;t about pointing fingers.
                     It&apos;s about eliminating invisible{" "}
                     <strong className="text-foreground">
@@ -722,6 +722,25 @@ export default function MaturityAssessment() {
                     so you can stop wrestling with fractured pipelines and start
                     scaling advanced analytics securely.
                   </p>
+
+                  {/* Aesthetic Data Visualization Filler */}
+                  <div className="relative mb-8 min-h-[160px] w-full flex-1 overflow-hidden rounded-2xl border-2 border-border/60 shadow-inner">
+                    <Image
+                      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop"
+                      alt="Analytics Scaling Up"
+                      fill
+                      className="object-cover object-center opacity-90 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-100 contrast-[1.1] brightness-90 grayscale-[20%]"
+                    />
+                    {/* Deep inner shadow to ensure text and badge pop, killing the white wash */}
+                    <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.6)] z-10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none" />
+                    
+                    {/* Live indicator badge */}
+                    <div className="absolute top-3 left-3 z-20 flex items-center gap-2 bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/20">
+                      <span className="block h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Velocity Optimized</span>
+                    </div>
+                  </div>
 
                   <div className="relative mt-auto grid grid-cols-2 gap-8 border-t border-border/80 pt-6">
                     <div className="absolute bottom-0 left-1/2 top-6 w-px bg-border/60"></div>
@@ -751,7 +770,7 @@ export default function MaturityAssessment() {
               </motion.div>
             </div>
 
-            <div className="relative z-20 mx-auto -mt-20 w-[95%] min-w-0 max-w-lg overflow-visible border-4 border-foreground bg-card/95 p-6 shadow-[20px_20px_0px_0px_hsl(var(--forest))] backdrop-blur-2xl sm:p-10 lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:mx-0 lg:mt-24 lg:w-auto lg:max-w-none lg:self-start lg:p-12">
+            <div className="relative z-20 mx-auto -mt-16 w-[92%] min-w-0 max-w-lg overflow-visible border-[3px] border-foreground bg-card/95 p-6 shadow-[10px_10px_0px_0px_hsl(var(--forest))] backdrop-blur-2xl sm:-mt-20 sm:w-[95%] sm:border-4 sm:p-10 sm:shadow-[20px_20px_0px_0px_hsl(var(--forest))] lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:mx-0 lg:mt-24 lg:w-auto lg:max-w-none lg:self-start lg:p-12">
               <div className="mb-8 flex items-center gap-4">
                 <span className="h-4 w-4 shrink-0 rounded-none bg-forest shadow-[2px_2px_0px_0px_foreground]"></span>
                 <span className="text-sm font-black uppercase tracking-[0.3em] text-forest">
@@ -759,14 +778,14 @@ export default function MaturityAssessment() {
                 </span>
               </div>
 
-              <h2 className="mb-8 text-3xl font-black uppercase leading-[0.9] tracking-tight text-foreground md:text-5xl">
+              <h2 className="mb-6 text-2xl font-black uppercase leading-[0.95] tracking-tight text-foreground sm:mb-8 sm:text-3xl md:text-5xl">
                 How we helped a PE portfolio company find their gaps
                 <span className="mt-2 inline-block bg-forest px-2 py-1 text-forest-foreground">
                   .
                 </span>
               </h2>
 
-              <p className="mb-10 border-l-[4px] border-forest bg-muted/40 p-4 pl-6 text-xl font-bold leading-relaxed text-foreground/80">
+              <p className="mb-8 border-l-[3px] border-forest bg-muted/40 p-4 pl-5 text-base font-bold leading-relaxed text-foreground/80 sm:mb-10 sm:border-l-[4px] sm:pl-6 sm:text-xl">
                 A PE-backed software company had invested in Azure Analysis
                 Services (AAS) for enterprise data modeling. Leadership believed
                 they were &quot;data mature.&quot; But refresh failures were
@@ -858,7 +877,7 @@ export default function MaturityAssessment() {
         <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] max-w-full rounded-full bg-forest/5 blur-[100px]" />
         <div className="container relative z-10 mx-auto max-w-5xl px-6">
           <div className="mb-16 border-b-4 border-foreground pb-8">
-            <h2 className="text-[2.5rem] font-black uppercase leading-[0.9] tracking-tighter md:text-[5rem]">
+            <h2 className="text-[2rem] font-black uppercase leading-[0.9] tracking-tighter sm:text-[2.5rem] md:text-[5rem]">
               Frequently
               <br />
               Asked Questions
@@ -894,7 +913,7 @@ export default function MaturityAssessment() {
               <h2 className="mb-8 flex items-center gap-4 text-sm font-black uppercase tracking-[0.4em] text-forest">
                 <span className="h-[2px] w-12 bg-forest"></span> Next Steps
               </h2>
-              <h3 className="mb-10 text-[2.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground drop-shadow-[5px_5px_0_rgba(0,0,0,0.02)] md:text-[5rem] lg:text-[6rem]">
+              <h3 className="mb-8 text-[2rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground drop-shadow-[5px_5px_0_rgba(0,0,0,0.02)] sm:mb-10 sm:text-[2.5rem] sm:leading-[0.85] md:text-[5rem] lg:text-[6rem]">
                 Continue <br />
                 <span className="stroke-text bg-gradient-to-r from-foreground to-foreground/30 bg-clip-text text-transparent mix-blend-normal">
                   Your
@@ -902,7 +921,7 @@ export default function MaturityAssessment() {
                 <br />
                 Journey
               </h3>
-              <p className="max-w-xl border-l-[4px] border-forest bg-muted/30 p-8 text-xl font-bold leading-relaxed text-foreground/80 shadow-[15px_15px_0px_0px_rgba(0,0,0,0.03)] backdrop-blur-md transition-colors selection:bg-forest/30 hover:bg-muted/50">
+              <p className="max-w-xl border-l-[4px] border-forest bg-muted/30 p-6 text-base font-bold leading-relaxed text-foreground/80 shadow-[10px_10px_0px_0px_rgba(0,0,0,0.03)] backdrop-blur-md transition-colors selection:bg-forest/30 hover:bg-muted/50 sm:p-8 sm:text-xl sm:shadow-[15px_15px_0px_0px_rgba(0,0,0,0.03)]">
                 Data maturity is not a static destination. Explore related
                 services to help you define and execute a resilient, scalable,
                 and high-impact enterprise data strategy.
@@ -1053,7 +1072,7 @@ export default function MaturityAssessment() {
 
         <div className="container relative z-10 mx-auto max-w-6xl px-6">
           <div className="text-center">
-            <h2 className="mb-10 select-none text-[3rem] font-black uppercase leading-[0.8] tracking-tighter text-foreground md:text-[7rem]">
+            <h2 className="mb-8 select-none text-[2.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground sm:mb-10 sm:text-[3rem] md:text-[7rem]">
               <span className="text-forest underline decoration-forest/50 underline-offset-8">
                 Know
               </span>
@@ -1062,7 +1081,7 @@ export default function MaturityAssessment() {
               Stand.
             </h2>
 
-            <div className="relative mx-auto max-w-4xl border border-border/80 bg-card/70 p-8 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] backdrop-blur-xl md:p-12">
+            <div className="relative mx-auto max-w-4xl border border-border/80 bg-card/70 p-6 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] backdrop-blur-xl sm:p-8 md:p-12">
               <div className="absolute -left-4 -top-4 h-8 w-8 border-l-4 border-t-4 border-forest"></div>
               <div className="absolute -bottom-4 -right-4 h-8 w-8 border-b-4 border-r-4 border-forest"></div>
 
@@ -1158,9 +1177,9 @@ function MethodPanel({ step, week, title, desc, color }) {
 export function FAQItem({ q, a }) {
   return (
     <details className="group relative -mt-[3px] cursor-pointer rounded-none border-[3px] border-border/80 bg-card p-6 shadow-[5px_5px_0px_0px_rgba(0,0,0,0.1)] transition-all duration-300 hover:border-foreground hover:shadow-[10px_10px_0_0_foreground] md:p-10 dark:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.1)] [&_summary::-webkit-details-marker]:hidden">
-      <summary className="flex select-none items-center justify-between pr-12 text-2xl font-black uppercase tracking-tight outline-none">
-        {q}
-        <div className="absolute right-10 top-1/2 flex h-12 w-12 shrink-0 -translate-y-1/2 items-center justify-center bg-forest/10 text-forest shadow-[4px_4px_0_0_hsl(var(--forest)/0.3)] transition-all duration-300 group-open:rotate-90 group-open:bg-forest group-open:text-forest-foreground group-open:shadow-[2px_2px_0_0_foreground]">
+      <summary className="flex select-none items-center justify-between gap-6 text-2xl font-black uppercase tracking-tight outline-none">
+        <span className="flex-1">{q}</span>
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-forest/10 text-forest shadow-[4px_4px_0_0_hsl(var(--forest)/0.3)] transition-all duration-300 group-open:rotate-90 group-open:bg-forest group-open:text-forest-foreground group-open:shadow-[2px_2px_0_0_foreground]">
           <ChevronRight className="h-6 w-6" />
         </div>
       </summary>

@@ -1,7 +1,9 @@
 // @ts-nocheck
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Terminal } from "lucide-react";
+import { useState } from "react";
+import ApplicationModal from "./ApplicationModal";
 
 export const JOBS = [
   {
@@ -11,6 +13,7 @@ export const JOBS = [
     location: "Remote",
     desc: "Building data pipelines and infrastructure on Azure and Microsoft Fabric. Data Factory, Lakehouse implementation, source system integrations. 3+ years Azure experience. Strong SQL and Python.",
     subject: "Application: Azure Data Engineer",
+    skills: ["Azure Data Factory", "Python", "PySpark", "SQL"],
   },
   {
     title: "Fabric Data Engineer",
@@ -19,6 +22,7 @@ export const JOBS = [
     location: "Remote",
     desc: "Microsoft Fabric implementations — Lakehouse, notebooks, pipelines, real-time analytics. 2+ years data engineering. Experience with Fabric, Databricks, or Spark environments.",
     subject: "Application: Fabric Data Engineer",
+    skills: ["Microsoft Fabric", "OneLake", "Databricks", "Scala"],
   },
   {
     title: "Analytics Engineer",
@@ -27,6 +31,7 @@ export const JOBS = [
     location: "Remote",
     desc: "The layer between raw data and business consumption. Gold layer datasets, transformation logic, data quality, semantic model design. 3+ years analytics engineering. Strong SQL.",
     subject: "Application: Analytics Engineer",
+    skills: ["dbt", "Snowflake", "SQL Server", "Data Modeling"],
   },
   {
     title: "Power BI Developer",
@@ -35,12 +40,13 @@ export const JOBS = [
     location: "Remote",
     desc: "Semantic models, DAX, reports that executives actually use. 3+ years Power BI. Strong DAX and data modeling fundamentals. Experience building semantic models, not just reports.",
     subject: "Application: Power BI Developer",
+    skills: ["Power BI", "DAX", "Power Query", "Tabular Editor"],
   },
 ];
 
 const STYLES = {
   section:
-    "py-32 md:py-48 bg-background relative border-y border-border/50 overflow-hidden",
+    "py-20 md:py-32 bg-background relative border-y border-border/50 overflow-hidden",
   bgTopRight:
     "absolute top-0 right-0 w-[1200px] h-[1200px] bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.08),transparent_60%)] pointer-events-none",
   bgBottomLeft:
@@ -78,12 +84,12 @@ const STYLES = {
   mobileHeading: "text-5xl font-black tracking-tighter mb-4 text-foreground",
   mobileDesc: "text-lg text-muted-foreground font-medium",
   jobCard:
-    "group block relative p-8 md:p-12 rounded-[2.5rem] bg-card/60 backdrop-blur-md border-[2px] border-border shadow-sm hover:shadow-[12px_12px_0_hsl(var(--forest))] transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:border-forest hover:bg-card",
+    "group w-full text-left block relative p-8 md:p-12 rounded-[2.5rem] bg-card/60 backdrop-blur-md border-[2px] border-border shadow-sm hover:shadow-[12px_12px_0_hsl(var(--forest))] transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:border-forest hover:bg-card flex flex-col h-full focus:outline-none focus:ring-4 focus:ring-forest/20",
   jobCardHoverBg:
     "absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--forest)/0.05),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none",
   jobCardInner:
-    "flex flex-col xl:flex-row xl:items-start justify-between gap-8 relative z-10",
-  jobContent: "flex-1 w-full relative",
+    "flex flex-col xl:flex-row xl:items-start justify-between gap-8 relative z-10 flex-1",
+  jobContent: "flex-1 w-full relative flex flex-col",
   pillsWrapper: "flex flex-wrap items-center gap-2 mb-8",
   pillType:
     "px-5 py-2 rounded-full bg-forest text-forest-foreground tracking-[0.1em] uppercase text-xs font-black shadow-sm",
@@ -95,7 +101,10 @@ const STYLES = {
   jobTitle:
     "text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-foreground group-hover:text-forest transition-colors duration-300 tracking-tight leading-[1.05]",
   jobDesc:
-    "text-muted-foreground font-medium text-lg lg:text-xl leading-relaxed max-w-2xl relative z-10 group-hover:text-foreground/80 transition-colors duration-300",
+    "text-muted-foreground font-medium text-lg lg:text-xl leading-relaxed max-w-2xl relative z-10 group-hover:text-foreground/80 transition-colors duration-300 mb-8",
+  skillsWrapper: "mt-auto pt-6 border-t border-border/50 flex flex-wrap gap-2 items-center",
+  skillIcon: "text-muted-foreground mr-2 w-4 h-4",
+  skillPill: "px-3 py-1 rounded-md bg-primary/5 text-muted-foreground border border-primary/10 text-xs font-semibold tracking-wide",
   actionBlock:
     "relative z-10 shrink-0 mt-4 xl:mt-0 flex flex-row xl:flex-col items-center xl:items-end justify-between xl:justify-start w-full xl:w-auto border-t xl:border-t-0 xl:border-l border-border/50 pt-6 xl:pt-0 xl:pl-8",
   actionText:
@@ -106,99 +115,121 @@ const STYLES = {
 };
 
 export default function OpenPositions() {
+  const [selectedJob, setSelectedJob] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleApply = (jobTitle) => {
+    setSelectedJob(jobTitle);
+    setIsModalOpen(true);
+  };
+
   return (
-    <section className={STYLES.section}>
-      <div className={STYLES.bgTopRight} aria-hidden="true" />
-      <div className={STYLES.bgBottomLeft} aria-hidden="true" />
+    <>
+      <section className={STYLES.section}>
+        <div className={STYLES.bgTopRight} aria-hidden="true" />
+        <div className={STYLES.bgBottomLeft} aria-hidden="true" />
 
-      <div className={STYLES.container}>
-        <div className={STYLES.gridOuter}>
-          <div className={STYLES.stickyColumn}>
-            <div className={STYLES.stickyCard}>
-              {/* @media (prefers-reduced-motion: reduce) handles animation disable internally via tailwind logic usually, but here we just suppress visually if screen reader */}
-              <div className={STYLES.spinnerBg} aria-hidden="true">
-                <div className={STYLES.spinner1} />
-                <div className={STYLES.spinner2} />
-                <div className={STYLES.spinner3} />
-              </div>
-
-              <div className={STYLES.stickyContent}>
-                <div className={STYLES.badgeWrapper}>
-                  <span className={STYLES.badgeLine} aria-hidden="true" />
-                  <span className={STYLES.badgeText}>Now Hiring</span>
+        <div className={STYLES.container}>
+          <div className={STYLES.gridOuter}>
+            <div className={STYLES.stickyColumn}>
+              <div className={STYLES.stickyCard}>
+                <div className={STYLES.spinnerBg} aria-hidden="true">
+                  <div className={STYLES.spinner1} />
+                  <div className={STYLES.spinner2} />
+                  <div className={STYLES.spinner3} />
                 </div>
-                <h2 className={STYLES.heading}>
-                  Open <br aria-hidden="true" />
-                  <span className={STYLES.headingAccent}>Positions.</span>
-                </h2>
-                <p className={STYLES.paragraph}>
-                  Join an elite engineering culture building the world&apos;s
-                  most robust data platforms on the Microsoft stack.
-                </p>
 
-                <div className={STYLES.metricsWrapper}>
-                  <div className="text-foreground">
-                    <span className={STYLES.metricNumber}>{JOBS.length}</span>
+                <div className={STYLES.stickyContent}>
+                  <div className={STYLES.badgeWrapper}>
+                    <span className={STYLES.badgeLine} aria-hidden="true" />
+                    <span className={STYLES.badgeText}>Now Hiring</span>
                   </div>
-                  <div className={STYLES.metricDivider} aria-hidden="true" />
-                  <p className={STYLES.metricLabel}>
-                    Active Roles <br aria-hidden="true" /> Available Now
+                  <h2 className={STYLES.heading}>
+                    Open <br aria-hidden="true" />
+                    <span className={STYLES.headingAccent}>Positions.</span>
+                  </h2>
+                  <p className={STYLES.paragraph}>
+                    Join an elite engineering culture building the world&apos;s
+                    most robust data platforms on the Microsoft stack.
                   </p>
+
+                  <div className={STYLES.metricsWrapper}>
+                    <div className="text-foreground">
+                      <span className={STYLES.metricNumber}>{JOBS.length}</span>
+                    </div>
+                    <div className={STYLES.metricDivider} aria-hidden="true" />
+                    <p className={STYLES.metricLabel}>
+                      Active Roles <br aria-hidden="true" /> Available Now
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className={STYLES.listColumn}>
-            <div className={STYLES.mobileHeader}>
-              <h2 className={STYLES.mobileHeading}>Open Positions</h2>
-              <p className={STYLES.mobileDesc}>
-                Join an elite engineering culture.
-              </p>
+            <div className={STYLES.listColumn}>
+              <div className={STYLES.mobileHeader}>
+                <h2 className={STYLES.mobileHeading}>Open Positions</h2>
+                <p className={STYLES.mobileDesc}>
+                  Join an elite engineering culture.
+                </p>
+              </div>
+
+              {JOBS.map((job, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleApply(job.title)}
+                  className={STYLES.jobCard}
+                  aria-label={`Apply for the ${job.title} position`}
+                >
+                  <div className={STYLES.jobCardHoverBg} aria-hidden="true" />
+
+                  <div className={STYLES.jobCardInner}>
+                    <div className={STYLES.jobContent}>
+                      <div className={STYLES.pillsWrapper}>
+                        <span className={STYLES.pillType}>{job.type}</span>
+                        <span className={STYLES.pillDefault}>{job.location}</span>
+                        <span className={STYLES.pillExperience}>
+                          <span className={STYLES.pulseDot} aria-hidden="true" />{" "}
+                          {job.experience}
+                        </span>
+                      </div>
+
+                      <h3 className={STYLES.jobTitle}>{job.title}</h3>
+
+                      <p className={STYLES.jobDesc}>{job.desc}</p>
+
+                      <div className={STYLES.skillsWrapper}>
+                        <Terminal className={STYLES.skillIcon} />
+                        {job.skills.map((skill, i) => (
+                          <span key={i} className={STYLES.skillPill}>{skill}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className={STYLES.actionBlock}>
+                      <span className={STYLES.actionText}>Apply Now</span>
+
+                      <div className={STYLES.actionButton} aria-hidden="true">
+                        <ArrowRight
+                          size={24}
+                          strokeWidth={2.5}
+                          className={STYLES.actionIcon}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              ))}
             </div>
-
-            {JOBS.map((job, idx) => (
-              <a
-                key={idx}
-                href={`mailto:careers@grootanalytics.com?subject=${job.subject}`}
-                className={STYLES.jobCard}
-                aria-label={`Apply for the ${job.title} position via email`}
-              >
-                <div className={STYLES.jobCardHoverBg} aria-hidden="true" />
-
-                <div className={STYLES.jobCardInner}>
-                  <div className={STYLES.jobContent}>
-                    <div className={STYLES.pillsWrapper}>
-                      <span className={STYLES.pillType}>{job.type}</span>
-                      <span className={STYLES.pillDefault}>{job.location}</span>
-                      <span className={STYLES.pillExperience}>
-                        <span className={STYLES.pulseDot} aria-hidden="true" />{" "}
-                        {job.experience}
-                      </span>
-                    </div>
-
-                    <h3 className={STYLES.jobTitle}>{job.title}</h3>
-
-                    <p className={STYLES.jobDesc}>{job.desc}</p>
-                  </div>
-
-                  <div className={STYLES.actionBlock}>
-                    <span className={STYLES.actionText}>Apply Now</span>
-
-                    <div className={STYLES.actionButton} aria-hidden="true">
-                      <ArrowRight
-                        size={24}
-                        strokeWidth={2.5}
-                        className={STYLES.actionIcon}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </a>
-            ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <ApplicationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        jobTitle={selectedJob} 
+      />
+    </>
   );
 }

@@ -67,9 +67,11 @@ export function ServicesSection() {
         */}
           <div className="flex w-full justify-center">
             <div className="relative transform transition-transform duration-300 lg:origin-top lg:scale-[0.80] xl:scale-[0.90] 2xl:scale-100">
-              <div className="mx-auto flex flex-col flex-nowrap items-stretch justify-center gap-6 rounded-2xl p-6 md:gap-8 md:p-8 lg:flex-row lg:gap-0">
+              <div className="relative mx-auto flex flex-col flex-nowrap items-center justify-center gap-8 rounded-2xl p-4 sm:p-6 md:gap-10 md:p-8 lg:flex-row lg:items-stretch lg:gap-0">
+                {/* Mobile Vertical Connection Line */}
+                <div className="absolute bottom-20 left-1/2 top-20 z-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-primary/0 via-primary/30 to-primary/0 lg:hidden" />
                 {/* Card 1 (Left) */}
-                <div className="group relative z-40 h-[28rem] w-full max-w-sm flex-shrink-0 overflow-visible rounded-lg border-0 bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md md:bg-card/80 lg:mr-[99px] lg:w-[18rem] lg:max-w-[18rem]">
+                <div className="group relative z-10 h-auto w-full max-w-sm flex-shrink-0 overflow-visible rounded-3xl border border-primary/10 bg-card/80 p-8 shadow-md backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 lg:z-40 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:bg-card lg:p-6 lg:backdrop-blur-none lg:hover:shadow-md md:bg-card/80">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -129,7 +131,7 @@ export function ServicesSection() {
                   </div>
                   <div className="relative z-10 flex h-full flex-col items-center">
                     {/* Icon */}
-                    <div className="flex-shrink-0 rounded-2xl bg-gradient-to-br from-primary/15 via-primary/10 to-forest/10 p-4 ring-1 ring-primary/20">
+                    <div className="relative z-10 flex-shrink-0 rounded-2xl bg-card bg-gradient-to-br from-primary/15 via-primary/10 to-forest/10 p-4 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:shadow-primary/20">
                       {React.createElement(cards[0].icon, {
                         className:
                           "w-10 h-10 sm:w-11 sm:h-11 text-forest stroke-[1.5]",
@@ -159,7 +161,7 @@ export function ServicesSection() {
                       href={cards[0].link || "#"}
                       className="mt-4 flex w-full flex-shrink-0 justify-center"
                     >
-                      <button className="rounded-full bg-forest px-6 py-2.5 text-sm font-medium tracking-wide text-forest-foreground shadow-md transition-colors duration-300 hover:bg-forest/90 hover:shadow-lg">
+                      <button className="w-full sm:w-auto rounded-full bg-forest px-6 py-2.5 text-sm font-medium tracking-wide text-forest-foreground shadow-md transition-all duration-300 hover:bg-forest/90 hover:shadow-lg group-hover:-translate-y-0.5 group-hover:shadow-lg">
                         Learn More
                       </button>
                     </Link>
@@ -167,7 +169,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Card 2 (Middle) */}
-                <div className="relative z-30 h-[28rem] w-full max-w-sm flex-shrink-0 overflow-visible rounded-lg border-0 bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md md:bg-card/80 lg:mr-[99px] lg:w-[18rem] lg:max-w-[18rem]">
+                <div className="group relative z-10 h-auto w-full max-w-sm flex-shrink-0 overflow-visible rounded-3xl border border-primary/10 bg-card/80 p-8 shadow-md backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 lg:z-30 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:bg-card lg:p-6 lg:backdrop-blur-none lg:hover:shadow-md md:bg-card/80">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -221,7 +223,7 @@ export function ServicesSection() {
                   </div>
                   <div className="relative z-10 flex h-full flex-col items-center">
                     {/* Icon */}
-                    <div className="flex-shrink-0 rounded-2xl bg-gradient-to-br from-primary/15 via-primary/10 to-forest/10 p-4 ring-1 ring-primary/20">
+                    <div className="relative z-10 flex-shrink-0 rounded-2xl bg-card bg-gradient-to-br from-primary/15 via-primary/10 to-forest/10 p-4 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:shadow-primary/20">
                       {React.createElement(cards[1].icon, {
                         className:
                           "w-10 h-10 sm:w-11 sm:h-11 text-forest stroke-[1.5]",
@@ -251,7 +253,7 @@ export function ServicesSection() {
                       href={cards[1].link || "#"}
                       className="mt-4 flex w-full flex-shrink-0 justify-center"
                     >
-                      <button className="rounded-full bg-forest px-6 py-2.5 text-sm font-medium tracking-wide text-forest-foreground shadow-md transition-colors duration-300 hover:bg-forest/90 hover:shadow-lg">
+                      <button className="w-full sm:w-auto rounded-full bg-forest px-6 py-2.5 text-sm font-medium tracking-wide text-forest-foreground shadow-md transition-all duration-300 hover:bg-forest/90 hover:shadow-lg group-hover:-translate-y-0.5 group-hover:shadow-lg">
                         Learn More
                       </button>
                     </Link>
@@ -259,7 +261,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Card 3 (AI Foundry) - Middle connector */}
-                <div className="relative z-20 h-[28rem] w-full max-w-sm flex-shrink-0 overflow-visible rounded-lg border-0 bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md md:bg-card/80 lg:mr-[99px] lg:w-[18rem] lg:max-w-[18rem]">
+                <div className="group relative z-10 h-auto w-full max-w-sm flex-shrink-0 overflow-visible rounded-3xl border border-primary/10 bg-card/80 p-8 shadow-md backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 lg:z-20 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:bg-card lg:p-6 lg:backdrop-blur-none lg:hover:shadow-md md:bg-card/80">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -313,7 +315,7 @@ export function ServicesSection() {
                   </div>
                   <div className="relative z-10 flex h-full flex-col items-center">
                     {/* Icon */}
-                    <div className="flex-shrink-0 rounded-2xl bg-gradient-to-br from-primary/15 via-primary/10 to-forest/10 p-4 ring-1 ring-primary/20">
+                    <div className="relative z-10 flex-shrink-0 rounded-2xl bg-card bg-gradient-to-br from-primary/15 via-primary/10 to-forest/10 p-4 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:shadow-primary/20">
                       {React.createElement(cards[2].icon, {
                         className:
                           "w-10 h-10 sm:w-11 sm:h-11 text-forest stroke-[1.5]",
@@ -343,7 +345,7 @@ export function ServicesSection() {
                       href={cards[2].link || "#"}
                       className="mt-4 flex w-full flex-shrink-0 justify-center"
                     >
-                      <button className="rounded-full bg-forest px-6 py-2.5 text-sm font-medium tracking-wide text-forest-foreground shadow-md transition-colors duration-300 hover:bg-forest/90 hover:shadow-lg">
+                      <button className="w-full sm:w-auto rounded-full bg-forest px-6 py-2.5 text-sm font-medium tracking-wide text-forest-foreground shadow-md transition-all duration-300 hover:bg-forest/90 hover:shadow-lg group-hover:-translate-y-0.5 group-hover:shadow-lg">
                         Learn More
                       </button>
                     </Link>
@@ -351,7 +353,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Card 4 (Copilot) - Closing card */}
-                <div className="relative z-10 h-[28rem] w-full max-w-sm flex-shrink-0 overflow-visible rounded-lg border-0 bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md md:bg-card/80 lg:w-[18rem] lg:max-w-[18rem]">
+                <div className="group relative z-10 h-auto w-full max-w-sm flex-shrink-0 overflow-visible rounded-3xl border border-primary/10 bg-card/80 p-8 shadow-md backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:bg-card lg:p-6 lg:backdrop-blur-none lg:hover:shadow-md md:bg-card/80">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -383,7 +385,7 @@ export function ServicesSection() {
                   </div>
                   <div className="relative z-10 flex h-full flex-col items-center">
                     {/* Icon */}
-                    <div className="flex-shrink-0 rounded-2xl bg-gradient-to-br from-primary/15 via-primary/10 to-forest/10 p-4 ring-1 ring-primary/20">
+                    <div className="relative z-10 flex-shrink-0 rounded-2xl bg-card bg-gradient-to-br from-primary/15 via-primary/10 to-forest/10 p-4 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:shadow-primary/20">
                       {React.createElement(cards[3].icon, {
                         className:
                           "w-10 h-10 sm:w-11 sm:h-11 text-forest stroke-[1.5]",
@@ -413,7 +415,7 @@ export function ServicesSection() {
                       href={cards[3].link || "#"}
                       className="mt-4 flex w-full flex-shrink-0 justify-center"
                     >
-                      <button className="rounded-full bg-forest px-6 py-2.5 text-sm font-medium tracking-wide text-forest-foreground shadow-md transition-colors duration-300 hover:bg-forest/90 hover:shadow-lg">
+                      <button className="w-full sm:w-auto rounded-full bg-forest px-6 py-2.5 text-sm font-medium tracking-wide text-forest-foreground shadow-md transition-all duration-300 hover:bg-forest/90 hover:shadow-lg group-hover:-translate-y-0.5 group-hover:shadow-lg">
                         Learn More
                       </button>
                     </Link>
