@@ -2,34 +2,26 @@ const sharp = require("sharp");
 const fs = require("fs");
 const path = require("path");
 
+/** Canonical favicon artwork: dark rounded tile + mark (not the legacy white-only SVG). */
+const SOURCE_SVG = path.join(
+  __dirname,
+  "public/svg/image2vector (2).svg",
+);
+const PUBLIC_SVG_FAVICON = path.join(__dirname, "public/svg/favicon.svg");
+
 async function generate() {
-  const svgPath = path.join(__dirname, "public/svg/favicon.svg");
-  const svgBuffer = fs.readFileSync(svgPath);
+  if (!fs.existsSync(SOURCE_SVG)) {
+    throw new Error(`Missing favicon source: ${SOURCE_SVG}`);
+  }
 
-  // The SVG is pure white but might have no bounds or bad bounds.
-  // sharp handles SVGs nicely, but we can force a density to render it high-res.
-  const renderedSvg = await sharp(svgBuffer, { density: 300 })
-    .resize(400, 400, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
-    .toBuffer();
+  const svgBuffer = fs.readFileSync(SOURCE_SVG);
 
-  const background = await sharp({
-    create: {
-      width: 512,
-      height: 512,
-      channels: 4,
-      background: "#0c1214",
-    },
-  })
-    .composite([
-      {
-        input: renderedSvg,
-        gravity: "center",
-      },
-    ])
+  // SVG includes #111827 card; pad to square with same tone for crisp scaling.
+  const background = await sharp(svgBuffer, { density: 300 })
+    .resize(512, 512, { fit: "contain", background: "#111827" })
     .png()
     .toBuffer();
 
-  // Google Search favicon guidance: use a square icon; 48px+ multiples help discovery.
   const sizes = {
     "favicon-16x16.png": 16,
     "favicon-32x32.png": 32,
@@ -53,6 +45,9 @@ async function generate() {
   ]);
   fs.writeFileSync(path.join(publicDir, "favicon.ico"), icoBuffer);
   console.log("Generated favicon.ico (16+32+48)");
+
+  fs.copyFileSync(SOURCE_SVG, PUBLIC_SVG_FAVICON);
+  console.log("Synced public/svg/favicon.svg from image2vector (2).svg");
 }
 
 generate().catch(console.error);
