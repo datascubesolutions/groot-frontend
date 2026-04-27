@@ -79,7 +79,7 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon-48x48-v2.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-v5.png", sizes: "48x48", type: "image/png" },
     ],
     apple: [
       { url: "/apple-touch-icon-v2.png", sizes: "180x180", type: "image/png" },
