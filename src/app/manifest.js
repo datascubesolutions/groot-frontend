@@ -22,7 +22,7 @@ export default function manifest() {
         purpose: "any",
       },
       {
-        src: "/apple-touch-icon.png",
+        src: "/apple-touch-icon-v2.png",
         sizes: "180x180",
         type: "image/png",
       },
