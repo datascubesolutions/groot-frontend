@@ -29,60 +29,110 @@ export async function GET(req) {
 
     const searchParams = req.nextUrl.searchParams;
     const days = parseInt(searchParams.get("days") || "30", 10);
+    const country = searchParams.get("country") || "all";
+    const device = searchParams.get("device") || "all";
     const startDate = `${days}daysAgo`;
+    const normalizedDays = [7, 30, 90, 365].includes(days) ? days : 30;
 
-    // 1. Fetch Global KPIs
-    const [kpiResponse] = await analyticsDataClient.runReport({
+    const filters = [];
+    if (country !== "all") {
+      filters.push({
+        filter: {
+          fieldName: "country",
+          stringFilter: { matchType: "EXACT", value: country },
+        },
+      });
+    }
+    if (device !== "all") {
+      filters.push({
+        filter: {
+          fieldName: "deviceCategory",
+          stringFilter: { matchType: "EXACT", value: device },
+        },
+      });
+    }
+    const dimensionFilter =
+      filters.length === 0
+        ? undefined
+        : filters.length === 1
+          ? filters[0]
+          : { andGroup: { expressions: filters } };
+
+    const reportBase = {
       property: `properties/${propertyId}`,
       dateRanges: [{ startDate, endDate: "today" }],
-      metrics: [
-        { name: "activeUsers" },
-        { name: "sessions" },
-        { name: "engagementRate" },
-        { name: "conversions" },
-      ],
-    });
+      dimensionFilter,
+    };
 
-    // 2. Fetch Time-Series Data (Trends)
-    const [trendResponse] = await analyticsDataClient.runReport({
-      property: `properties/${propertyId}`,
-      dateRanges: [{ startDate, endDate: "today" }],
-      dimensions: [{ name: "date" }],
-      metrics: [{ name: "activeUsers" }, { name: "sessions" }],
-      orderBys: [
-        { dimension: { dimensionName: "date" }, desc: false }, // Chronological
-      ],
-    });
-
-    // 3. Fetch Top Pages
-    const [pageResponse] = await analyticsDataClient.runReport({
-      property: `properties/${propertyId}`,
-      dateRanges: [{ startDate, endDate: "today" }],
-      dimensions: [{ name: "pagePath" }],
-      metrics: [{ name: "screenPageViews" }],
-      orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
-      limit: 7,
-    });
-
-    // 4. Fetch Traffic Sources
-    const [sourceResponse] = await analyticsDataClient.runReport({
-      property: `properties/${propertyId}`,
-      dateRanges: [{ startDate, endDate: "today" }],
-      dimensions: [{ name: "sessionSourceMedium" }],
-      metrics: [{ name: "sessions" }],
-      orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
-      limit: 5,
-    });
-
-    // 5. Fetch Key Event Interactions
-    const [eventResponse] = await analyticsDataClient.runReport({
-      property: `properties/${propertyId}`,
-      dateRanges: [{ startDate, endDate: "today" }],
-      dimensions: [{ name: "eventName" }],
-      metrics: [{ name: "eventCount" }],
-      orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
-      limit: 20,
-    });
+    const [
+      [kpiResponse],
+      [trendResponse],
+      [pageResponse],
+      [sourceResponse],
+      [eventResponse],
+      [regionResponse],
+      [deviceResponse],
+      [countryOptionsResponse],
+    ] = await Promise.all([
+      analyticsDataClient.runReport({
+        ...reportBase,
+        metrics: [
+          { name: "activeUsers" },
+          { name: "sessions" },
+          { name: "engagementRate" },
+          { name: "conversions" },
+        ],
+      }),
+      analyticsDataClient.runReport({
+        ...reportBase,
+        dimensions: [{ name: "date" }],
+        metrics: [{ name: "activeUsers" }, { name: "sessions" }],
+        orderBys: [{ dimension: { dimensionName: "date" }, desc: false }],
+      }),
+      analyticsDataClient.runReport({
+        ...reportBase,
+        dimensions: [{ name: "pagePath" }],
+        metrics: [{ name: "screenPageViews" }, { name: "sessions" }],
+        orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
+        limit: 12,
+      }),
+      analyticsDataClient.runReport({
+        ...reportBase,
+        dimensions: [{ name: "sessionSourceMedium" }],
+        metrics: [{ name: "sessions" }],
+        orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+        limit: 6,
+      }),
+      analyticsDataClient.runReport({
+        ...reportBase,
+        dimensions: [{ name: "eventName" }],
+        metrics: [{ name: "eventCount" }],
+        orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+        limit: 20,
+      }),
+      analyticsDataClient.runReport({
+        ...reportBase,
+        dimensions: [{ name: "country" }, { name: "region" }],
+        metrics: [{ name: "sessions" }, { name: "activeUsers" }],
+        orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+        limit: 15,
+      }),
+      analyticsDataClient.runReport({
+        ...reportBase,
+        dimensions: [{ name: "deviceCategory" }],
+        metrics: [{ name: "sessions" }, { name: "activeUsers" }],
+        orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+        limit: 10,
+      }),
+      analyticsDataClient.runReport({
+        property: `properties/${propertyId}`,
+        dateRanges: [{ startDate: `${normalizedDays}daysAgo`, endDate: "today" }],
+        dimensions: [{ name: "country" }],
+        metrics: [{ name: "sessions" }],
+        orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+        limit: 50,
+      }),
+    ]);
 
     // Parsers
     const kpis = kpiResponse.rows?.[0]
@@ -117,6 +167,7 @@ export async function GET(req) {
       pageResponse.rows?.map((row) => ({
         path: row.dimensionValues[0].value,
         views: parseInt(row.metricValues[0].value, 10),
+        sessions: parseInt(row.metricValues[1].value, 10),
       })) || [];
 
     const trafficSources =
@@ -150,8 +201,45 @@ export async function GET(req) {
         }));
     }
 
+    const regions =
+      regionResponse.rows?.map((row) => ({
+        country: row.dimensionValues[0].value || "Unknown",
+        region: row.dimensionValues[1].value || "Unknown",
+        sessions: parseInt(row.metricValues[0].value, 10),
+        users: parseInt(row.metricValues[1].value, 10),
+      })) || [];
+
+    const devices =
+      deviceResponse.rows?.map((row) => ({
+        device: row.dimensionValues[0].value || "unknown",
+        sessions: parseInt(row.metricValues[0].value, 10),
+        users: parseInt(row.metricValues[1].value, 10),
+      })) || [];
+
+    const countryOptions = [
+      "all",
+      ...(countryOptionsResponse.rows?.map((row) => row.dimensionValues[0].value) ||
+        []),
+    ];
+
     return NextResponse.json(
-      { kpis, trends, trafficSources, topPages, events },
+      {
+        kpis,
+        trends,
+        trafficSources,
+        topPages,
+        events,
+        regions,
+        devices,
+        filters: {
+          days: normalizedDays,
+          country,
+          device,
+          countryOptions,
+          deviceOptions: ["all", "desktop", "mobile", "tablet", "smart tv"],
+        },
+        updatedAt: new Date().toISOString(),
+      },
       { headers: { "Cache-Control": "s-maxage=3600, stale-while-revalidate" } }
     );
   } catch (error) {

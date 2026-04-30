@@ -4,13 +4,17 @@
 import { useEffect, useState } from "react";
 import { AdminSkeleton } from "@/components/admin/AdminSkeleton";
 import {
-  Users,
   Activity,
-  MousePointerClick,
-  TrendingUp,
-  Calendar,
-  Zap,
   AlertCircle,
+  Filter,
+  Globe2,
+  Monitor,
+  MousePointerClick,
+  RefreshCw,
+  Search,
+  TrendingUp,
+  Users,
+  Zap,
 } from "lucide-react";
 import dynamic from "next/dynamic";
 
@@ -28,14 +32,21 @@ export default function AnalyticsDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [days, setDays] = useState(30);
+  const [country, setCountry] = useState("all");
+  const [device, setDevice] = useState("all");
+  const [pageSearch, setPageSearch] = useState("");
 
   useEffect(() => {
     async function fetchAnalytics() {
       setLoading(true);
+      setError(null);
       try {
-        const response = await fetch(
-          `/api/admin/analytics/overview?days=${days}`
-        );
+        const params = new URLSearchParams({
+          days: String(days),
+          country,
+          device,
+        });
+        const response = await fetch(`/api/admin/analytics/overview?${params}`);
         if (!response.ok) {
           throw new Error("Failed to fetch analytics data");
         }
@@ -52,7 +63,7 @@ export default function AnalyticsDashboard() {
     }
 
     fetchAnalytics();
-  }, [days]);
+  }, [days, country, device]);
 
   if (error) {
     return (
@@ -64,16 +75,6 @@ export default function AnalyticsDashboard() {
           </h2>
         </div>
         <p className="text-sm text-foreground/80">{error}</p>
-        <div className="mt-2 space-y-1 border-t border-red-500/20 pt-4 font-mono text-xs text-muted-foreground">
-          <p>
-            1. Check if GA_PROPERTY_ID is replaced with your real ID in
-            .env.local
-          </p>
-          <p>
-            2. Check if groot-analytics-viewer@... is added as a Viewer in GA4
-            Property configuration.
-          </p>
-        </div>
       </div>
     );
   }
@@ -84,35 +85,79 @@ export default function AnalyticsDashboard() {
       style: "percent",
       maximumFractionDigits: 1,
     }).format(num || 0);
+  const filteredTopPages =
+    data?.topPages?.filter((page) =>
+      page.path.toLowerCase().includes(pageSearch.trim().toLowerCase())
+    ) || [];
 
   return (
     <div className="space-y-8 pb-12 font-sans">
-      {/* Header & Controls */}
-      <div className="flex flex-col gap-5 border-b border-border/50 pb-6 md:flex-row md:items-end md:justify-between">
-        <div className="space-y-1.5">
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-            Analytics Overview
-          </h1>
-          <p className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
-            <Zap className="h-3.5 w-3.5 fill-primary text-primary" /> Live
-            platform telemetry
-          </p>
+      <div className="space-y-5 border-b border-border/50 pb-6">
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-1.5">
+            <h1 className="text-3xl font-semibold tracking-tight text-foreground">
+              Analytics Command Center
+            </h1>
+            <p className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
+              <Zap className="h-3.5 w-3.5 fill-primary text-primary" />
+              Manage traffic by region, device, and source
+            </p>
+          </div>
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <RefreshCw className="h-3.5 w-3.5" />
+            Last sync:
+            <span className="font-medium text-foreground/90">
+              {data?.updatedAt
+                ? new Date(data.updatedAt).toLocaleString()
+                : "Loading..."}
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center rounded-xl border border-border/60 bg-muted/40 p-1 backdrop-blur-sm">
-          {[7, 30, 90, 365].map((d) => (
-            <button
-              key={d}
-              onClick={() => setDays(d)}
-              className={`rounded-lg px-4 py-1.5 text-xs font-medium transition-all duration-200 ${
-                days === d
-                  ? "border border-border/50 bg-background text-foreground shadow-sm ring-1 ring-border"
-                  : "bg-transparent text-muted-foreground hover:bg-muted/50 hover:text-foreground"
-              }`}
+        <div className="grid gap-3 lg:grid-cols-4">
+          <div className="flex items-center rounded-xl border border-border/60 bg-muted/40 p-1 backdrop-blur-sm lg:col-span-2">
+            {[7, 30, 90, 365].map((d) => (
+              <button
+                key={d}
+                onClick={() => setDays(d)}
+                className={`rounded-lg px-4 py-1.5 text-xs font-medium transition-all duration-200 ${
+                  days === d
+                    ? "border border-border/50 bg-background text-foreground shadow-sm ring-1 ring-border"
+                    : "bg-transparent text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                }`}
+              >
+                {d === 365 ? "1 Year" : `${d} Days`}
+              </button>
+            ))}
+          </div>
+          <label className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/50 px-3 py-2">
+            <Globe2 className="h-4 w-4 text-muted-foreground" />
+            <select
+              className="w-full bg-transparent text-sm text-foreground outline-none"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
             >
-              {d === 365 ? "1 Year" : `${d} Days`}
-            </button>
-          ))}
+              {(data?.filters?.countryOptions || ["all"]).map((option) => (
+                <option key={option} value={option} className="bg-[#141414]">
+                  {option === "all" ? "All Countries" : option}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/50 px-3 py-2">
+            <Monitor className="h-4 w-4 text-muted-foreground" />
+            <select
+              className="w-full bg-transparent text-sm capitalize text-foreground outline-none"
+              value={device}
+              onChange={(e) => setDevice(e.target.value)}
+            >
+              {(data?.filters?.deviceOptions || ["all"]).map((option) => (
+                <option key={option} value={option} className="bg-[#141414]">
+                  {option === "all" ? "All Devices" : option}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
       </div>
 
@@ -120,7 +165,6 @@ export default function AnalyticsDashboard() {
         <AdminSkeleton type="analytics" />
       ) : (
         <>
-          {/* Refined KPI Grid */}
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
@@ -158,12 +202,10 @@ export default function AnalyticsDashboard() {
             ].map((kpi, idx) => (
               <div
                 key={idx}
-                className="relative rounded-2xl border border-border/60 bg-card/50 p-5 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-border hover:bg-card hover:shadow-md"
+                className="relative rounded-2xl border border-border/60 bg-card/50 p-5 shadow-sm backdrop-blur-xl"
               >
                 <div className="flex items-center gap-4">
-                  <div
-                    className={`rounded-xl border p-2.5 ${kpi.bg} ${kpi.border}`}
-                  >
+                  <div className={`rounded-xl border p-2.5 ${kpi.bg} ${kpi.border}`}>
                     <kpi.icon className={`h-5 w-5 ${kpi.color}`} />
                   </div>
                   <div>
@@ -179,32 +221,130 @@ export default function AnalyticsDashboard() {
             ))}
           </div>
 
-          {/* Time Series Area Chart */}
-          <div className="rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl">
-            <div className="mb-8 flex items-center justify-between">
-              <h3 className="flex items-center gap-2 text-base font-semibold tracking-tight text-foreground">
+          <div className="grid gap-6 xl:grid-cols-5">
+            <div className="rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl xl:col-span-3">
+              <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">
                 Traffic Trends
               </h3>
-              <div className="flex items-center gap-4 text-xs font-medium">
-                <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <div className="h-2.5 w-2.5 rounded-full bg-emerald-500/80"></div>{" "}
-                  Users
-                </div>
-                <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <div className="h-2.5 w-2.5 rounded-full bg-blue-500/80"></div>{" "}
-                  Sessions
-                </div>
+              <div className="h-[320px] w-full">
+                <TrafficChart trends={data?.trends} />
               </div>
             </div>
 
-            <div className="h-[320px] w-full">
-              <TrafficChart trends={data?.trends} />
+            <div className="rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl xl:col-span-2">
+              <div className="mb-5 flex items-center gap-2">
+                <Filter className="h-4 w-4 text-muted-foreground" />
+                <h3 className="text-base font-semibold tracking-tight">
+                  Device Distribution
+                </h3>
+              </div>
+              <div className="space-y-3">
+                {data?.devices?.length ? (
+                  data.devices.map((row) => (
+                    <div
+                      key={row.device}
+                      className="rounded-lg border border-border/50 bg-background/40 p-3"
+                    >
+                      <div className="mb-1 flex items-center justify-between text-sm">
+                        <span className="capitalize text-foreground">
+                          {row.device}
+                        </span>
+                        <span className="text-muted-foreground">
+                          {formatNumber(row.sessions)} sessions
+                        </span>
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {formatNumber(row.users)} users
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="flex h-36 items-center justify-center rounded-lg border border-dashed border-border/60 text-sm text-muted-foreground">
+                    No device data
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-6 xl:grid-cols-5">
+            <div className="rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl xl:col-span-2">
+              <h3 className="mb-6 text-base font-semibold tracking-tight">
+                Region Management View
+              </h3>
+              <div className="space-y-2">
+                {data?.regions?.length ? (
+                  data.regions.map((row, idx) => (
+                    <div
+                      key={`${row.country}-${row.region}-${idx}`}
+                      className="grid grid-cols-12 items-center gap-2 rounded-lg border border-border/40 bg-background/40 px-3 py-2.5 text-sm"
+                    >
+                      <div className="col-span-7 min-w-0">
+                        <p className="truncate text-foreground">{row.region}</p>
+                        <p className="truncate text-xs text-muted-foreground">
+                          {row.country}
+                        </p>
+                      </div>
+                      <div className="col-span-3 text-right text-xs text-muted-foreground">
+                        {formatNumber(row.users)} users
+                      </div>
+                      <div className="col-span-2 text-right text-xs font-medium text-foreground">
+                        {formatNumber(row.sessions)}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="flex h-48 items-center justify-center rounded-xl border border-dashed border-border/60 text-sm text-muted-foreground">
+                    No region data
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl xl:col-span-3">
+              <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                <h3 className="text-base font-semibold tracking-tight">
+                  Top Pages Management
+                </h3>
+                <label className="flex items-center gap-2 rounded-lg border border-border/60 bg-background/40 px-3 py-2">
+                  <Search className="h-4 w-4 text-muted-foreground" />
+                  <input
+                    value={pageSearch}
+                    onChange={(e) => setPageSearch(e.target.value)}
+                    placeholder="Search page path"
+                    className="w-56 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
+                  />
+                </label>
+              </div>
+              <div className="space-y-2">
+                {filteredTopPages.length ? (
+                  filteredTopPages.map((page, idx) => (
+                    <div
+                      key={`${page.path}-${idx}`}
+                      className="grid grid-cols-12 items-center gap-2 rounded-lg border border-border/40 bg-background/40 px-3 py-2.5 text-sm"
+                    >
+                      <div className="col-span-8 min-w-0 truncate text-foreground">
+                        {page.path === "/" ? "/ (Home)" : page.path}
+                      </div>
+                      <div className="col-span-2 text-right text-xs text-muted-foreground">
+                        {formatNumber(page.sessions)}
+                      </div>
+                      <div className="col-span-2 text-right text-xs font-medium text-foreground">
+                        {formatNumber(page.views)}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="flex h-48 items-center justify-center rounded-xl border border-dashed border-border/60 text-sm text-muted-foreground">
+                    No page data for this filter
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            {/* Value Events interactions */}
-            <div className="flex flex-col rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl lg:col-span-1">
+            <div className="flex flex-col rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl">
               <h3 className="mb-6 text-base font-semibold tracking-tight">
                 Conversion Intent
               </h3>
@@ -213,7 +353,7 @@ export default function AnalyticsDashboard() {
                   data.events.map((event, idx) => (
                     <div key={idx} className="flex flex-col gap-2.5">
                       <div className="flex w-full items-center justify-between">
-                        <span className="text-sm font-medium lowercase capitalize text-foreground first-letter:uppercase">
+                        <span className="text-sm font-medium capitalize text-foreground">
                           {event.name}
                         </span>
                         <span className="rounded-md bg-muted px-2 py-0.5 text-xs font-semibold text-muted-foreground">
@@ -238,8 +378,7 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
 
-            {/* Top Traffic Distribution */}
-            <div className="flex flex-col rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl lg:col-span-1">
+            <div className="flex flex-col rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl">
               <h3 className="mb-1 text-base font-semibold tracking-tight">
                 Traffic Breakdown
               </h3>
@@ -264,36 +403,34 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
 
-            {/* Top Pages */}
-            <div className="flex flex-col rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl lg:col-span-1">
+            <div className="flex flex-col rounded-2xl border border-border/60 bg-card/50 p-6 shadow-sm backdrop-blur-xl">
               <h3 className="mb-6 text-base font-semibold tracking-tight">
-                Top Generating Paths
+                Filter Snapshot
               </h3>
-              <div className="flex-1 space-y-1">
-                {data?.topPages?.length > 0 ? (
-                  data.topPages.map((page, idx) => (
-                    <div
-                      key={idx}
-                      className="-mx-2 flex items-center justify-between rounded-lg p-2.5 transition-colors hover:bg-muted/40"
-                    >
-                      <span className="w-[75%] truncate pr-4 text-sm text-muted-foreground">
-                        {page.path === "/" ? "/ (Home)" : page.path}
-                      </span>
-                      <div className="flex items-center text-xs font-medium text-foreground">
-                        {formatNumber(page.views)}
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <div className="flex h-full min-h-[150px] items-center justify-center rounded-xl border border-dashed border-border/60 text-sm text-muted-foreground">
-                    No page data
-                  </div>
-                )}
+              <div className="space-y-4 text-sm">
+                <SnapshotCard label="Date range" value={`Last ${days} days`} />
+                <SnapshotCard
+                  label="Country"
+                  value={country === "all" ? "All Countries" : country}
+                />
+                <SnapshotCard
+                  label="Device"
+                  value={device === "all" ? "All Devices" : device}
+                />
               </div>
             </div>
           </div>
         </>
       )}
+    </div>
+  );
+}
+
+function SnapshotCard({ label, value }) {
+  return (
+    <div className="rounded-lg border border-border/40 bg-background/40 p-3">
+      <p className="text-xs text-muted-foreground">{label}</p>
+      <p className="font-medium text-foreground">{value}</p>
     </div>
   );
 }
