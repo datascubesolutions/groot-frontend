@@ -142,6 +142,9 @@ module.exports = {
         "draw-height-line-cross-line":
           "draw-height-line-cross-line 2s ease-out forwards",
       },
+      screens: {
+        lg: "960px",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -108,6 +108,13 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#000000",
+};
+
 import { PublicLayoutWrapper } from "@/components/layout/PublicLayoutWrapper";
 import { CookieConsent } from "@/components/ui";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
@@ -123,7 +130,7 @@ export default function RootLayout({ children }) {
         <SiteNavigationSchema />
       </head>
       <body
-        className={`${plusJakartaSans.variable} antialiased`}
+        className={`${plusJakartaSans.variable} antialiased overflow-x-hidden relative min-w-[320px]`}
         suppressHydrationWarning
       >
         <Suspense fallback={null}>
