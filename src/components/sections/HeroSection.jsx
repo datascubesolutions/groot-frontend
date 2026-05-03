@@ -5,7 +5,7 @@ import { SideParticles } from "@/components/animations/SideParticles";
 import { Button } from "@/components/ui/Button";
 import { createMulberry32 } from "@/lib/prng";
 import { domAnimation, LazyMotion, m } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -236,21 +236,24 @@ export function HeroSection() {
 
                 <div className="relative rounded-3xl px-6 pb-3 pt-0 sm:px-8 md:px-10">
                   <m.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.7 }}
-                    className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-2"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
+                    className="group relative mb-6 inline-flex cursor-pointer overflow-hidden rounded-full border border-forest/15 bg-white/60 px-4 py-1.5 shadow-sm backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:border-forest/25 hover:bg-white/90 hover:shadow-md sm:px-5 sm:py-2 md:mb-8 md:px-6 md:py-2.5"
                   >
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-                    <span className="text-sm font-bold uppercase tracking-[0.1em] text-foreground/80 drop-shadow-sm md:text-base">
-                      MICROSOFT FABRIC & AI FOUNDRY SPECIALISTS
+                    {/* Hover Shine Effect */}
+                    <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-transform duration-[1.5s] ease-in-out group-hover:translate-x-full" />
+                    
+                    {/* Pure Typography */}
+                    <span className="relative whitespace-nowrap bg-gradient-to-r from-forest to-forest/80 bg-clip-text text-[8.5px] font-extrabold uppercase tracking-[0.1em] text-transparent drop-shadow-sm xs:text-[9px] xs:tracking-[0.15em] sm:text-[10px] sm:tracking-[0.2em] md:text-xs md:tracking-[0.25em]">
+                      Microsoft Fabric & AI Foundry Specialists
                     </span>
                   </m.div>
 
                   <h1 className="mb-2 text-3xl font-bold leading-tight tracking-tight text-foreground md:mb-3 md:text-5xl lg:text-6xl">
                     Your data wasn&apos;t built for
                     <br />
-                    <span className="whitespace-nowrap bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent">
+                    <span className="whitespace-nowrap bg-gradient-to-r from-[hsl(var(--groot-dark-forest))] to-[hsl(var(--groot-dark-primary))] bg-clip-text text-transparent">
                       what&apos;s coming.
                     </span>
                   </h1>
@@ -278,8 +281,8 @@ export function HeroSection() {
                       </Button>
                     </Link>
 
-                    {/* Tech Strip - Logos + Text (matches hero badge styling) */}
-                    <div className="inline-flex flex-wrap items-center justify-center gap-4 rounded-full border border-border/60 bg-muted/50 px-5 py-3 text-sm font-medium text-foreground/75 md:gap-8 md:text-base">
+                    {/* Tech Strip - Logos + Text (fixed wrapping for mobile) */}
+                    <div className="mx-auto mt-4 inline-flex w-full max-w-sm flex-wrap items-center justify-center gap-x-5 gap-y-3 rounded-2xl border border-border/60 bg-muted/50 px-4 py-4 text-sm font-medium text-foreground/75 md:max-w-none md:gap-8 md:rounded-full md:px-6 md:py-3 md:text-base">
                       <div className="flex items-center gap-2">
                         <Image
                           src="/svg/azure-2.svg"

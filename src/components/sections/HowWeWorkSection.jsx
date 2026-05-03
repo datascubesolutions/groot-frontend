@@ -201,37 +201,36 @@ export function HowWeWorkSection() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className="group relative overflow-hidden rounded-2xl border-2 border-slate-200 bg-white p-6 shadow-md shadow-slate-200/60">
-                {/* Top accent - theme gradient */}
-                <div className="absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r from-forest via-primary to-forest" />
-                {/* Left accent stripe - theme gradient */}
-                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-forest via-primary to-forest" />
-                <div className="mb-5 flex items-start gap-4">
+              <div className="group relative overflow-hidden rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/5 sm:p-8">
+                {/* Top accent */}
+                <div className="absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r from-forest via-primary to-forest opacity-80" />
+                
+                <div className="mb-6 flex items-center gap-5">
                   {/* Icon */}
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 ring-2 ring-primary/20">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 shadow-sm ring-1 ring-primary/20">
                     <phase.icon
-                      className="h-7 w-7 text-primary"
+                      className="h-6 w-6 text-primary"
                       strokeWidth={2}
                     />
                   </div>
                   <div>
-                    <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.15em] text-forest">
+                    <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-forest/80">
                       {phase.timeline}
                     </span>
-                    <h3 className="text-lg font-bold tracking-tight text-forest">
+                    <h3 className="text-xl font-bold tracking-tight text-foreground">
                       {phase.title}
                     </h3>
-                    <p className="mt-1 text-sm font-medium text-primary">
+                    <p className="mt-1 text-sm font-semibold text-primary">
                       {phase.tagline}
                     </p>
                   </div>
                 </div>
 
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {phase.activities.map((activity, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <span className="mt-2 flex h-2 w-2 shrink-0 rounded-full bg-primary ring-2 ring-primary/25" />
-                      <span className="text-[15px] font-medium leading-snug text-slate-700">
+                      <span className="text-[15px] font-medium leading-relaxed text-foreground/80">
                         {activity}
                       </span>
                     </li>

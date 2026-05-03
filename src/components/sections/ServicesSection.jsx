@@ -67,11 +67,10 @@ export function ServicesSection() {
         */}
           <div className="flex w-full justify-center">
             <div className="relative transform transition-transform duration-300 lg:origin-top lg:scale-[0.80] xl:scale-[0.90] 2xl:scale-100">
-              <div className="relative mx-auto flex flex-col flex-nowrap items-center justify-center gap-8 rounded-2xl p-4 sm:p-6 md:gap-10 md:p-8 lg:flex-row lg:items-stretch lg:gap-0">
-                {/* Mobile Vertical Connection Line */}
-                <div className="absolute bottom-20 left-1/2 top-20 z-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-primary/0 via-primary/30 to-primary/0 lg:hidden" />
+              <div className="relative mx-auto flex flex-col flex-nowrap items-center justify-center gap-6 rounded-2xl p-4 sm:gap-8 sm:p-6 md:gap-10 md:p-8 lg:flex-row lg:items-stretch lg:gap-0">
+                {/* Mobile vertical line removed for cleaner card stacking */}
                 {/* Card 1 (Left) */}
-                <div className="group relative z-10 h-auto w-full max-w-sm flex-shrink-0 overflow-visible rounded-3xl border border-primary/10 bg-card/80 p-8 shadow-md backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 lg:z-40 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:bg-card lg:p-6 lg:backdrop-blur-none lg:hover:shadow-md md:bg-card/80">
+                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-40 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -169,7 +168,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Card 2 (Middle) */}
-                <div className="group relative z-10 h-auto w-full max-w-sm flex-shrink-0 overflow-visible rounded-3xl border border-primary/10 bg-card/80 p-8 shadow-md backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 lg:z-30 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:bg-card lg:p-6 lg:backdrop-blur-none lg:hover:shadow-md md:bg-card/80">
+                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-30 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -261,7 +260,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Card 3 (AI Foundry) - Middle connector */}
-                <div className="group relative z-10 h-auto w-full max-w-sm flex-shrink-0 overflow-visible rounded-3xl border border-primary/10 bg-card/80 p-8 shadow-md backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 lg:z-20 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:bg-card lg:p-6 lg:backdrop-blur-none lg:hover:shadow-md md:bg-card/80">
+                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-20 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -353,7 +352,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Card 4 (Copilot) - Closing card */}
-                <div className="group relative z-10 h-auto w-full max-w-sm flex-shrink-0 overflow-visible rounded-3xl border border-primary/10 bg-card/80 p-8 shadow-md backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:bg-card lg:p-6 lg:backdrop-blur-none lg:hover:shadow-md md:bg-card/80">
+                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-10 lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"

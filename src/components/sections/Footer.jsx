@@ -4,9 +4,36 @@
 import { siteConfig } from "@/config/site.config";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { FOOTER_LINKS } from "@/lib/constants/navigation";
-import { Linkedin, Mail, Twitter } from "lucide-react";
+import { 
+  Linkedin, 
+  Mail, 
+  Twitter,
+  TrendingUp, 
+  Database, 
+  BarChart, 
+  Brain,
+  Users, 
+  Briefcase, 
+  Globe,
+  Building2, 
+  Lightbulb, 
+  FileText
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+const FOOTER_ICONS = {
+  "Define Your Roadmap": TrendingUp,
+  "Build Your Foundation": Database,
+  "Decision Intelligence": BarChart,
+  "AI That Ships": Brain,
+  "About Us": Users,
+  "Careers": Briefcase,
+  "Contact Us": Globe,
+  "Industries": Building2,
+  "Solutions": Lightbulb,
+  "Blog": FileText,
+};
 
 export function Footer() {
   return (
@@ -58,16 +85,19 @@ export function Footer() {
             <ScrollReveal delay={0.1}>
               <h4 className="mb-4 font-semibold md:mb-5">Services</h4>
               <ul className="space-y-3">
-                {FOOTER_LINKS.services.map((link) => (
+                {FOOTER_LINKS.services.map((link) => {
+                  const Icon = FOOTER_ICONS[link.label];
+                  return (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-birch/70 transition-colors hover:text-primary"
+                      className="group flex items-center gap-2 text-birch/70 transition-all hover:translate-x-1 hover:text-primary"
                     >
-                      {link.label}
+                      {Icon && <Icon size={16} className="text-primary/70 transition-colors group-hover:text-primary" />}
+                      <span>{link.label}</span>
                     </Link>
                   </li>
-                ))}
+                )})}
               </ul>
             </ScrollReveal>
           </div>
@@ -76,16 +106,19 @@ export function Footer() {
             <ScrollReveal delay={0.2}>
               <h4 className="mb-4 font-semibold md:mb-5">Company</h4>
               <ul className="space-y-3">
-                {FOOTER_LINKS.company.map((link) => (
+                {FOOTER_LINKS.company.map((link) => {
+                  const Icon = FOOTER_ICONS[link.label];
+                  return (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-birch/70 transition-colors hover:text-primary"
+                      className="group flex items-center gap-2 text-birch/70 transition-all hover:translate-x-1 hover:text-primary"
                     >
-                      {link.label}
+                      {Icon && <Icon size={16} className="text-primary/70 transition-colors group-hover:text-primary" />}
+                      <span>{link.label}</span>
                     </Link>
                   </li>
-                ))}
+                )})}
               </ul>
             </ScrollReveal>
           </div>
@@ -94,16 +127,19 @@ export function Footer() {
             <ScrollReveal delay={0.3}>
               <h4 className="mb-4 font-semibold md:mb-5">Resources</h4>
               <ul className="space-y-3">
-                {FOOTER_LINKS.resources.map((link) => (
+                {FOOTER_LINKS.resources.map((link) => {
+                  const Icon = FOOTER_ICONS[link.label];
+                  return (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-birch/70 transition-colors hover:text-primary"
+                      className="group flex items-center gap-2 text-birch/70 transition-all hover:translate-x-1 hover:text-primary"
                     >
-                      {link.label}
+                      {Icon && <Icon size={16} className="text-primary/70 transition-colors group-hover:text-primary" />}
+                      <span>{link.label}</span>
                     </Link>
                   </li>
-                ))}
+                )})}
               </ul>
             </ScrollReveal>
           </div>

@@ -4,11 +4,52 @@
 import { Button } from "@/components/ui/Button";
 import { NAV_LINKS, SERVICE_CATEGORIES } from "@/lib/constants/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { 
+  ChevronDown, 
+  Menu, 
+  X,
+  Home,
+  Layers,
+  Building2,
+  AppWindow,
+  FileText,
+  Users,
+  Database,
+  PieChart,
+  Bot,
+  Cpu,
+  ShieldCheck,
+  Cloud,
+  Wrench,
+  Briefcase,
+  Globe
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MegaMenu } from "./MegaMenu";
+
+const MOBILE_ICONS = {
+  "Home": Home,
+  "Services": Layers,
+  "Industries": Building2,
+  "Microsoft": AppWindow,
+  "Blog": FileText,
+  "About Us": Users,
+};
+
+const SUB_ICONS = {
+  "Fabric": Database,
+  "Power BI": PieChart,
+  "Copilot": Bot,
+  "AI Foundry": Cpu,
+  "Purview": ShieldCheck,
+  "Azure": Cloud,
+  "DevOps": Wrench,
+  "About Us": Users,
+  "Careers": Briefcase,
+  "Contact Us": Globe,
+};
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -59,7 +100,9 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden h-full items-center gap-5 lg:gap-7 md:flex">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link) => {
+              const Icon = MOBILE_ICONS[link.label];
+              return (
               <div
                 key={link.label}
                 className="relative flex h-full items-center"
@@ -67,9 +110,10 @@ export function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className={`group relative flex items-center gap-1 py-2 text-sm font-medium transition-colors duration-200 ${activeDropdown === link.label ? "text-forest" : "text-foreground/80 hover:text-forest"}`}
+                  className={`group relative flex items-center gap-1.5 py-2 text-sm font-medium transition-colors duration-200 ${activeDropdown === link.label ? "text-forest" : "text-foreground/80 hover:text-forest"}`}
                 >
-                  {link.label}
+                  {Icon && <Icon size={16} className="text-forest/80 transition-colors group-hover:text-forest" />}
+                  <span>{link.label}</span>
                   {link.hasDropdown && (
                     <ChevronDown
                       size={16}
@@ -93,19 +137,23 @@ export function Navbar() {
                       transition={{ duration: 0.2 }}
                       className="absolute left-0 top-full z-50 w-64 rounded-xl border border-border bg-background py-4 shadow-xl"
                     >
-                      {link.subLinks?.map((sub) => (
+                      {link.subLinks?.map((sub) => {
+                        const SubIcon = SUB_ICONS[sub.label];
+                        return (
                         <Link
                           key={sub.label}
                           href={sub.href}
-                          className="block px-6 py-2.5 text-sm text-foreground/70 transition-all hover:bg-primary/5 hover:text-primary"
+                          className="flex items-center gap-3 px-6 py-2.5 text-sm text-foreground/70 transition-all hover:bg-primary/5 hover:text-primary"
                         >
-                          {sub.label}
+                          {SubIcon && <SubIcon size={16} className="text-forest/60" />}
+                          <span>{sub.label}</span>
                         </Link>
-                      ))}
+                        );
+                      })}
                     </motion.div>
                   )}
               </div>
-            ))}
+            )})}
           </div>
 
           {/* CTA Button */}
@@ -151,7 +199,9 @@ export function Navbar() {
             className="glass max-h-[85vh] overflow-hidden overflow-y-auto border-t border-border md:hidden"
           >
             <div className="container mx-auto flex flex-col gap-2 px-6 py-4">
-              {NAV_LINKS.map((link) => (
+              {NAV_LINKS.map((link) => {
+                const Icon = MOBILE_ICONS[link.label];
+                return (
                 <div key={link.label} className="flex flex-col">
                   <Link
                     href={link.hasDropdown ? "#" : link.href}
@@ -168,7 +218,10 @@ export function Navbar() {
                         : "text-foreground/80 hover:text-forest"
                     }`}
                   >
-                    {link.label}
+                    <div className="flex items-center gap-3">
+                      {Icon && <Icon size={18} className="text-forest/80" />}
+                      <span>{link.label}</span>
+                    </div>
                     {link.hasDropdown && (
                       <ChevronDown
                         size={16}
@@ -207,22 +260,27 @@ export function Navbar() {
                           setIsMobileMenuOpen={setIsMobileMenuOpen}
                         />
                       ) : (
-                        link.subLinks?.map((sub) => (
+                        link.subLinks?.map((sub) => {
+                          const SubIcon = SUB_ICONS[sub.label];
+                          return (
                           <Link
                             key={sub.label}
                             href={sub.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="block py-2 text-[15px] font-medium text-foreground/80 transition-all hover:translate-x-1 hover:text-forest"
+                            className="flex items-center gap-3 py-2 text-[15px] font-medium text-foreground/80 transition-all hover:translate-x-1 hover:text-forest"
                           >
-                            {sub.label}
+                            {SubIcon && <SubIcon size={16} className="text-forest/60" />}
+                            <span>{sub.label}</span>
                           </Link>
-                        ))
+                          );
+                        })
                       )}
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
-              ))}
+                );
+              })}
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="hero" className="mt-2 w-full">
                   Let&apos;s Connect
@@ -241,16 +299,20 @@ export function Navbar() {
 const ServicesMobileMenu = ({ setIsMobileMenuOpen }) => {
   return (
     <>
-      {SERVICE_CATEGORIES.map((category) => (
+      {SERVICE_CATEGORIES.map((category) => {
+        const Icon = category.icon;
+        return (
         <Link
           key={category.slug}
           href={category.href}
           onClick={() => setIsMobileMenuOpen(false)}
-          className="block py-2 text-[15px] font-medium text-foreground/80 transition-all hover:translate-x-1 hover:text-forest"
+          className="flex items-center gap-3 py-2 text-[15px] font-medium text-foreground/80 transition-all hover:translate-x-1 hover:text-forest"
         >
-          {category.title}
+          {Icon && <Icon size={16} className="text-forest/60" />}
+          <span>{category.title}</span>
         </Link>
-      ))}
+        );
+      })}
     </>
   );
 };
