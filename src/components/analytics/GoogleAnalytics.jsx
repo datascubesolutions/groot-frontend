@@ -12,8 +12,9 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }) {
 
   useEffect(() => {
     if (pathname && GA_MEASUREMENT_ID) {
-      const url = pathname + searchParams.toString();
-      pageview(url);
+      const url =
+        pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : "");
+      pageview(url, GA_MEASUREMENT_ID);
     }
   }, [pathname, searchParams, GA_MEASUREMENT_ID]);
 

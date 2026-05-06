@@ -4,10 +4,11 @@
  * to Enterprise and BigQuery requirements.
  */
 
-// Log the pageview with their URL
-export const pageview = (url) => {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("config", process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID, {
+// Log the pageview with their URL (pass measurementId from the client that loads gtag)
+export const pageview = (url, measurementId) => {
+  const id = measurementId || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  if (typeof window !== "undefined" && window.gtag && id) {
+    window.gtag("config", id, {
       page_path: url,
     });
   }
