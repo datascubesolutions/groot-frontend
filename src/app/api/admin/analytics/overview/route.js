@@ -254,7 +254,12 @@ export async function GET(req) {
         },
         updatedAt: new Date().toISOString(),
       },
-      { headers: { "Cache-Control": "s-maxage=3600, stale-while-revalidate" } }
+      {
+        headers: {
+          // Admin KPIs must be fresh; CDN-cached empty JSON was masking real GA data for up to 1h.
+          "Cache-Control": "private, no-store, must-revalidate",
+        },
+      }
     );
   } catch (error) {
     console.error("Google Analytics API Error:", error);

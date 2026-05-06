@@ -4,6 +4,8 @@
 import { X } from "lucide-react";
 import { startTransition, useEffect, useState } from "react";
 
+import { pageview } from "@/lib/analytics";
+
 function ConsentToggle({ checked, onChange, disabled, id }) {
   return (
     <button
@@ -116,6 +118,17 @@ export default function CookieConsent() {
       // Trigger event to process queued tags after consent update
       if (window.dataLayer) {
         window.dataLayer.push({ event: "consent_update" });
+      }
+      // First page load runs gtag while analytics was denied; after grant, send a real hit
+      // without requiring navigation (GA4 otherwise stays empty for that session).
+      if (prefs.performance) {
+        const mid = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+        if (mid) {
+          const url =
+            window.location.pathname +
+            (window.location.search ? window.location.search : "");
+          setTimeout(() => pageview(url, mid), 50);
+        }
       }
     }
   };
