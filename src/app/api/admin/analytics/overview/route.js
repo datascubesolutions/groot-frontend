@@ -2,30 +2,44 @@
 import { NextRequest, NextResponse } from "next/server";
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
-const analyticsDataClient = new BetaAnalyticsDataClient({
-  credentials: {
-    client_email: process.env.GA_CLIENT_EMAIL,
-    private_key: process.env.GA_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-  },
-  projectId: process.env.GA_PROJECT_ID,
-});
+function getMissingGaEnvVars() {
+  const missing = [];
+  if (!process.env.GA_PROPERTY_ID?.trim()) missing.push("GA_PROPERTY_ID");
+  if (!process.env.GA_CLIENT_EMAIL?.trim()) missing.push("GA_CLIENT_EMAIL");
+  if (!process.env.GA_PRIVATE_KEY?.trim()) missing.push("GA_PRIVATE_KEY");
+  if (!process.env.GA_PROJECT_ID?.trim()) missing.push("GA_PROJECT_ID");
+  return missing;
+}
+
+let cachedAnalyticsClient;
+function getAnalyticsClient() {
+  if (!cachedAnalyticsClient) {
+    cachedAnalyticsClient = new BetaAnalyticsDataClient({
+      credentials: {
+        client_email: process.env.GA_CLIENT_EMAIL,
+        private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, "\n"),
+      },
+      projectId: process.env.GA_PROJECT_ID,
+    });
+  }
+  return cachedAnalyticsClient;
+}
 
 export async function GET(req) {
   try {
-    const propertyId = process.env.GA_PROPERTY_ID;
-
-    if (
-      !propertyId ||
-      !process.env.GA_CLIENT_EMAIL ||
-      !process.env.GA_PRIVATE_KEY
-    ) {
+    const missingEnv = getMissingGaEnvVars();
+    if (missingEnv.length > 0) {
       return NextResponse.json(
         {
           error: "Analytics API not configured. Missing environment variables.",
+          missing: missingEnv,
         },
         { status: 500 }
       );
     }
+
+    const propertyId = process.env.GA_PROPERTY_ID;
+    const analyticsDataClient = getAnalyticsClient();
 
     const searchParams = req.nextUrl.searchParams;
     const days = parseInt(searchParams.get("days") || "30", 10);
