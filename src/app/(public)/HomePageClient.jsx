@@ -11,7 +11,9 @@ import { API_ENDPOINTS } from "@/lib/api/endpoints";
 import { useEffect, useState } from "react";
 
 export default function HomePageClient() {
-  const [dynamicContent, setDynamicContent] = useState(null);
+  const [dynamicContent, setDynamicContent] = useState(
+    /** @type {Record<string, any> | null} */ (null)
+  );
 
   useEffect(() => {
     let cancelled = false;
