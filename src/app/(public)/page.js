@@ -1,15 +1,6 @@
 // @ts-nocheck
 import { generateBreadcrumbSchema, generateRouteMetadata } from "@/lib/seo";
-
-import HeroSection from "@/components/sections/HeroSection";
-import ClientLogosSection from "@/components/sections/ClientLogosSection";
-import VideoScrollSection from "@/components/sections/VideoScrollSection";
-import ServicesSection from "@/components/sections/ServicesSection";
-import { PainPointsSection } from "@/components/sections/PainPointsSection";
-import { ProcessTimelineSection } from "@/components/sections/ProcessTimelineSection";
-import { PlatformPreviewSection } from "@/components/sections/PlatformPreviewSection";
-import AboutSection from "@/components/sections/AboutSection";
-import { DataReadinessSection } from "@/components/sections/DataReadinessSection";
+import HomePageClient from "./HomePageClient";
 
 // Elite Demo Sections - BACKUP AT /elite-demo
 // import TestimonialsSection from "@/components/sections/elite/TestimonialsSection";
@@ -19,8 +10,10 @@ import { DataReadinessSection } from "@/components/sections/DataReadinessSection
 export const metadata = {
   ...generateRouteMetadata("home"),
 };
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export default function HomePage() {
+export default async function HomePage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", path: "/" },
   ]);
@@ -31,26 +24,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <div className="min-h-screen bg-background">
-        <HeroSection />
-        <VideoScrollSection />
-        <ClientLogosSection />
-        <ServicesSection />
-        <ProcessTimelineSection />
-        <PainPointsSection />
-        {/*
-      <div className="theme-elite">
-        <EnterpriseHeroSection />
-      </div>
-      <PlatformPreviewSection />
-      */}
-        <DataReadinessSection />
-        {/*
-      <div className="theme-elite">
-        <CultureSection />
-      </div>
-      */}
-      </div>
+      <HomePageClient />
     </>
   );
 }

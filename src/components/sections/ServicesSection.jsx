@@ -6,7 +6,7 @@ import { Bot, Cpu, Database, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-const cards = [
+const defaultCards = [
   {
     title: "FABRIC-READY FOUNDATION",
     subtitle: "Azure + Fabric + Purview",
@@ -42,7 +42,14 @@ const cards = [
   },
 ];
 
-export function ServicesSection() {
+export function ServicesSection({ content }) {
+  const cards = defaultCards.map((card, index) => ({
+    ...card,
+    title: content?.items?.[index]?.title || card.title,
+    description: content?.items?.[index]?.description || card.description,
+  }));
+  const sectionTitle = content?.sectionTitle || "Our Services";
+
   return (
     <LazyMotion features={domAnimation} strict>
       <section className="section-padding relative overflow-hidden bg-background">
@@ -56,7 +63,7 @@ export function ServicesSection() {
           {/* Section Header */}
           <div className="mx-auto mb-10 max-w-3xl space-y-4 text-center md:mb-12">
             <h2 className="heading-section">
-              Our <span className="text-foreground">Services</span>
+              <span className="text-foreground">{sectionTitle}</span>
             </h2>
           </div>
 

@@ -8,9 +8,9 @@ import Link from "next/link";
 
 export default function AssessmentPage() {
   return (
-    <main className="min-h-screen bg-background py-12 md:py-24">
-      <div className="container mx-auto px-2 sm:px-6">
-        <div className="mx-auto max-w-4xl">
+    <main className="min-h-screen bg-background py-10 md:py-16">
+      <div className="container mx-auto px-2 sm:px-5">
+        <div className="mx-auto max-w-3xl">
           {/* Back Button */}
           <div className="mb-8">
             <Link href="/">
@@ -25,7 +25,7 @@ export default function AssessmentPage() {
           </div>
 
           {/* Quiz Container */}
-          <div className="relative overflow-hidden rounded-none border-[4px] border-foreground bg-card p-3 shadow-[8px_8px_0_0_hsl(var(--forest))] sm:p-6 md:p-16 md:shadow-[24px_24px_0_0_hsl(var(--forest))]">
+          <div className="relative overflow-hidden rounded-none border-[3px] border-foreground bg-card p-3 shadow-[8px_8px_0_0_hsl(var(--forest))] sm:p-5 md:p-10 md:shadow-[16px_16px_0_0_hsl(var(--forest))]">
             <QuizFlow />
           </div>
 

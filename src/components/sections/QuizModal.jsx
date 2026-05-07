@@ -22,7 +22,7 @@ export function QuizModal({ children, className }) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent
         className={cn(
-          "relative max-w-3xl overflow-hidden border-none bg-gradient-to-br from-white via-slate-50 to-white p-0 shadow-2xl sm:rounded-3xl",
+          "relative max-w-2xl overflow-hidden border-none bg-gradient-to-br from-white via-slate-50 to-white p-0 shadow-2xl sm:rounded-3xl",
           className
         )}
       >
@@ -50,7 +50,7 @@ export function QuizModal({ children, className }) {
         </DialogHeader>
 
         {/* Header Badge */}
-        <div className="relative border-b border-slate-100/50 px-6 pb-4 pt-8 md:px-12">
+        <div className="relative border-b border-slate-100/50 px-5 pb-3 pt-6 md:px-8">
           <div className="flex items-center justify-center gap-2">
             <div className="flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-primary/10 to-emerald-500/10 px-4 py-2">
               <Sparkles className="h-4 w-4 text-primary" />
@@ -61,7 +61,7 @@ export function QuizModal({ children, className }) {
           </div>
         </div>
 
-        <div className="scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent relative max-h-[85vh] overflow-y-auto p-6 md:p-8">
+        <div className="scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent relative max-h-[85vh] overflow-y-auto p-4 sm:p-5 md:p-6">
           <QuizFlow onComplete={() => setIsOpen(false)} />
         </div>
       </DialogContent>

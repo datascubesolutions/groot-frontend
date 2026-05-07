@@ -14,7 +14,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export function DataReadinessSection() {
+export function DataReadinessSection({ content }) {
+  const heading = content?.heading || "Not sure where to start?";
+  const buttonText = content?.buttonText || "Data Readiness Score";
+
   return (
     <LazyMotion features={domAnimation} strict>
       <section className="section-padding relative overflow-hidden border-t border-border bg-muted/20 text-foreground">
@@ -27,9 +30,7 @@ export function DataReadinessSection() {
             <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-2">
               {/* Left - Content */}
               <div className="lg:pr-12">
-                <h2 className="heading-section mb-6 md:mb-8">
-                  Not sure where to start?
-                </h2>
+                <h2 className="heading-section mb-6 md:mb-8">{heading}</h2>
 
                 <p className="mb-8 max-w-2xl text-xl font-medium leading-relaxed text-foreground/85 md:mb-10 md:font-normal md:text-muted-foreground">
                   Take our 2-minute{" "}
@@ -48,7 +49,7 @@ export function DataReadinessSection() {
                       className="group h-auto min-h-[4rem] w-full cursor-pointer px-6 py-4 text-center text-base font-bold leading-tight tracking-wide shadow-xl shadow-forest/20 md:text-lg"
                     >
                       <span className="flex items-center justify-center gap-3">
-                        Data Readiness Score
+                        {buttonText}
                         <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
                       </span>
                     </Button>

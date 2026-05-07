@@ -25,7 +25,7 @@ const THEME_COLORS = {
   teal: "hsl(var(--primary))",
 };
 
-const steps = [
+const defaultSteps = [
   {
     id: "01",
     title: "Discover & Assess",
@@ -80,8 +80,17 @@ const steps = [
   },
 ];
 
-export const ProcessTimelineSection = () => {
+export const ProcessTimelineSection = ({ content }) => {
   const containerRef = useRef(null);
+  const steps =
+    Array.isArray(content?.steps) && content.steps.length > 0
+      ? defaultSteps.map((step, index) => ({
+          ...step,
+          id: content.steps[index]?.num || step.id,
+          title: content.steps[index]?.title || step.title,
+          tagline: content.steps[index]?.description || step.tagline,
+        }))
+      : defaultSteps;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,

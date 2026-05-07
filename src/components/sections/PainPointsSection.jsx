@@ -44,7 +44,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function PainPointsSection() {
+export function PainPointsSection({ content }) {
   const [questionAnimation, setQuestionAnimation] = useState(null);
 
   useEffect(() => {
@@ -52,6 +52,8 @@ export function PainPointsSection() {
       setQuestionAnimation(mod.default)
     );
   }, []);
+
+  const heading = content?.sectionHeading || "Sound familiar?";
 
   return (
     <LazyMotion features={domAnimation} strict>
@@ -95,9 +97,8 @@ export function PainPointsSection() {
                         System diagnostics
                       </p>
                       <h2 id="pain-points-heading" className="heading-section">
-                        Sound{" "}
                         <span className="bg-gradient-to-r from-forest to-forest/70 bg-clip-text text-transparent">
-                          familiar?
+                          {heading}
                         </span>
                       </h2>
                     </div>

@@ -1,12 +1,13 @@
 // @ts-nocheck
 "use client";
 
-import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
 
-export default function VideoScrollSection() {
+export default function VideoScrollSection({ content }) {
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
+  const backgroundVideoUrl = content?.backgroundVideoUrl || "/video/homepage-hero.mp4";
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -23,7 +24,7 @@ export default function VideoScrollSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => {});
+          video.play().catch(() => { });
         } else {
           video.pause();
         }
@@ -77,7 +78,7 @@ export default function VideoScrollSection() {
               controlsList="nodownload nofullscreen noremoteplayback"
               preload="none"
             >
-              <source src="/video/homepage-hero.mp4" type="video/mp4" />
+              <source src={backgroundVideoUrl} type="video/mp4" />
             </video>
           </div>
         </motion.div>

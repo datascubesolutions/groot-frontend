@@ -13,9 +13,8 @@
 export const API_ENDPOINTS = {
   // Auth
   AUTH: {
-    /** Real Firebase Cloud Function used for login */
-    LOGIN_FN:
-      "https://us-central1-datascube-2b74e.cloudfunctions.net/auth_login",
+    /** Next.js proxy endpoint to avoid browser CORS issues */
+    LOGIN_FN: "/api/auth/login",
     LOGIN: "/auth/login",
     LOGOUT: "/auth/logout",
     REGISTER: "/auth/register",

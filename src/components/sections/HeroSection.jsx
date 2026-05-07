@@ -11,13 +11,25 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { logoPaths } from "./logoData";
 
-export function HeroSection() {
+export function HeroSection({ content }) {
   const [textAnimationDone, setTextAnimationDone] = useState(false);
   const [isAssembled, setIsAssembled] = useState(false);
   const [isPulsing, setIsPulsing] = useState(false);
   const [animationDone, setAnimationDone] = useState(false);
   const [particlesReady, setParticlesReady] = useState(false);
   const svgRef = useRef(null);
+  const heroContent = {
+    badgeText:
+      content?.badgeText ?? "Microsoft Fabric & AI Foundry Specialists",
+    headlineLine1: content?.headlineLine1 ?? "Your data wasn't built for",
+    headlineHighlight: content?.headlineHighlight ?? "what's coming.",
+    subtitle:
+      content?.subtitle ??
+      "No rip-and-replace. We leverage your existing Microsoft investment and build alongside you.",
+    primaryButtonText:
+      content?.primaryButtonText ?? "Get Your Data Readiness Score",
+    primaryButtonLink: content?.primaryButtonLink ?? "/assessment",
+  };
 
   // Generate paths that will form the GROOT logo
   const logoElements = useMemo(() => {
@@ -246,22 +258,20 @@ export function HeroSection() {
                     
                     {/* Pure Typography */}
                     <span className="relative whitespace-nowrap bg-gradient-to-r from-forest to-forest/80 bg-clip-text text-[8.5px] font-extrabold uppercase tracking-[0.1em] text-transparent drop-shadow-sm xs:text-[9px] xs:tracking-[0.15em] sm:text-[10px] sm:tracking-[0.2em] md:text-xs md:tracking-[0.25em]">
-                      Microsoft Fabric & AI Foundry Specialists
+                      {heroContent.badgeText}
                     </span>
                   </m.div>
 
                   <h1 className="mb-2 text-3xl font-bold leading-tight tracking-tight text-foreground md:mb-3 md:text-5xl lg:text-6xl">
-                    Your data wasn&apos;t built for
+                    {heroContent.headlineLine1}
                     <br />
                     <span className="whitespace-nowrap bg-gradient-to-r from-[hsl(var(--groot-dark-forest))] to-[hsl(var(--groot-dark-primary))] bg-clip-text text-transparent">
-                      what&apos;s coming.
+                      {heroContent.headlineHighlight}
                     </span>
                   </h1>
 
                   <p className="mx-auto mb-3 max-w-3xl text-lg font-medium leading-relaxed text-foreground/80 md:mb-4 md:text-xl md:font-normal md:text-muted-foreground">
-                    No rip-and-replace. We leverage your existing Microsoft
-                    <br className="hidden md:block" /> investment and build
-                    alongside you.
+                    {heroContent.subtitle}
                   </p>
 
                   <m.div
@@ -270,13 +280,16 @@ export function HeroSection() {
                     transition={{ delay: 0.8 }}
                     className="flex flex-col items-center justify-center gap-3 pt-2 md:gap-4"
                   >
-                    <Link href="/assessment" className="w-full sm:w-auto">
+                    <Link
+                      href={heroContent.primaryButtonLink}
+                      className="w-full sm:w-auto"
+                    >
                       <Button
                         variant="hero"
                         size="xl"
                         className="group flex w-full items-center justify-center gap-1.5 px-3 py-4 text-sm shadow-lg shadow-mint/20 xs:px-4 sm:w-auto sm:gap-2 sm:px-6 sm:text-base md:px-8 md:text-lg"
                       >
-                        Get Your Data Readiness Score
+                        {heroContent.primaryButtonText}
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 sm:h-5 sm:w-5" />
                       </Button>
                     </Link>

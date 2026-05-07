@@ -65,7 +65,7 @@ const nextConfig = {
       style-src 'self' 'unsafe-inline';
       img-src 'self' blob: data: https://images.unsplash.com https://res.cloudinary.com https://www.google-analytics.com;
       font-src 'self' data:;
-      connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.googletagmanager.com https://us-central1-datascube-2b74e.cloudfunctions.net https://*.a.run.app wss:;
+      connect-src 'self' https://region1.google-analytics.com https://www.google-analytics.com https://us-central1-datascube-2b74e.cloudfunctions.net wss:;
       object-src 'none';
       base-uri 'self';
       form-action 'self';

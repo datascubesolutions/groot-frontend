@@ -83,12 +83,14 @@ function BrandItem({ brand }) {
           height={36}
           className="h-6 w-auto object-contain opacity-90 contrast-125 grayscale-[100%] filter transition-all duration-300 group-hover:scale-110 group-hover:opacity-100 group-hover:contrast-100 group-hover:grayscale-0 md:h-9"
         />
-        <h3
-          ref={textRef}
-          className="text-nowrap text-center text-xl font-medium tracking-tight text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
-        >
-          {brand.name}
-        </h3>
+        {brand.name ? (
+          <h3
+            ref={textRef}
+            className="text-nowrap text-center text-xl font-medium tracking-tight text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
+          >
+            {brand.name}
+          </h3>
+        ) : null}
       </div>
       {/* Sharp separator */}
       <div className="mx-4 block h-10 w-[1px] bg-border opacity-30 md:mx-6" />
@@ -96,9 +98,22 @@ function BrandItem({ brand }) {
   );
 }
 
-export function ClientLogosSection() {
+export function ClientLogosSection({ content }) {
+  const dynamicBrands =
+    Array.isArray(content?.logos) && content.logos.length > 0
+      ? content.logos.map((logo, index) => ({
+          name: `Partner ${index + 1}`,
+          logo,
+        }))
+      : null;
+  const displayBrands = dynamicBrands || brands;
   // Duplicate brands to ensure seamless loop
-  const seamlessBrands = [...brands, ...brands, ...brands, ...brands];
+  const seamlessBrands = [
+    ...displayBrands,
+    ...displayBrands,
+    ...displayBrands,
+    ...displayBrands,
+  ];
 
   return (
     <LazyMotion features={domAnimation} strict>

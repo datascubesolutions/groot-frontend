@@ -7,20 +7,20 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup";
 import { cn } from "@/lib/utils";
 import { Label } from "@radix-ui/react-label";
 import {
-  animate,
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useTransform,
+    animate,
+    AnimatePresence,
+    motion,
+    useMotionValue,
+    useTransform,
 } from "framer-motion";
 import {
-  ArrowLeft,
-  ArrowRight,
-  Calendar,
-  CheckCircle2,
-  Download,
-  Mail,
-  TrendingUp,
+    ArrowLeft,
+    ArrowRight,
+    Calendar,
+    CheckCircle2,
+    Download,
+    Mail,
+    TrendingUp,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -357,18 +357,31 @@ export function QuizFlow({ onComplete }) {
 
   const renderIntro = () => (
     <motion.div
-      className="py-6 text-center"
+      className="py-4 text-center sm:py-6"
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
+      <div className="relative mx-auto max-w-xl overflow-hidden rounded-3xl border border-border/70 bg-card/95 px-5 py-7 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:px-8 sm:py-9">
+        <div className="pointer-events-none absolute -left-20 -top-16 h-44 w-44 rounded-full bg-forest/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 -right-16 h-52 w-52 rounded-full bg-primary/10 blur-3xl" />
+        <div className="relative z-10">
+          <motion.span
+            initial={{ y: 8, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="mb-4 inline-flex items-center rounded-full border border-forest/20 bg-forest/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-forest"
+          >
+            Free Maturity Check
+          </motion.span>
+
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.1 }}
         className="mb-4"
       >
-        <h2 className="mb-2 text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
+        <h2 className="mb-2 text-[2rem] font-extrabold tracking-tight text-foreground sm:text-4xl md:text-[2.75rem]">
           Get Your <span className="text-forest">Data Readiness Score</span>
         </h2>
       </motion.div>
@@ -377,12 +390,12 @@ export function QuizFlow({ onComplete }) {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mb-8 text-lg font-medium text-muted-foreground"
+        className="mx-auto mb-8 max-w-xl text-base font-medium leading-relaxed text-muted-foreground sm:text-lg"
       >
         Answer 7 quick questions to find out:
       </motion.p>
 
-      <ul className="mx-auto mb-10 max-w-sm space-y-4 text-left">
+      <ul className="mx-auto mb-9 max-w-md space-y-3.5 text-left sm:mb-10">
         {[
           "Where you stand on data maturity",
           "Your recommended starting point",
@@ -393,12 +406,12 @@ export function QuizFlow({ onComplete }) {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-            className="flex items-center gap-4"
+            className="flex items-center gap-3.5 rounded-xl border border-border/60 bg-muted/30 px-3 py-2.5"
           >
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-forest/10 text-forest">
-              <CheckCircle2 className="h-5 w-5" strokeWidth={2.5} />
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-forest/20 bg-forest/10 text-forest">
+              <CheckCircle2 className="h-[18px] w-[18px]" strokeWidth={2.5} />
             </div>
-            <span className="text-lg font-medium text-foreground/80">
+            <span className="text-base font-medium text-foreground/85 sm:text-lg">
               {text}
             </span>
           </motion.li>
@@ -409,10 +422,10 @@ export function QuizFlow({ onComplete }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="mb-8 flex items-center justify-center gap-2 text-sm font-medium text-muted-foreground"
+        className="mb-7 flex items-center justify-center gap-2 text-sm font-semibold text-muted-foreground sm:mb-8"
       >
         <span className="relative flex h-2.5 w-2.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-forest opacity-75"></span>
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-forest/80 opacity-70"></span>
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-forest"></span>
         </span>
         Takes about 2 minutes
@@ -426,12 +439,28 @@ export function QuizFlow({ onComplete }) {
         <Button
           onClick={() => setStep("questions")}
           size="lg"
-          className="w-full rounded-xl bg-forest px-6 py-4 text-base font-bold text-white shadow-xl shadow-forest/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-forest/90 hover:shadow-forest/30 sm:w-auto sm:px-10 sm:py-6 sm:text-lg"
+          className="group relative isolate w-full overflow-hidden rounded-xl bg-forest px-7 py-4 text-base font-bold text-white shadow-[0_12px_30px_-10px_rgba(6,95,70,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-forest/90 hover:shadow-[0_18px_35px_-12px_rgba(6,95,70,0.6)] sm:w-auto sm:min-w-[260px] sm:px-10 sm:py-6 sm:text-lg"
         >
-          Start Assessment
-          <ArrowRight className="ml-2 h-5 w-5" />
+          <motion.span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,rgba(255,255,255,0.22),transparent_55%)]"
+            animate={{ opacity: [0.35, 0.6, 0.35] }}
+            transition={{ duration: 2.2, ease: "easeInOut", repeat: Infinity }}
+          />
+          <span className="relative z-10 inline-flex items-center justify-center gap-2">
+            <span>Start Assessment</span>
+            <motion.span
+              className="inline-flex"
+              animate={{ x: [0, 2.5, 0] }}
+              transition={{ duration: 1.6, ease: "easeInOut", repeat: Infinity }}
+            >
+              <ArrowRight className="h-5 w-5" />
+            </motion.span>
+          </span>
         </Button>
       </motion.div>
+        </div>
+      </div>
     </motion.div>
   );
 
@@ -867,7 +896,7 @@ export function QuizFlow({ onComplete }) {
   };
 
   return (
-    <div className="mx-auto max-w-4xl">
+    <div className="mx-auto max-w-3xl">
       {/* Top-Mounted Premium Progress Bar */}
       {step === "questions" && (
         <div className="fixed left-0 right-0 top-0 z-50 h-[3px] bg-muted">
