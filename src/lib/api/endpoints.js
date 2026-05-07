@@ -7,8 +7,10 @@
  */
 
 /**
- * API Endpoints organized by feature
- * @type {Object}
+ * API Endpoints organized by feature.
+ *
+ * Keep this untyped so TypeScript can infer the literal keys
+ * (`AUTH`, `HOMEPAGE`, etc.) for JS consumers under type-checking.
  */
 export const API_ENDPOINTS = {
   // Auth
