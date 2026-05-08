@@ -1,7 +1,10 @@
 // @ts-nocheck
+"use client";
+
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
-import { generateBreadcrumbSchema, generateRouteMetadata } from "@/lib/seo";
+import { generateBreadcrumbSchema } from "@/lib/seo";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Brain,
@@ -14,47 +17,42 @@ import {
   ShoppingCart,
   Stethoscope,
   TrendingUp,
+  ChevronRight,
+  Activity
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-export const metadata = {
-  ...generateRouteMetadata("industries"),
-};
 
 const caseStudies = [
   {
     category: "Data Engineering",
     title: "Modernizing a Global Financial Data Lake",
     client: "Tier 1 Investment Bank",
-    impact: "99.9% Pipeline Reliability",
-    description:
-      "Built a cloud-native data architecture on Azure Databricks processing 5TB+ daily for real-time risk assessment, ensuring absolute precision in high-frequency trading environments.",
+    impact: "99.9% Reliability",
+    description: "Built a cloud-native data architecture on Azure Databricks processing 5TB+ daily for real-time risk assessment, ensuring precision in high-frequency trading.",
     icon: Database,
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    code: "CS-01"
   },
   {
     category: "AI & Automation",
     title: "Intelligent Inventory Optimization AI",
     client: "Retail Conglomerate",
-    impact: "18% Stockout Reduction",
-    description:
-      "Deployed custom XGBoost models on Azure ML to predict micro-market demand spikes and automate supply chain logistics across 200+ global locations.",
+    impact: "18% Stockout Redux",
+    description: "Deployed custom XGBoost models on Azure ML to predict micro-market demand spikes and automate supply chain logistics across 200+ global locations.",
     icon: Brain,
-    image:
-      "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=2070&auto=format&fit=crop",
+    code: "CS-02"
   },
   {
     category: "Strategy & BI",
     title: "Decision Intelligence for PE Integration",
-    client: "Leading Private Equity Firm",
-    impact: "40% Faster Reporting",
-    description:
-      "Designed a unified semantic layer on Snowflake and executive Power BI dashboards during a complex, trillion-dollar merger of three major entities.",
+    client: "Private Equity Firm",
+    impact: "40% Faster Reps",
+    description: "Designed a unified semantic layer on Snowflake and executive Power BI dashboards during a complex, trillion-dollar merger of three major entities.",
     icon: TrendingUp,
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop",
+    code: "CS-03"
   },
 ];
 
@@ -62,88 +60,56 @@ const industries = [
   {
     icon: Building2,
     title: "Financial Services",
-    description:
-      "Advanced risk modeling, algorithmic fraud detection, and steadfast regulatory compliance solutions tailored for banking and fintech innovators.",
-    points: [
-      "Real-time Risk Dashboards",
-      "Fraud Detection Algorithms",
-      "Customer Churn Prediction",
-      "Portfolio Optimization Models",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    description: "Advanced risk modeling, algorithmic fraud detection, and steadfast regulatory compliance tailored for banking and fintech innovators.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    code: "IND-FS"
   },
   {
     icon: Factory,
-    title: "Manufacturing & Supply",
-    description:
-      "Shatter operational bottlenecks with AI-driven predictive maintenance, dynamic demand forecasting, and complete inventory intelligence.",
-    points: [
-      "IoT Predictive Maintenance",
-      "Demand Forecasting AI",
-      "Supply Chain Observability",
-      "Automated Quality Control",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=2070&auto=format&fit=crop",
+    title: "Manufacturing",
+    description: "Shatter operational bottlenecks with AI-driven predictive maintenance, dynamic demand forecasting, and complete inventory intelligence.",
+    image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=2070&auto=format&fit=crop",
+    code: "IND-MFG"
   },
   {
     icon: Stethoscope,
-    title: "Healthcare & Life Sciences",
-    description:
-      "Elevating patient outcomes and streamlining clinical efficiency through HIPAA-compliant data lakes and advanced operational analytics.",
-    points: [
-      "Patient Outcome Analytics",
-      "Revenue Cycle Intelligence",
-      "Population Health AI",
-      "Secure Clinical Data Lakes",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop",
+    title: "Healthcare",
+    description: "Elevating patient outcomes and streamlining clinical efficiency through HIPAA-compliant data lakes and advanced operational analytics.",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop",
+    code: "IND-HLT"
   },
   {
     icon: ShoppingCart,
     title: "Retail & E-commerce",
-    description:
-      "Hyper-personalize digital customer experiences and optimize dynamic pricing engines using sophisticated machine learning insights.",
-    points: [
-      "Hyper-Personalization Engines",
-      "Dynamic Pricing Models",
-      "Omnichannel Optimization",
-      "Market Basket AI Analysis",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop",
+    description: "Hyper-personalize digital customer experiences and optimize dynamic pricing engines using sophisticated machine learning insights.",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop",
+    code: "IND-RTL"
   },
   {
     icon: Globe2,
     title: "Logistics & Transport",
-    description:
-      "Architecting route optimization algorithms and global real-time tracking infrastructures to drive unparalleled efficiency.",
-    points: [
-      "Algorithmic Route Optimization",
-      "Fleet Health Monitoring",
-      "Dynamic ETA Systems",
-      "Fuel & Cost Benchmarking",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=2070&auto=format&fit=crop",
+    description: "Architecting route optimization algorithms and global real-time tracking infrastructures to drive unparalleled efficiency.",
+    image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=2070&auto=format&fit=crop",
+    code: "IND-LOG"
   },
   {
     icon: Cpu,
     title: "Technology & SaaS",
-    description:
-      "Building scalable product usage pipelines and telemetry analytics platforms for modern software enterprises to drive explosive growth.",
-    points: [
-      "Telemetry & Usage Analytics",
-      "SaaS KPI Frameworks",
-      "Customer Success Scoring",
-      "Growth Attribution Modeling",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
+    description: "Building scalable product usage pipelines and telemetry analytics platforms for modern software enterprises to drive explosive growth.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
+    code: "IND-TEC"
   },
 ];
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
 
 export default function IndustriesPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -157,307 +123,209 @@ export default function IndustriesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <main className="min-h-screen bg-background font-sans selection:bg-primary/30 selection:text-forest">
-        <div className="container mx-auto px-6 pt-24">
+      <main className="min-h-screen bg-background pt-20 selection:bg-emerald-500/30">
+        <div className="container mx-auto px-6 py-4 relative z-20">
           <Breadcrumb items={[{ label: "Industries", href: "/industries" }]} />
         </div>
 
-        {/* Hero Section */}
-        <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden bg-background pb-20 pt-10">
-          {/* Subtle Background Pattern matching other pages */}
-          <div className="dot-pattern pointer-events-none absolute inset-0 z-0 opacity-40"></div>
+        {/* Blueprint Canvas Background */}
+        <div className="fixed inset-0 pointer-events-none z-0 opacity-40">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.08)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        </div>
 
-          {/* Soft Glowing Orbs */}
-          <div className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] -translate-y-1/2 translate-x-1/3 rounded-full bg-primary/10 mix-blend-multiply blur-[140px]"></div>
-          <div className="pointer-events-none absolute bottom-0 left-0 h-[700px] w-[700px] -translate-x-1/4 translate-y-1/3 rounded-full bg-forest/5 mix-blend-multiply blur-[160px]"></div>
+        {/* Dense Editorial Hero */}
+        <section className="relative z-10 pt-10 pb-20">
+          <div className="container mx-auto px-6 max-w-[1400px]">
+            <div className="border-[4px] border-foreground bg-card shadow-[20px_20px_0px_0px_hsl(var(--emerald-600)/0.2)]">
+               <div className="grid grid-cols-1 lg:grid-cols-12 divide-y-[4px] lg:divide-y-0 lg:divide-x-[4px] divide-foreground">
+                 
+                 {/* Left Text Content */}
+                 <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="lg:col-span-8 p-8 md:p-16 relative overflow-hidden bg-background">
+                    <div className="absolute right-[-10%] top-0 text-[12rem] font-black leading-none text-muted-foreground/5 select-none pointer-events-none">IND</div>
+                    
+                    <motion.div variants={fadeIn} className="mb-6">
+                      <span className="text-xs font-black uppercase tracking-[0.4em] text-emerald-600 bg-emerald-600/10 px-3 py-1 border border-emerald-600/30">
+                        Sector Matrix
+                      </span>
+                    </motion.div>
+                    
+                    <motion.h1 variants={fadeIn} className="mb-8 text-[3.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground sm:text-[4.5rem] md:text-[6.5rem]">
+                      Industries We <span className="text-emerald-600 block">Transform.</span>
+                    </motion.h1>
 
-          <div className="container relative z-10 mx-auto mt-16 flex flex-1 flex-col items-center justify-center px-6 text-center">
-            <div className="glass group relative mb-12 inline-flex items-center gap-2 overflow-hidden rounded-full border border-border px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-forest shadow-sm sm:text-xs">
-              <div className="absolute inset-0 translate-y-[100%] bg-primary/10 transition-transform duration-300 group-hover:translate-y-0"></div>
-            </div>
-            <h1 className="mb-8 text-5xl font-extrabold leading-[1.05] tracking-tighter text-foreground md:text-7xl lg:text-[7.5rem]">
-              Industries We
-              <br className="hidden md:block" />{" "}
-              <span className="bg-gradient-to-r from-primary to-forest bg-clip-text pr-2 font-serif font-medium italic text-transparent">
-                Transform
-              </span>
-            </h1>
+                    <motion.p variants={fadeIn} className="max-w-2xl mb-12 text-xl font-bold leading-relaxed text-muted-foreground border-l-[4px] border-emerald-600 pl-6">
+                      Deep domain expertise paired with advanced AI & analytics engineering to master the distinct complexities of your vertical.
+                    </motion.p>
 
-            <p className="mx-auto mb-16 max-w-4xl text-balance text-xl font-light leading-relaxed text-muted-foreground md:text-2xl lg:text-3xl">
-              Deep domain expertise paired with{" "}
-              <strong className="font-semibold text-foreground">
-                advanced AI & analytics
-              </strong>{" "}
-              engineering to master the distinct complexities of your vertical.
-            </p>
-
-            <div className="flex w-full flex-col items-center justify-center gap-6 sm:flex-row">
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  className="h-[4.5rem] transform rounded-full bg-forest px-12 text-lg font-bold text-white shadow-xl shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:bg-forest/90"
-                >
-                  Consult Your Expert{" "}
-                  <ArrowRight size={22} className="ml-3" aria-hidden="true" />
-                </Button>
-              </Link>
-              <div className="group relative w-full sm:w-auto">
-                <label htmlFor="industry-search" className="sr-only">
-                  Search by industry
-                </label>
-                <input
-                  id="industry-search"
-                  type="search"
-                  placeholder="Search by industry..."
-                  aria-label="Search by industry"
-                  className="h-[4.5rem] w-full rounded-full border border-border bg-card px-8 pr-16 text-lg font-medium text-foreground shadow-sm outline-none transition-all placeholder:text-muted-foreground hover:border-primary/50 focus:border-primary focus:ring-4 focus:ring-primary/10 sm:w-80 sm:group-focus-within:w-[28rem]"
-                />
-                <Search
-                  className="absolute right-6 top-1/2 -translate-y-1/2 text-primary"
-                  size={24}
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Case Studies - Our Work */}
-        <section
-          id="our-work"
-          className="relative border-t border-border bg-background py-40"
-        >
-          <div className="container relative z-10 mx-auto px-6 xl:px-12">
-            <div className="mb-32 flex flex-col items-end justify-between gap-8 border-b border-border/50 pb-12 md:flex-row">
-              <div className="max-w-3xl">
-                <h2 className="mb-8 text-5xl font-extrabold tracking-tight text-foreground md:text-6xl lg:text-7xl">
-                  Proven Impact
-                </h2>
-                <p className="text-balance text-xl font-light leading-relaxed text-muted-foreground md:text-2xl">
-                  Engineering intelligent systems that solve real-world industry
-                  bottlenecks. Explore our empirical success stories.
-                </p>
-              </div>
-              <Link href="/contact" className="hidden shrink-0 md:inline-flex">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="h-[4.5rem] rounded-full border-2 border-border px-12 text-lg font-bold tracking-wide text-forest transition-all duration-300 hover:border-forest hover:bg-forest hover:text-white"
-                >
-                  Partner With Us
-                </Button>
-              </Link>
-            </div>
-
-            <div className="space-y-48">
-              {caseStudies.map((study, index) => {
-                const Icon = study.icon;
-                const isEven = index % 2 === 0;
-                return (
-                  <div
-                    key={index}
-                    className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} group items-center gap-16 lg:gap-32`}
-                  >
-                    {/* Image Column */}
-                    <div className="relative w-full lg:w-[55%]">
-                      <div className="relative aspect-[4/3] transform overflow-hidden rounded-[2.5rem] shadow-2xl shadow-foreground/5 ring-1 ring-border transition-all duration-700 group-hover:-translate-y-4 group-hover:shadow-[0_40px_80px_-20px_rgba(20,184,166,0.15)]">
-                        <div className="absolute inset-0 z-10 bg-forest/5 mix-blend-overlay transition-colors duration-500 group-hover:bg-transparent" />
-                        <Image
-                          src={study.image}
-                          alt={study.title}
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 55vw"
-                          {...(index === 0 ? { priority: true } : {})}
-                          className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 relative z-10">
+                      <div className="relative w-full sm:w-[400px]">
+                        <input
+                          type="search"
+                          placeholder="Search sector protocols..."
+                          className="h-16 w-full border-[3px] border-foreground bg-background px-6 pr-16 text-sm font-black uppercase tracking-widest text-foreground outline-none transition-all placeholder:text-muted-foreground/50 focus:border-emerald-600 focus:ring-0"
                         />
-
-                        {/* Floating Labels */}
-                        <div className="absolute left-10 top-10 z-20 rounded-full border border-border bg-card/95 px-6 py-2.5 text-xs font-extrabold uppercase tracking-[0.15em] text-forest shadow-xl backdrop-blur-md">
-                          {study.category}
-                        </div>
-
-                        <div className="absolute bottom-10 right-10 z-20 flex h-20 w-20 items-center justify-center rounded-[1.5rem] border border-border bg-card/95 shadow-2xl backdrop-blur-md transition-colors duration-500 group-hover:bg-forest">
-                          <Icon
-                            size={32}
-                            className="text-primary transition-colors duration-500 group-hover:text-white"
-                          />
+                        <div className="absolute right-0 top-0 bottom-0 w-16 border-l-[3px] border-foreground flex items-center justify-center bg-muted/50">
+                          <Search size={20} className="text-foreground" />
                         </div>
                       </div>
+                    </motion.div>
+                 </motion.div>
+
+                 {/* Right Data Grid */}
+                 <div className="lg:col-span-4 bg-muted/30 grid grid-cols-2 divide-x-[4px] divide-y-[4px] divide-foreground">
+                    <div className="col-span-2 border-b-[4px] border-foreground bg-emerald-600/10 p-6 flex flex-col justify-center items-center text-center">
+                       <Activity className="w-12 h-12 text-emerald-600 mb-4" />
+                       <span className="text-sm font-black uppercase tracking-widest text-foreground">Global Operations</span>
+                       <span className="text-xs font-bold text-muted-foreground mt-2">Active Telemetry</span>
                     </div>
-
-                    {/* Content Column */}
-                    <div className="flex w-full flex-col justify-center lg:w-[45%]">
-                      <h3 className="mb-8 text-4xl font-extrabold leading-tight tracking-tight text-foreground transition-colors duration-500 group-hover:text-forest lg:text-5xl">
-                        {study.title}
-                      </h3>
-                      <p className="mb-14 text-xl font-light leading-relaxed text-muted-foreground">
-                        {study.description}
-                      </p>
-
-                      <div className="mb-14 grid grid-cols-2 gap-10 rounded-[2rem] border border-border/50 bg-muted/30 p-10">
-                        <div className="space-y-4">
-                          <span className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">
-                            Client
-                          </span>
-                          <p className="text-xl font-bold leading-tight text-foreground">
-                            {study.client}
-                          </p>
-                        </div>
-                        <div className="space-y-4">
-                          <span className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">
-                            Impact
-                          </span>
-                          <p className="inline-flex items-center text-2xl font-extrabold leading-tight text-forest">
-                            {study.impact}
-                          </p>
-                        </div>
+                    
+                    {industries.slice(0,4).map((ind, i) => (
+                      <div key={i} className={`p-6 flex flex-col items-center justify-center text-center ${i < 2 ? '' : 'border-t-[4px] border-foreground'}`}>
+                         <ind.icon className="w-8 h-8 text-foreground/50 mb-3" />
+                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground">{ind.title.split(' ')[0]}</span>
                       </div>
-
-                      <div>
-                        {/* Case study detail pages are not yet available — link removed to avoid dead navigation */}
-                        <span
-                          className="inline-flex cursor-default items-center gap-3 text-lg font-bold tracking-wide text-muted-foreground"
-                          aria-label={`Case study: ${study.title} — coming soon`}
-                        >
-                          Read Case Study{" "}
-                          <ArrowRight size={22} aria-hidden="true" />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="mt-32 text-center md:hidden">
-              <Link href="/contact">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="h-16 w-full rounded-full border-2 border-border text-lg font-bold text-forest transition-all duration-300 hover:border-forest hover:bg-forest hover:text-white"
-                >
-                  Partner With Us
-                </Button>
-              </Link>
+                    ))}
+                 </div>
+               </div>
             </div>
           </div>
         </section>
 
-        {/* Industry Grid */}
-        <section className="relative overflow-hidden border-t border-border bg-background py-40">
-          {/* Repeating dot pattern to match the whole site vibe without breaking contrast */}
-          <div className="dot-pattern pointer-events-none absolute inset-0 z-0 opacity-20"></div>
-
-          <div className="container relative z-10 mx-auto px-6 xl:px-12">
-            <div className="mx-auto mb-32 max-w-4xl text-center">
-              <h2 className="mb-8 text-5xl font-extrabold tracking-tight text-foreground md:text-6xl lg:text-7xl">
-                Vertical Mastery
-              </h2>
-              <p className="text-balance text-xl font-light leading-relaxed text-muted-foreground md:text-2xl">
-                Custom-architected data strategies engineered for the precise
-                dynamics of your industry.
+        {/* Proven Impact - Dense Blueprint Matrix */}
+        <section className="relative z-20 py-20 border-y-[6px] border-foreground bg-foreground">
+          <div className="container mx-auto px-6 max-w-[1400px]">
+            <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b-[4px] border-background/20 pb-8">
+              <div className="max-w-2xl">
+                <span className="text-xs font-black uppercase tracking-[0.4em] text-emerald-400 block mb-4">Empirical Results</span>
+                <h2 className="text-[3rem] sm:text-[4.5rem] font-black uppercase leading-[0.85] tracking-tighter text-background">
+                  Proven Impact.
+                </h2>
+              </div>
+              <p className="max-w-md font-bold text-lg text-background/70 border-l-[3px] border-emerald-400 pl-6">
+                Engineering intelligent systems that solve real-world industry bottlenecks.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-              {industries.map((industry, index) => {
-                const Icon = industry.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-border bg-card transition-all duration-500 hover:-translate-y-3 hover:border-primary/40 hover:shadow-[0_45px_100px_-20px_rgba(20,184,166,0.15)]"
-                  >
-                    {/* Card Header Image Snippet */}
-                    <div className="relative h-64 w-full overflow-hidden">
-                      <div className="absolute inset-0 z-10 bg-forest/5 mix-blend-multiply transition-colors duration-500 group-hover:bg-transparent"></div>
-                      <Image
-                        src={industry.image}
-                        alt={industry.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                      />
-                      {/* Floating icon */}
-                      <div className="absolute -bottom-10 left-10 z-20 flex h-20 w-20 items-center justify-center rounded-[1.5rem] border border-border bg-card shadow-md transition-all duration-500 group-hover:scale-110 group-hover:bg-forest">
-                        <Icon
-                          size={32}
-                          className="text-forest transition-colors duration-500 group-hover:text-white"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-1 flex-col p-10 pt-20">
-                      <h3 className="mb-6 text-3xl font-extrabold tracking-tight text-foreground transition-colors group-hover:text-forest">
-                        {industry.title}
-                      </h3>
-                      <p className="mb-12 flex-1 text-lg font-light leading-relaxed text-muted-foreground">
-                        {industry.description}
-                      </p>
-
-                      <ul className="mb-12 space-y-5">
-                        {industry.points.map((point, pIdx) => (
-                          <li
-                            key={pIdx}
-                            className="flex items-start gap-4 text-base font-semibold text-foreground/80"
-                          >
-                            <div className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary shadow-[0_0_8px_rgba(20,184,166,0.5)]" />
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
-
-                      <Link href="/services" className="mt-auto">
-                        <Button
-                          variant="ghost"
-                          className="h-auto w-full justify-between rounded-none border-t border-border/50 px-0 pt-8 text-lg font-bold text-foreground hover:bg-transparent hover:text-forest group-hover:text-forest"
-                        >
-                          Explore Solutions{" "}
-                          <ArrowRight
-                            size={24}
-                            className="text-primary transition-transform duration-300 group-hover:translate-x-2"
-                            aria-hidden="true"
-                          />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-[4px] border-[4px] border-background bg-background shadow-[15px_15px_0px_0px_rgba(0,0,0,0.5)]">
+               {caseStudies.map((study, idx) => {
+                 const Icon = study.icon;
+                 return (
+                   <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+                     key={idx} className="bg-card flex flex-col relative group overflow-hidden"
+                   >
+                     {/* Image Header */}
+                     <div className="relative h-48 sm:h-56 border-b-[4px] border-foreground bg-black overflow-hidden">
+                       <Image src={study.image} alt={study.title} fill className="object-cover grayscale opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700 mix-blend-screen" />
+                       <div className="absolute inset-0 bg-emerald-600/10 mix-blend-overlay"></div>
+                       <div className="absolute top-4 left-4 bg-background border-[2px] border-foreground px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] z-10">
+                         {study.code}
+                       </div>
+                       <div className="absolute bottom-4 right-4 bg-emerald-600 text-white w-12 h-12 flex items-center justify-center border-[2px] border-foreground z-10">
+                         <Icon size={20} />
+                       </div>
+                     </div>
+                     {/* Content */}
+                     <div className="p-8 flex-1 flex flex-col">
+                        <span className="text-xs font-black uppercase tracking-widest text-emerald-600 mb-4">{study.category}</span>
+                        <h3 className="text-2xl sm:text-3xl font-black uppercase leading-[0.9] tracking-tight mb-6">{study.title}</h3>
+                        <p className="text-muted-foreground font-bold leading-relaxed mb-8">{study.description}</p>
+                        
+                        <div className="mt-auto grid grid-cols-2 gap-4 border-t-[3px] border-foreground/10 pt-6">
+                           <div>
+                             <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground block mb-1">Client</span>
+                             <span className="text-sm font-bold text-foreground">{study.client}</span>
+                           </div>
+                           <div>
+                             <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground block mb-1">Impact</span>
+                             <span className="text-sm font-black text-emerald-600">{study.impact}</span>
+                           </div>
+                        </div>
+                     </div>
+                   </motion.div>
+                 );
+               })}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="relative overflow-hidden border-t border-border bg-background py-40">
-          {/* Match the Hero pattern EXACTLY */}
-          <div className="dot-pattern pointer-events-none absolute inset-0 z-0 opacity-40"></div>
-
-          <div className="pointer-events-none absolute right-0 top-0 h-[1000px] w-[1000px] -translate-y-1/2 translate-x-1/2 rounded-full bg-primary/10 blur-[200px]"></div>
-          <div className="pointer-events-none absolute bottom-0 left-0 h-[800px] w-[800px] -translate-x-1/2 translate-y-1/2 rounded-full bg-emerald-300/10 blur-[200px]"></div>
-
-          <div className="container relative z-10 mx-auto flex flex-col items-center px-6 text-center">
-            <div className="mb-16 inline-flex h-32 w-32 items-center justify-center rounded-full border border-border bg-card text-primary shadow-xl backdrop-blur-sm">
-              <Globe2 size={64} strokeWidth={1.5} />
+        {/* Industry Matrix - Dense Tile Grid */}
+        <section className="relative z-30 py-24 bg-background">
+          <div className="container mx-auto px-6 max-w-[1400px]">
+            <div className="mb-16 text-center max-w-3xl mx-auto border-b-[4px] border-foreground pb-8">
+              <span className="text-xs font-black uppercase tracking-[0.4em] text-emerald-600 block mb-4">Vertical Mastery</span>
+              <h2 className="text-[3.5rem] md:text-[5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground mb-6">
+                Sector Matrix.
+              </h2>
+              <p className="font-bold text-lg text-muted-foreground">
+                Custom-architected data strategies engineered for the precise dynamics of your industry.
+              </p>
             </div>
-            <h2 className="mb-10 text-5xl font-extrabold leading-[1.05] tracking-tighter text-foreground md:text-6xl lg:text-[5.5rem]">
-              Don&apos;t See Your Industry?
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[4px] border-[4px] border-foreground bg-foreground shadow-[20px_20px_0px_0px_hsl(var(--emerald-600)/0.2)]">
+               {industries.map((industry, index) => {
+                 const Icon = industry.icon;
+                 return (
+                   <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+                     key={index} className="bg-card flex flex-col group relative overflow-hidden"
+                   >
+                     {/* Top ID bar */}
+                     <div className="flex justify-between items-center border-b-[4px] border-foreground bg-muted/40 p-4">
+                       <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-600">{industry.code}</span>
+                       <Icon size={16} className="text-muted-foreground group-hover:text-emerald-600 transition-colors" />
+                     </div>
+
+                     {/* Image + Content block */}
+                     <div className="relative p-8 pb-12 flex-1 flex flex-col justify-center min-h-[280px]">
+                        {/* Background Image that fades in on hover */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-black z-0">
+                           <Image src={industry.image} alt={industry.title} fill className="object-cover grayscale" />
+                        </div>
+                        
+                        <div className="relative z-10">
+                          <h3 className="text-3xl font-black uppercase tracking-tight leading-[0.9] text-foreground mb-6 group-hover:text-emerald-600 transition-colors">
+                            {industry.title}
+                          </h3>
+                          <p className="text-base font-bold leading-relaxed text-muted-foreground">
+                            {industry.description}
+                          </p>
+                        </div>
+                        
+                        {/* Hover reveal button */}
+                        <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20 bg-gradient-to-t from-card via-card to-transparent pt-16">
+                           <Link href="/contact" className="inline-flex items-center text-xs font-black uppercase tracking-widest text-emerald-600 border-b-2 border-emerald-600 pb-1">
+                              Deploy Protocol <ChevronRight size={14} className="ml-1" />
+                           </Link>
+                        </div>
+                     </div>
+                   </motion.div>
+                 );
+               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Brutalist CTA */}
+        <section className="bg-foreground py-24 text-background lg:py-32 border-t-[6px] border-emerald-600 relative overflow-hidden">
+          <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 text-[20rem] font-black text-background/5 select-none pointer-events-none">X</div>
+          <div className="container mx-auto max-w-5xl px-6 text-center relative z-10">
+            <div className="mb-12 inline-flex h-24 w-24 items-center justify-center border-[4px] border-background bg-transparent text-emerald-400">
+              <Globe2 size={40} />
+            </div>
+            <h2 className="mb-8 text-[3rem] font-black uppercase leading-[0.9] tracking-tighter sm:text-[4rem] md:text-[5.5rem]">
+              Beyond The Grid.
             </h2>
-            <p className="mx-auto mb-16 max-w-4xl text-balance text-2xl font-light leading-relaxed text-muted-foreground md:text-3xl">
-              Our data foundation transcends borders. Let&apos;s engineer a
-              cohesive, intelligent strategy uniquely tuned to your specific
-              market dynamics.
+            <p className="mx-auto mb-12 max-w-2xl text-xl font-bold leading-relaxed text-background/80">
+              Don't see your sector? Our foundational architectures transcend borders. Let's engineer a bespoke strategy tuned to your domain.
             </p>
             <Link href="/contact">
               <Button
+                variant="hero"
                 size="lg"
-                className="group h-[5rem] rounded-full bg-forest px-14 text-xl font-extrabold text-white shadow-2xl shadow-forest/10 transition-all duration-300 hover:-translate-y-1 hover:bg-forest/90"
+                className="group h-16 rounded-none border-[3px] border-background bg-transparent px-10 text-background shadow-[8px_8px_0px_0px_hsl(var(--background))] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:bg-background hover:text-foreground hover:shadow-none"
               >
-                Start the Conversation
-                <ArrowRight
-                  size={26}
-                  className="ml-4 transition-transform group-hover:translate-x-2"
-                  aria-hidden="true"
-                />
+                <span className="text-sm font-black uppercase tracking-[0.2em]">
+                  Initialize Contact
+                </span>
               </Button>
             </Link>
           </div>

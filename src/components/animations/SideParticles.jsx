@@ -4,7 +4,7 @@
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 // ── Static config objects (hoisted outside component to avoid re-creation) ──
 
@@ -123,8 +123,6 @@ const optionsMap = {
 function SideParticlesInner({ side = "left", variant = "chaotic" }) {
   const [init, setInit] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 1024px)");
-  const containerRef = useRef(null);
-  const particleContainerRef = useRef(null);
 
   // Only load the particle engine on desktop
   useEffect(() => {
@@ -136,44 +134,6 @@ function SideParticlesInner({ side = "left", variant = "chaotic" }) {
     });
   }, [isDesktop]);
 
-  const particlesLoaded = useCallback((container) => {
-    particleContainerRef.current = container;
-    if (typeof document !== "undefined") {
-      const handleVisibilityChange = () => {
-        if (document.hidden) {
-          container?.pause();
-        } else {
-          container?.play();
-        }
-      };
-      document.addEventListener("visibilitychange", handleVisibilityChange);
-      return () =>
-        document.removeEventListener(
-          "visibilitychange",
-          handleVisibilityChange
-        );
-    }
-  }, []);
-
-  // IntersectionObserver: pause particles when hero scrolls out of view
-  useEffect(() => {
-    const el = containerRef.current;
-    const pc = particleContainerRef.current;
-    if (!el || !pc) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          pc.play();
-        } else {
-          pc.pause();
-        }
-      },
-      { threshold: 0 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [init]);
 
   // Don't render anything on mobile/tablet
   if (!isDesktop || !init) {
@@ -184,7 +144,6 @@ function SideParticlesInner({ side = "left", variant = "chaotic" }) {
 
   return (
     <div
-      ref={containerRef}
       className={`pointer-events-none absolute top-0 z-[1] h-full ${
         side === "left" ? "left-0" : "right-0"
       }`}
@@ -207,7 +166,6 @@ function SideParticlesInner({ side = "left", variant = "chaotic" }) {
       <Particles
         id={`tsparticles-${side}`}
         options={options}
-        particlesLoaded={particlesLoaded}
         className="h-full w-full"
       />
     </div>

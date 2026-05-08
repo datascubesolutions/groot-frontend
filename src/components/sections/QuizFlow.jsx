@@ -872,10 +872,10 @@ export function QuizFlow({ onComplete }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <Button className="h-auto flex-1 whitespace-normal break-words rounded-xl bg-forest py-4 text-center text-sm font-bold text-white shadow-xl shadow-forest/20 transition-all hover:-translate-y-1 hover:bg-forest hover:shadow-forest/40 sm:text-lg">
+          <a href="/ai-roadmap.pdf" download="Groot_AI_Roadmap.pdf" className="flex h-auto flex-1 items-center justify-center whitespace-normal break-words rounded-xl bg-forest py-4 text-center text-sm font-bold text-white shadow-xl shadow-forest/20 transition-all hover:-translate-y-1 hover:bg-forest hover:shadow-forest/40 sm:text-lg">
             <Download className="mr-2 h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
             <span>Download AI Roadmap</span>
-          </Button>
+          </a>
           <Button
             variant="outline"
             className="h-auto flex-1 whitespace-normal break-words rounded-xl border-2 border-border py-4 text-center text-sm font-bold text-foreground/80 transition-all hover:border-slate-300 hover:bg-muted/50 sm:text-lg"

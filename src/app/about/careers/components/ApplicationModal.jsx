@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { AnimatePresence, m } from "framer-motion";
 import { Award, CheckCircle2, Code2, File, Loader2, Phone, Sparkles, UploadCloud, X } from "lucide-react";
 import { useRef, useState } from "react";
+import { toast } from "sonner";
 
 const TIMELINE_STEPS = [
   {
@@ -45,7 +46,10 @@ export default function ApplicationModal({ isOpen, onClose, jobTitle }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!resumeFile) return;
+    if (!resumeFile) {
+      toast.error("Resume attachment is required");
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -98,7 +102,7 @@ export default function ApplicationModal({ isOpen, onClose, jobTitle }) {
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
       <DialogContent className="max-w-[1100px] w-[95vw] max-h-[90vh] overflow-y-auto lg:overflow-hidden p-0 border-0 bg-transparent shadow-none">
 
-        <div className="bg-card/90 backdrop-blur-3xl rounded-2xl sm:rounded-[3rem] border border-border/50 shadow-[0_0_80px_-20px_hsl(var(--primary)/0.15)] overflow-hidden relative flex flex-col lg:flex-row min-h-[auto] lg:min-h-[700px] lg:h-[85vh]">
+        <div className="bg-card/90 backdrop-blur-3xl rounded-2xl sm:rounded-[3rem] border border-border/50 shadow-[0_0_80px_-20px_hsl(var(--primary)/0.15)] overflow-hidden relative flex flex-col lg:flex-row min-h-[auto] lg:min-h-[760px] lg:h-[90vh]">
           {/* LEFT PANEL - CONTEXT & BRANDING */}
           <div className="w-full lg:w-[40%] bg-forest relative p-5 sm:p-8 md:p-12 text-forest-foreground flex flex-col justify-between overflow-hidden shrink-0">
             {/* Background graphics */}
@@ -143,7 +147,7 @@ export default function ApplicationModal({ isOpen, onClose, jobTitle }) {
           </div>
 
           {/* RIGHT PANEL - THE FORM */}
-          <div className="w-full lg:w-[60%] p-5 sm:p-8 md:p-12 relative flex flex-col lg:overflow-y-auto custom-scrollbar">
+          <div className="w-full lg:w-[60%] p-5 sm:p-6 md:p-8 lg:p-10 relative flex flex-col lg:overflow-y-auto custom-scrollbar">
             <AnimatePresence mode="wait">
               {isSuccess ? (
                 <m.div
@@ -171,40 +175,40 @@ export default function ApplicationModal({ isOpen, onClose, jobTitle }) {
                   onSubmit={handleSubmit}
                   className="flex flex-col h-full"
                 >
-                  <div className="mb-8 sm:mb-12">
+                  <div className="mb-6 sm:mb-8">
                     <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tighter text-foreground mb-4">Submit Your Application</h3>
-                    <p className="text-sm sm:text-base text-muted-foreground font-medium border-l-2 border-primary/50 pl-4 py-1 bg-muted/20 rounded-r-lg">Fields marked with an asterisk are required.</p>
+                    <p className="text-sm sm:text-base text-forest/70 font-medium border-l-2 border-primary/50 pl-4 py-1 bg-primary/5 rounded-r-lg">Fields marked with an asterisk are required.</p>
                   </div>
 
-                  <div className="space-y-6 sm:space-y-8 flex-1">
+                  <div className="space-y-4 sm:space-y-6 flex-1">
                     {/* Compact Grid for Basics */}
-                    <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
-                      <div className="space-y-2.5">
-                        <Label htmlFor="firstName" className="text-muted-foreground font-black uppercase tracking-[0.2em] text-[10px] ml-1">First Name <span className="text-primary">*</span></Label>
-                        <Input id="firstName" required placeholder="Shivam" className="h-14 rounded-2xl border-t border-l border-white/60 dark:border-white/10 border-b-border/30 border-r-border/30 bg-background/30 backdrop-blur-xl shadow-[inset_0_2px_15px_rgba(0,0,0,0.03),0_4px_10px_rgba(0,0,0,0.03)] px-5 text-base font-medium transition-all duration-300 placeholder:text-muted-foreground/70 hover:bg-background/50 hover:border-primary/40 focus-visible:border-primary focus-visible:bg-background/80 focus-visible:ring-4 focus-visible:ring-primary/10" />
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="firstName" className="text-forest/80 font-black uppercase tracking-[0.2em] text-[10px] ml-1">First Name <span className="text-primary">*</span></Label>
+                        <Input id="firstName" required placeholder="Shivam" className="h-12 rounded-2xl border border-border/80 bg-muted/30 px-5 text-base font-semibold text-foreground transition-all duration-300 placeholder:text-muted-foreground/60 shadow-sm hover:bg-muted/50 hover:border-border outline-none focus-visible:outline-none focus-visible:border-primary focus-visible:bg-white focus-visible:ring-[3px] focus-visible:ring-primary/20" />
                       </div>
                       <div className="space-y-2.5">
-                        <Label htmlFor="lastName" className="text-muted-foreground font-black uppercase tracking-[0.2em] text-[10px] ml-1">Last Name <span className="text-primary">*</span></Label>
-                        <Input id="lastName" required placeholder="Chaudhary" className="h-14 rounded-2xl border-t border-l border-white/60 dark:border-white/10 border-b-border/30 border-r-border/30 bg-background/30 backdrop-blur-xl shadow-[inset_0_2px_15px_rgba(0,0,0,0.03),0_4px_10px_rgba(0,0,0,0.03)] px-5 text-base font-medium transition-all duration-300 placeholder:text-muted-foreground/70 hover:bg-background/50 hover:border-primary/40 focus-visible:border-primary focus-visible:bg-background/80 focus-visible:ring-4 focus-visible:ring-primary/10" />
+                        <Label htmlFor="lastName" className="text-forest/80 font-black uppercase tracking-[0.2em] text-[10px] ml-1">Last Name <span className="text-primary">*</span></Label>
+                        <Input id="lastName" required placeholder="Chaudhary" className="h-12 rounded-2xl border border-border/80 bg-muted/30 px-5 text-base font-semibold text-foreground transition-all duration-300 placeholder:text-muted-foreground/60 shadow-sm hover:bg-muted/50 hover:border-border outline-none focus-visible:outline-none focus-visible:border-primary focus-visible:bg-white focus-visible:ring-[3px] focus-visible:ring-primary/20" />
                       </div>
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
                       <div className="space-y-2.5">
-                        <Label htmlFor="email" className="text-muted-foreground font-black uppercase tracking-[0.2em] text-[10px] ml-1">Email Address <span className="text-primary">*</span></Label>
-                        <Input id="email" type="email" required placeholder="Groot@example.com" className="h-14 rounded-2xl border-t border-l border-white/60 dark:border-white/10 border-b-border/30 border-r-border/30 bg-background/30 backdrop-blur-xl shadow-[inset_0_2px_15px_rgba(0,0,0,0.03),0_4px_10px_rgba(0,0,0,0.03)] px-5 text-base font-medium transition-all duration-300 placeholder:text-muted-foreground/70 hover:bg-background/50 hover:border-primary/40 focus-visible:border-primary focus-visible:bg-background/80 focus-visible:ring-4 focus-visible:ring-primary/10" />
+                        <Label htmlFor="email" className="text-forest/80 font-black uppercase tracking-[0.2em] text-[10px] ml-1">Email Address <span className="text-primary">*</span></Label>
+                        <Input id="email" type="email" required placeholder="Groot@example.com" className="h-12 rounded-2xl border border-border/80 bg-muted/30 px-5 text-base font-semibold text-foreground transition-all duration-300 placeholder:text-muted-foreground/60 shadow-sm hover:bg-muted/50 hover:border-border outline-none focus-visible:outline-none focus-visible:border-primary focus-visible:bg-white focus-visible:ring-[3px] focus-visible:ring-primary/20" />
                       </div>
                       <div className="space-y-2.5">
-                        <Label htmlFor="linkedin" className="text-muted-foreground font-black uppercase tracking-[0.2em] text-[10px] ml-1">LinkedIn / Portfolio</Label>
-                        <Input id="linkedin" type="url" placeholder="https://linkedin.com/in/..." className="h-14 rounded-2xl border-t border-l border-white/60 dark:border-white/10 border-b-border/30 border-r-border/30 bg-background/30 backdrop-blur-xl shadow-[inset_0_2px_15px_rgba(0,0,0,0.03),0_4px_10px_rgba(0,0,0,0.03)] px-5 text-base font-medium transition-all duration-300 placeholder:text-muted-foreground/70 hover:bg-background/50 hover:border-primary/40 focus-visible:border-primary focus-visible:bg-background/80 focus-visible:ring-4 focus-visible:ring-primary/10" />
+                        <Label htmlFor="linkedin" className="text-forest/80 font-black uppercase tracking-[0.2em] text-[10px] ml-1">LinkedIn / Portfolio</Label>
+                        <Input id="linkedin" type="url" placeholder="https://linkedin.com/in/..." className="h-12 rounded-2xl border border-border/80 bg-muted/30 px-5 text-base font-semibold text-foreground transition-all duration-300 placeholder:text-muted-foreground/60 shadow-sm hover:bg-muted/50 hover:border-border outline-none focus-visible:outline-none focus-visible:border-primary focus-visible:bg-white focus-visible:ring-[3px] focus-visible:ring-primary/20" />
                       </div>
                     </div>
 
                     {/* Horizontal Compact Resume Uploader */}
-                    <div className="space-y-2.5 pt-2">
-                      <Label className="text-muted-foreground font-black uppercase tracking-[0.2em] text-[10px] ml-1">Resume / CV <span className="text-primary">*</span></Label>
+                    <div className="space-y-1.5 pt-1">
+                      <Label className="text-forest/80 font-black uppercase tracking-[0.2em] text-[10px] ml-1">Resume / CV <span className="text-primary">*</span></Label>
                       <div
-                        className={`relative flex items-center justify-between w-full p-5 sm:p-6 rounded-2xl border-t border-l border-white/60 dark:border-white/10 border-b-border/30 border-r-border/30 border-dashed transition-all duration-300 cursor-pointer backdrop-blur-xl ${isDragging ? 'border-primary bg-primary/10 scale-[1.02] shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.2)]' : 'bg-background/30 hover:bg-background/50 hover:border-primary/50 shadow-[inset_0_2px_15px_rgba(0,0,0,0.02),0_4px_10px_rgba(0,0,0,0.03)]'}`}
+                        className={`relative flex items-center justify-between w-full p-4 sm:p-5 rounded-2xl border-2 border-dashed transition-all duration-300 cursor-pointer ${isDragging ? 'border-primary bg-primary/10 scale-[1.02] shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.2)]' : 'border-border/60 bg-muted/30 shadow-sm hover:bg-muted/50 hover:border-primary/40'}`}
                         onDragOver={handleDragOver}
                         onDragLeave={handleDragLeave}
                         onDrop={handleDrop}
@@ -249,33 +253,33 @@ export default function ApplicationModal({ isOpen, onClose, jobTitle }) {
                       </div>
                     </div>
 
-                    <div className="space-y-2.5 pt-2">
-                      <Label htmlFor="whyGroot" className="text-muted-foreground font-black uppercase tracking-[0.2em] text-[10px] ml-1">Why Groot Analytics? <span className="text-primary">*</span></Label>
+                    <div className="space-y-1.5 pt-1">
+                      <Label htmlFor="whyGroot" className="text-forest/80 font-black uppercase tracking-[0.2em] text-[10px] ml-1">Why Groot Analytics? <span className="text-primary">*</span></Label>
                       <Textarea
                         id="whyGroot"
                         required
                         placeholder="A few short sentences on why Groot interests you..."
-                        className="h-24 sm:h-28 rounded-2xl border-t border-l border-white/60 dark:border-white/10 border-b-border/30 border-r-border/30 bg-background/30 backdrop-blur-xl shadow-[inset_0_2px_15px_rgba(0,0,0,0.03),0_4px_10px_rgba(0,0,0,0.03)] p-5 text-base font-medium transition-all duration-300 placeholder:text-muted-foreground/70 hover:bg-background/50 hover:border-primary/40 focus-visible:border-primary focus-visible:bg-background/80 focus-visible:ring-4 focus-visible:ring-primary/10 resize-none"
+                        className="h-20 sm:h-24 rounded-2xl border border-border/80 bg-muted/30 p-4 sm:p-5 text-base font-semibold text-foreground transition-all duration-300 placeholder:text-muted-foreground/60 shadow-sm hover:bg-muted/50 hover:border-border outline-none focus-visible:outline-none focus-visible:border-primary focus-visible:bg-white focus-visible:ring-[3px] focus-visible:ring-primary/20 resize-none"
                       />
                     </div>
 
-                    <div className="space-y-2.5 pt-2 pb-6">
-                      <Label htmlFor="dataProject" className="text-muted-foreground font-black uppercase tracking-[0.2em] text-[10px] ml-1">A Data Project You're Proud Of <span className="text-primary">*</span></Label>
+                    <div className="space-y-1.5 pt-1 pb-4">
+                      <Label htmlFor="dataProject" className="text-forest/80 font-black uppercase tracking-[0.2em] text-[10px] ml-1">A Data Project You're Proud Of <span className="text-primary">*</span></Label>
                       <Textarea
                         id="dataProject"
                         required
                         placeholder="Briefly describe a data puzzle, pipeline, or model you built."
-                        className="h-24 sm:h-28 rounded-2xl border-t border-l border-white/60 dark:border-white/10 border-b-border/30 border-r-border/30 bg-background/30 backdrop-blur-xl shadow-[inset_0_2px_15px_rgba(0,0,0,0.03),0_4px_10px_rgba(0,0,0,0.03)] p-5 text-base font-medium transition-all duration-300 placeholder:text-muted-foreground/70 hover:bg-background/50 hover:border-primary/40 focus-visible:border-primary focus-visible:bg-background/80 focus-visible:ring-4 focus-visible:ring-primary/10 resize-none"
+                        className="h-20 sm:h-24 rounded-2xl border border-border/80 bg-muted/30 p-4 sm:p-5 text-base font-semibold text-foreground transition-all duration-300 placeholder:text-muted-foreground/60 shadow-sm hover:bg-muted/50 hover:border-border outline-none focus-visible:outline-none focus-visible:border-primary focus-visible:bg-white focus-visible:ring-[3px] focus-visible:ring-primary/20 resize-none"
                       />
                     </div>
                   </div>
 
                   {/* Footer Area */}
-                  <div className="border-t-2 border-border/30 mt-8 pt-6 sm:pt-10 -mx-5 -mb-5 px-5 pb-5 sm:-mx-8 sm:-mb-8 sm:px-8 sm:pb-8 md:-mx-12 md:-mb-12 md:px-12 md:pb-12 lg:mx-0 lg:mb-0 lg:px-0 lg:pb-0 relative z-20">
+                  <div className="border-t-2 border-border/30 mt-6 pt-5 sm:pt-8 -mx-5 -mb-5 px-5 pb-5 sm:-mx-6 sm:-mb-6 sm:px-6 sm:pb-6 md:-mx-8 md:-mb-8 md:px-8 md:pb-8 lg:mx-0 lg:mb-0 lg:px-0 lg:pb-0 relative z-20">
                     <button
                       type="submit"
-                      disabled={isSubmitting || !resumeFile}
-                      className="w-full h-16 sm:h-20 rounded-2xl bg-forest text-forest-foreground font-black tracking-[0.25em] uppercase text-[13px] sm:text-[15px] transition-all duration-500 flex items-center justify-center shadow-[0_15px_40px_-10px_hsl(var(--forest)/0.4)] hover:shadow-[0_20px_50px_-10px_hsl(var(--forest)/0.6)] hover:-translate-y-1 hover:bg-forest/90 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none group overflow-hidden relative"
+                      disabled={isSubmitting}
+                      className="w-full h-14 sm:h-16 rounded-2xl bg-forest text-forest-foreground font-black tracking-[0.25em] uppercase text-[12px] sm:text-[14px] transition-all duration-500 flex items-center justify-center shadow-[0_15px_40px_-10px_hsl(var(--forest)/0.4)] hover:shadow-[0_20px_50px_-10px_hsl(var(--forest)/0.6)] hover:-translate-y-1 hover:bg-forest/90 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none group overflow-hidden relative"
                     >
                       <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
                       <span className="relative z-10 flex items-center">
@@ -289,9 +293,6 @@ export default function ApplicationModal({ isOpen, onClose, jobTitle }) {
                         )}
                       </span>
                     </button>
-                    {!resumeFile && (
-                      <p className="text-center text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-destructive mt-4 sm:mt-5 bg-destructive/10 inline-block px-4 py-1.5 rounded-full mx-auto flex justify-center w-max border border-destructive/20">Resume attachment is required</p>
-                    )}
                   </div>
                 </m.form>
               )}

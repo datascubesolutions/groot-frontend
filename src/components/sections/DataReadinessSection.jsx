@@ -55,7 +55,7 @@ export function DataReadinessSection({ content }) {
                     </Button>
                   </Link>
 
-                  <Link href="/resources/ai-roadmap" className="w-full">
+                  <a href="/ai-roadmap.pdf" download="Groot_AI_Roadmap.pdf" className="w-full">
                     <Button
                       variant="hero-outline"
                       size="xl"
@@ -66,7 +66,7 @@ export function DataReadinessSection({ content }) {
                         Download AI Roadmap
                       </span>
                     </Button>
-                  </Link>
+                  </a>
                 </div>
 
                 {/* Trust Indicators */}

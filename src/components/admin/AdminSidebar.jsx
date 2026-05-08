@@ -38,6 +38,11 @@ const navItems = [
     icon: Users,
   },
   {
+    title: "Applications",
+    href: "/admin/applications",
+    icon: FileText,
+  },
+  {
     title: "Blog",
     href: "/admin/blogs",
     icon: FileText,

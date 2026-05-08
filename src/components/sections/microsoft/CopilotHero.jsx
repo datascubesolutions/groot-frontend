@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function CopilotHero() {
@@ -82,87 +83,106 @@ export function CopilotHero() {
             </motion.div>
           </div>
 
-          {/* Right visualization */}
+          {/* Right visualization - Copilot UI */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative hidden lg:block"
+            className="relative hidden aspect-square max-h-[600px] w-full items-center justify-center p-8 md:aspect-[4/3] lg:flex"
           >
-            <div className="pointer-events-none absolute inset-0 rotate-3 scale-105 transform rounded-3xl bg-white opacity-50 shadow-xl" />
-            <div className="pointer-events-none absolute inset-0 -rotate-2 scale-105 transform rounded-3xl bg-white/50 opacity-50 shadow-xl" />
-            <div className="relative h-[400px] overflow-hidden rounded-3xl border border-border bg-white p-8 shadow-2xl">
-              <div className="relative flex h-full w-full items-center justify-center">
-                <div className="bg-gradient-to-radial absolute inset-0 from-forest/10 to-transparent blur-2xl" />
+            {/* Rich Glassmorphic Ambient Backing */}
+            <div className="absolute inset-4 z-0 transform overflow-hidden rounded-[3rem] border border-white/80 bg-white/40 shadow-[0_20px_80px_-20px_rgba(46,163,169,0.15)] backdrop-blur-3xl transition-transform duration-700 hover:scale-[1.01] lg:inset-8">
+              {/* Inner Architectural Grid */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#2ea3a90A_1px,transparent_1px),linear-gradient(to_bottom,#2ea3a90A_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_20%,transparent_100%)]" />
 
-                {/* Central AI Orb */}
+              {/* Soft Internal Glowing Orbs */}
+              <motion.div
+                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-[#2EA3A9]/20 blur-[80px]"
+              />
+              <motion.div
+                animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-[#2EA3A9]/20 blur-[80px]"
+              />
+            </div>
+
+            <div className="relative h-full w-full flex items-center justify-center z-10">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2EA3A9]/5 to-transparent blur-2xl" />
+
+              {/* Central Copilot Node */}
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="relative z-20 flex h-36 w-36 items-center justify-center rounded-[2rem] border border-[#2EA3A9]/20 bg-white shadow-2xl overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-[#2EA3A9]/5 to-transparent" />
+                <Image src="/svg/copilot-icon.svg" alt="Copilot" width={64} height={64} className="relative z-10 transition-transform duration-500 group-hover:scale-110" />
+                
+                {/* AI Pulse */}
                 <motion.div
+                  animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0, 0.4] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 rounded-[2rem] border border-[#2EA3A9]"
+                />
+              </motion.div>
+
+              {/* Floating Chat Bubbles */}
+              {[
+                { text: "Summarize the Q3 report", x: -140, y: -100, delay: 0 },
+                { text: "Draft an email to the client", x: 120, y: -70, delay: 1 },
+                { text: "Analyze this dataset", x: -110, y: 110, delay: 2 },
+                { text: "Create presentation slides", x: 130, y: 80, delay: 3 },
+              ].map((bubble, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.8 }}
                   animate={{
-                    scale: [1, 1.1, 1],
-                    rotate: [0, 90, 180, 270, 360],
+                    opacity: [0, 1, 1, 0],
+                    scale: [0.8, 1, 1, 0.8],
+                    y: [
+                      bubble.y + 20,
+                      bubble.y,
+                      bubble.y - 10,
+                      bubble.y - 30,
+                    ],
                   }}
                   transition={{
-                    duration: 10,
+                    duration: 6,
+                    delay: bubble.delay,
                     repeat: Infinity,
-                    ease: "linear",
+                    times: [0, 0.1, 0.8, 1],
                   }}
-                  className="absolute z-10 h-40 w-40 rounded-full bg-gradient-to-tr from-forest via-forest/80 to-forest/60 opacity-90 blur-md"
-                />
-                <div className="relative z-20 flex h-32 w-32 items-center justify-center rounded-full border border-white/50 bg-white shadow-2xl">
-                  <Sparkles className="h-12 w-12 text-forest" />
-                </div>
-
-                {/* Floating Chat Bubbles */}
-                {[
-                  {
-                    text: "Summarize the Q3 report",
-                    x: -120,
-                    y: -100,
-                    delay: 0,
-                  },
-                  {
-                    text: "Draft an email to the client",
-                    x: 100,
-                    y: -60,
-                    delay: 1,
-                  },
-                  { text: "Analyze this dataset", x: -80, y: 120, delay: 2 },
-                  {
-                    text: "Create presentation slides",
-                    x: 120,
-                    y: 80,
-                    delay: 3,
-                  },
-                ].map((bubble, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{
-                      opacity: [0, 1, 1, 0],
-                      scale: [0.8, 1, 1, 0.8],
-                      y: [
-                        bubble.y + 20,
-                        bubble.y,
-                        bubble.y - 10,
-                        bubble.y - 30,
-                      ],
-                    }}
-                    transition={{
-                      duration: 6,
-                      delay: bubble.delay,
-                      repeat: Infinity,
-                      times: [0, 0.1, 0.8, 1],
-                    }}
-                    className="absolute z-30 max-w-[150px] whitespace-nowrap rounded-2xl rounded-bl-sm border border-border bg-white px-4 py-3 text-sm font-medium text-foreground/80 shadow-lg"
-                    style={{
-                      left: "calc(50% + " + bubble.x + "px)",
-                      top: "calc(50% + " + bubble.y + "px)",
-                    }}
-                  >
+                  className="absolute z-30 max-w-[200px] whitespace-nowrap rounded-2xl rounded-bl-sm border border-[#2EA3A9]/20 bg-white px-5 py-3 text-sm font-medium text-foreground/80 shadow-[0_10px_30px_-10px_rgba(46,163,169,0.2)]"
+                  style={{
+                    left: `calc(50% + ${bubble.x}px)`,
+                    top: `calc(50% + ${bubble.y}px)`,
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-[#2EA3A9]/60" />
                     {bubble.text}
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Connecting Data Lineage Lines */}
+              <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-20">
+                <motion.circle
+                  cx="50%"
+                  cy="50%"
+                  r="140"
+                  fill="none"
+                  stroke="#2EA3A9"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 8"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  style={{ transformOrigin: "center" }}
+                />
+              </svg>
             </div>
           </motion.div>
         </div>
