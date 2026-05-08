@@ -94,7 +94,7 @@ export function HeroSection({ content }) {
           {/* Particles deferred until assembly completes to free main thread */}
           {particlesReady && (
             <>
-              <SideParticles side="left" variant="chaotic" />
+              <SideParticles side="left" variant="structured" />
               <SideParticles side="right" variant="structured" />
             </>
           )}
@@ -102,8 +102,11 @@ export function HeroSection({ content }) {
           {/* Grid Pattern with Vignette Mask - Reduced opacity */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
-          {/* Data Architect Radial Gradient: White center -> Faint Mint Edges */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white_0%,hsl(160,20%,97%)_60%,hsl(160,20%,94%)_100%)] opacity-80 md:mix-blend-multiply"></div>
+          {/* Softer radial layer to keep hero tone aligned with page background */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,white_0%,hsl(160,20%,97%)_58%,hsl(var(--background))_100%)] opacity-65"></div>
+
+          {/* Blend hero bottom into next section background */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-b from-transparent via-background/80 to-background md:h-44" />
         </div>
 
         {/* GROOT Logo + Content - Logo fixed, gap pushes text below */}

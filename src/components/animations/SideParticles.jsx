@@ -9,8 +9,9 @@ import { memo, useCallback, useEffect, useRef, useState } from "react";
 // ── Static config objects (hoisted outside component to avoid re-creation) ──
 
 const baseOptions = {
-  fpsLimit: 30,
-  detectRetina: true,
+  // Lower and lock frame budget for more consistent motion across devices/tabs.
+  fpsLimit: 24,
+  detectRetina: false,
   fullScreen: {
     enable: false,
     zIndex: 0,
