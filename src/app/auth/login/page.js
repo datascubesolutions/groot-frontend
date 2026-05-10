@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { authService } from "@/services/authService";
 import { motion } from "framer-motion";
-import { ArrowRight, Eye, EyeOff, Loader2, Lock, Mail } from "lucide-react";
+import { ArrowLeft, ArrowRight, Eye, EyeOff, Loader2, Lock, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -132,6 +132,15 @@ export default function LoginPage() {
 
       {/* Right Panel - Login Form */}
       <div className="relative flex flex-col items-center justify-center overflow-hidden bg-[#050C0F] p-6 sm:p-12 lg:p-16">
+        {/* Navigation Back */}
+        <Link
+          href="/"
+          className="absolute left-6 top-6 z-20 flex items-center gap-2 text-sm font-medium text-gray-400 transition-colors hover:text-white sm:left-12 sm:top-12"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to website
+        </Link>
+
         {/* Blog-like Background Effects */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute right-0 top-0 h-[600px] w-[600px] -translate-y-1/3 translate-x-1/3 rounded-full bg-primary/10 opacity-30 blur-[100px]" />

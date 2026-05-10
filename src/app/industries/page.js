@@ -206,17 +206,18 @@ export default function IndustriesPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-[4px] border-[4px] border-background bg-background shadow-[15px_15px_0px_0px_rgba(0,0,0,0.5)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[4px] border-[4px] border-background bg-background shadow-[15px_15px_0px_0px_rgba(0,0,0,0.5)]">
                {caseStudies.map((study, idx) => {
                  const Icon = study.icon;
+                 // Asymmetric Brutalist layout: first item spans full width and uses flex-row on desktop
+                 const isFeatured = idx === 0;
                  return (
                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                     key={idx} className="bg-card flex flex-col relative group overflow-hidden"
+                     key={idx} className={`bg-card flex flex-col relative group overflow-hidden ${isFeatured ? 'md:col-span-2 lg:flex-row' : ''}`}
                    >
                      {/* Image Header */}
-                     <div className="relative h-48 sm:h-56 border-b-[4px] border-foreground bg-black overflow-hidden">
-                       <Image src={study.image} alt={study.title} fill className="object-cover grayscale opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700 mix-blend-screen" />
-                       <div className="absolute inset-0 bg-emerald-600/10 mix-blend-overlay"></div>
+                     <div className={`relative border-foreground bg-black overflow-hidden ${isFeatured ? 'h-64 lg:h-auto lg:w-1/2 lg:border-r-[4px] lg:border-b-0 border-b-[4px]' : 'h-48 sm:h-56 border-b-[4px]'}`}>
+                       <Image src={study.image} alt={study.title} fill className="object-cover group-hover:scale-105 transition-all duration-700" />
                        <div className="absolute top-4 left-4 bg-background border-[2px] border-foreground px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] z-10">
                          {study.code}
                        </div>
@@ -225,10 +226,10 @@ export default function IndustriesPage() {
                        </div>
                      </div>
                      {/* Content */}
-                     <div className="p-8 flex-1 flex flex-col">
+                     <div className={`p-8 flex flex-col ${isFeatured ? 'lg:w-1/2 justify-center' : 'flex-1'}`}>
                         <span className="text-xs font-black uppercase tracking-widest text-emerald-600 mb-4">{study.category}</span>
-                        <h3 className="text-2xl sm:text-3xl font-black uppercase leading-[0.9] tracking-tight mb-6">{study.title}</h3>
-                        <p className="text-muted-foreground font-bold leading-relaxed mb-8">{study.description}</p>
+                        <h3 className="text-2xl sm:text-4xl font-black uppercase leading-[0.9] tracking-tight mb-6">{study.title}</h3>
+                        <p className="text-muted-foreground font-bold leading-relaxed mb-8 text-lg">{study.description}</p>
                         
                         <div className="mt-auto grid grid-cols-2 gap-4 border-t-[3px] border-foreground/10 pt-6">
                            <div>
@@ -261,12 +262,20 @@ export default function IndustriesPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[4px] border-[4px] border-foreground bg-foreground shadow-[20px_20px_0px_0px_hsl(var(--emerald-600)/0.2)]">
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-[4px] border-[4px] border-foreground bg-foreground shadow-[20px_20px_0px_0px_hsl(var(--emerald-600)/0.2)]">
                {industries.map((industry, index) => {
                  const Icon = industry.icon;
+                 
+                 // Neo-Brutalist Bento Sizing - perfectly spans 4 cols on md/lg and 6 cols on xl
+                 let spanClass = "col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2"; // default square-ish
+                 if (index === 0) spanClass = "col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-4"; // Wide featured
+                 else if (index === 3) spanClass = "col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-4"; // wide featured row 3
+                 else if (index === 4) spanClass = "col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-3"; // bottom row
+                 else if (index === 5) spanClass = "col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-3"; // bottom row
+                 
                  return (
                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                     key={index} className="bg-card flex flex-col group relative overflow-hidden"
+                     key={index} className={`bg-card flex flex-col group relative overflow-hidden ${spanClass}`}
                    >
                      {/* Top ID bar */}
                      <div className="flex justify-between items-center border-b-[4px] border-foreground bg-muted/40 p-4">
@@ -274,13 +283,13 @@ export default function IndustriesPage() {
                        <Icon size={16} className="text-muted-foreground group-hover:text-emerald-600 transition-colors" />
                      </div>
 
-                     {/* Image + Content block */}
-                     <div className="relative p-8 pb-12 flex-1 flex flex-col justify-center min-h-[280px]">
-                        {/* Background Image that fades in on hover */}
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-black z-0">
-                           <Image src={industry.image} alt={industry.title} fill className="object-cover grayscale" />
-                        </div>
-                        
+                     {/* Image Header explicitly visible without grayscale */}
+                     <div className="relative h-48 sm:h-56 border-b-[4px] border-foreground bg-black overflow-hidden">
+                       <Image src={industry.image} alt={industry.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                     </div>
+
+                     {/* Content block */}
+                     <div className="relative p-8 pb-12 flex-1 flex flex-col justify-center min-h-[200px]">
                         <div className="relative z-10">
                           <h3 className="text-3xl font-black uppercase tracking-tight leading-[0.9] text-foreground mb-6 group-hover:text-emerald-600 transition-colors">
                             {industry.title}

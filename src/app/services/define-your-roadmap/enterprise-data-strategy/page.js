@@ -23,6 +23,16 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+const slideAndPop = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 100, damping: 15, duration: 0.6 },
+  },
+};
+
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -64,12 +74,12 @@ export default function EnterpriseDataStrategy() {
               className="lg:col-span-7 max-w-2xl"
             >
               <motion.h1
-                variants={fadeIn}
-                className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1]"
+                variants={slideAndPop}
+                className="text-[clamp(3rem,8vw,5.5rem)] font-black uppercase mb-6 tracking-tighter leading-[0.9]"
               >
                 <span className="text-foreground">Enterprise </span>
                 <br />
-                <span className="text-[hsl(var(--secondary))]">
+                <span className="text-emerald-500 drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] dark:drop-shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
                   Data Strategy
                 </span>
               </motion.h1>
@@ -86,16 +96,20 @@ export default function EnterpriseDataStrategy() {
                 variants={fadeIn}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <Link href="/contact?service=data-strategy" passHref>
-                  <Button
-                    variant="hero"
-                    size="lg"
-                    className="px-8 shadow-primary/25 shadow-xl group"
-                  >
-                    Start a Strategy Conversation
-                    <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
+                <div className="flex w-full justify-start mt-4">
+                  <Link href="/contact?service=data-strategy" passHref className="w-full sm:w-auto">
+                    <Button
+                      variant="hero"
+                      size="lg"
+                      className="group relative flex w-full items-center justify-center rounded-none border-2 border-foreground bg-foreground text-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:translate-x-[8px] hover:translate-y-[8px] hover:bg-emerald-500 hover:text-foreground hover:shadow-none sm:w-auto md:h-16 dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)]"
+                    >
+                      <span className="flex h-full w-full items-center justify-center px-8 sm:px-12 text-xs font-black uppercase tracking-wider sm:text-sm sm:tracking-[0.15em]">
+                        Start a Strategy Conversation
+                      </span>
+                      <ChevronRight className="absolute right-4 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2 sm:right-6 sm:h-5 sm:w-5" />
+                    </Button>
+                  </Link>
+                </div>
               </motion.div>
             </motion.div>
 
@@ -130,7 +144,7 @@ export default function EnterpriseDataStrategy() {
                 <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.25)]">
                   The Challenge
                 </h2>
-                <h3 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-foreground">
+                <h3 className="text-4xl md:text-[3.5rem] lg:text-[4.5rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground mb-6">
                   Why data strategies fail.
                 </h3>
                 <p className="text-xl text-foreground/90 leading-relaxed mb-8">
@@ -155,8 +169,8 @@ export default function EnterpriseDataStrategy() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="bg-background/80 backdrop-blur-md p-6 md:p-10 rounded-[2rem] border border-border/60 hover:border-emerald-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
+                variants={slideAndPop}
+                className="group relative bg-card p-6 md:p-10 rounded-none rounded-br-[3rem] rounded-tl-[3rem] border-2 border-foreground shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:translate-x-2 hover:border-emerald-500 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.1)]"
               >
                 <div className="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
                   <FileText size={28} />
@@ -170,7 +184,7 @@ export default function EnterpriseDataStrategy() {
                   lists &quot;key initiatives.&quot; But when a new Power BI
                   project starts, nobody references it. When someone proposes a
                   Fabric implementation, the deck stays closed. The strategy
-                  exists. Execution doesn&apos;t.os;t.
+                  exists. Execution doesn&apos;t.
                 </p>
               </motion.div>
 
@@ -178,8 +192,8 @@ export default function EnterpriseDataStrategy() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="bg-background/80 backdrop-blur-md p-6 md:p-10 rounded-[2rem] border border-border/60 hover:border-emerald-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
+                variants={slideAndPop}
+                className="group relative bg-card p-6 md:p-10 rounded-none rounded-bl-[3rem] rounded-tr-[3rem] border-2 border-foreground shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:-translate-x-2 hover:border-emerald-500 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.1)]"
               >
                 <div className="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
                   <Signpost size={28} />
@@ -201,8 +215,8 @@ export default function EnterpriseDataStrategy() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="bg-background/80 backdrop-blur-md p-6 md:p-10 rounded-[2rem] border border-border/60 hover:border-emerald-500/40 shadow-sm hover:shadow-glow transition-all duration-500 group"
+                variants={slideAndPop}
+                className="group relative bg-card p-6 md:p-10 rounded-none rounded-br-[3rem] rounded-tl-[3rem] border-2 border-foreground shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:translate-x-2 hover:border-emerald-500 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.1)]"
               >
                 <div className="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
                   <AlertTriangle size={28} />
@@ -232,20 +246,20 @@ export default function EnterpriseDataStrategy() {
             <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.25)]">
               Deliverables
             </h2>
-            <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            <h3 className="text-4xl md:text-5xl lg:text-[4.5rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground">
               What a real strategy looks like.
             </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-fr">
             {/* Large Feature 1 */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="md:col-span-8 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-6 md:p-10 hover:border-primary/40 transition-colors shadow-sm relative overflow-hidden flex flex-col justify-end min-h-[300px]"
-            >
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={slideAndPop}
+                className="group md:col-span-8 bg-card border-[3px] border-foreground rounded-none p-6 md:p-10 transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 relative overflow-hidden flex flex-col justify-end min-h-[300px] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] dark:hover:shadow-none"
+              >
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full" />
               <div className="relative z-10">
                 <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
@@ -309,13 +323,13 @@ export default function EnterpriseDataStrategy() {
             </motion.div>
 
             {/* Large Feature 4 */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="md:col-span-8 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-6 md:p-10 hover:border-emerald-500/40 transition-colors shadow-sm relative overflow-hidden flex flex-col justify-end min-h-[300px]"
-            >
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={slideAndPop}
+                className="group md:col-span-8 bg-card border-[3px] border-foreground rounded-none p-6 md:p-10 transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 relative overflow-hidden flex flex-col justify-end min-h-[300px] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] dark:hover:shadow-none"
+              >
               <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full" />
               <div className="relative z-10">
                 <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
@@ -384,7 +398,7 @@ export default function EnterpriseDataStrategy() {
       {/* Real Example - Premium Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
-          <div className="rounded-[3rem] border border-border bg-card p-6 md:p-10 lg:p-16 shadow-[0_8px_40px_rgba(0,0,0,0.04)] dark:shadow-[0_40px_80px_rgba(0,0,0,0.65)] overflow-hidden relative transition-shadow duration-500 hover:shadow-[0_8px_60px_rgba(0,0,0,0.08)]">
+          <div className="rounded-none border-[4px] border-foreground bg-card p-6 md:p-10 lg:p-16 shadow-[16px_16px_0_0_rgba(0,0,0,1)] overflow-hidden relative transition-all duration-500 dark:shadow-[16px_16px_0_0_rgba(255,255,255,0.1)]">
             {/* Decorative background glow */}
             <div className="pointer-events-none absolute inset-0 opacity-10 [background-image:radial-gradient(circle_at_top_right,hsl(var(--primary)),transparent_40%)] dark:opacity-20" />
 
@@ -451,18 +465,32 @@ export default function EnterpriseDataStrategy() {
 
               <div className="mt-16 pt-10 border-t border-border grid grid-cols-1 sm:grid-cols-3 gap-8">
                 <div>
-                  <p className="text-5xl font-black text-emerald-500 mb-2">
-                    2 Hours
-                  </p>
-                  <p className="text-foreground/70 font-medium">
+                  <div className="group relative w-fit overflow-hidden">
+                    <p className="text-5xl lg:text-[4.5rem] font-black text-emerald-500 mb-2 drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] dark:drop-shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
+                      2 Hours
+                    </p>
+                    <motion.div
+                      animate={{ x: ["-100%", "250%"] }}
+                      transition={{ repeat: Infinity, duration: 2.5, ease: "linear", repeatDelay: 0.5 }}
+                      className="absolute inset-0 z-10 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"
+                    />
+                  </div>
+                  <p className="text-foreground font-bold uppercase tracking-wider text-sm mt-2">
                     Board deck generation time (down from 2 weeks)
                   </p>
                 </div>
                 <div>
-                  <p className="text-4xl font-black text-emerald-500 mb-2 mt-1">
-                    16 Weeks
-                  </p>
-                  <p className="text-foreground/70 font-medium">
+                  <div className="group relative w-fit overflow-hidden">
+                    <p className="text-4xl lg:text-[3.5rem] font-black text-emerald-500 mb-2 mt-1 drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] dark:drop-shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
+                      16 Weeks
+                    </p>
+                    <motion.div
+                      animate={{ x: ["-100%", "250%"] }}
+                      transition={{ repeat: Infinity, duration: 2.5, ease: "linear", repeatDelay: 0.5, delay: 1.25 }}
+                      className="absolute inset-0 z-10 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"
+                    />
+                  </div>
+                  <p className="text-foreground font-bold uppercase tracking-wider text-sm mt-2">
                     Phase 1 completed
                   </p>
                 </div>
@@ -610,7 +638,7 @@ export default function EnterpriseDataStrategy() {
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-background border-t border-border">
         <div className="container mx-auto px-6 max-w-5xl">
-          <div className="bg-primary/5 border border-primary/20 rounded-[3rem] p-12 md:p-10 lg:p-16 text-center shadow-lg shadow-primary/5">
+          <div className="bg-muted border-[4px] border-foreground rounded-none p-12 md:p-10 lg:p-16 text-center shadow-[16px_16px_0_0_rgba(0,0,0,1)] dark:shadow-[16px_16px_0_0_rgba(255,255,255,0.1)]">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
               Strategy that gets executed.
             </h2>
@@ -619,13 +647,14 @@ export default function EnterpriseDataStrategy() {
               Fabric strategy that aligns stakeholders, justifies investment,
               and guides implementation.
             </p>
-            <Link href="/contact?service=data-strategy" passHref>
+            <Link href="/contact?service=data-strategy" passHref className="w-full sm:w-auto">
               <Button
                 variant="hero"
                 size="lg"
-                className="px-10 text-lg h-14 rounded-full"
+                className="group relative flex w-full items-center justify-center rounded-none border-4 border-foreground bg-transparent py-6 text-center text-base font-black uppercase tracking-wider text-foreground shadow-[12px_12px_0_0_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-3 hover:translate-y-3 hover:bg-emerald-500 hover:border-emerald-500 hover:text-foreground hover:shadow-none sm:w-auto sm:py-8 sm:text-xl sm:tracking-[0.2em] dark:shadow-[12px_12px_0_0_rgba(255,255,255,0.2)] dark:hover:shadow-none"
               >
-                Start a Strategy Conversation
+                <span className="flex h-full w-full items-center justify-center px-12 sm:px-16">Start a Strategy Conversation</span>
+                <ChevronRight className="absolute right-4 h-6 w-6 transition-transform group-hover:translate-x-3 sm:right-6 sm:h-8 sm:w-8" />
               </Button>
             </Link>
           </div>
@@ -645,8 +674,8 @@ function MethodCard({ step, week, title, desc }) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-40px" }}
-      variants={fadeIn}
-      className="group relative bg-background border border-border/60 rounded-[1.75rem] p-8 shadow-sm hover:shadow-lg hover:border-primary/25 transition-all duration-300 overflow-hidden"
+      variants={slideAndPop}
+      className="group relative bg-card border-[3px] border-foreground rounded-none p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 transition-all duration-300 overflow-hidden dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] dark:hover:shadow-none"
     >
       <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors duration-300" />
       <div className="relative flex flex-col h-full">

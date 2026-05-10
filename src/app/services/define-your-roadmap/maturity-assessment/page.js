@@ -21,6 +21,16 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+const slideAndPop = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 100, damping: 15, duration: 0.6 },
+  },
+};
+
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -144,11 +154,11 @@ export default function MaturityAssessment() {
                         <Button
                           variant="hero"
                           size="lg"
-                          className="group relative h-16 w-full overflow-hidden rounded-none border-2 border-foreground bg-foreground px-8 text-background shadow-[10px_10px_0px_0px_hsl(var(--forest)/0.3)] transition-all duration-500 hover:translate-x-[10px] hover:translate-y-[10px] hover:bg-forest hover:text-forest-foreground hover:shadow-none md:w-auto"
+                          className="group relative h-16 w-full overflow-hidden rounded-none border-2 border-foreground bg-foreground text-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:translate-x-[8px] hover:translate-y-[8px] hover:bg-forest hover:text-forest-foreground hover:shadow-none md:w-auto dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)]"
                         >
-                          <span className="relative z-10 flex items-center text-sm font-black uppercase tracking-[0.15em]">
-                            Schedule Assessment
-                            <ChevronRight className="ml-3 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+                          <span className="relative z-10 flex h-full w-full items-center justify-center px-12 text-center text-xs font-black uppercase tracking-wider sm:px-16 sm:text-sm sm:tracking-[0.15em]">
+                            <span>Schedule Assessment</span>
+                            <ChevronRight className="absolute right-4 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2 sm:right-6 sm:h-5 sm:w-5" />
                           </span>
                         </Button>
                       </Link>
@@ -173,7 +183,7 @@ export default function MaturityAssessment() {
                   <span className="h-1 w-12 bg-forest"></span>
                   What we see in the field
                 </h2>
-                <h3 className="mb-8 text-[3.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground md:text-[4rem]">
+                <h3 className="mb-8 text-4xl font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:text-[3.5rem] md:text-[3.5rem] lg:text-[4rem]">
                   The cost of assuming readiness.
                 </h3>
                 <p className="mb-8 text-xl font-bold leading-relaxed text-foreground/80">
@@ -346,8 +356,8 @@ export default function MaturityAssessment() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="group relative z-10 w-full overflow-hidden rounded-br-[2.5rem] rounded-tl-[2.5rem] border-2 border-border bg-card p-6 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-forest/30 sm:rounded-br-[3rem] sm:rounded-tl-[3rem] sm:p-10 md:w-[90%] lg:p-12"
+                variants={slideAndPop}
+                className="group relative z-10 w-full overflow-hidden rounded-br-[2.5rem] rounded-tl-[2.5rem] border-2 border-foreground bg-card p-6 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:translate-x-2 sm:rounded-br-[3rem] sm:rounded-tl-[3rem] sm:p-10 md:w-[90%] lg:p-12 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.1)]"
               >
                 <div className="pointer-events-none absolute -right-4 -top-10 select-none text-[6rem] font-black leading-[0.75] text-rose-500/10 transition-colors duration-500 group-hover:text-rose-500/15 sm:text-[8rem] md:-rotate-12 md:text-[18rem]">
                   01
@@ -361,7 +371,7 @@ export default function MaturityAssessment() {
                       Infrastructure Risk
                     </p>
                   </div>
-                  <h4 className="mb-6 text-3xl font-black uppercase leading-[0.9] tracking-tight lg:text-4xl">
+                  <h4 className="mb-6 text-2xl font-black uppercase leading-[0.9] tracking-tight sm:text-3xl lg:text-4xl">
                     The Pipeline That Fails Every Monday
                   </h4>
                   <p className="text-xl font-medium leading-relaxed text-foreground">
@@ -386,8 +396,8 @@ export default function MaturityAssessment() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="group relative z-20 mt-6 w-full self-end overflow-hidden rounded-bl-[2.5rem] rounded-tr-[2.5rem] bg-foreground p-6 text-background shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.5)] transition-transform duration-500 hover:scale-[1.02] sm:-mt-12 sm:rounded-bl-[3rem] sm:rounded-tr-[3rem] sm:p-8 md:w-[95%] lg:-mt-24 lg:p-12"
+                variants={slideAndPop}
+                className="group relative z-20 mt-6 w-full self-end overflow-hidden rounded-bl-[2.5rem] rounded-tr-[2.5rem] bg-foreground p-6 text-background shadow-[12px_12px_0px_0px_hsl(var(--forest))] transition-all duration-500 hover:-translate-y-2 hover:-translate-x-2 sm:-mt-12 sm:rounded-bl-[3rem] sm:rounded-tr-[3rem] sm:p-8 md:w-[95%] lg:-mt-32 lg:p-12"
               >
                 <div className="pointer-events-none absolute -bottom-8 -left-6 select-none text-[6rem] font-black leading-[0.75] text-background/10 transition-colors duration-500 group-hover:text-background/15 sm:text-[8rem] md:rotate-12 md:text-[18rem]">
                   02
@@ -401,7 +411,7 @@ export default function MaturityAssessment() {
                       Data Management
                     </p>
                   </div>
-                  <h4 className="mb-6 text-3xl font-black uppercase leading-[0.9] tracking-tight text-background lg:text-4xl">
+                  <h4 className="mb-6 text-2xl font-black uppercase leading-[0.9] tracking-tight text-background sm:text-3xl lg:text-4xl">
                     Six Customer IDs, Zero Master Data
                   </h4>
                   <p className="text-xl font-medium leading-relaxed text-background/80">
@@ -427,8 +437,8 @@ export default function MaturityAssessment() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="group relative z-30 mt-6 w-full overflow-hidden rounded-br-[2.5rem] rounded-tl-[2.5rem] border-x-4 border-y border-orange-500 bg-card p-6 shadow-[0_20px_60px_-15px_rgba(249,115,22,0.2)] transition-transform duration-500 hover:scale-[1.02] sm:-mt-10 sm:rounded-br-[3rem] sm:rounded-tl-[3rem] sm:p-8 md:w-[90%] lg:-mt-16 lg:w-[85%] lg:p-12"
+                variants={slideAndPop}
+                className="group relative z-30 mt-6 w-full overflow-hidden rounded-br-[2.5rem] rounded-tl-[2.5rem] border-2 border-foreground bg-card p-6 shadow-[12px_12px_0px_0px_rgba(249,115,22,1)] transition-all duration-500 hover:-translate-y-2 hover:translate-x-2 sm:-mt-10 sm:rounded-br-[3rem] sm:rounded-tl-[3rem] sm:p-8 md:w-[90%] lg:-mt-20 lg:w-[85%] lg:p-12 dark:shadow-[12px_12px_0px_0px_rgba(249,115,22,0.5)]"
               >
                 <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none text-[6rem] font-black leading-[0.75] text-orange-500/10 transition-transform duration-700 group-hover:scale-110 sm:text-[8rem] md:text-[20rem]">
                   03
@@ -442,7 +452,7 @@ export default function MaturityAssessment() {
                       Semantic Governance
                     </p>
                   </div>
-                  <h4 className="mb-6 text-3xl font-black uppercase leading-[0.9] tracking-tight lg:text-4xl">
+                  <h4 className="mb-6 text-2xl font-black uppercase leading-[0.9] tracking-tight sm:text-3xl lg:text-4xl">
                     Nobody Knows Where the Number Came From
                   </h4>
                   <p className="text-xl font-medium leading-relaxed text-foreground">
@@ -476,7 +486,7 @@ export default function MaturityAssessment() {
               <h2 className="mb-6 inline-block border border-forest/30 bg-forest/10 px-4 py-2 text-sm font-black uppercase tracking-[0.4em] text-forest">
                 [ DELIVERABLES ]
               </h2>
-              <h3 className="text-[2rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:text-[2.5rem] md:text-[4.5rem]">
+              <h3 className="text-3xl font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:text-[2.5rem] md:text-[4.5rem]">
                 Clarity over
                 <br />
                 assumptions.
@@ -489,7 +499,7 @@ export default function MaturityAssessment() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-[2px] border-[3px] border-foreground bg-foreground p-[2px] shadow-[20px_20px_0px_0px_hsl(var(--forest)/0.3)] md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-[2px] border-[3px] border-foreground bg-foreground p-[2px] shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] md:grid-cols-2 lg:grid-cols-4 dark:shadow-[16px_16px_0px_0px_rgba(255,255,255,0.1)]">
             {/* Cell 1: 2-columns wide */}
             <motion.div
               initial="hidden"
@@ -641,7 +651,8 @@ export default function MaturityAssessment() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-0 border-4 border-border/60 bg-muted/20 lg:flex-row">
+          <div className="relative flex flex-col gap-0 border-4 border-foreground bg-muted/20 lg:flex-row">
+            {/* Method Panels */}
             <MethodPanel
               step={1}
               week="Week 1-2"
@@ -796,20 +807,34 @@ export default function MaturityAssessment() {
 
               <div className="mb-12 min-w-0 border-l-[4px] border-forest pl-4 sm:pl-6">
                 <div className="border-y-4 border-forest bg-[linear-gradient(45deg,transparent_25%,hsl(var(--forest)/0.05)_25%,hsl(var(--forest)/0.05)_50%,transparent_50%,transparent_75%,hsl(var(--forest)/0.05)_75%,hsl(var(--forest)/0.05)_100%)] bg-[length:20px_20px] py-8 sm:py-10">
-                  <div className="grid min-w-0 grid-cols-2 gap-6 px-1 sm:gap-8 sm:px-0">
+                  <div className="grid min-w-0 grid-cols-1 gap-6 px-1 sm:grid-cols-2 sm:gap-8 sm:px-0">
                     <div className="min-w-0 text-center md:text-left">
-                      <p className="mb-3 pb-3 text-[clamp(2.25rem,7vw,3.75rem)] font-black leading-none tracking-tighter text-foreground drop-shadow-[5px_5px_0px_hsl(var(--forest)/0.2)] md:text-[4.5rem]">
-                        3x
-                      </p>
-                      <p className="inline-block max-w-full bg-foreground px-2 py-1 text-[0.65rem] font-black uppercase tracking-widest text-mint sm:px-3 sm:text-xs">
+                      <div className="group relative w-fit md:mx-0 mx-auto overflow-hidden">
+                        <p className="mb-3 pb-3 text-[clamp(2.25rem,7vw,3.75rem)] font-black leading-none tracking-tighter text-foreground drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] md:text-[4.5rem] dark:drop-shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
+                          3x
+                        </p>
+                        <motion.div
+                          animate={{ x: ["-100%", "250%"] }}
+                          transition={{ repeat: Infinity, duration: 2.5, ease: "linear", repeatDelay: 0.5 }}
+                          className="absolute inset-0 z-10 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-forest/40 to-transparent"
+                        />
+                      </div>
+                      <p className="inline-block max-w-full whitespace-normal bg-foreground px-2 py-1 text-[0.65rem] font-black uppercase tracking-wider text-mint sm:px-3 sm:text-xs sm:tracking-widest">
                         Faster refresh after remediation
                       </p>
                     </div>
                     <div className="min-w-0 text-center md:text-left">
-                      <p className="mb-3 pb-3 text-[clamp(2.25rem,7vw,3.75rem)] font-black leading-none tracking-tighter text-foreground drop-shadow-[5px_5px_0px_hsl(var(--forest)/0.2)] md:text-[4.5rem]">
-                        8W
-                      </p>
-                      <p className="inline-block max-w-full bg-foreground px-2 py-1 text-[0.65rem] font-black uppercase tracking-widest text-mint sm:px-3 sm:text-xs">
+                      <div className="group relative w-fit md:mx-0 mx-auto overflow-hidden">
+                        <p className="mb-3 pb-3 text-[clamp(2.25rem,7vw,3.75rem)] font-black leading-none tracking-tighter text-foreground drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] md:text-[4.5rem] dark:drop-shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
+                          8W
+                        </p>
+                        <motion.div
+                          animate={{ x: ["-100%", "250%"] }}
+                          transition={{ repeat: Infinity, duration: 2.5, ease: "linear", repeatDelay: 0.5, delay: 1.25 }}
+                          className="absolute inset-0 z-10 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent"
+                        />
+                      </div>
+                      <p className="inline-block max-w-full whitespace-normal bg-foreground px-2 py-1 text-[0.65rem] font-black uppercase tracking-wider text-mint sm:px-3 sm:text-xs sm:tracking-widest">
                         To Complete Fabric Migration
                       </p>
                     </div>
@@ -862,10 +887,10 @@ export default function MaturityAssessment() {
 
               <Link
                 href="/industries/technology-saas"
-                className="group inline-flex items-center gap-4 border-[3px] border-transparent bg-foreground px-8 py-5 text-sm font-black uppercase tracking-[0.2em] text-background transition-all hover:border-foreground hover:bg-forest hover:text-forest-foreground"
+                className="group inline-flex flex-wrap items-center justify-center gap-2 border-4 border-foreground bg-foreground px-4 py-4 text-center text-xs font-black uppercase tracking-widest text-background shadow-[6px_6px_0_0_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:translate-x-1 hover:bg-forest hover:text-forest-foreground hover:shadow-none sm:gap-4 sm:px-8 sm:py-5 sm:text-sm sm:tracking-[0.2em] dark:shadow-[6px_6px_0_0_rgba(255,255,255,0.2)] dark:hover:shadow-none"
               >
                 See how we work with technology companies
-                <ChevronRight className="h-6 w-6 transition-transform group-hover:translate-x-3" />
+                <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-3 sm:h-6 sm:w-6" />
               </Link>
             </div>
           </div>
@@ -1072,7 +1097,7 @@ export default function MaturityAssessment() {
 
         <div className="container relative z-10 mx-auto max-w-6xl px-6">
           <div className="text-center">
-            <h2 className="mb-8 select-none text-[2.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground sm:mb-10 sm:text-[3rem] md:text-[7rem]">
+            <h2 className="mb-8 select-none text-4xl font-black uppercase leading-[0.85] tracking-tighter text-foreground sm:mb-10 sm:text-[2.5rem] md:text-[7rem]">
               <span className="text-forest underline decoration-forest/50 underline-offset-8">
                 Know
               </span>
@@ -1081,7 +1106,7 @@ export default function MaturityAssessment() {
               Stand.
             </h2>
 
-            <div className="relative mx-auto max-w-4xl border border-border/80 bg-card/70 p-6 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] backdrop-blur-xl sm:p-8 md:p-12">
+            <div className="relative mx-auto max-w-4xl border-[4px] border-foreground bg-card/95 p-6 shadow-[16px_16px_0_0_rgba(0,0,0,1)] backdrop-blur-xl sm:p-8 md:p-12 dark:shadow-[16px_16px_0_0_rgba(255,255,255,0.1)]">
               <div className="absolute -left-4 -top-4 h-8 w-8 border-l-4 border-t-4 border-forest"></div>
               <div className="absolute -bottom-4 -right-4 h-8 w-8 border-b-4 border-r-4 border-forest"></div>
 
@@ -1093,16 +1118,18 @@ export default function MaturityAssessment() {
                 Let&apos;s find your gaps before they find you.
               </p>
 
-              <Link href="/contact?service=maturity-assessment" passHref>
-                <Button
-                  variant="hero"
-                  size="lg"
-                  className="group relative w-full rounded-none border-4 border-foreground bg-transparent px-12 py-8 text-xl font-black uppercase tracking-[0.2em] text-foreground shadow-[10px_10px_0_0_rgba(0,0,0,0.8)] transition-all duration-300 hover:translate-x-2 hover:translate-y-2 hover:border-forest hover:bg-forest hover:text-forest-foreground hover:shadow-none sm:w-auto dark:shadow-[10px_10px_0_0_rgba(255,255,255,0.2)]"
-                >
-                  Schedule Assessment
-                  <ChevronRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-3" />
-                </Button>
-              </Link>
+              <div className="flex w-full justify-center">
+                <Link href="/contact?service=maturity-assessment" passHref className="w-full sm:w-auto">
+                  <Button
+                    variant="hero"
+                    size="lg"
+                    className="group relative flex w-full items-center justify-center rounded-none border-4 border-foreground bg-transparent py-6 text-center text-base font-black uppercase tracking-wider text-foreground shadow-[12px_12px_0_0_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-3 hover:translate-y-3 hover:border-forest hover:bg-forest hover:text-forest-foreground hover:shadow-none sm:w-auto sm:py-8 sm:text-xl sm:tracking-[0.2em] dark:shadow-[12px_12px_0_0_rgba(255,255,255,0.2)] dark:hover:shadow-none"
+                  >
+                    <span className="flex h-full w-full items-center justify-center px-12 sm:px-16">Schedule Assessment</span>
+                    <ChevronRight className="absolute right-4 h-6 w-6 transition-transform group-hover:translate-x-3 sm:right-6 sm:h-8 sm:w-8" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -1140,7 +1167,7 @@ function MethodPanel({ step, week, title, desc, color }) {
       whileInView="visible"
       viewport={{ once: true }}
       variants={fadeIn}
-      className={`group/panel relative flex h-auto flex-1 flex-col overflow-hidden border-b border-l border-border/80 bg-card shadow-sm transition-colors duration-500 hover:z-10 hover:border-foreground hover:shadow-[10px_10px_0_0_rgba(0,0,0,1)] lg:min-h-[350px] lg:flex-row lg:border-b-0 lg:border-l-0 lg:border-t dark:hover:shadow-[10px_10px_0_0_rgba(255,255,255,0.2)]`}
+      className={`group/panel relative flex h-auto flex-1 flex-col overflow-hidden border-b border-l border-foreground/30 bg-card shadow-sm transition-all duration-500 hover:z-10 hover:-translate-y-2 hover:translate-x-2 hover:border-foreground hover:shadow-[12px_12px_0_0_rgba(0,0,0,1)] lg:min-h-[350px] lg:flex-row lg:border-b-0 lg:border-l-0 lg:border-t dark:hover:shadow-[12px_12px_0_0_rgba(255,255,255,0.2)]`}
     >
       {/* Twisted Vertical Bar */}
       <div

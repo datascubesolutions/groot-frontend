@@ -188,7 +188,7 @@ export function DeliveryTimeline({
           {/* Mobile / tablet: chips + one card */}
           <div className="w-full space-y-6 sm:space-y-7 lg:hidden">
             <div
-              className="flex flex-wrap justify-stretch gap-2.5 sm:justify-center sm:gap-3"
+              className="flex w-full snap-x snap-mandatory gap-2.5 overflow-x-auto pb-4 scrollbar-hide sm:flex-wrap sm:justify-center sm:gap-3 sm:overflow-x-visible sm:pb-0 sm:snap-none"
               role="tablist"
               aria-label="Phases"
             >
@@ -202,7 +202,7 @@ export function DeliveryTimeline({
                   aria-controls={`timeline-panel-mobile-${i}`}
                   tabIndex={activeIndex === i ? 0 : -1}
                   onClick={() => activate(i)}
-                  className={`inline-flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0078d4] focus-visible:ring-offset-2 sm:flex-initial ${
+                  className={`inline-flex shrink-0 snap-center items-center justify-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0078d4] focus-visible:ring-offset-2 sm:flex-initial sm:snap-align-none ${
                     activeIndex === i
                       ? "border-[#0078d4] bg-[#0078d4] text-white shadow-[0_2px_8px_rgba(0,120,212,0.35),0_1px_0_rgba(255,255,255,0.2)_inset]"
                       : "border-[#C8C6C4]/80 bg-white text-foreground/80 shadow-[0_1px_3px_rgba(0,0,0,0.05)] hover:border-[#0078d4]/45 hover:shadow-[0_4px_12px_rgba(0,120,212,0.12)]"

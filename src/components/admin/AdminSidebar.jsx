@@ -166,13 +166,10 @@ export function AdminSidebar() {
                 className={cn(
                   "group relative flex items-center gap-3 overflow-hidden rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-300",
                   isActive
-                    ? "text-white shadow-[0_0_20px_rgba(34,197,94,0.15)]"
-                    : "text-muted-foreground hover:text-white"
+                    ? "text-white bg-white/10 border border-white/10 shadow-sm"
+                    : "text-muted-foreground hover:text-white hover:bg-white/5"
                 )}
               >
-                {isActive && (
-                  <div className="absolute inset-0 rounded-xl border border-primary/20 bg-gradient-to-r from-primary/20 to-[hsl(var(--forest))]/10" />
-                )}
                 {/* Hover effect for non-active items */}
                 {!isActive && (
                   <div className="absolute inset-0 rounded-xl bg-white/5 opacity-0 transition-opacity group-hover:opacity-100" />
@@ -183,7 +180,7 @@ export function AdminSidebar() {
                   className={cn(
                     "relative z-10 transition-colors duration-300",
                     isActive
-                      ? "text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]"
+                      ? "text-primary"
                       : "group-hover:text-white"
                   )}
                 />

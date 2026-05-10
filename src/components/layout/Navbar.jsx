@@ -318,13 +318,13 @@ const ServicesMobileMenu = ({ setIsMobileMenuOpen }) => {
 };
 
 const GrootLogo = () => (
-  <div className="relative h-32 w-auto md:h-40">
+  <div className="relative h-20 w-auto max-w-[200px] sm:max-w-none sm:h-24 md:h-28">
     <Image
       src="/svg/logo.svg"
       alt="Groot Analytics Logo"
       width={500}
       height={180}
-      className="h-full w-auto object-contain"
+      className="h-full w-auto object-contain object-left"
       priority
     />
   </div>

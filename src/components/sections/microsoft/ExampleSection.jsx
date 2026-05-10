@@ -41,8 +41,8 @@ export function ExampleSection({
             Real Results
           </span>
           {outcomeMetric && outcomeMetricLabel && (
-            <div className="mb-6 inline-flex items-baseline gap-2 rounded-2xl border border-white/15 bg-forest px-6 py-3">
-              <span className="text-4xl font-black tracking-tight text-forest-foreground md:text-5xl">
+            <div className="mb-6 inline-flex flex-wrap items-baseline gap-2 rounded-2xl border border-white/15 bg-forest px-6 py-3">
+              <span className="text-3xl font-black tracking-tight text-forest-foreground sm:text-4xl md:text-5xl">
                 {outcomeMetric}
               </span>
               <span className="text-sm font-semibold uppercase tracking-wider text-forest-foreground/75">

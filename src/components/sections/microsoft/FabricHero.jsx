@@ -36,6 +36,7 @@ export function FabricHero() {
           width={20}
           height={20}
           className="h-auto w-5 object-contain"
+          priority
         />
       ),
     },
@@ -48,6 +49,7 @@ export function FabricHero() {
           width={20}
           height={20}
           className="h-5 w-5 object-contain"
+          priority
         />
       ),
     },
@@ -60,6 +62,7 @@ export function FabricHero() {
           width={20}
           height={20}
           className="h-5 w-5 object-contain"
+          priority
         />
       ),
     },
@@ -72,6 +75,7 @@ export function FabricHero() {
           width={20}
           height={20}
           className="h-5 w-5 object-contain"
+          priority
         />
       ),
     },
@@ -84,6 +88,7 @@ export function FabricHero() {
           width={20}
           height={20}
           className="h-5 w-5 object-contain"
+          priority
         />
       ),
     },
@@ -325,6 +330,7 @@ export function FabricHero() {
                       alt="Azure Data Factory"
                       width={16}
                       height={16}
+                      priority
                     />
                   </div>
                   <div className="flex-1">
@@ -361,6 +367,7 @@ export function FabricHero() {
                     width={32}
                     height={32}
                     className="relative z-10"
+                    priority
                   />
                 </div>
                 <div className="relative z-10 text-center">
@@ -401,6 +408,7 @@ export function FabricHero() {
                     alt="Power BI"
                     width={16}
                     height={16}
+                    priority
                   />
                   <span className="text-xs font-semibold text-foreground xl:text-sm">
                     Power BI
@@ -445,6 +453,7 @@ export function FabricHero() {
                     alt="Copilot"
                     width={16}
                     height={16}
+                    priority
                   />
                   <span className="text-xs font-semibold text-foreground xl:text-sm">
                     Copilot
@@ -464,6 +473,7 @@ export function FabricHero() {
                     alt="Purview"
                     width={16}
                     height={16}
+                    priority
                   />
                   <span className="text-xs font-semibold text-foreground xl:text-sm">
                     Purview

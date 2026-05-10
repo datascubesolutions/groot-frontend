@@ -96,17 +96,32 @@ export default function AdminServicesPage() {
         </div>
         <div className="flex items-center gap-3">
           <span className="text-sm font-medium text-white/70">
-            Use Dynamic Content
+            Content Source
           </span>
-          <button
-            type="button"
-            onClick={() => setIsDynamic(!isDynamic)}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${isDynamic ? "bg-primary" : "bg-white/10"}`}
-          >
-            <span
-              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isDynamic ? "translate-x-6" : "translate-x-1"}`}
-            />
-          </button>
+          <div className="flex rounded-lg border border-white/10 bg-[#0a0a0a] p-1">
+            <button
+              type="button"
+              onClick={() => setIsDynamic(false)}
+              className={`rounded-md px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
+                !isDynamic
+                  ? "bg-white/10 text-white shadow-sm ring-1 ring-white/5"
+                  : "text-white/50 hover:text-white"
+              }`}
+            >
+              Static
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsDynamic(true)}
+              className={`rounded-md px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
+                isDynamic
+                  ? "bg-primary text-black shadow-sm ring-1 ring-primary/20"
+                  : "text-white/50 hover:text-white"
+              }`}
+            >
+              Dynamic
+            </button>
+          </div>
         </div>
       </div>
 

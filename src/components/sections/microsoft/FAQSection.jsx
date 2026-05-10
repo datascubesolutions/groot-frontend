@@ -251,7 +251,7 @@ export function FAQSection({
                     aria-expanded={isOpen}
                     {...(isOpen ? { "aria-controls": panelId } : {})}
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className={`group flex w-full items-start gap-5 rounded-2xl px-6 py-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:items-center md:rounded-3xl md:px-8 md:py-8 ${
+                    className={`group flex w-full items-start gap-3 rounded-2xl px-4 py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:items-center md:gap-5 md:rounded-3xl md:px-8 md:py-8 ${
                       isOpen
                         ? "focus-visible:ring-white focus-visible:ring-offset-forest"
                         : "focus-visible:ring-forest focus-visible:ring-offset-background"
@@ -259,20 +259,20 @@ export function FAQSection({
                   >
                     {/* Number */}
                     <div
-                      className={`mt-0 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl transition-all duration-300 md:-mt-1 ${
+                      className={`mt-0 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl transition-all duration-300 md:-mt-1 md:h-12 md:w-12 ${
                         isOpen
                           ? "bg-white text-forest shadow-lg"
                           : "bg-muted text-muted-foreground group-hover:bg-forest/10 group-hover:text-forest"
                       }`}
                     >
-                      <span className="text-sm font-semibold tabular-nums">
+                      <span className="text-xs font-semibold tabular-nums md:text-sm">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
 
                     {/* Question */}
                     <span
-                      className={`flex-1 text-lg font-semibold tracking-tight transition-colors duration-300 ${
+                      className={`flex-1 text-base font-semibold tracking-tight transition-colors duration-300 md:text-lg ${
                         isOpen
                           ? "text-white"
                           : "text-foreground group-hover:text-forest/90"
@@ -283,13 +283,13 @@ export function FAQSection({
 
                     {/* Chevron */}
                     <div
-                      className={`mt-0.5 flex-shrink-0 rounded-full p-2 transition-all duration-300 md:mt-0 ${
+                      className={`mt-0.5 flex-shrink-0 rounded-full p-1.5 transition-all duration-300 md:mt-0 md:p-2 ${
                         isOpen
                           ? "rotate-180 bg-white text-forest shadow-lg"
                           : "bg-forest/10 text-forest group-hover:scale-110 group-hover:bg-forest/20"
                       }`}
                     >
-                      <ChevronDown className="h-5 w-5" />
+                      <ChevronDown className="h-4 w-4 md:h-5 md:w-5" />
                     </div>
                   </button>
 
@@ -307,7 +307,7 @@ export function FAQSection({
                           ease: [0.04, 0.62, 0.23, 0.98],
                         }}
                       >
-                        <div className="px-6 pb-6 pl-[4.75rem] pt-0 md:px-8 md:pb-8 md:pl-[5.25rem]">
+                        <div className="px-4 pb-5 pl-[3.25rem] pt-0 md:px-8 md:pb-8 md:pl-[5.25rem]">
                           <div className="w-full border-t border-white/20 pt-5 antialiased md:pt-6">
                             <p className="text-base font-normal leading-relaxed text-white/80 md:text-lg">
                               {faq.answer}
