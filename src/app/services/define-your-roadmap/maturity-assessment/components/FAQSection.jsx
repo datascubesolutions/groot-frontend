@@ -2,6 +2,9 @@
 
 import { ChevronRight } from "lucide-react";
 
+/**
+ * @param {{ q: import("react").ReactNode; a: import("react").ReactNode }} props
+ */
 export function FAQItem({ q, a }) {
   return (
     <details className="group relative -mt-[3px] cursor-pointer rounded-none border-[3px] border-border/80 bg-card p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:border-foreground hover:shadow-[12px_12px_0_0_foreground] md:p-10 dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] dark:hover:shadow-[12px_12px_0_0_rgba(255,255,255,1)] [&_summary::-webkit-details-marker]:hidden">

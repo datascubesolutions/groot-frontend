@@ -4,7 +4,15 @@ import { motion } from "framer-motion";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      /** @type {import("framer-motion").Easing} */
+      ease: "easeOut",
+    },
+  },
 };
 
 const METHOD_PANEL_ACCENT = {
@@ -26,6 +34,15 @@ const METHOD_PANEL_ACCENT = {
   },
 };
 
+/**
+ * @param {{
+ *   step: number;
+ *   week: string;
+ *   title: string;
+ *   desc: string;
+ *   color: "forest" | "cyan" | "blue" | "indigo";
+ * }} props
+ */
 function MethodPanel({ step, week, title, desc, color }) {
   const num = String(step).padStart(2, "0");
   const accent = METHOD_PANEL_ACCENT[color] ?? METHOD_PANEL_ACCENT.forest;

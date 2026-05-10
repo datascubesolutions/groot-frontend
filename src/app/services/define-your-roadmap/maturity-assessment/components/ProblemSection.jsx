@@ -10,7 +10,12 @@ const slideAndPop = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { type: "spring", stiffness: 100, damping: 15, duration: 0.6 },
+    transition: /** @type {import("framer-motion").Transition} */ ({
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+      duration: 0.6,
+    }),
   },
 };
 
