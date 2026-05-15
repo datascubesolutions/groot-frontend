@@ -24,46 +24,46 @@ const STYLES = {
   heroContainer: "container mx-auto px-6 max-w-7xl pt-4",
   section: "relative pt-12 pb-20 lg:pt-16 lg:pb-32",
   bgShape:
-    "absolute top-0 right-0 w-[50vw] h-full bg-cyan-500/5 backdrop-blur-3xl -z-10 hidden lg:block",
+    "absolute right-0 top-0 -z-10 hidden h-full w-[55vw] bg-muted/40 backdrop-blur-3xl lg:block",
   innerContainer: "container mx-auto px-6 max-w-7xl relative z-20",
-  gridOuter: "grid grid-cols-1 lg:grid-cols-12 gap-0 relative items-center",
+  gridOuter: "relative grid grid-cols-1 items-center gap-0 lg:grid-cols-12",
   imageWrapper:
-    "lg:absolute top-0 right-0 lg:w-[45vw] lg:max-w-[650px] h-[350px] lg:h-[550px] -z-10 mb-10 lg:mb-0 rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden grayscale-[50%] contrast-125 border-r-8 border-b-8 border-cyan-500/30 shadow-[20px_20px_0px_0px_rgba(6,182,212,0.1)]",
+    "relative w-full mb-10 h-[350px] overflow-hidden rounded-none border-b-8 border-l-8 border-cyan-500/30 bg-muted/40 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:bg-muted/10 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] max-lg:!opacity-100 max-lg:!transform-none max-lg:!filter-none max-lg:order-last max-lg:mt-8 lg:absolute lg:-z-10 lg:right-0 lg:top-5 lg:mb-0 lg:h-[550px] lg:w-[65vw] lg:max-w-[850px] lg:bg-transparent contrast-125 grayscale-[40%]",
   imageOverlay:
-    "absolute inset-0 bg-gradient-to-l from-transparent via-background/40 to-background",
-  image: "object-cover mix-blend-overlay opacity-90",
+    "absolute inset-0 hidden bg-gradient-to-r from-background to-transparent lg:block lg:w-[15%]",
+  image: "object-cover opacity-100 mix-blend-normal lg:opacity-90 lg:mix-blend-overlay",
   contentCol:
-    "lg:col-span-12 relative flex flex-col md:flex-row gap-8 items-start pt-8",
-  verticalBadgeBlock: "hidden md:flex flex-col items-center pr-4",
+    "relative flex flex-col items-start gap-8 pt-8 md:flex-row lg:col-span-12",
+  verticalBadgeBlock: "hidden flex-col items-center pl-2 md:flex",
   verticalLine:
-    "w-px h-32 bg-gradient-to-b from-transparent to-cyan-500/60 mb-6",
+    "mb-6 h-32 w-px bg-gradient-to-b from-transparent to-cyan-500/60",
   verticalTextWrapper:
-    "[writing-mode:vertical-rl] text-sm font-black tracking-[0.4em] uppercase text-cyan-600 rotate-180 flex items-center justify-center gap-6 whitespace-nowrap",
+    "flex rotate-180 items-center justify-center gap-6 whitespace-nowrap text-sm font-black uppercase tracking-[0.4em] text-cyan-600 [writing-mode:vertical-rl] overflow-hidden",
   pingDotOuter: "relative flex h-3 w-3",
   pingDotAnim:
-    "animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75",
-  pingDotInner: "relative inline-flex rounded-full h-3 w-3 bg-cyan-500",
+    "absolute inline-flex h-full w-full animate-ping rounded-none bg-cyan-400/80 opacity-75",
+  pingDotInner: "relative inline-flex h-3 w-3 rounded-none bg-cyan-500",
   contentWrapper: "max-w-[1050px]",
   heading:
-    "text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[7.5rem] font-black mb-8 tracking-tighter leading-[0.85] uppercase text-foreground drop-shadow-sm",
+    "mb-8 indent-0 text-[3rem] font-black uppercase leading-[0.95] tracking-tighter text-foreground mix-blend-normal drop-shadow-none sm:text-[4rem] sm:leading-[0.85] md:text-[5rem] lg:text-[7.5rem] lg:text-white lg:mix-blend-difference lg:drop-shadow-[0_0_30px_rgba(6,182,212,0.3)]",
   headingAccent1:
-    "inline-block mix-blend-normal text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40 stroke-text",
-  headingAccent2: "text-cyan-600",
-  headingAccent3: "inline-block mix-blend-normal",
+    "stroke-text isolate inline-block bg-gradient-to-r from-foreground to-foreground/40 bg-clip-text text-transparent mix-blend-normal",
+  headingAccent2: "text-cyan-600 isolate mix-blend-normal",
+  headingAccent3: "stroke-text bg-gradient-to-r from-foreground to-foreground/40 bg-clip-text text-transparent",
   paragraphCard:
-    "grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-16 max-w-5xl mt-8 bg-background/85 backdrop-blur-2xl p-8 md:p-12 border-2 border-border shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] relative",
+    "relative mt-8 grid max-w-5xl gap-6 rounded-none border border-border/60 bg-background/85 p-6 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] backdrop-blur-2xl sm:gap-8 sm:p-8 md:grid-cols-2 md:gap-10 md:p-12 lg:gap-16",
   cardCornerAccent:
-    "absolute top-0 right-0 w-24 h-24 border-t-4 border-r-4 border-cyan-500/50 -m-0.5 pointer-events-none",
-  paragraph: "text-xl md:text-2xl text-foreground font-semibold leading-snug",
+    "absolute -inset-[2px] -z-10 rounded-none bg-gradient-to-b from-cyan-500/30 to-transparent",
+  paragraph: "text-xl font-semibold leading-snug text-foreground md:text-2xl",
   underline:
-    "underline decoration-cyan-500 underline-offset-4 pointer-events-none",
-  actionBlock: "flex flex-col justify-end",
+    "pointer-events-none text-cyan-500 underline decoration-cyan-500/30 underline-offset-4",
+  actionBlock: "flex flex-col justify-between",
   actionButton:
-    "px-8 h-16 w-full md:w-auto overflow-hidden group relative bg-foreground text-background hover:bg-cyan-500 hover:text-white transition-all duration-500 rounded-none border-[3px] border-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground)/0.2)] hover:shadow-none hover:translate-x-[8px] hover:translate-y-[8px]",
+    "group relative h-16 w-full overflow-hidden rounded-none border-2 border-foreground bg-foreground text-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all duration-500 hover:translate-x-[8px] hover:translate-y-[8px] hover:bg-cyan-500 hover:text-white hover:shadow-none md:w-auto dark:hover:shadow-none",
   actionTextWrapper:
-    "relative z-10 flex items-center font-black tracking-[0.15em] uppercase text-sm",
+    "relative z-10 flex h-full w-full items-center justify-center px-12 text-center text-xs font-black uppercase tracking-wider sm:px-16 sm:text-sm sm:tracking-[0.15em]",
   actionIcon:
-    "ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300",
+    "absolute right-4 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2 sm:right-6 sm:h-5 sm:w-5",
 };
 
 export default function HeroSection() {

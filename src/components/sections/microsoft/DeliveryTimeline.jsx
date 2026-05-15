@@ -171,7 +171,7 @@ export function DeliveryTimeline({
                       {i + 1}
                     </span>
                     <span
-                      className={`mt-1 line-clamp-2 w-full min-w-0 px-1 text-center text-[11px] font-bold uppercase leading-tight tracking-widest ${
+                      className={`mt-3 w-full px-0.5 text-center text-[9px] lg:text-[10px] xl:text-[11px] font-bold uppercase leading-snug tracking-wide ${
                         activeIndex === i
                           ? "text-[#0078d4]"
                           : "text-muted-foreground group-hover:text-foreground"

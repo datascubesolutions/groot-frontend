@@ -163,8 +163,7 @@ export default function CTASection() {
                 <Sparkles className={STYLES.trustIcon} />
               </div>
               <p className={STYLES.trustText}>
-                Join 40+ senior data professionals <br aria-hidden="true" />{" "}
-                building the future on Microsoft Fabric.
+                Join our team building the future on Microsoft Fabric.
               </p>
             </m.div>
           </div>

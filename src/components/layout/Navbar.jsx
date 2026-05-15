@@ -298,22 +298,38 @@ export function Navbar() {
 
 const ServicesMobileMenu = ({ setIsMobileMenuOpen }) => {
   return (
-    <>
+    <div className="flex flex-col gap-4 py-2">
       {SERVICE_CATEGORIES.map((category) => {
         const Icon = category.icon;
         return (
-        <Link
-          key={category.slug}
-          href={category.href}
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="flex items-center gap-3 py-2 text-[15px] font-medium text-foreground/80 transition-all hover:translate-x-1 hover:text-forest"
-        >
-          {Icon && <Icon size={16} className="text-forest/60" />}
-          <span>{category.title}</span>
-        </Link>
+          <div key={category.slug} className="flex flex-col gap-1.5">
+            <Link
+              href={category.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center gap-2 text-[14px] font-bold text-foreground/90 transition-all hover:text-forest"
+            >
+              {Icon && <Icon size={16} className="text-forest/80" />}
+              <span>{category.title}</span>
+            </Link>
+            
+            {category.subServices && category.subServices.length > 0 && (
+              <div className="ml-5 mt-1 flex flex-col gap-2 border-l-2 border-border/50 pl-3">
+                {category.subServices.map((sub) => (
+                  <Link
+                    key={sub.slug}
+                    href={sub.slug ? `${category.href}/${sub.slug}` : category.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-[13px] font-medium text-foreground/70 transition-all hover:translate-x-1 hover:text-forest"
+                  >
+                    {sub.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

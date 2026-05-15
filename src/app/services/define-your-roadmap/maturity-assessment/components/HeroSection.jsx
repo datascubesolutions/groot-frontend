@@ -62,16 +62,16 @@ export default function HeroSection() {
               initial={{ opacity: 0, scale: 0.95, filter: "blur(20px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="right-0 top-5 -z-10 mb-10 h-[350px] overflow-hidden rounded-none border-b-8 border-l-8 border-forest/30 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] contrast-125 grayscale-[40%] lg:absolute lg:mb-0 lg:h-[550px] lg:w-[65vw] lg:max-w-[850px]"
+              className="relative w-full mb-10 h-[350px] overflow-hidden rounded-none border-b-8 border-l-8 border-forest/30 bg-muted/40 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:bg-muted/10 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] max-lg:!opacity-100 max-lg:!transform-none max-lg:!filter-none lg:absolute lg:-z-10 lg:right-0 lg:top-5 lg:mb-0 lg:h-[550px] lg:w-[65vw] lg:max-w-[850px] lg:bg-transparent contrast-125 grayscale-[40%]"
             >
               <Image
                 src="/images/maturity/live_radar.png"
                 alt="Data Professionals Analyzing Digital Radar"
                 fill
-                className="object-cover opacity-90 mix-blend-overlay"
+                className="object-cover opacity-100 mix-blend-normal lg:opacity-90 lg:mix-blend-overlay"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent lg:w-[15%]" />
+              <div className="absolute inset-0 hidden bg-gradient-to-r from-background to-transparent lg:block lg:w-[15%]" />
             </motion.div>
 
             <motion.div
@@ -97,15 +97,17 @@ export default function HeroSection() {
               <div className="max-w-[1050px]">
                 <motion.h1
                   variants={fadeIn}
-                  className="mb-8 indent-0 text-[2rem] font-black uppercase leading-[0.95] tracking-tighter text-white mix-blend-difference drop-shadow-[0_0_30px_hsl(var(--forest)/0.3)] sm:text-[3rem] sm:leading-[0.85] md:text-[5rem] lg:text-[7.5rem]"
+                  className="mb-8 indent-0 text-[2.2rem] font-black uppercase leading-[0.95] tracking-tighter text-foreground drop-shadow-sm sm:text-[3.2rem] sm:leading-[0.85] md:text-[4.5rem] lg:text-[6.5rem] xl:text-[7.5rem]"
                 >
-                  <span className="stroke-text isolate inline-block bg-gradient-to-r from-foreground to-foreground/40 bg-clip-text text-transparent mix-blend-normal">
+                  <span className="inline-block bg-gradient-to-r from-foreground via-foreground to-forest bg-clip-text text-transparent">
                     Data
                   </span>{" "}
-                  <span className="text-mint isolate mix-blend-normal">&amp;</span>{" "}
-                  Analytics
+                  <span className="text-forest">&amp;</span>{" "}
+                  <span className="inline-block bg-gradient-to-r from-foreground via-foreground to-forest bg-clip-text text-transparent">
+                    Analytics
+                  </span>
                   <br />
-                  <span className="stroke-text bg-gradient-to-r from-foreground to-foreground/40 bg-clip-text text-transparent">
+                  <span className="inline-block bg-gradient-to-r from-forest to-foreground bg-clip-text text-transparent">
                     Maturity Assessment
                   </span>
                 </motion.h1>
@@ -115,12 +117,12 @@ export default function HeroSection() {
 
                   <motion.p
                     variants={fadeIn}
-                    className="text-xl font-semibold leading-snug text-foreground md:text-2xl"
+                    className="text-xl font-bold leading-snug text-foreground md:text-2xl"
                   >
                     Before you can close the gap, you need to know where the gap
                     is. We assess your current data capabilities across six
                     dimensions and show you exactly where you stand —{" "}
-                    <span className="pointer-events-none text-forest underline decoration-forest/30 underline-offset-4">
+                    <span className="pointer-events-none text-forest underline decoration-forest/40 underline-offset-4">
                       with evidence, not assumptions.
                     </span>
                   </motion.p>

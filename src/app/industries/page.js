@@ -25,79 +25,127 @@ import Link from "next/link";
 
 const caseStudies = [
   {
-    category: "Data Engineering",
-    title: "Modernizing a Global Financial Data Lake",
-    client: "Tier 1 Investment Bank",
-    impact: "99.9% Reliability",
-    description: "Built a cloud-native data architecture on Azure Databricks processing 5TB+ daily for real-time risk assessment, ensuring precision in high-frequency trading.",
+    category: "Private Equity & M&A",
+    title: "3 ERPs to 1 Truth: Monthly Close from 10 Days to 3 Days",
+    client: "PE-Backed Portfolio Company",
+    impact: "10 Days → 3 Days",
+    description: "Groot built a Microsoft Fabric Lakehouse with unified chart of accounts across SAP, NetSuite, and QuickBooks. Automated daily pipelines with full Purview lineage tracking.",
     icon: Database,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop",
     code: "CS-01"
   },
   {
-    category: "AI & Automation",
-    title: "Intelligent Inventory Optimization AI",
-    client: "Retail Conglomerate",
-    impact: "18% Stockout Redux",
-    description: "Deployed custom XGBoost models on Azure ML to predict micro-market demand spikes and automate supply chain logistics across 200+ global locations.",
-    icon: Brain,
-    image: "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=2070&auto=format&fit=crop",
+    category: "Construction & Fleet",
+    title: "15% Reduction in Safety Incidents Through Real-Time Driver Analytics",
+    client: "PE-Backed Construction Company",
+    impact: "15% Less Incidents",
+    description: "Implemented a safety dashboard powered by Microsoft Fabric, Azure Data Factory, and Power BI. Tracked harsh braking and speeding in real-time, enabling proactive driver coaching.",
+    icon: Activity,
+    image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=2070&auto=format&fit=crop",
     code: "CS-02"
   },
   {
-    category: "Strategy & BI",
-    title: "Decision Intelligence for PE Integration",
-    client: "Private Equity Firm",
-    impact: "40% Faster Reps",
-    description: "Designed a unified semantic layer on Snowflake and executive Power BI dashboards during a complex, trillion-dollar merger of three major entities.",
+    category: "Construction & Fleet",
+    title: "40% Reduction in Rental Overruns — $180K Prevented in First Quarter",
+    client: "Construction Company with Large Fleet",
+    impact: "$180K Prevented",
+    description: "Implemented a fleet management system on Microsoft Fabric to monitor equipment utilization in real-time. Alerts triggered when equipment approached rental thresholds.",
     icon: TrendingUp,
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop",
     code: "CS-03"
   },
+  {
+    category: "Construction & Fleet",
+    title: "Real-Time Inventory Visibility Across 12 Job Sites — 25% Waste Reduction",
+    client: "Construction Company",
+    impact: "25% Waste Redux",
+    description: "Implemented an asset registry and inventory tracking system using Microsoft Fabric and Power BI. Real-time dashboards showed asset location and maintenance schedules.",
+    icon: Search,
+    image: "https://images.unsplash.com/photo-1586528116311-ad8ed7c406b9?q=80&w=2070&auto=format&fit=crop",
+    code: "CS-04"
+  },
+  {
+    category: "Financial Services",
+    title: "Scalable Reporting for 200+ QuickBooks Clients from Single Semantic Model",
+    client: "Financial Services Firm",
+    impact: "Zero Manual Effort",
+    description: "Built a parameterized Power BI semantic model that connects to all 200+ QBO accounts through Microsoft Fabric. Single report template serves all clients with dynamic filtering.",
+    icon: Database,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    code: "CS-05"
+  },
+  {
+    category: "Financial Services / Construction",
+    title: "Unified Vendor Spend Visibility with Automated Categorization",
+    client: "PE-Backed Portfolio Company",
+    impact: "90%+ Automated",
+    description: "Implemented vendor spend categorization using Microsoft Fabric Notebooks for automated classification. Power BI dashboards showing consolidation opportunities.",
+    icon: Search,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    code: "CS-06"
+  },
+  {
+    category: "Financial Services",
+    title: "Cash Flow Visibility Through Automated AR Aging Dashboards",
+    client: "Construction Company",
+    impact: "Proactive Collections",
+    description: "Implemented AR Aging Reports using Power BI connected to Microsoft Fabric. Dashboards show outstanding payments by age bucket, customer trends, and priorities.",
+    icon: TrendingUp,
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2070&auto=format&fit=crop",
+    code: "CS-07"
+  },
+  {
+    category: "Financial Services",
+    title: "Sales Strategy Optimized by Identifying Most Profitable Customers",
+    client: "Financial Services Firm",
+    impact: "Improved Margin",
+    description: "Implemented Customer Profitability Reports using Microsoft Fabric and Power BI. Year-to-date contribution margin by customer and segmentation showing high-value accounts.",
+    icon: Brain,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    code: "CS-08"
+  }
 ];
 
 const industries = [
   {
     icon: Building2,
-    title: "Financial Services",
-    description: "Advanced risk modeling, algorithmic fraud detection, and steadfast regulatory compliance tailored for banking and fintech innovators.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
-    code: "IND-FS"
+    title: "Private Equity & M&A",
+    description: "Post-acquisition data integration, portfolio company consolidation, and unified reporting across multiple ERPs. We build Microsoft Fabric foundations designed for rapid onboarding of new acquisitions — first company in 10-12 weeks, subsequent acquisitions in 2-3 weeks.",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop",
+    code: "IND-PE",
+    url: "/industries/private-equity-ma"
   },
   {
     icon: Factory,
-    title: "Manufacturing",
-    description: "Shatter operational bottlenecks with AI-driven predictive maintenance, dynamic demand forecasting, and complete inventory intelligence.",
-    image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=2070&auto=format&fit=crop",
-    code: "IND-MFG"
+    title: "Construction & Fleet",
+    description: "Fleet analytics, equipment utilization tracking, job site inventory management, and safety dashboards. Real-time visibility into assets, fuel consumption, rental costs, and driver behavior on Microsoft Fabric and Power BI.",
+    image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=2070&auto=format&fit=crop",
+    code: "IND-CST",
+    url: "/industries/construction-fleet"
+  },
+  {
+    icon: TrendingUp,
+    title: "Financial Services",
+    description: "Multi-client reporting platforms, customer profitability analysis, AR/AP aging dashboards, and vendor spend analytics. Scalable Power BI semantic models that serve hundreds of clients from a single data foundation.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    code: "IND-FS",
+    url: "/industries/financial-services"
   },
   {
     icon: Stethoscope,
-    title: "Healthcare",
-    description: "Elevating patient outcomes and streamlining clinical efficiency through HIPAA-compliant data lakes and advanced operational analytics.",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop",
-    code: "IND-HLT"
-  },
-  {
-    icon: ShoppingCart,
-    title: "Retail & E-commerce",
-    description: "Hyper-personalize digital customer experiences and optimize dynamic pricing engines using sophisticated machine learning insights.",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop",
-    code: "IND-RTL"
-  },
-  {
-    icon: Globe2,
-    title: "Logistics & Transport",
-    description: "Architecting route optimization algorithms and global real-time tracking infrastructures to drive unparalleled efficiency.",
-    image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=2070&auto=format&fit=crop",
-    code: "IND-LOG"
+    title: "Medical Device Manufacturing",
+    description: "Production analytics, quality compliance tracking, and supply chain visibility. Real-time monitoring with Azure AI Foundry for anomaly detection and predictive maintenance.",
+    image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=2070&auto=format&fit=crop",
+    code: "IND-MDM",
+    url: "/industries/medical-device"
   },
   {
     icon: Cpu,
     title: "Technology & SaaS",
-    description: "Building scalable product usage pipelines and telemetry analytics platforms for modern software enterprises to drive explosive growth.",
+    description: "Product usage analytics, customer health scoring, and operational dashboards. Microsoft Fabric migrations from Azure Analysis Services and legacy platforms with improved refresh times and governance.",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
-    code: "IND-TEC"
+    code: "IND-TEC",
+    url: "/industries/technology-saas"
   },
 ];
 
@@ -269,9 +317,8 @@ export default function IndustriesPage() {
                  // Neo-Brutalist Bento Sizing - perfectly spans 4 cols on md/lg and 6 cols on xl
                  let spanClass = "col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2"; // default square-ish
                  if (index === 0) spanClass = "col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-4"; // Wide featured
-                 else if (index === 3) spanClass = "col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-4"; // wide featured row 3
-                 else if (index === 4) spanClass = "col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-3"; // bottom row
-                 else if (index === 5) spanClass = "col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-3"; // bottom row
+                 else if (index === 3) spanClass = "col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-4"; // wide featured row 2
+                 else if (index === 4) spanClass = "col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-6"; // wide featured row 3
                  
                  return (
                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
@@ -301,7 +348,7 @@ export default function IndustriesPage() {
                         
                         {/* Hover reveal button */}
                         <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20 bg-gradient-to-t from-card via-card to-transparent pt-16">
-                           <Link href="/contact" className="inline-flex items-center text-xs font-black uppercase tracking-widest text-emerald-600 border-b-2 border-emerald-600 pb-1">
+                           <Link href={industry.url} className="inline-flex items-center text-xs font-black uppercase tracking-widest text-emerald-600 border-b-2 border-emerald-600 pb-1">
                               Deploy Protocol <ChevronRight size={14} className="ml-1" />
                            </Link>
                         </div>

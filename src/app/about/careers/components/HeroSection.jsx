@@ -140,7 +140,7 @@ export default function HeroSection() {
               <div>
                 <p className={STYLES.glassTitle}>Elite Engineering Culture</p>
                 <p className={STYLES.glassSubtitle}>
-                  Join 40+ senior architects building the future.
+                  Join our growing team.
                 </p>
               </div>
               <div className={STYLES.glassIconWrapper} aria-hidden="true">

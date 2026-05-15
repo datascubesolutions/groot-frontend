@@ -77,7 +77,7 @@ export function ServicesSection({ content }) {
               <div className="relative mx-auto flex flex-col flex-nowrap items-center justify-center gap-6 rounded-2xl p-4 sm:gap-8 sm:p-6 md:gap-10 md:p-8 lg:flex-row lg:items-stretch lg:gap-0">
                 {/* Mobile vertical line removed for cleaner card stacking */}
                 {/* Card 1 (Left) */}
-                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-40 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
+                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 lg:hover:translate-y-0 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-40 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -147,7 +147,7 @@ export function ServicesSection({ content }) {
 
                     <div className="mt-5 flex min-h-[5.5rem] w-full flex-shrink-0 flex-col justify-center text-center sm:mt-6">
                       <h2
-                        className="line-clamp-2 text-xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-2xl"
+                        className="line-clamp-3 text-xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-2xl"
                         style={{ margin: "0" }}
                       >
                         {cards[0].title}
@@ -175,7 +175,7 @@ export function ServicesSection({ content }) {
                 </div>
 
                 {/* Card 2 (Middle) */}
-                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-30 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
+                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 lg:hover:translate-y-0 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-30 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -239,7 +239,7 @@ export function ServicesSection({ content }) {
 
                     <div className="mt-5 flex min-h-[5.5rem] w-full flex-shrink-0 flex-col justify-center text-center sm:mt-6">
                       <h2
-                        className="line-clamp-2 text-xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-2xl"
+                        className="line-clamp-3 text-xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-2xl"
                         style={{ margin: "0" }}
                       >
                         {cards[1].title}
@@ -267,7 +267,7 @@ export function ServicesSection({ content }) {
                 </div>
 
                 {/* Card 3 (AI Foundry) - Middle connector */}
-                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-20 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
+                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 lg:hover:translate-y-0 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-20 lg:mr-[99px] lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -331,7 +331,7 @@ export function ServicesSection({ content }) {
 
                     <div className="mt-5 flex min-h-[5.5rem] w-full flex-shrink-0 flex-col justify-center text-center sm:mt-6">
                       <h2
-                        className="line-clamp-2 text-xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-2xl"
+                        className="line-clamp-3 text-xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-2xl"
                         style={{ margin: "0" }}
                       >
                         {cards[2].title}
@@ -359,7 +359,7 @@ export function ServicesSection({ content }) {
                 </div>
 
                 {/* Card 4 (Copilot) - Closing card */}
-                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-10 lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
+                <div className="group relative z-10 h-auto w-full max-w-[22rem] flex-shrink-0 overflow-visible rounded-[2rem] border border-border/60 bg-card p-6 shadow-xl transition-all duration-500 hover:-translate-y-1 lg:hover:translate-y-0 hover:border-forest/20 hover:shadow-2xl hover:shadow-forest/5 sm:p-8 lg:z-10 lg:h-[28rem] lg:w-[18rem] lg:max-w-[18rem] lg:translate-y-0 lg:rounded-lg lg:border-0 lg:p-6 lg:shadow-none lg:hover:shadow-md">
                   <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                     <svg
                       className="h-full w-full overflow-visible"
@@ -401,7 +401,7 @@ export function ServicesSection({ content }) {
 
                     <div className="mt-5 flex min-h-[5.5rem] w-full flex-shrink-0 flex-col justify-center text-center sm:mt-6">
                       <h2
-                        className="line-clamp-2 text-xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-2xl"
+                        className="line-clamp-3 text-xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-2xl"
                         style={{ margin: "0" }}
                       >
                         {cards[3].title}
