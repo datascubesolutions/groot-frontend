@@ -140,8 +140,7 @@ export default function ProblemSection() {
                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
                     alt=""
                     fill
-                    sizes="(max-width: 768px) 100vw, 35vw"
-                    className="ease-[cubic-bezier(0.19,1,0.22,1)] object-cover opacity-40 mix-blend-luminosity transition-all duration-1000 group-hover:scale-110 group-hover:opacity-70"
+                    className="ease-[cubic-bezier(0.19,1,0.22,1)] object-cover grayscale-[70%] contrast-125 brightness-90 mix-blend-luminosity opacity-60 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-[20%]"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
@@ -205,7 +204,7 @@ export default function ProblemSection() {
               </div>
               <div className="relative z-10">
                 <div className="mb-8 flex items-center gap-6">
-                  <div className="flex h-14 w-14 -rotate-6 items-center justify-center bg-rose-500 text-white shadow-[5px_5px_0px_0px_rgba(244,63,94,0.3)]">
+                  <div className="flex h-14 w-14 -rotate-2 items-center justify-center bg-rose-500 text-white shadow-[5px_5px_0px_0px_rgba(244,63,94,0.3)]">
                     <Activity size={28} />
                   </div>
                   <p className="bg-rose-500/10 px-3 py-1 text-sm font-black uppercase tracking-[0.2em] text-rose-500">
@@ -244,7 +243,7 @@ export default function ProblemSection() {
               </div>
               <div className="relative z-10">
                 <div className="mb-8 flex items-center gap-6">
-                  <div className="flex h-14 w-14 rotate-3 items-center justify-center bg-amber-500 text-foreground shadow-[5px_5px_0px_0px_rgba(245,158,11,0.5)]">
+                  <div className="flex h-14 w-14 rotate-1 items-center justify-center bg-amber-500 text-foreground shadow-[5px_5px_0px_0px_rgba(245,158,11,0.5)]">
                     <AlertCircle size={28} />
                   </div>
                   <p className="border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-sm font-black uppercase tracking-[0.2em] text-amber-500">
@@ -284,7 +283,7 @@ export default function ProblemSection() {
               </div>
               <div className="relative z-10 md:w-4/5">
                 <div className="mb-8 flex items-center gap-6">
-                  <div className="flex h-14 w-14 rotate-6 items-center justify-center bg-orange-500 text-white shadow-[5px_5px_0px_0px_rgba(249,115,22,0.3)]">
+                  <div className="flex h-14 w-14 rotate-2 items-center justify-center bg-orange-500 text-white shadow-[5px_5px_0px_0px_rgba(249,115,22,0.3)]">
                     <Target size={28} />
                   </div>
                   <p className="bg-orange-500/10 px-3 py-1 text-sm font-black uppercase tracking-[0.2em] text-orange-500">

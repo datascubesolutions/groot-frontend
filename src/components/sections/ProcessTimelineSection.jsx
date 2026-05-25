@@ -85,11 +85,11 @@ export const ProcessTimelineSection = ({ content }) => {
   const steps =
     Array.isArray(content?.steps) && content.steps.length > 0
       ? defaultSteps.map((step, index) => ({
-          ...step,
-          id: content.steps[index]?.num || step.id,
-          title: content.steps[index]?.title || step.title,
-          tagline: content.steps[index]?.description || step.tagline,
-        }))
+        ...step,
+        id: content.steps[index]?.num || step.id,
+        title: content.steps[index]?.title || step.title,
+        tagline: content.steps[index]?.description || step.tagline,
+      }))
       : defaultSteps;
 
   const { scrollYProgress } = useScroll({

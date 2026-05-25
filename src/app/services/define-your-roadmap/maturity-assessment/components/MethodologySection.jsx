@@ -1,6 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import ClientLottie from "@/components/ui/ClientLottie";
+
+function FetchLottie({ path, className }) {
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    fetch(path)
+      .then((res) => res.json())
+      .then(setData)
+      .catch(console.error);
+  }, [path]);
+
+  if (!data) return null;
+  return <ClientLottie animationData={data} className={className} />;
+}
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -41,9 +56,10 @@ const METHOD_PANEL_ACCENT = {
  *   title: string;
  *   desc: string;
  *   color: "forest" | "cyan" | "blue" | "indigo";
+ *   lottiePath?: string;
  * }} props
  */
-function MethodPanel({ step, week, title, desc, color }) {
+function MethodPanel({ step, week, title, desc, color, lottiePath }) {
   const num = String(step).padStart(2, "0");
   const accent = METHOD_PANEL_ACCENT[color] ?? METHOD_PANEL_ACCENT.forest;
   return (
@@ -74,6 +90,12 @@ function MethodPanel({ step, week, title, desc, color }) {
         </p>
       </div>
 
+      {lottiePath && (
+        <div className="absolute right-4 top-4 z-0 h-32 w-32 opacity-[0.15] transition-all duration-700 group-hover/panel:scale-110 group-hover/panel:opacity-40 sm:h-40 sm:w-40 md:right-6 md:top-6 md:h-48 md:w-48 lg:right-4 lg:top-4 lg:h-36 lg:w-36 xl:right-8 xl:top-8 xl:h-48 xl:w-48 mix-blend-luminosity">
+          <FetchLottie path={lottiePath} className="h-full w-full object-contain" />
+        </div>
+      )}
+
       <div
         className={`pointer-events-none absolute -bottom-8 -right-8 select-none text-[12rem] font-black leading-[0.7] text-foreground/5 dark:text-foreground/10 ${accent.num} transition-all duration-700 group-hover/panel:scale-110`}
       >
@@ -91,7 +113,12 @@ export default function MethodologySection() {
           <h3 className="mb-0 text-[clamp(2rem,8vw,6rem)] font-black uppercase leading-none tracking-tighter text-forest">
             Our process
           </h3>
-          <p className="max-w-sm border border-forest/40 bg-forest/15 p-6 text-base font-black uppercase tracking-[0.2em] text-foreground md:text-right">
+          
+          <div className="hidden h-24 flex-1 items-center justify-center opacity-30 mix-blend-luminosity transition-all duration-700 hover:scale-105 hover:opacity-80 hover:mix-blend-normal md:flex lg:h-40">
+            <FetchLottie path="/lottie/json/Technology%20Network.json" className="h-full w-full object-contain" />
+          </div>
+
+          <p className="max-w-sm border border-forest/40 bg-forest/15 p-6 text-base font-black uppercase tracking-[0.2em] text-foreground md:text-right relative z-10">
             Interviews, technical review, and evidence-based scoring —{" "}
             <span className="text-forest">3–4 weeks to presentation.</span>
           </p>
@@ -104,6 +131,7 @@ export default function MethodologySection() {
             title="Stakeholder Interviews"
             desc="We interview 8-12 stakeholders across business and technology. We're looking for gaps between what teams believe about your data capabilities and what's actually happening."
             color="forest"
+            lottiePath="/lottie/json/Data%20Analytics%20and%20Research.json"
           />
           <MethodPanel
             step={2}
@@ -111,6 +139,7 @@ export default function MethodologySection() {
             title="Technical Review"
             desc="We review your current architecture: Azure/Fabric configuration, Data Factory pipelines, Lakehouse structure, Power BI semantic models, Purview catalog, and security settings. We look at what's documented and what's actually implemented."
             color="cyan"
+            lottiePath="/lottie/json/Technology%20isometric%20ai%20robot%20brain.json"
           />
           <MethodPanel
             step={3}
@@ -118,6 +147,7 @@ export default function MethodologySection() {
             title="Analysis & Scoring"
             desc="We synthesize findings into a scored assessment. Each dimension rated with specific evidence and examples."
             color="blue"
+            lottiePath="/lottie/json/Data%20analytics%20techniques.json"
           />
           <MethodPanel
             step={4}
@@ -125,6 +155,7 @@ export default function MethodologySection() {
             title="Presentation & Alignment"
             desc="We present findings to leadership and facilitate discussion. The goal is alignment on priorities and next steps."
             color="indigo"
+            lottiePath="/lottie/json/3D%20Hologram.json"
           />
         </div>
       </div>

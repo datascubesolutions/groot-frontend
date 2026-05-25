@@ -79,25 +79,25 @@ export default function DeliverablesSection() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="group relative flex min-h-[300px] flex-col justify-between bg-card p-6 transition-colors duration-500 hover:bg-cyan-500/5 sm:min-h-[350px] sm:p-8 lg:p-12"
+            className="group relative flex min-h-[300px] flex-col justify-between bg-card p-6 transition-colors duration-500 hover:bg-forest/5 sm:min-h-[350px] sm:p-8 lg:p-12"
           >
             <div className="relative z-10 mb-14 flex items-start justify-between">
               <Target
-                className="h-12 w-12 text-cyan-500 transition-colors duration-500 group-hover:text-cyan-300"
+                className="h-12 w-12 text-forest transition-colors duration-500 group-hover:text-emerald-300"
                 strokeWidth={1}
               />
-              <span className="text-[4rem] font-black leading-none tracking-tighter text-foreground/5 mix-blend-multiply transition-colors duration-500 group-hover:text-cyan-500/30 dark:mix-blend-screen">
+              <span className="text-[4rem] font-black leading-none tracking-tighter text-foreground/5 mix-blend-multiply transition-colors duration-500 group-hover:text-emerald-500/20 dark:mix-blend-screen">
                 D-02
               </span>
             </div>
             <div className="relative z-10">
-              <p className="mb-4 inline-block border-b border-cyan-500/30 pb-1 text-[0.7rem] font-black uppercase tracking-[0.2em] text-cyan-500 transition-colors duration-500 group-hover:border-cyan-300/50 group-hover:text-cyan-300">
+              <p className="mb-4 inline-block border-b-2 border-forest/30 pb-1 text-sm font-black uppercase tracking-[0.2em] text-forest transition-colors duration-500 group-hover:border-emerald-300/50 group-hover:text-emerald-300">
                 Current state vs. target
               </p>
               <h4 className="mb-6 text-3xl font-black uppercase leading-[0.9] tracking-tight transition-colors duration-500 group-hover:text-white">
                 Gap Analysis
               </h4>
-              <p className="text-base font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-cyan-50">
+              <p className="text-base font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-emerald-50">
                 For each dimension, we document where you are today vs. where
                 you need to be. Gaps prioritized by business impact, not ease
                 of implementation.
@@ -110,25 +110,25 @@ export default function DeliverablesSection() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="group relative flex min-h-[300px] flex-col justify-between bg-card p-6 transition-colors duration-500 hover:bg-blue-500/5 sm:min-h-[350px] sm:p-8 lg:p-12"
+            className="group relative flex min-h-[300px] flex-col justify-between bg-card p-6 transition-colors duration-500 hover:bg-forest/5 sm:min-h-[350px] sm:p-8 lg:p-12"
           >
             <div className="relative z-10 mb-14 flex items-start justify-between">
               <ShieldCheck
-                className="h-12 w-12 text-blue-500 transition-colors duration-500 group-hover:text-blue-300"
+                className="h-12 w-12 text-forest transition-colors duration-500 group-hover:text-emerald-300"
                 strokeWidth={1}
               />
-              <span className="text-[4rem] font-black leading-none tracking-tighter text-foreground/5 mix-blend-multiply transition-colors duration-500 group-hover:text-blue-500/30 dark:mix-blend-screen">
+              <span className="text-[4rem] font-black leading-none tracking-tighter text-foreground/5 mix-blend-multiply transition-colors duration-500 group-hover:text-emerald-500/20 dark:mix-blend-screen">
                 D-03
               </span>
             </div>
             <div className="relative z-10">
-              <p className="mb-4 inline-block border-b border-blue-500/30 pb-1 text-[0.7rem] font-black uppercase tracking-[0.2em] text-blue-500 transition-colors duration-500 group-hover:border-blue-300/50 group-hover:text-blue-300">
+              <p className="mb-4 inline-block border-b-2 border-forest/30 pb-1 text-sm font-black uppercase tracking-[0.2em] text-forest transition-colors duration-500 group-hover:border-emerald-300/50 group-hover:text-emerald-300">
                 Architecture review
               </p>
               <h4 className="mb-6 text-3xl font-black uppercase leading-[0.9] tracking-tight transition-colors duration-500 group-hover:text-white">
                 Technical Findings
               </h4>
-              <p className="text-base font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-blue-50">
+              <p className="text-base font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-emerald-50">
                 Specific observations from our architecture review:
                 Fabric/Azure configuration, pipeline reliability, Power BI
                 semantic model design, Purview governance implementation,
@@ -142,21 +142,21 @@ export default function DeliverablesSection() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="group relative col-span-1 flex flex-col items-center justify-between gap-12 overflow-hidden bg-foreground p-8 text-background sm:p-10 md:col-span-2 md:flex-row lg:col-span-4 lg:p-16 lg:px-6"
+            className="group relative col-span-1 flex flex-col items-center justify-between gap-12 overflow-hidden bg-card p-8 transition-colors duration-500 hover:bg-forest/5 sm:p-10 md:col-span-2 md:flex-row lg:col-span-4 lg:p-16 lg:px-6"
           >
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-full max-w-[800px] bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.25),transparent_60%)] opacity-50 transition-opacity duration-700 group-hover:opacity-100" />
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-full max-w-[800px] bg-[radial-gradient(ellipse_at_center,hsl(var(--forest)/0.08),transparent_60%)] opacity-50 transition-opacity duration-700 group-hover:opacity-100" />
 
             <div className="relative z-10 max-w-4xl">
               <div className="mb-8 flex items-center gap-6">
                 <CheckCircle2 className="h-14 w-14 text-mint" />
-                <span className="text-[4rem] font-black leading-none tracking-tighter text-background/10 md:text-[6rem]">
+                <span className="text-[4rem] font-black leading-none tracking-tighter text-foreground/5 mix-blend-multiply dark:mix-blend-screen md:text-[6rem]">
                   D-04
                 </span>
               </div>
-              <h4 className="mb-8 text-[2rem] font-black uppercase leading-[0.85] tracking-tight text-background lg:text-[4.5rem]">
+              <h4 className="mb-8 text-[2rem] font-black uppercase leading-[0.85] tracking-tight text-foreground transition-colors duration-500 group-hover:text-white lg:text-[4.5rem]">
                 Prioritized Recommendations &amp; Exec Summary
               </h4>
-              <p className="max-w-3xl border-l-[3px] border-forest pl-6 text-xl font-bold leading-relaxed text-background/80">
+              <p className="max-w-3xl border-l-[3px] border-forest pl-6 text-xl font-bold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-emerald-50">
                 A prioritized set of recommendations with rationale and rough
                 effort estimates. We explain why and in what order. Delivered
                 alongside a one-page summary for leadership that drives
@@ -165,7 +165,7 @@ export default function DeliverablesSection() {
             </div>
 
             <div className="relative z-10 hidden pr-4 lg:block">
-              <div className="rotate-180 select-none text-[4rem] font-black uppercase leading-[0.75] tracking-tighter text-background/5 transition-colors [writing-mode:vertical-rl] group-hover:text-background/10 sm:text-[6rem] xl:text-[8rem]">
+              <div className="rotate-180 select-none text-[4rem] font-black uppercase leading-[0.75] tracking-tighter text-foreground/5 transition-colors [writing-mode:vertical-rl] group-hover:text-foreground/10 sm:text-[6rem] xl:text-[8rem]">
                 ROADMAP
               </div>
             </div>

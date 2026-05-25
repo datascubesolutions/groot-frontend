@@ -45,9 +45,9 @@ export default function ScaleYourTeam() {
         ]}
       />
 
-      {/* Hero Section - Split Layout */}
-      <section className="relative overflow-hidden bg-background py-16 md:py-24 lg:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.15),transparent_50%)]" />
+      {/* Hero Section - Neo-Brutalist Layout */}
+      <section className="relative overflow-hidden border-b-8 border-foreground bg-background py-16 md:py-24 lg:py-32">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
             {/* Left Content */}
@@ -57,35 +57,37 @@ export default function ScaleYourTeam() {
               variants={staggerContainer}
               className="max-w-2xl lg:col-span-7"
             >
+              <motion.div variants={fadeIn} className="mb-6 inline-block border-2 border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-black uppercase tracking-[0.3em] text-primary">
+                Team Augmentation
+              </motion.div>
               <motion.h1
                 variants={fadeIn}
-                className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-7xl"
+                className="mb-8 text-[3rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground drop-shadow-[4px_4px_0_rgba(0,0,0,0.1)] sm:text-[4.5rem] lg:text-[6.5rem] dark:drop-shadow-[4px_4px_0_rgba(255,255,255,0.1)]"
               >
                 Scale Your <br />
-                <span className="text-[hsl(var(--secondary))]">Team</span>
+                <span className="text-primary underline decoration-primary/30 underline-offset-8">Team</span>
               </motion.h1>
               <motion.p
                 variants={fadeIn}
-                className="mb-10 text-xl font-light leading-relaxed text-foreground/90 md:text-2xl"
+                className="mb-10 border-l-[4px] border-primary pl-6 text-xl font-bold leading-relaxed text-foreground/80 md:text-2xl"
               >
                 Stop relying on expensive monolithic consultancies. We provide
                 flexible, high-tier Microsoft Fabric and Power BI engineering
-                talent that integrates directly into your existing team to
-                accelerate delivery.
+                talent that integrates directly into your existing team.
               </motion.p>
 
               <motion.div
                 variants={fadeIn}
                 className="flex flex-col gap-4 sm:flex-row"
               >
-                <Link href="/contact?service=scale" passHref>
+                <Link href="/contact?service=scale" passHref className="w-full sm:w-auto">
                   <Button
                     variant="hero"
                     size="lg"
-                    className="group px-8 shadow-xl shadow-primary/25"
+                    className="group relative flex h-16 w-full items-center justify-center rounded-none border-4 border-foreground bg-primary px-8 text-center text-sm font-black uppercase tracking-wider text-primary-foreground shadow-[8px_8px_0_0_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-2 hover:translate-y-2 hover:bg-primary/90 hover:shadow-none sm:w-auto sm:px-12 dark:shadow-[8px_8px_0_0_rgba(255,255,255,0.2)] dark:hover:shadow-none"
                   >
                     Hire Elite Talent
-                    <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    <ChevronRight className="ml-4 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
                   </Button>
                 </Link>
               </motion.div>
@@ -93,18 +95,26 @@ export default function ScaleYourTeam() {
 
             {/* Right Visual */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="relative hidden lg:col-span-5 lg:block"
             >
-              <div className="relative mx-auto aspect-square w-full max-w-lg transform-gpu overflow-hidden rounded-3xl shadow-2xl shadow-[hsl(var(--primary))/0.15]">
-                <div className="absolute inset-0 flex items-center justify-center rounded-3xl border border-primary/20 bg-primary/5 backdrop-blur-sm">
-                  <div className="absolute h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
-                  <Users
-                    className="h-32 w-32 text-primary opacity-80"
-                    strokeWidth={1}
-                  />
+              <div className="group relative mx-auto aspect-square w-full max-w-lg transform-gpu overflow-hidden rounded-none border-[6px] border-foreground bg-background shadow-[16px_16px_0_0_rgba(0,0,0,1)] transition-all duration-700 hover:-translate-y-2 hover:translate-x-2 dark:shadow-[16px_16px_0_0_rgba(255,255,255,0.2)]">
+                <Image
+                  src="/images/services/scale-your-team-hero.png"
+                  alt="Elite Software Engineering Team"
+                  fill
+                  priority
+                  className="object-cover grayscale-[30%] contrast-125 transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                
+                {/* Fixed Hover Overlay: No more center blur, just a clean bottom gradient */}
+                <div className="absolute inset-0 z-20 flex items-end justify-start p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-t from-background/90 via-transparent to-transparent pointer-events-none">
+                  <div className="border-l-[4px] border-primary bg-background/90 px-4 py-2 text-sm font-black uppercase tracking-widest text-foreground backdrop-blur-sm">
+                    Elite Pods Deployed
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -125,7 +135,7 @@ export default function ScaleYourTeam() {
                 <h3 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
                   The consulting trap.
                 </h3>
-                <p className="mb-8 text-xl leading-relaxed text-muted-foreground">
+                <p className="mb-8 text-xl leading-relaxed text-foreground/80">
                   Traditional staffing agencies and global consultancies are
                   structured to maximize their margins, not your delivery speed.
                 </p>
@@ -147,7 +157,7 @@ export default function ScaleYourTeam() {
                 <h4 className="mb-4 text-2xl font-bold text-foreground">
                   The Generalist Trap
                 </h4>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p className="text-lg leading-relaxed text-foreground/80">
                   You hire a large consultancy, and they staff your project with
                   generalist developers who are learning Fabric on your dime.
                   You need specialists who have actually built enterprise-grade
@@ -169,7 +179,7 @@ export default function ScaleYourTeam() {
                 <h4 className="mb-4 text-2xl font-bold text-foreground">
                   The &quot;B-Team&quot; Switchwitch
                 </h4>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p className="text-lg leading-relaxed text-foreground/80">
                   The consultancy pitches you with their senior architects, but
                   once the contract is signed, they swap them out for junior
                   resources. You&apos;re paying premium rates for entry-level
@@ -190,7 +200,7 @@ export default function ScaleYourTeam() {
                 <h4 className="mb-4 text-2xl font-bold text-foreground">
                   Administrative Overhead
                 </h4>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p className="text-lg leading-relaxed text-foreground/80">
                   Traditional staffing agencies send you 40 resumes to review.
                   You spend weeks interviewing candidates only to find out they
                   don&apos;t actually understand DAX. You need pre-vetted, elite
@@ -232,7 +242,7 @@ export default function ScaleYourTeam() {
                 <h4 className="mb-4 text-3xl font-bold text-foreground">
                   Dedicated Engineering Pods
                 </h4>
-                <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                <p className="max-w-2xl text-lg leading-relaxed text-foreground/80">
                   A cohesive unit of pre-assembled architects and engineers that
                   integrate seamlessly into your agile workflow. They already
                   know how to work together, so they deliver features instantly.
@@ -255,7 +265,7 @@ export default function ScaleYourTeam() {
                 <h4 className="mb-4 text-2xl font-bold text-foreground">
                   Staff Augmentation
                 </h4>
-                <p className="leading-relaxed text-muted-foreground">
+                <p className="leading-relaxed text-foreground/80">
                   Elite individual contributors specialized in Microsoft Fabric
                   and Power BI that fill specific capability gaps on your
                   existing team.
@@ -278,7 +288,7 @@ export default function ScaleYourTeam() {
                 <h4 className="mb-4 text-2xl font-bold text-foreground">
                   Fractional Architecture
                 </h4>
-                <p className="leading-relaxed text-muted-foreground">
+                <p className="leading-relaxed text-foreground/80">
                   Bring in a Principal Architect for 10 hours a week to validate
                   technical designs, review code, and ensure your internal team
                   is building on a solid foundation.
@@ -302,7 +312,7 @@ export default function ScaleYourTeam() {
                 <h4 className="mb-4 text-3xl font-bold text-foreground">
                   Mentorship & Capability Building
                 </h4>
-                <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                <p className="max-w-2xl text-lg leading-relaxed text-foreground/80">
                   We don&apos;t build walled gardens. We actively upskill your
                   internal team on Fabric best practices so they can own the
                   platform long after the initial build is complete.
@@ -333,7 +343,7 @@ export default function ScaleYourTeam() {
                   <h3 className="mb-4 text-xl font-bold text-primary">
                     The Situation
                   </h3>
-                  <p className="text-lg leading-relaxed text-muted-foreground">
+                  <p className="text-lg leading-relaxed text-foreground/80">
                     An internal team was struggling to migrate from Snowflake to
                     Microsoft Fabric. They were 4 months behind schedule because
                     they couldn&apos;t optimize the Lakehouse partitioning
@@ -345,7 +355,7 @@ export default function ScaleYourTeam() {
                   <h3 className="mb-4 text-xl font-bold text-primary">
                     What We Built
                   </h3>
-                  <ul className="space-y-3 text-lg text-muted-foreground">
+                  <ul className="space-y-3 text-lg text-foreground/80">
                     <li className="flex items-start gap-3">
                       <div className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                       Deployed a fractional Fabric Architect (10 hrs/week) to
@@ -371,7 +381,7 @@ export default function ScaleYourTeam() {
                   <p className="mb-2 text-5xl font-black text-primary">
                     4 Weeks
                   </p>
-                  <p className="font-medium text-muted-foreground">
+                  <p className="font-medium text-foreground/80">
                     To get the migration back on track
                   </p>
                 </div>
@@ -379,7 +389,7 @@ export default function ScaleYourTeam() {
                   <p className="mb-2 mt-1 text-4xl font-black text-primary">
                     Upskilled
                   </p>
-                  <p className="font-medium text-muted-foreground">
+                  <p className="font-medium text-foreground/80">
                     Internal team fully adopted best practices
                   </p>
                 </div>
@@ -396,7 +406,7 @@ export default function ScaleYourTeam() {
             <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl">
               Expand your bandwidth.
             </h2>
-            <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-muted-foreground">
+            <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-foreground/80">
               Plug proven architects and engineers directly into your sprints
               and accelerate your data initiatives.
             </p>

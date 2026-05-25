@@ -11,17 +11,17 @@ export default function CaseStudySection() {
       <div className="container mx-auto max-w-7xl px-6">
         <div className="relative grid grid-cols-1 lg:grid-cols-12 lg:items-start lg:gap-0">
           <div className="z-10 flex h-full flex-col lg:col-span-8 lg:col-start-1 lg:row-start-1">
-            <div className="relative h-[300px] min-h-[300px] shrink-0 overflow-hidden border-[6px] border-foreground contrast-[1.1] grayscale-[40%] sm:h-[400px] sm:min-h-[400px] sm:border-8 lg:h-[650px] lg:min-h-[650px]">
+            <div className="relative h-[300px] min-h-[300px] shrink-0 overflow-hidden border-[6px] border-foreground sm:h-[400px] sm:min-h-[400px] sm:border-8 lg:h-[650px] lg:min-h-[650px]">
               <Image
                 src="/images/maturity/live_enterprise_alignment.png"
                 alt="Executive Team Discussing Data Strategy"
                 fill
-                className="object-cover"
+                className="object-cover grayscale-[70%] contrast-125 brightness-90 mix-blend-luminosity opacity-80"
                 sizes="(min-width: 1024px) 58vw, 100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent md:bg-gradient-to-l" />
 
-              <div className="absolute left-4 top-10 rotate-180 text-[3rem] font-black uppercase leading-[0.8] tracking-tighter text-foreground/5 mix-blend-multiply [writing-mode:vertical-rl] sm:text-[4rem] md:-left-10 md:text-[10rem] md:text-foreground/5 overflow-hidden">
+              <div className="absolute left-4 top-10 rotate-180 text-[3rem] font-black uppercase leading-[0.8] tracking-tighter text-foreground/5 [writing-mode:vertical-rl] sm:text-[4rem] md:-left-10 md:text-[10rem] overflow-hidden">
                 CASE STUDY
               </div>
             </div>
@@ -58,7 +58,7 @@ export default function CaseStudySection() {
                     src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop"
                     alt="Analytics Scaling Up"
                     fill
-                    className="object-cover object-center opacity-90 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-100 contrast-[1.1] brightness-90 grayscale-[20%]"
+                    className="object-cover object-center opacity-80 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-100 grayscale-[70%] contrast-125 brightness-90 mix-blend-luminosity group-hover:grayscale-[20%]"
                   />
                   <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.6)] z-10 pointer-events-none" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none" />
