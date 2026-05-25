@@ -97,17 +97,17 @@ export default function HeroSection() {
               <div className="max-w-[1050px]">
                 <motion.h1
                   variants={fadeIn}
-                  className="mb-8 indent-0 text-[2.2rem] font-black uppercase leading-[0.95] tracking-tighter text-foreground drop-shadow-sm sm:text-[3.2rem] sm:leading-[0.85] md:text-[4.5rem] lg:text-[6.5rem] xl:text-[7.5rem]"
+                  className="mb-8 indent-0 text-[2.2rem] font-black uppercase leading-[0.95] tracking-tighter text-foreground drop-shadow-sm sm:text-[3.2rem] sm:leading-[0.85] md:text-[4.5rem] lg:text-[7.5rem] lg:text-white lg:mix-blend-difference lg:drop-shadow-[0_0_30px_hsl(var(--forest)/0.3)]"
                 >
-                  <span className="inline-block bg-gradient-to-r from-foreground via-foreground to-forest bg-clip-text text-transparent">
+                  <span className="inline-block bg-gradient-to-r bg-clip-text text-transparent max-lg:from-foreground max-lg:via-foreground max-lg:to-forest lg:stroke-text lg:isolate lg:from-foreground lg:to-foreground/40 lg:mix-blend-normal">
                     Data
                   </span>{" "}
-                  <span className="text-forest">&amp;</span>{" "}
-                  <span className="inline-block bg-gradient-to-r from-foreground via-foreground to-forest bg-clip-text text-transparent">
+                  <span className="text-forest lg:text-mint lg:isolate lg:mix-blend-normal">&amp;</span>{" "}
+                  <span className="max-lg:inline-block max-lg:bg-gradient-to-r max-lg:from-foreground max-lg:via-foreground max-lg:to-forest max-lg:bg-clip-text max-lg:text-transparent">
                     Analytics
                   </span>
                   <br />
-                  <span className="inline-block bg-gradient-to-r from-forest to-foreground bg-clip-text text-transparent">
+                  <span className="inline-block bg-gradient-to-r bg-clip-text text-transparent max-lg:from-forest max-lg:to-foreground lg:stroke-text lg:from-foreground lg:to-foreground/40">
                     Maturity Assessment
                   </span>
                 </motion.h1>
@@ -117,12 +117,12 @@ export default function HeroSection() {
 
                   <motion.p
                     variants={fadeIn}
-                    className="text-xl font-bold leading-snug text-foreground md:text-2xl"
+                    className="text-xl font-bold leading-snug text-foreground md:text-2xl lg:font-semibold"
                   >
                     Before you can close the gap, you need to know where the gap
                     is. We assess your current data capabilities across six
                     dimensions and show you exactly where you stand —{" "}
-                    <span className="pointer-events-none text-forest underline decoration-forest/40 underline-offset-4">
+                    <span className="pointer-events-none text-forest underline decoration-forest/40 underline-offset-4 lg:decoration-forest/30">
                       with evidence, not assumptions.
                     </span>
                   </motion.p>
