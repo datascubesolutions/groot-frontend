@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import { CheckCircle2, ChevronRight, PieChart, Target } from "lucide-react";
 import Image from "next/image";
@@ -96,22 +95,20 @@ export default function NextStepsSection() {
           <div className="relative z-30 grid grid-cols-1 gap-0 border-4 border-foreground bg-foreground p-1 md:grid-cols-3 lg:mt-2">
             <Link
               href="/services/define-your-roadmap/enterprise-data-strategy"
-              className="group block h-full border border-transparent bg-card p-3 transition-colors duration-500 hover:border-forest md:p-4"
+              className="group block h-full border border-transparent bg-card px-3 py-5 transition-colors duration-500 hover:border-forest md:px-4 md:py-6"
             >
-              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-none border border-forest/30 bg-forest/10 text-forest shadow-[3px_3px_0_0_hsl(var(--forest)/0.2)] transition-transform duration-500 group-hover:scale-110">
+              <div className="mx-auto mb-3 flex h-8 w-8 items-center justify-center rounded-none border border-forest/30 bg-forest/10 text-forest shadow-[3px_3px_0_0_hsl(var(--forest)/0.2)] transition-transform duration-500 group-hover:scale-110">
                 <Target size={16} strokeWidth={2.5} />
               </div>
-              <h3 className="mb-1.5 text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-forest lg:text-base">
-                Enterprise
-                <br />
-                Data Strategy
+              <h3 className="mb-1.5 text-center text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-forest lg:text-base">
+                Enterprise Data Strategy
               </h3>
-              <p className="mb-3 text-xs font-medium leading-relaxed text-foreground">
+              <p className="mb-3 text-center text-xs font-medium leading-relaxed text-foreground">
                 Align your data initiatives with business outcomes and build a
                 comprehensive roadmap.
               </p>
               <div className="border-t-[3px] border-border pt-2 transition-colors group-hover:border-forest/50">
-                <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-forest transition-colors group-hover:text-forest/90">
+                <span className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-forest transition-colors group-hover:text-forest/90">
                   LEARN MORE{" "}
                   <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
@@ -120,22 +117,20 @@ export default function NextStepsSection() {
 
             <Link
               href="/services/define-your-roadmap/stack-evaluation"
-              className="group block h-full border border-transparent bg-card p-3 transition-colors duration-500 hover:border-cyan-500 md:p-4"
+              className="group block h-full border border-transparent bg-card px-3 py-5 transition-colors duration-500 hover:border-cyan-500 md:px-4 md:py-6"
             >
-              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-none border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 shadow-[3px_3px_0_0_rgba(6,182,212,0.2)] transition-transform duration-500 group-hover:scale-110 dark:text-cyan-400">
+              <div className="mx-auto mb-3 flex h-8 w-8 items-center justify-center rounded-none border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 shadow-[3px_3px_0_0_rgba(6,182,212,0.2)] transition-transform duration-500 group-hover:scale-110 dark:text-cyan-400">
                 <PieChart size={16} strokeWidth={2.5} />
               </div>
-              <h3 className="mb-1.5 text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-cyan-600 dark:group-hover:text-cyan-400 lg:text-base">
-                Platform
-                <br />
-                Evaluation
+              <h3 className="mb-1.5 text-center text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-cyan-600 dark:group-hover:text-cyan-400 lg:text-base">
+                Platform Evaluation
               </h3>
-              <p className="mb-3 text-xs font-medium leading-relaxed text-foreground">
+              <p className="mb-3 text-center text-xs font-medium leading-relaxed text-foreground">
                 Objective analysis to select the right tools and architecture
                 for your specific needs.
               </p>
               <div className="border-t-[3px] border-border pt-2 transition-colors group-hover:border-cyan-500/50">
-                <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-600 transition-colors group-hover:text-cyan-500 dark:text-cyan-400">
+                <span className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-600 transition-colors group-hover:text-cyan-500 dark:text-cyan-400">
                   LEARN MORE{" "}
                   <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
@@ -144,22 +139,20 @@ export default function NextStepsSection() {
 
             <Link
               href="/services/build-your-foundation/foundation-build"
-              className="group block h-full border border-transparent bg-card p-3 transition-colors duration-500 hover:border-blue-500 md:p-4"
+              className="group block h-full border border-transparent bg-card px-3 py-5 transition-colors duration-500 hover:border-blue-500 md:px-4 md:py-6"
             >
-              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-none border border-blue-500/30 bg-blue-500/10 text-blue-600 shadow-[3px_3px_0_0_rgba(59,130,246,0.2)] transition-transform duration-500 group-hover:scale-110 dark:text-blue-400">
+              <div className="mx-auto mb-3 flex h-8 w-8 items-center justify-center rounded-none border border-blue-500/30 bg-blue-500/10 text-blue-600 shadow-[3px_3px_0_0_rgba(59,130,246,0.2)] transition-transform duration-500 group-hover:scale-110 dark:text-blue-400">
                 <CheckCircle2 size={16} strokeWidth={2.5} />
               </div>
-              <h3 className="mb-1.5 text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400 lg:text-base">
-                Foundation
-                <br />
-                Build
+              <h3 className="mb-1.5 text-center text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400 lg:text-base">
+                Foundation Build
               </h3>
-              <p className="mb-3 text-xs font-medium leading-relaxed text-foreground">
+              <p className="mb-3 text-center text-xs font-medium leading-relaxed text-foreground">
                 Implement a robust, scalable data architecture that serves as
                 the bedrock for analytics.
               </p>
               <div className="border-t-[3px] border-border pt-2 transition-colors group-hover:border-blue-500/50">
-                <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 transition-colors group-hover:text-blue-500 dark:text-blue-400">
+                <span className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 transition-colors group-hover:text-blue-500 dark:text-blue-400">
                   LEARN MORE{" "}
                   <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
