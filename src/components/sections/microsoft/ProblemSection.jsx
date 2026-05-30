@@ -13,16 +13,16 @@ export function ProblemSection({
   if (!problems || problems.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-background py-16 text-foreground md:py-24">
+    <section className="relative overflow-hidden border-t border-border/50 bg-background py-8 text-foreground md:py-12">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8">
           {/* Header Column */}
-          <div className="space-y-8 antialiased lg:sticky lg:top-32 lg:col-span-5">
+          <div className="space-y-4 antialiased lg:sticky lg:top-32 lg:col-span-5">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-4 block text-sm font-semibold uppercase tracking-widest text-forest"
+              className="mb-2 block text-sm font-semibold uppercase tracking-widest text-forest"
             >
               The Problem
             </motion.span>
@@ -31,7 +31,7 @@ export function ProblemSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="mb-6 text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl"
+              className="mb-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl"
             >
               {title}
             </motion.h2>
@@ -40,7 +40,7 @@ export function ProblemSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="mb-6 text-balance border-l-4 border-forest pl-5 text-2xl font-semibold italic leading-snug tracking-tight text-forest md:text-4xl"
+              className="mb-4 text-balance border-l-4 border-forest pl-4 text-xl font-semibold italic leading-snug tracking-tight text-forest md:text-2xl"
             >
               {tagline}
             </motion.p>
@@ -50,7 +50,7 @@ export function ProblemSection({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.25 }}
-                className="mb-8 text-lg font-normal leading-relaxed text-muted-foreground/90 md:text-xl"
+                className="mb-6 text-base font-normal leading-relaxed text-muted-foreground/90 md:text-lg"
               >
                 {bridgeText}
               </motion.p>
@@ -60,7 +60,7 @@ export function ProblemSection({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="group relative mt-8 flex aspect-[4/3] max-h-[550px] w-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-border/40 bg-card p-8 font-sans shadow-2xl md:aspect-square lg:mt-12 xl:aspect-[4/5]"
+              className="group relative mt-6 flex aspect-[4/3] max-h-[400px] w-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-border/40 bg-card p-6 font-sans shadow-2xl md:aspect-square lg:mt-8 xl:aspect-[4/5]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-orange-500/5" />
 
@@ -222,7 +222,7 @@ export function ProblemSection({
           </div>
 
           {/* Cards Column */}
-          <div className="space-y-6 md:space-y-8 lg:col-span-7">
+          <div className="space-y-3 md:space-y-4 lg:col-span-7">
             {problems.map((problem, index) => (
               <motion.div
                 key={index}
@@ -230,27 +230,27 @@ export function ProblemSection({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="group relative overflow-hidden rounded-2xl bg-forest p-8 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(22,78,60,0.3)] md:rounded-3xl md:p-12"
+                className="group relative overflow-hidden rounded-2xl bg-forest p-5 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(22,78,60,0.3)] md:rounded-[1.5rem] md:p-6"
               >
                 {/* Subtle highlight effect on hover */}
                 <div className="absolute inset-0 bg-white/0 transition-colors duration-500 group-hover:bg-white/5" />
 
                 <div className="relative z-10 antialiased">
                   {/* Number indicator */}
-                  <span className="mb-6 block text-sm font-semibold uppercase tracking-widest text-white/50 md:mb-8">
+                  <span className="mb-3 block text-[11px] font-semibold uppercase tracking-widest text-white/50 md:mb-4">
                     Problem {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <h3 className="mb-4 text-2xl font-semibold leading-tight tracking-tight text-white md:text-3xl">
+                  <h3 className="mb-2 text-xl font-semibold leading-tight tracking-tight text-white md:text-2xl">
                     {problem.title}
                   </h3>
 
-                  <p className="mb-4 text-lg font-normal leading-relaxed text-white/80 md:text-xl">
+                  <p className="mb-3 text-base font-normal leading-relaxed text-white/80 md:text-lg">
                     {problem.description}
                   </p>
 
                   {problem.outcome && (
-                    <p className="text-base font-medium leading-snug text-mint md:text-lg">
+                    <p className="text-sm font-medium leading-snug text-mint md:text-base">
                       → {problem.outcome}
                     </p>
                   )}

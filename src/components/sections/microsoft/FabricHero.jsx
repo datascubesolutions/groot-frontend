@@ -95,7 +95,7 @@ export function FabricHero() {
   ];
 
   return (
-    <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-background pb-16 pt-32 text-foreground md:pb-24 md:pt-40 lg:pb-32 lg:pt-48">
+    <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-background pb-10 pt-28 text-foreground md:pb-12 md:pt-32 lg:pb-12 lg:pt-32">
       {/* Animated Cinematic Background Accents */}
       <motion.div
         animate={
@@ -148,9 +148,9 @@ export function FabricHero() {
       </div>
 
       <div className="container relative z-10 mx-auto w-full px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left content */}
-          <div className="space-y-6 lg:pr-8">
+          <div className="space-y-4 lg:pr-8">
             {/* Arrows decorative top */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -178,9 +178,9 @@ export function FabricHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground antialiased md:text-5xl lg:text-6xl xl:text-7xl"
+              className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground antialiased md:text-5xl lg:text-5xl xl:text-6xl"
             >
-              <span className="mb-4 block text-sm font-semibold uppercase tracking-widest text-forest">
+              <span className="mb-2 block text-sm font-semibold uppercase tracking-widest text-forest">
                 One Platform. One Truth.
               </span>
               Microsoft Fabric
@@ -190,7 +190,7 @@ export function FabricHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="max-w-2xl text-balance py-2 text-lg font-normal leading-relaxed text-muted-foreground/90 antialiased md:text-xl"
+              className="max-w-2xl text-balance py-1 text-lg font-normal leading-relaxed text-muted-foreground/90 antialiased md:text-xl"
             >
               Stop chasing the same number. From raw ingestion to board-ready
               dashboards — unified, governed, and ready for AI.{" "}
@@ -202,9 +202,9 @@ export function FabricHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="pt-2"
+              className="pt-1"
             >
-              <h3 className="mb-6 text-base font-bold uppercase tracking-wider text-foreground">
+              <h3 className="mb-3 text-base font-bold uppercase tracking-wider text-foreground">
                 Platform & Ecosystem:
               </h3>
 
@@ -226,11 +226,11 @@ export function FabricHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="pt-8"
+              className="pt-4"
             >
               <Button
                 asChild
-                className="group w-full rounded-full bg-forest px-8 py-7 text-base font-bold text-white shadow-lg shadow-forest/20 transition-all hover:bg-forest/90 sm:w-auto"
+                className="group w-full rounded-full bg-forest px-8 py-6 text-base font-bold text-white shadow-lg shadow-forest/20 transition-all hover:bg-forest/90 sm:w-auto"
               >
                 <Link href="/contact?service=fabric-assessment">
                   Get Readiness Assessment
@@ -245,10 +245,10 @@ export function FabricHero() {
             initial={{ opacity: 0, scale: 0.95, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative hidden aspect-square max-h-[600px] w-full items-center justify-center p-8 md:aspect-[4/3] lg:flex"
+            className="relative hidden aspect-square max-h-[480px] w-full items-center justify-center p-6 md:aspect-[4/3] lg:flex"
           >
             {/* Rich Glassmorphic Ambient Backing */}
-            <div className="absolute inset-4 z-0 transform overflow-hidden rounded-[3rem] border border-white/80 bg-white/40 shadow-[0_20px_80px_-20px_rgba(0,130,114,0.15)] backdrop-blur-3xl transition-transform duration-700 hover:scale-[1.01] lg:inset-8">
+            <div className="absolute inset-2 z-0 transform overflow-hidden rounded-[2.5rem] border border-white/80 bg-white/40 shadow-[0_20px_80px_-20px_rgba(0,130,114,0.15)] backdrop-blur-3xl transition-transform duration-700 hover:scale-[1.01] lg:inset-4">
               {/* Inner Architectural Grid */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#0082720A_1px,transparent_1px),linear-gradient(to_bottom,#0082720A_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_20%,transparent_100%)]" />
 
@@ -314,7 +314,7 @@ export function FabricHero() {
 
             <div className="relative flex h-full w-full flex-col items-center justify-center font-sans">
               {/* Top Layer - Ingestion */}
-              <div className="mb-8 flex gap-4 xl:mb-12 xl:gap-8">
+              <div className="mb-6 flex gap-3 xl:mb-8 xl:gap-6">
                 <motion.div
                   animate={{ y: [-5, 5, -5] }}
                   transition={{
@@ -393,7 +393,7 @@ export function FabricHero() {
               </div>
 
               {/* Bottom Layer - Consumption */}
-              <div className="z-10 mt-8 flex max-w-[400px] flex-wrap justify-center gap-3 xl:mt-12 xl:gap-4">
+              <div className="z-10 mt-6 flex max-w-[400px] flex-wrap justify-center gap-3 xl:mt-8 xl:gap-4">
                 <motion.div
                   animate={{ y: [-5, 5, -5] }}
                   transition={{

@@ -13,7 +13,7 @@ export function CapabilitiesSection({
   if (!capabilities || capabilities.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-background py-16 text-foreground md:py-24">
+    <section className="relative overflow-hidden border-t border-border/50 bg-background py-12 text-foreground md:py-16">
       {/* Animated Cinematic Background gradients */}
       <div className="absolute left-0 top-0 z-0 h-full w-full overflow-hidden">
         <motion.div
@@ -74,7 +74,7 @@ export function CapabilitiesSection({
 
       <div className="container relative z-10 mx-auto px-6">
         {/* Header - Centered Layout */}
-        <div className="mx-auto mb-16 flex max-w-3xl flex-col items-center text-center antialiased md:mb-24">
+        <div className="mx-auto mb-10 flex max-w-3xl flex-col items-center text-center antialiased md:mb-16">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ export function CapabilitiesSection({
         </div>
 
         {/* Feature Bento Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {capabilities.map((capability, index) => (
             <motion.div
               key={index}
@@ -113,7 +113,7 @@ export function CapabilitiesSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative z-10 flex h-full flex-col overflow-hidden rounded-[2rem] border border-border/50 bg-card/60 p-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] shadow-sm backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-forest/40 hover:shadow-[0_20px_40px_rgba(22,78,60,0.08)]"
+              className="group relative z-10 flex h-full flex-col overflow-hidden rounded-[2rem] border border-border/50 bg-card/60 p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] shadow-sm backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-forest/40 hover:shadow-[0_20px_40px_rgba(22,78,60,0.08)]"
             >
               {/* Soft background glow */}
               <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-forest/5 blur-[80px] transition-colors duration-700 group-hover:bg-forest/15" />

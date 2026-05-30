@@ -22,7 +22,7 @@ export function MicrosoftCTA({
   const titleWithoutLast = words.join(" ");
 
   return (
-    <section className="relative z-0 overflow-hidden border-t border-border/50 bg-background py-16 md:py-24">
+    <section className="relative z-0 overflow-hidden border-t border-border/50 bg-background py-12 md:py-16">
       <div className="container relative z-10 mx-auto w-full max-w-[1400px] px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -48,7 +48,7 @@ export function MicrosoftCTA({
             <div className="absolute bottom-[-30%] left-[-10%] h-[600px] w-[600px] rounded-full bg-forest/5 blur-[100px] filter" />
           </div>
 
-          <div className="relative z-10 flex flex-col items-center justify-between gap-12 p-10 md:p-16 lg:gap-20 lg:p-24 xl:flex-row">
+          <div className="relative z-10 flex flex-col items-center justify-between gap-8 p-8 md:p-12 lg:gap-16 lg:p-16 xl:flex-row">
             {/* Text Content Area */}
             <div className="flex w-full flex-col items-center text-center antialiased xl:w-3/5 xl:items-start xl:text-left">
               <h2 className="mb-6 text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">

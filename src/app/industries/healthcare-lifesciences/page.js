@@ -43,7 +43,7 @@ export default function HealthcareLifeSciencesPage() {
       />
 
       {/* Hero Section - Split Layout */}
-      <section className="relative overflow-hidden bg-background py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-background py-10 lg:py-16">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.15),transparent_50%)]" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-12">
@@ -59,7 +59,7 @@ export default function HealthcareLifeSciencesPage() {
               </div>
               <motion.h1
                 variants={fadeIn}
-                className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight text-foreground md:text-7xl"
+                className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground md:text-5xl"
               >
                 Healthcare <br />
                 <span className="text-[hsl(var(--secondary))]">
@@ -68,7 +68,7 @@ export default function HealthcareLifeSciencesPage() {
               </motion.h1>
               <motion.p
                 variants={fadeIn}
-                className="mb-10 text-xl font-light leading-relaxed text-foreground/90 md:text-2xl"
+                className="mb-6 text-lg font-light leading-relaxed text-foreground/90 md:text-2xl"
               >
                 Unify clinical, operational, and financial data. We build
                 secure, HIPAA-compliant data architectures on Microsoft Fabric
@@ -114,14 +114,14 @@ export default function HealthcareLifeSciencesPage() {
       </section>
 
       {/* Real World Section - Bento Grid */}
-      <section className="relative overflow-hidden bg-muted/20 py-32">
+      <section className="relative overflow-hidden bg-muted/20 py-16">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.03)_1px,transparent_1px)] bg-[size:24px_24px]" />
         <div className="container relative z-10 mx-auto max-w-7xl px-6">
-          <div className="mb-20 text-center text-foreground">
+          <div className="mb-12 text-center text-foreground">
             <h2 className="text-teal-500 mb-4 text-sm font-bold uppercase tracking-widest drop-shadow-[0_0_10px_rgba(20,184,166,0.2)]">
               Execution
             </h2>
-            <h3 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+            <h3 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
               Precision engineering for healthcare.
             </h3>
           </div>
@@ -133,7 +133,7 @@ export default function HealthcareLifeSciencesPage() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="hover:border-teal-500/40 relative overflow-hidden rounded-[2rem] border border-border/60 bg-background/80 p-10 shadow-sm backdrop-blur-sm transition-colors md:col-span-4"
+              className="hover:border-teal-500/40 relative overflow-hidden rounded-[2rem] border border-border/60 bg-background/80 p-6 lg:p-8 shadow-sm backdrop-blur-sm transition-colors md:col-span-4"
             >
               <div className="relative z-10">
                 <div className="bg-teal-500/10 text-teal-500 ring-teal-500/30 group-hover:bg-teal-500/20 mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl ring-1 transition-all duration-300">
@@ -157,16 +157,16 @@ export default function HealthcareLifeSciencesPage() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="hover:border-teal-500/40 relative overflow-hidden rounded-[2rem] border border-border/60 bg-background/80 p-10 shadow-sm backdrop-blur-sm transition-colors md:col-span-8"
+              className="hover:border-teal-500/40 relative overflow-hidden rounded-[2rem] border border-border/60 bg-background/80 p-6 lg:p-8 shadow-sm backdrop-blur-sm transition-colors md:col-span-8"
             >
               <div className="relative z-10">
-                <div className="bg-teal-500/10 text-teal-500 ring-teal-500/30 group-hover:bg-teal-500/20 mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl ring-1 transition-all duration-300">
-                  <Database className="h-7 w-7" strokeWidth={1.5} />
+                <div className="bg-teal-500/10 text-teal-500 ring-teal-500/30 group-hover:bg-teal-500/20 mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl ring-1 transition-all duration-300">
+                  <Database className="h-6 w-6" strokeWidth={1.5} />
                 </div>
-                <h4 className="mb-4 text-3xl font-bold text-foreground">
+                <h4 className="mb-4 text-2xl font-bold text-foreground">
                   EMR Integration Architecture
                 </h4>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p className="text-base leading-relaxed text-muted-foreground">
                   Stop manually extracting data from Epic, Cerner, or
                   proprietary clinic systems. We establish automated ingestion
                   patterns leveraging FHIR standards and APIs to build a unified
@@ -181,16 +181,16 @@ export default function HealthcareLifeSciencesPage() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="hover:border-teal-500/40 relative overflow-hidden rounded-[2rem] border border-border/60 bg-background/80 p-10 shadow-sm backdrop-blur-sm transition-colors md:col-span-12"
+              className="hover:border-teal-500/40 relative overflow-hidden rounded-[2rem] border border-border/60 bg-background/80 p-6 lg:p-8 shadow-sm backdrop-blur-sm transition-colors md:col-span-12"
             >
               <div className="relative z-10">
-                <div className="bg-teal-500/10 text-teal-500 ring-teal-500/30 group-hover:bg-teal-500/20 mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl ring-1 transition-all duration-300">
-                  <Activity className="h-7 w-7" strokeWidth={1.5} />
+                <div className="bg-teal-500/10 text-teal-500 ring-teal-500/30 group-hover:bg-teal-500/20 mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl ring-1 transition-all duration-300">
+                  <Activity className="h-6 w-6" strokeWidth={1.5} />
                 </div>
-                <h4 className="mb-4 text-3xl font-bold text-foreground">
+                <h4 className="mb-4 text-2xl font-bold text-foreground">
                   Clinical & Financial Visibility
                 </h4>
-                <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">
+                <p className="max-w-3xl text-base leading-relaxed text-muted-foreground">
                   Break down the silos between clinical outcomes and revenue
                   cycle management. We build certified semantic models that
                   allow hospital executives and clinic directors to understand
@@ -203,11 +203,11 @@ export default function HealthcareLifeSciencesPage() {
       </section>
 
       {/* Target Use Cases */}
-      <section className="relative overflow-hidden border-t border-border/50 bg-background py-24">
+      <section className="relative overflow-hidden border-t border-border/50 bg-background py-16">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,hsl(var(--secondary)/0.05),transparent_40%)]" />
         <div className="container relative z-10 mx-auto max-w-6xl px-6">
-          <div className="mb-16 text-center text-foreground">
-            <h2 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
+          <div className="mb-10 text-center text-foreground">
+            <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
               Core Use Cases
             </h2>
           </div>
@@ -218,7 +218,7 @@ export default function HealthcareLifeSciencesPage() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={fadeIn}
-              className="hover:border-teal-500/30 rounded-[2rem] border border-border/60 bg-muted/20 p-10 shadow-sm backdrop-blur-sm transition-all duration-300"
+              className="hover:border-teal-500/30 rounded-[2rem] border border-border/60 bg-muted/20 p-6 lg:p-8 shadow-sm backdrop-blur-sm transition-all duration-300"
             >
               <div className="bg-teal-500/10 text-teal-500 mb-6 flex h-12 w-12 items-center justify-center rounded-xl">
                 <Workflow className="h-6 w-6" />
@@ -226,7 +226,7 @@ export default function HealthcareLifeSciencesPage() {
               <h3 className="mb-4 text-2xl font-bold text-foreground">
                 Revenue Cycle Management (RCM)
               </h3>
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="text-base leading-relaxed text-muted-foreground">
                 Identify denial trends, optimize coding practices, and forecast
                 cash flow by tracking claims from origination to remittance
                 across complex payer networks.
@@ -238,7 +238,7 @@ export default function HealthcareLifeSciencesPage() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={fadeIn}
-              className="hover:border-teal-500/30 rounded-[2rem] border border-border/60 bg-muted/20 p-10 shadow-sm backdrop-blur-sm transition-all duration-300"
+              className="hover:border-teal-500/30 rounded-[2rem] border border-border/60 bg-muted/20 p-6 lg:p-8 shadow-sm backdrop-blur-sm transition-all duration-300"
             >
               <div className="bg-teal-500/10 text-teal-500 mb-6 flex h-12 w-12 items-center justify-center rounded-xl">
                 <Target className="h-6 w-6" />
@@ -246,7 +246,7 @@ export default function HealthcareLifeSciencesPage() {
               <h3 className="mb-4 text-2xl font-bold text-foreground">
                 Provider Capacity Planning
               </h3>
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="text-base leading-relaxed text-muted-foreground">
                 Optimize clinic schedules, predict no-shows, and align staffing
                 with patient demand using predictive modeling layered on top of
                 your central Fabric architecture.
@@ -257,13 +257,13 @@ export default function HealthcareLifeSciencesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-border bg-background py-24">
+      <section className="border-t border-border bg-background py-16">
         <div className="container mx-auto max-w-5xl px-6">
           <div className="bg-teal-500/5 border-teal-500/20 shadow-teal-500/5 rounded-[3rem] border p-12 text-center shadow-lg md:p-16">
-            <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl">
+            <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">
               Modernize your healthcare data.
             </h2>
-            <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-muted-foreground">
+            <p className="mx-auto mb-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
               Stop fighting with EMR exports. Let&apos;s design a compliant,
               scalable foundation on Microsoft Fabric that empowers both
               clinical and financial teams.

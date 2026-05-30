@@ -14,7 +14,7 @@ export function BenefitsSection({
   const [hero, ...rest] = benefits;
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-background py-16 text-foreground md:py-24">
+    <section className="relative overflow-hidden border-t border-border/50 bg-background py-8 text-foreground md:py-12">
       {/* Animated Cinematic Background accents */}
       <motion.div
         animate={
@@ -81,7 +81,7 @@ export function BenefitsSection({
 
       <div className="container relative z-10 mx-auto px-6">
         {/* Header */}
-        <div className="mx-auto mb-16 max-w-3xl text-center md:mb-20">
+        <div className="mx-auto mb-6 max-w-3xl text-center md:mb-8">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ export function BenefitsSection({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground antialiased md:text-5xl lg:text-6xl"
+            className="text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground antialiased md:text-4xl lg:text-5xl"
           >
             {title}
           </motion.h2>
@@ -105,7 +105,7 @@ export function BenefitsSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="mx-auto mt-4 max-w-2xl text-lg font-normal leading-relaxed text-muted-foreground/90 antialiased md:text-xl"
+              className="mx-auto mt-3 max-w-2xl text-base font-normal leading-relaxed text-muted-foreground/90 antialiased md:text-lg"
             >
               {subtitle}
             </motion.p>
@@ -121,26 +121,26 @@ export function BenefitsSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
-              className="group relative overflow-hidden rounded-3xl bg-forest p-8 text-white shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(22,78,60,0.3)] md:col-span-2 md:p-12 lg:col-span-2"
+              className="group relative overflow-hidden rounded-3xl bg-forest p-5 text-white shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(22,78,60,0.3)] md:col-span-2 md:p-6 lg:col-span-2"
             >
               {/* Hover glare effect */}
               <div className="absolute inset-0 bg-white/0 transition-colors duration-500 group-hover:bg-white/5" />
 
-              <div className="flex flex-col gap-6 pl-4 md:flex-row md:items-start md:gap-10">
+              <div className="flex flex-col gap-4 pl-4 md:flex-row md:items-start md:gap-6">
                 {hero.icon && (
-                  <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-white/20 text-white transition-transform duration-300 group-hover:scale-110">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-white/20 text-white transition-transform duration-300 group-hover:scale-110">
                     {hero.icon}
                   </div>
                 )}
                 <div className="flex-1 antialiased">
-                  <h3 className="mb-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+                  <h3 className="mb-2 text-2xl font-semibold tracking-tight text-white md:text-3xl">
                     {hero.title}
                   </h3>
-                  <p className="mb-3 max-w-2xl text-lg font-normal leading-relaxed text-white/80 md:text-xl">
+                  <p className="mb-3 max-w-2xl text-base font-normal leading-relaxed text-white/80 md:text-lg">
                     {hero.description}
                   </p>
                   {hero.outcome && (
-                    <p className="text-lg font-medium text-mint">
+                    <p className="text-base font-medium text-mint">
                       {hero.outcome}
                     </p>
                   )}
@@ -157,7 +157,7 @@ export function BenefitsSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-              className={`group relative overflow-hidden rounded-3xl border border-border/40 bg-card/60 p-7 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-forest/30 hover:shadow-lg md:p-8 ${
+              className={`group relative overflow-hidden rounded-3xl border border-border/40 bg-card/60 p-4 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-forest/30 hover:shadow-lg md:p-5 ${
                 index === 0 ? "lg:row-span-2" : ""
               }`}
             >
@@ -166,18 +166,18 @@ export function BenefitsSection({
 
               <div className="relative z-10 flex h-full flex-col antialiased">
                 {benefit.icon && (
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-forest/10 text-forest transition-transform duration-300 group-hover:scale-110">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-forest/10 text-forest transition-transform duration-300 group-hover:scale-110">
                     {benefit.icon}
                   </div>
                 )}
-                <h3 className="mb-3 text-xl font-semibold tracking-tight text-foreground">
+                <h3 className="mb-2 text-lg font-semibold tracking-tight text-foreground">
                   {benefit.title}
                 </h3>
-                <p className="mb-3 flex-1 font-normal leading-relaxed text-muted-foreground/90">
+                <p className="mb-3 flex-1 text-sm font-normal leading-relaxed text-muted-foreground/90">
                   {benefit.description}
                 </p>
                 {benefit.outcome && (
-                  <p className="text-sm font-medium text-forest">
+                  <p className="text-xs font-medium text-forest">
                     {benefit.outcome}
                   </p>
                 )}

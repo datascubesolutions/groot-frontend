@@ -26,7 +26,7 @@ export default function FinancialServicesPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border bg-background p-6 py-24">
+      <section className="relative overflow-hidden border-b border-border bg-background p-6 py-16">
         <div className="container relative z-10 mx-auto max-w-5xl text-center md:text-left">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
             <Shield className="h-4 w-4" />
@@ -51,9 +51,9 @@ export default function FinancialServicesPage() {
       </section>
 
       {/* Target Use Cases */}
-      <section className="bg-muted/30 py-24">
+      <section className="bg-muted/30 py-16">
         <div className="container mx-auto max-w-5xl px-6">
-          <div className="mb-16">
+          <div className="mb-10">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">
               Core Use Cases
             </h2>
@@ -84,7 +84,7 @@ export default function FinancialServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-border py-24">
+      <section className="border-t border-border py-16">
         <div className="container mx-auto px-6">
           <div className="items-center justify-between rounded-3xl border border-primary/10 bg-primary/5 p-12 text-center md:flex md:text-left">
             <div className="mb-8 md:mb-0 md:w-2/3">

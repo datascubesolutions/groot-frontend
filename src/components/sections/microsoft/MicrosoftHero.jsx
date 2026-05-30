@@ -18,7 +18,7 @@ export function MicrosoftHero({
 }) {
   return (
     <LazyMotion features={domAnimation} strict>
-      <section className="relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden pb-20 pt-32">
+      <section className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden pt-28 pb-10">
         {/* Background Elements */}
         <div className="absolute inset-0 -z-20 bg-background">
           <>
@@ -57,11 +57,11 @@ export function MicrosoftHero({
               </m.div>
             )}
 
-            <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">
+            <h1 className="mb-6 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
               {title}
             </h1>
 
-            <p className="mx-auto mb-10 max-w-3xl text-xl font-medium leading-relaxed text-foreground/80 md:text-2xl">
+            <p className="mx-auto mb-10 max-w-3xl text-lg font-medium leading-relaxed text-foreground/80 md:text-xl">
               {subtitle}
             </p>
 
@@ -75,7 +75,7 @@ export function MicrosoftHero({
                 <Button
                   variant="hero"
                   size="xl"
-                  className="group w-full border-0 bg-forest px-8 text-lg text-white shadow-lg shadow-forest/20 hover:bg-forest/90 sm:w-auto"
+                  className="group w-full border-0 bg-forest px-6 py-4 text-sm text-white shadow-lg shadow-forest/20 hover:bg-forest/90 sm:w-auto"
                 >
                   {primaryCtaText}
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -85,7 +85,7 @@ export function MicrosoftHero({
                 <Button
                   variant="outline"
                   size="xl"
-                  className="w-full bg-white/50 px-8 text-lg backdrop-blur-sm hover:bg-white/80 sm:w-auto"
+                  className="w-full bg-white/50 px-6 py-4 text-sm backdrop-blur-sm hover:bg-white/80 sm:w-auto"
                 >
                   {secondaryCtaText}
                 </Button>

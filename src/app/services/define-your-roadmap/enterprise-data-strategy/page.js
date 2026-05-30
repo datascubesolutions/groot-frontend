@@ -62,10 +62,10 @@ export default function EnterpriseDataStrategy() {
       />
 
       {/* Hero Section - Split Layout */}
-      <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-background">
+      <section className="relative py-12 md:py-16 overflow-hidden bg-background">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.15),transparent_50%)]" />
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <motion.div
               initial="hidden"
@@ -75,7 +75,7 @@ export default function EnterpriseDataStrategy() {
             >
               <motion.h1
                 variants={slideAndPop}
-                className="text-[clamp(3rem,8vw,5.5rem)] font-black uppercase mb-6 tracking-tighter leading-[0.9]"
+                className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4 tracking-tighter leading-[0.9]"
               >
                 <span className="text-foreground">Enterprise </span>
                 <br />
@@ -85,7 +85,7 @@ export default function EnterpriseDataStrategy() {
               </motion.h1>
               <motion.p
                 variants={fadeIn}
-                className="text-xl md:text-2xl text-foreground/90 mb-10 leading-relaxed font-light"
+                className="text-lg md:text-xl text-foreground/90 mb-6 leading-relaxed font-light"
               >
                 A comprehensive strategy that aligns your Microsoft Fabric and
                 Azure investments with business outcomes. Not a vision deck — a
@@ -101,7 +101,7 @@ export default function EnterpriseDataStrategy() {
                     <Button
                       variant="hero"
                       size="lg"
-                      className="group relative flex w-full items-center justify-center rounded-none border-2 border-foreground bg-foreground text-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:translate-x-[8px] hover:translate-y-[8px] hover:bg-emerald-500 hover:text-foreground hover:shadow-none sm:w-auto md:h-16 dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)]"
+                      className="group relative flex w-full items-center justify-center rounded-none border-2 border-foreground bg-foreground text-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:translate-x-[8px] hover:translate-y-[8px] hover:bg-emerald-500 hover:text-foreground hover:shadow-none sm:w-auto md:h-14 dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)]"
                     >
                       <span className="flex h-full w-full items-center justify-center px-8 sm:px-12 text-xs font-black uppercase tracking-wider sm:text-sm sm:tracking-[0.15em]">
                         Start a Strategy Conversation
@@ -135,19 +135,19 @@ export default function EnterpriseDataStrategy() {
       </section>
 
       {/* The Problem - Sticky Scroll */}
-      <section className="py-16 lg:py-24 bg-muted/20 relative">
+      <section className="py-12 lg:py-16 bg-muted/20 relative">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Sticky Sidebar */}
             <div className="lg:col-span-5 pl-0 lg:pl-4">
               <div className="sticky top-32">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.25)]">
+                <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2 drop-shadow-[0_0_10px_rgba(52,211,153,0.25)]">
                   The Challenge
                 </h2>
-                <h3 className="text-4xl md:text-[3.5rem] lg:text-[4.5rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground mb-6">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-[0.9] tracking-tighter text-foreground mb-4">
                   Why data strategies fail.
                 </h3>
-                <p className="text-xl text-foreground/90 leading-relaxed mb-8">
+                <p className="text-lg text-foreground/90 leading-relaxed mb-6">
                   A strategy without execution is just an expensive
                   presentation. Most data strategies lack the pragmatic
                   prioritization needed to survive CFO scrutiny.
@@ -164,21 +164,21 @@ export default function EnterpriseDataStrategy() {
             </div>
 
             {/* Scrollable Content */}
-            <div className="lg:col-span-7 flex flex-col gap-8 pt-10">
+            <div className="lg:col-span-7 flex flex-col gap-6 pt-10">
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={slideAndPop}
-                className="group relative bg-card p-6 md:p-10 rounded-none rounded-br-[3rem] rounded-tl-[3rem] border-2 border-foreground shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:translate-x-2 hover:border-emerald-500 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.1)]"
+                className="group relative bg-card p-5 md:p-6 rounded-none rounded-br-[3rem] rounded-tl-[3rem] border-2 border-foreground shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:translate-x-2 hover:border-emerald-500 dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)]"
               >
-                <div className="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
-                  <FileText size={28} />
+                <div className="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center mb-4 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
+                  <FileText size={24} />
                 </div>
-                <h4 className="text-2xl font-bold mb-4 text-foreground">
+                <h4 className="text-xl font-bold mb-2 text-foreground">
                   The Vision Deck Nobody Opens
                 </h4>
-                <p className="text-lg text-foreground/80 leading-relaxed">
+                <p className="text-base text-foreground/80 leading-relaxed">
                   You have a slide deck titled &quot;Data Strategy&quot; on
                   SharePoint. It describes a &quot;data-driven culture&quot; and
                   lists &quot;key initiatives.&quot; But when a new Power BI
@@ -193,15 +193,15 @@ export default function EnterpriseDataStrategy() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={slideAndPop}
-                className="group relative bg-card p-6 md:p-10 rounded-none rounded-bl-[3rem] rounded-tr-[3rem] border-2 border-foreground shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:-translate-x-2 hover:border-emerald-500 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.1)]"
+                className="group relative bg-card p-5 md:p-6 rounded-none rounded-bl-[3rem] rounded-tr-[3rem] border-2 border-foreground shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:-translate-x-2 hover:border-emerald-500 dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)]"
               >
-                <div className="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
-                  <Signpost size={28} />
+                <div className="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center mb-4 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
+                  <Signpost size={24} />
                 </div>
-                <h4 className="text-2xl font-bold mb-4 text-foreground">
+                <h4 className="text-xl font-bold mb-2 text-foreground">
                   Competing Priorities, No Framework
                 </h4>
-                <p className="text-lg text-foreground/80 leading-relaxed">
+                <p className="text-base text-foreground/80 leading-relaxed">
                   Finance wants faster monthly close. Marketing wants customer
                   analytics. Operations wants real-time Power BI dashboards. IT
                   wants to modernize the data warehouse to Fabric. Everyone has
@@ -216,15 +216,15 @@ export default function EnterpriseDataStrategy() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={slideAndPop}
-                className="group relative bg-card p-6 md:p-10 rounded-none rounded-br-[3rem] rounded-tl-[3rem] border-2 border-foreground shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:translate-x-2 hover:border-emerald-500 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.1)]"
+                className="group relative bg-card p-5 md:p-6 rounded-none rounded-br-[3rem] rounded-tl-[3rem] border-2 border-foreground shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 hover:-translate-y-2 hover:translate-x-2 hover:border-emerald-500 dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)]"
               >
-                <div className="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
-                  <AlertTriangle size={28} />
+                <div className="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center mb-4 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
+                  <AlertTriangle size={24} />
                 </div>
-                <h4 className="text-2xl font-bold mb-4 text-foreground">
+                <h4 className="text-xl font-bold mb-2 text-foreground">
                   No Business Case That Survives CFO Scrutiny
                 </h4>
-                <p className="text-lg text-foreground/80 leading-relaxed">
+                <p className="text-base text-foreground/80 leading-relaxed">
                   You know you need to invest in Microsoft Fabric. But the CFO
                   wants numbers. What&apos;s the ROI on a Lakehouse? What&apos;s
                   the cost of inaction? What&apos;s the total investment over 18
@@ -239,36 +239,36 @@ export default function EnterpriseDataStrategy() {
       </section>
 
       {/* Deliverables - Bento Grid */}
-      <section className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,hsl(var(--primary)/0.05),transparent_40%)]" />
         <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-          <div className="text-center mb-20">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.25)]">
+          <div className="text-center mb-12">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2 drop-shadow-[0_0_10px_rgba(52,211,153,0.25)]">
               Deliverables
             </h2>
-            <h3 className="text-4xl md:text-5xl lg:text-[4.5rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-[0.9] tracking-tighter text-foreground">
               What a real strategy looks like.
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-fr">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-fr">
             {/* Large Feature 1 */}
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={slideAndPop}
-                className="group md:col-span-8 bg-card border-[3px] border-foreground rounded-none p-6 md:p-10 transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 relative overflow-hidden flex flex-col justify-end min-h-[300px] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] dark:hover:shadow-none"
+                className="group md:col-span-8 bg-card border-[3px] border-foreground rounded-none p-5 md:p-8 transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 relative overflow-hidden flex flex-col justify-end min-h-[250px] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] dark:hover:shadow-none"
               >
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full" />
               <div className="relative z-10">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
-                  <Target className="w-7 h-7" strokeWidth={1.5} />
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
+                  <Target className="w-6 h-6" strokeWidth={1.5} />
                 </div>
-                <h4 className="text-3xl font-bold mb-4 text-foreground">
+                <h4 className="text-2xl font-bold mb-2 text-foreground">
                   Current State Assessment
                 </h4>
-                <p className="text-lg text-foreground/80 leading-relaxed max-w-2xl">
+                <p className="text-base text-foreground/80 leading-relaxed max-w-2xl">
                   A clear-eyed view of your existing data landscape: Azure
                   resources, data flows, Power BI reports, capabilities, gaps,
                   and technical debt.
@@ -282,16 +282,16 @@ export default function EnterpriseDataStrategy() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="md:col-span-4 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-6 md:p-10 hover:border-emerald-500/40 transition-colors shadow-sm relative overflow-hidden"
+              className="md:col-span-4 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-5 md:p-6 hover:border-emerald-500/40 transition-colors shadow-sm relative overflow-hidden"
             >
               <div className="relative z-10">
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
-                  <Signpost className="w-6 h-6" strokeWidth={1.5} />
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
+                  <Signpost className="w-5 h-5" strokeWidth={1.5} />
                 </div>
-                <h4 className="text-2xl font-bold mb-4 text-foreground">
+                <h4 className="text-xl font-bold mb-2 text-foreground">
                   Prioritized Roadmap
                 </h4>
-                <p className="text-foreground/80 leading-relaxed">
+                <p className="text-base text-foreground/80 leading-relaxed">
                   A phased implementation plan with 90-day milestones,
                   dependencies, and decision points. Each phase delivers
                   measurable business value.
@@ -305,16 +305,16 @@ export default function EnterpriseDataStrategy() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="md:col-span-4 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-6 md:p-10 hover:border-emerald-500/40 transition-colors shadow-sm relative overflow-hidden"
+              className="md:col-span-4 bg-muted/20 backdrop-blur-sm border border-border/60 rounded-[2rem] p-5 md:p-6 hover:border-emerald-500/40 transition-colors shadow-sm relative overflow-hidden"
             >
               <div className="relative z-10">
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
-                  <LineChart className="w-6 h-6" strokeWidth={1.5} />
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
+                  <LineChart className="w-5 h-5" strokeWidth={1.5} />
                 </div>
-                <h4 className="text-2xl font-bold mb-4 text-foreground">
+                <h4 className="text-xl font-bold mb-2 text-foreground">
                   Business Case
                 </h4>
-                <p className="text-foreground/80 leading-relaxed">
+                <p className="text-base text-foreground/80 leading-relaxed">
                   Financial analysis quantifying investment and expected return.
                   Includes cost of current state, Fabric capacity costs,
                   implementation investment, and expected benefits.
@@ -328,17 +328,17 @@ export default function EnterpriseDataStrategy() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={slideAndPop}
-                className="group md:col-span-8 bg-card border-[3px] border-foreground rounded-none p-6 md:p-10 transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 relative overflow-hidden flex flex-col justify-end min-h-[300px] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] dark:hover:shadow-none"
+                className="group md:col-span-8 bg-card border-[3px] border-foreground rounded-none p-5 md:p-8 transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 relative overflow-hidden flex flex-col justify-end min-h-[250px] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] dark:hover:shadow-none"
               >
               <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full" />
               <div className="relative z-10">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
-                  <FileText className="w-7 h-7" strokeWidth={1.5} />
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] group-hover:bg-emerald-500/20 transition-all duration-300">
+                  <FileText className="w-6 h-6" strokeWidth={1.5} />
                 </div>
-                <h4 className="text-3xl font-bold mb-4 text-foreground">
+                <h4 className="text-2xl font-bold mb-2 text-foreground">
                   Governance Model
                 </h4>
-                <p className="text-lg text-foreground/80 leading-relaxed max-w-2xl">
+                <p className="text-base text-foreground/80 leading-relaxed max-w-2xl">
                   A governance framework using Microsoft Purview: data
                   ownership, quality standards, sensitivity labels, and lineage
                   tracking.
@@ -351,22 +351,22 @@ export default function EnterpriseDataStrategy() {
 
       {/* Our Process - Vertical Timeline */}
       {/* Methodology - Bento grid */}
-      <section className="py-16 md:py-24 lg:py-32 bg-muted/20 relative overflow-hidden">
+      <section className="py-12 lg:py-16 bg-muted/20 relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.25)]">
+          <div className="text-center mb-12">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2 drop-shadow-[0_0_10px_rgba(52,211,153,0.25)]">
               Methodology
             </h2>
-            <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+            <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
               How we build a strategy
             </h3>
-            <p className="text-foreground/80 max-w-2xl mx-auto text-lg leading-relaxed">
+            <p className="text-foreground/80 max-w-2xl mx-auto text-base leading-relaxed">
               Interviews, architectural design, and financial modeling —
               typically 6–8 weeks from kickoff to final presentation.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
             <MethodCard
               step={1}
               week="Week 1–3"
@@ -396,22 +396,22 @@ export default function EnterpriseDataStrategy() {
       </section>
 
       {/* Real Example - Premium Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+      <section className="py-12 lg:py-16 bg-background relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
-          <div className="rounded-none border-[4px] border-foreground bg-card p-6 md:p-10 lg:p-16 shadow-[16px_16px_0_0_rgba(0,0,0,1)] overflow-hidden relative transition-all duration-500 dark:shadow-[16px_16px_0_0_rgba(255,255,255,0.1)]">
+          <div className="rounded-none border-[4px] border-foreground bg-card p-5 md:p-8 lg:p-10 shadow-[8px_8px_0_0_rgba(0,0,0,1)] overflow-hidden relative transition-all duration-500 dark:shadow-[8px_8px_0_0_rgba(255,255,255,0.1)]">
             {/* Decorative background glow */}
             <div className="pointer-events-none absolute inset-0 opacity-10 [background-image:radial-gradient(circle_at_top_right,hsl(var(--primary)),transparent_40%)] dark:opacity-20" />
 
             <div className="relative z-10">
-              <div className="mb-8 inline-flex border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em]">
+              <div className="mb-6 inline-flex border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em]">
                 Case Study: Construction & Fleet
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-12 max-w-3xl leading-tight text-foreground">
+              <h2 className="text-2xl md:text-4xl font-bold mb-8 max-w-3xl leading-tight text-foreground">
                 How we built a data strategy for a multi-company construction
                 group.
               </h2>
 
-              <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden border border-border/60 shadow-sm mb-12">
+              <div className="relative w-full aspect-[21/9] max-h-[300px] rounded-2xl overflow-hidden border border-border/60 shadow-sm mb-8">
                 <Image
                   src="/images/data-strategy/strategy_case_study.png"
                   alt="Data Strategy Case Study"
@@ -421,12 +421,12 @@ export default function EnterpriseDataStrategy() {
                 <div className="absolute inset-0 bg-black/5 dark:bg-black/20" />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-12">
+              <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-emerald-600 dark:text-emerald-400">
+                  <h3 className="text-lg font-bold mb-2 text-emerald-600 dark:text-emerald-400">
                     The Situation
                   </h3>
-                  <p className="text-foreground/80 leading-relaxed text-lg">
+                  <p className="text-foreground/80 leading-relaxed text-base">
                     A PE-backed fire protection contractor had grown through
                     acquisition. Five regional business units, each with their
                     own ERP (mix of QuickBooks, Sage, and ServiceTitan for field
@@ -438,10 +438,10 @@ export default function EnterpriseDataStrategy() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-emerald-600 dark:text-emerald-400">
+                  <h3 className="text-lg font-bold mb-2 text-emerald-600 dark:text-emerald-400">
                     What We Built
                   </h3>
-                  <ul className="space-y-3 text-foreground/80 text-lg">
+                  <ul className="space-y-3 text-foreground/80 text-base">
                     <li className="flex items-start gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2.5 shrink-0" />
                       Current State Map: 7 source systems, 14 different
@@ -463,10 +463,10 @@ export default function EnterpriseDataStrategy() {
                 </div>
               </div>
 
-              <div className="mt-16 pt-10 border-t border-border grid grid-cols-1 sm:grid-cols-3 gap-8">
+              <div className="mt-8 pt-6 border-t border-border grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <div className="group relative w-fit overflow-hidden">
-                    <p className="text-5xl lg:text-[4.5rem] font-black text-emerald-500 mb-2 drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] dark:drop-shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
+                    <p className="text-4xl lg:text-5xl font-black text-emerald-500 mb-2 drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] dark:drop-shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
                       2 Hours
                     </p>
                     <motion.div
@@ -475,13 +475,13 @@ export default function EnterpriseDataStrategy() {
                       className="absolute inset-0 z-10 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"
                     />
                   </div>
-                  <p className="text-foreground font-bold uppercase tracking-wider text-sm mt-2">
+                  <p className="text-foreground font-bold uppercase tracking-wider text-xs mt-2">
                     Board deck generation time (down from 2 weeks)
                   </p>
                 </div>
                 <div>
                   <div className="group relative w-fit overflow-hidden">
-                    <p className="text-4xl lg:text-[3.5rem] font-black text-emerald-500 mb-2 mt-1 drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] dark:drop-shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
+                    <p className="text-3xl lg:text-4xl font-black text-emerald-500 mb-2 mt-1 drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] dark:drop-shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
                       16 Weeks
                     </p>
                     <motion.div
@@ -490,14 +490,14 @@ export default function EnterpriseDataStrategy() {
                       className="absolute inset-0 z-10 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"
                     />
                   </div>
-                  <p className="text-foreground font-bold uppercase tracking-wider text-sm mt-2">
+                  <p className="text-foreground font-bold uppercase tracking-wider text-xs mt-2">
                     Phase 1 completed
                   </p>
                 </div>
                 <div className="flex flex-col justify-end">
                   <Link
                     href="/industries/construction-fleet"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors uppercase tracking-wider group"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors uppercase tracking-wider group"
                   >
                     See how we work with construction companies
                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -510,10 +510,10 @@ export default function EnterpriseDataStrategy() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 lg:py-24 bg-muted/20">
+      <section className="py-12 lg:py-16 bg-muted/20">
         <div className="container mx-auto px-6 max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
               Frequently Asked Questions
             </h2>
           </div>

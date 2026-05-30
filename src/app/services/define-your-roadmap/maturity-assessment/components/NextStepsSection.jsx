@@ -9,25 +9,26 @@ import Link from "next/link";
 export default function NextStepsSection() {
   return (
     <>
-      <section className="relative overflow-hidden border-t border-border/60 bg-background py-16 lg:py-24">
+      <section className="relative overflow-hidden border-t border-border/60 bg-background py-6 lg:py-8">
         <div className="container relative z-10 mx-auto max-w-7xl px-6">
-          <div className="relative mb-24 grid grid-cols-1 items-end gap-10 md:grid-cols-12 lg:gap-10 lg:gap-16">
+          <div className="relative mb-6 grid grid-cols-1 items-center gap-4 md:grid-cols-12 lg:mb-6">
             <div className="absolute -top-12 right-[30%] -z-10 hidden h-[150%] w-[1px] bg-gradient-to-b from-transparent via-border to-transparent lg:block" />
 
-            <div className="relative z-10 pb-4 pt-8 md:col-span-12 lg:col-span-7">
-              <div className="absolute -left-12 bottom-0 top-0 hidden w-2 origin-bottom bg-forest transition-transform duration-700 hover:scale-y-110 lg:block"></div>
-              <h2 className="mb-8 flex items-center gap-4 text-sm font-black uppercase tracking-[0.4em] text-forest">
-                <span className="h-[2px] w-12 bg-forest"></span> Next Steps
+            <div className="relative z-10 md:col-span-12 lg:col-span-7">
+              <div className="absolute -left-8 bottom-0 top-0 hidden w-1.5 origin-bottom bg-forest transition-transform duration-700 hover:scale-y-110 lg:block"></div>
+              <h2 className="mb-4 flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-forest sm:text-sm">
+                <span className="h-[2px] w-8 bg-forest"></span> Next Steps
               </h2>
-              <h3 className="mb-8 text-[2rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground drop-shadow-[5px_5px_0_rgba(0,0,0,0.02)] sm:mb-10 sm:text-[2.5rem] sm:leading-[0.85] md:text-[5rem] lg:text-[6rem]">
-                Continue <br />
-                <span className="stroke-text bg-gradient-to-r from-foreground to-foreground/30 bg-clip-text text-transparent mix-blend-normal">
-                  Your
+              <h3 className="mb-4 text-[2rem] font-black uppercase leading-[1.1] tracking-tight text-foreground drop-shadow-[4px_4px_0_rgba(0,0,0,0.02)] sm:mb-6 sm:text-[2.5rem] sm:leading-[1.05] md:text-[3rem] lg:text-[3.5rem]">
+                <span className="whitespace-nowrap flex items-center gap-2">
+                  CONTINUE
+                  <span className="stroke-text bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent mix-blend-normal">
+                    YOUR
+                  </span>
                 </span>
-                <br />
-                Journey
+                JOURNEY
               </h3>
-              <p className="max-w-xl border-l-[4px] border-forest bg-muted/30 p-6 text-base font-bold leading-relaxed text-foreground/80 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] dark:shadow-[10px_10px_0px_0px_rgba(255,255,255,1)] backdrop-blur-md transition-colors selection:bg-forest/30 hover:bg-muted/50 sm:p-8 sm:text-xl">
+              <p className="max-w-xl border-l-[4px] border-forest bg-muted/30 p-4 text-sm font-semibold leading-relaxed text-foreground shadow-[8px_8px_0px_0px_rgba(0,0,0,0.04)] backdrop-blur-md transition-colors selection:bg-forest/30 hover:bg-muted/50 sm:p-5 sm:text-base">
                 Data maturity is not a static destination. Explore related
                 services to help you define and execute a resilient, scalable,
                 and high-impact enterprise data strategy.
@@ -39,12 +40,12 @@ export default function NextStepsSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-20 mt-12 hidden h-full items-end justify-end md:col-span-12 md:flex lg:col-span-5 lg:mt-0 lg:justify-center"
+              className="relative z-20 mt-8 hidden h-full items-center justify-end md:col-span-12 md:flex lg:col-span-5 lg:mt-0 lg:justify-center"
             >
-              <div className="group relative flex w-full max-w-[480px] flex-col overflow-visible bg-foreground text-background shadow-[12px_12px_0px_0px_hsl(var(--forest)/1)]">
-                <div className="absolute -right-6 -top-6 z-30 h-20 w-20 border-r-[4px] border-t-[4px] border-forest transition-transform duration-700 group-hover:-translate-y-2 group-hover:translate-x-2" />
+              <div className="group relative flex w-full max-w-[420px] flex-col overflow-visible bg-foreground text-background shadow-[10px_10px_0px_0px_rgba(225,29,72,1)]">
+                <div className="absolute -right-4 -top-4 z-30 h-12 w-12 border-r-[3px] border-t-[3px] border-rose-600 transition-transform duration-700 group-hover:-translate-y-2 group-hover:translate-x-2" />
 
-                <div className="relative h-[280px] w-full bg-background p-1.5 pb-0">
+                <div className="relative h-[140px] w-full bg-background p-1.5 pb-0 lg:h-[160px]">
                   <div className="relative h-full w-full overflow-hidden bg-black outline outline-1 outline-border/20">
                     <Image
                       src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
@@ -69,20 +70,20 @@ export default function NextStepsSection() {
                   </div>
                 </div>
 
-                <div className="relative p-6 md:p-10">
-                  <div className="pointer-events-none absolute right-6 top-10 rotate-90 select-none text-[3.5rem] font-black tracking-tighter text-background/10 transition-colors duration-700 group-hover:text-background/20">
+                <div className="relative p-4 md:p-5">
+                  <div className="pointer-events-none absolute right-4 top-6 rotate-90 select-none text-[2.5rem] font-black tracking-tighter text-background/10 transition-colors duration-700 group-hover:text-background/20">
                     FWD
                   </div>
 
-                  <div className="relative z-10 mb-8 flex w-fit items-center gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center border-2 border-forest bg-transparent text-forest transition-colors duration-500 group-hover:bg-forest group-hover:text-foreground">
+                  <div className="relative z-10 mb-3 flex w-fit items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center border-2 border-rose-400 bg-transparent text-rose-400 transition-colors duration-500 group-hover:bg-rose-400 group-hover:text-foreground">
                       <Target size={18} strokeWidth={2.5} />
                     </div>
-                    <span className="text-xs font-black uppercase tracking-[0.3em] text-forest">
+                    <span className="text-xs font-black uppercase tracking-[0.2em] text-rose-400">
                       Future Readiness
                     </span>
                   </div>
-                  <p className="relative z-10 border-l-[3px] border-forest/40 pl-5 text-[1.05rem] font-bold leading-relaxed text-background/80">
+                  <p className="relative z-10 border-l-[3px] border-rose-400/40 pl-4 text-sm font-medium leading-relaxed text-background">
                     The core capability that enables your organization to
                     compound value, integrate AI sustainably, and operate with
                     absolute clarity.
@@ -92,75 +93,75 @@ export default function NextStepsSection() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 gap-0 border-4 border-foreground bg-foreground p-1 md:grid-cols-3">
+          <div className="relative z-30 grid grid-cols-1 gap-0 border-4 border-foreground bg-foreground p-1 md:grid-cols-3 lg:mt-2">
             <Link
               href="/services/define-your-roadmap/enterprise-data-strategy"
-              className="group block h-full border border-transparent bg-card p-6 transition-colors duration-500 hover:border-forest md:p-10"
+              className="group block h-full border border-transparent bg-card p-3 transition-colors duration-500 hover:border-forest md:p-4"
             >
-              <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-none border border-forest/30 bg-forest/10 text-forest shadow-[4px_4px_0_0_hsl(var(--forest)/1)] transition-transform duration-500 group-hover:scale-110">
-                <Target size={28} strokeWidth={2.5} />
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-none border border-forest/30 bg-forest/10 text-forest shadow-[3px_3px_0_0_hsl(var(--forest)/0.2)] transition-transform duration-500 group-hover:scale-110">
+                <Target size={16} strokeWidth={2.5} />
               </div>
-              <h3 className="mb-4 text-2xl font-black uppercase leading-[0.9] tracking-tight text-foreground transition-colors group-hover:text-forest">
+              <h3 className="mb-1.5 text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-forest lg:text-base">
                 Enterprise
                 <br />
                 Data Strategy
               </h3>
-              <p className="mb-10 text-[0.95rem] font-medium leading-relaxed text-foreground/80">
+              <p className="mb-3 text-xs font-medium leading-relaxed text-foreground">
                 Align your data initiatives with business outcomes and build a
                 comprehensive roadmap.
               </p>
-              <div className="border-t-[3px] border-border pt-6 transition-colors group-hover:border-forest/50">
-                <span className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.2em] text-forest transition-colors group-hover:text-forest/90">
+              <div className="border-t-[3px] border-border pt-2 transition-colors group-hover:border-forest/50">
+                <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-forest transition-colors group-hover:text-forest/90">
                   LEARN MORE{" "}
-                  <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+                  <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </div>
             </Link>
 
             <Link
               href="/services/define-your-roadmap/stack-evaluation"
-              className="group block h-full border border-transparent bg-card p-6 transition-colors duration-500 hover:border-cyan-500 md:p-10"
+              className="group block h-full border border-transparent bg-card p-3 transition-colors duration-500 hover:border-cyan-500 md:p-4"
             >
-              <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-none border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 shadow-[4px_4px_0_0_rgba(6,182,212,1)] transition-transform duration-500 group-hover:scale-110 dark:text-cyan-400">
-                <PieChart size={28} strokeWidth={2.5} />
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-none border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 shadow-[3px_3px_0_0_rgba(6,182,212,0.2)] transition-transform duration-500 group-hover:scale-110 dark:text-cyan-400">
+                <PieChart size={16} strokeWidth={2.5} />
               </div>
-              <h3 className="mb-4 text-2xl font-black uppercase leading-[0.9] tracking-tight text-foreground transition-colors group-hover:text-cyan-600 dark:group-hover:text-cyan-400">
+              <h3 className="mb-1.5 text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-cyan-600 dark:group-hover:text-cyan-400 lg:text-base">
                 Platform
                 <br />
                 Evaluation
               </h3>
-              <p className="mb-10 text-[0.95rem] font-medium leading-relaxed text-foreground/80">
+              <p className="mb-3 text-xs font-medium leading-relaxed text-foreground">
                 Objective analysis to select the right tools and architecture
                 for your specific needs.
               </p>
-              <div className="border-t-[3px] border-border pt-6 transition-colors group-hover:border-cyan-500/50">
-                <span className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.2em] text-cyan-600 transition-colors group-hover:text-cyan-500 dark:text-cyan-400">
+              <div className="border-t-[3px] border-border pt-2 transition-colors group-hover:border-cyan-500/50">
+                <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-600 transition-colors group-hover:text-cyan-500 dark:text-cyan-400">
                   LEARN MORE{" "}
-                  <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+                  <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </div>
             </Link>
 
             <Link
               href="/services/build-your-foundation/foundation-build"
-              className="group block h-full border border-transparent bg-card p-6 transition-colors duration-500 hover:border-blue-500 md:p-10"
+              className="group block h-full border border-transparent bg-card p-3 transition-colors duration-500 hover:border-blue-500 md:p-4"
             >
-              <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-none border border-blue-500/30 bg-blue-500/10 text-blue-600 shadow-[4px_4px_0_0_rgba(59,130,246,1)] transition-transform duration-500 group-hover:scale-110 dark:text-blue-400">
-                <CheckCircle2 size={28} strokeWidth={2.5} />
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-none border border-blue-500/30 bg-blue-500/10 text-blue-600 shadow-[3px_3px_0_0_rgba(59,130,246,0.2)] transition-transform duration-500 group-hover:scale-110 dark:text-blue-400">
+                <CheckCircle2 size={16} strokeWidth={2.5} />
               </div>
-              <h3 className="mb-4 text-2xl font-black uppercase leading-[0.9] tracking-tight text-foreground transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">
+              <h3 className="mb-1.5 text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400 lg:text-base">
                 Foundation
                 <br />
                 Build
               </h3>
-              <p className="mb-10 text-[0.95rem] font-medium leading-relaxed text-foreground/80">
+              <p className="mb-3 text-xs font-medium leading-relaxed text-foreground">
                 Implement a robust, scalable data architecture that serves as
                 the bedrock for analytics.
               </p>
-              <div className="border-t-[3px] border-border pt-6 transition-colors group-hover:border-blue-500/50">
-                <span className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.2em] text-blue-600 transition-colors group-hover:text-blue-500 dark:text-blue-400">
+              <div className="border-t-[3px] border-border pt-2 transition-colors group-hover:border-blue-500/50">
+                <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 transition-colors group-hover:text-blue-500 dark:text-blue-400">
                   LEARN MORE{" "}
-                  <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+                  <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </div>
             </Link>
@@ -168,7 +169,7 @@ export default function NextStepsSection() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t-[12px] border-forest bg-muted/30 py-16 text-foreground md:py-24 lg:py-32">
+      {/* <section className="relative overflow-hidden border-t-[12px] border-forest bg-muted/30 py-16 text-foreground md:py-24 lg:py-32">
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[200%] w-[150%] -translate-x-1/2 -translate-y-1/2 rounded-none bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.15),transparent_40%)] blur-[100px]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl px-6">
@@ -209,7 +210,7 @@ export default function NextStepsSection() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

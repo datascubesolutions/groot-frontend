@@ -22,7 +22,7 @@ export function FAQSection({
   if (!faqs || faqs.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-background py-16 text-foreground md:py-24">
+    <section className="relative overflow-hidden border-t border-border/50 bg-background py-12 text-foreground md:py-16">
       {/* Animated Background glow */}
       <motion.div
         animate={
@@ -39,7 +39,7 @@ export function FAQSection({
       />
 
       <div className="container relative z-10 mx-auto px-6">
-        <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
+        <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
           {/* Left — Sticky heading */}
           <div className="antialiased lg:sticky lg:top-32 lg:w-[35%] lg:self-start">
             <motion.span
@@ -251,7 +251,7 @@ export function FAQSection({
                     aria-expanded={isOpen}
                     {...(isOpen ? { "aria-controls": panelId } : {})}
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className={`group flex w-full items-start gap-3 rounded-2xl px-4 py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:items-center md:gap-5 md:rounded-3xl md:px-8 md:py-8 ${
+                    className={`group flex w-full items-start gap-3 rounded-2xl px-4 py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:items-center md:gap-4 md:rounded-3xl md:px-6 md:py-6 ${
                       isOpen
                         ? "focus-visible:ring-white focus-visible:ring-offset-forest"
                         : "focus-visible:ring-forest focus-visible:ring-offset-background"
@@ -307,8 +307,8 @@ export function FAQSection({
                           ease: [0.04, 0.62, 0.23, 0.98],
                         }}
                       >
-                        <div className="px-4 pb-5 pl-[3.25rem] pt-0 md:px-8 md:pb-8 md:pl-[5.25rem]">
-                          <div className="w-full border-t border-white/20 pt-5 antialiased md:pt-6">
+                        <div className="px-4 pb-4 pl-[3.25rem] pt-0 md:px-6 md:pb-6 md:pl-[4.5rem]">
+                          <div className="w-full border-t border-white/20 pt-4 antialiased md:pt-5">
                             <p className="text-base font-normal leading-relaxed text-white/80 md:text-lg">
                               {faq.answer}
                             </p>

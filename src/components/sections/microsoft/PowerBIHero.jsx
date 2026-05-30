@@ -10,7 +10,7 @@ export function PowerBIHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-background pb-16 pt-32 text-foreground md:pb-24 md:pt-40 lg:pb-32 lg:pt-48">
+    <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-background pt-28 pb-10 text-foreground">
       {/* Animated Cinematic Background Accents */}
       <motion.div
         animate={
@@ -40,14 +40,14 @@ export function PowerBIHero() {
       />
 
       <div className="container relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left content */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground antialiased md:text-5xl lg:text-6xl xl:text-7xl"
+              className="text-balance text-3xl font-bold leading-tight tracking-tight text-foreground antialiased md:text-4xl lg:text-5xl xl:text-6xl"
             >
               <span className="mb-4 block text-sm font-semibold uppercase tracking-widest text-forest">
                 Business Intelligence
@@ -59,7 +59,7 @@ export function PowerBIHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="max-w-2xl text-balance py-2 text-lg font-normal leading-relaxed text-muted-foreground/90 antialiased md:text-xl"
+              className="max-w-2xl text-balance py-2 text-base font-normal leading-relaxed text-muted-foreground/90 antialiased md:text-lg"
             >
               Dashboards people actually use. Self-service analytics with the
               guardrails that keep Finance from losing sleep.
@@ -73,7 +73,7 @@ export function PowerBIHero() {
             >
               <Button
                 asChild
-                className="group w-full rounded-full bg-forest px-8 py-7 text-base font-bold text-white shadow-lg shadow-forest/20 transition-all hover:bg-forest/90 sm:w-auto"
+                className="group w-full rounded-full bg-forest px-6 py-4 text-sm font-bold text-white shadow-lg shadow-forest/20 transition-all hover:bg-forest/90 sm:w-auto"
               >
                 <Link href="/contact?service=powerbi-assessment">
                   Get Dashboard Assessment
@@ -88,7 +88,7 @@ export function PowerBIHero() {
             initial={{ opacity: 0, scale: 0.95, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative hidden aspect-square max-h-[600px] w-full items-center justify-center p-8 md:aspect-[4/3] lg:flex"
+            className="relative hidden aspect-square max-h-[480px] w-full items-center justify-center p-8 md:aspect-[4/3] lg:flex"
           >
             {/* Rich Glassmorphic Ambient Backing */}
             <div className="absolute inset-4 z-0 transform overflow-hidden rounded-[3rem] border border-white/80 bg-white/40 shadow-[0_20px_80px_-20px_rgba(242,200,17,0.15)] backdrop-blur-3xl transition-transform duration-700 hover:scale-[1.01] lg:inset-8">

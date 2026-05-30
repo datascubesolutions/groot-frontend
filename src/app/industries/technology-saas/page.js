@@ -21,7 +21,7 @@ export default function TechnologySaasPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border bg-background p-6 py-24">
+      <section className="relative overflow-hidden border-b border-border bg-background p-6 py-16">
         <div className="container relative z-10 mx-auto max-w-5xl text-center md:text-left">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
             <Cloud className="h-4 w-4" />
@@ -46,9 +46,9 @@ export default function TechnologySaasPage() {
       </section>
 
       {/* Target Use Cases */}
-      <section className="bg-muted/30 py-24">
+      <section className="bg-muted/30 py-16">
         <div className="container mx-auto max-w-5xl px-6">
-          <div className="mb-16">
+          <div className="mb-10">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">
               Core Use Cases
             </h2>

@@ -50,7 +50,7 @@ export default function HeroSection() {
         />
       </div>
 
-      <section className="relative pb-20 pt-12 lg:pb-32 lg:pt-16">
+      <section className="relative pb-12 pt-8 lg:pb-16 lg:pt-12">
         <div
           className="absolute right-0 top-0 -z-10 hidden h-full w-[55vw] bg-muted/40 backdrop-blur-3xl lg:block"
           style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%)" }}
@@ -62,7 +62,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, scale: 0.95, filter: "blur(20px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full mb-10 h-[350px] overflow-hidden rounded-none border-b-8 border-l-8 border-forest/30 bg-muted/40 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:bg-muted/10 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] max-lg:!opacity-100 max-lg:!transform-none max-lg:!filter-none lg:absolute lg:-z-10 lg:right-0 lg:top-5 lg:mb-0 lg:h-[550px] lg:w-[65vw] lg:max-w-[850px] lg:bg-transparent contrast-125 grayscale-[40%]"
+              className="relative w-full mb-8 h-[250px] overflow-hidden rounded-none border-b-8 border-l-8 border-forest/30 bg-muted/40 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:bg-muted/10 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] max-lg:!opacity-100 max-lg:!transform-none max-lg:!filter-none lg:absolute lg:-z-10 lg:right-0 lg:top-5 lg:mb-0 lg:h-[450px] lg:w-[65vw] lg:max-w-[850px] lg:bg-transparent contrast-125 grayscale-[40%]"
             >
               <Image
                 src="/images/maturity/live_radar.png"
@@ -97,17 +97,17 @@ export default function HeroSection() {
               <div className="max-w-[1050px]">
                 <motion.h1
                   variants={fadeIn}
-                  className="mb-8 indent-0 text-[2.2rem] font-black uppercase leading-[0.95] tracking-tighter text-foreground drop-shadow-sm sm:text-[3.2rem] sm:leading-[0.85] md:text-[4.5rem] lg:text-[7.5rem] lg:text-white lg:mix-blend-difference lg:drop-shadow-[0_0_30px_hsl(var(--forest)/0.3)]"
+                  className="mb-8 indent-0 text-[2.2rem] font-black uppercase leading-[0.95] tracking-tighter text-foreground drop-shadow-sm sm:text-[3.2rem] md:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem] 2xl:text-[7.5rem] lg:text-white lg:mix-blend-difference lg:drop-shadow-[0_0_30px_hsl(var(--forest)/0.3)] break-words"
                 >
-                  <span className="inline-block bg-gradient-to-r bg-clip-text text-transparent max-lg:from-foreground max-lg:via-foreground max-lg:to-forest lg:stroke-text lg:isolate lg:from-foreground lg:to-foreground/40 lg:mix-blend-normal">
+                  <span className="bg-gradient-to-r bg-clip-text text-transparent max-lg:from-foreground max-lg:via-foreground max-lg:to-forest lg:stroke-text lg:isolate lg:from-foreground lg:to-foreground/40 lg:mix-blend-normal">
                     Data
                   </span>{" "}
-                  <span className="text-forest lg:text-mint lg:isolate lg:mix-blend-normal">&amp;</span>{" "}
-                  <span className="max-lg:inline-block max-lg:bg-gradient-to-r max-lg:from-foreground max-lg:via-foreground max-lg:to-forest max-lg:bg-clip-text max-lg:text-transparent">
+                  <span className="text-forest lg:text-foreground lg:isolate lg:mix-blend-normal">&amp;</span>{" "}
+                  <span className="max-lg:bg-gradient-to-r max-lg:from-foreground max-lg:via-foreground max-lg:to-forest max-lg:bg-clip-text max-lg:text-transparent">
                     Analytics
                   </span>
                   <br />
-                  <span className="inline-block bg-gradient-to-r bg-clip-text text-transparent max-lg:from-forest max-lg:to-foreground lg:stroke-text lg:from-foreground lg:to-foreground/40">
+                  <span className="bg-gradient-to-r bg-clip-text text-transparent max-lg:from-forest max-lg:to-foreground lg:stroke-text lg:from-foreground lg:to-foreground/40">
                     Maturity Assessment
                   </span>
                 </motion.h1>
@@ -127,20 +127,17 @@ export default function HeroSection() {
                     </span>
                   </motion.p>
 
-                  <div className="flex flex-col justify-between">
-                    <motion.p
-                      variants={fadeIn}
-                      className="mb-8 text-base leading-relaxed text-muted-foreground"
-                    ></motion.p>
-                    <motion.div variants={fadeIn}>
+                  <div className="flex flex-col items-center justify-center">
+                    <motion.div variants={fadeIn} className="w-full flex justify-center">
                       <Link
                         href="/contact?service=maturity-assessment"
                         passHref
+                        className="w-full sm:w-auto"
                       >
                         <Button
                           variant="hero"
                           size="lg"
-                          className="group relative h-16 w-full overflow-hidden rounded-none border-2 border-foreground bg-foreground text-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all duration-500 hover:translate-x-[8px] hover:translate-y-[8px] hover:bg-forest hover:text-forest-foreground hover:shadow-none md:w-auto dark:hover:shadow-none"
+                          className="group relative h-16 w-full overflow-hidden rounded-none border-2 border-foreground bg-foreground text-background shadow-[8px_8px_0px_0px_rgba(225,29,72,1)] dark:shadow-[8px_8px_0px_0px_rgba(225,29,72,1)] transition-all duration-500 hover:translate-x-[8px] hover:translate-y-[8px] hover:bg-rose-600 hover:border-rose-600 hover:text-white hover:shadow-none md:w-auto dark:hover:shadow-none"
                         >
                           <span className="relative z-10 flex h-full w-full items-center justify-center px-12 text-center text-xs font-black uppercase tracking-wider sm:px-16 sm:text-sm sm:tracking-[0.15em]">
                             <span>Schedule Assessment</span>

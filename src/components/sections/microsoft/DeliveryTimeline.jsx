@@ -71,7 +71,7 @@ export function DeliveryTimeline({
   const activeImg = TIMELINE_IMAGES[activeIndex % TIMELINE_IMAGES.length];
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-muted/30 py-20 text-foreground md:py-28 lg:py-32">
+    <section className="relative overflow-hidden border-t border-border/50 bg-muted/30 py-12 text-foreground md:py-16">
       <div className="pointer-events-none absolute right-[-6%] top-[8%] z-0 hidden h-[480px] w-[480px] -rotate-12 opacity-[0.04] xl:block">
         <Image
           src="/svg/fabric_48_color.svg"
@@ -83,8 +83,8 @@ export function DeliveryTimeline({
       </div>
 
       <div className="container relative z-10 mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-10 xl:px-12">
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-12 xl:gap-16">
-          <div className="flex shrink-0 flex-col justify-center py-4 antialiased md:py-6 lg:w-[33%] lg:max-w-[450px] xl:max-w-[500px]">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-10 xl:gap-12">
+          <div className="flex shrink-0 flex-col justify-center py-2 antialiased md:py-4 lg:w-[33%] lg:max-w-[450px] xl:max-w-[500px]">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
