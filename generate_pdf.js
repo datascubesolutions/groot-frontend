@@ -33,7 +33,7 @@ function generatePDF() {
   }
 
   doc.end();
-  
+
   stream.on('finish', () => {
     console.log('PDF generated successfully at public/ai-roadmap.pdf');
   });

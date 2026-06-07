@@ -5,18 +5,18 @@ import { Activity, AlertCircle, Target } from "lucide-react";
 
 export default function ProblemSection() {
   return (
-    <section className="relative z-30 border-t-8 border-foreground bg-background py-24">
+    <section className="relative z-30 border-t-8 border-foreground bg-background py-12 lg:py-24">
       <div className="container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-12">
           
           {/* Header Area */}
           <div className="flex flex-col justify-start lg:col-span-5">
-            <div className="sticky top-32">
+            <div className="lg:sticky lg:top-32">
               <h2 className="mb-6 flex items-center gap-4 text-sm font-black uppercase tracking-[0.3em] text-forest">
                 <span className="h-1 w-12 bg-forest"></span>
                 The Reality Check
               </h2>
-              <h3 className="mb-8 text-4xl font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:text-[4rem]">
+              <h3 className="mb-6 text-3xl font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:text-4xl lg:text-[4rem]">
                 The Cost of <br /> Assuming <br /> Readiness.
               </h3>
               <p className="mb-8 text-xl font-bold leading-relaxed text-foreground/80">
@@ -31,13 +31,13 @@ export default function ProblemSection() {
           </div>
 
           {/* Cards Area */}
-          <div className="flex flex-col gap-8 lg:col-span-7">
+          <div className="flex flex-col gap-6 lg:gap-8 lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="group border-[4px] border-foreground bg-card p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-2 hover:translate-x-2 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)]"
+              className="group border-[4px] border-foreground bg-card p-5 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-2 hover:translate-x-2 dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] sm:dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)]"
             >
               <div className="mb-6 flex items-center gap-6">
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center border-[3px] border-foreground bg-rose-500 text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]">
@@ -57,7 +57,7 @@ export default function ProblemSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="group border-[4px] border-foreground bg-foreground p-8 text-background shadow-[12px_12px_0px_0px_hsl(var(--forest)/1)] transition-transform hover:-translate-y-2 hover:translate-x-2"
+              className="group border-[4px] border-foreground bg-foreground p-5 sm:p-8 text-background shadow-[8px_8px_0px_0px_hsl(var(--forest)/1)] sm:shadow-[12px_12px_0px_0px_hsl(var(--forest)/1)] transition-transform hover:-translate-y-2 hover:translate-x-2"
             >
               <div className="mb-6 flex items-center gap-6">
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center border-[3px] border-background bg-amber-500 text-foreground shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] dark:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
@@ -77,7 +77,7 @@ export default function ProblemSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="group border-[4px] border-foreground bg-card p-8 shadow-[12px_12px_0px_0px_rgba(249,115,22,1)] transition-transform hover:-translate-y-2 hover:translate-x-2"
+              className="group border-[4px] border-foreground bg-card p-5 sm:p-8 shadow-[8px_8px_0px_0px_rgba(249,115,22,1)] sm:shadow-[12px_12px_0px_0px_rgba(249,115,22,1)] transition-transform hover:-translate-y-2 hover:translate-x-2"
             >
               <div className="mb-6 flex items-center gap-6">
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center border-[3px] border-foreground bg-orange-500 text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]">

@@ -8,9 +8,9 @@ import Link from "next/link";
 export default function NextStepsSection() {
   return (
     <>
-      <section className="relative overflow-hidden border-t border-border/60 bg-background py-6 lg:py-8">
-        <div className="container relative z-10 mx-auto max-w-7xl px-6">
-          <div className="relative mb-6 grid grid-cols-1 items-center gap-4 md:grid-cols-12 lg:mb-6">
+      <section className="relative flex flex-col overflow-hidden border-t-4 border-foreground bg-background py-12 lg:py-20 lg:min-h-[calc(100vh-80px)]">
+        <div className="container relative z-10 mx-auto max-w-7xl px-6 lg:my-auto">
+          <div className="relative mb-6 grid grid-cols-1 items-center gap-6 md:grid-cols-12 lg:mb-6 lg:gap-4">
             <div className="absolute -top-12 right-[30%] -z-10 hidden h-[150%] w-[1px] bg-gradient-to-b from-transparent via-border to-transparent lg:block" />
 
             <div className="relative z-10 md:col-span-12 lg:col-span-7">
@@ -18,7 +18,7 @@ export default function NextStepsSection() {
               <h2 className="mb-4 flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-forest sm:text-sm">
                 <span className="h-[2px] w-8 bg-forest"></span> Next Steps
               </h2>
-              <h3 className="mb-4 text-[2rem] font-black uppercase leading-[1.1] tracking-tight text-foreground drop-shadow-[4px_4px_0_rgba(0,0,0,0.02)] sm:mb-6 sm:text-[2.5rem] sm:leading-[1.05] md:text-[3rem] lg:text-[3.5rem]">
+              <h3 className="mb-4 text-[1.75rem] font-black uppercase leading-[1.1] tracking-tight text-foreground drop-shadow-[4px_4px_0_rgba(0,0,0,0.02)] sm:mb-6 sm:text-[2.5rem] sm:leading-[1.05] md:text-[3rem] lg:text-[3.5rem]">
                 <span className="whitespace-nowrap flex items-center gap-2">
                   CONTINUE
                   <span className="stroke-text bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent mix-blend-normal">
@@ -82,7 +82,7 @@ export default function NextStepsSection() {
                       Future Readiness
                     </span>
                   </div>
-                  <p className="relative z-10 border-l-[3px] border-rose-400/40 pl-4 text-sm font-medium leading-relaxed text-background">
+                  <p className="relative z-10 border-l-[3px] border-rose-400/40 pl-4 text-base font-medium leading-relaxed text-background">
                     The core capability that enables your organization to
                     compound value, integrate AI sustainably, and operate with
                     absolute clarity.
@@ -92,7 +92,7 @@ export default function NextStepsSection() {
             </motion.div>
           </div>
 
-          <div className="relative z-30 grid grid-cols-1 gap-0 border-4 border-foreground bg-foreground p-1 md:grid-cols-3 lg:mt-2">
+          <div className="relative z-30 grid grid-cols-1 gap-0 border-4 border-foreground bg-foreground p-1 sm:grid-cols-3 lg:mt-2">
             <Link
               href="/services/define-your-roadmap/enterprise-data-strategy"
               className="group block h-full border border-transparent bg-card px-3 py-5 transition-colors duration-500 hover:border-forest md:px-4 md:py-6"
@@ -103,12 +103,12 @@ export default function NextStepsSection() {
               <h3 className="mb-1.5 text-center text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-forest lg:text-base">
                 Enterprise Data Strategy
               </h3>
-              <p className="mb-3 text-center text-xs font-medium leading-relaxed text-foreground">
+              <p className="mb-3 text-center text-sm font-medium leading-relaxed text-foreground/80">
                 Align your data initiatives with business outcomes and build a
                 comprehensive roadmap.
               </p>
-              <div className="border-t-[3px] border-border pt-2 transition-colors group-hover:border-forest/50">
-                <span className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-forest transition-colors group-hover:text-forest/90">
+              <div className="border-t-[3px] border-border pt-3 transition-colors group-hover:border-forest/50">
+                <span className="flex items-center justify-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-forest transition-colors group-hover:text-forest/90">
                   LEARN MORE{" "}
                   <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
@@ -125,12 +125,12 @@ export default function NextStepsSection() {
               <h3 className="mb-1.5 text-center text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-cyan-600 dark:group-hover:text-cyan-400 lg:text-base">
                 Platform Evaluation
               </h3>
-              <p className="mb-3 text-center text-xs font-medium leading-relaxed text-foreground">
+              <p className="mb-3 text-center text-sm font-medium leading-relaxed text-foreground/80">
                 Objective analysis to select the right tools and architecture
                 for your specific needs.
               </p>
-              <div className="border-t-[3px] border-border pt-2 transition-colors group-hover:border-cyan-500/50">
-                <span className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-600 transition-colors group-hover:text-cyan-500 dark:text-cyan-400">
+              <div className="border-t-[3px] border-border pt-3 transition-colors group-hover:border-cyan-500/50">
+                <span className="flex items-center justify-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-cyan-600 transition-colors group-hover:text-cyan-500 dark:text-cyan-400">
                   LEARN MORE{" "}
                   <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
@@ -147,12 +147,12 @@ export default function NextStepsSection() {
               <h3 className="mb-1.5 text-center text-sm font-black uppercase leading-[1.2] tracking-tight text-foreground transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400 lg:text-base">
                 Foundation Build
               </h3>
-              <p className="mb-3 text-center text-xs font-medium leading-relaxed text-foreground">
+              <p className="mb-3 text-center text-sm font-medium leading-relaxed text-foreground/80">
                 Implement a robust, scalable data architecture that serves as
                 the bedrock for analytics.
               </p>
-              <div className="border-t-[3px] border-border pt-2 transition-colors group-hover:border-blue-500/50">
-                <span className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 transition-colors group-hover:text-blue-500 dark:text-blue-400">
+              <div className="border-t-[3px] border-border pt-3 transition-colors group-hover:border-blue-500/50">
+                <span className="flex items-center justify-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-blue-600 transition-colors group-hover:text-blue-500 dark:text-blue-400">
                   LEARN MORE{" "}
                   <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>

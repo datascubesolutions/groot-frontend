@@ -14,8 +14,7 @@ const fadeIn = {
     y: 0,
     transition: {
       duration: 0.6,
-      /** @type {import("framer-motion").Easing} */
-      ease: "easeOut",
+      ease: [0.25, 0.1, 0.25, 1.0],
     },
   },
 };
@@ -31,7 +30,7 @@ const staggerContainer = {
 export default function HeroSection() {
   return (
     <>
-      <div className="container mx-auto max-w-7xl px-6 pt-4">
+      <div className="container mx-auto max-w-[1400px] px-6 py-1">
         <Breadcrumb
           items={[
             {
@@ -50,107 +49,96 @@ export default function HeroSection() {
         />
       </div>
 
-      <section className="relative pb-12 pt-8 lg:pb-16 lg:pt-12">
-        <div
-          className="absolute right-0 top-0 -z-10 hidden h-full w-[55vw] bg-muted/40 backdrop-blur-3xl lg:block"
-          style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%)" }}
-        />
+      <section className="relative w-full flex flex-col border-t border-b border-[#1b2b36] lg:min-h-[calc(100vh-112px)]">
+        {/* Absolute full width border container to break out of any constraints */}
+        <div className="relative flex flex-col lg:flex-row w-full flex-1 overflow-hidden">
 
-        <div className="container relative z-20 mx-auto max-w-7xl px-6">
-          <div className="relative grid grid-cols-1 items-center gap-0 lg:grid-cols-12">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, filter: "blur(20px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full mb-8 h-[250px] overflow-hidden rounded-none border-b-8 border-l-8 border-forest/30 bg-muted/40 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:bg-muted/10 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] max-lg:!opacity-100 max-lg:!transform-none max-lg:!filter-none lg:absolute lg:-z-10 lg:right-0 lg:top-5 lg:mb-0 lg:h-[450px] lg:w-[65vw] lg:max-w-[850px] lg:bg-transparent contrast-125 grayscale-[40%]"
-            >
-              <Image
-                src="/images/maturity/live_radar.png"
-                alt="Data Professionals Analyzing Digital Radar"
-                fill
-                className="object-cover opacity-100 mix-blend-normal lg:opacity-90 lg:mix-blend-overlay"
-                priority
-              />
-              <div className="absolute inset-0 hidden bg-gradient-to-r from-background to-transparent lg:block lg:w-[15%]" />
-            </motion.div>
+          {/* Left side: Content */}
+          <div className="relative flex w-full flex-col justify-center bg-[#e6f0eb] lg:w-1/2 z-10 overflow-hidden min-h-[55vh] lg:min-h-0">
+            {/* Left side geometric pattern */}
+            <div
+              className="absolute inset-0 pointer-events-none z-0 opacity-40"
+              style={{
+                backgroundImage: `repeating-linear-gradient(45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px), repeating-linear-gradient(-45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px)`
+              }}
+            />
 
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              className="relative flex flex-col items-start gap-8 pt-8 md:flex-row lg:col-span-12"
-            >
+            {/* Inner constraint to align with 1400px container */}
+            <div className="w-full max-w-[850px] mx-auto lg:ml-auto lg:mr-0 px-5 sm:px-6 lg:pl-10 xl:pl-16 lg:pr-10 py-8 lg:py-12 relative z-10">
               <motion.div
-                variants={fadeIn}
-                className="hidden flex-col items-center pl-2 md:flex"
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer}
+                className="relative z-10"
               >
-                <div className="mb-6 h-32 w-px bg-gradient-to-b from-transparent to-forest/60"></div>
-                <div className="flex rotate-180 items-center justify-center gap-6 whitespace-nowrap text-sm font-black uppercase tracking-[0.4em] text-forest [writing-mode:vertical-rl] overflow-hidden">
-                  Stop Guessing. Start Scaling.
-                  <span className="relative flex h-3 w-3">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-none bg-mint/80 opacity-75"></span>
-                    <span className="relative inline-flex h-3 w-3 rounded-none bg-forest"></span>
-                  </span>
-                </div>
-              </motion.div>
+                {/* Eyebrow */}
+                <motion.div variants={fadeIn} className="mb-8 flex items-center gap-3 text-[11px] font-bold tracking-[0.2em] text-[#1b2b36] sm:text-sm lg:text-[15px]">
+                  <div className="h-3 w-3 bg-[#A8D5BA]"></div>
+                  DATA STRATEGY • STOP GUESSING • START SCALING.
+                </motion.div>
 
-              <div className="max-w-[1050px]">
-                <motion.h1
-                  variants={fadeIn}
-                  className="mb-8 indent-0 text-[2.2rem] font-black uppercase leading-[0.95] tracking-tighter text-foreground drop-shadow-sm sm:text-[3.2rem] md:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem] 2xl:text-[7.5rem] lg:text-white lg:mix-blend-difference lg:drop-shadow-[0_0_30px_hsl(var(--forest)/0.3)] break-words"
-                >
-                  <span className="bg-gradient-to-r bg-clip-text text-transparent max-lg:from-foreground max-lg:via-foreground max-lg:to-forest lg:stroke-text lg:isolate lg:from-foreground lg:to-foreground/40 lg:mix-blend-normal">
-                    Data
-                  </span>{" "}
-                  <span className="text-forest lg:text-foreground lg:isolate lg:mix-blend-normal">&amp;</span>{" "}
-                  <span className="max-lg:bg-gradient-to-r max-lg:from-foreground max-lg:via-foreground max-lg:to-forest max-lg:bg-clip-text max-lg:text-transparent">
-                    Analytics
-                  </span>
-                  <br />
-                  <span className="bg-gradient-to-r bg-clip-text text-transparent max-lg:from-forest max-lg:to-foreground lg:stroke-text lg:from-foreground lg:to-foreground/40">
-                    Maturity Assessment
-                  </span>
+                {/* Headline */}
+                <motion.h1 variants={fadeIn} className="mb-6 text-[2rem] font-black uppercase leading-[0.95] tracking-tight text-[#1b2b36] sm:text-[3rem] lg:text-[4rem] xl:text-[4.2rem] 2xl:text-[4.5rem]">
+                  Data & Analytics<br />Maturity<br />Assessment
                 </motion.h1>
 
-                <div className="relative mt-8 grid max-w-5xl gap-6 rounded-none border border-border/60 bg-background/85 p-6 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] backdrop-blur-2xl sm:gap-8 sm:p-8 md:grid-cols-2 md:gap-10 md:p-12 lg:gap-16">
-                  <div className="absolute -inset-[2px] -z-10 rounded-none bg-gradient-to-b from-forest/30 to-transparent" />
+                {/* Subtext */}
+                <motion.p variants={fadeIn} className="mb-8 max-w-[650px] text-base leading-relaxed text-[#1b2b36] sm:text-lg lg:text-2xl xl:text-[1.75rem] xl:leading-[1.6]">
+                  Before you can close the gap, you need to know where the gap is. We assess your current data capabilities across six dimensions and show you exactly where you stand—<span className="font-bold text-[#1b2b36]">with evidence, not assumptions.</span>
+                </motion.p>
 
-                  <motion.p
-                    variants={fadeIn}
-                    className="text-xl font-bold leading-snug text-foreground md:text-2xl lg:font-semibold"
-                  >
-                    Before you can close the gap, you need to know where the gap
-                    is. We assess your current data capabilities across six
-                    dimensions and show you exactly where you stand —{" "}
-                    <span className="pointer-events-none text-forest underline decoration-forest/40 underline-offset-4 lg:decoration-forest/30">
-                      with evidence, not assumptions.
-                    </span>
-                  </motion.p>
+                {/* CTA */}
+                <motion.div variants={fadeIn}>
+                  <Link href="/contact?service=maturity-assessment" passHref>
+                    <Button className="h-14 lg:h-16 rounded-none bg-[#1b2b36] hover:bg-[#1b2b36]/90 px-8 sm:px-12 lg:px-14 text-xs sm:text-sm lg:text-base font-bold uppercase tracking-widest text-white shadow-none border-none">
+                      Schedule Assessment <ChevronRight className="ml-3 h-5 w-5" />
+                    </Button>
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
 
-                  <div className="flex flex-col items-center justify-center">
-                    <motion.div variants={fadeIn} className="w-full flex justify-center">
-                      <Link
-                        href="/contact?service=maturity-assessment"
-                        passHref
-                        className="w-full sm:w-auto"
-                      >
-                        <Button
-                          variant="hero"
-                          size="lg"
-                          className="group relative h-16 w-full overflow-hidden rounded-none border-2 border-foreground bg-foreground text-background shadow-[8px_8px_0px_0px_rgba(225,29,72,1)] dark:shadow-[8px_8px_0px_0px_rgba(225,29,72,1)] transition-all duration-500 hover:translate-x-[8px] hover:translate-y-[8px] hover:bg-rose-600 hover:border-rose-600 hover:text-white hover:shadow-none md:w-auto dark:hover:shadow-none"
-                        >
-                          <span className="relative z-10 flex h-full w-full items-center justify-center px-12 text-center text-xs font-black uppercase tracking-wider sm:px-16 sm:text-sm sm:tracking-[0.15em]">
-                            <span>Schedule Assessment</span>
-                            <ChevronRight className="absolute right-4 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2 sm:right-6 sm:h-5 sm:w-5" />
-                          </span>
-                        </Button>
-                      </Link>
-                    </motion.div>
+          {/* Right side: Image */}
+          <div className="relative flex w-full items-center justify-center bg-[#f8f9fa] lg:w-1/2 z-0 overflow-hidden min-h-[45vw] sm:min-h-[40vw] lg:min-h-0">
+            {/* Right side geometric pattern */}
+            <div
+              className="absolute inset-0 pointer-events-none z-0 opacity-50"
+              style={{
+                backgroundImage: `repeating-linear-gradient(45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px), repeating-linear-gradient(-45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px)`
+              }}
+            />
+
+            {/* Inner constraint to align with 1400px container */}
+            <div className="w-full max-w-[850px] mx-auto lg:mr-auto lg:ml-0 px-5 sm:px-6 lg:pl-0 lg:pr-10 xl:pr-16 py-6 lg:py-12 z-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="relative w-full"
+              >
+                {/* Double bordered frame for the image */}
+                <div className="relative w-full border-[2px] border-[#1b2b36] p-2 lg:p-3 bg-white">
+                  <div className="relative aspect-[4/3] lg:aspect-[5/4] w-full border-[2px] border-[#1b2b36] bg-muted/20">
+                    <Image
+                      src="/images/maturity/live_radar.png"
+                      alt="Data Professionals Analyzing Digital Radar"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                    {/* Small star icon at bottom right of image */}
+                    <div className="absolute bottom-4 right-4 text-white opacity-80 mix-blend-overlay">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
+
         </div>
       </section>
     </>
