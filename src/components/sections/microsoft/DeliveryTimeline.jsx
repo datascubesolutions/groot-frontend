@@ -71,7 +71,7 @@ export function DeliveryTimeline({
   const activeImg = TIMELINE_IMAGES[activeIndex % TIMELINE_IMAGES.length];
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-muted/30 py-12 text-foreground md:py-16">
+    <section className="relative flex flex-col justify-center overflow-hidden border-t border-border/50 bg-background py-12 lg:py-0 lg:min-h-[calc(100vh-80px)] text-foreground">
       <div className="pointer-events-none absolute right-[-6%] top-[8%] z-0 hidden h-[480px] w-[480px] -rotate-12 opacity-[0.04] xl:block">
         <Image
           src="/svg/fabric_48_color.svg"

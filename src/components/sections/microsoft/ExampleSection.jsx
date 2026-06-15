@@ -17,7 +17,7 @@ export function ExampleSection({
   linkUrl,
 }) {
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-background py-8 text-foreground md:py-12">
+    <section className="relative flex flex-col justify-center overflow-hidden border-t border-border/50 bg-slate-50 py-12 lg:py-0 lg:min-h-[calc(100vh-80px)] text-foreground">
       {/* Power BI Dashboard Background Art in Free Space */}
       <div className="pointer-events-none absolute -left-[10%] bottom-0 hidden h-[800px] w-[1000px] opacity-10 mix-blend-screen 2xl:block">
         <Image

@@ -13,7 +13,7 @@ export function ProblemSection({
   if (!problems || problems.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-background py-8 text-foreground md:py-12">
+    <section className="relative flex flex-col justify-center overflow-hidden border-t border-border/50 bg-slate-50 py-12 lg:py-0 lg:min-h-[calc(100vh-80px)] text-foreground">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8">
           {/* Header Column */}

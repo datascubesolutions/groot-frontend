@@ -55,7 +55,7 @@ export default function MaturityAssessment() {
 
 
       {/* NEW PROBLEM SECTION REPLACEMENT */}
-      <section className="relative z-30 flex flex-col bg-card py-8 lg:py-8 lg:min-h-[calc(100vh-80px)]">
+      <section className="relative z-30 flex flex-col border-t-2 border-b-2 border-foreground bg-card py-8 lg:py-8 lg:min-h-[calc(100vh-80px)]">
         <div className="container relative z-10 mx-auto max-w-[1536px] px-4 xl:px-8 flex flex-col gap-5 lg:gap-4 lg:my-auto">
           {/* Row 1: The Cost of Assuming Readiness */}
           <div className="flex flex-col lg:flex-row w-full bg-muted/40 rounded-xl border border-border shadow-sm overflow-hidden relative">
@@ -340,11 +340,11 @@ export default function MaturityAssessment() {
       </section>
 
       {/* Deliverables Section - Balanced Compact Grid */}
-      <section className="relative flex flex-col border-b-2 border-t-[8px] border-foreground bg-muted/20 py-10 lg:py-10 lg:min-h-[calc(100vh-80px)]">
+      <section className="relative flex flex-col border-t-2 border-b-2 border-foreground bg-muted/20 py-10 lg:py-10 lg:min-h-[calc(100vh-80px)]">
         {/* Subtle grid pattern background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-        <div className="container relative z-10 mx-auto max-w-[1400px] px-6 lg:my-auto">
+        <div className="container relative z-10 mx-auto max-w-[1536px] px-4 xl:px-8 lg:my-auto">
           <div className="mb-6 flex flex-col justify-between gap-4 border-b-4 border-forest pb-4 md:flex-row md:items-end">
             <div className="max-w-2xl">
               <h2 className="mb-3 inline-block border border-forest/30 bg-forest/10 px-3 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-forest lg:text-sm">
@@ -361,17 +361,17 @@ export default function MaturityAssessment() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-[2px] border-[3px] border-foreground bg-foreground p-[2px] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:grid-cols-2 lg:grid-cols-4 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.1)]">
+          <div className="grid grid-cols-1 gap-[2px] border-[3px] border-foreground bg-foreground p-[2px] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:grid-cols-2 lg:grid-cols-5 dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.1)]">
             {/* Cell 1 */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="group relative col-span-1 flex min-h-[280px] flex-col justify-between overflow-hidden bg-card p-5 transition-colors duration-500 hover:bg-forest/5 lg:min-h-[340px] lg:p-6"
+              className="group relative col-span-1 flex min-h-[280px] flex-col overflow-hidden bg-card p-5 transition-colors duration-500 hover:bg-forest/5 lg:min-h-[400px] lg:p-6"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.08),transparent_50%)]" />
-              <div className="relative z-10 mb-4 flex items-start justify-between">
+              <div className="relative z-10 mb-8 flex items-start justify-between">
                 <PieChart
                   className="h-10 w-10 text-forest transition-colors duration-500 group-hover:text-emerald-300 lg:h-12 lg:w-12"
                   strokeWidth={1.5}
@@ -380,11 +380,13 @@ export default function MaturityAssessment() {
                   D-01
                 </span>
               </div>
-              <div className="relative z-10">
-                <p className="mb-3 inline-block border-b-2 border-forest/30 pb-1 text-xs font-black uppercase tracking-[0.2em] text-forest transition-colors duration-500 group-hover:border-emerald-300/50 group-hover:text-emerald-300">
-                  Six dimensions
-                </p>
-                <h4 className="mb-4 text-xl font-black uppercase leading-[0.9] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-2xl">
+              <div className="relative z-10 flex flex-col flex-1">
+                <div className="mb-3">
+                  <p className="inline-block border-b-2 border-forest/30 pb-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-forest transition-colors duration-500 group-hover:border-emerald-300/50 group-hover:text-emerald-300">
+                    Six dimensions
+                  </p>
+                </div>
+                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words">
                   Maturity Scorecard
                 </h4>
                 <p className="text-sm font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-emerald-50">
@@ -401,9 +403,9 @@ export default function MaturityAssessment() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="group relative col-span-1 flex min-h-[280px] flex-col justify-between bg-card p-5 transition-colors duration-500 hover:bg-cyan-500/5 lg:min-h-[340px] lg:p-6"
+              className="group relative col-span-1 flex min-h-[280px] flex-col overflow-hidden bg-card p-5 transition-colors duration-500 hover:bg-cyan-500/5 lg:min-h-[400px] lg:p-6"
             >
-              <div className="relative z-10 mb-4 flex items-start justify-between">
+              <div className="relative z-10 mb-8 flex items-start justify-between">
                 <Target
                   className="h-10 w-10 text-cyan-500 transition-colors duration-500 group-hover:text-cyan-300 lg:h-12 lg:w-12"
                   strokeWidth={1.5}
@@ -412,11 +414,13 @@ export default function MaturityAssessment() {
                   D-02
                 </span>
               </div>
-              <div className="relative z-10">
-                <p className="mb-3 inline-block border-b border-cyan-500/30 pb-1 text-xs font-black uppercase tracking-[0.2em] text-cyan-500 transition-colors duration-500 group-hover:border-cyan-300/50 group-hover:text-cyan-300">
-                  Current vs target
-                </p>
-                <h4 className="mb-4 text-xl font-black uppercase leading-[0.9] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-2xl">
+              <div className="relative z-10 flex flex-col flex-1">
+                <div className="mb-3">
+                  <p className="inline-block border-b-2 border-cyan-500/30 pb-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-cyan-500 transition-colors duration-500 group-hover:border-cyan-300/50 group-hover:text-cyan-300">
+                    Current vs target
+                  </p>
+                </div>
+                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words">
                   Gap Analysis
                 </h4>
                 <p className="text-sm font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-cyan-50">
@@ -433,9 +437,9 @@ export default function MaturityAssessment() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="group relative col-span-1 flex min-h-[280px] flex-col justify-between bg-card p-5 transition-colors duration-500 hover:bg-blue-500/5 lg:min-h-[340px] lg:p-6"
+              className="group relative col-span-1 flex min-h-[280px] flex-col overflow-hidden bg-card p-5 transition-colors duration-500 hover:bg-blue-500/5 lg:min-h-[400px] lg:p-6"
             >
-              <div className="relative z-10 mb-4 flex items-start justify-between">
+              <div className="relative z-10 mb-8 flex items-start justify-between">
                 <ShieldCheck
                   className="h-10 w-10 text-blue-500 transition-colors duration-500 group-hover:text-blue-300 lg:h-12 lg:w-12"
                   strokeWidth={1.5}
@@ -444,11 +448,13 @@ export default function MaturityAssessment() {
                   D-03
                 </span>
               </div>
-              <div className="relative z-10">
-                <p className="mb-3 inline-block border-b border-blue-500/30 pb-1 text-xs font-black uppercase tracking-[0.2em] text-blue-500 transition-colors duration-500 group-hover:border-blue-300/50 group-hover:text-blue-300">
-                  Architecture
-                </p>
-                <h4 className="mb-4 text-xl font-black uppercase leading-[0.9] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-2xl">
+              <div className="relative z-10 flex flex-col flex-1">
+                <div className="mb-3">
+                  <p className="inline-block border-b-2 border-blue-500/30 pb-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-blue-500 transition-colors duration-500 group-hover:border-blue-300/50 group-hover:text-blue-300">
+                    Architecture
+                  </p>
+                </div>
+                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words">
                   Technical Findings
                 </h4>
                 <p className="text-sm font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-blue-50">
@@ -465,24 +471,58 @@ export default function MaturityAssessment() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="group relative col-span-1 flex min-h-[280px] flex-col justify-between overflow-hidden bg-foreground p-5 text-background transition-colors duration-500 lg:min-h-[340px] lg:p-6"
+              className="group relative col-span-1 flex min-h-[280px] flex-col overflow-hidden bg-card p-5 transition-colors duration-500 hover:bg-amber-500/5 lg:min-h-[400px] lg:p-6"
             >
-              <div className="pointer-events-none absolute right-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.25),transparent_60%)] opacity-50 transition-opacity duration-700 group-hover:opacity-100" />
-              <div className="relative z-10 mb-4 flex items-start justify-between">
-                <CheckCircle2 className="h-10 w-10 text-mint lg:h-12 lg:w-12" />
-                <span className="text-[3rem] font-black leading-none tracking-tighter text-background/10 lg:text-[4rem]">
+              <div className="relative z-10 mb-8 flex items-start justify-between">
+                <Lightbulb
+                  className="h-10 w-10 text-amber-500 transition-colors duration-500 group-hover:text-amber-300 lg:h-12 lg:w-12"
+                  strokeWidth={1.5}
+                />
+                <span className="text-[3rem] font-black leading-none tracking-tighter text-foreground/5 mix-blend-multiply transition-colors duration-500 group-hover:text-amber-500/30 dark:mix-blend-screen lg:text-[4rem]">
                   D-04
                 </span>
               </div>
-              <div className="relative z-10">
-                <p className="mb-3 inline-block border-b border-mint/30 pb-1 text-xs font-black uppercase tracking-[0.2em] text-mint">
-                  Exec Summary
+              <div className="relative z-10 flex flex-col flex-1">
+                <div className="mb-3">
+                  <p className="inline-block border-b-2 border-amber-500/30 pb-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-amber-500 transition-colors duration-500 group-hover:border-amber-300/50 group-hover:text-amber-300">
+                    Prioritized Path
+                  </p>
+                </div>
+                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words">
+                  Prioritized Recommendations
+                </h4>
+                <p className="text-sm font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-amber-50">
+                  A prioritized set of recommendations with rationale and rough effort estimates. We explain why and in what order.
                 </p>
-                <h4 className="mb-4 text-xl font-black uppercase leading-[0.9] tracking-tight text-background lg:text-2xl">
-                  Recommendations
+              </div>
+            </motion.div>
+
+            {/* Cell 5 */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="group relative col-span-1 md:col-span-2 lg:col-span-1 flex min-h-[280px] flex-col overflow-hidden bg-foreground p-5 text-background transition-colors duration-500 lg:min-h-[400px] lg:p-6"
+            >
+              <div className="pointer-events-none absolute right-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.25),transparent_60%)] opacity-50 transition-opacity duration-700 group-hover:opacity-100" />
+              <div className="relative z-10 mb-8 flex items-start justify-between">
+                <CheckCircle2 className="h-10 w-10 text-mint lg:h-12 lg:w-12" strokeWidth={1.5} />
+                <span className="text-[3rem] font-black leading-none tracking-tighter text-background/10 lg:text-[4rem]">
+                  D-05
+                </span>
+              </div>
+              <div className="relative z-10 flex flex-col flex-1">
+                <div className="mb-3">
+                  <p className="inline-block border-b-2 border-mint/30 pb-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-mint">
+                    Leadership
+                  </p>
+                </div>
+                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight text-background lg:text-[1.25rem] break-words">
+                  Executive Summary
                 </h4>
                 <p className="text-sm font-semibold leading-relaxed text-background/80">
-                  Prioritized recommendations with rationale and effort estimates. Delivered alongside a one-page summary for leadership that drives decisions.
+                  A one-page summary for leadership that drives decisions, not just informs.
                 </p>
               </div>
             </motion.div>
@@ -491,7 +531,7 @@ export default function MaturityAssessment() {
       </section>
 
       {/* Methodology Section - Twisted Horizontal Flow */}
-      <section className="relative flex flex-col overflow-hidden bg-background py-12 lg:py-12 lg:min-h-[calc(100vh-80px)] border-b-4 border-foreground">
+      <section className="relative flex flex-col overflow-hidden border-t-2 border-b-2 border-foreground bg-background py-12 lg:py-12 lg:min-h-[calc(100vh-80px)]">
         <div className="container relative z-10 mx-auto max-w-7xl px-6 lg:my-auto flex flex-col">
           <div className="mb-10 flex flex-col justify-between gap-6 border-b-4 border-foreground pb-8 md:flex-row md:items-center md:gap-10">
             <h3 className="mb-0 text-[clamp(2rem,6vw,4.5rem)] font-black uppercase leading-none tracking-tighter text-forest">
@@ -543,7 +583,7 @@ export default function MaturityAssessment() {
       <CaseStudySection />
 
       {/* FAQ Section - High Impact Neo-Brutalist */}
-      <section className="relative flex flex-col overflow-hidden border-t-4 border-foreground bg-card py-12 lg:py-20 lg:min-h-[calc(100vh-80px)]">
+      <section className="relative flex flex-col overflow-hidden border-t-2 border-b-2 border-foreground bg-card py-12 lg:py-20 lg:min-h-[calc(100vh-80px)]">
         {/* Dramatic grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808015_1px,transparent_1px),linear-gradient(to_bottom,#80808015_1px,transparent_1px)] bg-[size:64px_64px]" />
         
@@ -602,6 +642,8 @@ export default function MaturityAssessment() {
                     </div>
                   </div>
                 </div>
+
+
                 
               </div>
             </div>
@@ -625,6 +667,36 @@ export default function MaturityAssessment() {
                 ].map((faq, i) => (
                   <FAQItem key={i} index={i} q={faq.q} a={faq.a} />
                 ))}
+              </div>
+
+              {/* Blank Space Filler - Perfect Icons */}
+              <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full pt-8 border-t-[3px] border-slate-200/60">
+                <div className="flex items-center gap-4 group cursor-default">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-none border-[3px] border-slate-300 bg-white text-slate-700 group-hover:border-rose-500 group-hover:text-rose-500 group-hover:shadow-[6px_6px_0_0_rgba(225,29,72,1)] group-hover:-translate-y-1 transition-all duration-300">
+                    <ShieldCheck size={28} strokeWidth={2} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-black uppercase tracking-wide text-slate-800 group-hover:text-rose-600 transition-colors duration-300">Unbiased Analysis</span>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4 group cursor-default">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-none border-[3px] border-slate-300 bg-white text-slate-700 group-hover:border-rose-500 group-hover:text-rose-500 group-hover:shadow-[6px_6px_0_0_rgba(225,29,72,1)] group-hover:-translate-y-1 transition-all duration-300">
+                    <Target size={28} strokeWidth={2} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-black uppercase tracking-wide text-slate-800 group-hover:text-rose-600 transition-colors duration-300">Actionable Strategy</span>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4 group cursor-default">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-none border-[3px] border-slate-300 bg-white text-slate-700 group-hover:border-rose-500 group-hover:text-rose-500 group-hover:shadow-[6px_6px_0_0_rgba(225,29,72,1)] group-hover:-translate-y-1 transition-all duration-300">
+                    <Lightbulb size={28} strokeWidth={2} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-black uppercase tracking-wide text-slate-800 group-hover:text-rose-600 transition-colors duration-300">Clear Path Forward</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

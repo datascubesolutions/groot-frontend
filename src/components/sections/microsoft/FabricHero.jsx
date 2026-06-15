@@ -117,37 +117,25 @@ export function FabricHero() {
 
   return (
     <>
-      <div className="container mx-auto max-w-[1400px] px-6 py-1 pt-28">
-        <Breadcrumb
-          items={[
-            {
-              label: "Microsoft",
-              href: "/microsoft",
-            },
-            {
-              label: "Microsoft Fabric",
-              href: "/microsoft/fabric",
-            },
-          ]}
-        />
-      </div>
 
-      <section className="relative w-full min-h-[calc(100vh-112px)] flex flex-col border-t border-b border-[#1b2b36]">
+      <section className="relative w-full flex flex-col lg:min-h-[calc(100vh-80px)]">
         {/* Main container - 50/50 Split */}
         <div className="relative flex flex-col lg:flex-row w-full flex-1 overflow-hidden">
           
           {/* Left side: Content */}
-          <div className="relative flex w-full flex-col justify-center bg-[#e6f0eb] lg:w-1/2 z-10 overflow-hidden">
+          <div className="relative flex w-full flex-col justify-center bg-[#f0f4f8] lg:w-1/2 z-10 overflow-hidden min-h-[55vh] lg:min-h-0">
             {/* Left side geometric pattern */}
             <div 
-              className="absolute inset-0 pointer-events-none z-0 opacity-40"
+              className="absolute inset-0 pointer-events-none z-0 opacity-60"
               style={{
-                backgroundImage: `repeating-linear-gradient(45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px), repeating-linear-gradient(-45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px)`
+                backgroundImage: `linear-gradient(#cbd5e1 1px, transparent 1px), linear-gradient(90deg, #cbd5e1 1px, transparent 1px)`,
+                backgroundSize: '40px 40px',
+                backgroundPosition: '-1px -1px'
               }}
             />
 
             {/* Inner constraint to align with 1400px container */}
-            <div className="w-full max-w-[850px] ml-auto mr-0 pl-6 lg:pl-10 xl:pl-16 pr-6 lg:pr-10 py-10 lg:py-12 relative z-10">
+            <div className="w-full max-w-[850px] mx-auto lg:ml-auto lg:mr-0 px-5 sm:px-6 lg:pl-10 xl:pl-16 lg:pr-10 py-8 lg:py-12 relative z-10">
               <motion.div
                 initial="hidden"
                 animate="visible"
@@ -155,30 +143,30 @@ export function FabricHero() {
                 className="relative z-10"
               >
                 {/* Eyebrow */}
-                <motion.div variants={fadeIn} className="mb-8 flex items-center gap-3 text-[11px] font-bold tracking-[0.2em] text-[#1b2b36] sm:text-sm lg:text-[15px]">
-                  <div className="h-3 w-3 bg-[#A8D5BA]"></div>
+                <motion.div variants={fadeIn} className="mb-4 lg:mb-6 flex items-center gap-3 text-[11px] font-bold tracking-[0.2em] text-[#1b2b36] sm:text-sm lg:text-[15px]">
+                  <div className="h-3 w-3 bg-[#00A4EF]"></div>
                   ONE PLATFORM. ONE TRUTH.
                 </motion.div>
 
                 {/* Headline */}
-                <motion.h1 variants={fadeIn} className="mb-8 text-[2.5rem] font-black uppercase leading-[0.95] tracking-tight text-[#1b2b36] sm:text-[3.5rem] lg:text-[4rem] xl:text-[4.2rem] 2xl:text-[4.5rem]">
+                <motion.h1 variants={fadeIn} className="mb-6 text-[2rem] font-black uppercase leading-[0.95] tracking-tight text-[#1b2b36] sm:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.2rem]">
                   Microsoft Fabric
                 </motion.h1>
 
                 {/* Subtext */}
-                <motion.p variants={fadeIn} className="mb-8 max-w-[650px] text-lg leading-relaxed text-[#1b2b36] sm:text-xl lg:text-2xl xl:text-[1.75rem] xl:leading-[1.6]">
+                <motion.p variants={fadeIn} className="mb-6 lg:mb-8 max-w-[650px] text-base leading-relaxed text-[#1b2b36] sm:text-lg lg:text-xl xl:text-[1.5rem] xl:leading-[1.6]">
                   Stop chasing the same number. From raw ingestion to board-ready dashboards — unified, governed, and ready for AI. <span className="font-bold text-[#1b2b36]">In 10 weeks.</span>
                 </motion.p>
 
                 {/* Core Technologies List */}
-                <motion.div variants={fadeIn} className="mb-10">
-                  <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-[#1b2b36]">
+                <motion.div variants={fadeIn} className="mb-6 lg:mb-8">
+                  <h3 className="mb-3 lg:mb-4 text-xs lg:text-sm font-bold uppercase tracking-widest text-[#1b2b36]">
                     Platform & Ecosystem:
                   </h3>
-                  <div className="grid max-w-lg grid-cols-2 gap-x-8 gap-y-4">
+                  <div className="grid max-w-lg grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-3 lg:gap-y-4">
                     {technologies.map((tech, idx) => (
                       <div key={idx} className="flex items-center gap-3">
-                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#A8D5BA]/30">
+                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#00A4EF]/15">
                           {tech.icon}
                         </div>
                         <span className="text-sm font-semibold tracking-wide text-[#1b2b36]">
@@ -192,7 +180,7 @@ export function FabricHero() {
                 {/* CTA */}
                 <motion.div variants={fadeIn}>
                   <Link href="/contact?service=fabric-assessment" passHref>
-                    <Button className="h-16 rounded-none bg-[#1b2b36] hover:bg-[#1b2b36]/90 px-10 sm:px-12 lg:px-14 text-sm sm:text-base font-bold uppercase tracking-widest text-white shadow-none border-none">
+                    <Button className="h-14 lg:h-16 rounded-none bg-[#1b2b36] hover:bg-[#1b2b36]/90 px-8 sm:px-12 lg:px-14 text-xs sm:text-sm lg:text-base font-bold uppercase tracking-widest text-white shadow-none border-none">
                       Get Readiness Assessment <ChevronRight className="ml-3 h-5 w-5" />
                     </Button>
                   </Link>
@@ -202,26 +190,28 @@ export function FabricHero() {
           </div>
 
           {/* Right side: Visualization */}
-          <div className="relative flex w-full items-center justify-center bg-[#f8f9fa] lg:w-1/2 z-0 overflow-hidden">
+          <div className="relative flex w-full items-center justify-center bg-[#f8f9fa] lg:w-1/2 z-0 overflow-hidden min-h-[45vw] sm:min-h-[40vw] lg:min-h-0">
             {/* Right side geometric pattern */}
             <div 
-              className="absolute inset-0 pointer-events-none z-0 opacity-50"
+              className="absolute inset-0 pointer-events-none z-0 opacity-40"
               style={{
-                backgroundImage: `repeating-linear-gradient(45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px), repeating-linear-gradient(-45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px)`
+                backgroundImage: `linear-gradient(#cbd5e1 1px, transparent 1px), linear-gradient(90deg, #cbd5e1 1px, transparent 1px)`,
+                backgroundSize: '40px 40px',
+                backgroundPosition: '-1px -1px'
               }}
             />
 
             {/* Inner constraint to align with 1400px container */}
-            <div className="w-full max-w-[850px] mr-auto ml-0 pl-0 pr-6 lg:pr-10 xl:pr-16 py-10 lg:py-12 z-10">
+            <div className="w-full max-w-[850px] mx-auto lg:mr-auto lg:ml-0 px-5 sm:px-6 lg:pl-0 lg:pr-10 xl:pr-16 py-6 lg:py-12 z-10">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="relative w-full"
               >
-                {/* Double bordered frame for the visualization */}
-                <div className="relative w-full border-[2px] border-[#1b2b36] p-2 lg:p-3 bg-white">
-                  <div className="relative aspect-[4/3] lg:aspect-[5/4] w-full border-[2px] border-[#1b2b36] bg-muted/20 overflow-hidden flex items-center justify-center">
+                {/* Modern frame for the visualization */}
+                <div className="relative w-full rounded-3xl bg-white shadow-[0_0_40px_-10px_rgba(0,0,0,0.1)] border border-slate-200/60 p-2 lg:p-3">
+                  <div className="relative aspect-[4/3] lg:aspect-[5/4] w-full rounded-2xl bg-slate-50/50 overflow-hidden flex items-center justify-center border border-slate-100">
                     
                     {/* Rich Glassmorphic Ambient Backing */}
                     <div className="absolute inset-2 z-0 transform overflow-hidden rounded-[2.5rem] border border-white/80 bg-white/40 shadow-[0_20px_80px_-20px_rgba(0,130,114,0.15)] backdrop-blur-3xl transition-transform duration-700 hover:scale-[1.01] lg:inset-4">

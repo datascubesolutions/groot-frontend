@@ -1,14 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, ChevronRight, PieChart, Target } from "lucide-react";
+import { CheckCircle2, ChevronRight, CircleHelp, HelpCircle, PieChart, Target } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 export default function NextStepsSection() {
   return (
     <>
-      <section className="relative flex flex-col overflow-hidden border-t-4 border-foreground bg-background py-12 lg:py-20 lg:min-h-[calc(100vh-80px)]">
+      <section className="relative flex flex-col overflow-hidden border-t-2 border-b-2 border-foreground bg-background py-12 lg:py-20 lg:min-h-[calc(100vh-80px)]">
         <div className="container relative z-10 mx-auto max-w-7xl px-6 lg:my-auto">
           <div className="relative mb-6 grid grid-cols-1 items-center gap-6 md:grid-cols-12 lg:mb-6 lg:gap-4">
             <div className="absolute -top-12 right-[30%] -z-10 hidden h-[150%] w-[1px] bg-gradient-to-b from-transparent via-border to-transparent lg:block" />
@@ -161,49 +162,110 @@ export default function NextStepsSection() {
           </div>
         </div>
       </section>
+      <section className="relative overflow-hidden border-t border-[#1b2b36]/20 bg-[#e6f0eb] py-16 text-[#1b2b36] md:py-24 lg:py-28">
+        {/* Subtle geometric pattern — matches hero */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-30"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px), repeating-linear-gradient(-45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px)",
+          }}
+        />
+        <div className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-forest/10 blur-[80px]" />
+        <div className="pointer-events-none absolute -right-24 bottom-1/4 h-72 w-72 rounded-full bg-[#A8D5BA]/40 blur-[80px]" />
 
-      {/* <section className="relative overflow-hidden border-t-[12px] border-forest bg-muted/30 py-16 text-foreground md:py-24 lg:py-32">
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[200%] w-[150%] -translate-x-1/2 -translate-y-1/2 rounded-none bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.15),transparent_40%)] blur-[100px]" />
+        {/* Decorative question mark watermarks */}
+        <div className="pointer-events-none absolute left-[8%] top-[18%] hidden text-forest/8 lg:block">
+          <CircleHelp className="h-32 w-32" strokeWidth={1} />
+        </div>
+        <div className="pointer-events-none absolute right-[10%] bottom-[20%] hidden text-forest/6 lg:block">
+          <HelpCircle className="h-24 w-24" strokeWidth={1} />
+        </div>
 
-        <div className="container relative z-10 mx-auto max-w-6xl px-6">
-          <div className="text-center">
-            <h2 className="mb-8 select-none text-4xl font-black uppercase leading-[0.85] tracking-tighter text-foreground sm:mb-10 sm:text-[2.5rem] md:text-[7rem]">
-              <span className="text-forest underline decoration-forest/50 underline-offset-8">
-                Know
+        <div className="container relative z-10 mx-auto max-w-5xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center"
+          >
+            {/* Eyebrow */}
+            <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-[#1b2b36]/15 bg-[#dce9e2]/70 px-4 py-2 shadow-sm backdrop-blur-sm">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-forest/10 text-forest">
+                <CircleHelp className="h-4 w-4" strokeWidth={2.5} />
               </span>
-              <br /> Where you
-              <br />
-              Stand.
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1b2b36]/80">
+                Discovery starts here
+              </span>
+            </div>
+
+            <h2 className="mb-10 text-balance font-serif text-4xl font-bold leading-[1.05] tracking-tight text-[#1b2b36] sm:text-5xl md:text-6xl lg:text-[4.25rem]">
+              <span className="text-forest">Know</span> where
+              <br className="hidden sm:block" />
+              {" "}you stand
+              <span className="inline-flex align-middle ml-2 sm:ml-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-forest/30 bg-[#dce9e2]/80 text-forest shadow-sm sm:h-12 sm:w-12">
+                  <HelpCircle className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} />
+                </span>
+              </span>
             </h2>
 
-            <div className="relative mx-auto max-w-4xl border-[4px] border-foreground bg-card/95 p-6 shadow-[16px_16px_0_0_rgba(0,0,0,1)] backdrop-blur-xl sm:p-8 md:p-12 dark:shadow-[16px_16px_0_0_rgba(255,255,255,1)]">
-              <div className="absolute -left-4 -top-4 h-8 w-8 border-l-4 border-t-4 border-forest"></div>
-              <div className="absolute -bottom-4 -right-4 h-8 w-8 border-b-4 border-r-4 border-forest"></div>
+            <div className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-[#1b2b36]/12 bg-[#dce9e2]/55 p-8 shadow-[0_20px_48px_-12px_rgba(10,37,24,0.08)] backdrop-blur-md sm:p-10 md:p-12">
+              {/* Accent corners */}
+              <div className="absolute left-0 top-0 h-16 w-1 bg-gradient-to-b from-forest to-forest/20" />
+              <div className="pointer-events-none absolute -right-6 -top-6 text-forest/[0.06]">
+                <CircleHelp className="h-28 w-28" strokeWidth={1.5} />
+              </div>
 
-              <p className="mx-auto mb-6 text-xl font-black uppercase leading-relaxed tracking-wide text-foreground md:text-2xl">
+              <p className="relative z-10 mx-auto mb-6 max-w-2xl text-lg font-semibold leading-relaxed text-[#1b2b36] md:text-xl">
                 A maturity assessment gives you the baseline you need to make
                 confident Microsoft Fabric and Azure investments.
               </p>
-              <p className="mx-auto mb-10 border-t-2 border-border/50 pt-6 text-lg font-bold leading-relaxed text-muted-foreground md:text-xl">
-                Let&apos;s find your gaps before they find you.
-              </p>
 
-              <div className="flex w-full justify-center">
+              <div className="relative z-10 mx-auto mb-8 flex max-w-xl items-center justify-center gap-3 border-t border-[#1b2b36]/10 pt-6">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-forest/10 text-forest">
+                  <HelpCircle className="h-4 w-4" strokeWidth={2.5} />
+                </span>
+                <p className="text-base font-medium italic leading-relaxed text-[#1b2b36]/70 md:text-lg">
+                  Let&apos;s find your gaps before they find you.
+                </p>
+              </div>
+
+              {/* Trust signals */}
+              <div className="relative z-10 mb-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-left">
+                {[
+                  "Evidence-based scoring",
+                  "3–4 week delivery",
+                  "Executive-ready summary",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#1b2b36]/60"
+                  >
+                    <CheckCircle2 className="h-3.5 w-3.5 text-forest" strokeWidth={2.5} />
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div className="relative z-10 flex w-full justify-center">
                 <Link href="/contact?service=maturity-assessment" passHref className="w-full sm:w-auto">
                   <Button
-                    variant="hero"
                     size="lg"
-                    className="group relative flex w-full items-center justify-center rounded-none border-4 border-foreground bg-transparent py-6 text-center text-base font-black uppercase tracking-wider text-foreground shadow-[12px_12px_0_0_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-3 hover:translate-y-3 hover:border-forest hover:bg-forest hover:text-forest-foreground hover:shadow-none sm:w-auto sm:py-8 sm:text-xl sm:tracking-[0.2em] dark:shadow-[12px_12px_0_0_rgba(255,255,255,1)] dark:hover:shadow-none"
+                    className="group relative flex w-full items-center justify-center gap-3 rounded-full border-0 bg-[#1b2b36] px-10 py-6 text-sm font-bold uppercase tracking-[0.15em] text-white shadow-lg shadow-[#1b2b36]/20 transition-all duration-300 hover:bg-[#1b2b36]/90 hover:shadow-xl hover:shadow-[#1b2b36]/25 sm:w-auto sm:px-14 sm:py-7 sm:text-base"
                   >
-                    <span className="flex h-full w-full items-center justify-center px-12 sm:px-16">Schedule Assessment</span>
-                    <ChevronRight className="absolute right-4 h-6 w-6 transition-transform group-hover:translate-x-3 sm:right-6 sm:h-8 sm:w-8" />
+                    Schedule Assessment
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
+                      <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
                   </Button>
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section> */}
+      </section>
     </>
   );
 }

@@ -181,7 +181,7 @@ export default function PowerBIPage() {
   ];
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="relative min-h-screen overflow-x-hidden bg-background pt-20">
       <PowerBIHero />
 
       <ProblemSection tagline="The reporting reality." problems={problems} />

@@ -200,7 +200,7 @@ export default function FabricPage() {
   ];
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="relative min-h-screen overflow-x-hidden bg-background pt-20">
       <FabricHero />
 
       <ProblemSection

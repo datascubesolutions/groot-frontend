@@ -13,7 +13,7 @@ export function CapabilitiesSection({
   if (!capabilities || capabilities.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-background py-12 text-foreground md:py-16">
+    <section className="relative flex flex-col justify-center overflow-hidden border-t border-border/50 bg-slate-50 py-12 lg:py-0 lg:min-h-[calc(100vh-80px)] text-foreground">
       {/* Animated Cinematic Background gradients */}
       <div className="absolute left-0 top-0 z-0 h-full w-full overflow-hidden">
         <motion.div

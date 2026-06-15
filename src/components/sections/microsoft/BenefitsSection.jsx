@@ -14,7 +14,7 @@ export function BenefitsSection({
   const [hero, ...rest] = benefits;
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-background py-8 text-foreground md:py-12">
+    <section className="relative flex flex-col justify-center overflow-hidden border-t border-border/50 bg-background py-12 lg:py-0 lg:min-h-[calc(100vh-80px)] text-foreground">
       {/* Animated Cinematic Background accents */}
       <motion.div
         animate={
@@ -81,12 +81,12 @@ export function BenefitsSection({
 
       <div className="container relative z-10 mx-auto px-6">
         {/* Header */}
-        <div className="mx-auto mb-6 max-w-3xl text-center md:mb-8">
+        <div className="mx-auto mb-2 max-w-3xl text-center md:mb-4">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-4 block text-sm font-semibold uppercase tracking-widest text-forest"
+            className="mb-2 block text-xs font-semibold uppercase tracking-widest text-forest"
           >
             The Benefits
           </motion.span>
@@ -95,7 +95,7 @@ export function BenefitsSection({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground antialiased md:text-4xl lg:text-5xl"
+            className="text-balance text-2xl font-semibold leading-tight tracking-tight text-foreground antialiased md:text-3xl lg:text-4xl"
           >
             {title}
           </motion.h2>
@@ -105,7 +105,7 @@ export function BenefitsSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="mx-auto mt-3 max-w-2xl text-base font-normal leading-relaxed text-muted-foreground/90 antialiased md:text-lg"
+              className="mx-auto mt-2 max-w-2xl text-sm font-normal leading-relaxed text-muted-foreground/90 antialiased md:text-base"
             >
               {subtitle}
             </motion.p>
@@ -113,7 +113,7 @@ export function BenefitsSection({
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {/* Hero Card — spans 2 columns */}
           {hero && (
             <motion.div
@@ -126,17 +126,17 @@ export function BenefitsSection({
               {/* Hover glare effect */}
               <div className="absolute inset-0 bg-white/0 transition-colors duration-500 group-hover:bg-white/5" />
 
-              <div className="flex flex-col gap-4 pl-4 md:flex-row md:items-start md:gap-6">
+              <div className="flex flex-col gap-3 pl-4 md:flex-row md:items-start md:gap-4">
                 {hero.icon && (
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-white/20 text-white transition-transform duration-300 group-hover:scale-110">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-white/20 text-white transition-transform duration-300 group-hover:scale-110">
                     {hero.icon}
                   </div>
                 )}
                 <div className="flex-1 antialiased">
-                  <h3 className="mb-2 text-2xl font-semibold tracking-tight text-white md:text-3xl">
+                  <h3 className="mb-1 text-xl font-semibold tracking-tight text-white md:text-2xl">
                     {hero.title}
                   </h3>
-                  <p className="mb-3 max-w-2xl text-base font-normal leading-relaxed text-white/80 md:text-lg">
+                  <p className="mb-1 max-w-2xl text-sm font-normal leading-relaxed text-white/80 md:text-base">
                     {hero.description}
                   </p>
                   {hero.outcome && (
@@ -157,7 +157,7 @@ export function BenefitsSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-              className={`group relative overflow-hidden rounded-3xl border border-border/40 bg-card/60 p-4 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-forest/30 hover:shadow-lg md:p-5 ${
+              className={`group relative overflow-hidden rounded-2xl border border-border/40 bg-card/60 p-4 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-forest/30 hover:shadow-lg ${
                 index === 0 ? "lg:row-span-2" : ""
               }`}
             >
@@ -166,18 +166,18 @@ export function BenefitsSection({
 
               <div className="relative z-10 flex h-full flex-col antialiased">
                 {benefit.icon && (
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-forest/10 text-forest transition-transform duration-300 group-hover:scale-110">
+                  <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-xl bg-forest/10 text-forest transition-transform duration-300 group-hover:scale-110">
                     {benefit.icon}
                   </div>
                 )}
-                <h3 className="mb-2 text-lg font-semibold tracking-tight text-foreground">
+                <h3 className="mb-1 text-base font-semibold tracking-tight text-foreground lg:text-lg">
                   {benefit.title}
                 </h3>
-                <p className="mb-3 flex-1 text-sm font-normal leading-relaxed text-muted-foreground/90">
+                <p className="mb-1 flex-1 text-[13px] font-normal leading-relaxed text-muted-foreground/90 lg:text-sm">
                   {benefit.description}
                 </p>
                 {benefit.outcome && (
-                  <p className="text-xs font-medium text-forest">
+                  <p className="text-[11px] font-medium text-forest lg:text-xs">
                     {benefit.outcome}
                   </p>
                 )}
@@ -186,12 +186,13 @@ export function BenefitsSection({
           ))}
 
           {/* Empty Space Filler Custom Visualization */}
+          {rest.length % 3 !== 0 && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="group relative hidden min-h-[250px] items-center justify-center overflow-hidden rounded-3xl border border-border bg-white p-8 shadow-xl lg:flex"
+            className="group relative hidden min-h-[200px] items-center justify-center overflow-hidden rounded-2xl border border-border bg-white p-6 shadow-xl lg:flex"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-[#008272]/5 to-[#00A4EF]/5 transition-colors duration-500 group-hover:from-[#008272]/10 group-hover:to-[#00A4EF]/10" />
 
@@ -325,6 +326,7 @@ export function BenefitsSection({
               </div>
             </div>
           </motion.div>
+          )}
         </div>
       </div>
     </section>

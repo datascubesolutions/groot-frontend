@@ -7,15 +7,13 @@ import {
   BarChart2,
   BarChart3,
   CheckCircle2,
-  Cpu,
   Database,
   FileSearch,
   Lightbulb,
   RefreshCcw,
-  Scale,
   Shield,
   TrendingUp,
-  Users,
+  Users
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,12 +40,18 @@ export default function CaseStudySection() {
 
               {/* Text Card */}
               <div className="flex flex-col justify-center rounded-[20px] bg-card p-5 lg:p-6 border border-border shadow-sm lg:h-full">
-                <div className="mb-3 flex items-center gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#0A2518]">
-                    <BarChart2 className="h-3 w-3 text-white" />
+                <div className="mb-3 flex flex-wrap items-center gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#0A2518]">
+                      <BarChart2 className="h-3 w-3 text-white" />
+                    </div>
+                    <span className="text-[11px] font-bold tracking-widest text-[#0A2518] uppercase">
+                      Technology & SaaS
+                    </span>
                   </div>
-                  <span className="text-[11px] font-bold tracking-widest text-[#0A2518] uppercase">
-                    Technology & SaaS
+                  <span className="text-slate-300 mx-1 hidden sm:block">•</span>
+                  <span className="text-[11px] font-bold tracking-widest text-slate-500 uppercase">
+                    Use Case Reference: UC4 — Fabric Migration Assessment
                   </span>
                 </div>
                 <h2 className="mb-3 text-[1.5rem] lg:text-[1.85rem] font-bold leading-[1.15] tracking-tight text-slate-900">
@@ -65,8 +69,8 @@ export default function CaseStudySection() {
             </div>
 
             {/* ROI Card */}
-            <div className="flex flex-col justify-center rounded-[20px] bg-card p-5 lg:p-6 border border-border shadow-sm shrink-0">
-              <div className="flex items-start justify-between mb-4">
+            <div className="flex flex-col justify-center rounded-[20px] bg-card p-5 lg:p-7 border border-border shadow-sm shrink-0">
+              <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2 mt-0.5">
                   <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-50">
                     <BarChart3 className="h-3 w-3 text-[#0A2518]" />
@@ -84,50 +88,6 @@ export default function CaseStudySection() {
                   so you can stop wrestling with fractured pipelines and start
                   scaling securely.
                 </p>
-              </div>
-
-              {/* Gauges Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-1 w-full">
-                <GaugeItem
-                  icon={Cpu}
-                  label="Perceived Tech Readiness"
-                  value="85%"
-                  color="bg-[#0A2518]"
-                  lightColor="bg-emerald-50"
-                  iconColor="text-[#0A2518]"
-                />
-                <GaugeItem
-                  icon={TrendingUp}
-                  label="Actual Tech Readiness"
-                  value="32%"
-                  color="bg-rose-500"
-                  lightColor="bg-rose-50"
-                  iconColor="text-rose-500"
-                />
-                <GaugeItem
-                  icon={Shield}
-                  label="Perceived Data Trust"
-                  value="70%"
-                  color="bg-slate-700"
-                  lightColor="bg-slate-100"
-                  iconColor="text-slate-700"
-                />
-                <GaugeItem
-                  icon={Database}
-                  label="Actual Data Quality"
-                  value="28%"
-                  color="bg-amber-500"
-                  lightColor="bg-amber-50"
-                  iconColor="text-amber-500"
-                />
-                <GaugeItem
-                  icon={Scale}
-                  label="Governance Coverage"
-                  value="15%"
-                  color="bg-[#0A2518]"
-                  lightColor="bg-emerald-50"
-                  iconColor="text-[#0A2518]"
-                />
               </div>
             </div>
           </div>
@@ -299,7 +259,7 @@ export default function CaseStudySection() {
                 <p className="text-sm leading-relaxed text-slate-700 font-medium">
                   After addressing platform limits and modernizing the
                   architecture, the company saw measurable impact across cost
-                  and productivity.
+                  and productivity. BI team now self-sufficient without dependency on the legacy AAS admin.
                 </p>
               </div>
             </div>
@@ -385,6 +345,16 @@ export default function CaseStudySection() {
   );
 }
 
+/**
+ * @param {{
+ *   icon: import("lucide-react").LucideIcon;
+ *   label: string;
+ *   value: string;
+ *   color: string;
+ *   lightColor: string;
+ *   iconColor: string;
+ * }} props
+ */
 function GaugeItem({
   icon: IconComponent,
   label,
@@ -398,28 +368,28 @@ function GaugeItem({
   const restWords = words.slice(1).join(" ");
 
   return (
-    <div className="flex flex-col gap-1.5">
-      <div className="flex items-center gap-2 mb-1">
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center gap-2 mb-2">
         <div
-          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${lightColor}`}
+          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${lightColor}`}
         >
-          <IconComponent className={`h-3 w-3 ${iconColor}`} />
+          <IconComponent className={`h-3.5 w-3.5 ${iconColor}`} />
         </div>
         <div className="flex flex-col">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 leading-[1.1]">
+          <span className="text-[10px] lg:text-[11px] font-bold uppercase tracking-wider text-slate-700 leading-[1.2] whitespace-nowrap">
             {firstWord}
             <br />
             {restWords}
           </span>
         </div>
       </div>
-      <div className="pl-0">
+      <div className="pl-0 mt-auto">
         <div
-          className={`text-[1.5rem] font-bold mb-1.5 ${iconColor} leading-none tracking-tight`}
+          className={`text-[1.5rem] lg:text-[1.8rem] font-bold mb-2 ${iconColor} leading-none tracking-tight`}
         >
           {value}
         </div>
-        <div className="h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
+        <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: value }}
@@ -433,6 +403,13 @@ function GaugeItem({
   );
 }
 
+/**
+ * @param {{
+ *   icon: import("lucide-react").LucideIcon;
+ *   label: string;
+ *   text: string;
+ * }} props
+ */
 function ListItem({ icon: IconComponent, label, text }) {
   return (
     <div className="relative flex gap-4 z-10 items-start">

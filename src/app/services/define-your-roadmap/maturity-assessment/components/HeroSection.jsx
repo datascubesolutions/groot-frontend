@@ -1,12 +1,13 @@
 "use client";
 
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
+
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ArrowUpRight, BarChart, ChevronRight, Target } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+/** @type {import("framer-motion").Variants} */
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -14,6 +15,7 @@ const fadeIn = {
     y: 0,
     transition: {
       duration: 0.6,
+      /** @type {import("framer-motion").Easing} */
       ease: [0.25, 0.1, 0.25, 1.0],
     },
   },
@@ -30,24 +32,7 @@ const staggerContainer = {
 export default function HeroSection() {
   return (
     <>
-      <div className="container mx-auto max-w-[1400px] px-6 py-1">
-        <Breadcrumb
-          items={[
-            {
-              label: "Services",
-              href: "/services/define-your-roadmap/maturity-assessment",
-            },
-            {
-              label: "Define Your Roadmap",
-              href: "/services/define-your-roadmap",
-            },
-            {
-              label: "Maturity Assessment",
-              href: "/services/define-your-roadmap/maturity-assessment",
-            },
-          ]}
-        />
-      </div>
+
 
       <section className="relative w-full flex flex-col border-t border-b border-[#1b2b36] lg:min-h-[calc(100vh-112px)]">
         {/* Absolute full width border container to break out of any constraints */}
@@ -62,6 +47,18 @@ export default function HeroSection() {
                 backgroundImage: `repeating-linear-gradient(45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px), repeating-linear-gradient(-45deg, #A8D5BA 0, #A8D5BA 1px, transparent 1px, transparent 80px)`
               }}
             />
+
+            {/* Background typographic elements to fill space */}
+            <div className="absolute top-10 -left-10 z-0 select-none opacity-[0.04] pointer-events-none overflow-hidden">
+              <span className="text-[10rem] lg:text-[14rem] font-black uppercase leading-none text-[#1b2b36] whitespace-nowrap">
+                ASSESS
+              </span>
+            </div>
+            <div className="absolute bottom-10 right-0 z-0 select-none opacity-[0.04] pointer-events-none overflow-hidden">
+              <span className="text-[10rem] lg:text-[14rem] font-black uppercase leading-none text-[#1b2b36] whitespace-nowrap">
+                EVOLVE
+              </span>
+            </div>
 
             {/* Inner constraint to align with 1400px container */}
             <div className="w-full max-w-[850px] mx-auto lg:ml-auto lg:mr-0 px-5 sm:px-6 lg:pl-10 xl:pl-16 lg:pr-10 py-8 lg:py-12 relative z-10">
@@ -94,6 +91,25 @@ export default function HeroSection() {
                       Schedule Assessment <ChevronRight className="ml-3 h-5 w-5" />
                     </Button>
                   </Link>
+                </motion.div>
+
+                {/* Slogans / Stats to fill space */}
+                <motion.div variants={fadeIn} className="mt-12 flex flex-col gap-6 sm:mt-16 sm:flex-row sm:gap-10 border-t-2 border-[#1b2b36]/20 pt-8 relative z-20">
+                  <div className="flex flex-col gap-1 sm:gap-2">
+                    <Target className="h-5 w-5 sm:h-6 sm:w-6 text-[#1b2b36]" />
+                    <span className="text-2xl font-black text-[#1b2b36] lg:text-3xl">360°</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#1b2b36]/70 sm:text-xs">Holistic Analysis</span>
+                  </div>
+                  <div className="flex flex-col gap-1 sm:gap-2">
+                    <BarChart className="h-5 w-5 sm:h-6 sm:w-6 text-[#1b2b36]" />
+                    <span className="text-2xl font-black text-[#1b2b36] lg:text-3xl">6</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#1b2b36]/70 sm:text-xs">Core Pillars</span>
+                  </div>
+                  <div className="flex flex-col gap-1 sm:gap-2">
+                    <ArrowUpRight className="h-5 w-5 sm:h-6 sm:w-6 text-[#1b2b36]" />
+                    <span className="text-2xl font-black text-[#1b2b36] lg:text-3xl">100%</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#1b2b36]/70 sm:text-xs">Actionable Clarity</span>
+                  </div>
                 </motion.div>
               </motion.div>
             </div>
@@ -134,6 +150,32 @@ export default function HeroSection() {
                       </svg>
                     </div>
                   </div>
+
+                  {/* Floating Slogan 1 */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20, y: 10 }}
+                    animate={{ opacity: 1, x: 0, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="absolute -left-2 sm:-left-6 top-8 sm:top-12 z-20 bg-[#A8D5BA] px-3 py-2 sm:px-4 sm:py-2 border-2 border-[#1b2b36] shadow-[4px_4px_0px_0px_#1b2b36]"
+                  >
+                    <span className="text-[9px] sm:text-xs font-black uppercase tracking-widest text-[#1b2b36] flex items-center gap-2">
+                      <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 bg-[#1b2b36] rounded-full"></div>
+                      Identify Gaps
+                    </span>
+                  </motion.div>
+
+                  {/* Floating Slogan 2 */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20, y: -10 }}
+                    animate={{ opacity: 1, x: 0, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    className="absolute -right-2 sm:-right-6 bottom-8 sm:bottom-12 z-20 bg-white px-3 py-2 sm:px-4 sm:py-2 border-2 border-[#1b2b36] shadow-[4px_4px_0px_0px_#1b2b36]"
+                  >
+                    <span className="text-[9px] sm:text-xs font-black uppercase tracking-widest text-[#1b2b36] flex items-center gap-2">
+                      <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 bg-[#A8D5BA] rounded-full"></div>
+                      Accelerate Growth
+                    </span>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
