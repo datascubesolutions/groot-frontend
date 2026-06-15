@@ -1,429 +1,124 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
-  ArrowDown,
-  ArrowRight,
-  BarChart2,
-  BarChart3,
-  CheckCircle2,
   Database,
-  FileSearch,
-  Lightbulb,
-  RefreshCcw,
-  Shield,
+  Search,
   TrendingUp,
-  Users
+  ShieldCheck,
+  ArrowRight
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function CaseStudySection() {
   return (
-    <section className="bg-background flex flex-col w-full py-10 lg:py-8 lg:min-h-[calc(100vh-80px)] overflow-hidden font-sans text-foreground">
-      <div className="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:h-full flex flex-col lg:my-auto">
-        {/* Main Grid Wrapper */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-3 lg:h-full lg:max-h-[850px] lg:min-h-[700px]">
-          {/* LEFT SIDE: 8 Cols */}
-          <div className="lg:col-span-8 flex flex-col gap-3 lg:h-full">
-            {/* Top Row: Image & Text */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 flex-1">
-              {/* Image */}
-              <div className="relative w-full h-full overflow-hidden rounded-[20px] shadow-sm min-h-[180px]">
-                <Image
-                  src="/images/maturity/live_enterprise_alignment.png"
-                  alt="Enterprise Alignment"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+    <section className="relative flex flex-col justify-center border-t-2 border-b-2 border-foreground bg-background py-10 lg:py-0 lg:h-[calc(100vh-80px)] min-h-[700px] overflow-hidden">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-              {/* Text Card */}
-              <div className="flex flex-col justify-center rounded-[20px] bg-card p-5 lg:p-6 border border-border shadow-sm lg:h-full">
-                <div className="mb-3 flex flex-wrap items-center gap-2">
-                  <div className="flex items-center gap-2">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#0A2518]">
-                      <BarChart2 className="h-3 w-3 text-white" />
-                    </div>
-                    <span className="text-[11px] font-bold tracking-widest text-[#0A2518] uppercase">
-                      Technology & SaaS
-                    </span>
-                  </div>
-                  <span className="text-slate-300 mx-1 hidden sm:block">•</span>
-                  <span className="text-[11px] font-bold tracking-widest text-slate-500 uppercase">
-                    Use Case Reference: UC4 — Fabric Migration Assessment
-                  </span>
-                </div>
-                <h2 className="mb-3 text-[1.5rem] lg:text-[1.85rem] font-bold leading-[1.15] tracking-tight text-slate-900">
-                  How We Helped a PE Portfolio Company Find Their Gaps.
-                </h2>
-                <p className="text-sm leading-relaxed text-slate-700 font-medium">
-                  A PE-backed software company had invested in Azure Analysis
-                  Services (AAS) for enterprise data modeling. Leadership
-                  believed they were &quot;data mature.&quot; But refresh
-                  failures were increasing, autoscaling wasn&apos;t working, and
-                  the BI team was frustrated with the complexity of managing AAS
-                  alongside Power BI.
-                </p>
-              </div>
-            </div>
-
-            {/* ROI Card */}
-            <div className="flex flex-col justify-center rounded-[20px] bg-card p-5 lg:p-7 border border-border shadow-sm shrink-0">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2 mt-0.5">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-50">
-                    <BarChart3 className="h-3 w-3 text-[#0A2518]" />
-                  </div>
-                  <span className="text-[11px] font-bold tracking-widest text-[#0A2518] uppercase">
-                    The ROI of Reality
-                  </span>
-                </div>
-                <p className="text-sm leading-relaxed text-slate-600 font-medium max-w-[65%] hidden md:block">
-                  A maturity assessment isn&apos;t about pointing fingers.
-                  It&apos;s about eliminating{" "}
-                  <strong className="font-semibold text-slate-800">
-                    technical debt constraints
-                  </strong>{" "}
-                  so you can stop wrestling with fractured pipelines and start
-                  scaling securely.
-                </p>
-              </div>
-            </div>
+      <div className="container relative z-10 mx-auto max-w-[1536px] px-4 xl:px-8 2xl:px-12 flex flex-col justify-center h-full py-6 lg:py-8">
+        {/* Header Block */}
+        <div className="mb-6 flex flex-col justify-between gap-5 border-b-[3px] border-emerald-600 pb-5 md:flex-row md:items-end shrink-0 mt-2">
+          <div className="max-w-4xl">
+            <h3 className="text-[2.25rem] font-black uppercase leading-[0.9] tracking-tighter text-[#1b2b36] sm:text-[2.75rem] md:text-[3.25rem] lg:text-[3.5rem] max-w-[95%]">
+              How we helped a PE portfolio<br className="hidden md:block" /> company find their gaps.
+            </h3>
           </div>
-
-          {/* RIGHT SIDE: 4 Cols */}
-          <div className="lg:col-span-4 flex flex-col rounded-[20px] bg-card p-5 lg:p-6 border border-border shadow-sm lg:h-full">
-            {/* Top Stats */}
-            <div className="grid grid-cols-2 gap-3 mb-5">
-              <div className="flex flex-col justify-center rounded-[16px] border border-border bg-muted/50 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-50">
-                    <RefreshCcw
-                      className="h-3 w-3 text-[#0A2518]"
-                      strokeWidth={2}
-                    />
-                  </div>
-                  <span className="text-[2rem] font-bold tracking-tight text-[#0A2518] leading-none">
-                    3x
-                  </span>
-                </div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 leading-[1.3] mt-1">
-                  Faster Refresh
-                  <br />
-                  After Remediation
-                </span>
-              </div>
-              <div className="flex flex-col justify-center rounded-[16px] border border-border bg-muted/50 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-50">
-                    <Database
-                      className="h-3 w-3 text-[#0A2518]"
-                      strokeWidth={2}
-                    />
-                  </div>
-                  <span className="text-[2rem] font-bold tracking-tight text-[#0A2518] leading-none">
-                    8w
-                  </span>
-                </div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 leading-[1.3] mt-1">
-                  To Complete
-                  <br />
-                  Fabric Migration
-                </span>
-              </div>
-            </div>
-            {/* closes grid grid-cols-2 */}
-
-            {/* Divider */}
-            <div className="h-[1px] w-full bg-slate-100 mb-4"></div>
-
-            {/* Findings List */}
-            <div className="flex flex-col gap-4 flex-1 overflow-y-auto pr-1">
-              {/* Finding 1 */}
-              <div className="flex gap-3 relative">
-                <div className="absolute left-[11px] top-[30px] bottom-[-20px] w-[1px] bg-slate-100"></div>
-                <div className="flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-card border border-border z-10 mt-0.5">
-                  <Lightbulb className="h-[10px] w-[10px] text-slate-400" />
-                </div>
-                <div className="flex flex-col pb-2">
-                  <span className="text-[11px] font-bold tracking-widest text-slate-600 uppercase mb-0.5">
-                    Tech
-                  </span>
-                  <p className="text-sm leading-relaxed text-slate-700 font-medium">
-                    AAS models were well-designed, but the platform was reaching
-                    its limits. No autoscaling. XMLA endpoints weren&apos;t
-                    properly configured.
-                  </p>
-                </div>
-              </div>
-
-              {/* Finding 2 */}
-              <div className="flex gap-3 relative">
-                <div className="absolute left-[11px] top-[30px] bottom-[-20px] w-[1px] bg-slate-100"></div>
-                <div className="flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-card border border-border z-10 mt-0.5">
-                  <TrendingUp className="h-[10px] w-[10px] text-slate-400" />
-                </div>
-                <div className="flex flex-col pb-2">
-                  <span className="text-[11px] font-bold tracking-widest text-slate-600 uppercase mb-0.5">
-                    Analytics
-                  </span>
-                  <p className="text-sm leading-relaxed text-slate-700 font-medium">
-                    Good DAX measures, but models were disconnected from modern
-                    Power BI Premium features (dataflows).
-                  </p>
-                </div>
-              </div>
-
-              {/* Finding 3 */}
-              <div className="flex gap-3 relative">
-                <div className="absolute left-[11px] top-[30px] bottom-[-20px] w-[1px] bg-slate-100"></div>
-                <div className="flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-card border border-border z-10 mt-0.5">
-                  <Shield className="h-[10px] w-[10px] text-slate-400" />
-                </div>
-                <div className="flex flex-col pb-2">
-                  <span className="text-[11px] font-bold tracking-widest text-slate-600 uppercase mb-0.5">
-                    Gov
-                  </span>
-                  <p className="text-sm leading-relaxed text-slate-700 font-medium">
-                    No Purview integration. No lineage tracking. Sensitive data
-                    without classification.
-                  </p>
-                </div>
-              </div>
-
-              {/* Finding 4 */}
-              <div className="flex gap-3 relative">
-                <div className="absolute left-[11px] top-[30px] bottom-[-20px] w-[1px] bg-slate-100"></div>
-                <div className="flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-card border border-border z-10 mt-0.5">
-                  <Users className="h-[10px] w-[10px] text-slate-400" />
-                </div>
-                <div className="flex flex-col pb-2">
-                  <span className="text-[11px] font-bold tracking-widest text-slate-600 uppercase mb-0.5">
-                    Org
-                  </span>
-                  <p className="text-sm leading-relaxed text-slate-700 font-medium">
-                    One senior developer maintained everything. No
-                    documentation. Knowledge trapped in one head.
-                  </p>
-                </div>
-              </div>
-
-              {/* Finding 5 (Final) */}
-              <div className="flex gap-3 relative">
-                <div className="flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-100 z-10 mt-0.5">
-                  <CheckCircle2 className="h-[10px] w-[10px] text-[#0A2518]" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[11px] font-bold tracking-widest text-[#0A2518] uppercase mb-0.5">
-                    Recommendation
-                  </span>
-                  <p className="text-sm leading-relaxed text-slate-700 font-medium">
-                    Migrate from AAS to Microsoft Fabric. The assessment
-                    revealed 80% of pain points would be solved.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="flex shrink-0 pb-1">
+            <Link 
+              href="/industries/technology-saas" 
+              className="group flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-emerald-600 hover:text-emerald-700 transition-colors bg-emerald-50 px-5 py-2.5 rounded-full border border-emerald-200"
+            >
+              Technology & SaaS
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
+        </div>
 
-          {/* BOTTOM ROW */}
-          <div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-4 h-auto lg:h-full lg:max-h-[180px]">
-            {/* Laptop Card (5 cols) */}
-            <div className="md:col-span-5 flex flex-col sm:flex-row rounded-[24px] bg-card border border-border shadow-sm overflow-hidden h-full">
-              <div className="relative w-full sm:w-[40%] bg-slate-50 flex items-center justify-center overflow-hidden">
-                <div
-                  className="absolute inset-0 opacity-40"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle at 2px 2px, #cbd5e1 1px, transparent 0)",
-                    backgroundSize: "16px 16px",
-                  }}
-                ></div>
-                <div className="relative w-[120%] h-[120%] -ml-[10%] mt-[10%]">
-                  <Image
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop"
-                    alt="Analytics Platform"
-                    fill
-                    className="object-cover object-left-top rounded-lg shadow-xl"
-                  />
-                </div>
+        {/* 2x2 Grid Block */}
+        <div className="flex-1 min-h-0 bg-foreground border-[3px] border-foreground p-[2px] shadow-[15px_15px_0px_0px_hsl(var(--emerald-600)/0.25)] flex flex-col mb-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[2px] h-full flex-1">
+            
+            {/* Cell 1: Situation */}
+            <div className="group relative bg-card p-6 md:p-8 lg:p-10 flex flex-col overflow-hidden justify-center">
+              <div className="absolute right-[-2%] top-[-5%] text-[8rem] lg:text-[10rem] font-black leading-none tracking-tighter text-slate-100 pointer-events-none">01</div>
+              <div className="flex items-center gap-3 mb-4 lg:mb-6 relative z-10">
+                <Database className="h-6 w-6 text-emerald-600" strokeWidth={2.5} />
+                <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-[#1b2b36]">The Situation</h4>
               </div>
-              <div className="w-full sm:w-[60%] p-5 flex flex-col justify-center bg-card z-10">
-                <div className="mb-2 flex items-center gap-2.5">
-                  <div className="h-2 w-2 rounded-full bg-emerald-500"></div>
-                  <span className="text-[11px] font-bold tracking-widest text-slate-800 uppercase">
-                    Velocity Optimized
-                  </span>
+              <p className="text-[15px] lg:text-base font-medium leading-relaxed text-slate-600 relative z-10 max-w-[95%]">
+                A PE-backed software company had invested in Azure Analysis Services (AAS) for enterprise data modeling. Leadership believed they were "data mature." But refresh failures were increasing, autoscaling wasn't working, and the BI team was frustrated with the complexity of managing AAS alongside Power BI.
+              </p>
+            </div>
+
+            {/* Cell 2: What We Found */}
+            <div className="group relative bg-card p-6 md:p-8 lg:p-10 flex flex-col overflow-hidden justify-center">
+              <div className="absolute right-[-2%] top-[-5%] text-[8rem] lg:text-[10rem] font-black leading-none tracking-tighter text-slate-100 pointer-events-none">02</div>
+              <div className="flex items-center gap-3 mb-4 lg:mb-6 relative z-10">
+                <Search className="h-6 w-6 text-[#3b82f6]" strokeWidth={2.5} />
+                <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-[#1b2b36]">What We Found</h4>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 relative z-10">
+                 <div className="bg-slate-50 p-4 rounded-md border border-slate-200">
+                    <strong className="text-[#3b82f6] uppercase text-[10px] tracking-widest block mb-1.5">Technology</strong> 
+                    <span className="text-xs font-medium text-slate-600 leading-snug block">AAS models well-designed, but platform reaching limits. No autoscaling.</span>
+                 </div>
+                 <div className="bg-slate-50 p-4 rounded-md border border-slate-200">
+                    <strong className="text-[#3b82f6] uppercase text-[10px] tracking-widest block mb-1.5">Analytics</strong> 
+                    <span className="text-xs font-medium text-slate-600 leading-snug block">Disconnected from modern Power BI Premium features like dataflows.</span>
+                 </div>
+                 <div className="bg-slate-50 p-4 rounded-md border border-slate-200">
+                    <strong className="text-[#3b82f6] uppercase text-[10px] tracking-widest block mb-1.5">Governance</strong> 
+                    <span className="text-xs font-medium text-slate-600 leading-snug block">No Purview. No lineage. Sensitive data without classification.</span>
+                 </div>
+                 <div className="bg-slate-50 p-4 rounded-md border border-slate-200">
+                    <strong className="text-[#3b82f6] uppercase text-[10px] tracking-widest block mb-1.5">Organization</strong> 
+                    <span className="text-xs font-medium text-slate-600 leading-snug block">One senior developer maintained everything. Knowledge trapped.</span>
+                 </div>
+              </div>
+            </div>
+
+            {/* Cell 3: Recommendation (Dark Block) */}
+            <div className="group relative bg-[#0A2518] p-6 md:p-8 lg:p-10 flex flex-col text-background overflow-hidden justify-center">
+               <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--emerald-600)/0.2),transparent_70%)] pointer-events-none"></div>
+               
+               <div className="flex items-center gap-3 mb-4 lg:mb-6 relative z-10">
+                <ShieldCheck className="h-6 w-6 text-emerald-400" strokeWidth={2.5} />
+                <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-background">The Recommendation</h4>
+              </div>
+              <p className="text-base lg:text-lg font-bold leading-relaxed text-background/90 border-l-[3px] border-emerald-500 pl-5 lg:pl-6 relative z-10 max-w-[95%]">
+                Migrate from Azure Analysis Services to Microsoft Fabric. The assessment revealed that 80% of their pain points would be solved by the migration: autoscaling, simplified scheduling, native Power BI integration, and Fabric's built-in governance features.
+              </p>
+            </div>
+
+            {/* Cell 4: Outcome */}
+            <div className="group relative bg-card p-6 md:p-8 lg:p-10 flex flex-col overflow-hidden justify-center">
+              <div className="absolute right-[-2%] top-[-5%] text-[8rem] lg:text-[10rem] font-black leading-none tracking-tighter text-slate-100 pointer-events-none">04</div>
+              <div className="flex items-center gap-3 mb-5 lg:mb-8 relative z-10">
+                <TrendingUp className="h-6 w-6 text-violet-500" strokeWidth={2.5} />
+                <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-[#1b2b36]">The Outcome</h4>
+              </div>
+              
+              <div className="flex flex-col relative z-10">
+                <div className="mb-6 flex items-center gap-8 pb-6 border-b border-slate-200">
+                  <div className="flex flex-col min-w-[120px]">
+                    <div className="text-[3rem] lg:text-[4rem] font-black text-violet-500 leading-none tracking-tighter">3x</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mt-2">Faster Refresh</div>
+                  </div>
+                  <div className="w-[1px] h-14 bg-slate-200"></div>
+                  <div className="flex flex-col">
+                    <div className="text-[3rem] lg:text-[4rem] font-black text-violet-500 leading-none tracking-tighter">8w</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mt-2">To Migrate</div>
+                  </div>
                 </div>
-                <p className="text-sm leading-relaxed text-slate-700 font-medium">
-                  After addressing platform limits and modernizing the
-                  architecture, the company saw measurable impact across cost
-                  and productivity. BI team now self-sufficient without dependency on the legacy AAS admin.
+                <p className="text-[15px] lg:text-base font-medium leading-relaxed text-slate-600 max-w-[90%]">
+                  Assessment led to migration engagement. BI team now self-sufficient without dependency on the legacy AAS admin.
                 </p>
               </div>
             </div>
 
-            {/* Bottom Stats Card (3 cols) */}
-            <div className="md:col-span-3 flex flex-col justify-center rounded-[24px] bg-card border border-border shadow-sm px-6 py-4 h-full gap-3">
-              <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-500">
-                  <ArrowDown className="h-4 w-4" strokeWidth={2.5} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[1.25rem] font-bold text-rose-500 tracking-tight leading-none">
-                    -$1.2M
-                  </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                    Tech Debt Avoided
-                  </span>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-                  <TrendingUp className="h-4 w-4" strokeWidth={2.5} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[1.25rem] font-bold text-emerald-600 tracking-tight leading-none">
-                    +40%
-                  </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                    Velocity Lift
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Card (4 cols) */}
-            <div className="md:col-span-4 relative flex flex-col justify-center items-center rounded-[24px] bg-[#0A2518] p-6 overflow-hidden text-center shadow-lg h-full">
-              <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
-                <svg
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 400 300"
-                  fill="none"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M-50,350 C100,100 250,50 450,-50"
-                    stroke="white"
-                    strokeWidth="1"
-                  />
-                  <path
-                    d="M-50,380 C120,120 270,70 450,-20"
-                    stroke="white"
-                    strokeWidth="1"
-                  />
-                  <path
-                    d="M-50,410 C140,140 290,90 450,10"
-                    stroke="white"
-                    strokeWidth="1"
-                  />
-                </svg>
-              </div>
-
-              <div className="relative z-10 flex flex-col items-center w-full">
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white bg-white/5 backdrop-blur-sm">
-                  <FileSearch className="h-4 w-4" strokeWidth={1.5} />
-                </div>
-                <h3 className="mb-4 text-[1.1rem] font-semibold leading-[1.2] text-white max-w-[200px]">
-                  See how we work with technology companies
-                </h3>
-                <Link
-                  href="/industries/technology-saas"
-                  className="group flex w-full max-w-[200px] items-center justify-between rounded-full border border-white/30 px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-white transition-all hover:bg-white hover:text-[#0A2518]"
-                >
-                  Explore Solutions
-                  <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-/**
- * @param {{
- *   icon: import("lucide-react").LucideIcon;
- *   label: string;
- *   value: string;
- *   color: string;
- *   lightColor: string;
- *   iconColor: string;
- * }} props
- */
-function GaugeItem({
-  icon: IconComponent,
-  label,
-  value,
-  color,
-  lightColor,
-  iconColor,
-}) {
-  const words = label.split(" ");
-  const firstWord = words[0];
-  const restWords = words.slice(1).join(" ");
-
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2 mb-2">
-        <div
-          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${lightColor}`}
-        >
-          <IconComponent className={`h-3.5 w-3.5 ${iconColor}`} />
-        </div>
-        <div className="flex flex-col">
-          <span className="text-[10px] lg:text-[11px] font-bold uppercase tracking-wider text-slate-700 leading-[1.2] whitespace-nowrap">
-            {firstWord}
-            <br />
-            {restWords}
-          </span>
-        </div>
-      </div>
-      <div className="pl-0 mt-auto">
-        <div
-          className={`text-[1.5rem] lg:text-[1.8rem] font-bold mb-2 ${iconColor} leading-none tracking-tight`}
-        >
-          {value}
-        </div>
-        <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: value }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-            className={`h-full rounded-full ${color}`}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/**
- * @param {{
- *   icon: import("lucide-react").LucideIcon;
- *   label: string;
- *   text: string;
- * }} props
- */
-function ListItem({ icon: IconComponent, label, text }) {
-  return (
-    <div className="relative flex gap-4 z-10 items-start">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-50 border-[1.5px] border-slate-200 text-[#0A2518] shadow-sm z-10 mt-0.5">
-        <IconComponent className="h-4 w-4" strokeWidth={1.5} />
-      </div>
-      <div className="pb-1.5">
-        <span className="mb-2 inline-block rounded bg-slate-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-slate-700">
-          {label}
-        </span>
-        <p className="text-sm leading-[1.6] text-slate-500 font-medium pr-2">
-          {text}
-        </p>
-      </div>
-    </div>
   );
 }

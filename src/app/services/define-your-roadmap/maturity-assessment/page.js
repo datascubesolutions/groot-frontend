@@ -1,11 +1,11 @@
 // @ts-nocheck
 "use client";
 
-import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import {
   Activity,
   AlertCircle,
+  AlertTriangle,
   BarChart3,
   CheckCircle2,
   ChevronRight,
@@ -17,12 +17,11 @@ import {
   PieChart,
   ShieldCheck,
   Target,
-  Users
+  Users,
+  XCircle
 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import HeroSection from "./components/HeroSection";
 import CaseStudySection from "./components/CaseStudySection";
+import HeroSection from "./components/HeroSection";
 import NextStepsSection from "./components/NextStepsSection";
 
 const fadeIn = {
@@ -55,287 +54,163 @@ export default function MaturityAssessment() {
 
 
       {/* NEW PROBLEM SECTION REPLACEMENT */}
-      <section className="relative z-30 flex flex-col border-t-2 border-b-2 border-foreground bg-card py-8 lg:py-8 lg:min-h-[calc(100vh-80px)]">
-        <div className="container relative z-10 mx-auto max-w-[1536px] px-4 xl:px-8 flex flex-col gap-5 lg:gap-4 lg:my-auto">
-          {/* Row 1: The Cost of Assuming Readiness */}
-          <div className="flex flex-col lg:flex-row w-full bg-muted/40 rounded-xl border border-border shadow-sm overflow-hidden relative">
-            {/* Thick left border */}
-            <div className="w-2.5 bg-[#0A2518] absolute left-0 top-0 bottom-0 z-10"></div>
+      {/* NEW PROBLEM SECTION REPLACEMENT */}
+      <section className="relative z-30 flex flex-col justify-center bg-muted/20 py-10 lg:py-0 lg:min-h-[calc(100vh-80px)] border-t-2 border-foreground overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
-            {/* Left Content */}
-            <div className="w-full lg:w-[45%] p-4 lg:p-5 pl-8 flex flex-col justify-center">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-6 h-[2px] bg-[#0A2518]"></span>
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0A2518]">
-                  What we see in the field
-                </span>
-              </div>
-              <h3 className="font-serif text-[2.25rem] lg:text-[2.75rem] font-bold leading-[1.05] tracking-tight text-[#0A2518] mb-3">
-                The Cost of<br />Assuming<br />Readiness.
-              </h3>
-              <p className="text-sm leading-relaxed text-gray-800 font-medium max-w-[90%]">
-                Most organizations drastically overestimate their data maturity. When you build advanced analytics on a fractured foundation, the results are predictably chaotic.
-              </p>
-            </div>
-
-            {/* Right Content */}
-            <div className="w-full lg:w-[55%] p-3 flex items-stretch">
-              <div className="w-full bg-rose-950/10 rounded-xl p-5 lg:p-6 relative overflow-hidden flex flex-col justify-center border border-rose-900/20">
-                <div className="flex items-center gap-2 mb-2 relative z-10">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-rose-500 text-white shadow-sm">
-                    <Activity size={16} strokeWidth={2.5} />
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-[0.15em] text-rose-600">
-                    Infrastructure Risk
-                  </span>
-                </div>
-
-                <h4 className="text-base lg:text-lg font-black uppercase tracking-tight text-[#1b2b36] mb-1.5 relative z-10">
-                  The Pipeline That Fails Every Monday
-                </h4>
-
-                <p className="text-sm leading-relaxed text-gray-800 mb-2 relative z-10 w-full lg:max-w-[75%]">
-                  Your Data Factory pipeline fails again. The error says &quot;null reference in CustomerID transformation.&quot; Someone added a new customer type in the source ERP that your pipeline doesn&apos;t handle. This is the third time this month. There&apos;s no schema drift detection, no data quality rules, no proactive alerting.
-                </p>
-
-                <div className="flex items-start gap-2 bg-rose-50 border border-rose-200 rounded-lg px-3 py-2 relative z-10 w-full lg:max-w-[75%]">
-                  <AlertCircle size={14} className="text-rose-600 shrink-0 mt-0.5" />
-                  <p className="text-xs font-bold text-rose-700 leading-snug">
-                    You find out when Finance calls asking why the Power BI dashboard is blank.
-                  </p>
-                </div>
-
-                {/* SVG Background - Highly Detailed Pink Illustration */}
-                <div className="absolute right-0 top-0 bottom-0 w-[45%] max-w-[320px] pointer-events-none hidden lg:flex items-center justify-end pr-2 overflow-hidden z-0 rounded-r-xl">
-
-                  {/* Dot Grid Background */}
-                  <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #f43f5e 1px, transparent 0)', backgroundSize: '16px 16px' }}></div>
-
-                  <svg viewBox="0 0 100 125" className="w-full h-full max-h-[90%] text-rose-300 relative z-10" stroke="currentColor" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" preserveAspectRatio="xMaxYMid meet">
-
-                    {/* Database Cylinder */}
-                    <g className="translate-y-[-5px]">
-                      <path d="M50 15 c 12 0 18 2 18 4 v 18 c 0 2 -6 4 -18 4 s -18 -2 -18 -4 v -18 c 0 -2 6 -4 18 -4" fill="#FFF1F2" stroke="currentColor" strokeWidth="1.5" />
-                      <ellipse cx="50" cy="19" rx="18" ry="4" stroke="currentColor" strokeWidth="1.5" fill="#FFE4E6" />
-                      <path d="M32 27 c 0 2 6 4 18 4 s 18 -2 18 -4" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                      <path d="M32 35 c 0 2 6 4 18 4 s 18 -2 18 -4" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                    </g>
-
-                    {/* Dashed Connecting Lines & Arrows */}
-                    <path d="M30 65 v -15 a 5 5 0 0 1 5 -5 h 13" strokeDasharray="2 3" stroke="currentColor" fill="none" strokeWidth="1.5" />
-                    <polygon points="46,43 50,45 46,47" fill="currentColor" stroke="none" />
-
-                    <path d="M70 65 v -15 a 5 5 0 0 0 -5 -5 h -13" strokeDasharray="2 3" stroke="currentColor" fill="none" strokeWidth="1.5" />
-                    <polygon points="54,43 50,45 54,47" fill="currentColor" stroke="none" />
-
-                    {/* Danger Triangle */}
-                    <g className="translate-y-[-2px]">
-                      <polygon points="50,48 68,75 32,75" fill="#FFE4E6" stroke="#F43F5E" strokeWidth="2" strokeLinejoin="round" />
-                      <rect x="49" y="55" width="2" height="10" fill="#F43F5E" stroke="none" rx="1" />
-                      <circle cx="50" cy="70" r="1.5" fill="#F43F5E" stroke="none" />
-                    </g>
-
-                    {/* Arrow down to Browser */}
-                    <path d="M50 78 v 10" strokeDasharray="2 3" stroke="currentColor" fill="none" strokeWidth="1.5" />
-                    <polygon points="48,86 52,86 50,90" fill="currentColor" stroke="none" />
-
-                    {/* Browser Window */}
-                    <g className="translate-y-[2px]">
-                      <rect x="22" y="88" width="56" height="34" rx="3" fill="#FFF5F5" stroke="currentColor" strokeWidth="1.5" />
-                      <path d="M22 96 h 56" stroke="currentColor" strokeWidth="1.5" />
-                      <circle cx="27" cy="92" r="1.2" fill="currentColor" stroke="none" />
-                      <circle cx="31" cy="92" r="1.2" fill="currentColor" stroke="none" />
-                      <circle cx="35" cy="92" r="1.2" fill="currentColor" stroke="none" />
-
-                      {/* Chart Bars inside Browser */}
-                      <rect x="28" y="110" width="5" height="8" fill="#FDA4AF" stroke="none" rx="1" />
-                      <rect x="35" y="103" width="5" height="15" fill="#FB7185" stroke="none" rx="1" />
-                      <rect x="42" y="99" width="5" height="19" fill="#F43F5E" stroke="none" rx="1" />
-
-                      {/* Lines on right side */}
-                      <rect x="52" y="103" width="20" height="3" fill="#FECACA" stroke="none" rx="1.5" />
-                      <rect x="52" y="112" width="14" height="4" fill="#FEE2E2" stroke="none" rx="2" />
-                    </g>
-                  </svg>
-                </div>
-              </div>
-            </div>
+        <div className="container relative z-10 mx-auto max-w-[1536px] px-4 xl:px-8 2xl:px-12 py-10 lg:py-8 xl:py-10">
+          <div className="mb-8 lg:mb-10 border-l-8 border-emerald-600 bg-card p-6 lg:p-8 shadow-[15px_15px_0px_0px_rgba(0,0,0,0.05)] md:w-3/4 lg:w-2/3 xl:w-[60%]">
+            <h2 className="mb-3 flex items-center gap-4 text-xs lg:text-sm font-black uppercase tracking-[0.3em] text-emerald-600">
+              <span className="h-1 w-12 bg-emerald-600"></span>
+              What we see in the field
+            </h2>
+            <h3 className="text-[2.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground md:text-[3rem] lg:text-[3.5rem]">
+              The Cost of Assuming Readiness.
+            </h3>
           </div>
 
-          {/* Row 2: Baseline Disconnect Telemetry */}
-          <div className="w-full bg-muted/40 rounded-xl border border-border shadow-sm p-4 flex flex-col xl:flex-row gap-4 lg:items-center">
-            <div className="flex-1 flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#0A2518] text-white">
-                  <BarChart3 size={14} />
-                </div>
-                <h4 className="text-sm font-bold uppercase tracking-[0.15em] text-[#0A2518]">
-                  Baseline Disconnect Telemetry
-                </h4>
-              </div>
-
-              <div className="flex flex-wrap md:flex-nowrap justify-between items-end gap-3 w-full mt-1">
-                {/* Metric 1 */}
-                <div className="flex flex-col gap-1">
-                  <span className="text-xs font-bold uppercase text-gray-700 whitespace-nowrap tracking-wider">Perceived Tech Readiness</span>
-                  <span className="text-[1.75rem] font-black text-[#0A2518] leading-none">85%</span>
-                  <div className="h-2 w-16 bg-gray-200 rounded-full mt-1 overflow-hidden">
-                    <div className="h-full bg-[#0A2518] w-[85%] rounded-full"></div>
-                  </div>
-                </div>
-                {/* Metric 2 */}
-                <div className="flex flex-col gap-1">
-                  <span className="text-xs font-bold uppercase text-gray-700 whitespace-nowrap tracking-wider">Actual Tech Readiness</span>
-                  <span className="text-[1.75rem] font-black text-rose-600 leading-none">32%</span>
-                  <div className="h-2 w-16 bg-gray-200 rounded-full mt-1 overflow-hidden">
-                    <div className="h-full bg-rose-600 w-[32%] rounded-full"></div>
-                  </div>
-                </div>
-                {/* Metric 3 */}
-                <div className="flex flex-col gap-1">
-                  <span className="text-xs font-bold uppercase text-gray-700 whitespace-nowrap tracking-wider">Perceived Data Trust</span>
-                  <span className="text-[1.75rem] font-black text-[#2E4049] leading-none">70%</span>
-                  <div className="h-2 w-16 bg-gray-200 rounded-full mt-1 overflow-hidden">
-                    <div className="h-full bg-[#2E4049] w-[70%] rounded-full"></div>
-                  </div>
-                </div>
-                {/* Metric 4 */}
-                <div className="flex flex-col gap-1">
-                  <span className="text-xs font-bold uppercase text-gray-700 whitespace-nowrap tracking-wider">Actual Data Quality</span>
-                  <span className="text-[1.75rem] font-black text-amber-500 leading-none">28%</span>
-                  <div className="h-2 w-16 bg-gray-200 rounded-full mt-1 overflow-hidden">
-                    <div className="h-full bg-amber-500 w-[28%] rounded-full"></div>
-                  </div>
-                </div>
-                {/* Metric 5 */}
-                <div className="flex flex-col gap-1">
-                  <span className="text-xs font-bold uppercase text-gray-700 whitespace-nowrap tracking-wider">Governance Coverage</span>
-                  <span className="text-[1.75rem] font-black text-[#0A2518] leading-none">15%</span>
-                  <div className="h-2 w-16 bg-gray-200 rounded-full mt-1 overflow-hidden">
-                    <div className="h-full bg-[#0A2518] w-[15%] rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full xl:w-[260px] bg-[#0A2518] rounded-xl p-4 flex items-start gap-3 shrink-0 border border-[#0A2518]">
-              <div className="p-2 bg-white/10 rounded-full text-white shadow-sm shrink-0">
-                <Lightbulb size={16} />
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-black uppercase tracking-widest text-green-300">Key Insight</span>
-                <p className="text-xs font-medium leading-relaxed text-white/90">
-                  Organizations consistently rate their readiness <strong className="text-white">2-3x higher</strong> than reality before objective assessment.
+          <div className="grid gap-6 lg:gap-8 xl:gap-12 lg:grid-cols-3 items-start">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
+              className="group relative bg-card border-t-4 border-rose-500 p-6 xl:p-8 shadow-xl transition-transform hover:-translate-y-2 flex flex-col overflow-hidden"
+            >
+              <div className="absolute right-4 top-4 select-none text-[5rem] font-black leading-none text-rose-500/10 pointer-events-none">01</div>
+              <Activity className="mb-5 h-10 w-10 lg:h-12 lg:w-12 text-rose-500 relative z-10" />
+              
+              <h4 className="mb-3 text-xl lg:text-2xl font-black uppercase leading-[1] tracking-tight relative z-10">
+                The Pipeline That Fails Every Monday
+              </h4>
+              
+              <div className="mb-5 relative z-10">
+                <p className="text-[13px] lg:text-sm font-semibold text-muted-foreground leading-relaxed">
+                  Your Data Factory pipeline crashes. Someone added a new customer type in the ERP, and your pipeline doesn't handle it.
                 </p>
               </div>
-            </div>
+
+              <div className="mb-5 relative z-10">
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3">What's Missing</h5>
+                <ul className="space-y-2.5">
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-700">No schema drift detection</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-700">No data quality enforcement</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-700">No proactive alerting</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 relative z-10 bg-rose-50/50 -mx-6 px-6 xl:-mx-8 xl:px-8 -mb-6 pb-6 xl:-mb-8 xl:pb-8">
+                <div className="flex items-start gap-3 mt-2">
+                   <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
+                   <div>
+                     <strong className="block text-[11px] uppercase tracking-wider text-rose-600 mb-1">The Reality</strong>
+                     <p className="text-[13px] lg:text-sm font-bold text-slate-800 leading-snug">
+                       You find out it's broken only when Finance calls asking why the Power BI dashboard is blank.
+                     </p>
+                   </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
+              className="group relative bg-card border-t-4 border-amber-500 p-6 xl:p-8 shadow-xl transition-transform hover:-translate-y-2 lg:mt-8 flex flex-col overflow-hidden"
+            >
+              <div className="absolute right-4 top-4 select-none text-[5rem] font-black leading-none text-amber-500/10 pointer-events-none">02</div>
+              <Database className="mb-5 h-10 w-10 lg:h-12 lg:w-12 text-amber-500 relative z-10" />
+              
+              <h4 className="mb-3 text-xl lg:text-2xl font-black uppercase leading-[1] tracking-tight relative z-10">
+                Six Customer IDs, Zero Master Data
+              </h4>
+              
+              <div className="mb-5 relative z-10">
+                <p className="text-[13px] lg:text-sm font-semibold text-muted-foreground leading-relaxed">
+                  You need to join customers from Salesforce with orders from your ERP. Except they don't match, and there's no master data management.
+                </p>
+              </div>
+
+              <div className="mb-5 relative z-10">
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3">The Symptoms</h5>
+                <ul className="space-y-2.5">
+                  <li className="flex items-start gap-3">
+                    <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-700">Salesforce uses "AccountID"</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-700">ERP uses "CustomerNumber"</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-700">The same customer appears 47 ways</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 relative z-10 bg-amber-50/50 -mx-6 px-6 xl:-mx-8 xl:px-8 -mb-6 pb-6 xl:-mb-8 xl:pb-8">
+                <div className="flex items-start gap-3 mt-2">
+                   <AlertTriangle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
+                   <div>
+                     <strong className="block text-[11px] uppercase tracking-wider text-amber-600 mb-1">The Reality</strong>
+                     <p className="text-[13px] lg:text-sm font-bold text-slate-800 leading-snug">
+                       Your Engineer spent days building a fuzzy match that's 85% accurate. Everyone pretends that's good enough.
+                     </p>
+                   </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
+              className="group relative bg-card border-t-4 border-indigo-500 p-6 xl:p-8 shadow-xl transition-transform hover:-translate-y-2 lg:mt-16 flex flex-col overflow-hidden"
+            >
+              <div className="absolute right-4 top-4 select-none text-[5rem] font-black leading-none text-indigo-500/10 pointer-events-none">03</div>
+              <FileQuestion className="mb-5 h-10 w-10 lg:h-12 lg:w-12 text-indigo-500 relative z-10" />
+              
+              <h4 className="mb-3 text-xl lg:text-2xl font-black uppercase leading-[1] tracking-tight relative z-10">
+                Nobody Knows Where the Number Came From
+              </h4>
+              
+              <div className="mb-5 relative z-10">
+                <p className="text-[13px] lg:text-sm font-semibold text-muted-foreground leading-relaxed">
+                  Finance asks why the revenue number in the executive Power BI dashboard doesn't match the revenue in the sales report.
+                </p>
+              </div>
+
+              <div className="mb-5 relative z-10">
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3">The Root Cause</h5>
+                <ul className="space-y-2.5">
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-4 w-4 text-indigo-400 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-700">No central semantic model</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-4 w-4 text-indigo-400 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-700">No documented definitions</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="h-4 w-4 text-indigo-400 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-700">Conflicting dashboard logic</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 relative z-10 bg-indigo-50/50 -mx-6 px-6 xl:-mx-8 xl:px-8 -mb-6 pb-6 xl:-mb-8 xl:pb-8">
+                <div className="flex items-start gap-3 mt-2">
+                   <AlertTriangle className="h-5 w-5 text-indigo-500 shrink-0 mt-0.5" />
+                   <div>
+                     <strong className="block text-[11px] uppercase tracking-wider text-indigo-600 mb-1">The Reality</strong>
+                     <p className="text-[13px] lg:text-sm font-bold text-slate-800 leading-snug">
+                       Neither report is wrong, but there's no canonical definition documented anywhere in your semantic model.
+                     </p>
+                   </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
-
-          {/* Row 3: Data Management & Semantic Governance */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-            {/* Card 02 */}
-            <div className="bg-[#0A2518] rounded-xl p-5 relative overflow-hidden flex flex-col justify-between h-full border border-gray-800">
-              <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-              <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,255,255,0.08),transparent_60%)] pointer-events-none"></div>
-
-              <div className="relative z-10 flex flex-col gap-2">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-500">
-                    <Database size={14} strokeWidth={2.5} />
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-[0.15em] text-amber-400">
-                    Data Management
-                  </span>
-                </div>
-
-                <h4 className="text-base lg:text-lg font-black uppercase tracking-tight text-white">
-                  Six Customer IDs, Zero Master Data
-                </h4>
-
-                <p className="text-sm leading-relaxed text-white/85 max-w-[95%]">
-                  You need to join customers from Salesforce with orders from your ERP. Simple, right? Except Salesforce uses &quot;AccountID,&quot; the ERP uses &quot;CustomerNumber,&quot; and there&apos;s no master data management.
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-4 border border-amber-500/30 bg-amber-500/10 p-3 rounded-xl flex items-start gap-2.5">
-                <div className="text-amber-400 shrink-0 mt-0.5">
-                  <Users size={15} />
-                </div>
-                <p className="text-xs font-medium leading-relaxed text-amber-200">
-                  The same customer appears <strong className="text-amber-300">47 different ways</strong> across systems. Your Data Engineer spent three days building a fuzzy match that&apos;s 85% accurate. Everyone pretends that&apos;s good enough.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 03 */}
-            <div className="bg-card rounded-xl border border-border shadow-sm p-5 relative overflow-hidden flex flex-col justify-between h-full">
-              <div className="relative z-10 flex flex-col gap-2 w-full lg:max-w-[58%]">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#A855F7] text-white shadow-sm">
-                    <Network size={14} strokeWidth={2.5} />
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#9333EA]">
-                    Semantic Governance
-                  </span>
-                </div>
-
-                <h4 className="text-base lg:text-lg font-black uppercase tracking-tight text-[#1b2b36]">
-                  Nobody Knows Where the Number Came From
-                </h4>
-
-                <p className="text-sm leading-relaxed text-gray-800">
-                  Finance asks why the revenue number in the executive Power BI dashboard doesn&apos;t match the revenue in the sales report. Both are technically &quot;correct.&quot; The executive dashboard excludes returns that haven&apos;t been processed. The sales report includes pending orders.
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-4 bg-purple-50 p-3 rounded-xl flex items-start gap-2.5 w-full lg:max-w-[58%] border border-purple-200">
-                <FileQuestion size={16} className="text-[#A855F7] shrink-0 mt-0.5" />
-                <p className="text-xs font-medium text-purple-700 leading-snug">
-                  Neither is wrong, but there&apos;s no canonical definition documented anywhere in your semantic model.
-                </p>
-              </div>
-
-              {/* Fixed SVG Background - Highly Detailed Purple Illustration */}
-              <div className="absolute right-0 top-0 bottom-0 w-[50%] max-w-[280px] pointer-events-none z-0 overflow-hidden hidden lg:flex items-center justify-end pr-2 rounded-br-xl">
-                <svg viewBox="0 0 100 100" className="w-full h-full max-h-[90%] text-purple-300" stroke="currentColor" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" preserveAspectRatio="xMaxYMid meet">
-
-                  {/* Background Crosshair/Circle accents */}
-                  <circle cx="50" cy="30" r="28" stroke="currentColor" opacity="0.15" strokeWidth="0.5" strokeDasharray="4 4" />
-                  <path d="M50 0v100M0 30h100" stroke="currentColor" opacity="0.1" strokeWidth="0.5" />
-
-                  {/* Top Circle */}
-                  <circle cx="50" cy="30" r="14" fill="#F3E8FF" stroke="currentColor" strokeWidth="1.5" />
-                  {/* Question Mark */}
-                  <text x="50" y="36" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#9333EA" stroke="none">?</text>
-
-                  {/* Connections */}
-                  <path d="M50 48v10" strokeDasharray="2 3" />
-                  <path d="M25 58h50" strokeDasharray="2 3" />
-                  <path d="M25 58v10" strokeDasharray="2 3" />
-                  <path d="M75 58v10" strokeDasharray="2 3" />
-
-                  {/* Arrow pointing UP to question mark */}
-                  <polygon points="47,47 53,47 50,44" fill="currentColor" stroke="none" />
-                  {/* Arrows pointing down to boxes */}
-                  <polygon points="22,66 28,66 25,69" fill="currentColor" stroke="none" />
-                  <polygon points="72,66 78,66 75,69" fill="currentColor" stroke="none" />
-
-                  {/* Left Node - Dollar Box */}
-                  <rect x="13" y="70" width="24" height="24" rx="4" fill="#F3E8FF" stroke="currentColor" />
-                  <text x="25" y="87" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#9333EA" stroke="none">$</text>
-
-                  {/* Right Node - Chart Box */}
-                  <rect x="63" y="70" width="24" height="24" rx="4" fill="#F3E8FF" stroke="currentColor" />
-                  {/* Chart Bars */}
-                  <rect x="68" y="82" width="4" height="7" fill="#C084FC" stroke="none" rx="1" />
-                  <rect x="73" y="78" width="4" height="11" fill="#A855F7" stroke="none" rx="1" />
-                  <rect x="78" y="74" width="4" height="15" fill="#9333EA" stroke="none" rx="1" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
 
@@ -344,7 +219,7 @@ export default function MaturityAssessment() {
         {/* Subtle grid pattern background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-        <div className="container relative z-10 mx-auto max-w-[1536px] px-4 xl:px-8 lg:my-auto">
+        <div className="container relative z-10 mx-auto max-w-[1536px] px-4 xl:px-8 2xl:px-12 lg:my-auto">
           <div className="mb-6 flex flex-col justify-between gap-4 border-b-4 border-forest pb-4 md:flex-row md:items-end">
             <div className="max-w-2xl">
               <h2 className="mb-3 inline-block border border-forest/30 bg-forest/10 px-3 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-forest lg:text-sm">
@@ -583,16 +458,16 @@ export default function MaturityAssessment() {
       <CaseStudySection />
 
       {/* FAQ Section - High Impact Neo-Brutalist */}
-      <section className="relative flex flex-col overflow-hidden border-t-2 border-b-2 border-foreground bg-card py-12 lg:py-20 lg:min-h-[calc(100vh-80px)]">
-        {/* Dramatic grid background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808015_1px,transparent_1px),linear-gradient(to_bottom,#80808015_1px,transparent_1px)] bg-[size:64px_64px]" />
-        
+      <section className="relative flex flex-col overflow-hidden border-t-2 border-b-2 border-foreground bg-muted/20 py-12 lg:py-20 lg:min-h-[calc(100vh-80px)]">
+        {/* Subtle grid pattern background */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
+
         <div className="container relative z-10 mx-auto max-w-7xl px-6 lg:my-auto">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-16">
             {/* Left Column: Sticky Title */}
             <div className="md:col-span-5 lg:col-span-4 relative">
               <div className="lg:sticky lg:top-32 z-10 pr-4 lg:pr-8">
-                
+
                 {/* Background 01 Watermark */}
                 <div className="absolute -top-16 -left-8 -z-10 select-none text-[16rem] font-black leading-none tracking-tighter text-slate-50/80">
                   01
@@ -625,18 +500,18 @@ export default function MaturityAssessment() {
                   Clear answers to common questions about our assessment methodology, timeline, and deliverables.
                 </p>
 
-                {/* Sleek Dark Card */}
-                <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700 shadow-xl w-full sm:w-[95%]">
-                  <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-rose-500 shadow-[0_0_20px_rgba(225,29,72,0.6)]"></div>
-                  <div className="flex items-center gap-4 p-5 sm:p-6">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-rose-500/30 bg-rose-500/10">
-                      <FileCheck className="h-6 w-6 text-rose-500" strokeWidth={1.5} />
+                {/* Neo-Brutalist Callout Card */}
+                <div className="relative border-2 border-foreground bg-card shadow-[8px_8px_0_0_rgba(225,29,72,1)] w-full sm:w-[95%] transition-transform hover:-translate-y-1">
+                  <div className="absolute left-0 top-0 bottom-0 w-2 bg-rose-500"></div>
+                  <div className="flex items-center gap-5 p-5 sm:p-6 pl-8">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-none border-2 border-rose-500 bg-rose-50">
+                      <FileCheck className="h-6 w-6 text-rose-600" strokeWidth={2} />
                     </div>
                     <div className="flex flex-col">
-                      <h4 className="text-lg font-bold text-white mb-0.5 tracking-wide">
+                      <h4 className="text-lg font-black uppercase tracking-widest text-foreground mb-1">
                         3 KEY QUESTIONS
                       </h4>
-                      <p className="text-xs font-medium text-slate-300">
+                      <p className="text-sm font-bold text-slate-600">
                         Everything you need to know before we begin.
                       </p>
                     </div>
@@ -644,10 +519,10 @@ export default function MaturityAssessment() {
                 </div>
 
 
-                
+
               </div>
             </div>
-            
+
             {/* Right Column: FAQ Items */}
             <div className="md:col-span-7 lg:col-span-8">
               <div className="flex flex-col gap-6 pt-4 lg:pt-12">
@@ -679,7 +554,7 @@ export default function MaturityAssessment() {
                     <span className="text-sm font-black uppercase tracking-wide text-slate-800 group-hover:text-rose-600 transition-colors duration-300">Unbiased Analysis</span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 group cursor-default">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-none border-[3px] border-slate-300 bg-white text-slate-700 group-hover:border-rose-500 group-hover:text-rose-500 group-hover:shadow-[6px_6px_0_0_rgba(225,29,72,1)] group-hover:-translate-y-1 transition-all duration-300">
                     <Target size={28} strokeWidth={2} />
@@ -688,7 +563,7 @@ export default function MaturityAssessment() {
                     <span className="text-sm font-black uppercase tracking-wide text-slate-800 group-hover:text-rose-600 transition-colors duration-300">Actionable Strategy</span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 group cursor-default">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-none border-[3px] border-slate-300 bg-white text-slate-700 group-hover:border-rose-500 group-hover:text-rose-500 group-hover:shadow-[6px_6px_0_0_rgba(225,29,72,1)] group-hover:-translate-y-1 transition-all duration-300">
                     <Lightbulb size={28} strokeWidth={2} />
@@ -785,7 +660,7 @@ export function FAQItem({ q, a, index = 0 }) {
           <ChevronRight className="h-5 w-5 transition-transform duration-300 group-open:rotate-90 md:h-6 md:w-6" />
         </div>
       </summary>
-      
+
       <div className="relative z-10 border-t-[3px] border-foreground bg-foreground p-6 md:p-8 text-base font-semibold leading-relaxed text-background md:text-lg duration-300 animate-in fade-in slide-in-from-top-4">
         <div className="absolute top-0 left-8 -translate-y-1/2 bg-rose-600 px-3 py-1 text-[11px] font-black uppercase tracking-widest text-white">
           Answer
