@@ -45,7 +45,7 @@ export default function CaseStudySection() {
                 <Database className="h-6 w-6 text-emerald-600" strokeWidth={2.5} />
                 <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-[#1b2b36]">The Situation</h4>
               </div>
-              <p className="text-[15px] lg:text-base font-medium leading-relaxed text-slate-600 relative z-10 max-w-[95%]">
+              <p className="text-[15px] lg:text-base font-semibold leading-relaxed text-slate-700 relative z-10 max-w-[95%]">
                 A PE-backed software company had invested in Azure Analysis Services (AAS) for enterprise data modeling. Leadership believed they were "data mature." But refresh failures were increasing, autoscaling wasn't working, and the BI team was frustrated with the complexity of managing AAS alongside Power BI.
               </p>
             </div>
@@ -54,25 +54,25 @@ export default function CaseStudySection() {
             <div className="group relative bg-card p-6 md:p-8 lg:p-10 flex flex-col overflow-hidden justify-center">
               <div className="absolute right-[-2%] top-[-5%] text-[8rem] lg:text-[10rem] font-black leading-none tracking-tighter text-slate-100 pointer-events-none">02</div>
               <div className="flex items-center gap-3 mb-4 lg:mb-6 relative z-10">
-                <Search className="h-6 w-6 text-[#3b82f6]" strokeWidth={2.5} />
+                <Search className="h-6 w-6 text-blue-600" strokeWidth={2.5} />
                 <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-[#1b2b36]">What We Found</h4>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 relative z-10">
-                 <div className="bg-slate-50 p-4 rounded-md border border-slate-200">
-                    <strong className="text-[#3b82f6] uppercase text-[10px] tracking-widest block mb-1.5">Technology</strong> 
-                    <span className="text-xs font-medium text-slate-600 leading-snug block">AAS models well-designed, but platform reaching limits. No autoscaling.</span>
+                 <div className="bg-slate-50/80 p-4 rounded-md border border-slate-200 shadow-sm">
+                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Technology</strong> 
+                    <span className="text-[13px] font-bold text-slate-800 leading-snug block">AAS models well-designed, but platform reaching limits. No autoscaling.</span>
                  </div>
-                 <div className="bg-slate-50 p-4 rounded-md border border-slate-200">
-                    <strong className="text-[#3b82f6] uppercase text-[10px] tracking-widest block mb-1.5">Analytics</strong> 
-                    <span className="text-xs font-medium text-slate-600 leading-snug block">Disconnected from modern Power BI Premium features like dataflows.</span>
+                 <div className="bg-slate-50/80 p-4 rounded-md border border-slate-200 shadow-sm">
+                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Analytics</strong> 
+                    <span className="text-[13px] font-bold text-slate-800 leading-snug block">Disconnected from modern Power BI Premium features like dataflows.</span>
                  </div>
-                 <div className="bg-slate-50 p-4 rounded-md border border-slate-200">
-                    <strong className="text-[#3b82f6] uppercase text-[10px] tracking-widest block mb-1.5">Governance</strong> 
-                    <span className="text-xs font-medium text-slate-600 leading-snug block">No Purview. No lineage. Sensitive data without classification.</span>
+                 <div className="bg-slate-50/80 p-4 rounded-md border border-slate-200 shadow-sm">
+                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Governance</strong> 
+                    <span className="text-[13px] font-bold text-slate-800 leading-snug block">No Purview. No lineage. Sensitive data without classification.</span>
                  </div>
-                 <div className="bg-slate-50 p-4 rounded-md border border-slate-200">
-                    <strong className="text-[#3b82f6] uppercase text-[10px] tracking-widest block mb-1.5">Organization</strong> 
-                    <span className="text-xs font-medium text-slate-600 leading-snug block">One senior developer maintained everything. Knowledge trapped.</span>
+                 <div className="bg-slate-50/80 p-4 rounded-md border border-slate-200 shadow-sm">
+                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Organization</strong> 
+                    <span className="text-[13px] font-bold text-slate-800 leading-snug block">One senior developer maintained everything. Knowledge trapped.</span>
                  </div>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function CaseStudySection() {
                 <ShieldCheck className="h-6 w-6 text-emerald-400" strokeWidth={2.5} />
                 <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-background">The Recommendation</h4>
               </div>
-              <p className="text-base lg:text-lg font-bold leading-relaxed text-background/90 border-l-[3px] border-emerald-500 pl-5 lg:pl-6 relative z-10 max-w-[95%]">
+              <p className="text-base lg:text-lg font-bold leading-relaxed text-white border-l-[3px] border-emerald-500 pl-5 lg:pl-6 relative z-10 max-w-[95%]">
                 Migrate from Azure Analysis Services to Microsoft Fabric. The assessment revealed that 80% of their pain points would be solved by the migration: autoscaling, simplified scheduling, native Power BI integration, and Fabric's built-in governance features.
               </p>
             </div>
@@ -94,23 +94,23 @@ export default function CaseStudySection() {
             <div className="group relative bg-card p-6 md:p-8 lg:p-10 flex flex-col overflow-hidden justify-center">
               <div className="absolute right-[-2%] top-[-5%] text-[8rem] lg:text-[10rem] font-black leading-none tracking-tighter text-slate-100 pointer-events-none">04</div>
               <div className="flex items-center gap-3 mb-5 lg:mb-8 relative z-10">
-                <TrendingUp className="h-6 w-6 text-violet-500" strokeWidth={2.5} />
+                <TrendingUp className="h-6 w-6 text-violet-600" strokeWidth={2.5} />
                 <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-[#1b2b36]">The Outcome</h4>
               </div>
               
               <div className="flex flex-col relative z-10">
                 <div className="mb-6 flex items-center gap-8 pb-6 border-b border-slate-200">
                   <div className="flex flex-col min-w-[120px]">
-                    <div className="text-[3rem] lg:text-[4rem] font-black text-violet-500 leading-none tracking-tighter">3x</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mt-2">Faster Refresh</div>
+                    <div className="text-[3rem] lg:text-[4rem] font-black text-violet-600 leading-none tracking-tighter">3x</div>
+                    <div className="text-[11px] font-bold uppercase tracking-widest text-slate-600 mt-2">Faster Refresh</div>
                   </div>
                   <div className="w-[1px] h-14 bg-slate-200"></div>
                   <div className="flex flex-col">
-                    <div className="text-[3rem] lg:text-[4rem] font-black text-violet-500 leading-none tracking-tighter">8w</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mt-2">To Migrate</div>
+                    <div className="text-[3rem] lg:text-[4rem] font-black text-violet-600 leading-none tracking-tighter">8w</div>
+                    <div className="text-[11px] font-bold uppercase tracking-widest text-slate-600 mt-2">To Migrate</div>
                   </div>
                 </div>
-                <p className="text-[15px] lg:text-base font-medium leading-relaxed text-slate-600 max-w-[90%]">
+                <p className="text-[15px] lg:text-base font-semibold leading-relaxed text-slate-700 max-w-[90%]">
                   Assessment led to migration engagement. BI team now self-sufficient without dependency on the legacy AAS admin.
                 </p>
               </div>

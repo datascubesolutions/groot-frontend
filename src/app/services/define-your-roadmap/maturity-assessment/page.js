@@ -76,40 +76,40 @@ export default function MaturityAssessment() {
               <div className="absolute right-4 top-4 select-none text-[5rem] font-black leading-none text-rose-500/10 pointer-events-none">01</div>
               <Activity className="mb-5 h-10 w-10 lg:h-12 lg:w-12 text-rose-500 relative z-10" />
               
-              <h4 className="mb-3 text-xl lg:text-2xl font-black uppercase leading-[1] tracking-tight relative z-10">
+              <h4 className="mb-3 text-xl lg:text-2xl font-black uppercase leading-[1] tracking-tight relative z-10 text-slate-900">
                 The Pipeline That Fails Every Monday
               </h4>
               
               <div className="mb-5 relative z-10">
-                <p className="text-[13px] lg:text-sm font-semibold text-muted-foreground leading-relaxed">
+                <p className="text-[13px] lg:text-sm font-semibold text-slate-600 leading-relaxed">
                   Your Data Factory pipeline crashes. Someone added a new customer type in the ERP, and your pipeline doesn't handle it.
                 </p>
               </div>
 
               <div className="mb-5 relative z-10">
-                <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3">What's Missing</h5>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3">What's Missing</h5>
                 <ul className="space-y-2.5">
                   <li className="flex items-start gap-3">
-                    <XCircle className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
-                    <span className="text-[13px] font-bold text-slate-700">No schema drift detection</span>
+                    <XCircle className="h-4 w-4 text-rose-500 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-800">No schema drift detection</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <XCircle className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
-                    <span className="text-[13px] font-bold text-slate-700">No data quality enforcement</span>
+                    <XCircle className="h-4 w-4 text-rose-500 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-800">No data quality enforcement</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <XCircle className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
-                    <span className="text-[13px] font-bold text-slate-700">No proactive alerting</span>
+                    <XCircle className="h-4 w-4 text-rose-500 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-800">No proactive alerting</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 relative z-10 bg-rose-50/50 -mx-6 px-6 xl:-mx-8 xl:px-8 -mb-6 pb-6 xl:-mb-8 xl:pb-8">
+              <div className="pt-4 border-t border-slate-200 relative z-10 bg-rose-50/80 -mx-6 px-6 xl:-mx-8 xl:px-8 -mb-6 pb-6 xl:-mb-8 xl:pb-8">
                 <div className="flex items-start gap-3 mt-2">
-                   <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
+                   <AlertTriangle className="h-5 w-5 text-rose-600 shrink-0 mt-0.5" />
                    <div>
-                     <strong className="block text-[11px] uppercase tracking-wider text-rose-600 mb-1">The Reality</strong>
-                     <p className="text-[13px] lg:text-sm font-bold text-slate-800 leading-snug">
+                     <strong className="block text-[11px] uppercase tracking-wider text-rose-700 mb-1">The Reality</strong>
+                     <p className="text-[13px] lg:text-sm font-bold text-slate-900 leading-snug">
                        You find out it's broken only when Finance calls asking why the Power BI dashboard is blank.
                      </p>
                    </div>
@@ -123,40 +123,40 @@ export default function MaturityAssessment() {
               <div className="absolute right-4 top-4 select-none text-[5rem] font-black leading-none text-amber-500/10 pointer-events-none">02</div>
               <Database className="mb-5 h-10 w-10 lg:h-12 lg:w-12 text-amber-500 relative z-10" />
               
-              <h4 className="mb-3 text-xl lg:text-2xl font-black uppercase leading-[1] tracking-tight relative z-10">
+              <h4 className="mb-3 text-xl lg:text-2xl font-black uppercase leading-[1] tracking-tight relative z-10 text-slate-900">
                 Six Customer IDs, Zero Master Data
               </h4>
               
               <div className="mb-5 relative z-10">
-                <p className="text-[13px] lg:text-sm font-semibold text-muted-foreground leading-relaxed">
+                <p className="text-[13px] lg:text-sm font-semibold text-slate-600 leading-relaxed">
                   You need to join customers from Salesforce with orders from your ERP. Except they don't match, and there's no master data management.
                 </p>
               </div>
 
               <div className="mb-5 relative z-10">
-                <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3">The Symptoms</h5>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3">The Symptoms</h5>
                 <ul className="space-y-2.5">
                   <li className="flex items-start gap-3">
-                    <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-                    <span className="text-[13px] font-bold text-slate-700">Salesforce uses "AccountID"</span>
+                    <AlertCircle className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-800">Salesforce uses "AccountID"</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-                    <span className="text-[13px] font-bold text-slate-700">ERP uses "CustomerNumber"</span>
+                    <AlertCircle className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-800">ERP uses "CustomerNumber"</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-                    <span className="text-[13px] font-bold text-slate-700">The same customer appears 47 ways</span>
+                    <AlertCircle className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-800">The same customer appears 47 ways</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 relative z-10 bg-amber-50/50 -mx-6 px-6 xl:-mx-8 xl:px-8 -mb-6 pb-6 xl:-mb-8 xl:pb-8">
+              <div className="pt-4 border-t border-slate-200 relative z-10 bg-amber-50/80 -mx-6 px-6 xl:-mx-8 xl:px-8 -mb-6 pb-6 xl:-mb-8 xl:pb-8">
                 <div className="flex items-start gap-3 mt-2">
                    <AlertTriangle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
                    <div>
-                     <strong className="block text-[11px] uppercase tracking-wider text-amber-600 mb-1">The Reality</strong>
-                     <p className="text-[13px] lg:text-sm font-bold text-slate-800 leading-snug">
+                     <strong className="block text-[11px] uppercase tracking-wider text-amber-700 mb-1">The Reality</strong>
+                     <p className="text-[13px] lg:text-sm font-bold text-slate-900 leading-snug">
                        Your Engineer spent days building a fuzzy match that's 85% accurate. Everyone pretends that's good enough.
                      </p>
                    </div>
@@ -170,40 +170,40 @@ export default function MaturityAssessment() {
               <div className="absolute right-4 top-4 select-none text-[5rem] font-black leading-none text-indigo-500/10 pointer-events-none">03</div>
               <FileQuestion className="mb-5 h-10 w-10 lg:h-12 lg:w-12 text-indigo-500 relative z-10" />
               
-              <h4 className="mb-3 text-xl lg:text-2xl font-black uppercase leading-[1] tracking-tight relative z-10">
+              <h4 className="mb-3 text-xl lg:text-2xl font-black uppercase leading-[1] tracking-tight relative z-10 text-slate-900">
                 Nobody Knows Where the Number Came From
               </h4>
               
               <div className="mb-5 relative z-10">
-                <p className="text-[13px] lg:text-sm font-semibold text-muted-foreground leading-relaxed">
+                <p className="text-[13px] lg:text-sm font-semibold text-slate-600 leading-relaxed">
                   Finance asks why the revenue number in the executive Power BI dashboard doesn't match the revenue in the sales report.
                 </p>
               </div>
 
               <div className="mb-5 relative z-10">
-                <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3">The Root Cause</h5>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3">The Root Cause</h5>
                 <ul className="space-y-2.5">
                   <li className="flex items-start gap-3">
-                    <XCircle className="h-4 w-4 text-indigo-400 shrink-0 mt-0.5" />
-                    <span className="text-[13px] font-bold text-slate-700">No central semantic model</span>
+                    <XCircle className="h-4 w-4 text-indigo-500 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-800">No central semantic model</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <XCircle className="h-4 w-4 text-indigo-400 shrink-0 mt-0.5" />
-                    <span className="text-[13px] font-bold text-slate-700">No documented definitions</span>
+                    <XCircle className="h-4 w-4 text-indigo-500 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-800">No documented definitions</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <XCircle className="h-4 w-4 text-indigo-400 shrink-0 mt-0.5" />
-                    <span className="text-[13px] font-bold text-slate-700">Conflicting dashboard logic</span>
+                    <XCircle className="h-4 w-4 text-indigo-500 shrink-0 mt-0.5" />
+                    <span className="text-[13px] font-bold text-slate-800">Conflicting dashboard logic</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 relative z-10 bg-indigo-50/50 -mx-6 px-6 xl:-mx-8 xl:px-8 -mb-6 pb-6 xl:-mb-8 xl:pb-8">
+              <div className="pt-4 border-t border-slate-200 relative z-10 bg-indigo-50/80 -mx-6 px-6 xl:-mx-8 xl:px-8 -mb-6 pb-6 xl:-mb-8 xl:pb-8">
                 <div className="flex items-start gap-3 mt-2">
-                   <AlertTriangle className="h-5 w-5 text-indigo-500 shrink-0 mt-0.5" />
+                   <AlertTriangle className="h-5 w-5 text-indigo-600 shrink-0 mt-0.5" />
                    <div>
-                     <strong className="block text-[11px] uppercase tracking-wider text-indigo-600 mb-1">The Reality</strong>
-                     <p className="text-[13px] lg:text-sm font-bold text-slate-800 leading-snug">
+                     <strong className="block text-[11px] uppercase tracking-wider text-indigo-700 mb-1">The Reality</strong>
+                     <p className="text-[13px] lg:text-sm font-bold text-slate-900 leading-snug">
                        Neither report is wrong, but there's no canonical definition documented anywhere in your semantic model.
                      </p>
                    </div>
@@ -225,11 +225,11 @@ export default function MaturityAssessment() {
               <h2 className="mb-3 inline-block border border-forest/30 bg-forest/10 px-3 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-forest lg:text-sm">
                 [ DELIVERABLES ]
               </h2>
-              <h3 className="text-2xl font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem]">
+              <h3 className="text-2xl font-black uppercase leading-[0.9] tracking-tighter text-slate-900 sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem]">
                 Clarity over assumptions.
               </h3>
             </div>
-            <p className="max-w-sm border-l-[3px] border-forest bg-background/50 p-4 pl-5 text-sm font-bold leading-relaxed text-foreground/80 backdrop-blur-sm lg:text-base">
+            <p className="max-w-sm border-l-[3px] border-forest bg-background/50 p-4 pl-5 text-sm font-bold leading-relaxed text-slate-700 backdrop-blur-sm lg:text-base">
               Every assessment produces the same high-quality artifacts — no
               shortcuts, no templated scores. You get evidence, priorities, and
               a path forward.
@@ -261,10 +261,10 @@ export default function MaturityAssessment() {
                     Six dimensions
                   </p>
                 </div>
-                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words">
+                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words text-slate-900">
                   Maturity Scorecard
                 </h4>
-                <p className="text-sm font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-emerald-50">
+                <p className="text-sm font-semibold leading-relaxed text-slate-600 transition-colors duration-500 group-hover:text-emerald-50">
                   A scored assessment across six dimensions: Data Management,
                   Analytics Capability, Governance, Technology, Organization,
                   and Culture. Rated with clear evidence, not gut feel.
@@ -295,10 +295,10 @@ export default function MaturityAssessment() {
                     Current vs target
                   </p>
                 </div>
-                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words">
+                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words text-slate-900">
                   Gap Analysis
                 </h4>
-                <p className="text-sm font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-cyan-50">
+                <p className="text-sm font-semibold leading-relaxed text-slate-600 transition-colors duration-500 group-hover:text-cyan-50">
                   For each dimension, we document where you are today vs. where
                   you need to be. Gaps prioritized by business impact, not ease
                   of implementation.
@@ -329,10 +329,10 @@ export default function MaturityAssessment() {
                     Architecture
                   </p>
                 </div>
-                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words">
+                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words text-slate-900">
                   Technical Findings
                 </h4>
-                <p className="text-sm font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-blue-50">
+                <p className="text-sm font-semibold leading-relaxed text-slate-600 transition-colors duration-500 group-hover:text-blue-50">
                   Specific observations from our review:
                   Fabric/Azure configuration, pipeline reliability, Power BI
                   semantic model design, security, and technical debt.
@@ -363,10 +363,10 @@ export default function MaturityAssessment() {
                     Prioritized Path
                   </p>
                 </div>
-                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words">
+                <h4 className="mb-4 text-[1.15rem] font-black uppercase leading-[1.1] tracking-tight transition-colors duration-500 group-hover:text-white lg:text-[1.25rem] break-words text-slate-900">
                   Prioritized Recommendations
                 </h4>
-                <p className="text-sm font-semibold leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-amber-50">
+                <p className="text-sm font-semibold leading-relaxed text-slate-600 transition-colors duration-500 group-hover:text-amber-50">
                   A prioritized set of recommendations with rationale and rough effort estimates. We explain why and in what order.
                 </p>
               </div>
@@ -412,7 +412,7 @@ export default function MaturityAssessment() {
             <h3 className="mb-0 text-[clamp(2rem,6vw,4.5rem)] font-black uppercase leading-none tracking-tighter text-forest">
               Our process
             </h3>
-            <p className="max-w-sm border border-forest/40 bg-forest/15 p-4 text-sm font-black uppercase tracking-[0.2em] text-foreground md:text-right">
+            <p className="max-w-sm border border-forest/40 bg-forest/15 p-4 text-sm font-black uppercase tracking-[0.2em] text-slate-900 md:text-right">
               Interviews, technical review, and evidence-based scoring —{" "}
               <span className="text-forest">3–4 weeks to presentation.</span>
             </p>
@@ -508,7 +508,7 @@ export default function MaturityAssessment() {
                       <FileCheck className="h-6 w-6 text-rose-600" strokeWidth={2} />
                     </div>
                     <div className="flex flex-col">
-                      <h4 className="text-lg font-black uppercase tracking-widest text-foreground mb-1">
+                      <h4 className="text-lg font-black uppercase tracking-widest text-slate-900 mb-1">
                         3 KEY QUESTIONS
                       </h4>
                       <p className="text-sm font-bold text-slate-600">
@@ -629,10 +629,10 @@ function MethodPanel({ step, week, title, desc, color }) {
 
       {/* Content Area */}
       <div className="relative z-10 flex flex-1 flex-col p-5 transition-transform duration-500 group-hover/panel:-translate-y-2 md:p-6 lg:p-8">
-        <h4 className="mb-4 pr-2 text-lg font-black uppercase leading-[1] tracking-tight lg:text-xl">
+        <h4 className="mb-4 pr-2 text-lg font-black uppercase leading-[1] tracking-tight lg:text-xl text-slate-900">
           {title}
         </h4>
-        <p className="mt-auto text-[0.85rem] font-semibold leading-relaxed text-foreground/80 lg:text-sm">
+        <p className="mt-auto text-[0.85rem] font-semibold leading-relaxed text-slate-700 lg:text-sm">
           {desc}
         </p>
       </div>
@@ -654,14 +654,14 @@ export function FAQItem({ q, a, index = 0 }) {
       <summary className="flex select-none items-center justify-between gap-3 p-5 outline-none md:p-8">
         <div className="flex items-center gap-6">
           <span className="hidden text-5xl font-black text-rose-600/30 sm:block">{num}</span>
-          <span className="text-base font-black uppercase leading-[1.25] tracking-normal text-foreground sm:text-xl md:text-2xl">{q}</span>
+          <span className="text-base font-black uppercase leading-[1.25] tracking-normal text-slate-900 sm:text-xl md:text-2xl">{q}</span>
         </div>
         <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground bg-transparent text-foreground transition-all duration-300 group-open:bg-rose-600 group-open:text-white md:h-12 md:w-12">
           <ChevronRight className="h-5 w-5 transition-transform duration-300 group-open:rotate-90 md:h-6 md:w-6" />
         </div>
       </summary>
 
-      <div className="relative z-10 border-t-[3px] border-foreground bg-foreground p-6 md:p-8 text-base font-semibold leading-relaxed text-background md:text-lg duration-300 animate-in fade-in slide-in-from-top-4">
+      <div className="relative z-10 border-t-[3px] border-foreground bg-foreground p-6 md:p-8 text-base font-semibold leading-relaxed text-white md:text-lg duration-300 animate-in fade-in slide-in-from-top-4">
         <div className="absolute top-0 left-8 -translate-y-1/2 bg-rose-600 px-3 py-1 text-[11px] font-black uppercase tracking-widest text-white">
           Answer
         </div>
