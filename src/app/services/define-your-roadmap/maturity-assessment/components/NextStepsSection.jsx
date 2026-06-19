@@ -118,7 +118,42 @@ const MaturityMockup = () => {
   );
 };
 
-export default function NextStepsSection() {
+export default function NextStepsSection({
+  pillLabel = "Discovery starts here",
+  headline = "Know where you stand",
+  subHeadline = "A Strategic Roadmap for Microsoft Fabric and Azure",
+  bodyText = null,
+  buttonLabel = "Schedule Assessment",
+  buttonHref = "/contact?service=maturity-assessment",
+  trustSignals = null,
+  tagline = null,
+}) {
+  const defaultBodyText = (
+    <>
+      Our expert maturity assessment provides the essential baseline for making
+      confident, high-impact investments in{" "}
+      <strong className="font-semibold text-slate-900">Microsoft Fabric and Azure</strong>.
+    </>
+  );
+
+  const defaultTrustSignals = [
+    { label: "Evidence-Based Scoring", desc: "Using proprietary benchmarks and data points." },
+    { label: "3-4 Week Delivery", desc: "Rapid assessment to get insights quickly." },
+    { label: "Executive-Ready Summary", desc: "Clear actionable steps for leadership." },
+  ];
+
+  const defaultTagline = (
+    <>
+      Let&apos;s find your gaps{" "}
+      <HelpCircle className="inline h-[18px] w-[18px] text-slate-400 relative -top-[2px] ml-1" strokeWidth={2} />{" "}
+      <br /> before they find you.
+    </>
+  );
+
+  const resolvedTrustSignals = trustSignals ?? defaultTrustSignals;
+  const resolvedTagline = tagline ?? defaultTagline;
+  const resolvedBodyText = bodyText ?? defaultBodyText;
+
   return (
     <section className="relative flex flex-col overflow-hidden bg-[#f0f7f4] py-16 md:py-24 lg:py-32">
       {/* Subtle grid pattern */}
@@ -126,7 +161,7 @@ export default function NextStepsSection() {
       
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-100/40 blur-[100px]" />
 
-      {/* Decorative question mark watermarks */}
+      {/* Decorative watermarks */}
       <div className="pointer-events-none absolute left-[2%] top-[25%] text-[#0a3622] opacity-15 sm:block hidden">
         <CircleHelp className="h-40 w-40" strokeWidth={2} />
       </div>
@@ -150,7 +185,7 @@ export default function NextStepsSection() {
                 <CircleHelp className="h-3.5 w-3.5" strokeWidth={2.5} />
               </span>
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600">
-                Discovery starts here
+                {pillLabel}
               </span>
             </div>
             
@@ -160,61 +195,43 @@ export default function NextStepsSection() {
           {/* Right Column - Content Card */}
           <div className="relative w-full lg:w-[55%] rounded-[2.5rem] border border-white/80 bg-white/95 p-8 shadow-[0_16px_60px_rgba(0,0,0,0.04)] backdrop-blur-xl sm:p-10 md:p-12 lg:p-14">
             <h2 className="mb-2 font-serif text-[2.5rem] font-bold leading-[1.05] tracking-tight text-[#0a3622] sm:text-5xl lg:text-[3.25rem]">
-              Know where you stand
+              {headline}
             </h2>
             <h3 className="mb-6 text-[1.1rem] font-medium tracking-tight text-slate-800 sm:text-[1.25rem]">
-              A Strategic Roadmap for Microsoft Fabric and Azure
+              {subHeadline}
             </h3>
             
             <p className="mb-10 text-[1rem] leading-relaxed text-slate-700">
-              Our expert maturity assessment provides the essential baseline
-              for making confident, high-impact investments in <strong className="font-semibold text-slate-900">Microsoft Fabric and Azure</strong>.
+              {resolvedBodyText}
             </p>
 
             {/* Trust Signals Grid */}
             <div className="grid gap-4 sm:grid-cols-2 mb-10">
-              {/* Box 1 */}
-              <div className="flex flex-col gap-1.5 rounded-xl border border-white bg-gradient-to-br from-[#eef7f2] to-white/60 p-5 shadow-[0_4px_15px_rgba(0,0,0,0.02)] backdrop-blur-sm">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-slate-700" strokeWidth={2.5} />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-900">Evidence-Based Scoring</span>
+              {resolvedTrustSignals.map((signal, i) => (
+                <div key={i} className="flex flex-col gap-1.5 rounded-xl border border-white bg-gradient-to-br from-[#eef7f2] to-white/60 p-5 shadow-[0_4px_15px_rgba(0,0,0,0.02)] backdrop-blur-sm">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-slate-700" strokeWidth={2.5} />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-900">{signal.label}</span>
+                  </div>
+                  <p className="text-[12px] leading-snug text-slate-600 pl-6">{signal.desc}</p>
                 </div>
-                <p className="text-[12px] leading-snug text-slate-600 pl-6">Using proprietary benchmarks and data points.</p>
-              </div>
+              ))}
 
-              {/* Box 2 */}
-              <div className="flex flex-col gap-1.5 rounded-xl border border-white bg-gradient-to-br from-[#eef7f2] to-white/60 p-5 shadow-[0_4px_15px_rgba(0,0,0,0.02)] backdrop-blur-sm">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-slate-700" strokeWidth={2.5} />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-900">3-4 Week Delivery</span>
-                </div>
-                <p className="text-[12px] leading-snug text-slate-600 pl-6">Rapid assessment to get insights quickly.</p>
-              </div>
-
-              {/* Box 3 */}
-              <div className="flex flex-col gap-1.5 rounded-xl border border-white bg-gradient-to-br from-[#eef7f2] to-white/60 p-5 shadow-[0_4px_15px_rgba(0,0,0,0.02)] backdrop-blur-sm">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-slate-700" strokeWidth={2.5} />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-900">Executive-Ready Summary</span>
-                </div>
-                <p className="text-[12px] leading-snug text-slate-600 pl-6">Clear actionable steps for leadership.</p>
-              </div>
-
-              {/* Italic text next to Box 3 */}
+              {/* Tagline slot */}
               <div className="flex items-start pl-4 py-2">
                 <p className="text-[1.15rem] font-serif italic text-slate-800 leading-snug">
-                  Let&apos;s find your gaps <HelpCircle className="inline h-[18px] w-[18px] text-slate-400 relative -top-[2px] ml-1" strokeWidth={2} /> <br/> before they find you.
+                  {resolvedTagline}
                 </p>
               </div>
             </div>
 
             <div className="px-1 w-full sm:w-[95%]">
-              <Link href="/contact?service=maturity-assessment" passHref>
+              <Link href={buttonHref} passHref>
                 <Button
                   size="lg"
                   className="group relative flex w-full items-center justify-center gap-3 sm:gap-4 rounded-full border border-slate-700 bg-[#182921] px-6 sm:px-10 py-7 text-[12px] sm:text-sm font-bold uppercase tracking-[0.1em] text-white shadow-[0_8px_25px_rgba(24,41,33,0.35)] transition-all hover:bg-black"
                 >
-                  Schedule Assessment
+                  {buttonLabel}
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors group-hover:bg-white/20">
                     <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" strokeWidth={2.5} />
                   </span>
