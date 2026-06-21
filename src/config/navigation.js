@@ -61,13 +61,17 @@ export const NAVIGATION_CONFIG = {
               label: "Enterprise Data Strategy",
               href: "/services/define-your-roadmap/enterprise-data-strategy",
             },
-            {
-              label: "Stack Evaluation",
-              href: "/services/define-your-roadmap/stack-evaluation",
-            },
+            // {
+            //   label: "Stack Evaluation",
+            //   href: "/services/define-your-roadmap/stack-evaluation",
+            // },
             {
               label: "Data Modernization",
               href: "/services/build-your-foundation/data-modernization",
+            },
+            {
+              label: "Foundation Build",
+              href: "/services/build-your-foundation/foundation-build",
             },
             {
               label: "Data Integration",

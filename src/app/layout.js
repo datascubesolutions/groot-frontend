@@ -145,7 +145,7 @@ export default function RootLayout({ children }) {
               <Navbar />
             </PublicLayoutWrapper>
 
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 w-full overflow-x-clip relative flex flex-col">{children}</main>
 
             <PublicLayoutWrapper>
               <Footer />

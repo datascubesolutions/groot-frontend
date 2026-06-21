@@ -58,21 +58,21 @@ export const ROUTE_METADATA = {
     priority: 0.9,
     changeFrequency: "weekly",
   },
-  stackEvaluation: {
-    title: "Stack Evaluation Service | Groot Analytics",
-    description:
-      "Assess your current data stack, uncover architecture gaps, and define a practical modernization roadmap with Groot Analytics.",
-    path: "/services/define-your-roadmap/stack-evaluation",
-    image: "/og-image.png",
-    keywords: [
-      "data stack evaluation",
-      "modern data architecture assessment",
-      "analytics modernization roadmap",
-    ],
-    indexable: true,
-    priority: 0.8,
-    changeFrequency: "monthly",
-  },
+  // stackEvaluation: {
+  //   title: "Stack Evaluation Service | Groot Analytics",
+  //   description:
+  //     "Assess your current data stack, uncover architecture gaps, and define a practical modernization roadmap with Groot Analytics.",
+  //   path: "/services/define-your-roadmap/stack-evaluation",
+  //   image: "/og-image.png",
+  //   keywords: [
+  //     "data stack evaluation",
+  //     "modern data architecture assessment",
+  //     "analytics modernization roadmap",
+  //   ],
+  //   indexable: true,
+  //   priority: 0.8,
+  //   changeFrequency: "monthly",
+  // },
   industries: {
     title: "Industry Analytics Solutions",
     description:

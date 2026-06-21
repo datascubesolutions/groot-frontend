@@ -12,7 +12,7 @@ export const SERVICE_CATEGORIES = [
     subServices: [
       { title: "Maturity Assessment", slug: "maturity-assessment" },
       { title: "Enterprise Data Strategy", slug: "enterprise-data-strategy" },
-      { title: "Stack Evaluation", slug: "stack-evaluation" },
+      // { title: "Stack Evaluation", slug: "stack-evaluation" },
     ],
   },
   {
