@@ -26,7 +26,7 @@ import {
   Scale
 } from "lucide-react";
 import HeroSection from "./components/HeroSection";
-import NextStepsSection from "../../maturity-assessment/components/NextStepsSection";
+import NextStepsSection from "../maturity-assessment/components/NextStepsSection";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },

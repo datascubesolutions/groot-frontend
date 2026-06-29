@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import CaseStudySection from "./components/CaseStudySection";
 import HeroSection from "./components/HeroSection";
-import NextStepsSection from "../../maturity-assessment/components/NextStepsSection";
+import CTASection from "./components/CTASection";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -554,7 +554,7 @@ export default function EnterpriseDataStrategy() {
       </section>
 
       {/* Related Services and Extreme CTA Section */}
-      <NextStepsSection />
+      <CTASection />
     </main>
   );
 }

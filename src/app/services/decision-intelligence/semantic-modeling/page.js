@@ -2,9 +2,8 @@
 "use client";
 
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { Button } from "@/components/ui/Button";
+import { motion } from "framer-motion";
 import {
-  AlertCircle,
   CheckCircle2,
   ChevronRight,
   DatabaseZap,
@@ -12,14 +11,21 @@ import {
   BoxSelect,
   Gauge,
   Sigma,
+  Scale,
+  Users,
+  FileText
 } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { useState } from "react";
+
+const neoShadow = "shadow-[8px_8px_0_0_#000000]";
+const neoShadowHover = "hover:shadow-[4px_4px_0_0_#000000] hover:translate-x-[4px] hover:translate-y-[4px]";
+const neoBorder = "border-4 border-black";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const staggerContainer = {
@@ -32,522 +38,170 @@ const staggerContainer = {
 
 export default function SemanticModeling() {
   return (
-    <main className="relative min-h-screen bg-background pt-20">
-      <Breadcrumb
-        items={[
-          {
-            label: "Services",
-            href: "/services/define-your-roadmap/maturity-assessment",
-          },
-          {
-            label: "Decision Intelligence",
-            href: "/services/decision-intelligence",
-          },
-          {
-            label: "Semantic Modeling",
-            href: "/services/decision-intelligence/semantic-modeling",
-          },
-        ]}
-      />
+    <main className="min-h-screen bg-[#fafafa] text-black font-sans selection:bg-black selection:text-white pt-24 overflow-x-hidden">
+      
+      {/* Decorative Grid Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-10 bg-[radial-gradient(circle_at_center,#000_2px,transparent_2px)] bg-[size:4rem_4rem]"></div>
 
-      {/* Hero Section - Split Layout */}
-      <section className="relative overflow-hidden bg-background py-16 md:py-24 lg:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.15),transparent_50%)]" />
-        <div className="container relative z-10 mx-auto px-6">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
-            {/* Left Content */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              className="max-w-2xl lg:col-span-7"
-            >
-              <motion.h1
-                variants={fadeIn}
-                className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-7xl"
-              >
-                Semantic <br />
-                <span className="text-[hsl(var(--secondary))]">Modeling</span>
-              </motion.h1>
-              <motion.p
-                variants={fadeIn}
-                className="mb-10 text-xl font-light leading-relaxed text-foreground/90 md:text-2xl"
-              >
-                The foundation underneath your dashboards. Built for
-                performance, consistency, and scale. We create the certified
-                Power BI datasets your organization trusts.
-              </motion.p>
+      {/* Hero Section */}
+      <section className="relative z-10 px-6 max-w-7xl mx-auto min-h-[calc(100vh-96px)] flex items-center pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col gap-8">
+            <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter">
+              Power BI <br/> Semantic <br/> <span className="text-blue-400 stroke-black" style={{ WebkitTextStroke: "2px black" }}>Modeling</span>
+            </motion.h1>
+            <motion.p variants={fadeIn} className="text-xl md:text-2xl font-bold leading-relaxed max-w-lg">
+              The foundation underneath your dashboards. Consistent DAX measures, proper star schema, row-level security, Direct Lake performance. Every report gives the same answer.
+            </motion.p>
+            <motion.div variants={fadeIn}>
+              <Link href="/contact?service=semantic-model" className={`inline-flex items-center justify-center bg-blue-400 text-black px-8 py-4 text-xl font-black uppercase ${neoBorder} ${neoShadow} transition-all duration-200 ${neoShadowHover}`}>
+                Schedule a Conversation
+                <ChevronRight className="ml-2 w-6 h-6 border-2 border-black rounded-full bg-white" />
+              </Link>
+            </motion.div>
+          </motion.div>
 
-              <motion.div
-                variants={fadeIn}
-                className="flex flex-col gap-4 sm:flex-row"
-              >
-                <Link href="/contact?service=modeling" passHref>
-                  <Button
-                    variant="hero"
-                    size="lg"
-                    className="group px-8 shadow-xl shadow-primary/25"
-                  >
-                    Schedule a Model Review
-                    <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Button>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="relative h-[500px] w-full">
+            <div className={`absolute inset-0 bg-teal-400 ${neoBorder} ${neoShadow} -rotate-3`}></div>
+            <div className={`absolute inset-0 bg-white ${neoBorder} ${neoShadow} rotate-2 overflow-hidden flex items-center justify-center p-4`}>
+                <div className="relative w-full h-full border-2 border-black">
+                  <Image src="/semantic_model_v2.png" alt="Semantic Modeling Star Schema" fill className="object-cover" priority />
+                </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* The Problem Section */}
+      <section className="relative z-10 bg-[#f4f4f0] text-black py-16 lg:min-h-[calc(100vh-80px)] flex flex-col justify-center border-y-4 border-black">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-4">Why semantic models matter</h2>
+            <div className="w-24 h-4 bg-purple-300 border-2 border-black"></div>
+            <p className="mt-4 text-lg lg:text-xl font-bold max-w-2xl">Without a centralized model, everyone builds their own truth.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <ProblemCard 
+              color="bg-red-400" 
+              icon={<Scale size={24} />} 
+              title="Sales $10.2M, Finance $9.8M" 
+              desc="Both are 'correct'. Sales includes pending orders. Finance excludes returns. One uses order date, the other invoice date. Neither is wrong — but which goes in the deck?" 
+            />
+            <ProblemCard 
+              color="bg-orange-400" 
+              icon={<Users size={24} />} 
+              title="Every Analyst Builds Their Own" 
+              desc="15 reports, 15 connections to the warehouse. Each analyst figured out their own schema. When data model changes, 15 reports break." 
+            />
+            <ProblemCard 
+              color="bg-blue-400" 
+              icon={<FileText size={24} />} 
+              title='"Revenue" Means 12 Things' 
+              desc="No canonical definition. Gross revenue, net revenue, recognized revenue, booked revenue... each report picks one and labels it 'Revenue'." 
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Deliverables Section */}
+      <section className="relative z-10 py-16 lg:min-h-[calc(100vh-80px)] flex flex-col justify-center overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none z-0">
+          <span className="text-[8rem] lg:text-[12rem] font-black uppercase text-gray-200 whitespace-nowrap opacity-50">Deliverables</span>
+        </div>
+        <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+          <h2 className="text-5xl lg:text-6xl font-black uppercase tracking-tighter text-center mb-8 lg:mb-12">Deliverables</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <DeliverableCard 
+              title="Certified Power BI Semantic Model" 
+              icon={<Network size={32} />}
+              desc="A semantic model designed for your business: Star schema, correct relationships, hierarchies, and DAX measures. Certified in Power BI Service as the official source."
+              bg="bg-white"
+            />
+            <DeliverableCard 
+              title="Business Definitions Documentation" 
+              icon={<FileText size={32} />}
+              desc="Data dictionary documenting every measure. What's the source system? What transformations? Accessible in Power BI and standalone documents."
+              bg="bg-yellow-300"
+            />
+            <DeliverableCard 
+              title="Row-Level Security (RLS)" 
+              icon={<BoxSelect size={32} />}
+              desc="Security built into the model: Sales reps see their accounts, Regional managers see their region, Executives see everything. One model, secure for all."
+              bg="bg-teal-300"
+            />
+            <DeliverableCard 
+              title="Performance Optimization" 
+              icon={<Gauge size={32} />}
+              desc="Model designed for fast queries: Direct Lake mode on Fabric, proper aggregations for large fact tables, and highly optimized DAX."
+              bg="bg-white"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="relative z-10 py-16 bg-purple-300 border-y-4 border-black lg:min-h-[calc(100vh-80px)] flex flex-col justify-center overflow-hidden">
+        <div className="absolute right-0 top-0 select-none pointer-events-none opacity-20">
+          <span className="text-[12rem] lg:text-[16rem] font-black text-black leading-none -mr-10 -mt-10">04</span>
+        </div>
+        <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+          <h2 className="text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-8 lg:mb-10">Our Process</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            <ProcessCard step="01" week="Week 1-3" title="Discovery & Definition" desc="Interview stakeholders. Understand metric definitions. Identify conflicts. Align on 'official' definitions." />
+            <ProcessCard step="02" week="Week 3-4" title="Schema Design" desc="Design schema: fact tables, dimensions, relationships, measure logic. Review data model diagrams." />
+            <ProcessCard step="03" week="Week 5-8" title="Build & Implement" desc="Build in Power BI Desktop or Tabular Editor. Implement RLS, DAX measures, and formatting." />
+            <ProcessCard step="04" week="Week 8-10" title="Certify & Document" desc="Deploy to Power BI Service. Validate against source. Configure certification and train your team." />
+          </div>
+        </div>
+      </section>
+
+      {/* Real Examples */}
+      <section className="relative z-10 py-12 lg:min-h-[calc(100vh-80px)] flex flex-col justify-center bg-[#fafafa]">
+        <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(to_right,#000_2px,transparent_2px),linear-gradient(to_bottom,#000_2px,transparent_2px)] bg-[size:3rem_3rem]"></div>
+        <div className="container relative z-10 mx-auto px-6 max-w-7xl flex flex-col gap-12">
+          <CaseStudy 
+            industry="Financial Services"
+            title='"Scalable financial reporting for 200+ clients using parameterized semantic model"'
+            situation="A financial services provider managed accounting for over 200 businesses using QuickBooks. They couldn't give clients direct QBO access, build 200 reports, or share one report."
+            solution={[
+              "Centralized Data Layer via SQL Server",
+              "Single Parameterized Semantic Model with RLS",
+              "Self-Service Portal for secure client access"
+            ]}
+            stat1={{ val: "200+", label: "Clients Served" }}
+            stat2={{ val: "0", label: "Manual effort per client" }}
+            link="/industries/financial-services"
+            bg="bg-blue-300"
+          />
+        </div>
+      </section>
+
+      {/* FAQ & CTA */}
+      <section className="relative z-10 py-16 bg-blue-300 text-black border-t-4 border-black lg:min-h-[calc(100vh-80px)] flex flex-col justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,#fff_1px,transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
+        <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5 flex flex-col">
+              <div className="mb-6 self-start bg-white text-black px-6 py-3 border-4 border-black shadow-[8px_8px_0_0_#000] transform -rotate-2 hover:rotate-0 transition-transform">
+                <h2 className="text-6xl md:text-7xl font-black uppercase tracking-tighter">FAQ</h2>
+              </div>
+              <p className="text-xl font-bold mb-12 max-w-md">Answers to common questions about semantic modeling and governance.</p>
+              
+              <div className={`bg-white text-black p-8 md:p-10 ${neoBorder} ${neoShadow} transform rotate-1`}>
+                <h3 className="text-3xl font-black uppercase leading-[0.9] tracking-tighter mb-6">One version of the truth.</h3>
+                <Link href="/contact?service=semantic-model" className={`inline-flex bg-teal-400 text-black px-6 py-4 text-lg font-black uppercase ${neoBorder} shadow-[4px_4px_0_0_#000] transition-all duration-200 hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px]`}>
+                  Schedule a Call
                 </Link>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Visual (Abstract Star Schema/Model) */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative hidden lg:col-span-5 lg:block"
-            >
-              <div className="relative mx-auto aspect-square w-full max-w-lg transform-gpu overflow-hidden rounded-3xl shadow-2xl shadow-[hsl(var(--primary))/0.15]">
-                <Image
-                  src="/semantic_modeling_star_schema.png"
-                  alt="Semantic Modeling and Star Schema"
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                  priority
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem - Sticky Scroll */}
-      <section className="relative bg-muted/20 py-16 lg:py-24">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
-            {/* Sticky Sidebar */}
-            <div className="pl-0 lg:col-span-5 lg:pl-4">
-              <div className="sticky top-32">
-                <h2 className="mb-4 text-sm font-bold uppercase tracking-widest text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.2)]">
-                  The Anti-Patterns
-                </h2>
-                <h3 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-                  Why models break at scale.
-                </h3>
-                <p className="mb-8 text-xl leading-relaxed text-muted-foreground">
-                  A dataset that works perfectly for 100,000 rows will
-                  completely collapse when pointing to 40 million. Self-taught
-                  modeling habits destroy enterprise performance.
-                </p>
               </div>
             </div>
-
-            {/* Scrollable Content */}
-            <div className="flex flex-col gap-8 pt-10 lg:col-span-7">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="hover:shadow-glow group rounded-[2rem] border border-border/60 bg-background/80 p-6 shadow-sm backdrop-blur-md transition-all duration-500 hover:border-red-500/40 md:p-10"
-              >
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-500/10 text-red-500 transition-transform group-hover:scale-110">
-                  <Gauge size={28} />
-                </div>
-                <h4 className="mb-4 text-2xl font-bold text-foreground">
-                  The &quot;Wait and See&quot; Dashboardboard
-                </h4>
-                <p className="text-lg leading-relaxed text-muted-foreground">
-                  You click a filter. You wait 45 seconds for the visual to
-                  update. The report is unusable, not because of the
-                  visualization, but because the underlying DAX measures run
-                  table-scans over massive, unoptimized datasets.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="hover:shadow-glow group rounded-[2rem] border border-border/60 bg-background/80 p-6 shadow-sm backdrop-blur-md transition-all duration-500 hover:border-amber-500/40 md:p-10"
-              >
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500 transition-transform group-hover:scale-110">
-                  <Network size={28} />
-                </div>
-                <h4 className="mb-4 text-2xl font-bold text-foreground">
-                  A Million Silos
-                </h4>
-                <p className="text-lg leading-relaxed text-muted-foreground">
-                  Every Power BI dashboard contains its own dataset. When the
-                  definition of &quot;Active Customer&quot; changes, you have to
-                  find and update 40 different PBIX files. You inevitably miss
-                  three, leading to conflicting numbers in executive
-                  meetings.ings.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="hover:shadow-glow group rounded-[2rem] border border-border/60 bg-background/80 p-6 shadow-sm backdrop-blur-md transition-all duration-500 hover:border-indigo-500/40 md:p-10"
-              >
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-500/10 text-indigo-500 transition-transform group-hover:scale-110">
-                  <DatabaseZap size={28} />
-                </div>
-                <h4 className="mb-4 text-2xl font-bold text-foreground">
-                  The One Big Flat Table
-                </h4>
-                <p className="text-lg leading-relaxed text-muted-foreground">
-                  Instead of a Star Schema, the dataset is one massive, imported
-                  table with 300 columns meant to act like an Excel sheet. The
-                  refresh fails every morning because it exceeds Premium
-                  capacity memory limits during processing.
-                </p>
-              </motion.div>
+            
+            <div className="lg:col-span-7 flex flex-col gap-4">
+              <FAQItem q="What's the difference between a semantic model and Lakehouse?" a="Lakehouse stores your data. Semantic model adds business meaning: relationships, hierarchies, DAX measures, security. It sits between Lakehouse and reports." />
+              <FAQItem q="Import vs. DirectQuery vs. Direct Lake?" a="Import: fastest, requires refresh. DirectQuery: always current, slower. Direct Lake (Fabric): best of both — current data with near-import performance." />
+              <FAQItem q="How do we maintain the model after you build it?" a="We document everything and train your team. Adding DAX measures is straightforward. Structural changes need more care — we provide guidelines and support." />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Deliverables - Bento Grid */}
-      <section className="relative overflow-hidden bg-background py-16 md:py-24 lg:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,hsl(var(--primary)/0.05),transparent_40%)]" />
-        <div className="container relative z-10 mx-auto max-w-7xl px-6">
-          <div className="mb-20 text-center">
-            <h2 className="mb-4 text-sm font-bold uppercase tracking-widest text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.2)]">
-              Deliverables
-            </h2>
-            <h3 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-              Built for the VertiPaq Engine.
-            </h3>
-          </div>
-
-          <div className="grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-12">
-            {/* Large Feature 1 */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="relative flex min-h-[300px] flex-col justify-end overflow-hidden rounded-[2rem] border border-border/60 bg-muted/20 p-6 shadow-sm backdrop-blur-sm transition-colors hover:border-primary/40 md:col-span-8 md:p-10"
-            >
-              <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-primary/10 blur-[80px]" />
-              <div className="relative z-10">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] ring-1 ring-emerald-500/30 transition-all duration-300 group-hover:bg-emerald-500/20">
-                  <Network className="h-7 w-7" strokeWidth={1.5} />
-                </div>
-                <h4 className="mb-4 text-3xl font-bold text-foreground">
-                  Enterprise Star Schema Design
-                </h4>
-                <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                  True dimensional models optimized mathematically for the Power
-                  BI engine. Fact and dimension tables correctly structured for
-                  rapid filtering, aggregation, and future-proof flexibility.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Feature 2 */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-muted/20 p-6 shadow-sm backdrop-blur-sm transition-colors hover:border-blue-500/40 md:col-span-4 md:p-10"
-            >
-              <div className="relative z-10">
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400 shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)] ring-1 ring-blue-500/30 transition-all duration-300 group-hover:bg-blue-500/20">
-                  <Sigma className="h-6 w-6" strokeWidth={1.5} />
-                </div>
-                <h4 className="mb-4 text-2xl font-bold text-foreground">
-                  Optimized DAX Measures
-                </h4>
-                <p className="leading-relaxed text-muted-foreground">
-                  Complex calculations and time intelligence written cleanly
-                  using variables, tuned in DAX Studio for split-second
-                  rendering times.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Feature 3 */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-muted/20 p-6 shadow-sm backdrop-blur-sm transition-colors hover:border-emerald-500/40 md:col-span-4 md:p-10"
-            >
-              <div className="relative z-10">
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400 shadow-[0_0_20px_-5px_rgba(52,211,153,0.3)] ring-1 ring-emerald-500/30 transition-all duration-300 group-hover:bg-emerald-500/20">
-                  <CheckCircle2 className="h-6 w-6" strokeWidth={1.5} />
-                </div>
-                <h4 className="mb-4 text-2xl font-bold text-foreground">
-                  Certified Deployments
-                </h4>
-                <p className="leading-relaxed text-muted-foreground">
-                  Deployed securely into Fabric with &quot;Certified&quot;
-                  endorsement, ready for self-service consumption by the broader
-                  organization.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Large Feature 4 */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="relative flex min-h-[300px] flex-col justify-end overflow-hidden rounded-[2rem] border border-border/60 bg-muted/20 p-6 shadow-sm backdrop-blur-sm transition-colors hover:border-indigo-500/40 md:col-span-8 md:p-10"
-            >
-              <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-indigo-500/10 blur-[80px]" />
-              <div className="relative z-10">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-500/10 text-indigo-400 shadow-[0_0_20px_-5px_rgba(99,102,241,0.3)] ring-1 ring-indigo-500/30 transition-all duration-300 group-hover:bg-indigo-500/20">
-                  <BoxSelect className="h-7 w-7" strokeWidth={1.5} />
-                </div>
-                <h4 className="mb-4 text-3xl font-bold text-foreground">
-                  Granular Security Architecture
-                </h4>
-                <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                  Row-Level Security (RLS) and Object-Level Security (OLS)
-                  implemented deeply at the model connection layer, ensuring
-                  security rules are automatically inherited by absolutely every
-                  dashboard built on top.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Methodology - Bento Grid */}
-      <section className="relative overflow-hidden bg-muted/20 py-16 md:py-24 lg:py-32">
-        <div className="container mx-auto max-w-6xl px-6">
-          <div className="mb-16 text-center">
-            <h2 className="mb-4 text-sm font-bold uppercase tracking-widest text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.2)]">
-              Methodology
-            </h2>
-            <h3 className="mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-              How we build gold models
-            </h3>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-foreground/80">
-              Requirements, dimensional modeling, DAX engineering, and
-              performance optimization.
-            </p>
-          </div>
-
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
-            <MethodCard
-              step={1}
-              week="Phase 1"
-              title="Requirements & Metrics Mapping"
-              desc="Identify all required business metrics, base aggregations, and dimensional filtering cuts. Formally document defining logic for contested KPIs."
-            />
-            <MethodCard
-              step={2}
-              week="Phase 2"
-              title="Dimensional Modeling"
-              desc="Engineer the semantic star schema. Resolve complexities like many-to-many paths, role-playing dimensions, and slowly changing dimensions."
-            />
-            <MethodCard
-              step={3}
-              week="Phase 3"
-              title="Advanced DAX Engineering"
-              desc="Build complex measures. Implement Calculation Groups to drastically reduce redundant 'Time Intelligence' measure sprawl across the model."
-            />
-            <MethodCard
-              step={4}
-              week="Phase 4"
-              title="Performance Optimization"
-              desc="Diagnose memory usage via VertiPaq Analyzer. Optimize sorting, drastically reduce cardinality, and configure incremental refresh partitions."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Real Example - Premium Section */}
-      <section className="relative overflow-hidden bg-background py-16 md:py-24 lg:py-32">
-        <div className="container relative z-10 mx-auto max-w-6xl px-6">
-          <div className="relative overflow-hidden rounded-[3rem] border border-primary/20 bg-primary/5 p-6 text-foreground shadow-sm md:p-10 lg:p-16">
-            {/* Decorative background glow */}
-            <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] max-w-full rounded-full bg-primary/10 blur-[120px]" />
-
-            <div className="relative z-10">
-              <div className="mb-8 inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-bold uppercase tracking-wider text-primary">
-                Case Study: Retail & E-Commerce
-              </div>
-              <h2 className="mb-12 max-w-3xl text-3xl font-bold leading-tight text-foreground md:text-5xl">
-                Fixing a 14-hour daily report refresh cycle.
-              </h2>
-
-              <div className="grid gap-12 md:grid-cols-2">
-                <div>
-                  <h3 className="mb-4 text-xl font-bold text-primary">
-                    The Situation
-                  </h3>
-                  <p className="text-lg leading-relaxed text-muted-foreground">
-                    A multi-channel retailer built their core sales dashboard
-                    using a single, flattened table importing daily
-                    transactions. At 80 million rows, the dataset maxed out
-                    Power BI Premium memory limits. Refreshes failed multiple
-                    times a week, successful runs took 14 hours, and visual
-                    clicks took 30+ seconds to calculate.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="mb-4 text-xl font-bold text-primary">
-                    What We Delivered
-                  </h3>
-                  <ul className="space-y-3 text-lg text-muted-foreground">
-                    <li className="flex items-start gap-3">
-                      <div className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      Split the flat table into a strict Star Schema (1 Fact
-                      table, 8 highly optimized Dimensions).
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      Replaced 150 redundant hard-coded DAX measures with 5
-                      clean Calculation Group items.
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      Configured automated Incremental Refresh patterns over
-                      history.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-16 grid grid-cols-1 gap-8 border-t border-primary/20 pt-10 sm:grid-cols-3">
-                <div>
-                  <p className="mb-2 text-5xl font-black text-primary">
-                    12 Min
-                  </p>
-                  <p className="font-medium text-muted-foreground">
-                    New refresh duration
-                  </p>
-                </div>
-                <div>
-                  <p className="mb-2 mt-1 text-4xl font-black text-primary">
-                    -85%
-                  </p>
-                  <p className="font-medium text-muted-foreground">
-                    Model RAM usage reduction
-                  </p>
-                </div>
-                <div className="flex flex-col justify-end">
-                  <Link
-                    href="/industries/retail-ecommerce"
-                    className="group flex items-center gap-2 text-lg font-bold text-primary transition-colors hover:text-primary/80"
-                  >
-                    See Retail Work
-                    <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-muted/20 py-16 lg:py-24">
-        <div className="container mx-auto max-w-4xl px-6">
-          <div className="mb-16 text-center">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Frequently Asked Questions
-            </h2>
-          </div>
-          <div className="space-y-4">
-            <FAQItem
-              q="What is a semantic model vs. a dataset?"
-              a="Microsoft recently renamed 'Datasets' to 'Semantic Models' in Power BI and Fabric. They mean the same thing: the foundational data structure, relationships, and DAX calculations that power your visuals."
-            />
-            <FAQItem
-              q="Do you build DirectQuery or Import models?"
-              a="It depends entirely on architecture requirements. If you are on Microsoft Fabric, we strongly prefer Direct Lake mode (combining Import speed with DirectQuery scale). Otherwise, we recommend Import with Incremental Refresh for sub-second performance, reserving DirectQuery primarily for real-time edge cases."
-            />
-            <FAQItem
-              q="Can you fix our existing slow DAX measures?"
-              a="Yes. We frequently execute DAX performance tuning engagements. We utilize DAX Studio and VertiPaq Analyzer to locate engine bottlenecks and refactor the code for maximum evaluation efficiency."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Related Services */}
-      <section className="bg-background py-16 lg:py-24">
-        <div className="container mx-auto max-w-5xl px-6">
-          <h2 className="mb-10 text-center text-3xl font-bold">
-            Related Services
-          </h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <Link
-              href="/services/decision-intelligence/executive-analytics"
-              className="group"
-            >
-              <div className="flex h-full flex-col justify-between rounded-[2rem] border border-border/60 bg-muted/20 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:shadow-md">
-                <h3 className="mb-2 text-xl font-bold tracking-tight transition-colors group-hover:text-primary">
-                  Executive Analytics
-                </h3>
-                <span className="mt-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary">
-                  Learn more{" "}
-                  <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </Link>
-            <Link
-              href="/services/decision-intelligence/self-service-enablement"
-              className="group"
-            >
-              <div className="flex h-full flex-col justify-between rounded-[2rem] border border-border/60 bg-muted/20 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:shadow-md">
-                <h3 className="mb-2 text-xl font-bold tracking-tight transition-colors group-hover:text-primary">
-                  Self-Service Enablement
-                </h3>
-                <span className="mt-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary">
-                  Learn more{" "}
-                  <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </Link>
-            <Link
-              href="/services/build-your-foundation/data-modernization"
-              className="group"
-            >
-              <div className="flex h-full flex-col justify-between rounded-[2rem] border border-border/60 bg-muted/20 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:shadow-md">
-                <h3 className="mb-2 text-xl font-bold tracking-tight transition-colors group-hover:text-primary">
-                  Data Modernization
-                </h3>
-                <span className="mt-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary">
-                  Learn more{" "}
-                  <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="border-t border-border bg-background py-16 lg:py-24">
-        <div className="container mx-auto max-w-5xl px-6">
-          <div className="rounded-[3rem] border border-primary/20 bg-primary/5 p-12 text-center shadow-lg shadow-primary/5 md:p-10 lg:p-16">
-            <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl">
-              Build models, not just reports.
-            </h2>
-            <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-muted-foreground">
-              Stop creating a new dataset for every dashboard. Let&apos;s build
-              a certified, lightning-fast semantic model your entire
-              organization can rely on.
-            </p>
-            <Link href="/contact?service=modeling" passHref>
-              <Button
-                variant="hero"
-                size="lg"
-                className="h-14 rounded-full px-10 text-lg"
-              >
-                Schedule a Model Review
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
@@ -555,47 +209,101 @@ export default function SemanticModeling() {
   );
 }
 
-function MethodCard({ step, week, title, desc }) {
-  const num = String(step).padStart(2, "0");
+function ProblemCard({ color, icon, title, desc }) {
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-40px" }}
-      variants={fadeIn}
-      className="group relative overflow-hidden rounded-[1.75rem] border border-border/60 bg-background p-8 shadow-sm transition-all duration-300 hover:border-emerald-500/25 hover:shadow-lg"
-    >
-      <div className="absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/2 rounded-full bg-emerald-500/5 blur-2xl transition-colors duration-300 group-hover:bg-emerald-500/10" />
-      <div className="relative flex h-full flex-col">
-        <div className="mb-5 flex items-center gap-4">
-          <span className="text-[2.5rem] font-black tabular-nums leading-none tracking-tight text-foreground">
-            {num}
-          </span>
-          <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-[0.72rem] font-bold uppercase tracking-widest text-emerald-500 shadow-[0_0_15px_-3px_rgba(52,211,153,0.3)]">
-            {week}
-          </span>
-        </div>
-        <h4 className="mb-3 text-xl font-bold tracking-tight text-foreground">
-          {title}
-        </h4>
-        <p className="flex-1 leading-relaxed text-foreground/90">{desc}</p>
+    <div className={`${color} text-black p-6 lg:p-8 ${neoBorder} ${neoShadow} flex flex-col gap-4 lg:gap-6`}>
+      <div className="w-12 h-12 lg:w-14 lg:h-14 bg-white border-2 border-black flex items-center justify-center rounded-full shrink-0">
+        {icon}
       </div>
-    </motion.div>
+      <h3 className="text-xl lg:text-2xl font-black uppercase leading-tight">{title}</h3>
+      <p className="font-bold text-sm lg:text-base leading-snug">{desc}</p>
+    </div>
+  );
+}
+
+function DeliverableCard({ title, icon, desc, bg }) {
+  return (
+    <div className={`${bg} p-6 lg:p-8 ${neoBorder} ${neoShadow} flex flex-col gap-4 lg:gap-6 hover:-translate-y-2 transition-transform duration-300`}>
+      <div className="w-12 h-12 lg:w-16 lg:h-16 bg-black text-white flex items-center justify-center border-4 border-black shrink-0">
+        {icon}
+      </div>
+      <h3 className="text-2xl lg:text-3xl font-black uppercase leading-tight">{title}</h3>
+      <p className="font-bold text-base lg:text-lg leading-snug">{desc}</p>
+    </div>
+  );
+}
+
+function ProcessCard({ step, week, title, desc }) {
+  return (
+    <div className={`bg-white p-5 lg:p-6 ${neoBorder} ${neoShadow} flex flex-col gap-3 relative overflow-hidden group`}>
+      <div className="absolute top-0 right-0 bg-black text-white px-2 py-1 lg:px-3 lg:py-1 border-b-4 border-l-4 border-black font-black text-lg lg:text-xl">
+        {step}
+      </div>
+      <span className="text-xs lg:text-sm font-black uppercase tracking-widest text-gray-500">{week}</span>
+      <h4 className="text-xl lg:text-2xl font-black uppercase leading-tight group-hover:text-blue-500 transition-colors">{title}</h4>
+      <p className="font-bold text-sm lg:text-base text-gray-700 leading-snug">{desc}</p>
+    </div>
+  );
+}
+
+function CaseStudy({ industry, title, situation, solution, stat1, stat2, link, bg }) {
+  return (
+    <div className={`${bg} p-8 md:p-16 ${neoBorder} ${neoShadow}`}>
+      <div className="inline-block bg-white px-4 py-2 border-2 border-black font-black uppercase text-sm mb-8">
+        Case Study: {industry}
+      </div>
+      <h3 className="text-3xl md:text-5xl font-black uppercase leading-tight mb-12 border-b-4 border-black pb-8">
+        {title}
+      </h3>
+      <div className="grid md:grid-cols-2 gap-12 mb-12">
+        <div>
+          <h4 className="text-2xl font-black uppercase mb-4 bg-black text-white inline-block px-2">The Situation</h4>
+          <p className="font-bold text-xl leading-relaxed">{situation}</p>
+        </div>
+        <div>
+          <h4 className="text-2xl font-black uppercase mb-4 bg-black text-white inline-block px-2">What We Built</h4>
+          <ul className="flex flex-col gap-3 font-bold text-lg">
+            {solution.map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <CheckCircle2 className="shrink-0 mt-1" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="flex flex-col md:flex-row gap-12 md:items-center justify-between bg-white p-8 border-4 border-black">
+        <div className="flex gap-12">
+          <div>
+            <div className="text-5xl font-black">{stat1.val}</div>
+            <div className="font-bold uppercase text-sm mt-1">{stat1.label}</div>
+          </div>
+          <div>
+            <div className="text-5xl font-black">{stat2.val}</div>
+            <div className="font-bold uppercase text-sm mt-1">{stat2.label}</div>
+          </div>
+        </div>
+        <Link href={link} className="flex items-center gap-2 font-black uppercase hover:underline text-xl">
+          See Work <ChevronRight className="bg-black text-white rounded-full p-1 w-8 h-8" />
+        </Link>
+      </div>
+    </div>
   );
 }
 
 function FAQItem({ q, a }) {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <details className="group cursor-pointer rounded-[2rem] border border-border/60 bg-background p-8 shadow-sm transition-all duration-300 hover:border-primary/30 [&_summary::-webkit-details-marker]:hidden">
-      <summary className="flex select-none items-center justify-between text-xl font-bold outline-none">
+    <div className={`bg-white text-black ${neoBorder} transition-all duration-200 ${isOpen ? neoShadow : ''}`}>
+      <button onClick={() => setIsOpen(!isOpen)} className="w-full text-left p-6 flex justify-between items-center font-black text-xl md:text-2xl uppercase">
         {q}
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform duration-300 group-open:rotate-90">
-          <ChevronRight className="h-5 w-5" />
+        <ChevronRight className={`transition-transform duration-300 w-8 h-8 ${isOpen ? 'rotate-90' : ''}`} />
+      </button>
+      {isOpen && (
+        <div className="p-6 pt-0 font-bold text-lg leading-relaxed border-t-4 border-black">
+          {a}
         </div>
-      </summary>
-      <div className="mt-6 border-t border-border pt-6 text-lg leading-relaxed text-muted-foreground duration-300 animate-in fade-in slide-in-from-top-4">
-        {a}
-      </div>
-    </details>
+      )}
+    </div>
   );
 }

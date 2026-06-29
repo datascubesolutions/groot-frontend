@@ -81,7 +81,7 @@ export default function HeroSection() {
 
                 {/* Subtext */}
                 <motion.p variants={fadeIn} className="mb-8 max-w-[650px] text-base leading-relaxed text-[#1b2b36] sm:text-lg lg:text-2xl xl:text-[1.75rem] xl:leading-[1.6]">
-                  A comprehensive strategy that aligns your Microsoft Fabric and Azure investments with business outcomes. Not a vision deck — <span className="font-bold text-[#1b2b36]">a plan that gets executive buy-in.</span>
+                  A comprehensive strategy that aligns your Microsoft Fabric and Azure investments with business outcomes. Not a vision deck — <span className="font-bold text-[#1b2b36]">a plan that gets executive buy-in and guides implementation.</span>
                 </motion.p>
 
                 {/* CTA */}
