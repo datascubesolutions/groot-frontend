@@ -4,6 +4,7 @@ export const metadata = {
   keywords: "Power BI self-service, Power BI governance, certified datasets, Fabric workspace management, Power BI training, self-service BI"
 };
 
+/** @param {{ children: React.ReactNode }} props */
 export default function Layout({ children }) {
   return <>{children}</>;
 }

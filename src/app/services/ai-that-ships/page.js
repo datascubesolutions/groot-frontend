@@ -40,7 +40,7 @@ export default function AIThatShipsPage() {
       <section className="relative overflow-hidden pt-4 pb-10 lg:pt-8 flex lg:min-h-[calc(100vh-80px)] items-center">
         <div className="container mx-auto px-6 relative z-10 max-w-[1400px]">
 
-          <div className="mb-6">
+          <div className="mb-4">
             <Breadcrumb
               items={[
                 { label: "Services", href: "/services" },
@@ -58,7 +58,7 @@ export default function AIThatShipsPage() {
               {/* Left copy */}
               <motion.div
                 initial="hidden" animate="visible" variants={staggerContainer}
-                className="lg:col-span-7 p-8 md:p-16 flex flex-col justify-center relative z-10 bg-background/80 backdrop-blur-sm"
+                className="lg:col-span-7 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative z-10 bg-background/80 backdrop-blur-sm"
               >
                 <motion.div variants={fadeIn} className="mb-6 inline-block">
                   <div className="px-3 py-1 border-[2px] border-foreground text-[10px] sm:text-xs font-black uppercase tracking-widest inline-flex items-center gap-2">
@@ -69,28 +69,28 @@ export default function AIThatShipsPage() {
 
                 <motion.h1
                   variants={fadeIn}
-                  className="mb-6 text-[2.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5rem]"
+                  className="mb-4 text-[2.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground sm:text-[3.5rem] lg:text-[4.5rem]"
                 >
                   <span className="text-primary block mb-2">AI That</span>
                   Actually Ships.
-                  <span className="block text-[2rem] sm:text-[2.5rem] lg:text-[3rem] mt-2 text-foreground/50">
+                  <span className="block text-[2rem] sm:text-[2.5rem] lg:text-[2.75rem] mt-2 text-foreground/50">
                     To Production.
                   </span>
                 </motion.h1>
 
-                <motion.p variants={fadeIn} className="max-w-xl text-base sm:text-lg lg:text-xl font-bold leading-relaxed text-muted-foreground border-l-[4px] border-primary pl-6 mb-8">
+                <motion.p variants={fadeIn} className="max-w-xl text-sm sm:text-base lg:text-lg font-bold leading-relaxed text-muted-foreground border-l-[4px] border-primary pl-6 mb-8 bg-primary/5 py-2">
                   Theoretical AI is a cost center. We architect and deploy custom RAG agents, Copilot implementations, and enterprise ML models that move from notebook to live environment.
                 </motion.p>
 
                 <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact?service=ai" passHref>
-                    <Button variant="hero" size="lg" className="h-14 sm:h-16 w-full sm:w-auto rounded-none border-[3px] border-foreground bg-foreground px-6 sm:px-8 text-background shadow-[6px_6px_0px_0px_hsl(var(--primary))] transition-all duration-300 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none">
+                    <Button variant="hero" size="lg" className="h-14 w-full sm:w-auto rounded-none border-[3px] border-foreground bg-foreground px-6 sm:px-8 text-background shadow-[6px_6px_0px_0px_hsl(var(--primary))] transition-all duration-300 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none">
                       <span className="text-xs sm:text-sm font-black uppercase tracking-[0.15em]">Deploy AI Now</span>
                       <ChevronRight className="ml-3 h-4 w-4 sm:h-5 sm:w-5" />
                     </Button>
                   </Link>
                   <Link href="/contact" passHref>
-                    <Button variant="outline" size="lg" className="h-14 sm:h-16 w-full sm:w-auto rounded-none border-[3px] border-foreground bg-transparent px-6 sm:px-8 text-foreground transition-all duration-300 hover:bg-foreground/5">
+                    <Button variant="outline" size="lg" className="h-14 w-full sm:w-auto rounded-none border-[3px] border-foreground bg-transparent px-6 sm:px-8 text-foreground transition-all duration-300 hover:bg-foreground/5">
                       <span className="text-xs sm:text-sm font-black uppercase tracking-[0.15em]">Talk to Our Engineers</span>
                     </Button>
                   </Link>
@@ -98,16 +98,16 @@ export default function AIThatShipsPage() {
               </motion.div>
 
               {/* Right — terminal visual */}
-              <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-[400px] border-t-[4px] lg:border-t-0 lg:border-l-[4px] border-foreground bg-foreground overflow-hidden flex flex-col">
+              <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-[350px] border-t-[4px] lg:border-t-0 lg:border-l-[4px] border-foreground bg-foreground overflow-hidden flex flex-col">
                 {/* Terminal header */}
-                <div className="flex items-center gap-2 px-5 py-3 border-b-[3px] border-background/20">
+                <div className="flex items-center gap-2 px-5 py-3 border-b-[3px] border-background/20 bg-background/5">
                   <div className="h-3 w-3 bg-rose-500 border border-background/30" />
                   <div className="h-3 w-3 bg-amber-500 border border-background/30" />
                   <div className="h-3 w-3 bg-primary border border-background/30" />
                   <span className="ml-4 font-mono text-[10px] text-background/50 uppercase tracking-widest">production_deployment.sh</span>
                 </div>
                 {/* Terminal body */}
-                <div className="flex-1 p-6 font-mono text-sm space-y-3 overflow-hidden">
+                <div className="flex-1 p-6 font-mono text-sm space-y-3 overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.4)_100%)]">
                   {[
                     { color: "text-primary", line: "$ ./deploy_rag_agent.sh --env production" },
                     { color: "text-background/60", line: "→ Connecting to Azure AI Search..." },
@@ -143,14 +143,14 @@ export default function AIThatShipsPage() {
       </section>
 
       {/* ─── THE PROBLEM ─────────────────────────────────────────────────────── */}
-      <section className="relative z-20 py-24 border-y-[6px] border-foreground bg-card">
-        <div className="container mx-auto px-6 max-w-[1400px]">
-          <div className="mb-16 border-b-[4px] border-foreground pb-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+      <section className="relative z-20 lg:min-h-[calc(100vh-80px)] flex items-center py-16 lg:py-0 border-y-[6px] border-foreground bg-card">
+        <div className="container mx-auto px-6 max-w-[1400px] w-full">
+          <div className="mb-10 lg:mb-12 border-b-[4px] border-foreground pb-6 lg:pb-8 flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-8">
             <div className="max-w-3xl">
-              <span className="text-xs font-black uppercase tracking-[0.4em] text-primary block mb-4 border border-primary/30 bg-primary/10 px-3 py-1 w-max">
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-primary block mb-3 border border-primary/30 bg-primary/10 px-3 py-1 w-max">
                 [ THE PROBLEM ]
               </span>
-              <h2 className="text-[3rem] sm:text-[4rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground">
+              <h2 className="text-[2.5rem] sm:text-[3.5rem] lg:text-[4rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground">
                 Why AI projects fail in the real world.
               </h2>
             </div>
@@ -186,12 +186,12 @@ export default function AIThatShipsPage() {
               <motion.div
                 key={i}
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeIn}
-                className={`border-[3px] ${item.accent} bg-background p-8 md:p-10 shadow-[10px_10px_0px_0px_hsl(var(--foreground)/0.1)] relative hover:-translate-y-1 transition-transform`}
+                className={`border-[3px] ${item.accent} bg-background p-6 lg:p-8 shadow-[8px_8px_0px_0px_hsl(var(--foreground)/0.1)] relative hover:-translate-y-1 transition-transform`}
               >
-                <div className="absolute right-4 top-4 text-xs font-black uppercase tracking-widest text-muted-foreground">{item.code}</div>
-                <item.icon className={`w-10 h-10 ${item.iconColor} mb-6`} strokeWidth={2} />
-                <h3 className="text-xl font-black uppercase leading-[1.1] tracking-tight mb-4">{item.title}</h3>
-                <p className="text-[1rem] font-semibold text-muted-foreground leading-relaxed">{item.desc}</p>
+                <div className="absolute right-4 top-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">{item.code}</div>
+                <item.icon className={`w-8 h-8 lg:w-10 lg:h-10 ${item.iconColor} mb-4 lg:mb-6`} strokeWidth={2} />
+                <h3 className="text-lg lg:text-xl font-black uppercase leading-[1.1] tracking-tight mb-3 lg:mb-4">{item.title}</h3>
+                <p className="text-sm lg:text-[15px] font-semibold text-muted-foreground leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -199,10 +199,10 @@ export default function AIThatShipsPage() {
       </section>
 
       {/* ─── CAPABILITIES ────────────────────────────────────────────────────── */}
-      <section className="relative z-30 bg-background py-12 lg:py-0 flex lg:min-h-[calc(100vh-80px)] items-center">
+      <section className="relative z-30 bg-background py-16 lg:py-0 flex lg:min-h-[calc(100vh-80px)] items-center">
         <div className="container mx-auto px-6 max-w-[1400px] w-full">
-          <div className="mb-10 lg:mb-12 text-center">
-            <h2 className="mb-4 text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-primary">What's Included</h2>
+          <div className="mb-8 lg:mb-10 text-center">
+            <h2 className="mb-3 text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-primary">What's Included</h2>
             <h3 className="text-[2.5rem] md:text-[3.5rem] font-black uppercase leading-[0.9] tracking-tighter text-foreground max-w-4xl mx-auto">
               Four pillars of enterprise AI engineering
             </h3>
@@ -242,16 +242,16 @@ export default function AIThatShipsPage() {
               <motion.div
                 key={i}
                 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                className="bg-card flex flex-col group overflow-hidden border-[4px] border-foreground shadow-[10px_10px_0px_0px_hsl(var(--primary)/0.2)] hover:shadow-[15px_15px_0px_0px_hsl(var(--primary)/0.3)] transition-all duration-300 hover:-translate-y-2"
+                className="bg-card flex flex-col group overflow-hidden border-[3px] border-foreground shadow-[8px_8px_0px_0px_hsl(var(--primary)/0.2)] hover:shadow-[12px_12px_0px_0px_hsl(var(--primary)/0.3)] transition-all duration-300 hover:-translate-y-2"
               >
-                <div className="border-b-[4px] border-foreground bg-muted/30 p-3 lg:p-4 flex justify-between items-center">
+                <div className="border-b-[3px] border-foreground bg-muted/30 p-3 flex justify-between items-center">
                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">{item.code}</span>
-                  <item.icon className="w-5 h-5 text-muted-foreground" />
+                  <item.icon className="w-4 h-4 text-muted-foreground" />
                 </div>
-                <div className="p-6 lg:p-8 flex-1 flex flex-col">
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-4 bg-primary/10 w-max px-2 py-0.5 border border-primary/20">{item.tag}</div>
-                  <h4 className="text-xl lg:text-2xl font-black uppercase leading-[1.1] tracking-tight mb-4">{item.title}</h4>
-                  <p className="text-sm lg:text-[15px] font-semibold text-muted-foreground leading-relaxed">{item.desc}</p>
+                <div className="p-5 lg:p-6 flex-1 flex flex-col">
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-3 bg-primary/10 w-max px-2 py-0.5 border border-primary/20">{item.tag}</div>
+                  <h4 className="text-lg lg:text-xl font-black uppercase leading-[1.1] tracking-tight mb-3">{item.title}</h4>
+                  <p className="text-sm font-semibold text-muted-foreground leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -260,11 +260,11 @@ export default function AIThatShipsPage() {
       </section>
 
       {/* ─── METHODOLOGY (dark bg section) ──────────────────────────────────── */}
-      <section className="relative py-12 lg:py-0 flex lg:min-h-[calc(100vh-80px)] items-center bg-foreground text-background border-y-[6px] border-foreground">
+      <section className="relative py-16 lg:py-0 flex lg:min-h-[calc(100vh-80px)] items-center bg-foreground text-background border-y-[6px] border-foreground">
         <div className="container mx-auto px-6 max-w-[1400px] w-full">
-          <div className="mb-10 lg:mb-12 md:flex justify-between items-end border-b-[4px] border-background pb-6">
+          <div className="mb-8 lg:mb-10 md:flex justify-between items-end border-b-[4px] border-background pb-5">
             <div>
-              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-primary block mb-3">Our Approach</span>
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-primary block mb-2">Our Approach</span>
               <h2 className="text-[2.5rem] md:text-[3.5rem] font-black uppercase leading-[0.85] tracking-tighter">
                 How we ship AI<br />to production.
               </h2>
@@ -280,16 +280,16 @@ export default function AIThatShipsPage() {
       </section>
 
       {/* ─── CASE STUDY ──────────────────────────────────────────────────────── */}
-      <section className="relative py-12 lg:py-0 flex lg:min-h-[calc(100vh-80px)] items-center bg-card border-y-[6px] border-foreground">
-        <div className="container mx-auto px-6 max-w-[1400px]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+      <section className="relative py-16 lg:py-0 flex lg:min-h-[calc(100vh-80px)] items-center bg-card border-y-[6px] border-foreground">
+        <div className="container mx-auto px-6 max-w-[1400px] w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
             {/* Left — numbers */}
             <div className="lg:col-span-5 flex flex-col justify-center">
-              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-primary block mb-4 border border-primary/30 bg-primary/10 px-3 py-1 w-max">
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-primary block mb-3 border border-primary/30 bg-primary/10 px-3 py-1 w-max">
                 Case Study
               </span>
-              <h2 className="text-[2.5rem] md:text-[3.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground mb-8">
+              <h2 className="text-[2.5rem] md:text-[3.5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground mb-6">
                 Enterprise IT<br />Helpdesk AI.
               </h2>
 
@@ -316,29 +316,29 @@ export default function AIThatShipsPage() {
             </div>
 
             {/* Right — execution log */}
-            <div className="lg:col-span-7 border-[3px] border-foreground bg-background p-6 md:p-10 shadow-[10px_10px_0px_0px_hsl(var(--primary)/0.2)] relative flex flex-col justify-center">
+            <div className="lg:col-span-7 border-[3px] border-foreground bg-background p-6 lg:p-8 shadow-[8px_8px_0px_0px_hsl(var(--primary)/0.2)] relative flex flex-col justify-center">
               <div className="absolute top-0 right-0 border-b-[3px] border-l-[3px] border-foreground bg-primary/10 px-3 py-1">
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">EXECUTION LOG</span>
               </div>
 
-              <h3 className="font-mono text-sm font-black uppercase tracking-widest text-muted-foreground mb-8 border-b-[2px] border-border pb-4 mt-2">
+              <h3 className="font-mono text-[10px] lg:text-xs font-black uppercase tracking-widest text-muted-foreground mb-6 border-b-[2px] border-border pb-3 mt-2">
                 How we built it
               </h3>
 
-              <ul className="space-y-6">
+              <ul className="space-y-4">
                 {[
                   "Indexed SharePoint, Confluence, and legacy ticketing systems to create a unified, secure knowledge base inside Azure AI Search.",
                   "Built a custom RAG chatbot deployed natively inside Microsoft Teams — accessible where employees already work, requiring zero behavior change.",
                   "Implemented strict Entra ID security trimming so each user's context is mathematically limited to documents they're already permitted to read.",
                   "Set up Azure Monitor dashboards and Prompt Flow tracing so the IT team owns the system — no ongoing consultant dependency.",
                 ].map((text, i) => (
-                  <li key={i} className="flex items-start gap-5">
+                  <li key={i} className="flex items-start gap-4">
                     <div className="shrink-0 flex items-center justify-center mt-0.5">
-                      <div className="flex h-7 w-7 items-center justify-center border-[2px] border-foreground bg-primary text-background">
-                        <CheckCircle2 size={14} strokeWidth={3} />
+                      <div className="flex h-5 w-5 lg:h-6 lg:w-6 items-center justify-center border-[2px] border-foreground bg-primary text-background">
+                        <CheckCircle2 size={12} strokeWidth={3} />
                       </div>
                     </div>
-                    <p className="text-base font-semibold text-foreground leading-relaxed">{text}</p>
+                    <p className="text-sm font-semibold text-foreground leading-relaxed">{text}</p>
                   </li>
                 ))}
               </ul>
@@ -348,12 +348,12 @@ export default function AIThatShipsPage() {
       </section>
 
       {/* ─── CTA ─────────────────────────────────────────────────────────────── */}
-      <section className="bg-foreground py-24 text-background lg:py-32 border-t-[8px] border-primary">
-        <div className="container mx-auto max-w-4xl px-6 text-center">
-          <h2 className="mb-8 text-[3rem] font-black uppercase leading-[0.9] tracking-tighter sm:text-[4rem] md:text-[5rem]">
+      <section className="bg-foreground py-16 lg:py-0 flex lg:min-h-[60vh] items-center border-t-[8px] border-primary text-background">
+        <div className="container mx-auto max-w-4xl px-6 text-center w-full">
+          <h2 className="mb-6 text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] font-black uppercase leading-[0.9] tracking-tighter">
             Stop building demos.<br />Ship production AI.
           </h2>
-          <p className="mx-auto mb-12 max-w-2xl text-xl font-bold leading-relaxed text-background/70">
+          <p className="mx-auto mb-10 max-w-2xl text-lg lg:text-xl font-bold leading-relaxed text-background/70">
             Your competitors are deploying AI that works. Every week you spend in staging is a week they're ahead of you.
           </p>
           <Link href="/contact?service=ai" passHref>
@@ -378,16 +378,16 @@ function PhaseSlice({ num, title, desc }) {
   return (
     <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-      className="group grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 border-b-[3px] border-background/20 py-6 lg:py-10 transition-colors hover:bg-background/5 px-2 lg:px-4"
+      className="group grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 border-b-[3px] border-background/20 py-5 lg:py-8 transition-colors hover:bg-background/5 px-2 lg:px-4"
     >
-      <div className="lg:col-span-2 text-[3rem] font-black leading-[0.8] tracking-tighter text-primary/40 group-hover:text-primary transition-colors flex items-center">
+      <div className="lg:col-span-2 text-[2.5rem] lg:text-[3rem] font-black leading-[0.8] tracking-tighter text-primary/40 group-hover:text-primary transition-colors flex items-center">
         {num}
       </div>
       <div className="lg:col-span-3 flex items-center">
-        <h3 className="text-xl lg:text-2xl font-black uppercase tracking-tight leading-[1] text-background">{title}</h3>
+        <h3 className="text-lg lg:text-xl font-black uppercase tracking-tight leading-[1.1] text-background">{title}</h3>
       </div>
       <div className="lg:col-span-7 flex items-center">
-        <p className="text-sm lg:text-base font-medium text-background/70 leading-relaxed border-l-[3px] border-primary/30 pl-4 lg:pl-6 group-hover:border-primary transition-colors">
+        <p className="text-sm font-medium text-background/70 leading-relaxed border-l-[3px] border-primary/30 pl-4 group-hover:border-primary transition-colors">
           {desc}
         </p>
       </div>

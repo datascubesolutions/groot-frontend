@@ -26,7 +26,7 @@ export default function CaseStudySection() {
           <div className="flex shrink-0 pb-1">
             <Link 
               href="/industries/technology-saas" 
-              className="group flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-emerald-600 hover:text-emerald-700 transition-colors bg-emerald-50 px-5 py-2.5 rounded-full border border-emerald-200"
+              className="group flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-[#1b2b36] hover:bg-emerald-600 hover:text-white transition-all bg-emerald-100 px-5 py-2.5 rounded-full border-2 border-emerald-600 shadow-[2px_2px_0_0_#1b2b36] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[1px_1px_0_0_#1b2b36]"
             >
               Technology & SaaS
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />

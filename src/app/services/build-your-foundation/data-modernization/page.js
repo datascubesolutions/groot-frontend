@@ -24,11 +24,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 
+/** @type {import('framer-motion').Variants} */
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+/** @type {import('framer-motion').Variants} */
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -865,6 +867,7 @@ const METHOD_PANEL_ACCENT = {
 };
 
 // Complex methodology panel implementing twisted writing mode
+/** @param {{ step: number, week: string, title: string, desc: string, color: 'emerald' | 'cyan' | 'blue' | 'indigo' }} props */
 function MethodPanel({ step, week, title, desc, color }) {
   const num = String(step).padStart(2, "0");
   const accent = METHOD_PANEL_ACCENT[color] ?? METHOD_PANEL_ACCENT.emerald;
@@ -908,6 +911,7 @@ function MethodPanel({ step, week, title, desc, color }) {
   );
 }
 
+/** @param {{ q: string, a: string, index?: number }} props */
 export function FAQItem({ q, a, index = 0 }) {
   const num = String(index + 1).padStart(2, "0");
   return (

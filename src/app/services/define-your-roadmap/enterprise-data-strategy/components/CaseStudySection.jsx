@@ -1,11 +1,11 @@
 "use client";
 
 import {
+  ArrowRight,
   Database,
   Search,
-  TrendingUp,
   ShieldCheck,
-  ArrowRight
+  TrendingUp
 } from "lucide-react";
 import Link from "next/link";
 
@@ -24,9 +24,9 @@ export default function CaseStudySection() {
             </h3>
           </div>
           <div className="flex shrink-0 pb-1">
-            <Link 
-              href="/industries/construction-fleet" 
-              className="group flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-emerald-600 hover:text-emerald-700 transition-colors bg-emerald-50 px-5 py-2.5 rounded-full border border-emerald-200"
+            <Link
+              href="/industries/construction-fleet"
+              className="group flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-[#1b2b36] hover:bg-emerald-600 hover:text-white transition-all bg-emerald-100 px-5 py-2.5 rounded-full border-2 border-emerald-600 shadow-[2px_2px_0_0_#1b2b36] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[1px_1px_0_0_#1b2b36]"
             >
               Construction & Fleet
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -37,7 +37,7 @@ export default function CaseStudySection() {
         {/* 2x2 Grid Block */}
         <div className="flex-1 min-h-0 bg-foreground border-[3px] border-foreground p-[2px] shadow-[15px_15px_0px_0px_hsl(var(--emerald-600)/0.25)] flex flex-col mb-2">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[2px] h-full flex-1">
-            
+
             {/* Cell 1: Situation */}
             <div className="group relative bg-card p-6 md:p-8 lg:p-10 flex flex-col overflow-hidden justify-center">
               <div className="absolute right-[-2%] top-[-5%] text-[8rem] lg:text-[10rem] font-black leading-none tracking-tighter text-slate-100 pointer-events-none">01</div>
@@ -59,19 +59,19 @@ export default function CaseStudySection() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 relative z-10">
                  <div className="bg-slate-50/80 p-4 rounded-md border border-slate-200 shadow-sm">
-                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Current State</strong> 
+                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Current State</strong>
                     <span className="text-[13px] font-bold text-slate-800 leading-snug block">7 source systems, 14 different definitions of "revenue," zero shared data infrastructure.</span>
                  </div>
                  <div className="bg-slate-50/80 p-4 rounded-md border border-slate-200 shadow-sm">
-                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Target State</strong> 
+                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Target State</strong>
                     <span className="text-[13px] font-bold text-slate-800 leading-snug block">Microsoft Fabric with OneLake. Lakehouse for consolidated data. Power BI semantic model.</span>
                  </div>
                  <div className="bg-slate-50/80 p-4 rounded-md border border-slate-200 shadow-sm">
-                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Business Case</strong> 
+                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Business Case</strong>
                     <span className="text-[13px] font-bold text-slate-800 leading-snug block">$340K annual savings from eliminated reconciliation. 18-month payback.</span>
                  </div>
                  <div className="bg-slate-50/80 p-4 rounded-md border border-slate-200 shadow-sm">
-                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Alignment</strong> 
+                    <strong className="text-blue-700 uppercase text-[11px] tracking-widest block mb-1.5">Alignment</strong>
                     <span className="text-[13px] font-bold text-slate-800 leading-snug block">Executive team fully onboarded with a phased implementation roadmap.</span>
                  </div>
               </div>
@@ -80,7 +80,7 @@ export default function CaseStudySection() {
             {/* Cell 3: Recommendation (Dark Block) */}
             <div className="group relative bg-[#0A2518] p-6 md:p-8 lg:p-10 flex flex-col text-background overflow-hidden justify-center">
                <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--emerald-600)/0.2),transparent_70%)] pointer-events-none"></div>
-               
+
                <div className="flex items-center gap-3 mb-4 lg:mb-6 relative z-10">
                 <ShieldCheck className="h-6 w-6 text-emerald-400" strokeWidth={2.5} />
                 <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-background">The Solution</h4>
@@ -97,7 +97,7 @@ export default function CaseStudySection() {
                 <TrendingUp className="h-6 w-6 text-violet-600" strokeWidth={2.5} />
                 <h4 className="text-lg lg:text-xl font-black uppercase tracking-tight text-[#1b2b36]">The Outcome</h4>
               </div>
-              
+
               <div className="flex flex-col relative z-10">
                 <div className="mb-6 flex items-center gap-8 pb-6 border-b border-slate-200">
                   <div className="flex flex-col min-w-[120px]">

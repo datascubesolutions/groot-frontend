@@ -4,6 +4,7 @@ export const metadata = {
   keywords: "Power BI semantic model, DAX development, Power BI dataset, Direct Lake, row-level security Power BI, certified dataset"
 };
 
+/** @param {{ children: React.ReactNode }} props */
 export default function Layout({ children }) {
   return <>{children}</>;
 }

@@ -4,6 +4,7 @@ export const metadata = {
   keywords: "executive dashboard Power BI, CEO dashboard, board reporting Power BI, KPI dashboard, PE portfolio reporting, Power BI mobile"
 };
 
+/** @param {{ children: React.ReactNode }} props */
 export default function Layout({ children }) {
   return <>{children}</>;
 }
