@@ -33,7 +33,7 @@ export function PowerBIHero() {
   return (
     <>
 
-      <section className="relative w-full flex flex-col lg:min-h-[calc(100vh-80px)]">
+      <section className="relative w-full flex flex-col lg:h-[calc(100vh-80px)]">
         {/* Main container - 50/50 Split */}
         <div className="relative flex flex-col lg:flex-row w-full flex-1 overflow-hidden">
           

@@ -30,16 +30,19 @@ export default function PurviewPage() {
       title: "The Data Scavenger Hunt",
       description:
         "Someone needs customer data for a project. They search Slack. They email around. They ask in meetings. Eventually they find someone who knows where it lives. This happens every week. There's no catalog, no discoverability, no documentation.",
+      outcome: "One catalog. Any data, searchable in seconds.",
     },
     {
       title: "Audit Panic",
       description:
         'Regulators ask: "Where is PII stored? Who has access? When was it last accessed?" Your compliance team scrambles. Three weeks of manual investigation. Spreadsheets tracking spreadsheets. Even after all that work, nobody\'s confident the answer is complete.',
+      outcome: "Continuous visibility. Answers in hours, not weeks.",
     },
     {
       title: "Unknown Quality",
       description:
         "Reports are built on data nobody has validated. ETL processes transform data without quality checks. Decisions happen on information that might be stale, duplicated, or wrong. There's no measurement, no ownership, no accountability.",
+      outcome: "Defined ownership. Measurable quality. Accountability built in.",
     },
   ];
 
@@ -181,10 +184,15 @@ export default function PurviewPage() {
   ];
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="relative min-h-screen overflow-x-hidden bg-background pt-20">
       <PurviewHero />
 
-      <ProblemSection tagline="The governance gap." problems={problems} />
+      <ProblemSection
+        title="The Governance Gap."
+        tagline="If this feels like your Friday, you're in the right place."
+        problems={problems}
+        bridgeText="Purview changes that. Here's how."
+      />
 
       <BenefitsSection title="What Purview Changes" benefits={benefits} />
 
@@ -200,6 +208,8 @@ export default function PurviewPage() {
 
       <ExampleSection
         title="Banking Compliance Response"
+        outcomeMetric="3 weeks → 3 hrs"
+        outcomeMetricLabel="Audit response time"
         context="Regional bank preparing for regulatory examination. 50+ data sources across core banking, CRM, data warehouse, and departmental databases."
         reality="Regulators asked for documentation of where customer PII was stored and who had access. Compliance spent three weeks manually auditing systems and interviewing teams. Even after that, they weren't confident the answer was complete. The next exam was in six months."
         build={[
@@ -209,8 +219,8 @@ export default function PurviewPage() {
           "Access audit capabilities integrated with existing SIEM",
           "Compliance dashboard for continuous monitoring",
         ]}
-        outcome="Future regulatory questions answered in hours, not weeks. Compliance has continuous visibility instead of point-in-time panic. New data sources automatically cataloged and classified as they're added."
-        linkText="See our approach"
+        outcome="Regulatory questions answered in hours, not weeks. Compliance has continuous visibility instead of point-in-time panic. New data sources automatically cataloged and classified as they're added."
+        linkText="See our data governance approach"
         linkUrl="/services/build-your-foundation"
       />
 
@@ -218,9 +228,16 @@ export default function PurviewPage() {
 
       <MicrosoftCTA
         title="Ready to govern your data?"
-        description="We'll assess your current state and build a governance roadmap that's practical, not theoretical."
+        description="We'll assess your current state and build a governance roadmap that's practical — not theoretical. 10 weeks to audit-ready."
         primaryCta="Get a Governance Assessment"
         primaryCtaLink="/contact?service=purview-assessment"
+        secondaryCta="Talk to Our Team"
+        secondaryCtaLink="/contact"
+        stats={[
+          { value: "50+", label: "Source types supported" },
+          { value: "10", label: "Weeks to governed data" },
+          { value: "100%", label: "Audit-ready by default" },
+        ]}
       />
     </main>
   );

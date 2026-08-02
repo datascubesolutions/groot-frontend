@@ -1,11 +1,9 @@
-// @ts-nocheck
+// src/components/sections/microsoft/MicrosoftCTA.jsx
 "use client";
-
+import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, MessageSquare, Rocket } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export function MicrosoftCTA({
   title = "Ready to get started?",
@@ -16,95 +14,77 @@ export function MicrosoftCTA({
   secondaryCtaLink = "/contact",
   stats = [],
 }) {
-  // Dynamically highlight the last word of the title
-  const words = title.split(" ");
-  const lastWord = words.pop();
-  const titleWithoutLast = words.join(" ");
-
   return (
-    <section className="relative flex flex-col justify-center overflow-hidden border-t border-border/50 bg-slate-50 py-12 lg:py-0 lg:min-h-[calc(100vh-80px)] z-0">
-      <div className="container relative z-10 mx-auto w-full max-w-[1400px] px-6">
+    <section className="relative font-sans overflow-hidden bg-[#F8FAFC] border-t border-slate-200/60 h-full w-full flex flex-col justify-center pt-[80px]">
+
+      {/* Background gradients */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[120px]" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-100/40 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container mx-auto max-w-5xl px-6 text-center relative z-10 w-full h-full flex flex-col justify-center py-10">
+
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden rounded-[2.5rem] border border-border/50 bg-card/60 shadow-2xl backdrop-blur-2xl"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="bg-white rounded-[3rem] p-10 lg:p-12 border border-slate-200/80 shadow-2xl relative overflow-hidden flex flex-col justify-center flex-1 max-h-[800px]"
         >
-          {/* Background Accents */}
-          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-            {/* Fabric Logo Watermark */}
-            <div className="absolute right-[-5%] top-1/2 h-[800px] w-[800px] -translate-y-1/2 -rotate-12 opacity-[0.03]">
-              <Image
-                src="/svg/fabric_48_color.svg"
-                alt="Fabric Background"
-                fill
-                className="object-contain"
-              />
-            </div>
+          <div className="absolute -left-20 -top-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Elegant Light Glows */}
-            <div className="absolute -right-[10%] -top-[30%] h-[600px] w-[600px] rounded-full bg-forest/5 blur-[100px] filter" />
-            <div className="absolute bottom-[-30%] left-[-10%] h-[600px] w-[600px] rounded-full bg-forest/5 blur-[100px] filter" />
+          <div className="mb-6 mx-auto flex items-center justify-center w-16 h-16 rounded-3xl bg-blue-50 text-[#0067B8] border border-blue-100 shadow-sm relative z-10 shrink-0">
+             <Rocket className="w-8 h-8 text-[#0067B8]" strokeWidth={2} />
           </div>
 
-          <div className="relative z-10 flex flex-col items-center justify-between gap-8 p-8 md:p-12 lg:gap-16 lg:p-16 xl:flex-row">
-            {/* Text Content Area */}
-            <div className="flex w-full flex-col items-center text-center antialiased xl:w-3/5 xl:items-start xl:text-left">
-              <h2 className="mb-6 text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
-                {titleWithoutLast}{" "}
-                <span className="font-bold text-forest">{lastWord}</span>
-              </h2>
+          <h2 className="mb-6 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0F172A] leading-[1.1] relative z-10 shrink-0">
+            {title}
+          </h2>
 
-              <p className="mb-8 max-w-2xl text-balance text-lg font-normal leading-relaxed text-muted-foreground/90 md:text-xl">
-                {description}
-              </p>
+          <p className="mx-auto mb-8 max-w-2xl text-base sm:text-lg font-medium leading-relaxed text-slate-600 relative z-10 shrink-0">
+            {description}
+          </p>
 
-              {stats && stats.length > 0 && (
-                <div className="flex flex-wrap gap-6 md:gap-10">
-                  {stats.map((stat, idx) => (
-                    <div key={idx} className="text-left">
-                      <div className="text-2xl font-black text-forest md:text-3xl">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm font-medium text-muted-foreground">
-                        {stat.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Actions/Buttons Area */}
-            <div className="mx-auto flex w-full max-w-md shrink-0 flex-col gap-4 antialiased xl:mx-0 xl:w-2/5">
-              <Link
-                href={primaryCtaLink}
-                className={cn(
-                  "group inline-flex w-full items-center justify-between rounded-full bg-forest px-8 py-5 text-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-forest/20 transition-all hover:scale-[1.02] hover:bg-forest/90 active:scale-[0.98]",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                )}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-10 relative z-10 shrink-0">
+            <Link href={primaryCtaLink} passHref className="w-full sm:w-auto">
+              <Button
+                className="h-14 w-full sm:w-auto rounded-2xl bg-[#0067B8] px-10 text-white hover:bg-[#005DA6] transition-all shadow-xl hover:shadow-blue-900/20 hover:-translate-y-1"
               >
-                <span className="text-left">{primaryCta}</span>
-                <span
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-colors group-hover:bg-white/30"
-                  aria-hidden
-                >
-                  <ArrowRight className="h-4 w-4" />
+                <span className="text-base font-bold">
+                  {primaryCta}
                 </span>
-              </Link>
+                <ArrowRight className="ml-2 h-5 w-5" strokeWidth={2} />
+              </Button>
+            </Link>
 
-              <Link
-                href={secondaryCtaLink}
-                className={cn(
-                  "inline-flex w-full items-center justify-center rounded-full border border-border/50 bg-card px-8 py-5 text-sm font-semibold uppercase tracking-wider text-foreground shadow-sm transition-all hover:bg-muted/50",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                )}
+            <Link href={secondaryCtaLink} passHref className="w-full sm:w-auto">
+              <Button
+                variant="outline"
+                className="h-14 w-full sm:w-auto rounded-2xl bg-white border-2 border-slate-200 px-10 text-[#0F172A] hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm"
               >
-                {secondaryCta}
-              </Link>
-            </div>
+                <MessageSquare className="mr-2 h-5 w-5 text-[#0067B8]" strokeWidth={2} />
+                <span className="text-base font-bold">
+                  {secondaryCta}
+                </span>
+              </Button>
+            </Link>
           </div>
+
+          {stats && stats.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-slate-200/80 max-w-3xl mx-auto relative z-10 shrink-0 w-full">
+              {stats.map((stat, idx) => (
+                <div key={idx} className="text-center p-2">
+                  <div className="text-4xl lg:text-5xl font-black text-[#0F172A] tracking-tight mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-[12px] font-bold uppercase tracking-widest text-[#0067B8]">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

@@ -55,14 +55,14 @@ export default function FabricPage() {
       icon: <Database className="h-7 w-7" />,
     },
     {
-      title: "Governance Built In, Not Bolted On",
+      title: "Governance Built In",
       description:
         'Purview is inside Fabric — sensitivity labels, lineage, access policies. Configure once, enforce everywhere. When the board asks "where did this come from?" you show them. No scrambling.',
       outcome: "Audit-ready without the scramble.",
       icon: <ShieldCheck className="h-7 w-7" />,
     },
     {
-      title: "One Platform. One Bill. Everything Connects.",
+      title: "One Bill. Everything Connects.",
       description:
         "Ingestion, transformation, analytics, streaming, ML — all in Fabric. No more juggling vendors, integrations, or surprise invoices. One capacity scales with you.",
       outcome: "Simplicity that scales.",
@@ -81,13 +81,6 @@ export default function FabricPage() {
         "Copilot writes SQL, builds pipelines, explores data in plain language. Your Lakehouse feeds Azure AI Foundry, RAG, and the workloads competitors are still planning.",
       outcome: "Catch up — or get ahead.",
       icon: <Cpu className="h-7 w-7" />,
-    },
-    {
-      title: "Predictable Costs. No Surprises.",
-      description:
-        "One capacity for all workloads. No idle clusters. No separate warehouse bills. Scale up when you need it; scale down when you don't. Budget meets reality.",
-      outcome: "Cost clarity, every month.",
-      icon: <TrendingDown className="h-7 w-7" />,
     },
   ];
 
@@ -115,18 +108,6 @@ export default function FabricPage() {
       description:
         "Catalog, sensitivity labels, lineage, access policies. Done during implementation — not six months later when compliance shows up with questions.",
       outcome: "Governance from day one.",
-    },
-    {
-      title: "Private Endpoints",
-      description:
-        "When data can't touch the public internet, we configure managed private endpoints. Fabric connects via Azure Private Link. Traffic stays on Microsoft's backbone.",
-      outcome: "Enterprise security. Zero compromise.",
-    },
-    {
-      title: "Semantic Model Foundation",
-      description:
-        "The certified layer between Lakehouse and Power BI. Consistent measures, documented relationships, row-level security. Analysts build on governed data — not cryptic column names.",
-      outcome: "Self-service that doesn't create mess.",
     },
   ];
 
@@ -187,80 +168,85 @@ export default function FabricPage() {
       answer:
         "Foundational implementation: 8-10 weeks. Complex enterprise rollouts with strict governance and many sources take longer. We scope based on your reality, not a template.",
     },
-    {
-      question: "What about our existing Azure Data Factory and Synapse?",
-      answer:
-        "They can coexist. ADF pipelines can write to OneLake. Synapse workspaces can query via shortcuts. We help you run them alongside Fabric during transition, then plan migration when it makes sense.",
-    },
-    {
-      question: "What happens after you leave?",
-      answer:
-        "You own everything. We document the architecture, train your team, and establish processes. The goal is a self-sustaining foundation — not ongoing dependency.",
-    },
   ];
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-background pt-20">
-      <FabricHero />
+    <main className="relative w-full bg-background overflow-x-clip">
+      <div className="w-full h-auto lg:h-screen lg:min-h-[700px] pt-[80px]">
+        <FabricHero />
+      </div>
 
-      <ProblemSection
-        title="Same Question. Too Many Answers."
-        tagline="If this feels like your Monday, you're in the right place."
-        problems={problems}
-        bridgeText="Fabric changes that. Here's how."
-      />
+      <div className="w-full h-auto lg:h-screen lg:min-h-[700px]">
+        <ProblemSection
+          title="Same Question. Too Many Answers."
+          tagline="If this feels like your Monday, you're in the right place."
+          problems={problems}
+          bridgeText="Fabric changes that. Here's how."
+        />
+      </div>
 
-      <BenefitsSection
-        title="Why Leading Teams Choose Fabric"
-        subtitle="One platform. Unified data. Decisions, not debates."
-        benefits={benefits}
-      />
+      <div className="w-full h-auto lg:h-screen lg:min-h-[700px]">
+        <BenefitsSection
+          title="Why Leading Teams Choose Fabric"
+          subtitle="One platform. Unified data. Decisions, not debates."
+          benefits={benefits}
+        />
+      </div>
 
-      <CapabilitiesSection
-        title="What We Deliver — And Why It Matters"
-        subtitle="From fragmented sources to a production-ready platform. In 10 weeks."
-        capabilities={capabilities}
-      />
+      <div className="w-full h-auto lg:h-screen lg:min-h-[700px]">
+        <CapabilitiesSection
+          title="What We Deliver"
+          subtitle="From fragmented sources to a production-ready platform. In 10 weeks."
+          capabilities={capabilities}
+        />
+      </div>
 
-      <DeliveryTimeline
-        title="From Chaos to Clarity in 10 Weeks"
-        subtitle="A proven path. No endless discovery. Real deliverables, every phase."
-        timeline={timeline}
-      />
+      <div className="w-full">
+        <DeliveryTimeline
+          title="From Chaos to Clarity in 10 Weeks"
+          subtitle="A proven path. No endless discovery. Real deliverables, every phase."
+          timeline={timeline}
+        />
+      </div>
 
-      <ExampleSection
-        title="Private Equity: 3 ERPs, 1 Truth"
-        outcomeMetric="10 days → 3 days"
-        outcomeMetricLabel="Monthly close"
-        context="PE-backed portfolio company. Three acquisitions. Three ERPs — SAP, NetSuite, QuickBooks. CFO needed consolidated financials. Fast."
-        reality="Finance spent the first week of every month in Excel. Manual exports. VLOOKUP hell. Board meetings delayed. 'Final' numbers still came with asterisks."
-        build={[
-          "Fabric Lakehouse with unified chart of accounts across all three ERPs",
-          "Automated daily pipelines from SAP, NetSuite, and QuickBooks",
-          "Medallion architecture: Bronze → Silver → Gold, fully traceable",
-          "Purview lineage from source to executive dashboard",
-          "Flash report dashboard the CFO checks every morning",
-        ]}
-        outcome="Monthly close: 10 days → 3 days. Finance shifted from data wrestling to analysis. Board gets weekly flash reports. Asterisks eliminated."
-        linkText="See the PE approach"
-        linkUrl="/industries/private-equity-ma"
-      />
+      <div className="w-full h-auto lg:h-screen lg:min-h-[700px]">
+        <ExampleSection
+          title="Private Equity: 3 ERPs, 1 Truth"
+          outcomeMetric="10 days → 3 days"
+          outcomeMetricLabel="Monthly close"
+          context="PE-backed portfolio company. Three acquisitions. Three ERPs — SAP, NetSuite, QuickBooks. CFO needed consolidated financials. Fast."
+          reality="Finance spent the first week of every month in Excel. Manual exports. VLOOKUP hell. Board meetings delayed. 'Final' numbers still came with asterisks."
+          build={[
+            "Fabric Lakehouse with unified chart of accounts across all three ERPs",
+            "Automated daily pipelines from SAP, NetSuite, and QuickBooks",
+            "Medallion architecture: Bronze → Silver → Gold, fully traceable",
+            "Purview lineage from source to executive dashboard",
+          ]}
+          outcome="Monthly close: 10 days → 3 days. Finance shifted from data wrestling to analysis. Board gets weekly flash reports. Asterisks eliminated."
+          linkText="See the PE approach"
+          linkUrl="/industries/private-equity-ma"
+        />
+      </div>
 
-      <FAQSection faqs={faqs} />
+      <div className="w-full h-auto lg:h-screen lg:min-h-[700px]">
+        <FAQSection faqs={faqs} />
+      </div>
 
-      <MicrosoftCTA
-        title="Ready to stop chasing the same number?"
-        description="20+ Fabric implementations delivered. We'll assess your landscape, identify quick wins, and map a path to one source of truth."
-        primaryCta="Get Your Data Readiness Assessment"
-        primaryCtaLink="/contact?service=fabric-assessment"
-        secondaryCta="Talk to Our Team"
-        secondaryCtaLink="/contact"
-        stats={[
-          { value: "20+", label: "Fabric implementations" },
-          { value: "10", label: "Weeks to foundation" },
-          { value: "1", label: "Source of truth" },
-        ]}
-      />
+      <div className="w-full h-auto lg:h-screen lg:min-h-[700px]">
+        <MicrosoftCTA
+          title="Ready to stop chasing the same number?"
+          description="20+ Fabric implementations delivered. We'll assess your landscape, identify quick wins, and map a path to one source of truth."
+          primaryCta="Get Your Data Readiness Assessment"
+          primaryCtaLink="/contact?service=fabric-assessment"
+          secondaryCta="Talk to Our Team"
+          secondaryCtaLink="/contact"
+          stats={[
+            { value: "20+", label: "Fabric implementations" },
+            { value: "10", label: "Weeks to foundation" },
+            { value: "1", label: "Source of truth" },
+          ]}
+        />
+      </div>
     </main>
   );
 }

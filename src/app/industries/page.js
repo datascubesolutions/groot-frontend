@@ -182,7 +182,7 @@ export default function IndustriesPage() {
         </div>
 
         {/* Dense Editorial Hero */}
-        <section className="relative z-10 pt-10 pb-20">
+        <section className="relative z-10 pt-10 pb-20 lg:pt-0 lg:pb-0 flex lg:min-h-[calc(100vh-80px)] items-center">
           <div className="container mx-auto px-6 max-w-[1400px]">
             <div className="border-[4px] border-foreground bg-card shadow-[20px_20px_0px_0px_hsl(var(--emerald-600)/0.2)]">
                <div className="grid grid-cols-1 lg:grid-cols-12 divide-y-[4px] lg:divide-y-0 lg:divide-x-[4px] divide-foreground">
@@ -240,8 +240,8 @@ export default function IndustriesPage() {
         </section>
 
         {/* Proven Impact - Dense Blueprint Matrix */}
-        <section className="relative z-20 py-20 border-y-[6px] border-foreground bg-foreground">
-          <div className="container mx-auto px-6 max-w-[1400px]">
+        <section className="relative z-20 py-20 lg:py-0 flex lg:min-h-[calc(100vh-80px)] items-center border-y-[6px] border-foreground bg-foreground">
+          <div className="container mx-auto px-6 max-w-[1400px] w-full">
             <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b-[4px] border-background/20 pb-8">
               <div className="max-w-2xl">
                 <span className="text-xs font-black uppercase tracking-[0.4em] text-emerald-400 block mb-4">Empirical Results</span>
@@ -298,8 +298,8 @@ export default function IndustriesPage() {
         </section>
 
         {/* Industry Matrix - Dense Tile Grid */}
-        <section className="relative z-30 py-24 bg-background">
-          <div className="container mx-auto px-6 max-w-[1400px]">
+        <section className="relative z-30 py-24 lg:py-0 flex lg:min-h-[calc(100vh-80px)] items-center bg-background">
+          <div className="container mx-auto px-6 max-w-[1400px] w-full">
             <div className="mb-16 text-center max-w-3xl mx-auto border-b-[4px] border-foreground pb-8">
               <span className="text-xs font-black uppercase tracking-[0.4em] text-emerald-600 block mb-4">Vertical Mastery</span>
               <h2 className="text-[3.5rem] md:text-[5rem] font-black uppercase leading-[0.85] tracking-tighter text-foreground mb-6">
@@ -361,7 +361,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* Brutalist CTA */}
-        <section className="bg-foreground py-24 text-background lg:py-32 border-t-[6px] border-emerald-600 relative overflow-hidden">
+        <section className="bg-foreground py-24 lg:py-0 flex lg:min-h-[60vh] items-center text-background border-t-[6px] border-emerald-600 relative overflow-hidden">
           <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 text-[20rem] font-black text-background/5 select-none pointer-events-none">X</div>
           <div className="container mx-auto max-w-5xl px-6 text-center relative z-10">
             <div className="mb-12 inline-flex h-24 w-24 items-center justify-center border-[4px] border-background bg-transparent text-emerald-400">

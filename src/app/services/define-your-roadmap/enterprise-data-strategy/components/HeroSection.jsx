@@ -34,9 +34,9 @@ export default function HeroSection() {
     <>
 
 
-      <section className="relative w-full flex flex-col border-t border-b border-[#1b2b36] lg:min-h-[calc(100vh-80px)]">
+      <section className="relative w-full flex flex-col border-t border-b border-[#1b2b36] lg:h-[calc(100vh-80px)] lg:min-h-[700px]">
         {/* Absolute full width border container to break out of any constraints */}
-        <div className="relative flex flex-col lg:flex-row w-full flex-1 overflow-hidden">
+        <div className="relative flex flex-col lg:flex-row w-full flex-1 min-h-0 overflow-hidden">
 
           {/* Left side: Content */}
           <div className="relative flex w-full flex-col justify-center bg-[#e6f0eb] lg:w-1/2 z-10 overflow-hidden min-h-[55vh] lg:min-h-0">

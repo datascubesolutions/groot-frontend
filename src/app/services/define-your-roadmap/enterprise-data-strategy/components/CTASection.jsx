@@ -93,7 +93,7 @@ const StrategyMockup = () => {
 
 export default function CTASection() {
   return (
-    <section className="relative flex flex-col overflow-hidden bg-[#f0f7f4] py-16 md:py-24 lg:py-32">
+    <section className="relative flex flex-col justify-center overflow-hidden bg-[#f0f7f4] py-16 lg:py-0 lg:h-[calc(100vh-80px)] lg:min-h-[700px]">
       {/* Subtle grid pattern */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:40px_40px]" />
       

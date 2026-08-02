@@ -2,181 +2,153 @@
 "use client";
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Cloud,
-  Database,
-  FileText,
-  Server,
-  ShieldAlert,
-} from "lucide-react";
+import { ArrowRight, Cloud, Database, FileText, Network, Search, Server, ShieldAlert } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
 export function PurviewHero() {
   return (
-    <section className="bg-grid-slate-50/50 relative flex min-h-[100dvh] items-center overflow-hidden pt-28 pb-10">
-      <div className="absolute inset-0 bg-background/90" />
+    <section className="relative w-full h-[calc(100vh-80px)] min-h-[700px] flex items-center bg-background border-b-[4px] border-foreground overflow-hidden pt-12 md:pt-16">
 
-      <div className="container relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left content */}
-          <div className="space-y-6">
+      {/* Heavy Neo-Brutalist Background Grid */}
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808020_2px,transparent_2px),linear-gradient(to_bottom,#80808020_2px,transparent_2px)] bg-[size:64px_64px] pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 lg:px-12 max-w-[1600px] relative z-10 flex flex-col justify-center h-full">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center h-full">
+
+          {/* ── Left Text Column ── */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}
+            className="lg:col-span-7 flex flex-col justify-center"
+          >
+            {/* Badge */}
+            <motion.div variants={fadeIn} className="mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#2B71C4]/10 border-[2px] border-[#2B71C4] shadow-[4px_4px_0_0_#2B71C4]">
+                <div className="w-2 h-2 rounded-none bg-[#2B71C4] animate-pulse" />
+                <span className="text-[11px] lg:text-xs font-black tracking-[0.2em] text-[#2B71C4] uppercase">
+                  Data Governance &amp; Compliance
+                </span>
+              </div>
+            </motion.div>
+
+            {/* H1 */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-3xl font-bold leading-tight text-foreground md:text-4xl lg:text-5xl"
+              variants={fadeIn}
+              className="mb-6 text-[3.5rem] sm:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] font-black tracking-tighter text-foreground leading-[0.9] uppercase"
             >
-              Microsoft Purview
+              Govern every<br />
+              <span className="relative inline-block mt-2">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#2B71C4] to-[#2B71C4]/80">
+                  data asset.
+                </span>
+                <span className="absolute bottom-1 left-0 w-full h-[30%] bg-[#2B71C4]/20 -z-10" />
+              </span>
             </motion.h1>
 
+            {/* Subheading */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-lg leading-relaxed text-muted-foreground"
+              variants={fadeIn}
+              className="max-w-xl mb-10 text-base lg:text-lg font-bold leading-relaxed text-slate-700 border-l-[4px] border-[#2B71C4] pl-5"
             >
-              Data governance that gets used. Discovery, lineage,
-              classification, and policy — across your actual data estate.
+              Data governance that gets used. Discovery, lineage, classification,
+              and policy — across your entire data estate. Audit-ready by default.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="flex flex-col gap-4 pt-4 sm:flex-row"
-            >
+            {/* CTA */}
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Link href="/contact?service=purview-assessment">
-                <Button className="group w-full rounded-full bg-brand-red px-6 py-4 text-sm font-bold text-white shadow-lg shadow-brand-red/20 transition-all hover:bg-brand-red/90 sm:w-auto">
-                  Get Governance Assessment
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <Button className="h-14 rounded-none bg-foreground hover:bg-[#2B71C4] px-8 text-background font-black tracking-[0.15em] text-xs uppercase border-[3px] border-foreground shadow-[6px_6px_0_0_#2B71C4] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all">
+                  Get Governance Assessment <ArrowRight className="ml-3 h-5 w-5" />
                 </Button>
               </Link>
             </motion.div>
-          </div>
+          </motion.div>
 
-          {/* Right visualization */}
+          {/* ── Right Visual Column — Governance Architecture Stack ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative hidden lg:block aspect-square max-h-[480px] w-full p-8"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            className="lg:col-span-5 relative w-full h-[500px] lg:h-[600px] hidden md:flex flex-col items-center justify-center"
           >
-            {/* Ambient Base */}
-            <div className="absolute inset-4 z-0 transform overflow-hidden rounded-[3rem] border border-white/80 bg-white/40 shadow-[0_20px_80px_-20px_rgba(43,113,196,0.15)] backdrop-blur-3xl transition-transform duration-700 hover:scale-[1.01]">
-              {/* Inner Architectural Grid */}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#2b71c40A_1px,transparent_1px),linear-gradient(to_bottom,#2b71c40A_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_20%,transparent_100%)]" />
+            <div className="relative w-[90%] max-w-[400px] h-[500px] flex flex-col items-center justify-center group">
 
-              {/* Soft Internal Glowing Orbs */}
+              {/* Layer 1: Compliance Reports (Top) */}
               <motion.div
-                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-[#2B71C4]/20 blur-[80px]"
-              />
-            </div>
-
-            <div className="relative h-full w-full flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#2B71C4]/10 to-transparent blur-3xl" />
-
-              {/* Central Purview Node */}
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="relative z-20 flex h-40 w-40 items-center justify-center rounded-[2rem] border border-[#2B71C4]/20 bg-white shadow-2xl overflow-hidden group"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-[5%] w-full bg-[#2B71C4]/10 border-[3px] border-[#2B71C4] p-5 shadow-[12px_12px_0_0_#2B71C4] backdrop-blur-sm z-40 flex items-center justify-between transition-transform duration-500 group-hover:-translate-y-8"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-[#2B71C4]/5 to-transparent" />
-                <Image src="/svg/microsoft-purview-seeklogo.svg" alt="Microsoft Purview" width={64} height={64} className="relative z-10 transition-transform duration-500 group-hover:scale-110" />
-
-                {/* Scanning radar line */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="pointer-events-none absolute inset-0 rounded-[2rem] overflow-hidden"
-                >
-                  <div className="h-1/2 w-1/2 origin-bottom-right bg-gradient-to-br from-[#2B71C4]/20 to-transparent" />
-                </motion.div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white border-[2px] border-[#2B71C4] flex items-center justify-center p-2">
+                    <ShieldAlert className="w-6 h-6 text-[#2B71C4]" strokeWidth={2.5} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-black uppercase tracking-widest text-[#2B71C4]">Compliance</h4>
+                    <p className="text-[10px] font-bold text-slate-700 uppercase">Audit-Ready Reports</p>
+                  </div>
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-emerald-600 border border-emerald-500 bg-emerald-50 px-2 py-1">✓ Ready</span>
               </motion.div>
 
-              {/* Floating Data Assets being scanned */}
-              {[
-                { icon: FileText, x: -130, y: -90, delay: 0 },
-                { icon: Database, x: 130, y: -50, delay: 0.5 },
-                { icon: Cloud, x: -110, y: 110, delay: 1 },
-                { icon: Server, x: 130, y: 110, delay: 1.5 },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    y: [item.y - 10, item.y + 10, item.y - 10],
-                    borderColor: [
-                      "#e5e7eb",
-                      "rgba(43,113,196, 0.4)",
-                      "#e5e7eb",
-                    ],
-                  }}
-                  transition={{
-                    duration: 4,
-                    delay: item.delay,
-                    repeat: Infinity,
-                  }}
-                  className="absolute z-10 flex h-16 w-16 items-center justify-center rounded-2xl border border-border bg-white shadow-lg"
-                  style={{
-                    left: "calc(50% + " + item.x + "px)",
-                    top: "calc(50% + " + item.y + "px)",
-                  }}
-                >
-                  <item.icon className="h-6 w-6 text-slate-500" />
-                  
-                  {/* Status Indicator */}
-                  <motion.div
-                    animate={{ opacity: [0, 1, 0] }}
-                    transition={{
-                      duration: 4,
-                      delay: item.delay + 0.5,
-                      repeat: Infinity,
-                    }}
-                    className="absolute -right-2 -top-2 h-4 w-4 rounded-full border-2 border-white bg-emerald-500 shadow-sm"
-                  />
-                  
-                  {/* Classification Tag */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 0] }}
-                    transition={{
-                      duration: 4,
-                      delay: item.delay + 1,
-                      repeat: Infinity,
-                    }}
-                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded bg-[#2B71C4] px-1.5 py-0.5 text-[8px] font-bold text-white shadow-sm"
-                  >
-                    SECURE
-                  </motion.div>
-                </motion.div>
-              ))}
+              {/* Layer 2: Data Catalog (Middle High) */}
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-[32%] w-[95%] right-0 bg-slate-50 border-[3px] border-foreground p-5 shadow-[12px_12px_0_0_rgba(0,0,0,0.1)] backdrop-blur-sm z-30 flex items-center justify-between transition-transform duration-500 group-hover:-translate-y-2 group-hover:translate-x-4"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white border-[2px] border-foreground flex items-center justify-center p-2">
+                    <Image src="/svg/microsoft-purview-seeklogo.svg" alt="Purview" width={28} height={28} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-black uppercase tracking-widest text-slate-900">Data Catalog</h4>
+                    <p className="text-[10px] font-bold text-slate-600 uppercase">Discovery &amp; Lineage</p>
+                  </div>
+                </div>
+              </motion.div>
 
-              {/* Connecting Data Lineage Lines */}
-              <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-30">
-                <motion.path
-                  d="M 50% 50% L 20% 25% M 50% 50% L 80% 35% M 50% 50% L 25% 75% M 50% 50% L 75% 80%"
-                  stroke="#2B71C4"
-                  strokeWidth="2"
-                  strokeDasharray="6 6"
-                  animate={{ strokeDashoffset: [0, -24] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-              </svg>
+              {/* Layer 3: Classification (Middle Low) */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute top-[57%] w-[105%] -left-4 bg-amber-50 border-[3px] border-amber-600 p-5 shadow-[12px_12px_0_0_rgba(217,119,6,0.4)] backdrop-blur-sm z-20 flex items-center justify-between transition-transform duration-500 group-hover:translate-y-4 group-hover:-translate-x-4"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white border-[2px] border-amber-600 flex items-center justify-center p-2">
+                    <Search className="w-6 h-6 text-amber-600" strokeWidth={2.5} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-black uppercase tracking-widest text-amber-700">Classification</h4>
+                    <p className="text-[10px] font-bold text-slate-700 uppercase">PII &amp; Sensitivity Labels</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Layer 4: Data Sources (Bottom) */}
+              <div className="absolute top-[82%] w-[85%] bg-slate-100 border-[3px] border-slate-800 p-5 shadow-[12px_12px_0_0_#1e293b] z-10 flex items-center justify-center gap-6 transition-transform duration-500 group-hover:translate-y-8">
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-800 absolute -top-3 bg-slate-100 px-2 border-[2px] border-slate-800">Data Sources</span>
+                <Image src="/svg/azure-2.svg" alt="Azure" width={24} height={24} className="grayscale hover:grayscale-0 transition-all" />
+                <div className="w-1.5 h-1.5 bg-slate-400 rounded-none" />
+                <Database className="w-5 h-5 text-slate-600" strokeWidth={2} />
+                <div className="w-1.5 h-1.5 bg-slate-400 rounded-none" />
+                <Cloud className="w-5 h-5 text-slate-600" strokeWidth={2} />
+              </div>
+
+              {/* Connecting vertical line */}
+              <div className="absolute top-[10%] bottom-[18%] w-[4px] bg-foreground/20 -z-10 group-hover:bg-[#2B71C4]/50 transition-colors duration-500" />
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

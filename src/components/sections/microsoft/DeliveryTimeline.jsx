@@ -1,346 +1,149 @@
-// @ts-nocheck
+// src/components/sections/microsoft/DeliveryTimeline.jsx
 "use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-import { useCallback, useState } from "react";
-import Image from "next/image";
-
-const TIMELINE_IMAGES = [
-  "/images/fabric/process_timeline.png",
-  "/images/fabric/server_capabilities.png",
-  "/images/fabric/fabric_lakehouse.png",
-  "/images/fabric/powerbi_dashboard.png",
-];
-
-function PhaseCardContent({ item, imgSrc, index }) {
-  return (
-    <>
-      <div className="relative h-[220px] shrink-0 p-4 pb-0 sm:h-[248px] sm:p-5 md:h-auto md:min-h-[300px] md:w-[38%] md:p-6 md:pb-6 lg:min-h-[320px] lg:w-[35%] xl:w-[40%]">
-        <div className="relative h-full min-h-[196px] overflow-hidden rounded-2xl border border-black/[0.06] bg-[#F3F2F1] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] md:min-h-0">
-          <Image
-            src={imgSrc}
-            alt=""
-            fill
-            priority={index === 0}
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 360px, 420px"
-            className="object-cover object-center"
-          />
-        </div>
-      </div>
-
-      <div className="flex min-w-0 flex-1 flex-col justify-center border-t border-border/40 bg-white px-6 py-8 sm:px-8 sm:py-8 md:border-l md:border-t-0 md:px-10 md:py-10 lg:px-10 lg:py-10 xl:px-12">
-        <span className="mb-3 text-[12px] font-bold uppercase tracking-[0.15em] text-[#0078d4] md:mb-4">
-          {item.phase}
-        </span>
-        <h3 className="mb-4 text-pretty pr-2 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:mb-5 md:text-3xl lg:text-[2.1rem] xl:text-4xl">
-          {item.title}
-        </h3>
-        <p className="mb-6 max-w-[95%] text-[15px] leading-relaxed text-foreground/85 md:mb-8 md:text-base lg:text-[1.05rem]">
-          {item.description}
-        </p>
-        {item.deliverable && (
-          <div className="mt-auto rounded-xl border border-gray-200/80 bg-gray-50/80 px-5 py-4 shadow-sm lg:px-6 lg:py-5">
-            <span className="mb-1.5 block text-[10px] font-bold uppercase tracking-[0.15em] text-[#0078d4] lg:mb-2 lg:text-[11px]">
-              Deliverable
-            </span>
-            <p className="text-pretty text-[14px] font-semibold leading-snug text-foreground lg:text-[15px]">
-              {item.deliverable}
-            </p>
-          </div>
-        )}
-      </div>
-    </>
-  );
-}
+import { motion } from "framer-motion";
+import { CheckCircle2, Clock, Calendar, ShieldCheck, Flag, ArrowRight } from "lucide-react";
 
 export function DeliveryTimeline({
-  title = "Ten Weeks to a Working Foundation",
-  subtitle,
+  title = "From Chaos to Clarity in 10 Weeks",
+  subtitle = "A proven path. No endless discovery. Real deliverables, every phase.",
   timeline = [],
 }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const reduceMotion = useReducedMotion();
-
-  const activate = useCallback((index) => {
-    setActiveIndex(index);
-  }, []);
-
   if (!timeline || timeline.length === 0) return null;
 
-  const activeItem = timeline[activeIndex];
-  const activeImg = TIMELINE_IMAGES[activeIndex % TIMELINE_IMAGES.length];
-
   return (
-    <section className="relative flex flex-col justify-center overflow-hidden border-t border-border/50 bg-background py-12 lg:py-0 lg:min-h-[calc(100vh-80px)] text-foreground">
-      <div className="pointer-events-none absolute right-[-6%] top-[8%] z-0 hidden h-[480px] w-[480px] -rotate-12 opacity-[0.04] xl:block">
-        <Image
-          src="/svg/fabric_48_color.svg"
-          alt=""
-          fill
-          className="object-contain"
-          aria-hidden
-        />
-      </div>
-
-      <div className="container relative z-10 mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-10 xl:px-12">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-10 xl:gap-12">
-          <div className="flex shrink-0 flex-col justify-center py-2 antialiased md:py-4 lg:w-[33%] lg:max-w-[450px] xl:max-w-[500px]">
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              className="mb-5 block text-sm font-semibold uppercase tracking-widest text-forest"
-            >
-              Implementation timeline
-            </motion.span>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: 0.05 }}
-              className="mb-6 text-balance text-5xl font-bold leading-[1.05] tracking-tight text-foreground md:text-5xl lg:text-5xl xl:text-[3.5rem]"
-            >
-              {title}
-            </motion.h2>
-
-            {subtitle && (
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ delay: 0.1 }}
-                className="mb-7 w-[95%] text-pretty text-xl font-medium leading-snug text-foreground/80 md:text-xl lg:text-[1.35rem]"
-              >
+    <section className="relative z-20 bg-slate-50 font-sans w-full border-t border-slate-200/60 py-16 lg:py-24 overflow-visible h-auto">
+      
+      <div className="container mx-auto px-6 max-w-[1320px] relative z-10 w-full h-auto">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative w-full h-auto pb-10">
+          
+          {/* Left Summary Area - Sticky */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32">
+            <div className="mb-6 lg:mb-8 shrink-0">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-[#0067B8] mb-4 shadow-sm">
+                <Calendar className="w-3.5 h-3.5" />
+                <span className="text-[11px] font-bold tracking-[0.15em] uppercase">Roadmap</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0F172A] leading-[1.1] mb-4">
+                {title}
+              </h2>
+              <p className="text-[15px] lg:text-base text-slate-600 font-medium leading-relaxed">
                 {subtitle}
-              </motion.p>
-            )}
-
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: 0.15 }}
-              className="w-[90%] text-pretty text-base font-medium leading-relaxed text-foreground/60 lg:text-[17px]"
-            >
-              Tangible deliverables each phase — from architecture sign-off to
-              analysts on governed data.
-            </motion.p>
-
-            <ol
-              className="relative mt-14 hidden items-start gap-0 lg:flex xl:mt-16"
-              role="tablist"
-              aria-label="Jump to phase"
-            >
-              {timeline.map((item, i) => (
-                <li
-                  key={i}
-                  className="group relative flex min-w-0 flex-1 flex-col items-center"
-                >
-                  {i < timeline.length - 1 && (
-                    <div
-                      aria-hidden="true"
-                      className={`absolute left-[calc(50%+24px)] top-5 h-[2px] w-[calc(100%-48px)] transition-colors duration-300 ${
-                        i < activeIndex ? "bg-[#0078d4]" : "bg-border"
-                      }`}
-                    />
-                  )}
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={activeIndex === i}
-                    aria-controls={`timeline-panel-${i}`}
-                    id={`timeline-tab-${i}`}
-                    tabIndex={activeIndex === i ? 0 : -1}
-                    onClick={() => activate(i)}
-                    className={`relative -m-1 flex w-full flex-col items-center gap-3 rounded-lg p-1 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0078d4] focus-visible:ring-offset-2 ${
-                      activeIndex === i
-                        ? "text-[#0078d4]"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    <span
-                      className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-bold tabular-nums transition-all duration-300 ${
-                        activeIndex === i
-                          ? "scale-110 border-[#0078d4] bg-[#0078d4] text-white shadow-md shadow-[#0078d4]/20"
-                          : i < activeIndex
-                            ? "border-[#0078d4] bg-white text-[#0078d4] hover:bg-[#0078d4]/5"
-                            : "border-border/80 bg-white text-muted-foreground shadow-sm hover:border-border"
-                      }`}
-                    >
-                      {i + 1}
-                    </span>
-                    <span
-                      className={`mt-3 w-full px-0.5 text-center text-[9px] lg:text-[10px] xl:text-[11px] font-bold uppercase leading-snug tracking-wide ${
-                        activeIndex === i
-                          ? "text-[#0078d4]"
-                          : "text-muted-foreground group-hover:text-foreground"
-                      }`}
-                    >
-                      {item.title}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          {/* Mobile / tablet: chips + one card */}
-          <div className="w-full space-y-6 sm:space-y-7 lg:hidden">
-            <div
-              className="flex w-full snap-x snap-mandatory gap-2.5 overflow-x-auto pb-4 scrollbar-hide sm:flex-wrap sm:justify-center sm:gap-3 sm:overflow-x-visible sm:pb-0 sm:snap-none"
-              role="tablist"
-              aria-label="Phases"
-            >
-              {timeline.map((item, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeIndex === i}
-                  id={`timeline-tab-mobile-${i}`}
-                  aria-controls={`timeline-panel-mobile-${i}`}
-                  tabIndex={activeIndex === i ? 0 : -1}
-                  onClick={() => activate(i)}
-                  className={`inline-flex shrink-0 snap-center items-center justify-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0078d4] focus-visible:ring-offset-2 sm:flex-initial sm:snap-align-none ${
-                    activeIndex === i
-                      ? "border-[#0078d4] bg-[#0078d4] text-white shadow-[0_2px_8px_rgba(0,120,212,0.35),0_1px_0_rgba(255,255,255,0.2)_inset]"
-                      : "border-[#C8C6C4]/80 bg-white text-foreground/80 shadow-[0_1px_3px_rgba(0,0,0,0.05)] hover:border-[#0078d4]/45 hover:shadow-[0_4px_12px_rgba(0,120,212,0.12)]"
-                  }`}
-                >
-                  <span className="shrink-0 tabular-nums opacity-90">
-                    {i + 1}
-                  </span>
-                  <span className="max-w-[9rem] truncate text-left sm:max-w-[11rem]">
-                    {item.title}
-                  </span>
-                </button>
-              ))}
+              </p>
             </div>
 
-            <motion.div
-              key={activeIndex}
-              initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25 }}
-              className="overflow-hidden rounded-3xl border border-border/80 bg-white shadow-[0_4px_32px_-8px_rgba(0,0,0,0.09)]"
-              role="tabpanel"
-              id={`timeline-panel-mobile-${activeIndex}`}
-              aria-labelledby={`timeline-tab-mobile-${activeIndex}`}
-            >
-              <div className="flex w-full flex-col text-left md:flex-row">
-                <PhaseCardContent
-                  item={activeItem}
-                  imgSrc={activeImg}
-                  index={activeIndex}
-                />
+            <div className="bg-slate-900 rounded-[2rem] p-6 lg:p-8 border border-slate-800 shadow-2xl flex flex-col w-full relative overflow-hidden group">
+              {/* Background glowing effects */}
+              <div className="absolute -right-10 -top-10 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -left-10 -bottom-10 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+              
+              <div className="relative z-10">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 inline-block w-max mb-4">
+                  Fixed Scope Guarantee
+                </span>
+                <h3 className="text-3xl font-extrabold text-white mb-3 tracking-tight">10-Week Execution</h3>
+                <p className="text-slate-400 text-[15px] font-medium leading-relaxed mb-6">
+                  Structured phased delivery with dedicated Microsoft Fabric architects. No endless discovery, just results.
+                </p>
               </div>
-            </motion.div>
+
+              {/* REAL CSS UI: Beautiful 10-Week Gantt Chart / Timeline Graphic */}
+              <div className="bg-slate-950/80 rounded-2xl border border-slate-800 p-5 mb-6 relative z-10 flex flex-col gap-3 shadow-inner">
+                <div className="flex justify-between items-center border-b border-slate-800 pb-2 mb-1">
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-slate-500">Timeline</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-500 flex items-center gap-1"><Flag className="w-3 h-3"/> GO LIVE</span>
+                </div>
+                
+                {/* Track 1 */}
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] text-slate-400 font-mono w-6">Wk1</span>
+                  <div className="flex-1 h-3 bg-slate-800 rounded-full overflow-hidden flex">
+                    <div className="w-1/4 h-full bg-blue-500/80 border-r border-slate-900" title="Discovery"></div>
+                    <div className="w-1/4 h-full bg-slate-700" title="Pending"></div>
+                    <div className="w-1/2 h-full bg-slate-800" title="Pending"></div>
+                  </div>
+                </div>
+
+                {/* Track 2 */}
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] text-slate-400 font-mono w-6">Wk4</span>
+                  <div className="flex-1 h-3 bg-slate-800 rounded-full overflow-hidden flex">
+                    <div className="w-1/4 h-full bg-transparent"></div>
+                    <div className="w-1/2 h-full bg-indigo-500/80 border-r border-slate-900 shadow-[0_0_10px_rgba(99,102,241,0.3)] relative">
+                      <div className="absolute inset-0 bg-white/20 w-1/2 animate-pulse"></div>
+                    </div>
+                    <div className="w-1/4 h-full bg-slate-700"></div>
+                  </div>
+                </div>
+                
+                {/* Track 3 */}
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] text-slate-400 font-mono w-6">Wk8</span>
+                  <div className="flex-1 h-3 bg-slate-800 rounded-full overflow-hidden flex">
+                    <div className="w-1/2 h-full bg-transparent"></div>
+                    <div className="w-1/2 h-full bg-emerald-500/80 shadow-[0_0_10px_rgba(52,211,153,0.3)]"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 text-[14px] font-semibold text-slate-300 relative z-10">
+                <div className="flex items-center gap-3 bg-slate-800/50 px-5 py-3.5 rounded-xl border border-slate-700/50">
+                  <ShieldCheck className="w-5 h-5 text-emerald-400" /> Audit-Ready Infrastructure
+                </div>
+                <div className="flex items-center gap-3 bg-slate-800/50 px-5 py-3.5 rounded-xl border border-slate-700/50">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400" /> Full Codebase Ownership
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Desktop: horizontal accordion */}
-          <div
-            className="hidden h-[min(580px,74vh)] min-h-[500px] w-full flex-row gap-4 lg:flex lg:flex-1 xl:h-[min(600px,76vh)] xl:min-h-[520px] xl:gap-5"
-            role="tablist"
-            aria-label="Expand a phase"
-          >
-            {timeline.map((item, index) => {
-              const isActive = activeIndex === index;
-              const imgSrc = TIMELINE_IMAGES[index % TIMELINE_IMAGES.length];
-
-              return (
-                <motion.div
-                  key={index}
-                  layout={!reduceMotion}
-                  transition={
-                    reduceMotion
-                      ? { duration: 0.2, ease: "easeOut" }
-                      : { type: "spring", stiffness: 400, damping: 40 }
-                  }
-                  className={`group relative flex overflow-hidden rounded-3xl border bg-white transition-[box-shadow,border-color,transform] duration-300 focus-within:z-10 ${
-                    isActive
-                      ? "min-w-0 flex-1 border-[#0078d4]/50 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1),0_0_0_1px_rgba(0,120,212,0.14)]"
-                      : "w-[68px] flex-[0_0_68px] shrink-0 cursor-pointer border-[#C8C6C4]/90 bg-gradient-to-b from-white via-[#FAFCFE] to-[#E8F2FA] shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_0_rgba(255,255,255,0.9)_inset,0_12px_28px_-8px_rgba(0,120,212,0.08)] transition-transform hover:-translate-y-0.5 hover:border-[#0078d4]/55 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08),0_12px_32px_-6px_rgba(0,120,212,0.14)] xl:w-[76px] xl:flex-[0_0_76px]"
-                  }`}
-                >
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-controls={`timeline-panel-${index}`}
-                    id={`timeline-tab-acc-${index}`}
-                    tabIndex={isActive ? 0 : -1}
-                    className={`absolute inset-0 z-20 rounded-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0078d4] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
-                      isActive ? "pointer-events-none" : ""
-                    }`}
-                    onClick={() => activate(index)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        activate(index);
-                      }
-                      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-                        e.preventDefault();
-                        activate(Math.min(index + 1, timeline.length - 1));
-                      }
-                      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-                        e.preventDefault();
-                        activate(Math.max(index - 1, 0));
-                      }
-                    }}
-                  />
-
-                  {isActive ? (
-                    <div
-                      id={`timeline-panel-${index}`}
-                      role="tabpanel"
-                      className="pointer-events-none flex h-full w-full min-w-0 flex-col text-left md:flex-row"
-                      aria-labelledby={`timeline-tab-acc-${index}`}
-                    >
-                      <PhaseCardContent
-                        item={item}
-                        imgSrc={imgSrc}
-                        index={index}
-                      />
-                    </div>
-                  ) : (
-                    <div className="pointer-events-none relative flex h-full min-h-0 w-full flex-col items-stretch">
-                      <div
-                        className="absolute left-0 right-0 top-0 h-[3px] bg-gradient-to-r from-[#0078d4] via-[#2899f5] to-[#0078d4] opacity-95"
-                        aria-hidden
-                      />
-                      <div
-                        className="absolute inset-0 bg-gradient-to-b from-white/90 via-[#F6FAFD] to-[#E3EEF8]/95 opacity-[0.97]"
-                        aria-hidden
-                      />
-                      <div
-                        className="absolute inset-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)]"
-                        aria-hidden
-                      />
-                      <div className="relative z-[1] flex min-h-0 flex-1 flex-col items-center justify-between gap-4 px-2 py-7 xl:px-2.5">
-                        <span
-                          className="inline-flex min-h-[2.25rem] min-w-[2.5rem] items-center justify-center rounded-full bg-white px-2 text-[13px] font-black tabular-nums text-[#0078d4] shadow-[0_1px_4px_rgba(0,0,0,0.08),0_0_0_1px_rgba(0,120,212,0.18)] ring-1 ring-white/80 transition-shadow group-hover:shadow-[0_2px_8px_rgba(0,120,212,0.2)] group-hover:ring-[#0078d4]/25"
-                          aria-hidden
-                        >
-                          {String(index + 1).padStart(2, "0")}
+          {/* Right Timeline Steps - Native Scroll */}
+          <div className="lg:col-span-7 flex flex-col gap-6 lg:gap-8 pb-20 relative before:absolute before:inset-0 before:ml-[31px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent h-auto">
+            {timeline.map((item, idx) => (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                key={idx}
+                className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group w-full"
+              >
+                {/* Timeline Dot */}
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-100 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 absolute left-[11px] md:static md:left-auto md:mx-auto z-20">
+                  <div className="w-2.5 h-2.5 bg-blue-600 rounded-full"></div>
+                </div>
+                <div className="flex-1 relative z-10 bg-white hover:bg-slate-50/80 rounded-[1.5rem] p-6 lg:p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 w-full">
+                  <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-[13px] font-bold text-[#0067B8] bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100 flex items-center gap-2 shrink-0 shadow-sm">
+                          <Clock className="w-4 h-4" />
+                          {item.phase}
                         </span>
-                        <span className="flex max-h-[min(300px,58vh)] min-h-0 flex-1 rotate-180 items-center justify-center whitespace-nowrap text-center text-[11px] font-semibold uppercase leading-snug tracking-[0.16em] text-[#323130] drop-shadow-[0_1px_0_rgba(255,255,255,0.9)] transition-colors [text-shadow:0_0_20px_rgba(255,255,255,0.6)] [writing-mode:vertical-rl] group-hover:text-[#005a9e] xl:text-[12px]">
-                          {item.title}
-                        </span>
-                        <span
-                          className="select-none text-[10px] font-bold text-[#0078d4]/70 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                          aria-hidden
-                        >
-                          ···
-                        </span>
+                        <h4 className="text-xl font-extrabold text-[#0F172A] tracking-tight">{item.title}</h4>
                       </div>
+                      <p className="text-[15px] font-medium text-slate-600 leading-relaxed lg:pl-[90px]">
+                        {item.description}
+                      </p>
                     </div>
-                  )}
-                </motion.div>
-              );
-            })}
+
+                    {item.deliverable && (
+                      <div className="lg:w-64 bg-slate-50 group-hover:bg-emerald-50/80 p-5 rounded-2xl border border-slate-200 group-hover:border-emerald-200 shrink-0 transition-all duration-300 relative z-10">
+                        <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500 group-hover:text-emerald-700 block mb-2.5 transition-colors">Key Deliverable</span>
+                        <div className="flex items-start gap-2.5 text-[14px] font-bold text-slate-900 leading-snug">
+                          <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                          <span>{item.deliverable}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
+
         </div>
+
       </div>
     </section>
   );

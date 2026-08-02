@@ -1,340 +1,324 @@
 // @ts-nocheck
 "use client";
-import { Button } from "@/components/ui/Button";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Database, Cloud, ChevronRight } from "lucide-react";
-import Image from "next/image";
+
+import { motion } from "framer-motion";
+import { ArrowRight, Cloud, ShieldCheck, TrendingUp, Snowflake, Factory, Database, Layers, Cpu, Activity, PieChart } from "lucide-react";
 import Link from "next/link";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
 export function FabricHero() {
-  const reduceMotion = useReducedMotion();
-
-  const technologies = [
-    {
-      name: "Microsoft",
-      icon: (
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 23 23"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect x="0" y="0" width="11" height="11" fill="#F25022" />
-          <rect x="12" y="0" width="11" height="11" fill="#7FBA00" />
-          <rect x="0" y="12" width="11" height="11" fill="#00A4EF" />
-          <rect x="12" y="12" width="11" height="11" fill="#FFB900" />
-        </svg>
-      ),
-    },
-    {
-      name: "Azure",
-      icon: (
-        <Image
-          src="/svg/azure-2.svg"
-          alt="Azure"
-          width={20}
-          height={20}
-          className="h-auto w-5 object-contain"
-          priority
-        />
-      ),
-    },
-    {
-      name: "Fabric",
-      icon: (
-        <Image
-          src="/svg/fabric_48_color.svg"
-          alt="Fabric"
-          width={20}
-          height={20}
-          className="h-5 w-5 object-contain"
-          priority
-        />
-      ),
-    },
-    {
-      name: "Purview",
-      icon: (
-        <Image
-          src="/svg/microsoft-purview-seeklogo.svg"
-          alt="Purview"
-          width={20}
-          height={20}
-          className="h-5 w-5 object-contain"
-          priority
-        />
-      ),
-    },
-    {
-      name: "Power BI",
-      icon: (
-        <Image
-          src="/svg/power-bi-icon.svg"
-          alt="Power BI"
-          width={20}
-          height={20}
-          className="h-5 w-5 object-contain"
-          priority
-        />
-      ),
-    },
-    {
-      name: "Copilot",
-      icon: (
-        <Image
-          src="/svg/copilot-icon.svg"
-          alt="Copilot"
-          width={20}
-          height={20}
-          className="h-5 w-5 object-contain"
-          priority
-        />
-      ),
-    },
-  ];
-
   return (
-    <>
+    <section className="relative w-full min-h-screen lg:h-[calc(100vh-80px)] flex flex-col justify-center bg-[#F8FAFC] overflow-hidden pt-12 md:pt-16 pb-12 font-sans">
+      
+      {/* Soft Background Gradients */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-50/50 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
+      
+      {/* Optional faint dot grid to match subtle texture */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
-      <section className="relative w-full flex flex-col lg:min-h-[calc(100vh-80px)]">
-        {/* Main container - 50/50 Split */}
-        <div className="relative flex flex-col lg:flex-row w-full flex-1 overflow-hidden">
+      <div className="container mx-auto px-6 lg:px-12 max-w-[1400px] relative z-10 flex flex-col justify-center flex-1 h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center h-full">
           
-          {/* Left side: Content */}
-          <div className="relative flex w-full flex-col justify-center bg-[#f0f4f8] lg:w-1/2 z-10 overflow-hidden min-h-[55vh] lg:min-h-0">
-            {/* Left side geometric pattern */}
-            <div 
-              className="absolute inset-0 pointer-events-none z-0 opacity-60"
-              style={{
-                backgroundImage: `linear-gradient(#cbd5e1 1px, transparent 1px), linear-gradient(90deg, #cbd5e1 1px, transparent 1px)`,
-                backgroundSize: '40px 40px',
-                backgroundPosition: '-1px -1px'
-              }}
-            />
+          {/* ── Left Text Column ── */}
+          <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }} className="lg:col-span-6 flex flex-col justify-center">
+            
+            <motion.div variants={fadeIn} className="mb-4">
+              <span className="text-[#0067B8] font-bold text-[11px] tracking-[0.2em] uppercase">
+                Enterprise Data Modernization
+              </span>
+            </motion.div>
+            
+            <motion.h1 variants={fadeIn} className="mb-6 text-[3rem] sm:text-[4rem] lg:text-[4.5rem] font-bold tracking-tight text-[#0F172A] leading-[1.1]">
+              Unify your data.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0067B8] to-[#5C2D91]">
+                Unlock real impact.
+              </span>
+            </motion.h1>
 
-            {/* Inner constraint to align with 1400px container */}
-            <div className="w-full max-w-[850px] mx-auto lg:ml-auto lg:mr-0 px-5 sm:px-6 lg:pl-10 xl:pl-16 lg:pr-10 py-8 lg:py-12 relative z-10">
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
-                className="relative z-10"
+            <motion.p variants={fadeIn} className="max-w-lg mb-10 text-[15px] lg:text-lg text-slate-600 font-medium leading-relaxed">
+              Move from data silos to a unified, secure, and intelligent foundation with Microsoft Fabric.
+            </motion.p>
+
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <Link href="/contact?service=fabric-assessment">
+                <button className="h-12 w-full sm:w-auto rounded-lg bg-[#0067B8] hover:bg-[#005DA6] px-6 text-white font-semibold transition-all duration-300 shadow-md flex items-center justify-center">
+                  Get Readiness Assessment <ArrowRight className="ml-2 w-5 h-5" />
+                </button>
+              </Link>
+              <Link href="/services/microsoft/fabric">
+                <button className="h-12 w-full sm:w-auto rounded-lg bg-transparent border-[1.5px] border-[#0067B8] text-[#0067B8] hover:bg-blue-50 px-6 font-semibold transition-all duration-300 flex items-center justify-center">
+                  Explore Microsoft Fabric
+                </button>
+              </Link>
+            </motion.div>
+
+            {/* Three Features */}
+            <motion.div variants={fadeIn} className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 pt-8 border-t border-slate-200 max-w-2xl">
+              <div className="flex items-start gap-3">
+                <ShieldCheck className="w-7 h-7 text-[#0067B8] shrink-0" strokeWidth={1.5} />
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug pt-1">Enterprise-grade<br/>security & governance</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <TrendingUp className="w-7 h-7 text-[#0067B8] shrink-0" strokeWidth={1.5} />
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug pt-1">Faster insights with<br/>AI-powered analytics</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Cloud className="w-7 h-7 text-[#0067B8] shrink-0" strokeWidth={1.5} />
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug pt-1">Scalable. Flexible.<br/>Future-ready.</span>
+              </div>
+            </motion.div>
+
+          </motion.div>
+
+          {/* ── Right Visual Column (Isometric Thick 3D Stack) ── */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="lg:col-span-6 relative w-full h-[500px] lg:h-[600px] hidden md:flex flex-col items-center justify-center"
+          >
+            {/* The Stack Container */}
+            <div className="relative w-full max-w-[600px] h-full flex flex-col items-center justify-center -translate-y-4 z-10">
+              
+              {/* Connecting glowing dashed elevator shafts behind */}
+              <div className="absolute top-[10%] bottom-[15%] left-[calc(50%-135px)] md:left-[calc(50%-158px)] w-px bg-gradient-to-b from-transparent via-slate-300 to-transparent z-0" />
+              <div className="absolute top-[10%] bottom-[15%] left-[calc(50%+135px)] md:left-[calc(50%+158px)] w-px bg-gradient-to-b from-transparent via-slate-300 to-transparent z-0" />
+              <div className="absolute top-[5%] bottom-[10%] left-1/2 w-px bg-gradient-to-b from-transparent via-slate-400/50 to-transparent z-0" />
+
+              {/* Layer 1: Top (Gold) */}
+              <motion.div 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative z-30 flex items-center justify-center w-full"
               >
-                {/* Eyebrow */}
-                <motion.div variants={fadeIn} className="mb-4 lg:mb-6 flex items-center gap-3 text-[11px] font-bold tracking-[0.2em] text-[#1b2b36] sm:text-sm lg:text-[15px]">
-                  <div className="h-3 w-3 bg-[#00A4EF]"></div>
-                  ONE PLATFORM. ONE TRUTH.
-                </motion.div>
-
-                {/* Headline */}
-                <motion.h1 variants={fadeIn} className="mb-6 text-[2rem] font-black uppercase leading-[0.95] tracking-tight text-[#1b2b36] sm:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.2rem]">
-                  Microsoft Fabric
-                </motion.h1>
-
-                {/* Subtext */}
-                <motion.p variants={fadeIn} className="mb-6 lg:mb-8 max-w-[650px] text-base leading-relaxed text-[#1b2b36] sm:text-lg lg:text-xl xl:text-[1.5rem] xl:leading-[1.6]">
-                  Stop chasing the same number. From raw ingestion to board-ready dashboards — unified, governed, and ready for AI. <span className="font-bold text-[#1b2b36]">In 10 weeks.</span>
-                </motion.p>
-
-                {/* Core Technologies List */}
-                <motion.div variants={fadeIn} className="mb-6 lg:mb-8">
-                  <h3 className="mb-3 lg:mb-4 text-xs lg:text-sm font-bold uppercase tracking-widest text-[#1b2b36]">
-                    Platform & Ecosystem:
-                  </h3>
-                  <div className="grid max-w-lg grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-3 lg:gap-y-4">
-                    {technologies.map((tech, idx) => (
-                      <div key={idx} className="flex items-center gap-3">
-                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#00A4EF]/15">
-                          {tech.icon}
-                        </div>
-                        <span className="text-sm font-semibold tracking-wide text-[#1b2b36]">
-                          {tech.name}
-                        </span>
-                      </div>
+                <div style={{ perspective: '1200px' }} className="relative w-48 h-48 md:w-56 md:h-56 flex justify-center items-center group">
+                  <div style={{ transformStyle: 'preserve-3d', transform: 'rotateX(60deg) rotateZ(-45deg)' }} className="relative w-full h-full transition-transform duration-500 group-hover:translate-z-4">
+                    {/* Shadow underneath */}
+                    <div className="absolute inset-0 rounded-[2rem] blur-[16px] bg-[#B45309]/50" style={{ transform: 'translateZ(-30px)' }} />
+                    {/* True CSS 3D Thickness (Darker for Contrast) */}
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="absolute inset-0 rounded-[2rem] bg-[#B45309]" style={{ transform: `translateZ(-${i * 2}px)` }} />
                     ))}
-                  </div>
-                </motion.div>
-
-                {/* CTA */}
-                <motion.div variants={fadeIn}>
-                  <Link href="/contact?service=fabric-assessment" passHref>
-                    <Button className="h-14 lg:h-16 rounded-none bg-[#1b2b36] hover:bg-[#1b2b36]/90 px-8 sm:px-12 lg:px-14 text-xs sm:text-sm lg:text-base font-bold uppercase tracking-widest text-white shadow-none border-none">
-                      Get Readiness Assessment <ChevronRight className="ml-3 h-5 w-5" />
-                    </Button>
-                  </Link>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Right side: Visualization */}
-          <div className="relative flex w-full items-center justify-center bg-[#f8f9fa] lg:w-1/2 z-0 overflow-hidden min-h-[45vw] sm:min-h-[40vw] lg:min-h-0">
-            {/* Right side geometric pattern */}
-            <div 
-              className="absolute inset-0 pointer-events-none z-0 opacity-40"
-              style={{
-                backgroundImage: `linear-gradient(#cbd5e1 1px, transparent 1px), linear-gradient(90deg, #cbd5e1 1px, transparent 1px)`,
-                backgroundSize: '40px 40px',
-                backgroundPosition: '-1px -1px'
-              }}
-            />
-
-            {/* Inner constraint to align with 1400px container */}
-            <div className="w-full max-w-[850px] mx-auto lg:mr-auto lg:ml-0 px-5 sm:px-6 lg:pl-0 lg:pr-10 xl:pr-16 py-6 lg:py-12 z-10">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative w-full"
-              >
-                {/* Modern frame for the visualization */}
-                <div className="relative w-full rounded-3xl bg-white shadow-[0_0_40px_-10px_rgba(0,0,0,0.1)] border border-slate-200/60 p-2 lg:p-3">
-                  <div className="relative aspect-[4/3] lg:aspect-[5/4] w-full rounded-2xl bg-slate-50/50 overflow-hidden flex items-center justify-center border border-slate-100">
+                    <div className="absolute inset-0 rounded-[2rem] bg-[#92400E]" style={{ transform: `translateZ(-24px)` }} /> {/* Bottom Plate */}
                     
-                    {/* Rich Glassmorphic Ambient Backing */}
-                    <div className="absolute inset-2 z-0 transform overflow-hidden rounded-[2.5rem] border border-white/80 bg-white/40 shadow-[0_20px_80px_-20px_rgba(0,130,114,0.15)] backdrop-blur-3xl transition-transform duration-700 hover:scale-[1.01] lg:inset-4">
-                      {/* Inner Architectural Grid */}
-                      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0082720A_1px,transparent_1px),linear-gradient(to_bottom,#0082720A_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_20%,transparent_100%)]" />
-
-                      {/* Corner Dot Matrices */}
-                      <svg className="absolute right-8 top-8 text-[#008272] opacity-40" width="80" height="80" viewBox="0 0 80 80">
-                        <pattern id="dots-tr" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-                          <circle cx="2" cy="2" r="1.5" fill="currentColor" />
-                        </pattern>
-                        <rect x="0" y="0" width="80" height="80" fill="url(#dots-tr)" />
-                      </svg>
-                      <svg className="absolute bottom-8 left-8 text-[#008272] opacity-40" width="80" height="80" viewBox="0 0 80 80">
-                        <pattern id="dots-bl" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-                          <circle cx="2" cy="2" r="1.5" fill="currentColor" />
-                        </pattern>
-                        <rect x="0" y="0" width="80" height="80" fill="url(#dots-bl)" />
-                      </svg>
-
-                      {/* Soft Internal Glowing Orbs */}
-                      <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-[#00A4EF]/20 blur-[80px]" />
-                      <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }} className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-[#008272]/20 blur-[80px]" />
+                    {/* Top Glowing Surface - MORE SATURATED */}
+                    <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-[#FBBF24] to-[#D97706] border-[1px] border-slate-300/80 overflow-hidden shadow-inner" style={{ transform: 'translateZ(0px)' }}>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/30" />
+                      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent" />
                     </div>
-
-                    <div className="relative flex h-full w-full flex-col items-center justify-center font-sans scale-90">
-                      {/* Top Layer - Ingestion */}
-                      <div className="mb-6 flex gap-3 xl:mb-8 xl:gap-6">
-                        <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} className="z-10 flex w-36 items-center gap-3 rounded-2xl border border-border bg-white p-3 shadow-xl xl:w-40">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#00A4EF]/10 text-[#00A4EF]">
-                            <Image src="/svg/azure-2.svg" alt="Azure Data Factory" width={16} height={16} priority />
-                          </div>
-                          <div className="flex-1">
-                            <div className="mb-1 h-1.5 w-full rounded bg-muted" />
-                            <div className="h-1.5 w-2/3 rounded bg-[#00A4EF]/30" />
-                          </div>
-                        </motion.div>
-                        <motion.div animate={{ y: [5, -5, 5] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="z-10 flex w-36 items-center gap-3 rounded-2xl border border-border bg-white p-3 shadow-xl xl:w-40">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600">
-                            <Database className="h-4 w-4" />
-                          </div>
-                          <div className="flex-1">
-                            <div className="mb-1 h-1.5 w-full rounded bg-muted" />
-                            <div className="h-1.5 w-2/3 rounded bg-emerald-500/30" />
-                          </div>
-                        </motion.div>
+                    
+                    {/* True 3D Extruded Bar Chart on the surface */}
+                    <div className="absolute inset-0 flex items-center justify-center gap-[12px] md:gap-[16px] pointer-events-none" style={{ transform: 'translateZ(1px)', transformStyle: 'preserve-3d' }}>
+                      {/* Bar 1 */}
+                      <div className="relative w-5 h-5 md:w-7 md:h-7 rounded-full bg-[#78350F]" style={{ transformStyle: 'preserve-3d' }}>
+                        {[...Array(20)].map((_, i) => <div key={i} className="absolute inset-0 rounded-full bg-[#92400E]" style={{ transform: `translateZ(${i}px)` }} />)}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#F59E0B] to-[#B45309] border-[1px] border-slate-300/60" style={{ transform: 'translateZ(20px)' }} />
                       </div>
-
-                      {/* Middle Layer - OneLake & Fabric Core */}
-                      <div className="group relative z-20 flex w-64 flex-col items-center justify-center gap-4 rounded-3xl border border-border bg-white p-6 shadow-2xl">
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-[#008272]/5 to-transparent" />
-                        <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-[#008272]/10 ring-1 ring-[#008272]/20 transition-transform duration-500 group-hover:scale-110">
-                          <Image src="/svg/fabric_48_color.svg" alt="Microsoft Fabric" width={32} height={32} className="relative z-10" priority />
-                        </div>
-                        <div className="relative z-10 text-center">
-                          <h3 className="text-lg font-bold text-[#1b2b36]">OneLake Base</h3>
-                          <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-[#008272]">Delta Parquet</p>
-                        </div>
-                        {/* Data streaming animation */}
-                        <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-muted">
-                          <motion.div animate={{ x: ["-100%", "200%"] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="absolute inset-y-0 left-0 w-1/2 rounded-full bg-[#008272]" />
-                        </div>
+                      {/* Bar 2 */}
+                      <div className="relative w-5 h-5 md:w-7 md:h-7 rounded-full bg-[#78350F]" style={{ transformStyle: 'preserve-3d' }}>
+                        {[...Array(35)].map((_, i) => <div key={i} className="absolute inset-0 rounded-full bg-[#92400E]" style={{ transform: `translateZ(${i}px)` }} />)}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#F59E0B] to-[#B45309] border-[1px] border-slate-300/60" style={{ transform: 'translateZ(35px)' }} />
                       </div>
-
-                      {/* Bottom Layer - Consumption */}
-                      <div className="z-10 mt-6 flex max-w-[400px] flex-wrap justify-center gap-3 xl:mt-8 xl:gap-4">
-                        <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} className="flex items-center gap-2 rounded-xl border border-border bg-white px-3 py-2.5 shadow-lg">
-                          <Image src="/svg/power-bi-icon.svg" alt="Power BI" width={16} height={16} priority />
-                          <span className="text-xs font-semibold text-[#1b2b36] xl:text-sm">Power BI</span>
-                        </motion.div>
-                        <motion.div animate={{ y: [4, -4, 4] }} transition={{ duration: 2.9, repeat: Infinity, ease: "easeInOut" }} className="flex items-center gap-2 rounded-xl border border-border bg-white px-3 py-2.5 shadow-lg">
-                          <div className="flex h-4 w-4 items-center justify-center rounded-sm text-blue-500">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                              <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
-                            </svg>
-                          </div>
-                          <span className="text-xs font-semibold text-[#1b2b36] xl:text-sm">Synapse</span>
-                        </motion.div>
-                        <motion.div animate={{ y: [-3, 3, -3] }} transition={{ duration: 3.1, repeat: Infinity, ease: "easeInOut" }} className="flex items-center gap-2 rounded-xl border border-border bg-white px-3 py-2.5 shadow-lg">
-                          <Image src="/svg/copilot-icon.svg" alt="Copilot" width={16} height={16} priority />
-                          <span className="text-xs font-semibold text-[#1b2b36] xl:text-sm">Copilot</span>
-                        </motion.div>
-                        <motion.div animate={{ y: [3, -3, 3] }} transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }} className="flex items-center gap-2 rounded-xl border border-border bg-white px-3 py-2.5 shadow-lg">
-                          <Image src="/svg/microsoft-purview-seeklogo.svg" alt="Purview" width={16} height={16} priority />
-                          <span className="text-xs font-semibold text-[#1b2b36] xl:text-sm">Purview</span>
-                        </motion.div>
+                      {/* Bar 3 */}
+                      <div className="relative w-5 h-5 md:w-7 md:h-7 rounded-full bg-[#78350F]" style={{ transformStyle: 'preserve-3d' }}>
+                        {[...Array(50)].map((_, i) => <div key={i} className="absolute inset-0 rounded-full bg-[#92400E]" style={{ transform: `translateZ(${i}px)` }} />)}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#F59E0B] to-[#B45309] border-[1px] border-slate-300/60" style={{ transform: 'translateZ(50px)' }} />
                       </div>
-
-                      {/* Connecting Lines background SVG */}
-                      <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-40" viewBox="0 0 400 400">
-                        {/* Lines from top to middle */}
-                        <motion.path animate={{ strokeDashoffset: [0, -12] }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }} d="M 120 120 Q 200 150 200 180" fill="none" stroke="currentColor" className="text-[#008272]" strokeWidth="2" strokeDasharray="6 6" />
-                        <motion.path animate={{ strokeDashoffset: [0, -12] }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }} d="M 280 120 Q 200 150 200 180" fill="none" stroke="currentColor" className="text-[#008272]" strokeWidth="2" strokeDasharray="6 6" />
-
-                        {/* Lines from middle to bottom */}
-                        <motion.path animate={{ strokeDashoffset: [0, 12] }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }} d="M 200 280 Q 200 320 100 340" fill="none" stroke="currentColor" className="text-[#008272]" strokeWidth="2" strokeDasharray="6 6" />
-                        <motion.path animate={{ strokeDashoffset: [0, 12] }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }} d="M 200 280 Q 200 320 200 340" fill="none" stroke="currentColor" className="text-[#008272]" strokeWidth="2" strokeDasharray="6 6" />
-                        <motion.path animate={{ strokeDashoffset: [0, 12] }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }} d="M 200 280 Q 200 320 300 340" fill="none" stroke="currentColor" className="text-[#008272]" strokeWidth="2" strokeDasharray="6 6" />
-
-                        {/* Floating Abstract Plus Signs to fill whitespace */}
-                        <g className="text-[#008272]/30">
-                          <motion.path animate={{ opacity: [0.2, 0.6, 0.2], scale: [0.9, 1.1, 0.9] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} d="M 80 200 L 90 200 M 85 195 L 85 205" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          <motion.path animate={{ opacity: [0.2, 0.6, 0.2], scale: [0.9, 1.1, 0.9] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }} d="M 320 250 L 330 250 M 325 245 L 325 255" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          <motion.circle animate={{ y: [-5, 5, -5] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} cx="300" cy="180" r="3" fill="currentColor" />
-                          <motion.circle animate={{ y: [5, -5, 5] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }} cx="120" cy="280" r="4" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                        </g>
-                      </svg>
-                    </div>
-
-                    {/* Small star icon at bottom right of image */}
-                    <div className="absolute bottom-4 right-4 text-[#1b2b36] opacity-30 mix-blend-overlay">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
-                      </svg>
                     </div>
                   </div>
                 </div>
+                <div className="absolute top-1/2 -translate-y-1/2 left-[calc(50%+160px)] md:left-[calc(50%+190px)] w-48 pointer-events-none">
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-[3px] h-4 bg-[#D97706]" />
+                    <h4 className="text-[13px] font-bold tracking-widest uppercase" style={{ color: '#D97706' }}>Gold Layer</h4>
+                  </div>
+                  <p className="text-[13px] text-slate-600 font-medium">Board-ready analytics</p>
+                </div>
               </motion.div>
+
+              {/* Layer 2: Middle (Blue) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="relative z-20 flex items-center justify-center w-full -mt-2 md:-mt-4"
+              >
+                <div style={{ perspective: '1200px' }} className="relative w-48 h-48 md:w-56 md:h-56 flex justify-center items-center group">
+                  <div style={{ transformStyle: 'preserve-3d', transform: 'rotateX(60deg) rotateZ(-45deg)' }} className="relative w-full h-full transition-transform duration-500 group-hover:translate-z-4">
+                    <div className="absolute inset-0 rounded-[2rem] blur-[16px] bg-[#1E3A8A]/50" style={{ transform: 'translateZ(-30px)' }} />
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="absolute inset-0 rounded-[2rem] bg-[#1E3A8A]" style={{ transform: `translateZ(-${i * 2}px)` }} />
+                    ))}
+                    <div className="absolute inset-0 rounded-[2rem] bg-[#172554]" style={{ transform: `translateZ(-24px)` }} />
+                    
+                    {/* Top Glowing Surface - MORE SATURATED */}
+                    <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] border-[1px] border-slate-300/80 overflow-hidden shadow-inner" style={{ transform: 'translateZ(0px)' }}>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/30" />
+                      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent" />
+                    </div>
+
+                    {/* True 3D Upright Extruded Shield */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(42px)', transformStyle: 'preserve-3d' }}>
+                      <div className="relative w-20 h-20 md:w-24 md:h-24" style={{ transformStyle: 'preserve-3d', transform: 'rotateZ(45deg) rotateX(-60deg)' }}>
+                        <div className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 w-16 h-4 bg-black/50 blur-[6px] rounded-full" style={{ transform: 'rotateX(60deg) rotateZ(-45deg)' }} />
+                        {[...Array(16)].map((_, i) => (
+                          <ShieldCheck key={i} className="absolute inset-0 w-full h-full text-[#172554]" strokeWidth={0} fill="currentColor" style={{ transform: `translateZ(${-i*1.5}px)` }} />
+                        ))}
+                        <ShieldCheck className="absolute inset-0 w-full h-full text-white" strokeWidth={1.5} fill="#2563EB" style={{ transform: 'translateZ(1px)' }} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute top-1/2 -translate-y-1/2 left-[calc(50%+160px)] md:left-[calc(50%+190px)] w-56 pointer-events-none">
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-[3px] h-4 bg-[#2563EB]" />
+                    <h4 className="text-[13px] font-bold tracking-widest uppercase" style={{ color: '#2563EB' }}>Governance</h4>
+                  </div>
+                  <p className="text-[13px] text-slate-600 font-medium">Security, lineage & compliance</p>
+                </div>
+              </motion.div>
+
+              {/* Layer 3: Bottom (Green) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="relative z-10 flex items-center justify-center w-full -mt-2 md:-mt-4"
+              >
+                <div style={{ perspective: '1200px' }} className="relative w-48 h-48 md:w-56 md:h-56 flex justify-center items-center group">
+                  <div style={{ transformStyle: 'preserve-3d', transform: 'rotateX(60deg) rotateZ(-45deg)' }} className="relative w-full h-full transition-transform duration-500 group-hover:translate-z-4">
+                    <div className="absolute inset-0 rounded-[2rem] blur-[16px] bg-[#064E3B]/40" style={{ transform: 'translateZ(-30px)' }} />
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="absolute inset-0 rounded-[2rem] bg-[#064E3B]" style={{ transform: `translateZ(-${i * 2}px)` }} />
+                    ))}
+                    <div className="absolute inset-0 rounded-[2rem] bg-[#022C22]" style={{ transform: `translateZ(-24px)` }} />
+                    
+                    {/* Top Glowing Surface - MORE SATURATED */}
+                    <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-[#10B981] to-[#047857] border-[1px] border-slate-300/80 overflow-hidden shadow-inner" style={{ transform: 'translateZ(0px)' }}>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/30" />
+                      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent" />
+                    </div>
+
+                    {/* True 3D Extruded Cylinder (Database) */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(1px)', transformStyle: 'preserve-3d' }}>
+                      <div className="absolute w-16 h-16 md:w-20 md:h-20 bg-black/40 blur-[8px] rounded-full" style={{ transform: 'translate(4px, 4px)' }} />
+                      <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#022C22]" style={{ transformStyle: 'preserve-3d' }}>
+                        {[...Array(48)].map((_, i) => (
+                          <div key={i} className="absolute inset-0 rounded-full bg-[#064E3B]" style={{ transform: `translateZ(${i}px)` }} />
+                        ))}
+                        <div className="absolute inset-0 rounded-full border-t-[1.5px] border-white/30" style={{ transform: 'translateZ(16px)' }} />
+                        <div className="absolute inset-0 rounded-full border-t-[1.5px] border-white/30" style={{ transform: 'translateZ(32px)' }} />
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#10B981] to-[#047857] border-[1px] border-slate-300/80" style={{ transform: 'translateZ(48px)' }} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute top-1/2 -translate-y-1/2 left-[calc(50%+160px)] md:left-[calc(50%+190px)] w-48 pointer-events-none">
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-[3px] h-4 bg-[#059669]" />
+                    <h4 className="text-[13px] font-bold tracking-widest uppercase" style={{ color: '#059669' }}>OneLake</h4>
+                  </div>
+                  <p className="text-[13px] text-slate-600 font-medium">Unified data foundation</p>
+                </div>
+              </motion.div>
+
+              {/* Data Sources Pill (Centered, internal text) */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="absolute bottom-[-90px] md:bottom-[-120px] left-1/2 -translate-x-1/2 z-40 bg-white/95 backdrop-blur-xl rounded-[2rem] px-8 md:px-12 py-4 shadow-[0_12px_40px_-10px_rgba(0,0,0,0.15)] border border-slate-200 flex flex-col items-center gap-3 min-w-max"
+              >
+                <div className="text-[9px] font-bold text-[#0067B8] tracking-[0.15em] uppercase leading-relaxed whitespace-nowrap mt-1">
+                  Data Sources
+                </div>
+                <div className="flex items-center gap-6 md:gap-8 mb-1">
+                  {/* Azure */}
+                  <div className="flex items-center justify-center">
+                    <span className="font-black text-[#0067B8] text-2xl leading-none">A</span>
+                  </div>
+                  <div className="w-px h-5 bg-slate-200" />
+                  {/* SAP */}
+                  <div className="font-bold text-slate-800 text-[15px]">SAP</div>
+                  <div className="w-px h-5 bg-slate-200" />
+                  {/* Snowflake */}
+                  <div className="flex items-center justify-center">
+                    <Snowflake className="w-6 h-6 text-[#0067B8]" strokeWidth={2} />
+                  </div>
+                  <div className="w-px h-5 bg-slate-200" />
+                  {/* SFDC */}
+                  <div className="font-bold text-slate-800 text-[15px]">SFDC</div>
+                </div>
+              </motion.div>
+
             </div>
-          </div>
-          
+          </motion.div>
+
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* Fabric Workloads */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="w-full max-w-6xl mx-auto mt-32 lg:mt-auto lg:pt-32 px-6 relative z-10 hidden lg:block"
+      >
+        <div className="bg-white/60 backdrop-blur-xl rounded-[24px] shadow-[0_8px_32px_rgba(0,0,0,0.04)] border border-white/80 p-6 flex flex-col items-center">
+          <h5 className="text-[11px] font-bold text-[#0067B8] tracking-[0.2em] uppercase mb-5">Unified Fabric Workloads</h5>
+          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3">
+            
+            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-white/80 hover:shadow-sm transition-all duration-300 cursor-pointer group">
+              <div className="w-9 h-9 rounded-full bg-blue-50/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 group-hover:bg-[#0067B8] group-hover:shadow-md">
+                <Factory className="w-4 h-4 text-[#0067B8] group-hover:text-white transition-colors" strokeWidth={2} />
+              </div>
+              <span className="font-semibold text-[13.5px] text-slate-700 group-hover:text-[#0067B8] transition-colors">Data Factory</span>
+            </div>
+
+            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-white/80 hover:shadow-sm transition-all duration-300 cursor-pointer group">
+              <div className="w-9 h-9 rounded-full bg-purple-50/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 group-hover:bg-[#5C2D91] group-hover:shadow-md">
+                <Layers className="w-4 h-4 text-[#5C2D91] group-hover:text-white transition-colors" strokeWidth={2} />
+              </div>
+              <span className="font-semibold text-[13.5px] text-slate-700 group-hover:text-[#5C2D91] transition-colors">Data Engineering</span>
+            </div>
+
+            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-white/80 hover:shadow-sm transition-all duration-300 cursor-pointer group">
+              <div className="w-9 h-9 rounded-full bg-emerald-50/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 group-hover:bg-[#059669] group-hover:shadow-md">
+                <Database className="w-4 h-4 text-[#059669] group-hover:text-white transition-colors" strokeWidth={2} />
+              </div>
+              <span className="font-semibold text-[13.5px] text-slate-700 group-hover:text-[#059669] transition-colors">Data Warehouse</span>
+            </div>
+
+            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-white/80 hover:shadow-sm transition-all duration-300 cursor-pointer group">
+              <div className="w-9 h-9 rounded-full bg-rose-50/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 group-hover:bg-[#E11D48] group-hover:shadow-md">
+                <Cpu className="w-4 h-4 text-[#E11D48] group-hover:text-white transition-colors" strokeWidth={2} />
+              </div>
+              <span className="font-semibold text-[13.5px] text-slate-700 group-hover:text-[#E11D48] transition-colors">Data Science</span>
+            </div>
+
+            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-white/80 hover:shadow-sm transition-all duration-300 cursor-pointer group">
+              <div className="w-9 h-9 rounded-full bg-amber-50/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 group-hover:bg-[#D97706] group-hover:shadow-md">
+                <Activity className="w-4 h-4 text-[#D97706] group-hover:text-white transition-colors" strokeWidth={2} />
+              </div>
+              <span className="font-semibold text-[13.5px] text-slate-700 group-hover:text-[#D97706] transition-colors">Real-Time Analytics</span>
+            </div>
+
+            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-white/80 hover:shadow-sm transition-all duration-300 cursor-pointer group">
+              <div className="w-9 h-9 rounded-full bg-yellow-50/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 group-hover:bg-[#F2C811] group-hover:shadow-md">
+                <PieChart className="w-4 h-4 text-[#B49200] group-hover:text-white transition-colors" strokeWidth={2} />
+              </div>
+              <span className="font-semibold text-[13.5px] text-slate-700 group-hover:text-[#B49200] transition-colors">Power BI</span>
+            </div>
+
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 }

@@ -1,12 +1,12 @@
-// @ts-nocheck
+// src/components/sections/microsoft/ExampleSection.jsx
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight } from "lucide-react";
-import Image from "next/image";
+import { CheckCircle2, Zap, ArrowRight, TrendingDown } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 export function ExampleSection({
-  title = "Real Example",
+  title = "Private Equity: 3 ERPs, 1 Truth",
   outcomeMetric,
   outcomeMetricLabel,
   context,
@@ -17,142 +17,115 @@ export function ExampleSection({
   linkUrl,
 }) {
   return (
-    <section className="relative flex flex-col justify-center overflow-hidden border-t border-border/50 bg-slate-50 py-12 lg:py-0 lg:min-h-[calc(100vh-80px)] text-foreground">
-      {/* Power BI Dashboard Background Art in Free Space */}
-      <div className="pointer-events-none absolute -left-[10%] bottom-0 hidden h-[800px] w-[1000px] opacity-10 mix-blend-screen 2xl:block">
-        <Image
-          src="/images/fabric/powerbi_dashboard.png"
-          alt="Power BI Dashboard"
-          fill
-          className="object-contain object-bottom"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
-      </div>
-
-      <div className="container relative z-10 mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+    <section className="relative z-30 bg-white font-sans w-full py-20 lg:py-32">
+      <div className="container mx-auto px-6 max-w-[1320px] relative z-10 w-full">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto mb-8 max-w-4xl text-center antialiased md:mb-10"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="bg-slate-50 rounded-[2rem] lg:rounded-[3rem] border border-slate-200/80 shadow-2xl flex flex-col lg:flex-row overflow-hidden w-full"
         >
-          <span className="mb-3 block text-[13px] font-semibold uppercase tracking-widest text-forest">
-            Real Results
-          </span>
-          {outcomeMetric && outcomeMetricLabel && (
-            <div className="mb-5 inline-flex flex-wrap items-baseline gap-2 rounded-2xl border border-white/15 bg-forest px-5 py-2.5">
-              <span className="text-2xl font-black tracking-tight text-forest-foreground sm:text-3xl md:text-4xl">
-                {outcomeMetric}
-              </span>
-              <span className="text-xs font-semibold uppercase tracking-wider text-forest-foreground/75">
-                {outcomeMetricLabel}
-              </span>
+          
+          {/* Left Column - High Premium Dark Mode */}
+          <div className="lg:w-5/12 p-8 lg:p-14 flex flex-col justify-between bg-slate-900 border-b lg:border-b-0 lg:border-r border-slate-800 relative overflow-hidden shrink-0">
+            {/* Dark Mode Background Effects */}
+            <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 -translate-y-1/3" />
+            <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none translate-x-1/3 translate-y-1/3" />
+            
+            <div className="relative z-10 mb-12">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-400 mb-8 shadow-sm">
+                <Zap className="w-3.5 h-3.5" />
+                <span className="text-[11px] font-bold tracking-[0.15em] uppercase">Featured Case Study</span>
+              </div>
+              
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.15] mb-4">
+                {title}
+              </h3>
             </div>
-          )}
-          <h2 className="text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl">
-            {title}
-          </h2>
-        </motion.div>
-
-        <div className="flex flex-col overflow-hidden rounded-3xl border border-border/50 shadow-2xl">
-          {/* Top Half: Context vs Reality */}
-          <div className="grid grid-cols-1 antialiased md:grid-cols-2">
-            {/* Context Block */}
-            {context && (
-              <div className="border-r border-border/50 bg-card/60 p-5 backdrop-blur-xl md:p-8">
-                <h3 className="mb-3 flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  <div className="h-1.5 w-1.5 rounded-full bg-border" />
-                  The Context
-                </h3>
-                <p className="text-balance text-base font-normal leading-relaxed text-muted-foreground/90 lg:text-lg">
-                  {context}
-                </p>
-              </div>
-            )}
-
-            {/* Reality Block (Problem) */}
-            {reality && (
-              <div className="bg-forest p-5 md:p-8">
-                <h3 className="mb-3 flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-white/70">
-                  <div className="h-1.5 w-1.5 rounded-full bg-white" />
-                  The Reality
-                </h3>
-                <p className="text-balance text-base font-normal leading-relaxed text-white/90 lg:text-lg">
-                  {reality}
-                </p>
-              </div>
-            )}
+            
+            <div className="space-y-8 relative z-10 mt-auto">
+              {context && (
+                <div className="border-l-[3px] border-blue-500 pl-5">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400 block mb-2">Context</span>
+                  <p className="text-[15px] font-medium text-slate-300 leading-relaxed">
+                    {context}
+                  </p>
+                </div>
+              )}
+              {reality && (
+                <div className="border-l-[3px] border-slate-700 pl-5">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400 block mb-2">The Challenge</span>
+                  <p className="text-[15px] font-medium text-slate-400 leading-relaxed">
+                    {reality}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Middle: What we built */}
-          {build && build.length > 0 && (
-            <div className="border-y border-border/50 bg-background/80 p-5 antialiased backdrop-blur-xl md:p-8">
-              <h3 className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                <div className="h-1.5 w-1.5 rounded-full bg-forest" />
-                What We Built
-              </h3>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                {build.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-forest/10">
-                      <ChevronRight className="h-3 w-3 text-forest" />
-                    </div>
-                    <span className="text-sm font-normal leading-relaxed text-muted-foreground/90">
-                      {item}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Bottom Half: The Outcome */}
-          {outcome && (
-            <div className="relative grid grid-cols-1 items-stretch overflow-hidden bg-forest/5 antialiased lg:grid-cols-2">
-              <div className="relative z-10 flex flex-col justify-center p-5 md:p-8">
-                <div className="pointer-events-none absolute bottom-0 right-0 h-48 w-48 rounded-full bg-forest/5 blur-[80px]" />
-                <h3 className="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-forest/80">
-                  <div className="h-1.5 w-1.5 rounded-full bg-forest" />
-                  The Outcome
-                </h3>
-                <p className="max-w-4xl text-xl font-semibold leading-relaxed tracking-tight text-foreground md:text-2xl">
-                  &quot;{outcome}&quot;
-                </p>
-
-                {/* CTA */}
-                {linkUrl && linkText && (
-                  <div className="mt-8">
-                    <Link
-                      href={linkUrl}
-                      className="group inline-flex w-fit items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-forest/90"
-                    >
-                      {linkText}
-                      <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
-                    </Link>
+          {/* Right Column - Clean Data / Bento Aesthetic */}
+          <div className="lg:w-7/12 p-8 lg:p-14 bg-white flex flex-col justify-center">
+            
+            {outcomeMetric && (
+              <div className="mb-12">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-600">
+                    <TrendingDown className="w-4 h-4 stroke-[3]" />
+                  </span>
+                  <span className="text-[12px] font-bold uppercase tracking-widest text-slate-500">{outcomeMetricLabel}</span>
+                </div>
+                
+                {/* Custom Split Metric Visualization */}
+                <div className="flex flex-wrap items-baseline gap-4 lg:gap-6 bg-slate-50 border border-slate-100 p-6 lg:p-8 rounded-3xl shadow-sm">
+                  <div className="text-4xl lg:text-5xl font-black text-slate-400 line-through decoration-red-500/80 decoration-4">
+                    10 Days
                   </div>
-                )}
+                  <div className="text-slate-300">
+                    <ArrowRight className="w-8 h-8 lg:w-10 lg:h-10" />
+                  </div>
+                  <div className="text-5xl lg:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-emerald-500 pb-2">
+                    3 Days
+                  </div>
+                </div>
               </div>
+            )}
 
-              <div className="relative hidden h-full min-h-[300px] bg-muted/30 lg:block">
-                <Image
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2015&auto=format&fit=crop"
-                  alt="Finance Team in Boardroom"
-                  fill
-                  className="object-cover"
-                />
+            {build && (
+              <div className="mb-12">
+                <div className="text-[12px] font-bold uppercase tracking-widest text-slate-400 mb-5">What We Built</div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {build.map((item, i) => (
+                    <div key={i} className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-50 border border-slate-200/60 transition-colors hover:border-blue-200 group">
+                      <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0 mt-0.5 group-hover:text-blue-600" />
+                      <span className="text-[14px] font-semibold text-slate-700 leading-snug">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
+            )}
+
+            <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6 pt-8 border-t border-slate-100 mt-auto">
+              {outcome && (
+                <p className="text-[15px] font-medium text-slate-600 italic flex-1 xl:pr-8">
+                  "{outcome}"
+                </p>
+              )}
+              {linkUrl && (
+                <Link href={linkUrl} className="shrink-0">
+                  <Button className="h-14 px-8 rounded-2xl bg-[#0067B8] hover:bg-[#005A9E] text-white text-[13px] font-bold uppercase tracking-wider transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 w-full xl:w-auto flex items-center justify-center">
+                     {linkText}
+                     <ArrowRight className="ml-2.5 h-4 w-4" />
+                  </Button>
+                </Link>
+              )}
             </div>
-          )}
-        </div>
+            
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
+
