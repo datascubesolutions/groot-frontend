@@ -27,7 +27,7 @@ export default function FinancialServicesPage() {
             <Breadcrumb
               items={[
                 { label: "Industries", href: "/industries" },
-                { label: "Financial Services", href: "/industries/financial-services", active: true },
+                { label: "Financial Services", href: "/industries/financial-services" },
               ]}
             />
           </div>
