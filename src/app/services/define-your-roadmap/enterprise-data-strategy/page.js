@@ -616,7 +616,7 @@ function MethodPanel({ step, week, title, desc, color }) {
   );
 }
 
-export function FAQItem({ q, a, index = 0 }) {
+function FAQItem({ q, a, index = 0 }) {
   const num = String(index + 1).padStart(2, "0");
   return (
     <details className="group relative cursor-pointer overflow-hidden border-2 border-foreground bg-card transition-all duration-300 hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_0px_rgba(16,185,129,1)] shadow-none [&_summary::-webkit-details-marker]:hidden">

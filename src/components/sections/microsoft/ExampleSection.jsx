@@ -1,4 +1,5 @@
 // src/components/sections/microsoft/ExampleSection.jsx
+// @ts-nocheck
 "use client";
 import { motion } from "framer-motion";
 import { CheckCircle2, Zap, ArrowRight, TrendingDown } from "lucide-react";

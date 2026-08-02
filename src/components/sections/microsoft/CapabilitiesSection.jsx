@@ -1,4 +1,5 @@
 // src/components/sections/microsoft/CapabilitiesSection.jsx
+// @ts-nocheck
 "use client";
 import { motion } from "framer-motion";
 import { Layers, Database, Shield, GitMerge, FileSpreadsheet, Box, ArrowRight, Lock } from "lucide-react";

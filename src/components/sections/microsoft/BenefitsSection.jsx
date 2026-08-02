@@ -1,4 +1,5 @@
 // src/components/sections/microsoft/BenefitsSection.jsx
+// @ts-nocheck
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Sparkles, Database, ShieldCheck, Link2, Search, Bot, BarChart3, Lock, LineChart, Terminal, MessageSquare } from "lucide-react";

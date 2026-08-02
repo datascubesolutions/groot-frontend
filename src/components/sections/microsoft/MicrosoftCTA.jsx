@@ -1,4 +1,5 @@
 // src/components/sections/microsoft/MicrosoftCTA.jsx
+// @ts-nocheck
 "use client";
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";

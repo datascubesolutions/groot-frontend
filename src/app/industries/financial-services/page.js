@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";

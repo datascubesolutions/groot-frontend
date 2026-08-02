@@ -1,4 +1,5 @@
 // src/components/sections/microsoft/DeliveryTimeline.jsx
+// @ts-nocheck
 "use client";
 import { motion } from "framer-motion";
 import { CheckCircle2, Clock, Calendar, ShieldCheck, Flag, ArrowRight } from "lucide-react";

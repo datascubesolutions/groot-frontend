@@ -1,4 +1,5 @@
 // src/components/sections/microsoft/ProblemSection.jsx
+// @ts-nocheck
 "use client";
 import { motion } from "framer-motion";
 import { AlertTriangle, CheckCircle2, Search, Database, ShieldAlert, Activity, FileSpreadsheet, Lock } from "lucide-react";

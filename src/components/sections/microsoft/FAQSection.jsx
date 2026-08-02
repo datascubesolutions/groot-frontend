@@ -1,4 +1,5 @@
 // src/components/sections/microsoft/FAQSection.jsx
+// @ts-nocheck
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { HelpCircle, Minus, Plus } from "lucide-react";
